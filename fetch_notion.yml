@@ -1,0 +1,54 @@
+name: Atualizar Dados e Publicar Site de Obra
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */4 * * *'   # a cada 4 horas (disparado pelo cron-job.org também)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependências
+        run: pip install requests
+
+      - name: Gerar data.json
+        env:
+          NOTION_TOKEN_DOCS: ${{ secrets.NOTION_TOKEN_DOCS }}
+          NOTION_DB_DOCS:    ${{ secrets.NOTION_DB_DOCS }}
+        run: python fetch_notion.py
+
+      - name: Commitar data.json atualizado
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git diff --cached --quiet || git commit -m "chore: atualizar data.json [skip ci]"
+          git push
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artefato
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
