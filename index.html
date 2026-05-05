@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site de Obra — Morais Engenharia</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', sans-serif; background: #0f1923; color: #e8edf2; min-height: 100vh; }
+.header {
+  background: #1a2a3a; border-bottom: 2px solid #2e86de;
+  padding: 14px 24px; display: flex; align-items: center; gap: 16px;
+}
+.header img { height: 44px; }
+.header h1 { font-size: 1.2rem; color: #fff; }
+.header h2 { font-size: 0.8rem; color: #90adc4; text-transform: uppercase; letter-spacing: 1px; }
+.container { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
+.cidade-titulo {
+  font-size: 0.72rem; color: #2e86de; text-transform: uppercase;
+  letter-spacing: 2px; font-weight: 700; margin-bottom: 14px;
+  border-bottom: 1px solid #2e4a6a; padding-bottom: 8px;
+}
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 36px; }
+.card {
+  background: #1a2a3a; border: 1px solid #2e4a6a; border-radius: 10px;
+  padding: 18px 16px; cursor: pointer; text-decoration: none; color: inherit;
+  display: flex; align-items: center; gap: 12px;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.card:hover { border-color: #2e86de; transform: translateY(-2px); }
+.card-icon { font-size: 1.6rem; }
+.card-nome { font-size: 0.9rem; font-weight: 700; color: #fff; }
+.card-cidade { font-size: 0.7rem; color: #90adc4; margin-top: 2px; }
+.ts { text-align: center; color: #90adc4; font-size: 0.72rem; margin-top: 8px; }
+@media (max-width: 500px) { .grid { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <img src="logo.png" alt="Morais" onerror="this.style.display='none'">
+  <div>
+    <h2>Morais Engenharia e Construção</h2>
+    <h1>Controle de Obra — Setores</h1>
+  </div>
+</div>
+<div class="container">
+
+  <div class="cidade-titulo">📍 Goiânia</div>
+  <div class="grid">
+    <a href="acropole.html" class="card"><span class="card-icon">🏘</span><div><div class="card-nome">Acropole</div><div class="card-cidade">Goiânia</div></div></a>
+    <a href="esmeraldas.html" class="card"><span class="card-icon">🏘</span><div><div class="card-nome">Cond. Esmeraldas</div><div class="card-cidade">Goiânia</div></div></a>
+    <a href="ipanema.html" class="card"><span class="card-icon">🏘</span><div><div class="card-nome">Ipanema</div><div class="card-cidade">Goiânia</div></div></a>
+    <a href="joaobraz2.html" class="card"><span class="card-icon">🏘</span><div><div class="card-nome">João Braz 2</div><div class="card-cidade">Goiânia</div></div></a>
+    <a href="marquesdeabreu.html" class="card"><span class="card-icon">🏘</span><div><div class="card-nome">Marques de Abreu</div><div class="card-cidade">Goiânia</div></div></a>
+    <a href="solarville.html" class="card"><span class="card-icon">🏘</span><div><div class="card-nome">Solar Ville</div><div class="card-cidade">Goiânia</div></div></a>
+  </div>
+
+  <div class="cidade-titulo">📍 Senador Canedo</div>
+  <div class="grid">
+    <a href="pqdosburitis.html" class="card"><span class="card-icon">🏘</span><div><div class="card-nome">Pq. dos Buritis</div><div class="card-cidade">Senador Canedo</div></div></a>
+    <a href="ravena.html" class="card"><span class="card-icon">🏘</span><div><div class="card-nome">Ravena</div><div class="card-cidade">Senador Canedo</div></div></a>
+    <a href="terrabela.html" class="card"><span class="card-icon">🏘</span><div><div class="card-nome">Terrabela</div><div class="card-cidade">Senador Canedo</div></div></a>
+  </div>
+
+  <p class="ts" id="ts">—</p>
+</div>
+<script>
+fetch("data.json?t="+Date.now())
+  .then(r=>r.json())
+  .then(j=>{ document.getElementById("ts").textContent = "Dados atualizados em: " + new Date(j.updated_at).toLocaleString("pt-BR"); })
+  .catch(()=>{});
+</script>
+</body>
+</html>
