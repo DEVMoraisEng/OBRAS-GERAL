@@ -8,16 +8,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy:   #1a2744;
-    --navy2:  #243057;
+    --navy:   #1e3255;
+    --navy2:  #2a3d6b;
     --teal:   #3d8b8b;
     --teal2:  #4fa8a8;
     --light:  #e8f0f0;
     --white:  #ffffff;
-    --gray:   #8a9ab5;
-    --panel:  #1e2e52;
-    --panel2: #162240;
-    --border: rgba(61,139,139,0.2);
+    --gray:   #9aaac5;
+    --panel:  #253660;
+    --panel2: #1e2e52;
+    --border: rgba(61,139,139,0.25);
 
     /* Status cores — igual ao print */
     --c-nao-comprado:    #b0bec5;
@@ -145,7 +145,7 @@
     flex: 1;
     position: relative;
     overflow: hidden;
-    background: #f0f4f8;
+    background: #f4f7fa;
     min-height: 0;
   }
 
@@ -194,7 +194,9 @@
   /* Legenda — barra fixa abaixo do mapa */
   .legend {
     background: var(--navy2);
-    border-top: 1px solid rgba(61,139,139,0.2);
+    border-top: 2px solid var(--teal);
+    outline: none;
+    box-shadow: 0 -2px 12px rgba(61,139,139,0.18);
     padding: 10px 20px;
     display: flex;
     flex-wrap: wrap;
@@ -421,6 +423,106 @@
   }
 
   .tooltip strong { display: block; font-size: 13px; margin-bottom: 2px; color: var(--teal2); }
+
+  /* ══════════════════════════════════
+     MOBILE — responsivo
+  ══════════════════════════════════ */
+  @media (max-width: 768px) {
+    html, body { overflow: auto; }
+
+    header {
+      padding: 0 14px;
+      height: auto;
+      min-height: 54px;
+      flex-wrap: wrap;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      gap: 6px;
+    }
+    .header-logo { height: 32px; }
+    .header-brand-name { font-size: 16px; }
+    .header-brand-sub { font-size: 8px; }
+    .header-emp { font-size: 16px; }
+    .header-divider { display: none; }
+    .back-btn { font-size: 10px; padding: 6px 10px; }
+
+    /* Layout vira coluna no mobile */
+    .layout { flex-direction: column; height: auto; }
+    .map-panel-row { flex-direction: column; height: auto; overflow: visible; }
+
+    /* Mapa ocupa largura total com scroll horizontal */
+    .map-area {
+      width: 100%;
+      height: 55vw;
+      min-height: 220px;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x pan-y;
+    }
+
+    #mapa-svg {
+      width: auto;
+      height: 100%;
+      min-width: 520px;
+    }
+
+    #mapa-svg svg {
+      width: auto;
+      height: 100%;
+      min-width: 520px;
+    }
+
+    /* Barra de busca no mapa */
+    .search-bar {
+      width: calc(100% - 20px);
+      top: 8px;
+      left: 10px;
+    }
+
+    /* Painel lateral vira painel inferior */
+    .panel {
+      width: 100%;
+      max-height: 60vh;
+      border-left: none;
+      border-top: 2px solid var(--teal);
+    }
+
+    .panel-header { height: 44px; padding: 0 14px; }
+    .panel-title { font-size: 13px; }
+
+    /* Grid do painel de 2 colunas para 1 coluna em telas muito pequenas */
+    .panel-grid { grid-template-columns: 1fr; }
+    .panel-field.full { grid-column: 1; }
+    .panel-field { padding: 10px 14px; }
+    .field-label { font-size: 8px; }
+    .field-value { font-size: 13px; }
+
+    /* Legenda compacta */
+    .legend {
+      padding: 8px 12px;
+      gap: 4px 14px;
+      justify-content: flex-start;
+    }
+    .legend-item { font-size: 10px; gap: 5px; }
+    .legend-dot { width: 10px; height: 10px; }
+
+    /* Checklist */
+    .check-item { font-size: 10px; padding: 5px 8px; }
+    .check-icon { width: 16px; height: 16px; font-size: 9px; }
+
+    /* Panel empty */
+    .panel-empty { padding: 24px; gap: 8px; }
+    .panel-empty-icon { font-size: 28px; }
+    .panel-empty p { font-size: 12px; }
+
+    /* Status badge */
+    .status-badge { font-size: 10px; padding: 3px 8px; }
+  }
+
+  @media (max-width: 400px) {
+    .map-area { height: 62vw; }
+    header .back-btn span { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -465,7 +567,7 @@
   <div class="panel" id="panel">
 
     <div class="panel-header">
-      <div class="panel-title">Gestão Documental</div>
+      <div class="panel-title">Gestão de Obra</div>
       <button class="panel-close" onclick="closePanel()">✕</button>
     </div>
 
@@ -488,7 +590,7 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-nao-iniciado)"></div>Não iniciado</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-em-andamento)"></div>Em andamento</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-fin-prazo)"></div>Finalizado no prazo</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--c-fin-sem-prazo)"></div>Finalizado s/ prazo</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--c-fin-sem-prazo)"></div>Finalizado acima do prazo</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-acima-prazo)"></div>Acima do prazo</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-agendado)"></div>Habite-se agendado</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-concluido)"></div>Habite-se concluído</div>
@@ -526,7 +628,7 @@ const STATUS_LABEL = {
   nao_iniciado:    'Não iniciado',
   em_andamento:    'Em andamento',
   fin_prazo:       'Finalizado no prazo',
-  fin_sem_prazo:   'Finalizado s/ prazo',
+  fin_sem_prazo:   'Finalizado acima do prazo',
   acima_prazo:     'Acima do prazo',
   habite_agendado: 'Habite-se agendado',
   habite_concluido:'Habite-se concluído',
@@ -652,6 +754,7 @@ function pintarMapa() {
 
     // Pinta o elemento (rect, path, polygon, etc.)
     el.style.fill = cor;
+    el.style.fillOpacity = '0.55';
     el.style.cursor = 'pointer';
     el.style.transition = 'opacity 0.15s, stroke-width 0.15s';
 
@@ -753,9 +856,13 @@ function openPanel(ref, doc, status) {
         <div class="field-label">Tempo de Obra</div>
         <div class="field-value ${!tempoObra ? 'empty' : ''}">${tempoObra || '—'}</div>
       </div>
-      <div class="panel-field">
+      <div class="panel-field full">
         <div class="field-label">Proprietário</div>
         <div class="field-value ${!d.proprietario ? 'empty' : ''}">${d.proprietario || '—'}</div>
+      </div>
+      <div class="panel-field full">
+        <div class="field-label">Documento (CPF/CNPJ)</div>
+        <div class="field-value ${!d.documento ? 'empty' : ''}" style="word-break:break-all;font-size:13px">${d.documento || '—'}</div>
       </div>
       <div class="panel-field">
         <div class="field-label">Mestre</div>
