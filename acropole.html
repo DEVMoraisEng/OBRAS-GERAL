@@ -8,15 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy:   #1e3255;
-    --navy2:  #2a3d6b;
+    --navy:   #243d6a;
+    --navy2:  #2f4878;
     --teal:   #3d8b8b;
     --teal2:  #4fa8a8;
     --light:  #e8f0f0;
     --white:  #ffffff;
     --gray:   #9aaac5;
-    --panel:  #253660;
-    --panel2: #1e2e52;
+    --panel:  #2a3d6b;
+    --panel2: #253660;
     --border: rgba(61,139,139,0.25);
 
     /* Status cores — igual ao print */
@@ -472,11 +472,17 @@
       min-width: 520px;
     }
 
-    /* Barra de busca no mapa */
+    /* Barra de busca no mapa — no mobile vai para fora do map-area */
     .search-bar {
-      width: calc(100% - 20px);
-      top: 8px;
-      left: 10px;
+      position: static;
+      width: 100%;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      box-shadow: none;
+      background: #fff;
+      padding: 10px 14px;
     }
 
     /* Painel lateral vira painel inferior */
@@ -523,6 +529,75 @@
     .map-area { height: 62vw; }
     header .back-btn span { display: none; }
   }
+
+  /* ── GRUPOS DO PAINEL ── */
+  .panel-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .group-row {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(61,139,139,0.15);
+    border-left: 3px solid var(--teal);
+    margin: 8px 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(61,139,139,0.35);
+    border-left: 3px solid var(--teal);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .group-row .panel-field {
+    flex: 1;
+    min-width: 120px;
+    border-bottom: none;
+    padding: 10px 14px;
+  }
+
+  .group-row .panel-field.full {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .group-row .panel-field + .panel-field {
+    border-left: 1px solid rgba(61,139,139,0.15);
+  }
+
+  /* ── BUSCA — no mobile vai acima do mapa (estático) ── */
+  @media (max-width: 768px) {
+    .map-area { display: flex; flex-direction: column; }
+
+    .search-bar {
+      position: static !important;
+      top: auto !important;
+      left: auto !important;
+      width: 100% !important;
+      border-radius: 0 !important;
+      border: none !important;
+      border-bottom: 1px solid #dde4ed !important;
+      box-shadow: none !important;
+      flex-shrink: 0;
+      z-index: auto;
+    }
+
+    #mapa-svg {
+      flex: 1;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x pan-y;
+      min-height: 180px;
+    }
+
+    #mapa-svg svg {
+      width: auto !important;
+      height: 100% !important;
+      min-width: 480px;
+      display: block;
+    }
+  }
+
 </style>
 </head>
 <body>
