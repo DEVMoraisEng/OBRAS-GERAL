@@ -1,54 +1,823 @@
-name: Atualizar Dados e Publicar Site de Obra
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esmeraldas – Morais Engenharia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:   #1a2744;
+    --navy2:  #243057;
+    --teal:   #3d8b8b;
+    --teal2:  #4fa8a8;
+    --light:  #e8f0f0;
+    --white:  #ffffff;
+    --gray:   #8a9ab5;
+    --panel:  #1e2e52;
+    --panel2: #162240;
+    --border: rgba(61,139,139,0.2);
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 */4 * * *'   # a cada 4 horas (disparado pelo cron-job.org também)
+    /* Status cores — igual ao print */
+    --c-nao-comprado:    #b0bec5;
+    --c-nao-iniciado:    #f5a623;
+    --c-em-andamento:    #4a90d9;
+    --c-fin-prazo:       #2ecc71;
+    --c-fin-sem-prazo:   #27ae60;
+    --c-acima-prazo:     #e74c3c;
+    --c-habite-agendado: #e84393;
+    --c-habite-concluido:#8e44ad;
+  }
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  html, body {
+    height: 100%;
+    font-family: 'Barlow', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow: hidden; /* sem scroll na página, scroll interno no mapa se necessário */
+  }
 
-    steps:
-      - uses: actions/checkout@v4
+  /* ══════════════════════════════════
+     HEADER
+  ══════════════════════════════════ */
+  header {
+    background: var(--navy2);
+    border-bottom: 2px solid var(--teal);
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 50;
+  }
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+  .header-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+  }
 
-      - name: Instalar dependências
-        run: pip install requests
+  .header-brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
 
-      - name: Gerar data.json
-        env:
-          NOTION_TOKEN_DOCS: ${{ secrets.NOTION_TOKEN_DOCS }}
-          NOTION_DB_DOCS:    ${{ secrets.NOTION_DB_DOCS }}
-        run: python fetch_notion.py
+  .header-brand-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    text-transform: uppercase;
+  }
 
-      - name: Commitar data.json atualizado
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json
-          git diff --cached --quiet || git commit -m "chore: atualizar data.json [skip ci]"
-          git push
+  .header-brand-sub {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--teal2);
+    text-transform: uppercase;
+  }
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+  .header-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--border);
+    margin: 0 6px;
+  }
 
-      - name: Upload artefato
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
+  .header-emp {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    text-transform: uppercase;
+  }
 
-      - name: Deploy Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+  .header-spacer { flex: 1; }
+
+  .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: var(--teal2);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .back-btn:hover {
+    background: rgba(61,139,139,0.1);
+    border-color: var(--teal);
+  }
+
+  /* ══════════════════════════════════
+     LAYOUT PRINCIPAL
+  ══════════════════════════════════ */
+  .layout {
+    display: flex;
+    height: calc(100vh - 64px);
+  }
+
+  /* ── ÁREA DO MAPA ── */
+  .map-area {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: #f0f4f8;
+  }
+
+  /* Barra de busca sobre o mapa */
+  .search-bar {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.97);
+    border: 1px solid #dde4ed;
+    border-radius: 8px;
+    padding: 8px 14px;
+    width: 260px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  }
+
+  .search-bar svg { color: #8a9ab5; flex-shrink: 0; }
+
+  .search-bar input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: #1a2744;
+    width: 100%;
+  }
+
+  .search-bar input::placeholder { color: #b0bec5; }
+
+  /* SVG do mapa */
+  #mapa-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  #mapa-svg svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Legenda no canto inferior esquerdo */
+  .legend {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    z-index: 10;
+    background: rgba(26,39,68,0.92);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 14px 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px 20px;
+    backdrop-filter: blur(4px);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    color: #d0dce8;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── PAINEL LATERAL ── */
+  .panel {
+    width: 420px;
+    flex-shrink: 0;
+    background: var(--navy2);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .panel-header {
+    background: var(--navy);
+    border-bottom: 2px solid var(--teal);
+    padding: 0 20px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .panel-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .panel-close {
+    background: none;
+    border: none;
+    color: var(--gray);
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+    transition: color 0.15s;
+  }
+
+  .panel-close:hover { color: var(--white); }
+
+  /* Grid de campos dentro do painel */
+  .panel-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+  }
+
+  .panel-body::-webkit-scrollbar { width: 4px; }
+  .panel-body::-webkit-scrollbar-track { background: transparent; }
+  .panel-body::-webkit-scrollbar-thumb { background: rgba(61,139,139,0.3); border-radius: 2px; }
+
+  .panel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .panel-field {
+    background: var(--navy2);
+    padding: 14px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .panel-field.full { grid-column: 1 / -1; }
+
+  .field-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  .field-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.3;
+  }
+
+  .field-value.empty { color: var(--gray); font-style: italic; }
+
+  /* Seção separadora */
+  .panel-section {
+    padding: 10px 20px 6px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal2);
+    background: var(--panel2);
+    border-top: 1px solid var(--border);
+  }
+
+  /* Checklist de documentação */
+  .panel-checklist {
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    color: #b0c4d8;
+    padding: 6px 10px;
+    border-radius: 5px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .check-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+
+  .check-icon.sim    { background: rgba(46,204,113,0.2); color: #2ecc71; }
+  .check-icon.nao    { background: rgba(231,76,60,0.2);  color: #e74c3c; }
+  .check-icon.inexiste { background: rgba(138,154,181,0.15); color: #8a9ab5; }
+  .check-icon.vazio  { background: rgba(138,154,181,0.1);  color: #8a9ab5; }
+
+  /* Status badge */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .status-badge .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .s-nao-comprado    { background: rgba(176,190,197,0.15); color: var(--c-nao-comprado); }
+  .s-nao-iniciado    { background: rgba(245,166,35,0.15);  color: var(--c-nao-iniciado); }
+  .s-em-andamento    { background: rgba(74,144,217,0.15);  color: var(--c-em-andamento); }
+  .s-fin-prazo       { background: rgba(46,204,113,0.15);  color: var(--c-fin-prazo); }
+  .s-fin-sem-prazo   { background: rgba(39,174,96,0.15);   color: var(--c-fin-sem-prazo); }
+  .s-acima-prazo     { background: rgba(231,76,60,0.15);   color: var(--c-acima-prazo); }
+  .s-habite-agendado { background: rgba(232,67,147,0.15);  color: var(--c-habite-agendado); }
+  .s-habite-concluido{ background: rgba(142,68,173,0.15);  color: var(--c-habite-concluido); }
+
+  /* Estado vazio do painel */
+  .panel-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--gray);
+    padding: 40px;
+    text-align: center;
+  }
+
+  .panel-empty-icon { font-size: 36px; opacity: 0.4; }
+  .panel-empty p { font-size: 13px; line-height: 1.5; }
+
+  /* Tooltip */
+  .tooltip {
+    position: fixed;
+    background: rgba(26,39,68,0.95);
+    border: 1px solid var(--teal);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 11px;
+    color: var(--white);
+    pointer-events: none;
+    z-index: 200;
+    display: none;
+    max-width: 200px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  }
+
+  .tooltip strong { display: block; font-size: 13px; margin-bottom: 2px; color: var(--teal2); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <img src="logo.png" alt="Logo" class="header-logo" onerror="this.style.display='none'">
+  <div class="header-brand">
+    <div class="header-brand-name">Morais</div>
+    <div class="header-brand-sub">Engenharia e Construção</div>
+  </div>
+  <div class="header-divider"></div>
+  <div class="header-emp" id="header-emp-name">Esmeraldas</div>
+  <div class="header-spacer"></div>
+  <a href="index.html" class="back-btn">← Empreendimentos</a>
+</header>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- MAPA -->
+  <div class="map-area">
+
+    <!-- Busca -->
+    <div class="search-bar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="search-input" placeholder="Pesquisar endereço...">
+    </div>
+
+    <!-- SVG do mapa (será preenchido pelo JS ou pelo HTML específico) -->
+    <div id="mapa-svg">
+      <!-- ════════════════════════════════════════════
+           COLE O SVG DO MAPA AQUI
+           Cada lote deve ter:
+             - data-ref="REF_DO_LOTE"  (ex: data-ref="TC 21")
+             - class="lote"
+           ════════════════════════════════════════════ -->
+    </div>
+
+    <!-- Legenda -->
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--c-nao-comprado)"></div>Não comprado</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--c-nao-iniciado)"></div>Não iniciado</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--c-em-andamento)"></div>Em andamento</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--c-fin-prazo)"></div>Finalizado no prazo</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--c-fin-sem-prazo)"></div>Finalizado s/ prazo</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--c-acima-prazo)"></div>Acima do prazo</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-agendado)"></div>Habite-se agendado</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-concluido)"></div>Habite-se concluído</div>
+    </div>
+  </div>
+
+  <!-- PAINEL LATERAL -->
+  <div class="panel" id="panel">
+
+    <div class="panel-header">
+      <div class="panel-title">Gestão Documental</div>
+      <button class="panel-close" onclick="closePanel()">✕</button>
+    </div>
+
+    <!-- Estado vazio (inicial) -->
+    <div class="panel-empty" id="panel-empty">
+      <div class="panel-empty-icon">📍</div>
+      <p>Clique em um lote no mapa para ver os detalhes e o status documental.</p>
+    </div>
+
+    <!-- Conteúdo do lote selecionado -->
+    <div class="panel-body" id="panel-body" style="display:none">
+    </div>
+
+  </div>
+</div>
+
+<!-- Tooltip -->
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+// ══════════════════════════════════════════════════════
+// CONFIGURAÇÃO — ajuste para cada empreendimento
+// ══════════════════════════════════════════════════════
+const CONFIG = {
+  nome: 'Esmeraldas',       // Ex: 'Terrabela Cerrado II'
+  setor: 'ES',                        // Prefixo/valor do campo setor no Notion
+  // Filtro: função que retorna true se o doc pertence a este empreendimento
+  filtro: (doc) => (doc.setor || '').toUpperCase().includes('ES'),
+};
+
+// ══════════════════════════════════════════════════════
+// STATUS — lógica idêntica para todos os empreendimentos
+// ══════════════════════════════════════════════════════
+const STATUS_COR = {
+  nao_comprado:    'var(--c-nao-comprado)',
+  nao_iniciado:    'var(--c-nao-iniciado)',
+  em_andamento:    'var(--c-em-andamento)',
+  fin_prazo:       'var(--c-fin-prazo)',
+  fin_sem_prazo:   'var(--c-fin-sem-prazo)',
+  acima_prazo:     'var(--c-acima-prazo)',
+  habite_agendado: 'var(--c-habite-agendado)',
+  habite_concluido:'var(--c-habite-concluido)',
+};
+
+const STATUS_LABEL = {
+  nao_comprado:    'Não comprado',
+  nao_iniciado:    'Não iniciado',
+  em_andamento:    'Em andamento',
+  fin_prazo:       'Finalizado no prazo',
+  fin_sem_prazo:   'Finalizado s/ prazo',
+  acima_prazo:     'Acima do prazo',
+  habite_agendado: 'Habite-se agendado',
+  habite_concluido:'Habite-se concluído',
+};
+
+const STATUS_CLASS = {
+  nao_comprado:    's-nao-comprado',
+  nao_iniciado:    's-nao-iniciado',
+  em_andamento:    's-em-andamento',
+  fin_prazo:       's-fin-prazo',
+  fin_sem_prazo:   's-fin-sem-prazo',
+  acima_prazo:     's-acima-prazo',
+  habite_agendado: 's-habite-agendado',
+  habite_concluido:'s-habite-concluido',
+};
+
+const CAMPOS_DOC = [
+  ['escritura_assinada',      'Escritura assinada por todos'],
+  ['itbi_pago',               'ITBI pago'],
+  ['registro_pago',           'Registro pago'],
+  ['projeto_feito',           'Projeto feito'],
+  ['art_feita_paga',          'ART feita e paga'],
+  ['escritura_registrada',    'Escritura registrada e digitalizada'],
+  ['certidao_lote',           'Certidão do lote anexada'],
+  ['contrato_mestre',         'Contrato mestre assinado'],
+  ['contrato_investidor',     'Contrato investidor assinado'],
+  ['taxas_alvara_pagas',      'Taxas alvará pagas'],
+  ['projeto_aprovado',        'Projeto aprovado / Alvará emitido'],
+  ['incorporacao_finalizada',  'Incorporação finalizada'],
+  ['ret_armazenado',          'RET armazenado'],
+  ['taxas_habite_se',         'Taxas habite-se pagas'],
+  ['issqn',                   'ISSQN gerado'],
+  ['cno_cnd',                 'CNO e CND emitidos'],
+  ['armazenou_habite',        'Habite-se armazenado'],
+  ['certidoes_matricula',     'Certidões de matrícula'],
+];
+
+const POSITIVOS = ['SIM','INEXISTE','ÁGIO','AGIO'];
+
+function calcStatus(doc) {
+  if (!doc) return 'nao_comprado';
+
+  // Habite-se
+  if ((doc.aprovou_habite_se || '').toUpperCase() === 'SIM') return 'habite_concluido';
+  if ((doc.agendou_habite_se || '').toUpperCase() === 'SIM') return 'habite_agendado';
+
+  // Documentação completa?
+  const completo = CAMPOS_DOC.every(([k]) =>
+    !doc[k] || POSITIVOS.includes((doc[k] || '').toUpperCase().trim())
+  );
+
+  if (completo && doc.data_inicio_obra) {
+    // Compara prazo
+    if (doc.data_termino_obra && doc.previsao_inicio_obra) {
+      // prazo estimado: 8 meses a partir de início (fallback se não tiver campo específico)
+      const inicio = new Date(doc.data_inicio_obra);
+      const termino = new Date(doc.data_termino_obra);
+      const prevInicio = new Date(doc.previsao_inicio_obra);
+      // prazo teórico = 8 meses a partir da previsão de início
+      const prazoTeorico = new Date(prevInicio);
+      prazoTeorico.setMonth(prazoTeorico.getMonth() + 8);
+      return termino <= prazoTeorico ? 'fin_prazo' : 'fin_sem_prazo';
+    }
+    return 'fin_prazo';
+  }
+
+  if (doc.data_inicio_obra) return 'em_andamento';
+  if (doc.previsao_inicio_obra || doc.ref || doc.endereco) return 'nao_iniciado';
+  return 'nao_comprado';
+}
+
+function parseDateBR(str) {
+  if (!str) return '—';
+  try {
+    const [y, m, d] = str.split('T')[0].split('-');
+    return `${d}/${m}/${y}`;
+  } catch { return str; }
+}
+
+function diasObra(doc) {
+  if (!doc.data_inicio_obra) return null;
+  const fim = doc.data_termino_obra ? new Date(doc.data_termino_obra) : new Date();
+  const ini = new Date(doc.data_inicio_obra);
+  const dias = Math.round((fim - ini) / 86400000);
+  return dias > 0 ? `${dias} dias` : null;
+}
+
+function checkIcon(val) {
+  const v = (val || '').toUpperCase().trim();
+  if (POSITIVOS.includes(v)) return `<div class="check-icon sim">✓</div>`;
+  if (v === 'NÃO' || v === 'NAO') return `<div class="check-icon nao">✗</div>`;
+  if (!v) return `<div class="check-icon vazio">—</div>`;
+  return `<div class="check-icon inexiste" title="${val}">?</div>`;
+}
+
+// ══════════════════════════════════════════════════════
+// DADOS
+// ══════════════════════════════════════════════════════
+let DOCS = {};   // ref → doc
+let LOTES_EL;   // NodeList dos elementos SVG
+
+function loadData() {
+  fetch('data.json')
+    .then(r => r.json())
+    .then(data => {
+      const docs = (data.documentos || []).filter(CONFIG.filtro);
+      docs.forEach(d => {
+        const ref = (d.ref || '').trim();
+        if (ref) DOCS[ref.toUpperCase()] = d;
+      });
+      pintarMapa();
+    })
+    .catch(err => console.warn('Erro ao carregar data.json:', err));
+}
+
+function pintarMapa() {
+  LOTES_EL = document.querySelectorAll('.lote');
+  LOTES_EL.forEach(el => {
+    const ref = (el.dataset.ref || '').toUpperCase().trim();
+    const doc = DOCS[ref];
+    const status = calcStatus(doc || null);
+    const cor = STATUS_COR[status] || STATUS_COR.nao_comprado;
+
+    // Pinta o elemento (rect, path, polygon, etc.)
+    el.style.fill = cor;
+    el.style.cursor = 'pointer';
+    el.style.transition = 'opacity 0.15s, stroke-width 0.15s';
+
+    // Hover tooltip
+    el.addEventListener('mouseenter', (e) => showTooltip(e, ref, doc, status));
+    el.addEventListener('mousemove',  (e) => moveTooltip(e));
+    el.addEventListener('mouseleave', hideTooltip);
+
+    // Click → painel
+    el.addEventListener('click', () => openPanel(ref, doc, status));
+  });
+}
+
+// ══════════════════════════════════════════════════════
+// TOOLTIP
+// ══════════════════════════════════════════════════════
+const tooltip = document.getElementById('tooltip');
+
+function showTooltip(e, ref, doc, status) {
+  tooltip.innerHTML = `
+    <strong>${ref || '—'}</strong>
+    ${doc ? (doc.endereco || '') : 'Sem dados'}
+    <br><span style="color:${STATUS_COR[status]}">${STATUS_LABEL[status]}</span>
+  `;
+  tooltip.style.display = 'block';
+  moveTooltip(e);
+}
+
+function moveTooltip(e) {
+  tooltip.style.left = (e.clientX + 12) + 'px';
+  tooltip.style.top  = (e.clientY + 12) + 'px';
+}
+
+function hideTooltip() { tooltip.style.display = 'none'; }
+
+// ══════════════════════════════════════════════════════
+// PAINEL
+// ══════════════════════════════════════════════════════
+let loteAtivo = null;
+
+function openPanel(ref, doc, status) {
+  hideTooltip();
+
+  // Destaca lote ativo
+  if (loteAtivo) loteAtivo.style.strokeWidth = '';
+  loteAtivo = document.querySelector(`.lote[data-ref="${ref}"], .lote[data-ref="${ref.toLowerCase()}"]`) ||
+              [...document.querySelectorAll('.lote')].find(el => el.dataset.ref?.toUpperCase() === ref);
+  if (loteAtivo) { loteAtivo.style.stroke = '#fff'; loteAtivo.style.strokeWidth = '2'; }
+
+  const d = doc || {};
+  const stClass = STATUS_CLASS[status] || 's-nao-comprado';
+  const stLabel = STATUS_LABEL[status] || 'Não comprado';
+
+  const tempoObra = diasObra(d);
+
+  const checklistHtml = CAMPOS_DOC.map(([k, label]) => `
+    <div class="check-item">
+      ${checkIcon(d[k])}
+      <span>${label}</span>
+      ${d[k] ? `<span style="margin-left:auto;font-size:10px;color:#8a9ab5">${d[k]}</span>` : ''}
+    </div>
+  `).join('');
+
+  document.getElementById('panel-empty').style.display = 'none';
+  const body = document.getElementById('panel-body');
+  body.style.display = 'block';
+
+  body.innerHTML = `
+    <div class="panel-grid">
+      <div class="panel-field full">
+        <div class="field-label">Endereço</div>
+        <div class="field-value">${d.endereco || '<span class="empty">—</span>'}</div>
+      </div>
+      <div class="panel-field">
+        <div class="field-label">Referência</div>
+        <div class="field-value">${d.ref || '<span class="empty">—</span>'}</div>
+      </div>
+      <div class="panel-field">
+        <div class="field-label">Status</div>
+        <div class="field-value">
+          <span class="status-badge ${stClass}">
+            <span class="dot"></span>${stLabel}
+          </span>
+        </div>
+      </div>
+      <div class="panel-field">
+        <div class="field-label">Prev. Início</div>
+        <div class="field-value ${!d.previsao_inicio_obra ? 'empty' : ''}">${parseDateBR(d.previsao_inicio_obra)}</div>
+      </div>
+      <div class="panel-field">
+        <div class="field-label">Data Início</div>
+        <div class="field-value ${!d.data_inicio_obra ? 'empty' : ''}">${parseDateBR(d.data_inicio_obra)}</div>
+      </div>
+      <div class="panel-field">
+        <div class="field-label">Data Término</div>
+        <div class="field-value ${!d.data_termino_obra ? 'empty' : ''}">${parseDateBR(d.data_termino_obra)}</div>
+      </div>
+      <div class="panel-field">
+        <div class="field-label">Tempo de Obra</div>
+        <div class="field-value ${!tempoObra ? 'empty' : ''}">${tempoObra || '—'}</div>
+      </div>
+      <div class="panel-field">
+        <div class="field-label">Proprietário</div>
+        <div class="field-value ${!d.proprietario ? 'empty' : ''}">${d.proprietario || '—'}</div>
+      </div>
+      <div class="panel-field">
+        <div class="field-label">Mestre</div>
+        <div class="field-value ${!d.mestre ? 'empty' : ''}">${d.mestre || '—'}</div>
+      </div>
+      <div class="panel-field">
+        <div class="field-label">Despachante</div>
+        <div class="field-value ${!d.despachante ? 'empty' : ''}">${d.despachante || '—'}</div>
+      </div>
+    </div>
+
+    <div class="panel-section">Habite-se</div>
+    <div class="panel-grid">
+      <div class="panel-field">
+        <div class="field-label">Agendou?</div>
+        <div class="field-value ${!d.agendou_habite_se ? 'empty' : ''}">${d.agendou_habite_se || '—'}</div>
+      </div>
+      <div class="panel-field">
+        <div class="field-label">Aprovado?</div>
+        <div class="field-value ${!d.aprovou_habite_se ? 'empty' : ''}">${d.aprovou_habite_se || '—'}</div>
+      </div>
+      <div class="panel-field">
+        <div class="field-label">Data</div>
+        <div class="field-value ${!d.data_habite_se ? 'empty' : ''}">${parseDateBR(d.data_habite_se)}</div>
+      </div>
+      <div class="panel-field">
+        <div class="field-label">Turno</div>
+        <div class="field-value ${!d.turno_habite_se ? 'empty' : ''}">${d.turno_habite_se || '—'}</div>
+      </div>
+    </div>
+
+    <div class="panel-section">Documentação</div>
+    <div class="panel-checklist">
+      ${checklistHtml}
+    </div>
+  `;
+}
+
+function closePanel() {
+  if (loteAtivo) { loteAtivo.style.strokeWidth = ''; loteAtivo = null; }
+  document.getElementById('panel-empty').style.display = 'flex';
+  document.getElementById('panel-body').style.display = 'none';
+}
+
+// ══════════════════════════════════════════════════════
+// BUSCA
+// ══════════════════════════════════════════════════════
+document.getElementById('search-input').addEventListener('input', function() {
+  const q = this.value.trim().toUpperCase();
+  document.querySelectorAll('.lote').forEach(el => {
+    const ref = (el.dataset.ref || '').toUpperCase();
+    const doc = DOCS[ref];
+    const end = (doc?.endereco || '').toUpperCase();
+    el.style.opacity = (!q || ref.includes(q) || end.includes(q)) ? '1' : '0.15';
+  });
+});
+
+// ══════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════
+document.getElementById('header-emp-name').textContent = CONFIG.nome.toUpperCase();
+document.title = `${CONFIG.nome} – Morais Engenharia`;
+loadData();
+</script>
+
+</body>
+</html>
