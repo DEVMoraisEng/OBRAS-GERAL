@@ -8,15 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy:   #243d6a;
-    --navy2:  #2f4878;
+    --navy:   #2d4f8a;
+    --navy2:  #385a9a;
     --teal:   #3d8b8b;
     --teal2:  #4fa8a8;
     --light:  #e8f0f0;
     --white:  #ffffff;
     --gray:   #9aaac5;
-    --panel:  #2a3d6b;
-    --panel2: #253660;
+    --panel:  #324e8c;
+    --panel2: #2d4f8a;
     --border: rgba(61,139,139,0.25);
 
     /* Status cores — igual ao print */
@@ -424,12 +424,80 @@
 
   .tooltip strong { display: block; font-size: 13px; margin-bottom: 2px; color: var(--teal2); }
 
+
+  /* ── GRUPOS DO PAINEL ── */
+  .panel-group { display: flex; flex-direction: column; gap: 0; }
+
+  .group-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 8px 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(61,139,139,0.35);
+    border-left: 3px solid var(--teal);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .group-row .panel-field {
+    flex: 1;
+    min-width: 120px;
+    border-bottom: none;
+    padding: 10px 14px;
+    background: transparent;
+  }
+
+  .group-row .panel-field.full {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .group-row .panel-field + .panel-field {
+    border-left: 1px solid rgba(61,139,139,0.15);
+  }
+
+  /* ══════════════════════════════════
+     MOBILE — responsivo
+  ══════════════════════════════════ */
+  
+  /* ── GRUPOS DO PAINEL ── */
+  .panel-group { display: flex; flex-direction: column; gap: 0; }
+
+  .group-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 8px 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(61,139,139,0.35);
+    border-left: 3px solid var(--teal);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .group-row .panel-field {
+    flex: 1;
+    min-width: 120px;
+    border-bottom: none;
+    padding: 10px 14px;
+    background: transparent;
+  }
+
+  .group-row .panel-field.full {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .group-row .panel-field + .panel-field {
+    border-left: 1px solid rgba(61,139,139,0.15);
+  }
+
   /* ══════════════════════════════════
      MOBILE — responsivo
   ══════════════════════════════════ */
   @media (max-width: 768px) {
     html, body { overflow: auto; }
 
+    /* HEADER */
     header {
       padding: 0 14px;
       height: auto;
@@ -446,133 +514,24 @@
     .header-divider { display: none; }
     .back-btn { font-size: 10px; padding: 6px 10px; }
 
-    /* Layout vira coluna no mobile */
+    /* Layout vira coluna */
     .layout { flex-direction: column; height: auto; }
     .map-panel-row { flex-direction: column; height: auto; overflow: visible; }
 
-    /* Mapa ocupa largura total com scroll horizontal */
+    /* MAPA: coluna interna busca + svg + legenda */
     .map-area {
       width: 100%;
-      height: 55vw;
-      min-height: 220px;
-      overflow: auto;
-      -webkit-overflow-scrolling: touch;
-      touch-action: pan-x pan-y;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      overflow: visible;
+      min-height: 0;
     }
 
-    #mapa-svg {
-      width: auto;
-      height: 100%;
-      min-width: 520px;
-    }
-
-    #mapa-svg svg {
-      width: auto;
-      height: 100%;
-      min-width: 520px;
-    }
-
-    /* Barra de busca no mapa — no mobile vai para fora do map-area */
-    .search-bar {
-      position: static;
-      width: 100%;
-      border-radius: 0;
-      border-left: none;
-      border-right: none;
-      border-top: none;
-      box-shadow: none;
-      background: #fff;
-      padding: 10px 14px;
-    }
-
-    /* Painel lateral vira painel inferior */
-    .panel {
-      width: 100%;
-      max-height: 60vh;
-      border-left: none;
-      border-top: 2px solid var(--teal);
-    }
-
-    .panel-header { height: 44px; padding: 0 14px; }
-    .panel-title { font-size: 13px; }
-
-    /* Grid do painel de 2 colunas para 1 coluna em telas muito pequenas */
-    .panel-grid { grid-template-columns: 1fr; }
-    .panel-field.full { grid-column: 1; }
-    .panel-field { padding: 10px 14px; }
-    .field-label { font-size: 8px; }
-    .field-value { font-size: 13px; }
-
-    /* Legenda compacta */
-    .legend {
-      padding: 8px 12px;
-      gap: 4px 14px;
-      justify-content: flex-start;
-    }
-    .legend-item { font-size: 10px; gap: 5px; }
-    .legend-dot { width: 10px; height: 10px; }
-
-    /* Checklist */
-    .check-item { font-size: 10px; padding: 5px 8px; }
-    .check-icon { width: 16px; height: 16px; font-size: 9px; }
-
-    /* Panel empty */
-    .panel-empty { padding: 24px; gap: 8px; }
-    .panel-empty-icon { font-size: 28px; }
-    .panel-empty p { font-size: 12px; }
-
-    /* Status badge */
-    .status-badge { font-size: 10px; padding: 3px 8px; }
-  }
-
-  @media (max-width: 400px) {
-    .map-area { height: 62vw; }
-    header .back-btn span { display: none; }
-  }
-
-  /* ── GRUPOS DO PAINEL ── */
-  .panel-group {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .group-row {
-    display: flex;
-    flex-wrap: wrap;
-    border-bottom: 1px solid rgba(61,139,139,0.15);
-    border-left: 3px solid var(--teal);
-    margin: 8px 12px;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px solid rgba(61,139,139,0.35);
-    border-left: 3px solid var(--teal);
-    background: rgba(255,255,255,0.03);
-  }
-
-  .group-row .panel-field {
-    flex: 1;
-    min-width: 120px;
-    border-bottom: none;
-    padding: 10px 14px;
-  }
-
-  .group-row .panel-field.full {
-    flex: 1 1 100%;
-    min-width: 100%;
-  }
-
-  .group-row .panel-field + .panel-field {
-    border-left: 1px solid rgba(61,139,139,0.15);
-  }
-
-  /* ── BUSCA — no mobile vai acima do mapa (estático) ── */
-  @media (max-width: 768px) {
-    .map-area { display: flex; flex-direction: column; }
-
+    /* Busca estática acima do SVG */
     .search-bar {
       position: static !important;
-      top: auto !important;
-      left: auto !important;
+      top: auto !important; left: auto !important;
       width: 100% !important;
       border-radius: 0 !important;
       border: none !important;
@@ -580,24 +539,91 @@
       box-shadow: none !important;
       flex-shrink: 0;
       z-index: auto;
+      background: #fff;
     }
 
+    /* SVG com scroll horizontal */
     #mapa-svg {
-      flex: 1;
+      width: 100%;
+      height: 52vw;
+      min-height: 200px;
       overflow: auto;
       -webkit-overflow-scrolling: touch;
       touch-action: pan-x pan-y;
-      min-height: 180px;
+      flex-shrink: 0;
     }
 
     #mapa-svg svg {
       width: auto !important;
       height: 100% !important;
-      min-width: 480px;
+      min-width: 500px;
       display: block;
     }
+
+    /* LEGENDA logo abaixo do SVG */
+    .legend {
+      position: static !important;
+      bottom: auto !important; left: auto !important;
+      border-radius: 0 !important;
+      backdrop-filter: none !important;
+      padding: 8px 10px;
+      gap: 5px 14px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      border-top: 2px solid var(--teal);
+      border-bottom: 1px solid rgba(61,139,139,0.2);
+      box-shadow: none;
+    }
+    .legend-item { font-size: 10px; gap: 5px; }
+    .legend-dot { width: 10px; height: 10px; }
+
+    /* PAINEL vira área abaixo */
+    .panel {
+      width: 100%;
+      max-height: none;
+      border-left: none;
+      border-top: none;
+    }
+    .panel-header { height: 44px; padding: 0 14px; }
+    .panel-title { font-size: 13px; }
+
+    /* Campos do painel */
+    .panel-field { padding: 8px 12px; }
+    .field-label { font-size: 8px; }
+    .field-value { font-size: 13px; }
+
+    /* Grupos lado a lado no mobile */
+    .group-row {
+      margin: 6px 10px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .group-row .panel-field {
+      flex: 1 1 45%;
+      min-width: 120px;
+      padding: 8px 10px;
+    }
+    .group-row .panel-field.full {
+      flex: 1 1 100%;
+    }
+
+    /* Checklist */
+    .check-item { font-size: 10px; padding: 5px 8px; }
+    .check-icon { width: 15px; height: 15px; font-size: 9px; }
+
+    /* Panel empty */
+    .panel-empty { padding: 20px; gap: 8px; }
+    .panel-empty-icon { font-size: 26px; }
+    .panel-empty p { font-size: 12px; }
+
+    /* Status badge */
+    .status-badge { font-size: 10px; padding: 3px 8px; }
   }
 
+  @media (max-width: 400px) {
+    #mapa-svg { height: 60vw; }
+    header .back-btn span { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -898,54 +924,60 @@ function openPanel(ref, doc, status) {
   body.style.display = 'block';
 
   body.innerHTML = `
-    <div class="panel-grid">
-      <div class="panel-field full">
-        <div class="field-label">Endereço</div>
-        <div class="field-value">${d.endereco || '<span class="empty">—</span>'}</div>
-      </div>
-      <div class="panel-field">
-        <div class="field-label">Referência</div>
-        <div class="field-value">${d.ref || '<span class="empty">—</span>'}</div>
-      </div>
-      <div class="panel-field">
-        <div class="field-label">Status</div>
-        <div class="field-value">
-          <span class="status-badge ${stClass}">
-            <span class="dot"></span>${stLabel}
-          </span>
+    <div class="panel-group">
+      <div class="group-row">
+        <div class="panel-field full">
+          <div class="field-label">Endereço</div>
+          <div class="field-value">${d.endereco || '<span class="empty">—</span>'}</div>
         </div>
       </div>
-      <div class="panel-field">
-        <div class="field-label">Prev. Início</div>
-        <div class="field-value ${!d.previsao_inicio_obra ? 'empty' : ''}">${parseDateBR(d.previsao_inicio_obra)}</div>
+      <div class="group-row">
+        <div class="panel-field">
+          <div class="field-label">Referência</div>
+          <div class="field-value">${d.ref || '<span class="empty">—</span>'}</div>
+        </div>
+        <div class="panel-field">
+          <div class="field-label">Status</div>
+          <div class="field-value"><span class="status-badge ${stClass}"><span class="dot"></span>${stLabel}</span></div>
+        </div>
       </div>
-      <div class="panel-field">
-        <div class="field-label">Data Início</div>
-        <div class="field-value ${!d.data_inicio_obra ? 'empty' : ''}">${parseDateBR(d.data_inicio_obra)}</div>
+      <div class="group-row">
+        <div class="panel-field">
+          <div class="field-label">Prev. Início</div>
+          <div class="field-value ${!d.previsao_inicio_obra ? 'empty' : ''}">${parseDateBR(d.previsao_inicio_obra)}</div>
+        </div>
+        <div class="panel-field">
+          <div class="field-label">Data Início</div>
+          <div class="field-value ${!d.data_inicio_obra ? 'empty' : ''}">${parseDateBR(d.data_inicio_obra)}</div>
+        </div>
+        <div class="panel-field">
+          <div class="field-label">Data Término</div>
+          <div class="field-value ${!d.data_termino_obra ? 'empty' : ''}">${parseDateBR(d.data_termino_obra)}</div>
+        </div>
+        <div class="panel-field">
+          <div class="field-label">Tempo de Obra</div>
+          <div class="field-value ${!tempoObra ? 'empty' : ''}">${tempoObra || '—'}</div>
+        </div>
       </div>
-      <div class="panel-field">
-        <div class="field-label">Data Término</div>
-        <div class="field-value ${!d.data_termino_obra ? 'empty' : ''}">${parseDateBR(d.data_termino_obra)}</div>
+      <div class="group-row">
+        <div class="panel-field full">
+          <div class="field-label">Proprietário</div>
+          <div class="field-value ${!d.proprietario ? 'empty' : ''}">${d.proprietario || '—'}</div>
+        </div>
+        <div class="panel-field full">
+          <div class="field-label">Documento (CPF/CNPJ)</div>
+          <div class="field-value ${!d.documento ? 'empty' : ''}" style="word-break:break-all">${d.documento || '—'}</div>
+        </div>
       </div>
-      <div class="panel-field">
-        <div class="field-label">Tempo de Obra</div>
-        <div class="field-value ${!tempoObra ? 'empty' : ''}">${tempoObra || '—'}</div>
-      </div>
-      <div class="panel-field full">
-        <div class="field-label">Proprietário</div>
-        <div class="field-value ${!d.proprietario ? 'empty' : ''}">${d.proprietario || '—'}</div>
-      </div>
-      <div class="panel-field full">
-        <div class="field-label">Documento (CPF/CNPJ)</div>
-        <div class="field-value ${!d.documento ? 'empty' : ''}" style="word-break:break-all;font-size:13px">${d.documento || '—'}</div>
-      </div>
-      <div class="panel-field">
-        <div class="field-label">Mestre</div>
-        <div class="field-value ${!d.mestre ? 'empty' : ''}">${d.mestre || '—'}</div>
-      </div>
-      <div class="panel-field">
-        <div class="field-label">Despachante</div>
-        <div class="field-value ${!d.despachante ? 'empty' : ''}">${d.despachante || '—'}</div>
+      <div class="group-row">
+        <div class="panel-field">
+          <div class="field-label">Mestre</div>
+          <div class="field-value ${!d.mestre ? 'empty' : ''}">${d.mestre || '—'}</div>
+        </div>
+        <div class="panel-field">
+          <div class="field-label">Despachante</div>
+          <div class="field-value ${!d.despachante ? 'empty' : ''}">${d.despachante || '—'}</div>
+        </div>
       </div>
     </div>
 
