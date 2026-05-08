@@ -8,15 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy:   #2d4f8a;
-    --navy2:  #385a9a;
+    --navy:   #1b3a52;
+    --navy2:  #1e4468;
     --teal:   #3d8b8b;
     --teal2:  #4fa8a8;
     --light:  #e8f0f0;
     --white:  #ffffff;
     --gray:   #9aaac5;
-    --panel:  #324e8c;
-    --panel2: #2d4f8a;
+    --panel:  #1e4060;
+    --panel2: #163248;
     --border: rgba(61,139,139,0.25);
 
     /* Status cores — igual ao print */
@@ -35,7 +35,8 @@
   html, body {
     height: 100%;
     font-family: 'Barlow', sans-serif;
-    background: var(--navy);
+    background: #dde4ec;
+    font-size: 15px;
     color: var(--white);
     overflow: hidden; /* sem scroll na página, scroll interno no mapa se necessário */
   }
@@ -110,7 +111,7 @@
     gap: 6px;
     text-decoration: none;
     color: var(--teal2);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -145,7 +146,7 @@
     flex: 1;
     position: relative;
     overflow: hidden;
-    background: #f4f7fa;
+    background: #edf1f6;
     min-height: 0;
   }
 
@@ -235,7 +236,7 @@
   }
 
   .panel-header {
-    background: var(--navy);
+    background: #dde4ec;
     border-bottom: 2px solid var(--teal);
     padding: 0 20px;
     height: 52px;
@@ -304,7 +305,7 @@
   }
 
   .field-value {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     color: var(--white);
     line-height: 1.3;
@@ -614,7 +615,7 @@
     /* Panel empty */
     .panel-empty { padding: 20px; gap: 8px; }
     .panel-empty-icon { font-size: 26px; }
-    .panel-empty p { font-size: 12px; }
+    .panel-empty p { font-size: 13px; }
 
     /* Status badge */
     .status-badge { font-size: 10px; padding: 3px 8px; }
