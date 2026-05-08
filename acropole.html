@@ -853,8 +853,8 @@ function pintarMapa() {
     const cor = STATUS_COR[status] || STATUS_COR.nao_comprado;
 
     // Pinta o elemento (rect, path, polygon, etc.)
-    el.style.fill = cor;
-    el.style.fillOpacity = '0.55';
+    el.setAttribute('fill', cor);
+    el.setAttribute('fill-opacity', '0.55');
     el.style.cursor = 'pointer';
     el.style.transition = 'opacity 0.15s, stroke-width 0.15s';
 
