@@ -1191,12 +1191,18 @@ loadData();
     zoomAt(e.clientX, e.clientY, e.deltaY < 0 ? 1.15 : 1/1.15);
   }, { passive: false });
 
-  // Pan + pinça unificados via Pointer Events
+  // Pan + pinça via Pointer Events
+  // IMPORTANTE: setPointerCapture só é chamado depois que o drag passa do
+  // threshold (4px). Antes disso, o evento 'click' segue o caminho normal
+  // e chega no polygon clicado.
   const pointers = new Map();
   const pinch = { active: false, dist: 0, midX: 0, midY: 0, scale: 1 };
   let drag = null;
+  let suppressNextClick = false;
 
   wrap.addEventListener('pointerdown', e => {
+    // Botão direito ou meio: ignorar
+    if (e.button !== 0 && e.pointerType === 'mouse') return;
     pointers.set(e.pointerId, e);
     if (pointers.size === 2) {
       const [a, b] = [...pointers.values()];
@@ -1205,17 +1211,18 @@ loadData();
       pinch.midX  = (a.clientX + b.clientX) / 2;
       pinch.midY  = (a.clientY + b.clientY) / 2;
       pinch.scale = state.scale;
-      drag = null;
-    } else {
+      drag = null;  // pinça toma conta
+    } else if (pointers.size === 1) {
       drag = { id: e.pointerId, sx: e.clientX, sy: e.clientY,
-               ox: state.x, oy: state.y, moved: false };
-      try { wrap.setPointerCapture(e.pointerId); } catch (_) {}
+               ox: state.x, oy: state.y, moved: false, captured: false };
+      // NÃO capturamos ainda — só quando o drag começar de verdade
     }
   });
 
   wrap.addEventListener('pointermove', e => {
     if (!pointers.has(e.pointerId)) return;
     pointers.set(e.pointerId, e);
+
     if (pointers.size === 2 && pinch.active) {
       const [a, b] = [...pointers.values()];
       const dist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
@@ -1231,11 +1238,18 @@ loadData();
       clampPan(); apply();
       return;
     }
+
     if (drag && drag.id === e.pointerId) {
       const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
-      if (!drag.moved && Math.hypot(dx, dy) < 4) return;
-      drag.moved = true;
-      wrap.classList.add('grabbing');
+      if (!drag.moved) {
+        if (Math.hypot(dx, dy) < 4) return;
+        // Agora SIM virou drag: capture e marca para suprimir o click
+        drag.moved = true;
+        drag.captured = true;
+        try { wrap.setPointerCapture(e.pointerId); } catch (_) {}
+        suppressNextClick = true;
+        wrap.classList.add('grabbing');
+      }
       state.x = drag.ox + dx; state.y = drag.oy + dy;
       clampPan(); apply();
     }
@@ -1244,18 +1258,26 @@ loadData();
   function endPointer(e) {
     pointers.delete(e.pointerId);
     if (pointers.size < 2) pinch.active = false;
-    if (drag && drag.moved) {
-      // bloquear o click sintético depois do drag,
-      // para não abrir painel sem o usuário querer
-      const swallow = ev => { ev.stopPropagation(); ev.preventDefault();
-        wrap.removeEventListener('click', swallow, true); };
-      wrap.addEventListener('click', swallow, true);
-    }
     wrap.classList.remove('grabbing');
-    drag = null;
+    if (drag && drag.id === e.pointerId) {
+      if (drag.captured) {
+        try { wrap.releasePointerCapture(e.pointerId); } catch (_) {}
+      }
+      drag = null;
+    }
   }
   wrap.addEventListener('pointerup',     endPointer);
   wrap.addEventListener('pointercancel', endPointer);
+
+  // Suprimir SÓ o click logo após um drag de verdade.
+  // Capture phase para chegar antes de qualquer handler nos polygons.
+  wrap.addEventListener('click', e => {
+    if (suppressNextClick) {
+      e.stopPropagation();
+      e.preventDefault();
+      suppressNextClick = false;
+    }
+  }, true);
 
   // Bloquear pinça nativa do iOS quando o foco é o mapa
   ['gesturestart', 'gesturechange', 'gestureend'].forEach(t => {
