@@ -77,6 +77,7 @@ def parse_doc(page):
         # Datas de obra
         "previsao_inicio_obra":   d("PREVISÃO DE INÍCIO DE OBRA"),
         "obra_iniciada":          s("OBRA INCIADA"),          # typo original do Notion
+        "obra_finalizada":       s("OBRA FINALIZADA?"),       # nova coluna
         "data_inicio_obra":       d("DATA DE INÍCIO DA OBRA"),
         "data_termino_obra":      d("DATA DE TÉRMINO DE OBRA"),
 
