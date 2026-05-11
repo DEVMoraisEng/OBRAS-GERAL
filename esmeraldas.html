@@ -626,6 +626,15 @@
     header .back-btn span { display: none; }
   }
 
+  
+  /* Bolinha vermelha de atenção (obra atrasada >150 dias e não finalizada) */
+  #mapa-svg svg .alerta-atraso {
+    fill: #dc2626;
+    stroke: #ffffff;
+    stroke-width: 3;
+    pointer-events: none;
+  }
+
   /* ══════════════════════════════════
      ZOOM ISOLADO + FALLBACK DE COR
      Adicionado no patch de correção
@@ -811,9 +820,10 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-em-andamento)"></div>Em andamento</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-fin-prazo)"></div>Finalizado no prazo</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-fin-sem-prazo)"></div>Finalizado sem prazo</div>
-    <div class="legend-item"><div class="legend-dot" style="background:var(--c-acima-prazo)"></div>Acima do prazo</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--c-acima-prazo)"></div>Finalizada acima do prazo</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-agendado)"></div>Habite-se agendado</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-concluido)"></div>Habite-se concluído</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#dc2626;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)"></div>Atraso (&gt;150 dias)</div>
   </div>
 
 <!-- Tooltip -->
@@ -849,7 +859,7 @@ const STATUS_LABEL = {
   em_andamento:    'Em andamento',
   fin_prazo:       'Finalizado no prazo',
   fin_sem_prazo:   'Finalizado sem prazo',
-  acima_prazo:     'Acima do prazo',
+  acima_prazo:     'Finalizada acima do prazo',
   habite_agendado: 'Habite-se agendado',
   habite_concluido:'Habite-se concluído',
 };
@@ -888,33 +898,65 @@ const CAMPOS_DOC = [
 
 const POSITIVOS = ['SIM','INEXISTE','ÁGIO','AGIO'];
 
+// "Obra iniciada" considera SIM e SIM SEM PRAZO
+function obraIniciada(doc) {
+  const v = (doc.obra_iniciada || '').toUpperCase().trim();
+  return v === 'SIM' || v === 'SIM SEM PRAZO';
+}
+function obraFinalizadaComPrazo(doc) {
+  return (doc.obra_finalizada || '').toUpperCase().trim() === 'SIM';
+}
+function obraFinalizadaSemPrazo(doc) {
+  return (doc.obra_finalizada || '').toUpperCase().trim() === 'SIM SEM PRAZO';
+}
+function obraFinalizada(doc) {
+  return obraFinalizadaComPrazo(doc) || obraFinalizadaSemPrazo(doc);
+}
+
+// Dias entre início da obra e término (ou hoje, se ainda não terminou)
+function diasDeObra(doc) {
+  if (!doc.data_inicio_obra) return null;
+  const fim = doc.data_termino_obra ? new Date(doc.data_termino_obra) : new Date();
+  const ini = new Date(doc.data_inicio_obra);
+  return Math.round((fim - ini) / 86400000);
+}
+
+const PRAZO_DIAS = 150;
+
+// Calcula se o lote precisa receber a bolinha vermelha de atenção:
+// OBRA INICIADA = "SIM" (com prazo) + ainda não finalizada + passaram >150 dias
+function temAlertaAtraso(doc) {
+  if (!doc) return false;
+  const iniciada = (doc.obra_iniciada || '').toUpperCase().trim();
+  if (iniciada !== 'SIM') return false;  // SIM SEM PRAZO nunca recebe bolinha
+  if (obraFinalizada(doc)) return false; // já finalizou -> sem bolinha
+  const dias = diasDeObra(doc);
+  return dias !== null && dias > PRAZO_DIAS;
+}
+
 function calcStatus(doc) {
   if (!doc) return 'nao_comprado';
 
-  // Habite-se
+  // Habite-se tem prioridade máxima
   if ((doc.aprovou_habite_se || '').toUpperCase() === 'SIM') return 'habite_concluido';
   if ((doc.agendou_habite_se || '').toUpperCase() === 'SIM') return 'habite_agendado';
 
-  // Documentação completa?
-  const completo = CAMPOS_DOC.every(([k]) =>
-    !doc[k] || POSITIVOS.includes((doc[k] || '').toUpperCase().trim())
-  );
+  // Obra finalizada sem prazo -> verde claro
+  if (obraFinalizadaSemPrazo(doc)) return 'fin_sem_prazo';
 
-  if (completo) {
-    if (!doc.data_inicio_obra) return 'fin_sem_prazo'; // docs OK mas obra não iniciada
-    // Obra iniciada e docs completos — verifica se dentro do prazo
-    if (doc.data_termino_obra && doc.previsao_inicio_obra) {
-      const termino = new Date(doc.data_termino_obra);
-      const prevInicio = new Date(doc.previsao_inicio_obra);
-      const prazoTeorico = new Date(prevInicio);
-      prazoTeorico.setMonth(prazoTeorico.getMonth() + 8);
-      return termino <= prazoTeorico ? 'fin_prazo' : 'acima_prazo';
-    }
+  // Obra finalizada com prazo -> dentro ou acima dos 150 dias
+  if (obraFinalizadaComPrazo(doc)) {
+    const dias = diasDeObra(doc);
+    if (dias !== null && dias > PRAZO_DIAS) return 'acima_prazo';
     return 'fin_prazo';
   }
 
-  if (doc.data_inicio_obra) return 'em_andamento';
-  if (doc.previsao_inicio_obra || doc.ref || doc.endereco) return 'nao_iniciado';
+  // Obra iniciada (SIM ou SIM SEM PRAZO) mas não finalizada -> em andamento
+  if (obraIniciada(doc)) return 'em_andamento';
+
+  // OBRA INICIADA = NÃO (e tem registro no Notion)
+  if (doc.ref || doc.endereco || doc.previsao_inicio_obra) return 'nao_iniciado';
+
   return 'nao_comprado';
 }
 
@@ -964,17 +1006,42 @@ function loadData() {
 
 function pintarMapa() {
   LOTES_EL = document.querySelectorAll('.lote');
+
+  // Camada SVG onde colocaremos as bolinhas de alerta (no mesmo SVG dos lotes)
+  let svgRoot = null;
+  if (LOTES_EL.length > 0) svgRoot = LOTES_EL[0].ownerSVGElement;
+
+  // Limpar bolinhas anteriores (caso pintarMapa rode 2x)
+  if (svgRoot) svgRoot.querySelectorAll('.alerta-atraso').forEach(n => n.remove());
+
   LOTES_EL.forEach(el => {
     const ref = (el.dataset.ref || '').toUpperCase().trim();
     const doc = DOCS[ref];
     const status = calcStatus(doc || null);
     const cor = STATUS_COR[status] || STATUS_COR.nao_comprado;
 
-    // Pinta o elemento (rect, path, polygon, etc.)
+    // Pinta o elemento
     el.setAttribute('fill', cor);
     el.setAttribute('fill-opacity', '0.55');
     el.style.cursor = 'pointer';
     el.style.transition = 'opacity 0.15s, stroke-width 0.15s';
+
+    // Bolinha vermelha de atenção sobreposta ao centro do lote
+    if (doc && temAlertaAtraso(doc) && svgRoot) {
+      try {
+        const bbox = el.getBBox();
+        const cx = bbox.x + bbox.width / 2;
+        const cy = bbox.y + bbox.height / 2;
+        // Raio = ~18% do menor lado do lote, com piso/teto
+        const r = Math.max(20, Math.min(70, Math.min(bbox.width, bbox.height) * 0.18));
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('class', 'alerta-atraso');
+        circle.setAttribute('cx', cx);
+        circle.setAttribute('cy', cy);
+        circle.setAttribute('r', r);
+        svgRoot.appendChild(circle);
+      } catch (_) { /* getBBox falha se o elemento ainda não foi renderizado */ }
+    }
 
     // Hover tooltip
     el.addEventListener('mouseenter', (e) => showTooltip(e, ref, doc, status));
@@ -1074,6 +1141,16 @@ function openPanel(ref, doc, status) {
         <div class="panel-field">
           <div class="field-label">Tempo de Obra</div>
           <div class="field-value ${!tempoObra ? 'empty' : ''}">${tempoObra || '—'}</div>
+        </div>
+      </div>
+      <div class="group-row">
+        <div class="panel-field">
+          <div class="field-label">Obra Iniciada?</div>
+          <div class="field-value ${!d.obra_iniciada ? 'empty' : ''}">${d.obra_iniciada || '—'}</div>
+        </div>
+        <div class="panel-field">
+          <div class="field-label">Obra Finalizada?</div>
+          <div class="field-value ${!d.obra_finalizada ? 'empty' : ''}">${d.obra_finalizada || '—'}</div>
         </div>
       </div>
       <div class="group-row">
