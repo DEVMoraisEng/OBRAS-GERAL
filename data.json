@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-12T12:01:40.824706+00:00",
+  "updated_at": "2026-05-12T12:03:40.674881+00:00",
   "documentos": [
     {
       "endereco": "TB 19 QD 50 LT 07",
@@ -4403,7 +4403,7 @@
       "despachante": "MESSIAS",
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
-      "obra_finalizada": "SIM SEM PRAZO",
+      "obra_finalizada": "SIM",
       "data_inicio_obra": "2025-09-01",
       "data_termino_obra": "2026-03-12",
       "agendou_habite_se": "SIM",
@@ -4439,7 +4439,7 @@
       "despachante": "MESSIAS",
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
-      "obra_finalizada": "SIM SEM PRAZO",
+      "obra_finalizada": "SIM",
       "data_inicio_obra": "2025-08-25",
       "data_termino_obra": "2026-02-27",
       "agendou_habite_se": "SIM",
