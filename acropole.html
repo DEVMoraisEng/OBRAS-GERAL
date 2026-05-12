@@ -937,19 +937,18 @@ function temAlertaAtraso(doc) {
 function calcStatus(doc) {
   if (!doc) return 'nao_comprado';
 
-  // Habite-se tem prioridade máxima
-  if ((doc.aprovou_habite_se || '').toUpperCase() === 'SIM') return 'habite_concluido';
-  if ((doc.agendou_habite_se || '').toUpperCase() === 'SIM') return 'habite_agendado';
-
-  // Obra finalizada sem prazo -> verde claro
+  // Finalização tem prioridade máxima
   if (obraFinalizadaSemPrazo(doc)) return 'fin_sem_prazo';
 
-  // Obra finalizada com prazo -> dentro ou acima dos 150 dias
   if (obraFinalizadaComPrazo(doc)) {
     const dias = diasDeObra(doc);
     if (dias !== null && dias > PRAZO_DIAS) return 'acima_prazo';
     return 'fin_prazo';
   }
+
+  // Habite-se (só se a obra não foi finalizada)
+  if ((doc.aprovou_habite_se || '').toUpperCase() === 'SIM') return 'habite_concluido';
+  if ((doc.agendou_habite_se || '').toUpperCase() === 'SIM') return 'habite_agendado';
 
   // Obra iniciada (SIM ou SIM SEM PRAZO) mas não finalizada -> em andamento
   if (obraIniciada(doc)) return 'em_andamento';
