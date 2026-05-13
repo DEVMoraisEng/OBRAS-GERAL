@@ -2,8 +2,10 @@ name: Atualizar Dados e Publicar Site de Obra
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
   schedule:
-    - cron: '0 */4 * * *'   # a cada 4 horas (disparado pelo cron-job.org também)
+    - cron: '0 */4 * * *'   # fallback — use cron-job.org como fonte primária
 
 jobs:
   build:
@@ -19,6 +21,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -33,13 +38,19 @@ jobs:
           NOTION_DB_DOCS:    ${{ secrets.NOTION_DB_DOCS }}
         run: python fetch_notion.py
 
-      - name: Commitar data.json atualizado
+      - name: Commit data.json
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data.json
-          git diff --cached --quiet || git commit -m "chore: atualizar data.json [skip ci]"
-          git push
+          if git diff --staged --quiet; then
+            echo "data.json sem alterações — sem commit necessário"
+          else
+            git commit -m "chore: atualizar data.json [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+            echo "data.json atualizado"
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
