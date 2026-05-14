@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-14T11:00:42.369347+00:00",
+  "updated_at": "2026-05-14T15:01:03.337185+00:00",
   "documentos": [
     {
       "endereco": "TB 19 QD 50 LT 07",
@@ -631,7 +631,7 @@
       "data_habite_se": null,
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
@@ -667,7 +667,7 @@
       "data_habite_se": null,
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
