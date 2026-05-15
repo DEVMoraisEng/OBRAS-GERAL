@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T17:16:30.832229+00:00",
+  "updated_at": "2026-05-15T19:00:27.384458+00:00",
   "documentos": [
     {
       "endereco": "TB 19 QD 50 LT 07",
@@ -3787,7 +3787,7 @@
       "setor": "PQ DOS BURITIS",
       "cidade": "SENADOR CANEDO",
       "proprietario": "MORAIS EMPREENDIMENTOS BURITIS",
-      "mestre": null,
+      "mestre": "WILLIAN RODRIGUES",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
@@ -3805,7 +3805,7 @@
       "art_feita_paga": "SIM",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
@@ -5106,7 +5106,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": "NÃO",
+      "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "SIM",
