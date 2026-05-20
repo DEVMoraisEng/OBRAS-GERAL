@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-20T15:00:34.097639+00:00",
+  "updated_at": "2026-05-20T19:00:27.622812+00:00",
   "documentos": [
     {
       "endereco": "TB 19 QD 50 LT 07",
@@ -599,7 +599,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
@@ -1473,7 +1473,7 @@
       "ret_armazenado": "INEXISTE",
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
     },
@@ -1509,7 +1509,7 @@
       "ret_armazenado": "INEXISTE",
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "armazenou_habite": "SIM",
       "certidoes_matricula": "NÃO"
     },
@@ -1689,7 +1689,7 @@
       "ret_armazenado": "INEXISTE",
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "armazenou_habite": "SIM",
       "certidoes_matricula": "SIM"
     },
@@ -3335,7 +3335,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "INEXISTE",
@@ -3407,7 +3407,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
@@ -3443,7 +3443,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
