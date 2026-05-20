@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-20T19:55:21.448938+00:00",
+  "updated_at": "2026-05-20T23:00:25.422461+00:00",
   "documentos": [
     {
       "endereco": "TB 19 QD 50 LT 07",
@@ -169,7 +169,7 @@
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "NÃO",
       "taxas_alvara_pagas": "NÃO",
       "projeto_aprovado": "NÃO",
