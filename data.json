@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-21T19:00:28.009941+00:00",
+  "updated_at": "2026-05-21T23:00:29.961218+00:00",
   "documentos": [
     {
       "endereco": "TB 19 QD 50 LT 07",
@@ -1655,7 +1655,7 @@
       "issqn": "SIM",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "TB 21 QD 50 LT 32",
