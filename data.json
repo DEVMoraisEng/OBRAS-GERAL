@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-21T15:00:36.843554+00:00",
+  "updated_at": "2026-05-21T18:28:47.675361+00:00",
   "documentos": [
     {
       "endereco": "TB 19 QD 50 LT 07",
@@ -166,7 +166,7 @@
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "SIM",
-      "art_feita_paga": "NÃO",
+      "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "SIM",
@@ -201,8 +201,8 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
-      "projeto_feito": "NÃO",
-      "art_feita_paga": "NÃO",
+      "projeto_feito": "SIM",
+      "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
@@ -237,8 +237,8 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
-      "projeto_feito": "NÃO",
-      "art_feita_paga": "NÃO",
+      "projeto_feito": "SIM",
+      "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
