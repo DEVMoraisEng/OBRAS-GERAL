@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-25T15:00:29.911222+00:00",
+  "updated_at": "2026-05-25T19:00:31.318658+00:00",
   "documentos": [
     {
       "endereco": "TB 19 QD 50 LT 07",
@@ -1366,7 +1366,7 @@
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
-      "armazenou_habite": "NÃO",
+      "armazenou_habite": "SIM",
       "certidoes_matricula": "NÃO"
     },
     {
@@ -1618,8 +1618,8 @@
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "NÃO",
-      "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "armazenou_habite": "SIM",
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "TB 21 QD 50 LT 39",
@@ -1654,7 +1654,7 @@
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "NÃO",
-      "armazenou_habite": "NÃO",
+      "armazenou_habite": "SIM",
       "certidoes_matricula": "SIM"
     },
     {
@@ -5001,7 +5001,7 @@
       "ret_armazenado": "SIM",
       "taxas_habite_se": "NÃO",
       "issqn": "NÃO",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
     },
