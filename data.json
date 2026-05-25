@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-25T12:49:38.934787+00:00",
+  "updated_at": "2026-05-25T15:00:29.911222+00:00",
   "documentos": [
     {
       "endereco": "TB 19 QD 50 LT 07",
@@ -94,7 +94,7 @@
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "SIM",
-      "art_feita_paga": "NÃO",
+      "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
