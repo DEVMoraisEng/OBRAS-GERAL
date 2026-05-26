@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-26T07:00:28.049991+00:00",
+  "updated_at": "2026-05-26T15:00:33.882332+00:00",
   "documentos": [
     {
       "endereco": "TB 19 QD 50 LT 07",
@@ -154,9 +154,9 @@
       "mestre": "ANTONIO",
       "despachante": null,
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-05-25",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -1545,7 +1545,7 @@
       "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
     },
@@ -1581,7 +1581,7 @@
       "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
     },
@@ -1617,7 +1617,7 @@
       "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "armazenou_habite": "SIM",
       "certidoes_matricula": "SIM"
     },
@@ -1653,7 +1653,7 @@
       "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "armazenou_habite": "SIM",
       "certidoes_matricula": "SIM"
     },
@@ -3430,9 +3430,9 @@
       "mestre": "IRINEU",
       "despachante": "YAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-05-25",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -3599,7 +3599,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "SIM",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "RPB 24 QD 26A LT 13",
@@ -3633,7 +3633,7 @@
       "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
     },
@@ -3934,9 +3934,9 @@
       "mestre": "FELIPE",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-05-25",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -4209,7 +4209,7 @@
       "ret_armazenado": null,
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
     },
