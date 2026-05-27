@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-27T15:00:40.438959+00:00",
+  "updated_at": "2026-05-27T19:00:33.646289+00:00",
   "documentos": [
     {
       "endereco": "TB 19 QD 50 LT 07",
@@ -224,7 +224,7 @@
       "cidade": "SENADOR CANEDO",
       "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE",
       "mestre": null,
-      "despachante": null,
+      "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
       "obra_finalizada": "NÃO",
@@ -243,7 +243,7 @@
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "INEXISTE",
-      "taxas_alvara_pagas": "NÃO",
+      "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": "NÃO",
