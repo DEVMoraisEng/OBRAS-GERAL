@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-28T15:31:18.509495+00:00",
+  "updated_at": "2026-05-28T18:30:39.729156+00:00",
   "documentos": [
     {
       "endereco": "TB 19 QD 50 LT 07",
@@ -1328,7 +1328,7 @@
       "incorporacao_finalizada": "INEXISTE",
       "ret_armazenado": "INEXISTE",
       "taxas_habite_se": "SIM",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
