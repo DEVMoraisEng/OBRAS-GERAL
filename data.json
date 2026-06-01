@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-01T17:45:46.395412+00:00",
+  "updated_at": "2026-06-01T17:53:56.149525+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5474,5 +5474,1434 @@
       "certidoes_matricula": "NÃO"
     }
   ],
-  "vendas": []
+  "vendas": [
+    {
+      "endereco": "TB 6 QD 40 LT 38",
+      "casa": null,
+      "clientes": "RAILMA MACARIO DA CRUZ",
+      "data_venda": "2026-01-17",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 6 QD 40 LT 38",
+      "casa": null,
+      "clientes": "KAYKY REZENDE",
+      "data_venda": "2026-01-30",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 6 QD 40 LT 37",
+      "casa": null,
+      "clientes": "LAINE VIEIRA FELIX",
+      "data_venda": "2025-10-15",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 6 QD 40 LT 37",
+      "casa": null,
+      "clientes": "ANA LUIZA RODRIGUES ARAUJO",
+      "data_venda": "2025-10-14",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 6 QD 40 LT 35",
+      "casa": null,
+      "clientes": "NELA JANE DOS SANTOS OLIVEIRA",
+      "data_venda": "2025-11-29",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 6 QD 40 LT 35",
+      "casa": null,
+      "clientes": "JOSÉ VITTOR ANTUNES SAMPAIO",
+      "data_venda": "2025-11-21",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 6 QD 40 LT 34",
+      "casa": null,
+      "clientes": "ALEX SENA DE JESUS",
+      "data_venda": "2025-10-31",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 6 QD 40 LT 34",
+      "casa": null,
+      "clientes": "ERISNALDO ARAUJO DE SOUSA",
+      "data_venda": "2026-03-26",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 6 QD 40 LT 33",
+      "casa": null,
+      "clientes": "LETICIA ARAUJO DOS SANTOS",
+      "data_venda": "2025-12-02",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 6 QD 40 LT 33",
+      "casa": null,
+      "clientes": "SILAS CEZARIO DA SILVA",
+      "data_venda": "2025-12-09",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 5 QD 40 LT 01",
+      "casa": null,
+      "clientes": "WILBER HENRIQUE FARIA DE CASTRO",
+      "data_venda": "2025-11-18",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 5 QD 40 LT 01",
+      "casa": null,
+      "clientes": "RAFAEL GONÇALVES DAS NEVES",
+      "data_venda": "2026-02-13",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 5 QD 40 LT 01",
+      "casa": null,
+      "clientes": "ANA LUCIA MACEDO DA CONCEIÇÃO SILVA",
+      "data_venda": "2026-04-27",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 21 QD 46 LT 18",
+      "casa": null,
+      "clientes": "WANDERSON GOMES DE FREITAS ",
+      "data_venda": "2026-05-04",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 21 QD 42 LT 14",
+      "casa": null,
+      "clientes": "BRUNA TRISTÃO OLIVEIRA QUEIROZ",
+      "data_venda": "2026-03-10",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 21 QD 42 LT 14",
+      "casa": null,
+      "clientes": "FERNANDA ILARINDO MOURA",
+      "data_venda": "2026-01-23",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 21 QD 42 LT 13",
+      "casa": null,
+      "clientes": "HARMESON RIBEIRO ABREU",
+      "data_venda": "2026-02-13",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 21 QD 42 LT 13",
+      "casa": null,
+      "clientes": "INGRID VITORIA DOS SANTOS",
+      "data_venda": "2026-02-10",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 21 QD 40 LT 30",
+      "casa": null,
+      "clientes": "PRISCILA COSTA MARTINS DOS SANTOS",
+      "data_venda": "2025-11-07",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 21 QD 40 LT 30",
+      "casa": null,
+      "clientes": "FRANCIANE CRISTINA PERERA MATOS",
+      "data_venda": "2025-12-01",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 20 QD 38 LT 01",
+      "casa": null,
+      "clientes": "ELMO ROCHA JÚNIOR",
+      "data_venda": "2025-10-01",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 20 QD 38 LT 01",
+      "casa": null,
+      "clientes": "TAMILLIS RIBEIRO DA SILVA",
+      "data_venda": "2025-09-30",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 20 QD 38 LT 01",
+      "casa": null,
+      "clientes": "MARIA FRANCISCA OLIVEIRA DOS ANJOS",
+      "data_venda": "2026-02-03",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 19 QD 46 LT 07",
+      "casa": null,
+      "clientes": "ROSILEIDE MARTINS DOS SANTOS",
+      "data_venda": "2026-05-12",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 17 QD 48 LT 46",
+      "casa": null,
+      "clientes": "RAIAN RODRIGUES MOREIRA",
+      "data_venda": "2026-05-27",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 17 QD 48 LT 46",
+      "casa": null,
+      "clientes": "COSME RIBEIRO DA COSTA",
+      "data_venda": "2026-05-27",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 17 QD 48 LT 44",
+      "casa": null,
+      "clientes": "FABIO CARDOSO DOS SANTOS",
+      "data_venda": "2026-03-23",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 17 QD 48 LT 41",
+      "casa": null,
+      "clientes": "ANE KAROLINE LOPES DA SILVA",
+      "data_venda": "2026-03-19",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 17 QD 48 LT 41",
+      "casa": null,
+      "clientes": "JAILINE SANTOS DE SANTANA",
+      "data_venda": "2026-03-20",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 17 QD 48 LT 40",
+      "casa": null,
+      "clientes": "ANA  PAULA PEIXOTO DOS SANTOS",
+      "data_venda": "2026-04-22",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 17 QD 48 LT 40",
+      "casa": null,
+      "clientes": "JESSICA CARA SANTOS DA CONCEIÇ",
+      "data_venda": "2026-05-15",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 14 QD 43 LT 48",
+      "casa": null,
+      "clientes": "IGOR LOPES DE SOUZA",
+      "data_venda": "2026-03-12",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 14 QD 43 LT 48",
+      "casa": null,
+      "clientes": "GEOVANA MARQUES DA SILVA",
+      "data_venda": "2026-03-04",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 14 QD 43 LT 35",
+      "casa": null,
+      "clientes": "LUANA RODRIGUES DOS SANTOS",
+      "data_venda": "2026-03-02",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 14 QD 43 LT 31",
+      "casa": null,
+      "clientes": "LUCIANO DE JESUS E SILVA",
+      "data_venda": "2026-02-25",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 14 QD 43 LT 31",
+      "casa": null,
+      "clientes": "LEANDRO LIMA BERALDO",
+      "data_venda": "2026-02-19",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 14 QD 43 LT 29",
+      "casa": null,
+      "clientes": "LARA CARREIRO MONSEF",
+      "data_venda": "2026-03-30",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 14 QD 43 LT 29",
+      "casa": null,
+      "clientes": "MARCIA CRISTINA DA  COSTA ",
+      "data_venda": "2026-04-16",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 14 QD 43 LT 27",
+      "casa": null,
+      "clientes": "WILLIAN SEBASTIÃO DE JESUS",
+      "data_venda": "2026-01-26",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 14 QD 43 LT 27",
+      "casa": null,
+      "clientes": "ENEZIA ROCHA SILVA",
+      "data_venda": "2026-02-14",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 14 QD 43 LT 27",
+      "casa": null,
+      "clientes": "PABLO MICHEL MARCELO RODRIGUES",
+      "data_venda": "2026-02-11",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 1 QD 39 LT 01",
+      "casa": null,
+      "clientes": "MARCOS CARLOS CARDOSO DOS SANTOS",
+      "data_venda": "2025-11-18",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 1 QD 39 LT 01",
+      "casa": null,
+      "clientes": "GILCELLI ROSA ALENCAR",
+      "data_venda": "2025-10-13",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 1 QD 39 LT 01",
+      "casa": null,
+      "clientes": "ALISSON LISBOA DE OLIVEIRA",
+      "data_venda": "2025-12-05",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 06 QD 39 LT 53",
+      "casa": null,
+      "clientes": "ADRIANO DE SOUSA DA SILVA",
+      "data_venda": "2025-12-02",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 06 QD 39 LT 53",
+      "casa": null,
+      "clientes": "RACHEL PAULA CAMPOS",
+      "data_venda": "2025-12-02",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 06 QD 39 LT 53",
+      "casa": null,
+      "clientes": "DUCICLEIA CARVALHO TORREJON",
+      "data_venda": "2026-01-07",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 06 QD 39 LT 51",
+      "casa": null,
+      "clientes": "BERGSON LUIZ DA SILVA JUNIOR",
+      "data_venda": "2025-10-01",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 06 QD 39 LT 51",
+      "casa": null,
+      "clientes": "PEDRO VITOR PEREIRA DE SÁ",
+      "data_venda": "2025-10-10",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 06 QD 39 LT 31",
+      "casa": null,
+      "clientes": "MARIA TAYNARA DE LIMA SANTOS",
+      "data_venda": "2025-10-09",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 06 QD 39 LT 31",
+      "casa": null,
+      "clientes": "ANDERSON FILIPE DE SOUSA SANTOS",
+      "data_venda": "2025-10-08",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 06 QD 39 LT 29",
+      "casa": null,
+      "clientes": "VITOR KAUA LEITE FERREIRA",
+      "data_venda": "2025-08-05",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 06 QD 39 LT 29",
+      "casa": null,
+      "clientes": "ALEXANDRE KAYNON CEROZIMO PAULINO",
+      "data_venda": "2025-08-13",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 06 QD 39 LT 28",
+      "casa": null,
+      "clientes": "JOSE LASARO CARVALHO DA CRUZ",
+      "data_venda": "2025-08-29",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 06 QD 39 LT 28",
+      "casa": null,
+      "clientes": "ANTONIA NOGUEIRA SOARES",
+      "data_venda": "2025-08-11",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 05 QD 37 LT 23",
+      "casa": null,
+      "clientes": "IZABELA BARREIRA DA CRUZ",
+      "data_venda": "2025-09-24",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 05 QD 37 LT 23",
+      "casa": null,
+      "clientes": "CEZAR HENRIQUE JUNIO PONTES DE MORAIS",
+      "data_venda": "2025-10-07",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 05 QD 37 LT 21",
+      "casa": null,
+      "clientes": "CLAUDENILTON PEREIRA DE ALENCAR",
+      "data_venda": "2026-01-15",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "TB 05 QD 37 LT 21",
+      "casa": null,
+      "clientes": "ANTONIA JULIANE COSTA MOURÃO",
+      "data_venda": "2025-08-25",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 01 QD 39 LT 54",
+      "casa": null,
+      "clientes": "MAIRA SILVA DE MORAIS",
+      "data_venda": "2025-12-29",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 01 QD 39 LT 54",
+      "casa": null,
+      "clientes": "BRENA DOS SANTOS PEREIRA",
+      "data_venda": "2025-11-25",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 20 QD 37 LT 17",
+      "casa": null,
+      "clientes": "ERICK FELIPE ALVES DE OLIVEIRA",
+      "data_venda": "2026-01-23",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 20 QD 37 LT 17",
+      "casa": null,
+      "clientes": "JOÃO VICTOR RODRIGUES EUROPEU",
+      "data_venda": "2025-12-30",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "TB 20 QD 37 LT 17",
+      "casa": null,
+      "clientes": "AUCIONE VIEIRA DE SOUSA",
+      "data_venda": "2026-04-07",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "FADAS QD 49 LT 33",
+      "casa": null,
+      "clientes": "IRANILSON BASILIO MARREIORS JUNIOR",
+      "data_venda": "2025-02-07",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "FADAS QD 49 LT 33",
+      "casa": null,
+      "clientes": "THAYNARA REIS SOUSA REZENDE",
+      "data_venda": "2025-02-10",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "GYN 23 QD 86 LT 25",
+      "casa": null,
+      "clientes": "DAVISSON FERREIRA DA SILVA PEREIRA",
+      "data_venda": "2025-05-14",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "GYN 23 QD 86 LT 25",
+      "casa": null,
+      "clientes": "TATYANNE ROCHA DOS SANTOS DIAS",
+      "data_venda": "2025-04-11",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "GYN 23 QD 86 LT 36",
+      "casa": null,
+      "clientes": "GUILHERME HALAX PONCIANO DO VALE",
+      "data_venda": "2025-03-31",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "GYN 23 QD 86 LT 36",
+      "casa": null,
+      "clientes": "FÁBIO REIS DE SOUSA BRITO",
+      "data_venda": "2025-04-08",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "DARCI ACCORSI QD 25 LT 31",
+      "casa": null,
+      "clientes": "IRANI LUIZA NETO",
+      "data_venda": "2025-02-28",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PROF DARCI QD 11 LT 23",
+      "casa": null,
+      "clientes": "IVANI CONCEIÇÃO DA SILVA",
+      "data_venda": "2025-01-17",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "MOLINESIA QD 11 LT 24",
+      "casa": null,
+      "clientes": "ANTONIA ELIZETE DA CONCEIÇÃO",
+      "data_venda": "2025-03-10",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "LUIS ALBERTO MONTEIRO ESPIRITO SANTO  QD 11 LT 22",
+      "casa": null,
+      "clientes": "DEUSENIR DOS SANTOS VIEIRA",
+      "data_venda": "2025-04-08",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "MANDI QD 25 LT 11",
+      "casa": null,
+      "clientes": "MACIONE ALVES DA SILVA",
+      "data_venda": "2025-04-01",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
+      "casa": null,
+      "clientes": "SILVANIA  CALDEIRA DE MOURA",
+      "data_venda": "2026-04-15",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "PROF DARCI QD 11 LT 23",
+      "casa": null,
+      "clientes": "SANDRO CLEMENTE FILHO",
+      "data_venda": "2025-04-23",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PROF DARCI QD 25 LT 22",
+      "casa": null,
+      "clientes": "SANTIAGO NATAL DE ALCANTARA",
+      "data_venda": "2025-06-19",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PROF DARCI QD 25 LT 31",
+      "casa": null,
+      "clientes": "DANIELA TEIXEIRA SILVA",
+      "data_venda": "2025-06-10",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PROF DARCI QD 11 LT 24",
+      "casa": null,
+      "clientes": "ATANAEL GOMES BARBOSA COSTA",
+      "data_venda": "2025-04-30",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 21 QD 17 LT 38",
+      "casa": null,
+      "clientes": "EDILSON CHAVES DA COSTA",
+      "data_venda": "2025-08-14",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 21 QD 17 LT 38",
+      "casa": null,
+      "clientes": "LUIGI DORIAN DOS SANTOS SILVA SANTANA",
+      "data_venda": "2025-08-13",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 21 QD 17 LT 38",
+      "casa": null,
+      "clientes": "ADAH TALITA BRANDAO DO VALE",
+      "data_venda": "2025-08-14",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 04 QD 03 LT 19",
+      "casa": null,
+      "clientes": "JHON WILKER GUESES DE OLIVEIRA",
+      "data_venda": "2026-01-13",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RR 04 QD 03 LT 19",
+      "casa": null,
+      "clientes": "FERNANDO DE JESUS ARAUJO",
+      "data_venda": "2026-01-13",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 04 QD 03 LT 18",
+      "casa": null,
+      "clientes": "FERNANDO ARAUJO DE SOUZA",
+      "data_venda": "2025-10-06",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RR 04 QD 03 LT 18",
+      "casa": null,
+      "clientes": "MILKA PEREIRA LIMA",
+      "data_venda": "2025-04-24",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 04 QD 03 LT 18",
+      "casa": null,
+      "clientes": "LORRANY ALVES ANDRADE VAZ OLIVEIRA",
+      "data_venda": "2025-06-27",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 15 QD 03 LT 17",
+      "casa": null,
+      "clientes": "SALMA CRISTINE CARDOSO DE SOUSA",
+      "data_venda": "2025-05-19",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 15 QD 03 LT 17",
+      "casa": null,
+      "clientes": "KAILAMMY MANACELY DA SILVA COSTA",
+      "data_venda": "2025-04-17",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 17 QD 02 LT 27",
+      "casa": null,
+      "clientes": "CARLOS EDUARDO DA SILVA BARROS",
+      "data_venda": "2025-06-17",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 17 QD 02 LT 27",
+      "casa": null,
+      "clientes": "RAFAEL SOUSA DOS SANTOS",
+      "data_venda": "2025-06-12",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 17 QD 02 LT 27",
+      "casa": null,
+      "clientes": "EMANUELA DOS SANTOS BRITO",
+      "data_venda": "2025-07-17",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 17 QD 02 LT 26",
+      "casa": null,
+      "clientes": "FELIPE MORAIS GALVÃO",
+      "data_venda": "2025-06-03",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 17 QD 02 LT 26",
+      "casa": null,
+      "clientes": "ALANA NEPOMUCENO DE CARVALHO",
+      "data_venda": "2025-05-29",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 17 QD 02 LT 26",
+      "casa": null,
+      "clientes": "ELAINE PORTO AMORIM",
+      "data_venda": "2024-10-09",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 15 QD 01 LT 14",
+      "casa": null,
+      "clientes": "JESSICA SOARES RODRIGUES PARREIRA",
+      "data_venda": "2025-09-25",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 15 QD 01 LT 14",
+      "casa": null,
+      "clientes": "FLAVIA LAURINDA GOMES",
+      "data_venda": "2025-05-21",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 15 QD 01 LT 14",
+      "casa": null,
+      "clientes": "FRANCISCO DAS CHAGAS FERNANDES DOS SANTOS",
+      "data_venda": "2025-09-22",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 02 QD 01 LT 17",
+      "casa": null,
+      "clientes": "SUZANE DOS SANTOS OLIVEIRA S NASCIMENTO",
+      "data_venda": "2026-04-24",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RR 02 QD 01 LT 17",
+      "casa": null,
+      "clientes": "JOÃO MARCOS",
+      "data_venda": "2026-04-14",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RR 15 QD 01 LT 15",
+      "casa": null,
+      "clientes": "LIELSON DE SOUSA RIBEIRO",
+      "data_venda": "2026-05-06",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RR 15 QD 01 LT 15",
+      "casa": null,
+      "clientes": "JUSSIARA BARBOSA DA SILVA",
+      "data_venda": "2026-03-11",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RR 12 QD 19 LT 01",
+      "casa": null,
+      "clientes": "CHARLENE MARIANO PEDROSO",
+      "data_venda": "2025-05-29",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 12 QD 19 LT 01",
+      "casa": null,
+      "clientes": "ALEXANDRO HONORIO DE CARVALHO",
+      "data_venda": "2025-05-19",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 09 QD 11 LT 29",
+      "casa": null,
+      "clientes": "ALDAIR ESTEVES SILVA",
+      "data_venda": "2025-04-22",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 09 QD 11 LT 29",
+      "casa": null,
+      "clientes": "MARIA EDUARDA DA PAIXÃO",
+      "data_venda": "2025-05-15",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 02 QD 02 LT 02",
+      "casa": null,
+      "clientes": "ANA THAYANE LIMA SOARES",
+      "data_venda": "2025-07-01",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 02 QD 02 LT 02",
+      "casa": null,
+      "clientes": "MATEUS TRINDADE FIGUEIREDO",
+      "data_venda": "2025-10-02",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 02 QD 01 LT 28",
+      "casa": null,
+      "clientes": "KATHIELE HENRIQUE MARTINS DA SILVA",
+      "data_venda": "2025-01-09",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 02 QD 01 LT 28",
+      "casa": null,
+      "clientes": "SAMUEL LOPES ANDRADE",
+      "data_venda": "2025-01-09",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 02 QD 01 LT 21",
+      "casa": null,
+      "clientes": "WILLIAN VIEIRA DOS SANTOS SILVA",
+      "data_venda": "2025-07-15",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 02 QD 01 LT 21",
+      "casa": null,
+      "clientes": "CARITA MARIA DOMINGUES DA SILVA",
+      "data_venda": "2025-07-10",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 01 QD 01 LT 13",
+      "casa": null,
+      "clientes": "DEBORA PIMENTA DOS SANTOS",
+      "data_venda": "2025-10-10",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 01 QD 01 LT 13",
+      "casa": null,
+      "clientes": "CHARLES LIMA SILVA",
+      "data_venda": "2025-05-09",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 01 QD 01 LT 11",
+      "casa": null,
+      "clientes": "MARIA PEREIRA DE SOUZA",
+      "data_venda": "2025-07-18",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RR 01 QD 01 LT 11",
+      "casa": null,
+      "clientes": "FERNANDO RODRIGUES",
+      "data_venda": "2025-11-25",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "IVO RODRIGUES QD 33 LT 08",
+      "casa": null,
+      "clientes": "IGOR GOMES PESSOA",
+      "data_venda": "2025-01-17",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "IVO RODRIGUES QD 33 LT 08",
+      "casa": null,
+      "clientes": "ITALO NERES DOS SANTOS",
+      "data_venda": "2025-01-02",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "IVO RODRIGUES QD 33 LT 06",
+      "casa": null,
+      "clientes": "JEAN MARCOS DOS SANTOS PANTOJA",
+      "data_venda": "2025-02-05",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "IVO RODRIGUES QD 33 LT 06",
+      "casa": null,
+      "clientes": "JEFFERSON PEREIRA NERES",
+      "data_venda": "2025-02-04",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "IVO RODRIGUES QD 33 LT 06",
+      "casa": null,
+      "clientes": "MARIA JOSÉ RODRIGUES DA SILVA",
+      "data_venda": "2025-02-04",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "IVO RODRIGUES QD 33 LT 08",
+      "casa": null,
+      "clientes": "FABRICIO DA SILVA LIMA",
+      "data_venda": "2025-02-04",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "IVO RODRIGUES QD 33 LT 07",
+      "casa": null,
+      "clientes": "LIDIANE FRANÇA ROCHA",
+      "data_venda": "2025-02-24",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "IVO RODRIGUES QD 33 LT 07",
+      "casa": null,
+      "clientes": "CAROLINE DE BRITO BARELLI",
+      "data_venda": "2025-02-24",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "IVO RODRIGUES QD 33 LT 07",
+      "casa": null,
+      "clientes": "RAFAEL FERREIRA LEMOS",
+      "data_venda": "2025-02-24",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "IVO RODRIGUES QD 33 LT 06",
+      "casa": null,
+      "clientes": "GERDE COSTA SOUSA",
+      "data_venda": "2025-04-03",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RPB 18 QD 21 LT 02",
+      "casa": null,
+      "clientes": "WELLINGTON SOUSA DOS SANTOS",
+      "data_venda": "2025-03-29",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RPB 18 QD 21 LT 02",
+      "casa": null,
+      "clientes": "RAFAEL GARCEZ TEIXEIRA DOS SANTOS",
+      "data_venda": "2025-04-17",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RPB 24 QD 29 LT 42",
+      "casa": null,
+      "clientes": "JOANNA NUNES DE SANTANA",
+      "data_venda": "2025-11-13",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RPB 24 QD 29 LT 42",
+      "casa": null,
+      "clientes": "ANTONY EDUARDO GODOY DANTAS",
+      "data_venda": "2026-01-14",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 17",
+      "casa": null,
+      "clientes": "JADIEL NUNES DOS SANTOS",
+      "data_venda": "2025-11-11",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 17",
+      "casa": null,
+      "clientes": "HALANE EDUARA DE OLIVEIRA FEITOSA",
+      "data_venda": "2026-01-13",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 16",
+      "casa": null,
+      "clientes": "JULIARIA PAESLANDIN DOS SANTOS",
+      "data_venda": "2026-01-14",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 16",
+      "casa": null,
+      "clientes": "EULER NASCIMENTO DE SOUZA",
+      "data_venda": "2026-01-26",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 15",
+      "casa": null,
+      "clientes": " MARIA EDUARDA ARAÚJO MELO",
+      "data_venda": "2026-05-05",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 13",
+      "casa": null,
+      "clientes": "BRUNA  IARA QUEIROZ  NEVES",
+      "data_venda": "2026-04-14",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 13",
+      "casa": null,
+      "clientes": "IASMIN DE SOUZA CHAGAS",
+      "data_venda": "2026-03-24",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 10",
+      "casa": null,
+      "clientes": "MARIA DE  FÁTIMA  SANTOS  SILVA",
+      "data_venda": "2026-05-05",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 10",
+      "casa": null,
+      "clientes": "JOAO MARIA DE ALBUQUERQUE ",
+      "data_venda": "2026-05-12",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RPB 21 QD 26 LT 1--2",
+      "casa": null,
+      "clientes": "VICTOR KAVINSCK GOMES LIMA",
+      "data_venda": "2025-08-01",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RPB 21 QD 26 LT 1--2",
+      "casa": null,
+      "clientes": "THAYNA MATISSE SOARES MARQUES",
+      "data_venda": "2025-05-14",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RPB 21 QD 26 LT 1--2",
+      "casa": null,
+      "clientes": "JORDANA SALES RODRIGUES",
+      "data_venda": "2025-09-01",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RPB 21 QD 26 LT 1--2",
+      "casa": null,
+      "clientes": "IARA QUEIROZ DE BRITO",
+      "data_venda": "2025-08-13",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RPB 21 QD 26 LT 1--2",
+      "casa": null,
+      "clientes": "KAMILLY DE SOUZA BORGES",
+      "data_venda": "2025-08-22",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "RPB 24 QD 28 LT 01",
+      "casa": null,
+      "clientes": "GABRIEL PORFIRIO MENCONÇA VECCI",
+      "data_venda": "2026-05-05",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "RPB 24 QD 28 LT 01",
+      "casa": null,
+      "clientes": "MARCELO AUGUSTO ALMEIDA COELHO",
+      "data_venda": "2025-12-18",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PS 16 QD 23 LT 08",
+      "casa": null,
+      "clientes": "OTAVIO FERREIRA DE SOUZA",
+      "data_venda": "2025-04-03",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PS 16 QD 23 LT 08",
+      "casa": null,
+      "clientes": "FERNANDO CAMPOS FERREIRA BALTAZAR",
+      "data_venda": "2025-01-31",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PS 16 QD 23 LT 10",
+      "casa": null,
+      "clientes": "LUCICLEUDE BARROS TEIXEIRA",
+      "data_venda": "2025-03-31",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PS 16 QD 23 LT 10",
+      "casa": null,
+      "clientes": "LOUSANE GOMES DE ARAÚJO",
+      "data_venda": "2025-03-25",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PS 16 QD 23 LT 10",
+      "casa": null,
+      "clientes": "ELAINE ALMEIDA DA COSTA",
+      "data_venda": "2025-03-20",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PS 16 QD 23 LT 04",
+      "casa": null,
+      "clientes": "DEVANI GODOFREDO RODRIGUES",
+      "data_venda": "2025-01-23",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PS 16 QD 23 LT 10",
+      "casa": null,
+      "clientes": "LUCIENE CESARIO",
+      "data_venda": "2025-03-25",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PS 16 QD 23 LT 09",
+      "casa": null,
+      "clientes": "VANDA VIANA TORRES",
+      "data_venda": "2025-05-15",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PS 16 QD 23 LT 09",
+      "casa": null,
+      "clientes": "JAVIER ALBERTO BEDNERS",
+      "data_venda": "2025-03-11",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PS 16 QD 23 LT 03",
+      "casa": null,
+      "clientes": "ALAN CRISTIAN DOS SANTOS BRELAZ",
+      "data_venda": "2025-01-31",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PS 16 QD 23 LT 03",
+      "casa": null,
+      "clientes": "JONAS ALVES SARAIVA",
+      "data_venda": "2024-11-26",
+      "entregou_casa": "ÁGIO"
+    },
+    {
+      "endereco": "PS 16 QD 23 LT 09",
+      "casa": null,
+      "clientes": "MAALATE VIEIRA DA SILVA",
+      "data_venda": "2024-11-18",
+      "entregou_casa": "ÁGIO"
+    },
+    {
+      "endereco": "FERROVIARIOS QD 01 LT 13",
+      "casa": null,
+      "clientes": "LAILA RODRIGUES DA SILVA ",
+      "data_venda": "2026-04-27",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "FERROVIARIOS QD 01 LT 13",
+      "casa": null,
+      "clientes": "ALESSANDRA DE SOUSA SILVA ",
+      "data_venda": "2026-05-19",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "FERROVIARIOS QD 01 LT 12",
+      "casa": null,
+      "clientes": "JOHNY RIBEIRO DA SILVA ",
+      "data_venda": "2026-04-30",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "W 6 QD 17 LT 06",
+      "casa": null,
+      "clientes": "KIRIA KAROLINE FERREIRA DA CONCEIÇAO",
+      "data_venda": "2026-02-26",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "W 6 QD 17 LT 06",
+      "casa": null,
+      "clientes": "EDUARDA PRIMO DE SOUSA",
+      "data_venda": "2026-02-28",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "W 6 QD 17 LT 06",
+      "casa": null,
+      "clientes": "GABRIEL MENEZES ALVES",
+      "data_venda": "2026-03-20",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "W 6 QD 17 LT 06",
+      "casa": null,
+      "clientes": "ARIANE SOUZA DE MEDEIROS",
+      "data_venda": "2026-03-03",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 23",
+      "casa": null,
+      "clientes": "LUCINALVA PAULA DE SALES",
+      "data_venda": "2025-09-22",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 23",
+      "casa": null,
+      "clientes": "JOÃO MARCOS SILVA MARTINS",
+      "data_venda": "2026-01-14",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 23",
+      "casa": null,
+      "clientes": "PAULO HENRIQUE DA SLVA RODRIGUES",
+      "data_venda": "2025-09-12",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 22",
+      "casa": null,
+      "clientes": "LUCAS LINCOLN ROCHA",
+      "data_venda": "2025-08-07",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 22",
+      "casa": null,
+      "clientes": "AURILEIDE OLIVEIRA SOUSA",
+      "data_venda": "2025-08-21",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 22",
+      "casa": null,
+      "clientes": "WANDERLAN NUNES LUIZ",
+      "data_venda": "2025-11-24",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 21",
+      "casa": null,
+      "clientes": "ANTONIO FRANQUELANE PEREIRA DA SILVA",
+      "data_venda": "2025-06-25",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 21",
+      "casa": null,
+      "clientes": "FABIANA GOMES DA ROCHA GALVÃO",
+      "data_venda": "2026-01-16",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 21",
+      "casa": null,
+      "clientes": "MAIKA BATISTA DOS SANTO",
+      "data_venda": "2025-01-07",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 20",
+      "casa": null,
+      "clientes": "CAMILA OLIVEIRA DA CUNHA",
+      "data_venda": "2026-02-03",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 20",
+      "casa": null,
+      "clientes": "ANA CLAUDIA BULHOES DE SENE",
+      "data_venda": "2025-02-17",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 20",
+      "casa": null,
+      "clientes": "ADEMILTON CORREA DE MORAIS",
+      "data_venda": "2025-07-03",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 19",
+      "casa": null,
+      "clientes": "POLIANA FIGUEREDO RAMOS",
+      "data_venda": "2025-07-03",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 19",
+      "casa": null,
+      "clientes": "ALICE LIMA ROCHA",
+      "data_venda": "2025-05-15",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-4 QD 04 LT 19",
+      "casa": null,
+      "clientes": "RENATA LARA DE FARIA",
+      "data_venda": "2025-05-13",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-3 QD 04 LT 18",
+      "casa": null,
+      "clientes": "WELBER SANDRO CALIXTO",
+      "data_venda": "2025-06-25",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-3 QD 04 LT 18",
+      "casa": null,
+      "clientes": "CLAUDIA GOMES DE OLIVEIRA ROSA",
+      "data_venda": "2025-04-14",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-3 QD 04 LT 18",
+      "casa": null,
+      "clientes": "LUIZA RODRIGUES PEREIRA",
+      "data_venda": "2025-06-16",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-3 QD 04 LT 17",
+      "casa": null,
+      "clientes": "ANDRESSA CAROLINY ALVES FARIA",
+      "data_venda": "2025-06-02",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-3 QD 04 LT 17",
+      "casa": null,
+      "clientes": "NORMELIA GOMES",
+      "data_venda": "2025-06-02",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-3 QD 04 LT 17",
+      "casa": null,
+      "clientes": "DILEMI MOURA DE OLIVEIRA",
+      "data_venda": "2026-02-18",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "I-3 QD 04 LT 17",
+      "casa": null,
+      "clientes": "MAURICIO AUGUSTO CENTENO",
+      "data_venda": "2025-02-19",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 16",
+      "casa": null,
+      "clientes": "MATEUS BATISTA DA SILVA",
+      "data_venda": "2025-05-21",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 16",
+      "casa": null,
+      "clientes": "JESSICA BATISTA DA SILVA",
+      "data_venda": "2025-05-21",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 16",
+      "casa": null,
+      "clientes": "PEDRO  ELEOMAR  MENDONÇA  DA SILVA  JÚNIOR ",
+      "data_venda": "2026-05-06",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 15",
+      "casa": null,
+      "clientes": "BELCHIRENE SANTIAGO PINHEIO",
+      "data_venda": "2025-11-17",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 15",
+      "casa": null,
+      "clientes": "LARA ESTER SOUSA ROCHA",
+      "data_venda": "2026-04-07",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 15",
+      "casa": null,
+      "clientes": "JOSILENE ALVES DOS SANTOS",
+      "data_venda": "2025-06-30",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 14",
+      "casa": null,
+      "clientes": "ERYK MYKAEL GONÇALVES",
+      "data_venda": "2025-10-08",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 14",
+      "casa": null,
+      "clientes": "STEICY EDUARDA LEITE SOUZA",
+      "data_venda": "2025-05-27",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 14",
+      "casa": null,
+      "clientes": "MARIA EDILEUSA AVES PEREIRA",
+      "data_venda": "2025-11-28",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 13",
+      "casa": null,
+      "clientes": "VANESSA RITA DE OLIVEIRA",
+      "data_venda": "2026-01-22",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 13",
+      "casa": null,
+      "clientes": "DAVID LEMOS ROSA",
+      "data_venda": "2026-02-17",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 13",
+      "casa": null,
+      "clientes": "DEBORAH RODRIGUES DA SILVA",
+      "data_venda": "2026-01-26",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 12",
+      "casa": null,
+      "clientes": "GABRIEL SILVA BRITO",
+      "data_venda": "2025-12-24",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 12",
+      "casa": null,
+      "clientes": "VITOR HUGO SOARES DA SILVA",
+      "data_venda": "2025-12-22",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "AV. FRANÇA QD 04 LT 12",
+      "casa": null,
+      "clientes": "RUBENS DA COSTA SANTOS",
+      "data_venda": "2026-01-06",
+      "entregou_casa": "SIM"
+    },
+    {
+      "endereco": "PS 16 QD 23 LT 08",
+      "casa": null,
+      "clientes": "SIDNEY MOREIRA DO NASCIMENTO",
+      "data_venda": "2025-02-24",
+      "entregou_casa": "SIM"
+    }
+  ]
 }
