@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-01T17:42:45.221084+00:00",
+  "updated_at": "2026-06-01T17:43:37.053086+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5473,5 +5473,6 @@
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
     }
-  ]
+  ],
+  "vendas": []
 }
