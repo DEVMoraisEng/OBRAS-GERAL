@@ -34,8 +34,12 @@ jobs:
 
       - name: Gerar data.json
         env:
-          NOTION_TOKEN_DOCS: ${{ secrets.NOTION_TOKEN_DOCS }}
-          NOTION_DB_DOCS:    ${{ secrets.NOTION_DB_DOCS }}
+          NOTION_TOKEN_DOCS:   ${{ secrets.NOTION_TOKEN_DOCS }}
+          NOTION_DB_DOCS:      ${{ secrets.NOTION_DB_DOCS }}
+          # Vendas — se usar token separado, adicionar NOTION_TOKEN_VENDAS nos Secrets
+          # Se o token for o mesmo do docs, não precisa de secret extra (fallback automático)
+          NOTION_TOKEN_VENDAS: ${{ secrets.NOTION_TOKEN_VENDAS }}
+          NOTION_DB_VENDAS:    ${{ secrets.NOTION_DB_VENDAS }}
         run: python fetch_notion.py
 
       - name: Commit data.json
