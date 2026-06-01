@@ -745,9 +745,9 @@
      ALERTA VENDA (bolinha casa)
   ══════════════════════════════════════ */
   .alerta-venda {
-    fill: #dc2626;
-    stroke: #fff;
-    stroke-width: 2;
+    fill: #f59e0b;
+    stroke: #ffffff;
+    stroke-width: 3;
     pointer-events: none;
   }
   .alerta-venda-icon {
@@ -1009,7 +1009,7 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-acima-prazo)"></div>Finalizada acima do prazo</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-agendado)"></div>Habite-se agendado</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-concluido)"></div>Habite-se concluído</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#dc2626;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)"></div>Casa vendida (pendente)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f59e0b;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)"></div>Casa vendida (pendente)</div>
 <div class="legend-item"><div class="legend-dot" style="background:#dc2626;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)"></div>Atraso (&gt;150 dias)</div>
   </div>
 
@@ -1381,26 +1381,17 @@ function desenharBolinhas(svgRoot) {
       svgRoot.appendChild(c);
     }
 
-    // Ícone de VENDA — ⌂ grande, acima do centro, sem círculo de fundo
-    // Posição fixa: topo do lote - margem, nunca sobrepõe o atraso (que fica no centro)
+    // Bolinha de VENDA — âmbar (#f59e0b), topo do lote, nunca sobrepõe atraso (centro)
     const vp = casasVendidasPendentes(doc);
     if (vp.length > 0) {
-      const fontSize = Math.max(40, Math.min(110, dim * 0.52));
-      // ancora no topo do lote + margem de 10% — fica bem acima do atraso no centro
-      const cyV = bbox.y + dim * 0.10 + fontSize * 0.5;
-      const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      txt.setAttribute('class', 'alerta-venda');
-      txt.setAttribute('x', cx);
-      txt.setAttribute('y', cyV);
-      txt.setAttribute('text-anchor', 'middle');
-      txt.setAttribute('dominant-baseline', 'central');
-      txt.setAttribute('fill', '#dc2626');
-      txt.setAttribute('font-size', fontSize);
-      txt.setAttribute('font-weight', 'bold');
-      txt.setAttribute('pointer-events', 'none');
-      txt.setAttribute('font-family', 'Arial, sans-serif');
-      txt.textContent = '\u2302';
-      svgRoot.appendChild(txt);
+      const r   = Math.max(18, Math.min(55, dim * 0.16));
+      const cyV = bbox.y + r + dim * 0.08;  // topo do lote + margem
+      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('class', 'alerta-venda');
+      c.setAttribute('cx', cx);
+      c.setAttribute('cy', cyV);
+      c.setAttribute('r', r);
+      svgRoot.appendChild(c);
     }
   });
 }
