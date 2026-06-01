@@ -740,6 +740,169 @@
     }
   }
 
+
+  /* ══════════════════════════════════════
+     ALERTA VENDA (bolinha casa)
+  ══════════════════════════════════════ */
+  .alerta-venda {
+    fill: #dc2626;
+    stroke: #fff;
+    stroke-width: 2;
+    pointer-events: none;
+  }
+  .alerta-venda-icon {
+    fill: #fff;
+    font-size: 14px;
+    pointer-events: none;
+    dominant-baseline: central;
+    text-anchor: middle;
+  }
+
+  /* ══════════════════════════════════════
+     PAINEL DE MEDIÇÕES SEMANAIS
+  ══════════════════════════════════════ */
+  .medicoes-section {
+    background: var(--navy2);
+    border-top: 2px solid var(--teal);
+    flex-shrink: 0;
+    max-height: 40vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .medicoes-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    user-select: none;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+  }
+  .medicoes-header:hover { background: var(--navy2); }
+
+  .med-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal2);
+    flex: 1;
+  }
+
+  .med-semana {
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 0.06em;
+  }
+
+  .med-arrow {
+    font-size: 12px;
+    color: var(--teal2);
+    transition: transform 0.15s;
+    width: 14px;
+  }
+
+  .med-counter-badge {
+    background: var(--teal);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 10px;
+  }
+
+  #med-corpo {
+    overflow-y: auto;
+    display: none;
+  }
+
+  .med-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .med-table th {
+    position: sticky;
+    top: 0;
+    background: var(--panel2);
+    color: var(--teal2);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    z-index: 2;
+  }
+
+  .med-table th:last-child { width: 210px; }
+
+  .med-table td {
+    padding: 6px 12px;
+    border-bottom: 1px solid rgba(61,139,139,0.1);
+    color: var(--light);
+    vertical-align: middle;
+  }
+
+  .med-table tr:hover td { background: rgba(255,255,255,0.03); }
+
+  .med-obra {
+    font-size: 11px;
+    word-break: break-word;
+  }
+
+  .med-select-cell { white-space: nowrap; }
+
+  .med-select-wrap {
+    position: relative;
+    display: inline-block;
+  }
+
+  .med-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--sel-cor, #9aaac5);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'Barlow', sans-serif;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 24px 4px 8px;
+    cursor: pointer;
+    outline: none;
+    min-width: 160px;
+  }
+
+  .med-select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.8);
+    font-size: 10px;
+    pointer-events: none;
+  }
+
+  .med-vazio {
+    text-align: center;
+    color: var(--gray);
+    padding: 14px;
+    font-size: 11px;
+  }
+
+  /* mobile medições */
+  @media (max-width: 768px) {
+    .medicoes-section { max-height: 45vh; }
+    .med-table th:last-child { width: auto; }
+    .med-select { min-width: 130px; font-size: 10px; }
+  }
 </style>
 </head>
 <body>
@@ -823,7 +986,8 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-acima-prazo)"></div>Finalizada acima do prazo</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-agendado)"></div>Habite-se agendado</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-concluido)"></div>Habite-se concluído</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#dc2626;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)"></div>Atraso (&gt;150 dias)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#dc2626;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)"></div>Casa vendida (pendente)</div>
+<div class="legend-item"><div class="legend-dot" style="background:#dc2626;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)"></div>Atraso (&gt;150 dias)</div>
   </div>
 
 <!-- Tooltip -->
@@ -983,6 +1147,129 @@ function checkIcon(val) {
   return `<div class="check-icon inexiste" title="${val}">?</div>`;
 }
 
+
+// ══════════════════════════════════════════════════════
+// DADOS DE VENDAS
+// ══════════════════════════════════════════════════════
+let VENDAS_MAP = {};  // endereco_upper → [{casa, data_venda, entregou_casa}]
+
+function carregarVendas(vendas) {
+  VENDAS_MAP = {};
+  (vendas || []).forEach(function(v) {
+    var key = (v.endereco || '').toUpperCase().trim();
+    if (!key) return;
+    if (!VENDAS_MAP[key]) VENDAS_MAP[key] = [];
+    VENDAS_MAP[key].push(v);
+  });
+}
+
+const ENTREGUES_OK = ['SIM','INEXISTE','ÁGIO','AGIO'];
+
+// Retorna array de casas vendidas que ainda não foram entregues
+function casasVendidasPendentes(doc) {
+  if (!doc) return [];
+  var key = (doc.endereco || '').toUpperCase().trim();
+  var vendas = VENDAS_MAP[key] || [];
+  return vendas.filter(function(v) {
+    var entregou = (v.entregou_casa || '').toUpperCase().trim();
+    return !ENTREGUES_OK.includes(entregou);
+  });
+}
+
+// ══════════════════════════════════════════════════════
+// PAINEL DE MEDIÇÕES SEMANAIS
+// ══════════════════════════════════════════════════════
+function semanaISO() {
+  var d = new Date();
+  var dayOfWeek = (d.getDay() + 6) % 7;
+  var weekStart = new Date(d);
+  weekStart.setDate(d.getDate() - dayOfWeek);
+  var jan1 = new Date(weekStart.getFullYear(), 0, 1);
+  var week = Math.ceil(((weekStart - jan1) / 86400000 + 1) / 7);
+  return weekStart.getFullYear() + '-W' + String(week).padStart(2,'0');
+}
+
+var SEMANA_ATUAL = semanaISO();
+var MEDICAO_STORAGE_KEY = 'medicoes_' + CONFIG.setor + '_' + SEMANA_ATUAL;
+var MEDICAO_OPCOES = [
+  { val: 'nao_realizada',      label: 'Não realizada',          cor: '#9aaac5' },
+  { val: 'lancada_aguardando', label: 'Laçada – Ag. revisão',   cor: '#e8c84a' },
+  { val: 'em_andamento',       label: 'Em andamento',           cor: '#4a90d9' },
+  { val: 'finalizada',         label: 'Finalizada',             cor: '#27c45e' },
+];
+
+function carregarMedicoes() {
+  try {
+    var raw = localStorage.getItem(MEDICAO_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch(e) { return {}; }
+}
+function salvarMedicoes(estado) {
+  try { localStorage.setItem(MEDICAO_STORAGE_KEY, JSON.stringify(estado)); } catch(e) {}
+}
+
+var estadoMedicoes = carregarMedicoes();
+
+function obrasEmAndamento() {
+  return Object.values(DOCS).filter(function(doc) {
+    var ini = (doc.obra_iniciada || '').toUpperCase().trim();
+    return (ini === 'SIM' || ini === 'SIM SEM PRAZO') && !obraFinalizada(doc);
+  }).sort(function(a,b) {
+    return (a.endereco || '').localeCompare(b.endereco || '', 'pt-BR');
+  });
+}
+
+function renderizarMedicoes() {
+  var obras = obrasEmAndamento();
+  var tbody = document.getElementById('med-tbody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  document.getElementById('med-counter').textContent = obras.length;
+  if (obras.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="2" class="med-vazio">Nenhuma obra em andamento</td></tr>';
+    return;
+  }
+  obras.forEach(function(doc) {
+    var ref = (doc.ref || doc.endereco || '').toUpperCase().trim();
+    var status = estadoMedicoes[ref] || 'nao_realizada';
+    var opt = MEDICAO_OPCOES.find(function(o){ return o.val === status; }) || MEDICAO_OPCOES[0];
+    var tr = document.createElement('tr');
+    var opts = MEDICAO_OPCOES.map(function(o) {
+      return '<option value="' + o.val + '"' + (o.val === status ? ' selected' : '') + '>' + o.label + '</option>';
+    }).join('');
+    tr.innerHTML =
+      '<td class="med-obra">' + (doc.endereco || ref) + '</td>' +
+      '<td class="med-select-cell">' +
+        '<div class="med-select-wrap" style="--sel-cor:' + opt.cor + '">' +
+          '<select class="med-select" data-ref="' + ref + '">' + opts + '</select>' +
+        '</div>' +
+      '</td>';
+    tr.querySelector('select').addEventListener('change', function() {
+      var novoStatus = this.value;
+      estadoMedicoes[ref] = novoStatus;
+      salvarMedicoes(estadoMedicoes);
+      var novaOpt = MEDICAO_OPCOES.find(function(o){ return o.val === novoStatus; }) || MEDICAO_OPCOES[0];
+      this.closest('.med-select-wrap').style.setProperty('--sel-cor', novaOpt.cor);
+    });
+    tbody.appendChild(tr);
+  });
+}
+
+function toggleMedicoes() {
+  var corpo = document.getElementById('med-corpo');
+  var arrow = document.getElementById('med-arrow');
+  var aberto = corpo.style.display !== 'none';
+  corpo.style.display = aberto ? 'none' : 'block';
+  arrow.textContent = aberto ? '▸' : '▾';
+  if (!aberto) renderizarMedicoes();
+}
+
+// Exibe semana atual no header
+(function() {
+  var el = document.getElementById('med-semana-label');
+  if (el) el.textContent = SEMANA_ATUAL;
+})();
+
 // ══════════════════════════════════════════════════════
 // DADOS
 // ══════════════════════════════════════════════════════
@@ -998,7 +1285,11 @@ function loadData() {
         const ref = (d.ref || '').trim();
         if (ref) DOCS[ref.toUpperCase()] = d;
       });
+      // Carrega vendas do banco de vendas
+      carregarVendas(data.vendas || []);
       pintarMapa();
+      // Atualiza contador do painel de medições
+      document.getElementById('med-counter').textContent = obrasEmAndamento().length;
     })
     .catch(err => console.warn('Erro ao carregar data.json:', err));
 }
@@ -1011,7 +1302,7 @@ function pintarMapa() {
   if (LOTES_EL.length > 0) svgRoot = LOTES_EL[0].ownerSVGElement;
 
   // Limpar bolinhas anteriores (caso pintarMapa rode 2x)
-  if (svgRoot) svgRoot.querySelectorAll('.alerta-atraso').forEach(n => n.remove());
+  if (svgRoot) { svgRoot.querySelectorAll('.alerta-atraso').forEach(n => n.remove()); svgRoot.querySelectorAll('.alerta-venda').forEach(n => n.remove()); }
 
   LOTES_EL.forEach(el => {
     const ref = (el.dataset.ref || '').toUpperCase().trim();
@@ -1058,10 +1349,15 @@ function pintarMapa() {
 const tooltip = document.getElementById('tooltip');
 
 function showTooltip(e, ref, doc, status) {
+  const vp = casasVendidasPendentes(doc);
+  const vpHtml = vp.length > 0
+    ? '<br><span style="color:#f87171;font-size:11px">🏠 ' + vp.length + ' casa(s) vendida(s) pendente(s)</span>'
+    : '';
   tooltip.innerHTML = `
     <strong>${ref || '—'}</strong>
     ${doc ? (doc.endereco || '') : 'Sem dados'}
     <br><span style="color:${STATUS_COR[status]}">${STATUS_LABEL[status]}</span>
+    ${vpHtml}
   `;
   tooltip.style.display = 'block';
   moveTooltip(e);
@@ -1093,6 +1389,30 @@ function openPanel(ref, doc, status) {
   const stLabel = STATUS_LABEL[status] || 'Não comprado';
 
   const tempoObra = diasObra(d);
+
+  // Casas vendidas pendentes
+  const vp = casasVendidasPendentes(doc || null);
+  const vendasHtml = vp.length > 0 ? `
+    <div class="panel-section" style="color:#f87171">🏠 Casas Vendidas — Pendente de Entrega</div>
+    <div class="panel-group">
+      ${vp.map(v => `
+        <div class="group-row">
+          <div class="panel-field">
+            <div class="field-label">Casa</div>
+            <div class="field-value" style="color:#f87171;font-weight:600">${v.casa || '—'}</div>
+          </div>
+          <div class="panel-field">
+            <div class="field-label">Data da Venda</div>
+            <div class="field-value">${parseDateBR(v.data_venda)}</div>
+          </div>
+          <div class="panel-field">
+            <div class="field-label">Entrega</div>
+            <div class="field-value" style="color:#fbbf24">${v.entregou_casa || '—'}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  ` : '';
 
   const checklistHtml = CAMPOS_DOC.map(([k, label]) => `
     <div class="check-item">
@@ -1194,6 +1514,7 @@ function openPanel(ref, doc, status) {
       </div>
     </div>
 
+    ${vendasHtml}
     <div class="panel-section">Documentação</div>
     <div class="panel-checklist">
       ${checklistHtml}
