@@ -1311,8 +1311,8 @@ function loadData() {
       // Carrega vendas do banco de vendas
       carregarVendas(data.vendas || []);
       pintarMapa();
-      // Atualiza contador do painel de medições
-      document.getElementById('med-counter').textContent = obrasEmAndamento().length;
+      // Renderiza painel de medições com dados reais
+      renderizarMedicoes();
     })
     .catch(err => console.warn('Erro ao carregar data.json:', err));
 }
@@ -1320,69 +1320,77 @@ function loadData() {
 function pintarMapa() {
   LOTES_EL = document.querySelectorAll('.lote');
 
-  // Camada SVG onde colocaremos as bolinhas de alerta (no mesmo SVG dos lotes)
   let svgRoot = null;
   if (LOTES_EL.length > 0) svgRoot = LOTES_EL[0].ownerSVGElement;
 
-  // Limpar bolinhas anteriores (caso pintarMapa rode 2x)
-  if (svgRoot) { svgRoot.querySelectorAll('.alerta-atraso').forEach(n => n.remove()); svgRoot.querySelectorAll('.alerta-venda').forEach(n => n.remove()); }
+  // Limpar bolinhas anteriores
+  if (svgRoot) {
+    svgRoot.querySelectorAll('.alerta-atraso').forEach(n => n.remove());
+    svgRoot.querySelectorAll('.alerta-venda').forEach(n => n.remove());
+  }
 
+  // Pinta cores e registra eventos em todos os lotes
   LOTES_EL.forEach(el => {
     const ref = (el.dataset.ref || '').toUpperCase().trim();
     const doc = DOCS[ref];
     const status = calcStatus(doc || null);
     const cor = STATUS_COR[status] || STATUS_COR.nao_comprado;
 
-    // Pinta o elemento
     el.setAttribute('fill', cor);
     el.setAttribute('fill-opacity', '0.55');
     el.style.cursor = 'pointer';
     el.style.transition = 'opacity 0.15s, stroke-width 0.15s';
 
-    // Bolinha vermelha de atenção sobreposta ao centro do lote
-    if (doc && temAlertaAtraso(doc) && svgRoot) {
-      try {
-        const bbox = el.getBBox();
-        const cx = bbox.x + bbox.width / 2;
-        const cy = bbox.y + bbox.height / 2;
-        // Raio = ~18% do menor lado do lote, com piso/teto
-        const r = Math.max(20, Math.min(70, Math.min(bbox.width, bbox.height) * 0.18));
-        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        circle.setAttribute('class', 'alerta-atraso');
-        circle.setAttribute('cx', cx);
-        circle.setAttribute('cy', cy);
-        circle.setAttribute('r', r);
-        svgRoot.appendChild(circle);
-      } catch (_) { /* getBBox falha se o elemento ainda não foi renderizado */ }
-    }
-
-
-    // Bolinha de CASA VENDIDA (vermelha, acima da de atraso)
-    const vendasPendentes = casasVendidasPendentes(doc);
-    if (vendasPendentes.length > 0 && svgRoot) {
-      try {
-        const bbox = el.getBBox();
-        const cx = bbox.x + bbox.width / 2;
-        const cy = bbox.y + bbox.height / 2;
-        const r  = Math.max(18, Math.min(60, Math.min(bbox.width, bbox.height) * 0.16));
-        // Posiciona acima da bolinha de atraso quando ambas existem
-        const temAtraso = temAlertaAtraso(doc);
-        const offY = temAtraso ? -(r * 2.6) : 0;
-        const circV = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        circV.setAttribute('class', 'alerta-venda');
-        circV.setAttribute('cx', cx);
-        circV.setAttribute('cy', cy + offY);
-        circV.setAttribute('r', r);
-        svgRoot.appendChild(circV);
-      } catch(_) {}
-    }
-    // Hover tooltip
     el.addEventListener('mouseenter', (e) => showTooltip(e, ref, doc, status));
     el.addEventListener('mousemove',  (e) => moveTooltip(e));
     el.addEventListener('mouseleave', hideTooltip);
-
-    // Click → painel
     el.addEventListener('click', () => openPanel(ref, doc, status));
+  });
+
+  // Bolinhas adiadas: getBBox() só funciona após o browser renderizar o SVG
+  requestAnimationFrame(() => desenharBolinhas(svgRoot));
+}
+
+function desenharBolinhas(svgRoot) {
+  if (!svgRoot) return;
+  svgRoot.querySelectorAll('.alerta-atraso').forEach(n => n.remove());
+  svgRoot.querySelectorAll('.alerta-venda').forEach(n => n.remove());
+
+  LOTES_EL.forEach(el => {
+    const ref = (el.dataset.ref || '').toUpperCase().trim();
+    const doc = DOCS[ref];
+    if (!doc) return;
+
+    let bbox;
+    try { bbox = el.getBBox(); } catch(_) { return; }
+    if (!bbox || bbox.width === 0) return;
+
+    const cx = bbox.x + bbox.width / 2;
+    const cy = bbox.y + bbox.height / 2;
+
+    // Bolinha de ATRASO (vermelha escura, centro do lote)
+    if (temAlertaAtraso(doc)) {
+      const r = Math.max(20, Math.min(70, Math.min(bbox.width, bbox.height) * 0.18));
+      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('class', 'alerta-atraso');
+      c.setAttribute('cx', cx);
+      c.setAttribute('cy', cy);
+      c.setAttribute('r', r);
+      svgRoot.appendChild(c);
+    }
+
+    // Bolinha de VENDA (vermelha viva, acima da de atraso)
+    const vp = casasVendidasPendentes(doc);
+    if (vp.length > 0) {
+      const r = Math.max(18, Math.min(60, Math.min(bbox.width, bbox.height) * 0.16));
+      const offY = temAlertaAtraso(doc) ? -(r * 2.6) : 0;
+      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('class', 'alerta-venda');
+      c.setAttribute('cx', cx);
+      c.setAttribute('cy', cy + offY);
+      c.setAttribute('r', r);
+      svgRoot.appendChild(c);
+    }
   });
 }
 

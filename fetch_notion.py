@@ -128,7 +128,7 @@ def parse_venda(page):
 
     return {
         "endereco":      endereco,
-        "casa":          s("CASA") or tx("CASA"),
+        "casa":          t("CASA") or s("CASA") or tx("CASA"),
         "clientes":      s("CLIENTES") or tx("CLIENTES"),
         "data_venda":    d("DATA DA VENDA"),
         "entregou_casa": s("ENTEGOU A CASA E PEGOU TERMO DE ENTREGA?"),
