@@ -1370,26 +1370,28 @@ function desenharBolinhas(svgRoot) {
     const cy  = bbox.y + bbox.height / 2;
     const dim = Math.min(bbox.width, bbox.height);
 
-    // Bolinha de ATRASO — sempre no centro do lote
+    // Bolinha de ATRASO — abaixo do centro (cy + r*1.5)
+    // Separada da bolinha de venda que fica em cy - r*1.5
     if (temAlertaAtraso(doc)) {
       const r = Math.max(20, Math.min(70, dim * 0.18));
       const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       c.setAttribute('class', 'alerta-atraso');
       c.setAttribute('cx', cx);
-      c.setAttribute('cy', cy);
+      c.setAttribute('cy', cy + r * 1.5);
       c.setAttribute('r', r);
       svgRoot.appendChild(c);
     }
 
-    // Bolinha de VENDA — branca c/ borda vermelha, mesmo tamanho da de atraso, topo do lote
+    // Bolinha de VENDA — branca c/ borda vermelha, acima do centro
+    // Usa cy - r*1.5 para separar da bolinha de atraso (cy + r*1.5)
+    // Garante que ambas ficam dentro do lote independente da forma
     const vp = casasVendidasPendentes(doc);
     if (vp.length > 0) {
-      const r   = Math.max(20, Math.min(70, dim * 0.18));  // igual ao atraso
-      const cyV = bbox.y + r + dim * 0.06;  // topo do lote + margem mínima
+      const r   = Math.max(20, Math.min(70, dim * 0.18));
       const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       c.setAttribute('class', 'alerta-venda');
       c.setAttribute('cx', cx);
-      c.setAttribute('cy', cyV);
+      c.setAttribute('cy', cy - r * 1.5);
       c.setAttribute('r', r);
       svgRoot.appendChild(c);
     }
