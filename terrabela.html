@@ -745,9 +745,9 @@
      ALERTA VENDA (bolinha casa)
   ══════════════════════════════════════ */
   .alerta-venda {
-    fill: #f59e0b;
-    stroke: #ffffff;
-    stroke-width: 3;
+    fill: #ffffff;
+    stroke: #dc2626;
+    stroke-width: 4;
     pointer-events: none;
   }
   .alerta-venda-icon {
@@ -1009,7 +1009,7 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-acima-prazo)"></div>Finalizada acima do prazo</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-agendado)"></div>Habite-se agendado</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-concluido)"></div>Habite-se concluído</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#f59e0b;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)"></div>Casa vendida (pendente)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#ffffff;border:3px solid #dc2626;box-shadow:0 0 0 1px rgba(0,0,0,.15)"></div>Casa vendida (pendente)</div>
 <div class="legend-item"><div class="legend-dot" style="background:#dc2626;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)"></div>Atraso (&gt;150 dias)</div>
   </div>
 
@@ -1381,11 +1381,11 @@ function desenharBolinhas(svgRoot) {
       svgRoot.appendChild(c);
     }
 
-    // Bolinha de VENDA — âmbar (#f59e0b), topo do lote, nunca sobrepõe atraso (centro)
+    // Bolinha de VENDA — branca c/ borda vermelha, mesmo tamanho da de atraso, topo do lote
     const vp = casasVendidasPendentes(doc);
     if (vp.length > 0) {
-      const r   = Math.max(18, Math.min(55, dim * 0.16));
-      const cyV = bbox.y + r + dim * 0.08;  // topo do lote + margem
+      const r   = Math.max(20, Math.min(70, dim * 0.18));  // igual ao atraso
+      const cyV = bbox.y + r + dim * 0.06;  // topo do lote + margem mínima
       const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       c.setAttribute('class', 'alerta-venda');
       c.setAttribute('cx', cx);
