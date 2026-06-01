@@ -1381,26 +1381,21 @@ function desenharBolinhas(svgRoot) {
       svgRoot.appendChild(c);
     }
 
-    // Símbolo de VENDA — sempre acima do centro (nunca sobrepõe atraso)
+    // Ícone de VENDA — ⌂ grande, acima do centro, sem círculo de fundo
+    // Posição fixa: topo do lote - margem, nunca sobrepõe o atraso (que fica no centro)
     const vp = casasVendidasPendentes(doc);
     if (vp.length > 0) {
-      const r   = Math.max(18, Math.min(55, dim * 0.16));
-      const cyV = cy - dim * 0.30;  // posição fixa: 30% da altura acima do centro
-      // círculo fundo
-      const circ = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      circ.setAttribute('class', 'alerta-venda');
-      circ.setAttribute('cx', cx);
-      circ.setAttribute('cy', cyV);
-      circ.setAttribute('r', r);
-      svgRoot.appendChild(circ);
-      // símbolo ⌂ (casa Unicode — renderiza em todos os browsers)
+      const fontSize = Math.max(40, Math.min(110, dim * 0.52));
+      // ancora no topo do lote + margem de 10% — fica bem acima do atraso no centro
+      const cyV = bbox.y + dim * 0.10 + fontSize * 0.5;
       const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      txt.setAttribute('class', 'alerta-venda');
       txt.setAttribute('x', cx);
       txt.setAttribute('y', cyV);
       txt.setAttribute('text-anchor', 'middle');
       txt.setAttribute('dominant-baseline', 'central');
-      txt.setAttribute('fill', '#ffffff');
-      txt.setAttribute('font-size', r * 1.1);
+      txt.setAttribute('fill', '#dc2626');
+      txt.setAttribute('font-size', fontSize);
       txt.setAttribute('font-weight', 'bold');
       txt.setAttribute('pointer-events', 'none');
       txt.setAttribute('font-family', 'Arial, sans-serif');
