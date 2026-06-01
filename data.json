@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-01T18:03:58.541748+00:00",
+  "updated_at": "2026-06-01T18:10:51.866762+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5676,7 +5676,7 @@
       "casa": null,
       "clientes": "JAILINE SANTOS DE SANTANA",
       "data_venda": "2026-03-20",
-      "entregou_casa": "NÃO"
+      "entregou_casa": "SIM"
     },
     {
       "endereco": "TB 17 QD 48 LT 40",
