@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-Busca dados do banco BASE DE DADOS DOCUMENTOS e gera data.json
+Busca dados do banco BASE DE DADOS DOCUMENTOS + VENDAS e gera data.json
 """
 import requests, json, os
 from datetime import datetime, timezone
 
 # ─── CREDENCIAIS (via GitHub Secrets) ────────────────────────
-TOKEN = os.environ.get("NOTION_TOKEN_DOCS", "")
-DB_ID = os.environ.get("NOTION_DB_DOCS",   "")  # obrigatório via GitHub Secret
+TOKEN_DOCS  = os.environ.get("NOTION_TOKEN_DOCS", "")
+DB_ID_DOCS  = os.environ.get("NOTION_DB_DOCS",    "")
+
+TOKEN_VENDAS = os.environ.get("NOTION_TOKEN_VENDAS", TOKEN_DOCS)   # fallback para o mesmo token
+DB_ID_VENDAS = os.environ.get("NOTION_DB_VENDAS", "33cc5ab532d38047ae3aee8b87ac1f4d")
 
 # ─── HELPERS NOTION ──────────────────────────────────────────
 def prop_title(p):
@@ -24,12 +27,16 @@ def prop_date(p):
     d = p.get("date")
     return d.get("start") if d else None
 
+def prop_multi_select(p):
+    items = p.get("multi_select", [])
+    return [i.get("name", "") for i in items] if items else []
+
 def get_prop(props, nome):
     if nome in props:
         return props[nome]
-    nome_strip = nome.strip()
+    nome_strip = nome.strip().upper()
     for k, v in props.items():
-        if k.strip() == nome_strip:
+        if k.strip().upper() == nome_strip:
             return v
     return {}
 
@@ -77,7 +84,7 @@ def parse_doc(page):
         # Datas de obra
         "previsao_inicio_obra":   d("PREVISÃO DE INÍCIO DE OBRA"),
         "obra_iniciada":          s("OBRA INCIADA"),          # typo original do Notion
-        "obra_finalizada":       s("OBRA FINALIZADA?"),       # nova coluna
+        "obra_finalizada":        s("OBRA FINALIZADA?"),
         "data_inicio_obra":       d("DATA DE INÍCIO DA OBRA"),
         "data_termino_obra":      d("DATA DE TÉRMINO DE OBRA"),
 
@@ -87,8 +94,7 @@ def parse_doc(page):
         "data_habite_se":         d("DATA HABITE-SE"),
         "turno_habite_se":        s("TURNO HABITE-SE"),
 
-        # Booleanos para calcular status "Finalizado s/ prazo"
-        # (todos SIM/INEXISTE/ÁGIO, sem NÃO = documentação encerrada)
+        # Documentação
         "escritura_assinada":     s("ESCRITURA ASSINADA POR TODOS?"),
         "itbi_pago":              s("ITBI PAGO ?"),
         "registro_pago":          s("REGISTRO PAGO?"),
@@ -109,26 +115,57 @@ def parse_doc(page):
         "certidoes_matricula":    s("SAIRAM AS CERTIDOES DE MATRICULA?"),
     }
 
+# ─── PARSE VENDAS ─────────────────────────────────────────────
+def parse_venda(page):
+    p = page.get("properties", {})
+    def s(nome): return prop_select(get_prop(p, nome))
+    def t(nome): return prop_title(get_prop(p, nome))
+    def tx(nome): return prop_text(get_prop(p, nome))
+    def d(nome): return prop_date(get_prop(p, nome))
+
+    # ENDEREÇO pode ser title ou rich_text dependendo do banco
+    endereco = t("ENDEREÇO") or tx("ENDEREÇO")
+
+    return {
+        "endereco":      endereco,
+        "casa":          s("CASA") or tx("CASA"),
+        "clientes":      s("CLIENTES") or tx("CLIENTES"),
+        "data_venda":    d("DATA DA VENDA"),
+        "entregou_casa": s("ENTEGOU A CASA E PEGOU TERMO DE ENTREGA?"),
+    }
+
 # ─── MAIN ─────────────────────────────────────────────────────
 def main():
+    # 1. Documentos
     print("Buscando BASE DE DADOS DOCUMENTOS...")
-    pages = notion_pages(TOKEN, DB_ID)
-    print(f"  {len(pages)} registros encontrados")
-
-    documentos = [parse_doc(p) for p in pages]
-
-    # Filtrar registros sem ref (linhas vazias/cabeçalho)
+    pages_docs = notion_pages(TOKEN_DOCS, DB_ID_DOCS)
+    print(f"  {len(pages_docs)} registros encontrados")
+    documentos = [parse_doc(p) for p in pages_docs]
     documentos = [d for d in documentos if d.get("ref") or d.get("endereco")]
+
+    # 2. Vendas
+    vendas = []
+    if TOKEN_VENDAS and DB_ID_VENDAS:
+        print("Buscando BASE DE DADOS VENDAS...")
+        try:
+            pages_vendas = notion_pages(TOKEN_VENDAS, DB_ID_VENDAS)
+            print(f"  {len(pages_vendas)} registros encontrados")
+            vendas = [parse_venda(p) for p in pages_vendas]
+            vendas = [v for v in vendas if v.get("endereco") and v.get("clientes")]
+            print(f"  {len(vendas)} vendas com cliente preenchido")
+        except Exception as e:
+            print(f"  AVISO: falha ao buscar vendas: {e}")
 
     output = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "documentos": documentos,
+        "vendas":     vendas,
     }
 
     with open("data.json", "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"data.json gerado: {len(documentos)} registros")
+    print(f"data.json gerado: {len(documentos)} docs, {len(vendas)} vendas")
 
 if __name__ == "__main__":
     main()
