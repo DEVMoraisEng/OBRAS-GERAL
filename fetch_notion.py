@@ -27,6 +27,10 @@ def prop_date(p):
     d = p.get("date")
     return d.get("start") if d else None
 
+def prop_number(p):
+    v = p.get("number")
+    return v if v is not None else None
+
 def prop_multi_select(p):
     items = p.get("multi_select", [])
     return [i.get("name", "") for i in items] if items else []
@@ -128,7 +132,7 @@ def parse_venda(page):
 
     return {
         "endereco":      endereco,
-        "casa":          t("CASA") or s("CASA") or tx("CASA"),
+        "casa":          prop_number(get_prop(p, "CASA")),
         "clientes":      s("CLIENTES") or tx("CLIENTES"),
         "data_venda":    d("DATA DA VENDA"),
         "entregou_casa": s("ENTEGOU A CASA E PEGOU TERMO DE ENTREGA?"),

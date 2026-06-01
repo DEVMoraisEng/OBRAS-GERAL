@@ -1278,13 +1278,14 @@ function renderizarMedicoes() {
   });
 }
 
+var _medAberto = false;
 function toggleMedicoes() {
   var corpo = document.getElementById('med-corpo');
   var arrow = document.getElementById('med-arrow');
-  var aberto = corpo.style.display !== 'none';
-  corpo.style.display = aberto ? 'none' : 'block';
-  arrow.textContent = aberto ? '▸' : '▾';
-  if (!aberto) renderizarMedicoes();
+  _medAberto = !_medAberto;
+  corpo.style.display = _medAberto ? 'block' : 'none';
+  arrow.textContent = _medAberto ? '▾' : '▸';
+  if (_medAberto) renderizarMedicoes();
 }
 
 // Exibe semana atual no header
@@ -1365,12 +1366,13 @@ function desenharBolinhas(svgRoot) {
     try { bbox = el.getBBox(); } catch(_) { return; }
     if (!bbox || bbox.width === 0) return;
 
-    const cx = bbox.x + bbox.width / 2;
-    const cy = bbox.y + bbox.height / 2;
+    const cx  = bbox.x + bbox.width  / 2;
+    const cy  = bbox.y + bbox.height / 2;
+    const dim = Math.min(bbox.width, bbox.height);
 
-    // Bolinha de ATRASO (vermelha escura, centro do lote)
+    // Bolinha de ATRASO — sempre no centro do lote
     if (temAlertaAtraso(doc)) {
-      const r = Math.max(20, Math.min(70, Math.min(bbox.width, bbox.height) * 0.18));
+      const r = Math.max(20, Math.min(70, dim * 0.18));
       const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       c.setAttribute('class', 'alerta-atraso');
       c.setAttribute('cx', cx);
@@ -1379,17 +1381,31 @@ function desenharBolinhas(svgRoot) {
       svgRoot.appendChild(c);
     }
 
-    // Bolinha de VENDA (vermelha viva, acima da de atraso)
+    // Símbolo de VENDA — sempre acima do centro (nunca sobrepõe atraso)
     const vp = casasVendidasPendentes(doc);
     if (vp.length > 0) {
-      const r = Math.max(18, Math.min(60, Math.min(bbox.width, bbox.height) * 0.16));
-      const offY = temAlertaAtraso(doc) ? -(r * 2.6) : 0;
-      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      c.setAttribute('class', 'alerta-venda');
-      c.setAttribute('cx', cx);
-      c.setAttribute('cy', cy + offY);
-      c.setAttribute('r', r);
-      svgRoot.appendChild(c);
+      const r   = Math.max(18, Math.min(55, dim * 0.16));
+      const cyV = cy - dim * 0.30;  // posição fixa: 30% da altura acima do centro
+      // círculo fundo
+      const circ = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circ.setAttribute('class', 'alerta-venda');
+      circ.setAttribute('cx', cx);
+      circ.setAttribute('cy', cyV);
+      circ.setAttribute('r', r);
+      svgRoot.appendChild(circ);
+      // símbolo ⌂ (casa Unicode — renderiza em todos os browsers)
+      const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      txt.setAttribute('x', cx);
+      txt.setAttribute('y', cyV);
+      txt.setAttribute('text-anchor', 'middle');
+      txt.setAttribute('dominant-baseline', 'central');
+      txt.setAttribute('fill', '#ffffff');
+      txt.setAttribute('font-size', r * 1.1);
+      txt.setAttribute('font-weight', 'bold');
+      txt.setAttribute('pointer-events', 'none');
+      txt.setAttribute('font-family', 'Arial, sans-serif');
+      txt.textContent = '\u2302';
+      svgRoot.appendChild(txt);
     }
   });
 }
