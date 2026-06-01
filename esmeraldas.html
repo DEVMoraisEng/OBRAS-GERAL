@@ -975,6 +975,29 @@
 
   </div>
 </div><!-- end map-panel-row -->
+<!-- ══════════ PAINEL DE MEDIÇÕES SEMANAIS ══════════ -->
+<div class="medicoes-section">
+  <div class="medicoes-header" onclick="toggleMedicoes()">
+    <span class="med-arrow" id="med-arrow">&#9658;</span>
+    <span class="med-title">MEDICOES DA SEMANA</span>
+    <span class="med-semana" id="med-semana-label"></span>
+    <span class="med-counter-badge"><span id="med-counter">0</span> obras</span>
+  </div>
+  <div id="med-corpo">
+    <table class="med-table">
+      <thead>
+        <tr>
+          <th>Endereco</th>
+          <th>Status da Medicao</th>
+        </tr>
+      </thead>
+      <tbody id="med-tbody">
+        <tr><td colspan="2" class="med-vazio">Carregando...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 
   <!-- LEGENDA -->
   <div class="legend">
@@ -1333,6 +1356,26 @@ function pintarMapa() {
       } catch (_) { /* getBBox falha se o elemento ainda não foi renderizado */ }
     }
 
+
+    // Bolinha de CASA VENDIDA (vermelha, acima da de atraso)
+    const vendasPendentes = casasVendidasPendentes(doc);
+    if (vendasPendentes.length > 0 && svgRoot) {
+      try {
+        const bbox = el.getBBox();
+        const cx = bbox.x + bbox.width / 2;
+        const cy = bbox.y + bbox.height / 2;
+        const r  = Math.max(18, Math.min(60, Math.min(bbox.width, bbox.height) * 0.16));
+        // Posiciona acima da bolinha de atraso quando ambas existem
+        const temAtraso = temAlertaAtraso(doc);
+        const offY = temAtraso ? -(r * 2.6) : 0;
+        const circV = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circV.setAttribute('class', 'alerta-venda');
+        circV.setAttribute('cx', cx);
+        circV.setAttribute('cy', cy + offY);
+        circV.setAttribute('r', r);
+        svgRoot.appendChild(circV);
+      } catch(_) {}
+    }
     // Hover tooltip
     el.addEventListener('mouseenter', (e) => showTooltip(e, ref, doc, status));
     el.addEventListener('mousemove',  (e) => moveTooltip(e));
@@ -1351,7 +1394,7 @@ const tooltip = document.getElementById('tooltip');
 function showTooltip(e, ref, doc, status) {
   const vp = casasVendidasPendentes(doc);
   const vpHtml = vp.length > 0
-    ? '<br><span style="color:#f87171;font-size:11px">🏠 ' + vp.length + ' casa(s) vendida(s) pendente(s)</span>'
+    ? '<br><span style="color:#f87171;font-size:11px">Casa vendida: ' + vp.length + ' pendente(s)</span>'
     : '';
   tooltip.innerHTML = `
     <strong>${ref || '—'}</strong>
@@ -1393,7 +1436,7 @@ function openPanel(ref, doc, status) {
   // Casas vendidas pendentes
   const vp = casasVendidasPendentes(doc || null);
   const vendasHtml = vp.length > 0 ? `
-    <div class="panel-section" style="color:#f87171">🏠 Casas Vendidas — Pendente de Entrega</div>
+    <div class="panel-section" style="color:#f87171">Casas Vendidas — Pendente de Entrega</div>
     <div class="panel-group">
       ${vp.map(v => `
         <div class="group-row">
