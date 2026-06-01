@@ -1221,17 +1221,58 @@ var MEDICAO_OPCOES = [
   { val: 'finalizada',         label: 'Finalizada',             cor: '#27c45e' },
 ];
 
-function carregarMedicoes() {
-  try {
-    var raw = localStorage.getItem(MEDICAO_STORAGE_KEY);
-    return raw ? JSON.parse(raw) : {};
-  } catch(e) { return {}; }
-}
-function salvarMedicoes(estado) {
-  try { localStorage.setItem(MEDICAO_STORAGE_KEY, JSON.stringify(estado)); } catch(e) {}
+// ── Supabase ─────────────────────────────────────────────────────────
+var SUPA_URL = 'https://hnncjuesndwbcpghynul.supabase.co';
+var SUPA_KEY = 'sb_publishable_GgymrKCdXiiYbhMsybnqlQ_bzW0FQ_q';
+
+function supaHeaders() {
+  return {
+    'Content-Type': 'application/json',
+    'apikey': SUPA_KEY,
+    'Authorization': 'Bearer ' + SUPA_KEY
+  };
 }
 
-var estadoMedicoes = carregarMedicoes();
+// Carrega medições do Supabase para a semana atual
+function carregarMedicoes() {
+  return fetch(
+    SUPA_URL + '/rest/v1/medicoes?setor=eq.' + encodeURIComponent(CONFIG.setor) +
+    '&semana=eq.' + encodeURIComponent(SEMANA_ATUAL) + '&select=ref,status',
+    { headers: supaHeaders() }
+  )
+  .then(function(r) { return r.json(); })
+  .then(function(rows) {
+    var estado = {};
+    (rows || []).forEach(function(row) { estado[row.ref] = row.status; });
+    estadoMedicoes = estado;
+    renderizarMedicoes();
+  })
+  .catch(function(e) {
+    console.warn('Supabase carregarMedicoes:', e);
+    estadoMedicoes = {};
+    renderizarMedicoes();
+  });
+}
+
+// Salva ou atualiza uma medição (upsert por setor+ref+semana)
+function salvarMedicao(ref, status) {
+  estadoMedicoes[ref] = status;
+  fetch(SUPA_URL + '/rest/v1/medicoes', {
+    method: 'POST',
+    headers: Object.assign({}, supaHeaders(), {
+      'Prefer': 'resolution=merge-duplicates'
+    }),
+    body: JSON.stringify({
+      setor:      CONFIG.setor,
+      ref:        ref,
+      status:     status,
+      semana:     SEMANA_ATUAL,
+      updated_at: new Date().toISOString()
+    })
+  }).catch(function(e) { console.warn('Supabase salvarMedicao:', e); });
+}
+
+var estadoMedicoes = {};
 
 function obrasEmAndamento() {
   return Object.values(DOCS).filter(function(doc) {
@@ -1269,8 +1310,7 @@ function renderizarMedicoes() {
       '</td>';
     tr.querySelector('select').addEventListener('change', function() {
       var novoStatus = this.value;
-      estadoMedicoes[ref] = novoStatus;
-      salvarMedicoes(estadoMedicoes);
+      salvarMedicao(ref, novoStatus);
       var novaOpt = MEDICAO_OPCOES.find(function(o){ return o.val === novoStatus; }) || MEDICAO_OPCOES[0];
       this.closest('.med-select-wrap').style.setProperty('--sel-cor', novaOpt.cor);
     });
@@ -1312,8 +1352,8 @@ function loadData() {
       // Carrega vendas do banco de vendas
       carregarVendas(data.vendas || []);
       pintarMapa();
-      // Renderiza painel de medições com dados reais
-      renderizarMedicoes();
+      // Carrega medições do Supabase (chama renderizarMedicoes internamente)
+      carregarMedicoes();
     })
     .catch(err => console.warn('Erro ao carregar data.json:', err));
 }
@@ -1352,6 +1392,46 @@ function pintarMapa() {
   requestAnimationFrame(() => desenharBolinhas(svgRoot));
 }
 
+// Calcula centroide real de um polígono/polyline/path a partir dos pontos
+function centroideEl(el) {
+  const tag = el.tagName.toLowerCase();
+  let pts = [];
+
+  if (tag === 'polygon' || tag === 'polyline') {
+    const raw = el.getAttribute('points') || '';
+    raw.trim().split(/\s+|,/).filter(Boolean).forEach((v, i, a) => {
+      if (i % 2 === 0 && i + 1 < a.length)
+        pts.push({ x: parseFloat(v), y: parseFloat(a[i + 1]) });
+    });
+  } else if (tag === 'rect') {
+    const x = parseFloat(el.getAttribute('x') || 0);
+    const y = parseFloat(el.getAttribute('y') || 0);
+    const w = parseFloat(el.getAttribute('width') || 0);
+    const h = parseFloat(el.getAttribute('height') || 0);
+    return { cx: x + w / 2, cy: y + h / 2, dim: Math.min(w, h) };
+  } else {
+    // fallback: centro da bounding box
+    try {
+      const b = el.getBBox();
+      return { cx: b.x + b.width / 2, cy: b.y + b.height / 2,
+               dim: Math.min(b.width, b.height) };
+    } catch(_) { return null; }
+  }
+
+  if (pts.length < 3) return null;
+
+  // Centroide geométrico (média dos vértices — simples e robusto para lotes convexos)
+  const cx = pts.reduce((s, p) => s + p.x, 0) / pts.length;
+  const cy = pts.reduce((s, p) => s + p.y, 0) / pts.length;
+
+  // Dimensão: menor distância do centroide a qualquer aresta (raio inscrito aprox.)
+  // Usa menor lado do bounding box como proxy conservador
+  const xs = pts.map(p => p.x), ys = pts.map(p => p.y);
+  const w = Math.max(...xs) - Math.min(...xs);
+  const h = Math.max(...ys) - Math.min(...ys);
+  return { cx, cy, dim: Math.min(w, h) };
+}
+
 function desenharBolinhas(svgRoot) {
   if (!svgRoot) return;
   svgRoot.querySelectorAll('.alerta-atraso').forEach(n => n.remove());
@@ -1362,38 +1442,35 @@ function desenharBolinhas(svgRoot) {
     const doc = DOCS[ref];
     if (!doc) return;
 
-    let bbox;
-    try { bbox = el.getBBox(); } catch(_) { return; }
-    if (!bbox || bbox.width === 0) return;
+    const geo = centroideEl(el);
+    if (!geo || geo.dim === 0) return;
 
-    const cx  = bbox.x + bbox.width  / 2;
-    const cy  = bbox.y + bbox.height / 2;
-    const dim = Math.min(bbox.width, bbox.height);
+    const { cx, cy, dim } = geo;
 
-    // Raio: 18% da menor dimensão, limitado para caber 2 bolinhas no lote
-    // Máximo = 22% do lote para que cy ± r*1.5 nunca ultrapasse a borda
-    const r = Math.max(12, Math.min(dim * 0.22, dim * 0.18, 60));
-    // Offset: garante que a bolinha inteira fica dentro — máx = (dim/2 - r) * 0.85
-    const maxOff = (dim / 2 - r) * 0.85;
-    const off = Math.min(r * 1.4, maxOff);
+    // Raio: 18% da menor dimensão do lote, com piso/teto
+    const r = Math.max(12, Math.min(dim * 0.18, 60));
 
-    // Bolinha de ATRASO — abaixo do centro
-    if (temAlertaAtraso(doc)) {
+    const temAtraso  = temAlertaAtraso(doc);
+    const temVenda   = casasVendidasPendentes(doc).length > 0;
+    const ambos      = temAtraso && temVenda;
+
+    // Se ambos: separa verticalmente. Se só um: fica no centro.
+    const offY = ambos ? Math.min(r * 1.3, (dim / 2 - r) * 0.8) : 0;
+
+    if (temAtraso) {
       const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       c.setAttribute('class', 'alerta-atraso');
       c.setAttribute('cx', cx);
-      c.setAttribute('cy', cy + off);
+      c.setAttribute('cy', ambos ? cy + offY : cy);
       c.setAttribute('r', r);
       svgRoot.appendChild(c);
     }
 
-    // Bolinha de VENDA — acima do centro
-    const vp = casasVendidasPendentes(doc);
-    if (vp.length > 0) {
+    if (temVenda) {
       const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       c.setAttribute('class', 'alerta-venda');
       c.setAttribute('cx', cx);
-      c.setAttribute('cy', cy - off);
+      c.setAttribute('cy', ambos ? cy - offY : cy);
       c.setAttribute('r', r);
       svgRoot.appendChild(c);
     }
