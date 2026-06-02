@@ -1268,7 +1268,7 @@ function mostrarStatusSupa(ok, msg) {
 function carregarMedicoes() {
   mostrarStatusSupa(null);
   return fetch(
-    SUPA_URL + '/rest/v1/' + encodeURIComponent('MEDIÇÕES') + '?SETOR=eq.' + encodeURIComponent(CONFIG.setor) +
+    SUPA_URL + '/rest/v1/MEDI%C3%87%C3%95ES?SETOR=eq.' + encodeURIComponent(CONFIG.setor) +
     '&SEMANA=eq.' + encodeURIComponent(SEMANA_ATUAL) + '&select=REF,STATUS',
     { headers: supaHeaders() }
   )
@@ -1301,7 +1301,7 @@ function carregarMedicoes() {
 // Salva ou atualiza uma medição (upsert por setor+ref+semana)
 function salvarMedicao(ref, status) {
   estadoMedicoes[ref] = status;
-  fetch(SUPA_URL + '/rest/v1/' + encodeURIComponent('MEDIÇÕES'), {
+  fetch(SUPA_URL + '/rest/v1/MEDI%C3%87%C3%95ES', {
     method: 'POST',
     headers: Object.assign({}, supaHeaders(), {
       'Prefer': 'resolution=merge-duplicates'
@@ -1504,29 +1504,21 @@ function desenharBolinhas(svgRoot) {
 
     const { cx, cy, dim } = geo;
 
-    // Raio menor: 10% da menor dimensão, piso 6, teto 16 — não tapa o número
-    const r = Math.max(6, Math.min(dim * 0.10, 16));
+    // Raio proporcional à dimensão do lote no SVG (25% da menor dim, piso/teto)
+    const r = Math.max(10, Math.min(dim * 0.25, 50));
 
     const temAtraso  = temAlertaAtraso(doc);
     const temVenda   = casasVendidasPendentes(doc).length > 0;
     const ambos      = temAtraso && temVenda;
 
-    // Posiciona no canto superior direito do lote
-    // cx/cy é o centroide; deslocamos para o canto usando metade da dimensão
-    const xs = Array.from(el.getAttribute('points').trim().split(/\s+/).map(p => parseFloat(p.split(',')[0])));
-    const ys = Array.from(el.getAttribute('points').trim().split(/\s+/).map(p => parseFloat(p.split(',')[1])));
-    const xMax = Math.max(...xs);
-    const yMin = Math.min(...ys);
-    // Canto superior direito, recuado pelo raio para ficar dentro do lote
-    const bx = xMax - r * 1.4;
-    const by = yMin + r * 1.4;
+    // Posição: centro do lote, com separação horizontal se ambos
+    const offX = ambos ? r * 1.1 : 0;
 
-    // Se ambos: segunda bolinha logo abaixo da primeira (vertical, no canto)
     if (temAtraso) {
       const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       c.setAttribute('class', 'alerta-atraso');
-      c.setAttribute('cx', bx);
-      c.setAttribute('cy', ambos ? by : by);
+      c.setAttribute('cx', ambos ? cx - offX : cx);
+      c.setAttribute('cy', cy);
       c.setAttribute('r', r);
       svgRoot.appendChild(c);
     }
@@ -1534,8 +1526,8 @@ function desenharBolinhas(svgRoot) {
     if (temVenda) {
       const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       c.setAttribute('class', 'alerta-venda');
-      c.setAttribute('cx', ambos ? bx - r * 2.4 : bx);
-      c.setAttribute('cy', by);
+      c.setAttribute('cx', ambos ? cx + offX : cx);
+      c.setAttribute('cy', cy);
       c.setAttribute('r', r);
       svgRoot.appendChild(c);
     }
