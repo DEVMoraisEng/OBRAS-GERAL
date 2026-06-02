@@ -1242,25 +1242,18 @@ function carregarMedicoes() {
 
   // Tenta sincronizar com Google Sheets em background
   mostrarStatusSupa(null);
-  fetch(GS_URL + '?setor=' + encodeURIComponent(CONFIG.setor) + '&semana=' + encodeURIComponent(SEMANA_ATUAL))
-  .then(function(r) {
-    if (!r.ok) {
-      mostrarStatusSupa(false, 'HTTP ' + r.status);
-      return;
-    }
+  // Apps Script exige no-cors com FormData para POST cross-origin
+  var fd = new FormData();
+  fd.append('SETOR',  CONFIG.setor);
+  fd.append('REF',    ref);
+  fd.append('STATUS', status);
+  fd.append('SEMANA', SEMANA_ATUAL);
+  fetch(GS_URL, { method: 'POST', mode: 'no-cors', body: fd })
+  .then(function() {
     mostrarStatusSupa(true);
-    return r.json().then(function(rows) {
-      if (rows && rows.length > 0) {
-        // Sheets tem dados → sobrescrever local
-        rows.forEach(function(row) { estadoMedicoes[row.REF] = row.STATUS; });
-        // Salvar no localStorage para próxima vez
-        try { localStorage.setItem(MEDICAO_STORAGE_KEY, JSON.stringify(estadoMedicoes)); } catch(e) {}
-        renderizarMedicoes();
-      }
-    });
   })
   .catch(function(e) {
-    console.warn('Google Sheets GET falhou (usando localStorage):', e);
+    console.warn('Google Sheets POST falhou (salvo localmente):', e);
     mostrarStatusSupa(false, e.message);
   });
 }
@@ -1273,25 +1266,15 @@ function salvarMedicao(ref, status) {
 
   // Tenta sincronizar com Google Sheets em background
   mostrarStatusSupa(null);
-  fetch(GS_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      SETOR:  CONFIG.setor,
-      REF:    ref,
-      STATUS: status,
-      SEMANA: SEMANA_ATUAL
-    })
-  })
-  .then(function(r) {
-    if (!r.ok) {
-      mostrarStatusSupa(false, 'Erro ao salvar: HTTP ' + r.status);
-      return;
-    }
-    return r.json().then(function(res) {
-      if (res && res.ok) { mostrarStatusSupa(true); }
-      else { mostrarStatusSupa(false, 'Resposta inesperada'); }
-    });
+  // Apps Script exige no-cors com FormData para POST cross-origin
+  var fd = new FormData();
+  fd.append('SETOR',  CONFIG.setor);
+  fd.append('REF',    ref);
+  fd.append('STATUS', status);
+  fd.append('SEMANA', SEMANA_ATUAL);
+  fetch(GS_URL, { method: 'POST', mode: 'no-cors', body: fd })
+  .then(function() {
+    mostrarStatusSupa(true);
   })
   .catch(function(e) {
     console.warn('Google Sheets POST falhou (salvo localmente):', e);
