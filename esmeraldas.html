@@ -189,7 +189,7 @@
 
   #mapa-svg svg {
     width: 100%;
-    height: auto;
+    height: 100%;
   }
 
   /* Legenda — barra fixa abaixo do mapa */
@@ -556,7 +556,7 @@
 
     #mapa-svg svg {
       width: auto !important;
-      height: auto !important;
+      height: 100% !important;
       min-width: 500px;
       display: block;
     }
@@ -644,9 +644,8 @@
   .map-wrap {
     position: absolute;
     inset: 0;
-    overflow: auto;
-    overflow: auto;
-  -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+    touch-action: none;
     overscroll-behavior: contain;
     cursor: grab;
     background: #edf1f6;
@@ -655,16 +654,16 @@
 
   /* Viewport interno onde o transform é aplicado */
   .map-viewport {
-    min-width: 100%;
-    
-    
-    
+    position: absolute;
+    inset: 0;
+    transform-origin: 0 0;
+    will-change: transform;
   }
 
   .map-viewport > #mapa-svg,
   .map-viewport > #mapa-svg svg {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
   }
 
@@ -746,9 +745,9 @@
      ALERTA VENDA (bolinha casa)
   ══════════════════════════════════════ */
   .alerta-venda {
-    fill: #ffffff;
-    stroke: #dc2626;
-    stroke-width: 4;
+    fill: #dc2626;
+    stroke: #fff;
+    stroke-width: 2;
     pointer-events: none;
   }
   .alerta-venda-icon {
@@ -982,8 +981,7 @@
     <span class="med-arrow" id="med-arrow">&#9658;</span>
     <span class="med-title">MEDICOES DA SEMANA</span>
     <span class="med-semana" id="med-semana-label"></span>
-    <span class="med-counter-badge"><span id="med-counter">0</span>
-    <span id="supa-status" style="margin-left:auto;font-size:11px;color:#9aaac5;padding-right:8px;transition:color .3s">☁ …</span> obras</span>
+    <span class="med-counter-badge"><span id="med-counter">0</span> obras</span>
   </div>
   <div id="med-corpo">
     <table class="med-table">
@@ -1011,7 +1009,7 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-acima-prazo)"></div>Finalizada acima do prazo</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-agendado)"></div>Habite-se agendado</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-concluido)"></div>Habite-se concluído</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#ffffff;border:3px solid #dc2626;box-shadow:0 0 0 1px rgba(0,0,0,.15)"></div>Casa vendida (pendente)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#dc2626;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)"></div>Casa vendida (pendente)</div>
 <div class="legend-item"><div class="legend-dot" style="background:#dc2626;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)"></div>Atraso (&gt;150 dias)</div>
   </div>
 
@@ -1223,68 +1221,79 @@ var MEDICAO_OPCOES = [
   { val: 'finalizada',         label: 'Finalizada',             cor: '#27c45e' },
 ];
 
-// ── Supabase ─────────────────────────────────────────────────────────
-
-var SUPA_OK = null;
-function mostrarStatusSupa(ok, msg) {
-  SUPA_OK = ok;
-  var el = document.getElementById('supa-status');
-  if (!el) return;
-  if (ok === true)  { el.textContent = '☁ Sincronizado'; el.style.color = '#27c45e'; }
-  else if (ok === false) { el.textContent = '⚠ Offline (local)'; el.title = msg||''; el.style.color = '#f59e0b'; }
-  else { el.textContent = '☁ …'; el.style.color = '#9aaac5'; }
+;
+  } catch(e) { return {}; }
 }
+function salvarMedicoes(estado) {
+  try { localStorage.setItem(MEDICAO_STORAGE_KEY, JSON.stringify(estado));
+    salvarMedicaoSupa(ref, novoStatus); 
+} catch(e) {}
+}
+
+
+// ── Supabase — medições compartilhadas ───────────────────────────────
 var SUPA_URL = 'https://hnncjuesndwbcpghynul.supabase.co';
 var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhubmNqdWVzbmR3YmNwZ2h5bnVsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMzUxOTEsImV4cCI6MjA5NTkxMTE5MX0.dQsbynBySg9THcNj8NrkqbfrT91autwcBX39MI060Ic';
+var SUPA_OK  = null;
 
 function supaHeaders() {
   return {
-    'Content-Type': 'application/json',
-    'apikey': SUPA_KEY,
+    'Content-Type':  'application/json',
+    'apikey':        SUPA_KEY,
     'Authorization': 'Bearer ' + SUPA_KEY
   };
 }
 
-// Carrega medições do Supabase para a semana atual
-function carregarMedicoes() {
-  return fetch(
+function mostrarStatusSupa(ok, msg) {
+  SUPA_OK = ok;
+  var el = document.getElementById('supa-status');
+  if (!el) return;
+  if (ok === true)        { el.textContent = '☁ Sincronizado';   el.style.color = '#27c45e'; }
+  else if (ok === false)  { el.textContent = '⚠ Offline (local)'; el.title = msg || ''; el.style.color = '#f59e0b'; }
+  else                    { el.textContent = '☁ …';               el.style.color = '#9aaac5'; }
+}
+
+function carregarMedicoesSupa(callback) {
+  mostrarStatusSupa(null);
+  fetch(
     SUPA_URL + '/rest/v1/medicoes?SETOR=eq.' + encodeURIComponent(CONFIG.setor) +
-    '&semana=eq.' + encodeURIComponent(SEMANA_ATUAL) + '&select=ref,status',
+    '&SEMANA=eq.' + encodeURIComponent(SEMANA_ATUAL) + '&select=REF,STATUS',
     { headers: supaHeaders() }
   )
-  .then(function(r) { return r.json(); })
-  .then(function(rows) {
-    var estado = {};
-    (rows || []).forEach(function(row) { estado[row.REF] = row.STATUS; });
-    estadoMedicoes = estado;
-    renderizarMedicoes();
+  .then(function(r) {
+    if (!r.ok) return r.text().then(function(t) {
+      console.error('Supabase GET:', r.status, t.substring(0,200));
+      mostrarStatusSupa(false, 'HTTP ' + r.status);
+      callback({});
+    });
+    mostrarStatusSupa(true);
+    return r.json().then(function(rows) {
+      var estado = {};
+      (rows || []).forEach(function(row) { estado[row.REF] = row.STATUS; });
+      callback(estado);
+    });
   })
   .catch(function(e) {
-    console.warn('Supabase carregarMedicoes:', e);
-    estadoMedicoes = {};
-    renderizarMedicoes();
+    console.warn('Supabase GET erro:', e);
+    mostrarStatusSupa(false, e.message);
+    callback({});
   });
 }
 
-// Salva ou atualiza uma medição (upsert por setor+ref+semana)
-function salvarMedicao(ref, status) {
-  estadoMedicoes[ref] = status;
-  fetch(SUPA_URL + '/rest/v1/medicoes', {
-    method: 'POST',
-    headers: Object.assign({}, supaHeaders(), {
-      'Prefer': 'resolution=merge-duplicates'
-    }),
-    body: JSON.stringify({
-      SETOR:      CONFIG.setor,
-      REF:        ref,
-      STATUS:     status,
-      SEMANA:     SEMANA_ATUAL,
-      updated_at: new Date().toISOString()
-    })
-  }).catch(function(e) { console.warn('Supabase salvarMedicao:', e); });
+function salvarMedicaoSupa(ref, status) {
+mostrarStatusSupa(false, 'Erro ao salvar: HTTP ' + r.status);
+    });
+    mostrarStatusSupa(true);
+  })
+  .catch(function(e) {
+    console.warn('Supabase POST erro:', e);
+    mostrarStatusSupa(false, e.message);
+  });
 }
+// ─────────────────────────────────────────────────────────────────────
 
 var estadoMedicoes = {};
+carregarMedicoesSupa(function(estado) { estadoMedicoes = estado; renderizarMedicoes(); });
 
 function obrasEmAndamento() {
   return Object.values(DOCS).filter(function(doc) {
@@ -1322,7 +1331,8 @@ function renderizarMedicoes() {
       '</td>';
     tr.querySelector('select').addEventListener('change', function() {
       var novoStatus = this.value;
-      salvarMedicao(ref, novoStatus);
+      estadoMedicoes[ref] = novoStatus;
+      salvarMedicoes(estadoMedicoes);
       var novaOpt = MEDICAO_OPCOES.find(function(o){ return o.val === novoStatus; }) || MEDICAO_OPCOES[0];
       this.closest('.med-select-wrap').style.setProperty('--sel-cor', novaOpt.cor);
     });
@@ -1330,14 +1340,13 @@ function renderizarMedicoes() {
   });
 }
 
-var _medAberto = false;
 function toggleMedicoes() {
   var corpo = document.getElementById('med-corpo');
   var arrow = document.getElementById('med-arrow');
-  _medAberto = !_medAberto;
-  corpo.style.display = _medAberto ? 'block' : 'none';
-  arrow.textContent = _medAberto ? '▾' : '▸';
-  if (_medAberto) renderizarMedicoes();
+  var aberto = corpo.style.display !== 'none';
+  corpo.style.display = aberto ? 'none' : 'block';
+  arrow.textContent = aberto ? '▸' : '▾';
+  if (!aberto) renderizarMedicoes();
 }
 
 // Exibe semana atual no header
@@ -1364,8 +1373,8 @@ function loadData() {
       // Carrega vendas do banco de vendas
       carregarVendas(data.vendas || []);
       pintarMapa();
-      // Carrega medições do Supabase (chama renderizarMedicoes internamente)
-      carregarMedicoes();
+      // Atualiza contador do painel de medições
+      document.getElementById('med-counter').textContent = obrasEmAndamento().length;
     })
     .catch(err => console.warn('Erro ao carregar data.json:', err));
 }
@@ -1373,119 +1382,68 @@ function loadData() {
 function pintarMapa() {
   LOTES_EL = document.querySelectorAll('.lote');
 
+  // Camada SVG onde colocaremos as bolinhas de alerta (no mesmo SVG dos lotes)
   let svgRoot = null;
   if (LOTES_EL.length > 0) svgRoot = LOTES_EL[0].ownerSVGElement;
 
-  // Limpar bolinhas anteriores
-  if (svgRoot) {
-    svgRoot.querySelectorAll('.alerta-atraso').forEach(n => n.remove());
-    svgRoot.querySelectorAll('.alerta-venda').forEach(n => n.remove());
-  }
+  // Limpar bolinhas anteriores (caso pintarMapa rode 2x)
+  if (svgRoot) { svgRoot.querySelectorAll('.alerta-atraso').forEach(n => n.remove()); svgRoot.querySelectorAll('.alerta-venda').forEach(n => n.remove()); }
 
-  // Pinta cores e registra eventos em todos os lotes
   LOTES_EL.forEach(el => {
     const ref = (el.dataset.ref || '').toUpperCase().trim();
     const doc = DOCS[ref];
     const status = calcStatus(doc || null);
     const cor = STATUS_COR[status] || STATUS_COR.nao_comprado;
 
+    // Pinta o elemento
     el.setAttribute('fill', cor);
     el.setAttribute('fill-opacity', '0.55');
     el.style.cursor = 'pointer';
     el.style.transition = 'opacity 0.15s, stroke-width 0.15s';
 
+        // Bolinha vermelha de atenção sobreposta ao centro do lote
+    if (doc && temAlertaAtraso(doc) && svgRoot) {
+      try {
+        const bbox = el.getBBox();
+        const cx = bbox.x + bbox.width / 2;
+        const cy = bbox.y + bbox.height / 2;
+        const r = Math.max(20, Math.min(70, Math.min(bbox.width, bbox.height) * 0.18));
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('class', 'alerta-atraso');
+        circle.setAttribute('cx', cx);
+        circle.setAttribute('cy', cy);
+        circle.setAttribute('r', r);
+        svgRoot.appendChild(circle);
+      } catch (_) {}
+    }
+
+    // Bolinha de CASA VENDIDA PENDENTE
+    const vendasPendentes = casasVendidasPendentes(doc);
+    if (vendasPendentes.length > 0 && svgRoot) {
+      try {
+        const bbox = el.getBBox();
+        const cx = bbox.x + bbox.width / 2;
+        const cy = bbox.y + bbox.height / 2;
+        const r  = Math.max(18, Math.min(60, Math.min(bbox.width, bbox.height) * 0.16));
+        const temAtraso = temAlertaAtraso(doc);
+        const offY = temAtraso ? -(r * 2.6) : 0;
+        const circV = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circV.setAttribute('class', 'alerta-venda');
+        circV.setAttribute('cx', cx);
+        circV.setAttribute('cy', cy + offY);
+        circV.setAttribute('r', r);
+        svgRoot.appendChild(circV);
+      } catch(_) {}
+    }
+
+    
+    // Hover tooltip
     el.addEventListener('mouseenter', (e) => showTooltip(e, ref, doc, status));
     el.addEventListener('mousemove',  (e) => moveTooltip(e));
     el.addEventListener('mouseleave', hideTooltip);
+
+    // Click → painel
     el.addEventListener('click', () => openPanel(ref, doc, status));
-  });
-
-  // Bolinhas adiadas: getBBox() só funciona após o browser renderizar o SVG
-  requestAnimationFrame(() => desenharBolinhas(svgRoot));
-}
-
-// Calcula centroide real de um polígono/polyline/path a partir dos pontos
-function centroideEl(el) {
-  const tag = el.tagName.toLowerCase();
-  let pts = [];
-
-  if (tag === 'polygon' || tag === 'polyline') {
-    const raw = el.getAttribute('points') || '';
-    raw.trim().split(/\s+|,/).filter(Boolean).forEach((v, i, a) => {
-      if (i % 2 === 0 && i + 1 < a.length)
-        pts.push({ x: parseFloat(v), y: parseFloat(a[i + 1]) });
-    });
-  } else if (tag === 'rect') {
-    const x = parseFloat(el.getAttribute('x') || 0);
-    const y = parseFloat(el.getAttribute('y') || 0);
-    const w = parseFloat(el.getAttribute('width') || 0);
-    const h = parseFloat(el.getAttribute('height') || 0);
-    return { cx: x + w / 2, cy: y + h / 2, dim: Math.min(w, h) };
-  } else {
-    // fallback: centro da bounding box
-    try {
-      const b = el.getBBox();
-      return { cx: b.x + b.width / 2, cy: b.y + b.height / 2,
-               dim: Math.min(b.width, b.height) };
-    } catch(_) { return null; }
-  }
-
-  if (pts.length < 3) return null;
-
-  // Centroide geométrico (média dos vértices — simples e robusto para lotes convexos)
-  const cx = pts.reduce((s, p) => s + p.x, 0) / pts.length;
-  const cy = pts.reduce((s, p) => s + p.y, 0) / pts.length;
-
-  // Dimensão: menor distância do centroide a qualquer aresta (raio inscrito aprox.)
-  // Usa menor lado do bounding box como proxy conservador
-  const xs = pts.map(p => p.x), ys = pts.map(p => p.y);
-  const w = Math.max(...xs) - Math.min(...xs);
-  const h = Math.max(...ys) - Math.min(...ys);
-  return { cx, cy, dim: Math.min(w, h) };
-}
-
-function desenharBolinhas(svgRoot) {
-  if (!svgRoot) return;
-  svgRoot.querySelectorAll('.alerta-atraso').forEach(n => n.remove());
-  svgRoot.querySelectorAll('.alerta-venda').forEach(n => n.remove());
-
-  LOTES_EL.forEach(el => {
-    const ref = (el.dataset.ref || '').toUpperCase().trim();
-    const doc = DOCS[ref];
-    if (!doc) return;
-
-    const geo = centroideEl(el);
-    if (!geo || geo.dim === 0) return;
-
-    const { cx, cy, dim } = geo;
-
-    // Raio: 18% da menor dimensão do lote, com piso/teto
-    const r = Math.max(216, Math.min(dim * 0.25, 384));
-
-    const temAtraso  = temAlertaAtraso(doc);
-    const temVenda   = casasVendidasPendentes(doc).length > 0;
-    const ambos      = temAtraso && temVenda;
-
-    // Se ambos: separa verticalmente. Se só um: fica no centro.
-    const offY = ambos ? Math.min(r * 1.3, (dim / 2 - r) * 0.8) : 0;
-
-    if (temAtraso) {
-      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      c.setAttribute('class', 'alerta-atraso');
-      c.setAttribute('cx', cx);
-      c.setAttribute('cy', ambos ? cy + offY : cy);
-      c.setAttribute('r', r);
-      svgRoot.appendChild(c);
-    }
-
-    if (temVenda) {
-      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      c.setAttribute('class', 'alerta-venda');
-      c.setAttribute('cx', cx);
-      c.setAttribute('cy', ambos ? cy - offY : cy);
-      c.setAttribute('r', r);
-      svgRoot.appendChild(c);
-    }
   });
 }
 

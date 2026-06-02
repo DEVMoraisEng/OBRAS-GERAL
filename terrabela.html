@@ -185,15 +185,11 @@
   #mapa-svg {
     width: 100%;
     height: 100%;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   #mapa-svg svg {
     width: 100%;
-    height: auto;
-    display: block;
-    min-width: 600px;
+    height: 100%;
   }
 
   /* Legenda — barra fixa abaixo do mapa */
@@ -640,39 +636,40 @@
   }
 
   /* ══════════════════════════════════
-     ZOOM NATIVO (sem transform/scale)
-     SVG renderiza nítido em qualquer zoom
+     ZOOM ISOLADO + FALLBACK DE COR
+     Adicionado no patch de correção
   ══════════════════════════════════ */
 
-  /* Container de scroll do mapa */
+  /* Container que captura pinça/scroll sem mexer na página */
   .map-wrap {
     position: absolute;
     inset: 0;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+    touch-action: none;
     overscroll-behavior: contain;
+    cursor: grab;
     background: #edf1f6;
   }
+  .map-wrap.grabbing { cursor: grabbing; }
 
-  /* Viewport interno — só expande conforme o zoom */
+  /* Viewport interno onde o transform é aplicado */
   .map-viewport {
-    min-width: 100%;
-    min-height: 100%;
+    position: absolute;
+    inset: 0;
+    transform-origin: 0 0;
+    will-change: transform;
   }
 
-  .map-viewport > #mapa-svg {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
+  .map-viewport > #mapa-svg,
   .map-viewport > #mapa-svg svg {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
   }
 
-  /* FALLBACK: polygon sem class recebe cinza neutro */
+  /* FALLBACK: qualquer polygon SEM class="lote" recebe cinza neutro,
+     em vez de ficar preto. Defesa em profundidade caso algum lote
+     passe sem o atributo. */
   #mapa-svg svg polygon:not(.lote) {
     fill: #b0bec5;
     fill-opacity: 0.55;
@@ -719,6 +716,7 @@
   }
 
   @media (max-width: 768px) {
+    /* No mobile: o mapa volta a ser um bloco normal, mas o zoom continua isolado */
     .map-wrap {
       position: relative;
       height: 60vw;
@@ -747,9 +745,9 @@
      ALERTA VENDA (bolinha casa)
   ══════════════════════════════════════ */
   .alerta-venda {
-    fill: #ffffff;
-    stroke: #dc2626;
-    stroke-width: 4;
+    fill: #dc2626;
+    stroke: #fff;
+    stroke-width: 2;
     pointer-events: none;
   }
   .alerta-venda-icon {
@@ -984,7 +982,6 @@
     <span class="med-title">MEDICOES DA SEMANA</span>
     <span class="med-semana" id="med-semana-label"></span>
     <span class="med-counter-badge"><span id="med-counter">0</span> obras</span>
-    <span id="supa-status" style="margin-left:auto;font-size:11px;color:#9aaac5;padding-right:8px;transition:color .3s">☁ …</span>
   </div>
   <div id="med-corpo">
     <table class="med-table">
@@ -1012,7 +1009,7 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-acima-prazo)"></div>Finalizada acima do prazo</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-agendado)"></div>Habite-se agendado</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--c-habite-concluido)"></div>Habite-se concluído</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#ffffff;border:3px solid #dc2626;box-shadow:0 0 0 1px rgba(0,0,0,.15)"></div>Casa vendida (pendente)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#dc2626;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)"></div>Casa vendida (pendente)</div>
 <div class="legend-item"><div class="legend-dot" style="background:#dc2626;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)"></div>Atraso (&gt;150 dias)</div>
   </div>
 
@@ -1224,25 +1221,25 @@ var MEDICAO_OPCOES = [
   { val: 'finalizada',         label: 'Finalizada',             cor: '#27c45e' },
 ];
 
-// ── Supabase ─────────────────────────────────────────────────────────
+;
+  } catch(e) { return {}; }
+}
+function salvarMedicoes(estado) {
+  try { localStorage.setItem(MEDICAO_STORAGE_KEY, JSON.stringify(estado));
+    salvarMedicaoSupa(ref, novoStatus); 
+} catch(e) {}
+}
+
+
+// ── Supabase — medições compartilhadas ───────────────────────────────
 var SUPA_URL = 'https://hnncjuesndwbcpghynul.supabase.co';
 var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhubmNqdWVzbmR3YmNwZ2h5bnVsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMzUxOTEsImV4cCI6MjA5NTkxMTE5MX0.dQsbynBySg9THcNj8NrkqbfrT91autwcBX39MI060Ic';
-
-// ⚠️ DIAGNÓSTICO: Se as medições não sincronizam, abra o console (F12)
-// e verifique as mensagens de erro do Supabase.
-// Causas comuns:
-//   1. SUPA_KEY incorreta — use a "anon key" do painel Supabase (Settings > API)
-//      O formato correto é "eyJ..." (JWT), não "sb_publishable_..."
-//   2. Tabela "medicoes" não existe — crie com: setor TEXT, ref TEXT, semana TEXT,
-//      status TEXT, updated_at TIMESTAMPTZ, UNIQUE(setor, ref, semana)
-//   3. RLS (Row Level Security) bloqueando — desative ou crie policy permissiva
-
-var SUPA_OK = null; // null=desconhecido, true=funcionando, false=erro
+var SUPA_OK  = null;
 
 function supaHeaders() {
   return {
-    'Content-Type': 'application/json',
-    'apikey': SUPA_KEY,
+    'Content-Type':  'application/json',
+    'apikey':        SUPA_KEY,
     'Authorization': 'Bearer ' + SUPA_KEY
   };
 }
@@ -1251,85 +1248,52 @@ function mostrarStatusSupa(ok, msg) {
   SUPA_OK = ok;
   var el = document.getElementById('supa-status');
   if (!el) return;
-  if (ok === true) {
-    el.textContent = '☁ Sincronizado';
-    el.style.color = '#27c45e';
-  } else if (ok === false) {
-    el.textContent = '⚠ Offline (local)';
-    el.title = msg || 'Verifique o console (F12) para detalhes';
-    el.style.color = '#f59e0b';
-  } else {
-    el.textContent = '☁ …';
-    el.style.color = '#9aaac5';
-  }
+  if (ok === true)        { el.textContent = '☁ Sincronizado';   el.style.color = '#27c45e'; }
+  else if (ok === false)  { el.textContent = '⚠ Offline (local)'; el.title = msg || ''; el.style.color = '#f59e0b'; }
+  else                    { el.textContent = '☁ …';               el.style.color = '#9aaac5'; }
 }
 
-// Carrega medições do Supabase para a semana atual
-function carregarMedicoes() {
+function carregarMedicoesSupa(callback) {
   mostrarStatusSupa(null);
-  return fetch(
+  fetch(
     SUPA_URL + '/rest/v1/medicoes?SETOR=eq.' + encodeURIComponent(CONFIG.setor) +
     '&SEMANA=eq.' + encodeURIComponent(SEMANA_ATUAL) + '&select=REF,STATUS',
     { headers: supaHeaders() }
   )
   .then(function(r) {
-    if (!r.ok) {
-      return r.text().then(function(t) {
-        var msg = 'HTTP ' + r.status + ': ' + t.substring(0, 200);
-        console.error('Supabase carregarMedicoes:', msg);
-        mostrarStatusSupa(false, msg);
-        return [];
-      });
-    }
+    if (!r.ok) return r.text().then(function(t) {
+      console.error('Supabase GET:', r.status, t.substring(0,200));
+      mostrarStatusSupa(false, 'HTTP ' + r.status);
+      callback({});
+    });
     mostrarStatusSupa(true);
-    return r.json();
-  })
-  .then(function(rows) {
-    var estado = {};
-    (rows || []).forEach(function(row) { estado[row.REF] = row.STATUS; });
-    estadoMedicoes = estado;
-    renderizarMedicoes();
+    return r.json().then(function(rows) {
+      var estado = {};
+      (rows || []).forEach(function(row) { estado[row.REF] = row.STATUS; });
+      callback(estado);
+    });
   })
   .catch(function(e) {
-    console.warn('Supabase carregarMedicoes (rede):', e);
+    console.warn('Supabase GET erro:', e);
     mostrarStatusSupa(false, e.message);
-    estadoMedicoes = {};
-    renderizarMedicoes();
+    callback({});
   });
 }
 
-// Salva ou atualiza uma medição (upsert por setor+ref+semana)
-function salvarMedicao(ref, status) {
-  estadoMedicoes[ref] = status;
-  fetch(SUPA_URL + '/rest/v1/medicoes', {
-    method: 'POST',
-    headers: Object.assign({}, supaHeaders(), {
-      'Prefer': 'resolution=merge-duplicates'
-    }),
-    body: JSON.stringify({
-      SETOR:      CONFIG.setor,
-      REF:        ref,
-      STATUS:     status,
-      SEMANA:     SEMANA_ATUAL,
-      updated_at: new Date().toISOString()
-    })
-  })
-  .then(function(r) {
-    if (!r.ok) {
-      return r.text().then(function(t) {
-        console.error('Supabase salvarMedicao:', 'HTTP ' + r.status, t.substring(0, 300));
-        mostrarStatusSupa(false, 'Erro ao salvar: HTTP ' + r.status);
-      });
-    }
+function salvarMedicaoSupa(ref, status) {
+mostrarStatusSupa(false, 'Erro ao salvar: HTTP ' + r.status);
+    });
     mostrarStatusSupa(true);
   })
   .catch(function(e) {
-    console.warn('Supabase salvarMedicao (rede):', e);
+    console.warn('Supabase POST erro:', e);
     mostrarStatusSupa(false, e.message);
   });
 }
+// ─────────────────────────────────────────────────────────────────────
 
 var estadoMedicoes = {};
+carregarMedicoesSupa(function(estado) { estadoMedicoes = estado; renderizarMedicoes(); });
 
 function obrasEmAndamento() {
   return Object.values(DOCS).filter(function(doc) {
@@ -1367,7 +1331,8 @@ function renderizarMedicoes() {
       '</td>';
     tr.querySelector('select').addEventListener('change', function() {
       var novoStatus = this.value;
-      salvarMedicao(ref, novoStatus);
+      estadoMedicoes[ref] = novoStatus;
+      salvarMedicoes(estadoMedicoes);
       var novaOpt = MEDICAO_OPCOES.find(function(o){ return o.val === novoStatus; }) || MEDICAO_OPCOES[0];
       this.closest('.med-select-wrap').style.setProperty('--sel-cor', novaOpt.cor);
     });
@@ -1375,14 +1340,13 @@ function renderizarMedicoes() {
   });
 }
 
-var _medAberto = false;
 function toggleMedicoes() {
   var corpo = document.getElementById('med-corpo');
   var arrow = document.getElementById('med-arrow');
-  _medAberto = !_medAberto;
-  corpo.style.display = _medAberto ? 'block' : 'none';
-  arrow.textContent = _medAberto ? '▾' : '▸';
-  if (_medAberto) renderizarMedicoes();
+  var aberto = corpo.style.display !== 'none';
+  corpo.style.display = aberto ? 'none' : 'block';
+  arrow.textContent = aberto ? '▸' : '▾';
+  if (!aberto) renderizarMedicoes();
 }
 
 // Exibe semana atual no header
@@ -1409,8 +1373,8 @@ function loadData() {
       // Carrega vendas do banco de vendas
       carregarVendas(data.vendas || []);
       pintarMapa();
-      // Carrega medições do Supabase (chama renderizarMedicoes internamente)
-      carregarMedicoes();
+      // Atualiza contador do painel de medições
+      document.getElementById('med-counter').textContent = obrasEmAndamento().length;
     })
     .catch(err => console.warn('Erro ao carregar data.json:', err));
 }
@@ -1418,119 +1382,68 @@ function loadData() {
 function pintarMapa() {
   LOTES_EL = document.querySelectorAll('.lote');
 
+  // Camada SVG onde colocaremos as bolinhas de alerta (no mesmo SVG dos lotes)
   let svgRoot = null;
   if (LOTES_EL.length > 0) svgRoot = LOTES_EL[0].ownerSVGElement;
 
-  // Limpar bolinhas anteriores
-  if (svgRoot) {
-    svgRoot.querySelectorAll('.alerta-atraso').forEach(n => n.remove());
-    svgRoot.querySelectorAll('.alerta-venda').forEach(n => n.remove());
-  }
+  // Limpar bolinhas anteriores (caso pintarMapa rode 2x)
+  if (svgRoot) { svgRoot.querySelectorAll('.alerta-atraso').forEach(n => n.remove()); svgRoot.querySelectorAll('.alerta-venda').forEach(n => n.remove()); }
 
-  // Pinta cores e registra eventos em todos os lotes
   LOTES_EL.forEach(el => {
     const ref = (el.dataset.ref || '').toUpperCase().trim();
     const doc = DOCS[ref];
     const status = calcStatus(doc || null);
     const cor = STATUS_COR[status] || STATUS_COR.nao_comprado;
 
+    // Pinta o elemento
     el.setAttribute('fill', cor);
     el.setAttribute('fill-opacity', '0.55');
     el.style.cursor = 'pointer';
     el.style.transition = 'opacity 0.15s, stroke-width 0.15s';
 
+        // Bolinha vermelha de atenção sobreposta ao centro do lote
+    if (doc && temAlertaAtraso(doc) && svgRoot) {
+      try {
+        const bbox = el.getBBox();
+        const cx = bbox.x + bbox.width / 2;
+        const cy = bbox.y + bbox.height / 2;
+        const r = Math.max(20, Math.min(70, Math.min(bbox.width, bbox.height) * 0.18));
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('class', 'alerta-atraso');
+        circle.setAttribute('cx', cx);
+        circle.setAttribute('cy', cy);
+        circle.setAttribute('r', r);
+        svgRoot.appendChild(circle);
+      } catch (_) {}
+    }
+
+    // Bolinha de CASA VENDIDA PENDENTE
+    const vendasPendentes = casasVendidasPendentes(doc);
+    if (vendasPendentes.length > 0 && svgRoot) {
+      try {
+        const bbox = el.getBBox();
+        const cx = bbox.x + bbox.width / 2;
+        const cy = bbox.y + bbox.height / 2;
+        const r  = Math.max(18, Math.min(60, Math.min(bbox.width, bbox.height) * 0.16));
+        const temAtraso = temAlertaAtraso(doc);
+        const offY = temAtraso ? -(r * 2.6) : 0;
+        const circV = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circV.setAttribute('class', 'alerta-venda');
+        circV.setAttribute('cx', cx);
+        circV.setAttribute('cy', cy + offY);
+        circV.setAttribute('r', r);
+        svgRoot.appendChild(circV);
+      } catch(_) {}
+    }
+
+    
+    // Hover tooltip
     el.addEventListener('mouseenter', (e) => showTooltip(e, ref, doc, status));
     el.addEventListener('mousemove',  (e) => moveTooltip(e));
     el.addEventListener('mouseleave', hideTooltip);
+
+    // Click → painel
     el.addEventListener('click', () => openPanel(ref, doc, status));
-  });
-
-  // Bolinhas adiadas: getBBox() só funciona após o browser renderizar o SVG
-  requestAnimationFrame(() => desenharBolinhas(svgRoot));
-}
-
-// Calcula centroide real de um polígono/polyline/path a partir dos pontos
-function centroideEl(el) {
-  const tag = el.tagName.toLowerCase();
-  let pts = [];
-
-  if (tag === 'polygon' || tag === 'polyline') {
-    const raw = el.getAttribute('points') || '';
-    raw.trim().split(/\s+|,/).filter(Boolean).forEach((v, i, a) => {
-      if (i % 2 === 0 && i + 1 < a.length)
-        pts.push({ x: parseFloat(v), y: parseFloat(a[i + 1]) });
-    });
-  } else if (tag === 'rect') {
-    const x = parseFloat(el.getAttribute('x') || 0);
-    const y = parseFloat(el.getAttribute('y') || 0);
-    const w = parseFloat(el.getAttribute('width') || 0);
-    const h = parseFloat(el.getAttribute('height') || 0);
-    return { cx: x + w / 2, cy: y + h / 2, dim: Math.min(w, h) };
-  } else {
-    // fallback: centro da bounding box
-    try {
-      const b = el.getBBox();
-      return { cx: b.x + b.width / 2, cy: b.y + b.height / 2,
-               dim: Math.min(b.width, b.height) };
-    } catch(_) { return null; }
-  }
-
-  if (pts.length < 3) return null;
-
-  // Centroide geométrico (média dos vértices — simples e robusto para lotes convexos)
-  const cx = pts.reduce((s, p) => s + p.x, 0) / pts.length;
-  const cy = pts.reduce((s, p) => s + p.y, 0) / pts.length;
-
-  // Dimensão: menor distância do centroide a qualquer aresta (raio inscrito aprox.)
-  // Usa menor lado do bounding box como proxy conservador
-  const xs = pts.map(p => p.x), ys = pts.map(p => p.y);
-  const w = Math.max(...xs) - Math.min(...xs);
-  const h = Math.max(...ys) - Math.min(...ys);
-  return { cx, cy, dim: Math.min(w, h) };
-}
-
-function desenharBolinhas(svgRoot) {
-  if (!svgRoot) return;
-  svgRoot.querySelectorAll('.alerta-atraso').forEach(n => n.remove());
-  svgRoot.querySelectorAll('.alerta-venda').forEach(n => n.remove());
-
-  LOTES_EL.forEach(el => {
-    const ref = (el.dataset.ref || '').toUpperCase().trim();
-    const doc = DOCS[ref];
-    if (!doc) return;
-
-    const geo = centroideEl(el);
-    if (!geo || geo.dim === 0) return;
-
-    const { cx, cy, dim } = geo;
-
-    // Raio proporcional à dimensão do lote no SVG (25% da menor dim, piso/teto)
-    const r = Math.max(58, Math.min(dim * 0.25, 104));
-
-    const temAtraso  = temAlertaAtraso(doc);
-    const temVenda   = casasVendidasPendentes(doc).length > 0;
-    const ambos      = temAtraso && temVenda;
-
-    // Posição: centro do lote, com separação horizontal se ambos
-    const offX = ambos ? r * 1.1 : 0;
-
-    if (temAtraso) {
-      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      c.setAttribute('class', 'alerta-atraso');
-      c.setAttribute('cx', ambos ? cx - offX : cx);
-      c.setAttribute('cy', cy);
-      c.setAttribute('r', r);
-      svgRoot.appendChild(c);
-    }
-
-    if (temVenda) {
-      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      c.setAttribute('class', 'alerta-venda');
-      c.setAttribute('cx', ambos ? cx + offX : cx);
-      c.setAttribute('cy', cy);
-      c.setAttribute('r', r);
-      svgRoot.appendChild(c);
-    }
   });
 }
 
@@ -1749,63 +1662,61 @@ loadData();
   const view = document.querySelector('.map-viewport');
   if (!wrap || !view) return;
 
-  // Zoom via largura do viewport — o SVG com height:auto escala proporcionalmente
-  // sem nenhum transform/scale, então renderiza nítido em qualquer nível de zoom
-  let zoomLevel = 1;
-  const MIN_ZOOM = 1, MAX_ZOOM = 6;
-
-  function applyZoom() {
-    // Em vez de transform: scale, expandimos a largura do viewport
-    // O SVG width:100% acompanha e o browser renderiza vetorialmente
-    const wrapW = wrap.clientWidth;
-    view.style.width = (wrapW * zoomLevel) + 'px';
+  const state = { x: 0, y: 0, scale: 1, min: 1, max: 8 };
+  function apply() {
+    view.style.transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
   }
-
+  function clampPan() {
+    const r = wrap.getBoundingClientRect();
+    if (state.scale <= state.min) { state.x = 0; state.y = 0; return; }
+    const w = r.width  * state.scale;
+    const h = r.height * state.scale;
+    state.x = Math.min(0, Math.max(r.width  - w, state.x));
+    state.y = Math.min(0, Math.max(r.height - h, state.y));
+  }
   function zoomAt(clientX, clientY, factor) {
-    const rect = wrap.getBoundingClientRect();
-    // Posição relativa ao scroll atual
-    const px = clientX - rect.left + wrap.scrollLeft;
-    const py = clientY - rect.top  + wrap.scrollTop;
-
-    const oldZoom = zoomLevel;
-    zoomLevel = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoomLevel * factor));
-
-    if (zoomLevel === oldZoom) return;
-    applyZoom();
-
-    // Reposicionar scroll para manter o ponto focal
-    wrap.scrollLeft = px * (zoomLevel / oldZoom) - (clientX - rect.left);
-    wrap.scrollTop  = py * (zoomLevel / oldZoom) - (clientY - rect.top);
+    const r = wrap.getBoundingClientRect();
+    const px = clientX - r.left, py = clientY - r.top;
+    const cx = (px - state.x) / state.scale;
+    const cy = (py - state.y) / state.scale;
+    state.scale = Math.max(state.min, Math.min(state.max, state.scale * factor));
+    state.x = px - cx * state.scale;
+    state.y = py - cy * state.scale;
+    clampPan(); apply();
   }
 
-  // Wheel: zoom só com Ctrl/Cmd
+  // Wheel: zoom só com Ctrl/Cmd (no Mac, pinça do trackpad chega como wheel+ctrlKey)
   wrap.addEventListener('wheel', e => {
     if (!(e.ctrlKey || e.metaKey)) return;
     e.preventDefault();
     zoomAt(e.clientX, e.clientY, e.deltaY < 0 ? 1.15 : 1/1.15);
   }, { passive: false });
 
-  // Pinça em touch
+  // Pan + pinça via Pointer Events
+  // IMPORTANTE: setPointerCapture só é chamado depois que o drag passa do
+  // threshold (4px). Antes disso, o evento 'click' segue o caminho normal
+  // e chega no polygon clicado.
   const pointers = new Map();
-  const pinch = { active: false, dist: 0, midX: 0, midY: 0, zoom: 1 };
+  const pinch = { active: false, dist: 0, midX: 0, midY: 0, scale: 1 };
   let drag = null;
   let suppressNextClick = false;
 
   wrap.addEventListener('pointerdown', e => {
+    // Botão direito ou meio: ignorar
     if (e.button !== 0 && e.pointerType === 'mouse') return;
     pointers.set(e.pointerId, e);
     if (pointers.size === 2) {
       const [a, b] = [...pointers.values()];
       pinch.active = true;
-      pinch.dist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
-      pinch.midX = (a.clientX + b.clientX) / 2;
-      pinch.midY = (a.clientY + b.clientY) / 2;
-      pinch.zoom = zoomLevel;
-      drag = null;
+      pinch.dist  = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+      pinch.midX  = (a.clientX + b.clientX) / 2;
+      pinch.midY  = (a.clientY + b.clientY) / 2;
+      pinch.scale = state.scale;
+      drag = null;  // pinça toma conta
     } else if (pointers.size === 1) {
       drag = { id: e.pointerId, sx: e.clientX, sy: e.clientY,
-               scrollX: wrap.scrollLeft, scrollY: wrap.scrollTop,
-               moved: false, captured: false };
+               ox: state.x, oy: state.y, moved: false, captured: false };
+      // NÃO capturamos ainda — só quando o drag começar de verdade
     }
   });
 
@@ -1817,10 +1728,15 @@ loadData();
       const [a, b] = [...pointers.values()];
       const dist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
       const factor = dist / pinch.dist;
-      const newZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, pinch.zoom * factor));
-      if (newZoom !== zoomLevel) {
-        zoomAt(pinch.midX, pinch.midY, newZoom / zoomLevel);
-      }
+      const target = Math.max(state.min, Math.min(state.max, pinch.scale * factor));
+      const r = wrap.getBoundingClientRect();
+      const px = pinch.midX - r.left, py = pinch.midY - r.top;
+      const cx = (px - state.x) / state.scale;
+      const cy = (py - state.y) / state.scale;
+      state.scale = target;
+      state.x = px - cx * state.scale;
+      state.y = py - cy * state.scale;
+      clampPan(); apply();
       return;
     }
 
@@ -1828,50 +1744,64 @@ loadData();
       const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
       if (!drag.moved) {
         if (Math.hypot(dx, dy) < 4) return;
+        // Agora SIM virou drag: capture e marca para suprimir o click
         drag.moved = true;
         drag.captured = true;
         try { wrap.setPointerCapture(e.pointerId); } catch (_) {}
         suppressNextClick = true;
-        wrap.style.cursor = 'grabbing';
+        wrap.classList.add('grabbing');
       }
-      wrap.scrollLeft = drag.scrollX - dx;
-      wrap.scrollTop  = drag.scrollY - dy;
+      state.x = drag.ox + dx; state.y = drag.oy + dy;
+      clampPan(); apply();
     }
   });
 
   function endPointer(e) {
     pointers.delete(e.pointerId);
     if (pointers.size < 2) pinch.active = false;
-    wrap.style.cursor = '';
+    wrap.classList.remove('grabbing');
     if (drag && drag.id === e.pointerId) {
-      if (drag.captured) try { wrap.releasePointerCapture(e.pointerId); } catch (_) {}
+      if (drag.captured) {
+        try { wrap.releasePointerCapture(e.pointerId); } catch (_) {}
+      }
       drag = null;
     }
   }
   wrap.addEventListener('pointerup',     endPointer);
   wrap.addEventListener('pointercancel', endPointer);
 
+  // Suprimir SÓ o click logo após um drag de verdade.
+  // Capture phase para chegar antes de qualquer handler nos polygons.
   wrap.addEventListener('click', e => {
     if (suppressNextClick) {
-      e.stopPropagation(); e.preventDefault();
+      e.stopPropagation();
+      e.preventDefault();
       suppressNextClick = false;
     }
   }, true);
 
+  // Bloquear pinça nativa do iOS quando o foco é o mapa
   ['gesturestart', 'gesturechange', 'gestureend'].forEach(t => {
     document.addEventListener(t, e => {
       if (wrap.contains(e.target)) e.preventDefault();
     });
   });
 
-  // Botões de zoom
+  // Botões
   const $ = id => document.getElementById(id);
-  if ($('btn-zoom-in'))    $('btn-zoom-in').addEventListener('click',    () => { const r = wrap.getBoundingClientRect(); zoomAt(r.left + r.width/2, r.top + r.height/2, 1.3); });
-  if ($('btn-zoom-out'))   $('btn-zoom-out').addEventListener('click',   () => { const r = wrap.getBoundingClientRect(); zoomAt(r.left + r.width/2, r.top + r.height/2, 1/1.3); });
-  if ($('btn-zoom-reset')) $('btn-zoom-reset').addEventListener('click', () => { zoomLevel = 1; applyZoom(); wrap.scrollLeft = 0; wrap.scrollTop = 0; });
+  if ($('btn-zoom-in')) $('btn-zoom-in').addEventListener('click', () => {
+    const r = wrap.getBoundingClientRect();
+    zoomAt(r.left + r.width/2, r.top + r.height/2, 1.3);
+  });
+  if ($('btn-zoom-out')) $('btn-zoom-out').addEventListener('click', () => {
+    const r = wrap.getBoundingClientRect();
+    zoomAt(r.left + r.width/2, r.top + r.height/2, 1/1.3);
+  });
+  if ($('btn-zoom-reset')) $('btn-zoom-reset').addEventListener('click', () => {
+    state.x = 0; state.y = 0; state.scale = 1; apply();
+  });
 
-  applyZoom();
-  window.addEventListener('resize', applyZoom);
+  apply();
 })();
 
 </script>
