@@ -189,7 +189,7 @@
 
   #mapa-svg svg {
     width: 100%;
-    height: 100%;
+    height: auto;
   }
 
   /* Legenda — barra fixa abaixo do mapa */
@@ -556,9 +556,10 @@
 
     #mapa-svg svg {
       width: auto !important;
-      height: 100% !important;
+      height: auto !important;
       min-width: 500px;
       display: block;
+    min-width: 600px;
     }
 
     /* LEGENDA logo abaixo do SVG */
@@ -644,8 +645,8 @@
   .map-wrap {
     position: absolute;
     inset: 0;
-    overflow: hidden;
-    touch-action: none;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
     cursor: grab;
     background: #edf1f6;
@@ -663,8 +664,9 @@
   .map-viewport > #mapa-svg,
   .map-viewport > #mapa-svg svg {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: block;
+    min-width: 600px;
   }
 
   /* FALLBACK: qualquer polygon SEM class="lote" recebe cinza neutro,
@@ -1274,10 +1276,10 @@ function salvarMedicao(ref, status) {
       'Prefer': 'resolution=merge-duplicates'
     }),
     body: JSON.stringify({
-      SETOR: CONFIG.setor,
-      REF: ref,
-      STATUS: status,
-      SEMANA: SEMANA_ATUAL,
+      SETOR:      CONFIG.setor,
+      REF:        ref,
+      STATUS:     status,
+      SEMANA:     SEMANA_ATUAL,
       updated_at: new Date().toISOString()
     })
   }).catch(function(e) { console.warn('Supabase salvarMedicao:', e); });
@@ -1402,8 +1404,7 @@ function pintarMapa() {
   // Bolinhas adiadas: getBBox() só funciona após o browser renderizar o SVG
   requestAnimationFrame(() => {
     desenharBolinhas(svgRoot);
-    // Segundo disparo para SVGs carregados assincronamente
-    setTimeout(() => desenharBolinhas(svgRoot), 300);
+    setTimeout(() => desenharBolinhas(svgRoot), 500);
   });
 }
 
@@ -1707,27 +1708,23 @@ loadData();
   const view = document.querySelector('.map-viewport');
   if (!wrap || !view) return;
 
-  const state = { x: 0, y: 0, scale: 1, min: 1, max: 8 };
-  function apply() {
-    view.style.transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
+  let zoomLevel = 1;
+  const MIN_ZOOM = 1, MAX_ZOOM = 6;
+
+  function applyZoom() {
+    view.style.width = (wrap.clientWidth * zoomLevel) + 'px';
   }
-  function clampPan() {
-    const r = wrap.getBoundingClientRect();
-    if (state.scale <= state.min) { state.x = 0; state.y = 0; return; }
-    const w = r.width  * state.scale;
-    const h = r.height * state.scale;
-    state.x = Math.min(0, Math.max(r.width  - w, state.x));
-    state.y = Math.min(0, Math.max(r.height - h, state.y));
-  }
+
   function zoomAt(clientX, clientY, factor) {
-    const r = wrap.getBoundingClientRect();
-    const px = clientX - r.left, py = clientY - r.top;
-    const cx = (px - state.x) / state.scale;
-    const cy = (py - state.y) / state.scale;
-    state.scale = Math.max(state.min, Math.min(state.max, state.scale * factor));
-    state.x = px - cx * state.scale;
-    state.y = py - cy * state.scale;
-    clampPan(); apply();
+    const rect = wrap.getBoundingClientRect();
+    const px = clientX - rect.left + wrap.scrollLeft;
+    const py = clientY - rect.top  + wrap.scrollTop;
+    const oldZoom = zoomLevel;
+    zoomLevel = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoomLevel * factor));
+    if (zoomLevel === oldZoom) return;
+    applyZoom();
+    wrap.scrollLeft = px * (zoomLevel / oldZoom) - (clientX - rect.left);
+    wrap.scrollTop  = py * (zoomLevel / oldZoom) - (clientY - rect.top);
   }
 
   // Wheel: zoom só com Ctrl/Cmd (no Mac, pinça do trackpad chega como wheel+ctrlKey)
@@ -1756,11 +1753,12 @@ loadData();
       pinch.dist  = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
       pinch.midX  = (a.clientX + b.clientX) / 2;
       pinch.midY  = (a.clientY + b.clientY) / 2;
-      pinch.scale = state.scale;
+      pinch.zoom = zoomLevel;
       drag = null;  // pinça toma conta
     } else if (pointers.size === 1) {
       drag = { id: e.pointerId, sx: e.clientX, sy: e.clientY,
-               ox: state.x, oy: state.y, moved: false, captured: false };
+               scrollX: wrap.scrollLeft, scrollY: wrap.scrollTop,
+               moved: false, captured: false };
       // NÃO capturamos ainda — só quando o drag começar de verdade
     }
   });
@@ -1781,7 +1779,7 @@ loadData();
       state.scale = target;
       state.x = px - cx * state.scale;
       state.y = py - cy * state.scale;
-      clampPan(); apply();
+      applyZoom();
       return;
     }
 
@@ -1797,7 +1795,7 @@ loadData();
         wrap.classList.add('grabbing');
       }
       state.x = drag.ox + dx; state.y = drag.oy + dy;
-      clampPan(); apply();
+      applyZoom();
     }
   });
 
@@ -1843,10 +1841,11 @@ loadData();
     zoomAt(r.left + r.width/2, r.top + r.height/2, 1/1.3);
   });
   if ($('btn-zoom-reset')) $('btn-zoom-reset').addEventListener('click', () => {
-    state.x = 0; state.y = 0; state.scale = 1; apply();
+    zoomLevel = 1; applyZoom(); wrap.scrollLeft = 0; wrap.scrollTop = 0;
   });
 
-  apply();
+  applyZoom();
+  window.addEventListener("resize", applyZoom);
 })();
 
 </script>
