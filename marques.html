@@ -1226,7 +1226,6 @@ var MEDICAO_OPCOES = [
 }
 function salvarMedicoes(estado) {
   try { localStorage.setItem(MEDICAO_STORAGE_KEY, JSON.stringify(estado));
-    salvarMedicaoSupa(ref, novoStatus); 
 } catch(e) {}
 }
 
@@ -1333,6 +1332,7 @@ function renderizarMedicoes() {
       var novoStatus = this.value;
       estadoMedicoes[ref] = novoStatus;
       salvarMedicoes(estadoMedicoes);
+      salvarMedicaoSupa(ref, novoStatus);
       var novaOpt = MEDICAO_OPCOES.find(function(o){ return o.val === novoStatus; }) || MEDICAO_OPCOES[0];
       this.closest('.med-select-wrap').style.setProperty('--sel-cor', novaOpt.cor);
     });
