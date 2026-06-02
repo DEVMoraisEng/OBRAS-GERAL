@@ -1266,8 +1266,8 @@ function mostrarStatusSupa(ok, msg) {
 function carregarMedicoes() {
   mostrarStatusSupa(null);
   return fetch(
-    SUPA_URL + '/rest/v1/medicoes?setor=eq.' + encodeURIComponent(CONFIG.setor) +
-    '&semana=eq.' + encodeURIComponent(SEMANA_ATUAL) + '&select=ref,status',
+    SUPA_URL + '/rest/v1/medicoes?SETOR=eq.' + encodeURIComponent(CONFIG.setor) +
+    '&SEMANA=eq.' + encodeURIComponent(SEMANA_ATUAL) + '&select=REF,STATUS',
     { headers: supaHeaders() }
   )
   .then(function(r) {
@@ -1284,7 +1284,7 @@ function carregarMedicoes() {
   })
   .then(function(rows) {
     var estado = {};
-    (rows || []).forEach(function(row) { estado[row.ref] = row.status; });
+    (rows || []).forEach(function(row) { estado[row.REF] = row.STATUS; });
     estadoMedicoes = estado;
     renderizarMedicoes();
   })
@@ -1305,10 +1305,10 @@ function salvarMedicao(ref, status) {
       'Prefer': 'resolution=merge-duplicates'
     }),
     body: JSON.stringify({
-      setor:      CONFIG.setor,
-      ref:        ref,
-      status:     status,
-      semana:     SEMANA_ATUAL,
+      SETOR:      CONFIG.setor,
+      REF:        ref,
+      STATUS:     status,
+      SEMANA:     SEMANA_ATUAL,
       updated_at: new Date().toISOString()
     })
   })
