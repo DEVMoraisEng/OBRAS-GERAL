@@ -559,7 +559,6 @@
       height: auto !important;
       min-width: 500px;
       display: block;
-    min-width: 600px;
     }
 
     /* LEGENDA logo abaixo do SVG */
@@ -666,7 +665,6 @@
     width: 100%;
     height: auto;
     display: block;
-    min-width: 600px;
   }
 
   /* FALLBACK: qualquer polygon SEM class="lote" recebe cinza neutro,
@@ -1223,53 +1221,66 @@ var MEDICAO_OPCOES = [
   { val: 'finalizada',         label: 'Finalizada',             cor: '#27c45e' },
 ];
 
-// ── Supabase ─────────────────────────────────────────────────────────
-
-function mostrarStatusSupa(ok, msg) {
-  var el = document.getElementById('supa-status');
-  if (!el) return;
-  if (ok === true)       { el.textContent = '☁ Sincronizado';   el.style.color = '#27c45e'; }
-  else if (ok === false) { el.textContent = '⚠ Offline (local)'; el.title = msg||''; el.style.color = '#f59e0b'; }
-  else                   { el.textContent = '☁ …';               el.style.color = '#9aaac5'; }
-}
+// ── Armazenamento: localStorage (primário) + Supabase (sync) ─────────
 var SUPA_URL = 'https://hnncjuesndwbcpghynul.supabase.co';
 var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhubmNqdWVzbmR3YmNwZ2h5bnVsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMzUxOTEsImV4cCI6MjA5NTkxMTE5MX0.dQsbynBySg9THcNj8NrkqbfrT91autwcBX39MI060Ic';
 
 function supaHeaders() {
-  return {
-    'Content-Type': 'application/json',
-    'apikey': SUPA_KEY,
-    'Authorization': 'Bearer ' + SUPA_KEY
-  };
+  return { 'Content-Type':'application/json', 'apikey':SUPA_KEY, 'Authorization':'Bearer '+SUPA_KEY };
+}
+function mostrarStatusSupa(ok, msg) {
+  var el = document.getElementById('supa-status');
+  if (!el) return;
+  if (ok === true)       { el.textContent = '☁ Sincronizado';   el.style.color = '#27c45e'; }
+  else if (ok === false) { el.textContent = '⚠ Offline (local)'; el.title = msg||'Verifique F12'; el.style.color = '#f59e0b'; }
+  else                   { el.textContent = '☁ …';               el.style.color = '#9aaac5'; }
 }
 
-// Carrega medições do Supabase para a semana atual
+// 1. Carregar: localStorage instantâneo, depois Supabase sobrescreve se funcionar
 function carregarMedicoes() {
+  // Lê do localStorage (sempre funciona, instantâneo)
+  try {
+    var raw = localStorage.getItem(MEDICAO_STORAGE_KEY);
+    if (raw) estadoMedicoes = JSON.parse(raw);
+  } catch(e) {}
+
+  // Tenta sincronizar com Supabase em background
   mostrarStatusSupa(null);
-  return fetch(
+  fetch(
     SUPA_URL + '/rest/v1/medicoes?SETOR=eq.' + encodeURIComponent(CONFIG.setor) +
     '&SEMANA=eq.' + encodeURIComponent(SEMANA_ATUAL) + '&select=REF,STATUS',
     { headers: supaHeaders() }
   )
-  .then(function(r) { return r.json(); })
-  .then(function(rows) {
-    var estado = {};
-    (rows || []).forEach(function(row) { estado[row.REF] = row.STATUS; });
+  .then(function(r) {
+    if (!r.ok) {
+      r.text().then(function(t) { console.error('Supabase GET:', r.status, t); });
+      mostrarStatusSupa(false, 'HTTP ' + r.status);
+      return;
+    }
     mostrarStatusSupa(true);
-    estadoMedicoes = estado;
-    renderizarMedicoes();
+    return r.json().then(function(rows) {
+      if (rows && rows.length > 0) {
+        // Supabase tem dados → sobrescrever local
+        (rows || []).forEach(function(row) { estadoMedicoes[row.REF] = row.STATUS; });
+        // Salvar no localStorage para próxima vez
+        try { localStorage.setItem(MEDICAO_STORAGE_KEY, JSON.stringify(estadoMedicoes)); } catch(e) {}
+        renderizarMedicoes();
+      }
+    });
   })
   .catch(function(e) {
+    console.warn('Supabase GET falhou (usando localStorage):', e);
     mostrarStatusSupa(false, e.message);
-    console.warn('Supabase carregarMedicoes:', e);
-    estadoMedicoes = {};
-    renderizarMedicoes();
   });
 }
 
-// Salva ou atualiza uma medição (upsert por setor+ref+semana)
+// 2. Salvar: localStorage imediato + Supabase em background
 function salvarMedicao(ref, status) {
+  // Salva no localStorage IMEDIATAMENTE (nunca falha)
   estadoMedicoes[ref] = status;
+  try { localStorage.setItem(MEDICAO_STORAGE_KEY, JSON.stringify(estadoMedicoes)); } catch(e) {}
+
+  // Tenta sincronizar com Supabase em background
   fetch(SUPA_URL + '/rest/v1/medicoes', {
     method: 'POST',
     headers: Object.assign({}, supaHeaders(), {
@@ -1282,7 +1293,19 @@ function salvarMedicao(ref, status) {
       SEMANA:     SEMANA_ATUAL,
       updated_at: new Date().toISOString()
     })
-  }).catch(function(e) { console.warn('Supabase salvarMedicao:', e); });
+  })
+  .then(function(r) {
+    if (!r.ok) {
+      r.text().then(function(t) { console.error('Supabase POST:', r.status, t); });
+      mostrarStatusSupa(false, 'Erro ao salvar: HTTP ' + r.status);
+      return;
+    }
+    mostrarStatusSupa(true);
+  })
+  .catch(function(e) {
+    console.warn('Supabase POST falhou (salvo localmente):', e);
+    mostrarStatusSupa(false, e.message);
+  });
 }
 
 var estadoMedicoes = {};
@@ -1402,50 +1425,7 @@ function pintarMapa() {
   });
 
   // Bolinhas adiadas: getBBox() só funciona após o browser renderizar o SVG
-  requestAnimationFrame(() => {
-    desenharBolinhas(svgRoot);
-    setTimeout(() => desenharBolinhas(svgRoot), 500);
-  });
-}
-
-// Calcula centroide real de um polígono/polyline/path a partir dos pontos
-function centroideEl(el) {
-  const tag = el.tagName.toLowerCase();
-  let pts = [];
-
-  if (tag === 'polygon' || tag === 'polyline') {
-    const raw = el.getAttribute('points') || '';
-    raw.trim().split(/\s+|,/).filter(Boolean).forEach((v, i, a) => {
-      if (i % 2 === 0 && i + 1 < a.length)
-        pts.push({ x: parseFloat(v), y: parseFloat(a[i + 1]) });
-    });
-  } else if (tag === 'rect') {
-    const x = parseFloat(el.getAttribute('x') || 0);
-    const y = parseFloat(el.getAttribute('y') || 0);
-    const w = parseFloat(el.getAttribute('width') || 0);
-    const h = parseFloat(el.getAttribute('height') || 0);
-    return { cx: x + w / 2, cy: y + h / 2, dim: Math.min(w, h) };
-  } else {
-    // fallback: centro da bounding box
-    try {
-      const b = el.getBBox();
-      return { cx: b.x + b.width / 2, cy: b.y + b.height / 2,
-               dim: Math.min(b.width, b.height) };
-    } catch(_) { return null; }
-  }
-
-  if (pts.length < 3) return null;
-
-  // Centroide geométrico (média dos vértices — simples e robusto para lotes convexos)
-  const cx = pts.reduce((s, p) => s + p.x, 0) / pts.length;
-  const cy = pts.reduce((s, p) => s + p.y, 0) / pts.length;
-
-  // Dimensão: menor distância do centroide a qualquer aresta (raio inscrito aprox.)
-  // Usa menor lado do bounding box como proxy conservador
-  const xs = pts.map(p => p.x), ys = pts.map(p => p.y);
-  const w = Math.max(...xs) - Math.min(...xs);
-  const h = Math.max(...ys) - Math.min(...ys);
-  return { cx, cy, dim: Math.min(w, h) };
+  requestAnimationFrame(() => { desenharBolinhas(svgRoot); setTimeout(() => desenharBolinhas(svgRoot), 500); });
 }
 
 function desenharBolinhas(svgRoot) {
@@ -1458,38 +1438,38 @@ function desenharBolinhas(svgRoot) {
     const doc = DOCS[ref];
     if (!doc) return;
 
-    const geo = centroideEl(el);
-    if (!geo || geo.dim === 0) return;
+    // getBBox: centro e dimensões reais do elemento renderizado
+    try {
+      const bbox = el.getBBox();
+      if (bbox.width === 0 || bbox.height === 0) return;
+      const cx = bbox.x + bbox.width / 2;
+      const cy = bbox.y + bbox.height / 2;
+      const dim = Math.min(bbox.width, bbox.height);
 
-    const { cx, cy, dim } = geo;
+      const temAtraso = temAlertaAtraso(doc);
+      const temVenda  = casasVendidasPendentes(doc).length > 0;
 
-    // Raio: 18% da menor dimensão do lote, com piso/teto
-    const r = Math.max(12, Math.min(dim * 0.18, 60));
+      if (temAtraso) {
+        const r = Math.max(20, Math.min(70, dim * 0.18));
+        const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('class', 'alerta-atraso');
+        c.setAttribute('cx', cx);
+        c.setAttribute('cy', cy);
+        c.setAttribute('r', r);
+        svgRoot.appendChild(c);
+      }
 
-    const temAtraso  = temAlertaAtraso(doc);
-    const temVenda   = casasVendidasPendentes(doc).length > 0;
-    const ambos      = temAtraso && temVenda;
-
-    // Se ambos: separa verticalmente. Se só um: fica no centro.
-    const offY = ambos ? Math.min(r * 1.3, (dim / 2 - r) * 0.8) : 0;
-
-    if (temAtraso) {
-      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      c.setAttribute('class', 'alerta-atraso');
-      c.setAttribute('cx', cx);
-      c.setAttribute('cy', ambos ? cy + offY : cy);
-      c.setAttribute('r', r);
-      svgRoot.appendChild(c);
-    }
-
-    if (temVenda) {
-      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      c.setAttribute('class', 'alerta-venda');
-      c.setAttribute('cx', cx);
-      c.setAttribute('cy', ambos ? cy - offY : cy);
-      c.setAttribute('r', r);
-      svgRoot.appendChild(c);
-    }
+      if (temVenda) {
+        const r = Math.max(18, Math.min(60, dim * 0.16));
+        const offY = temAtraso ? -(r * 2.6) : 0;
+        const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('class', 'alerta-venda');
+        c.setAttribute('cx', cx);
+        c.setAttribute('cy', cy + offY);
+        c.setAttribute('r', r);
+        svgRoot.appendChild(c);
+      }
+    } catch (_) {}
   });
 }
 
@@ -1710,11 +1690,7 @@ loadData();
 
   let zoomLevel = 1;
   const MIN_ZOOM = 1, MAX_ZOOM = 6;
-
-  function applyZoom() {
-    view.style.width = (wrap.clientWidth * zoomLevel) + 'px';
-  }
-
+  function applyZoom() { view.style.width = (wrap.clientWidth * zoomLevel) + 'px'; }
   function zoomAt(clientX, clientY, factor) {
     const rect = wrap.getBoundingClientRect();
     const px = clientX - rect.left + wrap.scrollLeft;
@@ -1757,8 +1733,7 @@ loadData();
       drag = null;  // pinça toma conta
     } else if (pointers.size === 1) {
       drag = { id: e.pointerId, sx: e.clientX, sy: e.clientY,
-               scrollX: wrap.scrollLeft, scrollY: wrap.scrollTop,
-               moved: false, captured: false };
+               scrollX: wrap.scrollLeft, scrollY: wrap.scrollTop, moved: false, captured: false };
       // NÃO capturamos ainda — só quando o drag começar de verdade
     }
   });
@@ -1841,11 +1816,10 @@ loadData();
     zoomAt(r.left + r.width/2, r.top + r.height/2, 1/1.3);
   });
   if ($('btn-zoom-reset')) $('btn-zoom-reset').addEventListener('click', () => {
-    zoomLevel = 1; applyZoom(); wrap.scrollLeft = 0; wrap.scrollTop = 0;
+    zoomLevel=1; applyZoom(); wrap.scrollLeft=0; wrap.scrollTop=0;
   });
 
-  applyZoom();
-  window.addEventListener("resize", applyZoom);
+  applyZoom(); window.addEventListener("resize",applyZoom);
 })();
 
 </script>
