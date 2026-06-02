@@ -1400,7 +1400,11 @@ function pintarMapa() {
   });
 
   // Bolinhas adiadas: getBBox() só funciona após o browser renderizar o SVG
-  requestAnimationFrame(() => desenharBolinhas(svgRoot));
+  requestAnimationFrame(() => {
+    desenharBolinhas(svgRoot);
+    // Segundo disparo para SVGs carregados assincronamente
+    setTimeout(() => desenharBolinhas(svgRoot), 300);
+  });
 }
 
 // Calcula centroide real de um polígono/polyline/path a partir dos pontos
