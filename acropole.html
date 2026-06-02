@@ -1232,28 +1232,28 @@ function mostrarStatusSupa(ok, msg) {
   else                   { el.textContent = '☁ …';               el.style.color = '#9aaac5'; }
 }
 
-// 1. Carregar: localStorage instantâneo, depois Google Sheets sobrescreve se funcionar
+// 1. Carregar: localStorage instantâneo, depois Google Sheets sobrescreve
 function carregarMedicoes() {
-  // Lê do localStorage (sempre funciona, instantâneo)
   try {
     var raw = localStorage.getItem(MEDICAO_STORAGE_KEY);
     if (raw) estadoMedicoes = JSON.parse(raw);
   } catch(e) {}
 
-  // Tenta sincronizar com Google Sheets em background
   mostrarStatusSupa(null);
-  // Apps Script exige no-cors com FormData para POST cross-origin
-  var fd = new FormData();
-  fd.append('SETOR',  CONFIG.setor);
-  fd.append('REF',    ref);
-  fd.append('STATUS', status);
-  fd.append('SEMANA', SEMANA_ATUAL);
-  fetch(GS_URL, { method: 'POST', mode: 'no-cors', body: fd })
-  .then(function() {
+  fetch(GS_URL + '?setor=' + encodeURIComponent(CONFIG.setor) + '&semana=' + encodeURIComponent(SEMANA_ATUAL))
+  .then(function(r) {
+    if (!r.ok) { mostrarStatusSupa(false, 'HTTP ' + r.status); return; }
     mostrarStatusSupa(true);
+    return r.json().then(function(rows) {
+      if (rows && rows.length > 0) {
+        rows.forEach(function(row) { estadoMedicoes[row.REF] = row.STATUS; });
+        try { localStorage.setItem(MEDICAO_STORAGE_KEY, JSON.stringify(estadoMedicoes)); } catch(e) {}
+        renderizarMedicoes();
+      }
+    });
   })
   .catch(function(e) {
-    console.warn('Google Sheets POST falhou (salvo localmente):', e);
+    console.warn('Google Sheets GET falhou (usando localStorage):', e);
     mostrarStatusSupa(false, e.message);
   });
 }
