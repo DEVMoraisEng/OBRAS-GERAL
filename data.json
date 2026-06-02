@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-02T12:40:22.089202+00:00",
+  "updated_at": "2026-06-02T12:41:54.033408+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -849,8 +849,8 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
-      "projeto_feito": "NÃO",
-      "art_feita_paga": "NÃO",
+      "projeto_feito": "SIM",
+      "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
