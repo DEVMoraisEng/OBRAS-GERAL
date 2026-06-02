@@ -185,11 +185,15 @@
   #mapa-svg {
     width: 100%;
     height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   #mapa-svg svg {
     width: 100%;
-    height: 100%;
+    height: auto;
+    display: block;
+    min-width: 600px;
   }
 
   /* Legenda — barra fixa abaixo do mapa */
@@ -636,40 +640,39 @@
   }
 
   /* ══════════════════════════════════
-     ZOOM ISOLADO + FALLBACK DE COR
-     Adicionado no patch de correção
+     ZOOM NATIVO (sem transform/scale)
+     SVG renderiza nítido em qualquer zoom
   ══════════════════════════════════ */
 
-  /* Container que captura pinça/scroll sem mexer na página */
+  /* Container de scroll do mapa */
   .map-wrap {
     position: absolute;
     inset: 0;
-    overflow: hidden;
-    touch-action: none;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
-    cursor: grab;
     background: #edf1f6;
   }
-  .map-wrap.grabbing { cursor: grabbing; }
 
-  /* Viewport interno onde o transform é aplicado */
+  /* Viewport interno — só expande conforme o zoom */
   .map-viewport {
-    position: absolute;
-    inset: 0;
-    transform-origin: 0 0;
-    will-change: transform;
+    min-width: 100%;
+    min-height: 100%;
   }
 
-  .map-viewport > #mapa-svg,
-  .map-viewport > #mapa-svg svg {
+  .map-viewport > #mapa-svg {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: block;
   }
 
-  /* FALLBACK: qualquer polygon SEM class="lote" recebe cinza neutro,
-     em vez de ficar preto. Defesa em profundidade caso algum lote
-     passe sem o atributo. */
+  .map-viewport > #mapa-svg svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* FALLBACK: polygon sem class recebe cinza neutro */
   #mapa-svg svg polygon:not(.lote) {
     fill: #b0bec5;
     fill-opacity: 0.55;
@@ -716,7 +719,6 @@
   }
 
   @media (max-width: 768px) {
-    /* No mobile: o mapa volta a ser um bloco normal, mas o zoom continua isolado */
     .map-wrap {
       position: relative;
       height: 60vw;
@@ -1266,7 +1268,7 @@ function mostrarStatusSupa(ok, msg) {
 function carregarMedicoes() {
   mostrarStatusSupa(null);
   return fetch(
-    SUPA_URL + '/rest/v1/medicoes?SETOR=eq.' + encodeURIComponent(CONFIG.setor) +
+    SUPA_URL + '/rest/v1/' + encodeURIComponent('MEDIÇÕES') + '?SETOR=eq.' + encodeURIComponent(CONFIG.setor) +
     '&SEMANA=eq.' + encodeURIComponent(SEMANA_ATUAL) + '&select=REF,STATUS',
     { headers: supaHeaders() }
   )
@@ -1299,7 +1301,7 @@ function carregarMedicoes() {
 // Salva ou atualiza uma medição (upsert por setor+ref+semana)
 function salvarMedicao(ref, status) {
   estadoMedicoes[ref] = status;
-  fetch(SUPA_URL + '/rest/v1/medicoes', {
+  fetch(SUPA_URL + '/rest/v1/' + encodeURIComponent('MEDIÇÕES'), {
     method: 'POST',
     headers: Object.assign({}, supaHeaders(), {
       'Prefer': 'resolution=merge-duplicates'
@@ -1502,23 +1504,29 @@ function desenharBolinhas(svgRoot) {
 
     const { cx, cy, dim } = geo;
 
-    // Raio: 18% da menor dimensão do lote, com piso/teto
-    const r = Math.max(12, Math.min(dim * 0.18, 60));
+    // Raio menor: 10% da menor dimensão, piso 6, teto 16 — não tapa o número
+    const r = Math.max(6, Math.min(dim * 0.10, 16));
 
     const temAtraso  = temAlertaAtraso(doc);
     const temVenda   = casasVendidasPendentes(doc).length > 0;
     const ambos      = temAtraso && temVenda;
 
-    // Se ambos: separa horizontalmente (esquerda/direita). Se só um: centro.
-    // offX = distância do centro para cada bolinha
-    const offX = ambos ? Math.min(r * 0.85, (dim / 2 - r) * 0.75) : 0;
+    // Posiciona no canto superior direito do lote
+    // cx/cy é o centroide; deslocamos para o canto usando metade da dimensão
+    const xs = Array.from(el.getAttribute('points').trim().split(/\s+/).map(p => parseFloat(p.split(',')[0])));
+    const ys = Array.from(el.getAttribute('points').trim().split(/\s+/).map(p => parseFloat(p.split(',')[1])));
+    const xMax = Math.max(...xs);
+    const yMin = Math.min(...ys);
+    // Canto superior direito, recuado pelo raio para ficar dentro do lote
+    const bx = xMax - r * 1.4;
+    const by = yMin + r * 1.4;
 
+    // Se ambos: segunda bolinha logo abaixo da primeira (vertical, no canto)
     if (temAtraso) {
       const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       c.setAttribute('class', 'alerta-atraso');
-      // Com ambos: vermelho vai para a ESQUERDA
-      c.setAttribute('cx', ambos ? cx - offX : cx);
-      c.setAttribute('cy', cy);
+      c.setAttribute('cx', bx);
+      c.setAttribute('cy', ambos ? by : by);
       c.setAttribute('r', r);
       svgRoot.appendChild(c);
     }
@@ -1526,9 +1534,8 @@ function desenharBolinhas(svgRoot) {
     if (temVenda) {
       const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       c.setAttribute('class', 'alerta-venda');
-      // Com ambos: branca (venda pendente) vai para a DIREITA
-      c.setAttribute('cx', ambos ? cx + offX : cx);
-      c.setAttribute('cy', cy);
+      c.setAttribute('cx', ambos ? bx - r * 2.4 : bx);
+      c.setAttribute('cy', by);
       c.setAttribute('r', r);
       svgRoot.appendChild(c);
     }
@@ -1750,61 +1757,63 @@ loadData();
   const view = document.querySelector('.map-viewport');
   if (!wrap || !view) return;
 
-  const state = { x: 0, y: 0, scale: 1, min: 1, max: 8 };
-  function apply() {
-    view.style.transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
-  }
-  function clampPan() {
-    const r = wrap.getBoundingClientRect();
-    if (state.scale <= state.min) { state.x = 0; state.y = 0; return; }
-    const w = r.width  * state.scale;
-    const h = r.height * state.scale;
-    state.x = Math.min(0, Math.max(r.width  - w, state.x));
-    state.y = Math.min(0, Math.max(r.height - h, state.y));
-  }
-  function zoomAt(clientX, clientY, factor) {
-    const r = wrap.getBoundingClientRect();
-    const px = clientX - r.left, py = clientY - r.top;
-    const cx = (px - state.x) / state.scale;
-    const cy = (py - state.y) / state.scale;
-    state.scale = Math.max(state.min, Math.min(state.max, state.scale * factor));
-    state.x = px - cx * state.scale;
-    state.y = py - cy * state.scale;
-    clampPan(); apply();
+  // Zoom via largura do viewport — o SVG com height:auto escala proporcionalmente
+  // sem nenhum transform/scale, então renderiza nítido em qualquer nível de zoom
+  let zoomLevel = 1;
+  const MIN_ZOOM = 1, MAX_ZOOM = 6;
+
+  function applyZoom() {
+    // Em vez de transform: scale, expandimos a largura do viewport
+    // O SVG width:100% acompanha e o browser renderiza vetorialmente
+    const wrapW = wrap.clientWidth;
+    view.style.width = (wrapW * zoomLevel) + 'px';
   }
 
-  // Wheel: zoom só com Ctrl/Cmd (no Mac, pinça do trackpad chega como wheel+ctrlKey)
+  function zoomAt(clientX, clientY, factor) {
+    const rect = wrap.getBoundingClientRect();
+    // Posição relativa ao scroll atual
+    const px = clientX - rect.left + wrap.scrollLeft;
+    const py = clientY - rect.top  + wrap.scrollTop;
+
+    const oldZoom = zoomLevel;
+    zoomLevel = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoomLevel * factor));
+
+    if (zoomLevel === oldZoom) return;
+    applyZoom();
+
+    // Reposicionar scroll para manter o ponto focal
+    wrap.scrollLeft = px * (zoomLevel / oldZoom) - (clientX - rect.left);
+    wrap.scrollTop  = py * (zoomLevel / oldZoom) - (clientY - rect.top);
+  }
+
+  // Wheel: zoom só com Ctrl/Cmd
   wrap.addEventListener('wheel', e => {
     if (!(e.ctrlKey || e.metaKey)) return;
     e.preventDefault();
     zoomAt(e.clientX, e.clientY, e.deltaY < 0 ? 1.15 : 1/1.15);
   }, { passive: false });
 
-  // Pan + pinça via Pointer Events
-  // IMPORTANTE: setPointerCapture só é chamado depois que o drag passa do
-  // threshold (4px). Antes disso, o evento 'click' segue o caminho normal
-  // e chega no polygon clicado.
+  // Pinça em touch
   const pointers = new Map();
-  const pinch = { active: false, dist: 0, midX: 0, midY: 0, scale: 1 };
+  const pinch = { active: false, dist: 0, midX: 0, midY: 0, zoom: 1 };
   let drag = null;
   let suppressNextClick = false;
 
   wrap.addEventListener('pointerdown', e => {
-    // Botão direito ou meio: ignorar
     if (e.button !== 0 && e.pointerType === 'mouse') return;
     pointers.set(e.pointerId, e);
     if (pointers.size === 2) {
       const [a, b] = [...pointers.values()];
       pinch.active = true;
-      pinch.dist  = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
-      pinch.midX  = (a.clientX + b.clientX) / 2;
-      pinch.midY  = (a.clientY + b.clientY) / 2;
-      pinch.scale = state.scale;
-      drag = null;  // pinça toma conta
+      pinch.dist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+      pinch.midX = (a.clientX + b.clientX) / 2;
+      pinch.midY = (a.clientY + b.clientY) / 2;
+      pinch.zoom = zoomLevel;
+      drag = null;
     } else if (pointers.size === 1) {
       drag = { id: e.pointerId, sx: e.clientX, sy: e.clientY,
-               ox: state.x, oy: state.y, moved: false, captured: false };
-      // NÃO capturamos ainda — só quando o drag começar de verdade
+               scrollX: wrap.scrollLeft, scrollY: wrap.scrollTop,
+               moved: false, captured: false };
     }
   });
 
@@ -1816,15 +1825,10 @@ loadData();
       const [a, b] = [...pointers.values()];
       const dist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
       const factor = dist / pinch.dist;
-      const target = Math.max(state.min, Math.min(state.max, pinch.scale * factor));
-      const r = wrap.getBoundingClientRect();
-      const px = pinch.midX - r.left, py = pinch.midY - r.top;
-      const cx = (px - state.x) / state.scale;
-      const cy = (py - state.y) / state.scale;
-      state.scale = target;
-      state.x = px - cx * state.scale;
-      state.y = py - cy * state.scale;
-      clampPan(); apply();
+      const newZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, pinch.zoom * factor));
+      if (newZoom !== zoomLevel) {
+        zoomAt(pinch.midX, pinch.midY, newZoom / zoomLevel);
+      }
       return;
     }
 
@@ -1832,64 +1836,50 @@ loadData();
       const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
       if (!drag.moved) {
         if (Math.hypot(dx, dy) < 4) return;
-        // Agora SIM virou drag: capture e marca para suprimir o click
         drag.moved = true;
         drag.captured = true;
         try { wrap.setPointerCapture(e.pointerId); } catch (_) {}
         suppressNextClick = true;
-        wrap.classList.add('grabbing');
+        wrap.style.cursor = 'grabbing';
       }
-      state.x = drag.ox + dx; state.y = drag.oy + dy;
-      clampPan(); apply();
+      wrap.scrollLeft = drag.scrollX - dx;
+      wrap.scrollTop  = drag.scrollY - dy;
     }
   });
 
   function endPointer(e) {
     pointers.delete(e.pointerId);
     if (pointers.size < 2) pinch.active = false;
-    wrap.classList.remove('grabbing');
+    wrap.style.cursor = '';
     if (drag && drag.id === e.pointerId) {
-      if (drag.captured) {
-        try { wrap.releasePointerCapture(e.pointerId); } catch (_) {}
-      }
+      if (drag.captured) try { wrap.releasePointerCapture(e.pointerId); } catch (_) {}
       drag = null;
     }
   }
   wrap.addEventListener('pointerup',     endPointer);
   wrap.addEventListener('pointercancel', endPointer);
 
-  // Suprimir SÓ o click logo após um drag de verdade.
-  // Capture phase para chegar antes de qualquer handler nos polygons.
   wrap.addEventListener('click', e => {
     if (suppressNextClick) {
-      e.stopPropagation();
-      e.preventDefault();
+      e.stopPropagation(); e.preventDefault();
       suppressNextClick = false;
     }
   }, true);
 
-  // Bloquear pinça nativa do iOS quando o foco é o mapa
   ['gesturestart', 'gesturechange', 'gestureend'].forEach(t => {
     document.addEventListener(t, e => {
       if (wrap.contains(e.target)) e.preventDefault();
     });
   });
 
-  // Botões
+  // Botões de zoom
   const $ = id => document.getElementById(id);
-  if ($('btn-zoom-in')) $('btn-zoom-in').addEventListener('click', () => {
-    const r = wrap.getBoundingClientRect();
-    zoomAt(r.left + r.width/2, r.top + r.height/2, 1.3);
-  });
-  if ($('btn-zoom-out')) $('btn-zoom-out').addEventListener('click', () => {
-    const r = wrap.getBoundingClientRect();
-    zoomAt(r.left + r.width/2, r.top + r.height/2, 1/1.3);
-  });
-  if ($('btn-zoom-reset')) $('btn-zoom-reset').addEventListener('click', () => {
-    state.x = 0; state.y = 0; state.scale = 1; apply();
-  });
+  if ($('btn-zoom-in'))    $('btn-zoom-in').addEventListener('click',    () => { const r = wrap.getBoundingClientRect(); zoomAt(r.left + r.width/2, r.top + r.height/2, 1.3); });
+  if ($('btn-zoom-out'))   $('btn-zoom-out').addEventListener('click',   () => { const r = wrap.getBoundingClientRect(); zoomAt(r.left + r.width/2, r.top + r.height/2, 1/1.3); });
+  if ($('btn-zoom-reset')) $('btn-zoom-reset').addEventListener('click', () => { zoomLevel = 1; applyZoom(); wrap.scrollLeft = 0; wrap.scrollTop = 0; });
 
-  apply();
+  applyZoom();
+  window.addEventListener('resize', applyZoom);
 })();
 
 </script>
