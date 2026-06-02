@@ -189,7 +189,7 @@
 
   #mapa-svg svg {
     width: 100%;
-    height: 100%;
+    height: auto;
   }
 
   /* Legenda — barra fixa abaixo do mapa */
@@ -556,7 +556,7 @@
 
     #mapa-svg svg {
       width: auto !important;
-      height: 100% !important;
+      height: auto !important;
       min-width: 500px;
       display: block;
     }
@@ -644,8 +644,9 @@
   .map-wrap {
     position: absolute;
     inset: 0;
-    overflow: hidden;
-    touch-action: none;
+    overflow: auto;
+    overflow: auto;
+  -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
     cursor: grab;
     background: #edf1f6;
@@ -654,16 +655,16 @@
 
   /* Viewport interno onde o transform é aplicado */
   .map-viewport {
-    position: absolute;
-    inset: 0;
-    transform-origin: 0 0;
-    will-change: transform;
+    min-width: 100%;
+    
+    
+    
   }
 
   .map-viewport > #mapa-svg,
   .map-viewport > #mapa-svg svg {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: block;
   }
 
@@ -981,7 +982,8 @@
     <span class="med-arrow" id="med-arrow">&#9658;</span>
     <span class="med-title">MEDICOES DA SEMANA</span>
     <span class="med-semana" id="med-semana-label"></span>
-    <span class="med-counter-badge"><span id="med-counter">0</span> obras</span>
+    <span class="med-counter-badge"><span id="med-counter">0</span>
+    <span id="supa-status" style="margin-left:auto;font-size:11px;color:#9aaac5;padding-right:8px;transition:color .3s">☁ …</span> obras</span>
   </div>
   <div id="med-corpo">
     <table class="med-table">
@@ -1222,8 +1224,18 @@ var MEDICAO_OPCOES = [
 ];
 
 // ── Supabase ─────────────────────────────────────────────────────────
+
+var SUPA_OK = null;
+function mostrarStatusSupa(ok, msg) {
+  SUPA_OK = ok;
+  var el = document.getElementById('supa-status');
+  if (!el) return;
+  if (ok === true)  { el.textContent = '☁ Sincronizado'; el.style.color = '#27c45e'; }
+  else if (ok === false) { el.textContent = '⚠ Offline (local)'; el.title = msg||''; el.style.color = '#f59e0b'; }
+  else { el.textContent = '☁ …'; el.style.color = '#9aaac5'; }
+}
 var SUPA_URL = 'https://hnncjuesndwbcpghynul.supabase.co';
-var SUPA_KEY = 'sb_publishable_GgymrKCdXiiYbhMsybnqlQ_bzW0FQ_q';
+var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhubmNqdWVzbmR3YmNwZ2h5bnVsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMzUxOTEsImV4cCI6MjA5NTkxMTE5MX0.dQsbynBySg9THcNj8NrkqbfrT91autwcBX39MI060Ic';
 
 function supaHeaders() {
   return {
@@ -1236,14 +1248,14 @@ function supaHeaders() {
 // Carrega medições do Supabase para a semana atual
 function carregarMedicoes() {
   return fetch(
-    SUPA_URL + '/rest/v1/medicoes?setor=eq.' + encodeURIComponent(CONFIG.setor) +
+    SUPA_URL + '/rest/v1/MEDI%C3%87%C3%95ES?SETOR=eq.' + encodeURIComponent(CONFIG.setor) +
     '&semana=eq.' + encodeURIComponent(SEMANA_ATUAL) + '&select=ref,status',
     { headers: supaHeaders() }
   )
   .then(function(r) { return r.json(); })
   .then(function(rows) {
     var estado = {};
-    (rows || []).forEach(function(row) { estado[row.ref] = row.status; });
+    (rows || []).forEach(function(row) { estado[row.REF] = row.STATUS; });
     estadoMedicoes = estado;
     renderizarMedicoes();
   })
@@ -1257,16 +1269,16 @@ function carregarMedicoes() {
 // Salva ou atualiza uma medição (upsert por setor+ref+semana)
 function salvarMedicao(ref, status) {
   estadoMedicoes[ref] = status;
-  fetch(SUPA_URL + '/rest/v1/medicoes', {
+  fetch(SUPA_URL + '/rest/v1/MEDI%C3%87%C3%95ES', {
     method: 'POST',
     headers: Object.assign({}, supaHeaders(), {
       'Prefer': 'resolution=merge-duplicates'
     }),
     body: JSON.stringify({
-      setor:      CONFIG.setor,
-      ref:        ref,
-      status:     status,
-      semana:     SEMANA_ATUAL,
+      SETOR:      CONFIG.setor,
+      REF:        ref,
+      STATUS:     status,
+      SEMANA:     SEMANA_ATUAL,
       updated_at: new Date().toISOString()
     })
   }).catch(function(e) { console.warn('Supabase salvarMedicao:', e); });
@@ -1448,7 +1460,7 @@ function desenharBolinhas(svgRoot) {
     const { cx, cy, dim } = geo;
 
     // Raio: 18% da menor dimensão do lote, com piso/teto
-    const r = Math.max(12, Math.min(dim * 0.18, 60));
+    const r = Math.max(10, Math.min(dim * 0.25, 50));
 
     const temAtraso  = temAlertaAtraso(doc);
     const temVenda   = casasVendidasPendentes(doc).length > 0;
