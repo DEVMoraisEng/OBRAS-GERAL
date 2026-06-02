@@ -1248,7 +1248,7 @@ function supaHeaders() {
 // Carrega medições do Supabase para a semana atual
 function carregarMedicoes() {
   return fetch(
-    SUPA_URL + '/rest/v1/MEDI%C3%87%C3%95ES?SETOR=eq.' + encodeURIComponent(CONFIG.setor) +
+    SUPA_URL + '/rest/v1/medicoes?SETOR=eq.' + encodeURIComponent(CONFIG.setor) +
     '&semana=eq.' + encodeURIComponent(SEMANA_ATUAL) + '&select=ref,status',
     { headers: supaHeaders() }
   )
@@ -1269,7 +1269,7 @@ function carregarMedicoes() {
 // Salva ou atualiza uma medição (upsert por setor+ref+semana)
 function salvarMedicao(ref, status) {
   estadoMedicoes[ref] = status;
-  fetch(SUPA_URL + '/rest/v1/MEDI%C3%87%C3%95ES', {
+  fetch(SUPA_URL + '/rest/v1/medicoes', {
     method: 'POST',
     headers: Object.assign({}, supaHeaders(), {
       'Prefer': 'resolution=merge-duplicates'
@@ -1460,7 +1460,7 @@ function desenharBolinhas(svgRoot) {
     const { cx, cy, dim } = geo;
 
     // Raio: 18% da menor dimensão do lote, com piso/teto
-    const r = Math.max(10, Math.min(dim * 0.25, 50));
+    const r = Math.max(122, Math.min(dim * 0.25, 218));
 
     const temAtraso  = temAlertaAtraso(doc);
     const temVenda   = casasVendidasPendentes(doc).length > 0;
