@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-02T15:01:10.794506+00:00",
+  "updated_at": "2026-06-02T16:04:05.148583+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -6600,6 +6600,13 @@
       "casa": 2,
       "clientes": "ALESSANDRA DE SOUSA SILVA ",
       "data_venda": "2026-05-19",
+      "entregou_casa": "NÃO"
+    },
+    {
+      "endereco": "FERROVIARIOS QD 01 LT 12",
+      "casa": 3,
+      "clientes": "LUCIANO ROSA DOS SANTOS",
+      "data_venda": "2026-06-01",
       "entregou_casa": "NÃO"
     },
     {
