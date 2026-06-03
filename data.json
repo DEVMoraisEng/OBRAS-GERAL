@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-03T11:01:02.776265+00:00",
+  "updated_at": "2026-06-03T15:01:13.532050+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5676,7 +5676,7 @@
       "casa": 2,
       "clientes": "ANE KAROLINE LOPES DA SILVA",
       "data_venda": "2026-03-19",
-      "entregou_casa": "NÃO"
+      "entregou_casa": "SIM"
     },
     {
       "endereco": "TB 17 QD 48 LT 41",
