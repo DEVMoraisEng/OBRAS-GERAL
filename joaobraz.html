@@ -132,7 +132,7 @@
   .layout {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 64px);
+    height: calc(100vh - 64px); /* ajustado pelo JS */
   }
 
   .map-panel-row {
@@ -903,6 +903,138 @@
     .med-table th:last-child { width: auto; }
     .med-select { min-width: 130px; font-size: 10px; }
   }
+
+  /* ══════════════════════════════════
+     PAINEL DE NOTIFICAÇÕES
+  ══════════════════════════════════ */
+  .notif-bar {
+    background: var(--navy2);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    max-height: 0;
+  }
+  .notif-bar.open { max-height: 400px; }
+
+  .notif-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 20px;
+    cursor: pointer;
+    user-select: none;
+    background: rgba(61,139,139,0.08);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .notif-toggle:hover { background: rgba(61,139,139,0.14); }
+
+  .notif-toggle-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--teal2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .notif-badge {
+    background: var(--teal);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    min-width: 22px;
+    text-align: center;
+  }
+  .notif-badge.zero { background: #555; }
+
+  .notif-chevron {
+    color: var(--gray);
+    font-size: 14px;
+    transition: transform 0.25s;
+  }
+  .notif-bar.open + .notif-toggle .notif-chevron,
+  .notif-toggle.active .notif-chevron { transform: rotate(180deg); }
+
+  .notif-content {
+    padding: 10px 20px 14px;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+  .notif-content::-webkit-scrollbar { width: 4px; }
+  .notif-content::-webkit-scrollbar-thumb { background: rgba(61,139,139,0.3); border-radius: 2px; }
+
+  .notif-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .notif-week-btn {
+    background: var(--panel2);
+    border: 1px solid var(--border);
+    color: var(--gray);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .notif-week-btn:hover { border-color: var(--teal); color: var(--teal2); }
+  .notif-week-btn.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+  .notif-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #d0dce8;
+    background: rgba(255,255,255,0.03);
+    margin-bottom: 4px;
+    transition: background 0.12s;
+  }
+  .notif-item:hover { background: rgba(255,255,255,0.07); cursor: pointer; }
+
+  .notif-ref {
+    font-weight: 700;
+    color: var(--teal2);
+    min-width: 60px;
+  }
+  .notif-arrow {
+    color: var(--gray);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .notif-status-old, .notif-status-new {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .notif-endereco {
+    color: #8a9ab5;
+    font-size: 11px;
+    margin-left: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
+  }
+  .notif-empty {
+    text-align: center;
+    color: #6a7fa0;
+    font-size: 13px;
+    padding: 20px 0;
+  }
 </style>
 </head>
 <body>
@@ -922,6 +1054,21 @@
 
 <!-- LAYOUT -->
 <div class="layout">
+
+  <!-- BARRA DE NOTIFICAÇÕES -->
+  <div class="notif-toggle" id="notif-toggle" onclick="toggleNotif()">
+    <div class="notif-toggle-left">
+      <span>🔔 Notificações de Status</span>
+      <span class="notif-badge" id="notif-badge">0</span>
+    </div>
+    <span class="notif-chevron" id="notif-chevron">▼</span>
+  </div>
+  <div class="notif-bar" id="notif-bar">
+    <div class="notif-content" id="notif-content">
+      <div class="notif-filters" id="notif-filters"></div>
+      <div id="notif-list"></div>
+    </div>
+  </div>
 
   <div class="map-panel-row">
 
@@ -1351,6 +1498,201 @@ function toggleMedicoes() {
 // ══════════════════════════════════════════════════════
 // DADOS
 // ══════════════════════════════════════════════════════
+
+// ══════════════════════════════════════════════════════
+// NOTIFICAÇÕES SEMANAIS DE MUDANÇA DE STATUS
+// ══════════════════════════════════════════════════════
+let HISTORICO_SEMANAL = [];
+let NOTIF_SEMANA_SELECIONADA = null;
+
+const NOTIF_STATUS_LABEL = {
+  nao_comprado:    'Não comprado',
+  nao_iniciado:    'Não iniciado',
+  em_andamento:    'Em andamento',
+  fin_prazo:       'Finaliz. prazo',
+  fin_sem_prazo:   'Finaliz. s/ prazo',
+  acima_prazo:     'Acima do prazo',
+  habite_agendado: 'Habite-se agend.',
+  habite_concluido:'Habite-se concl.',
+};
+
+const NOTIF_STATUS_BG = {
+  nao_comprado:    '#b0bec5',
+  nao_iniciado:    '#e8c84a',
+  em_andamento:    '#4a90d9',
+  fin_prazo:       '#27c45e',
+  fin_sem_prazo:   '#00c9a7',
+  acima_prazo:     '#f57c00',
+  habite_agendado: '#e84393',
+  habite_concluido:'#8e44ad',
+};
+
+function diffSemanal(semanaAnterior, semanaAtual) {
+  if (!semanaAnterior || !semanaAtual) return [];
+  const lotesAnt = semanaAnterior.lotes || {};
+  const lotesAtu = semanaAtual.lotes || {};
+  const mudancas = [];
+
+  // Filtrar apenas lotes do setor atual
+  for (const ref in lotesAtu) {
+    const atual = lotesAtu[ref];
+    if (!CONFIG.filtro({setor: atual.setor, endereco: atual.endereco})) continue;
+
+    const antInfo = lotesAnt[ref];
+    const statusAnt = antInfo ? antInfo.status : null;
+    const statusAtu = atual.status;
+
+    // 1. Mudança de status
+    if (statusAnt && statusAnt !== statusAtu) {
+      mudancas.push({
+        tipo: 'status',
+        ref: ref,
+        endereco: atual.endereco,
+        de: statusAnt,
+        para: statusAtu,
+      });
+    }
+
+    // 2. Pré-vistoria agendada (apareceu nesta semana)
+    const pvAtu = atual.pre_vistoria;
+    const pvAnt = antInfo ? antInfo.pre_vistoria : null;
+    if (pvAtu && pvAtu.agendou === 'SIM' && (!pvAnt || pvAnt.agendou !== 'SIM')) {
+      mudancas.push({
+        tipo: 'pre_vistoria',
+        ref: ref,
+        endereco: atual.endereco,
+        cliente: pvAtu.cliente || '',
+        casa: pvAtu.casa,
+        data_pv: pvAtu.data || '',
+      });
+    }
+  }
+  return mudancas;
+}
+
+function renderNotif(mudancas) {
+  const list = document.getElementById('notif-list');
+  if (!mudancas || mudancas.length === 0) {
+    list.innerHTML = '<div class="notif-empty">Nenhuma mudança nesta semana.</div>';
+    return;
+  }
+  list.innerHTML = mudancas.map(m => {
+    if (m.tipo === 'pre_vistoria') {
+      const dataPV = m.data_pv ? parseDateBR(m.data_pv) : '—';
+      const dataEnt = calcDataEntrega(m.data_pv) || '—';
+      return '<div class="notif-item notif-pv" onclick="focusLote(\'' + m.ref + '\')">'
+        + '<span class="notif-ref">' + m.ref + '</span>'
+        + '<span class="notif-status-new" style="background:#3d8b8b;color:#fff">📋 Pré-Vistoria Agendada</span>'
+        + '<span style="font-size:11px;color:#8a9ab5">Casa ' + (m.casa || '—') + ' · ' + dataPV + ' · Entrega: ' + dataEnt + '</span>'
+        + '<span class="notif-endereco">' + (m.endereco || '') + '</span>'
+        + '</div>';
+    }
+    const bgOld = NOTIF_STATUS_BG[m.de] || '#555';
+    const bgNew = NOTIF_STATUS_BG[m.para] || '#555';
+    return '<div class="notif-item" onclick="focusLote(\'' + m.ref + '\')">'
+      + '<span class="notif-ref">' + m.ref + '</span>'
+      + '<span class="notif-status-old" style="background:' + bgOld + ';color:#fff">' + (NOTIF_STATUS_LABEL[m.de] || m.de) + '</span>'
+      + '<span class="notif-arrow">→</span>'
+      + '<span class="notif-status-new" style="background:' + bgNew + ';color:#fff">' + (NOTIF_STATUS_LABEL[m.para] || m.para) + '</span>'
+      + '<span class="notif-endereco">' + (m.endereco || '') + '</span>'
+      + '</div>';
+  }).join('');
+}
+
+function selecionarSemanaNotif(idx) {
+  NOTIF_SEMANA_SELECIONADA = idx;
+  document.querySelectorAll('.notif-week-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i === idx);
+  });
+  if (idx > 0) {
+    const mudancas = diffSemanal(HISTORICO_SEMANAL[idx - 1], HISTORICO_SEMANAL[idx]);
+    renderNotif(mudancas);
+  } else {
+    renderNotif([]);
+  }
+}
+
+function formatarSemana(semStr) {
+  // "2026-W23" → "Semana 23"
+  const m = semStr.match(/W(\d+)/);
+  return m ? 'Semana ' + parseInt(m[1]) : semStr;
+}
+
+function initNotificacoes(historico) {
+  HISTORICO_SEMANAL = historico || [];
+  const filters = document.getElementById('notif-filters');
+  const badge = document.getElementById('notif-badge');
+
+  if (HISTORICO_SEMANAL.length < 2) {
+    filters.innerHTML = '';
+    renderNotif([]);
+    badge.textContent = '0';
+    badge.classList.add('zero');
+    return;
+  }
+
+  // Render week buttons
+  filters.innerHTML = HISTORICO_SEMANAL.map((h, i) => {
+    if (i === 0) return ''; // First week has no diff
+    const label = formatarSemana(h.semana);
+    return '<button class="notif-week-btn" onclick="selecionarSemanaNotif(' + i + ')">' + label + '</button>';
+  }).join('');
+
+  // Auto-select latest week
+  const lastIdx = HISTORICO_SEMANAL.length - 1;
+  const mudancasAtual = diffSemanal(HISTORICO_SEMANAL[lastIdx - 1], HISTORICO_SEMANAL[lastIdx]);
+  badge.textContent = mudancasAtual.length;
+  badge.classList.toggle('zero', mudancasAtual.length === 0);
+
+  selecionarSemanaNotif(lastIdx);
+
+  // Auto-open if there are changes
+  if (mudancasAtual.length > 0) {
+    document.getElementById('notif-bar').classList.add('open');
+    document.getElementById('notif-toggle').classList.add('active');
+  }
+}
+
+function toggleNotif() {
+  const bar = document.getElementById('notif-bar');
+  const toggle = document.getElementById('notif-toggle');
+  bar.classList.toggle('open');
+  toggle.classList.toggle('active');
+}
+
+function focusLote(ref) {
+  const el = document.querySelector('.lote[data-ref="' + ref + '"]') ||
+             document.querySelector('.lote[data-ref="' + ref.toLowerCase() + '"]') ||
+             [...document.querySelectorAll('.lote')].find(e => (e.dataset.ref || '').toUpperCase() === ref.toUpperCase());
+  if (!el) return;
+  // Scroll into view
+  el.scrollIntoView({behavior: 'smooth', block: 'center'});
+  // Flash the lot
+  const origFill = el.getAttribute('fill');
+  el.setAttribute('fill', '#fff');
+  setTimeout(() => el.setAttribute('fill', origFill), 300);
+  setTimeout(() => el.setAttribute('fill', '#fff'), 600);
+  setTimeout(() => el.setAttribute('fill', origFill), 900);
+  // Open panel
+  const doc = DOCS[ref.toUpperCase()];
+  if (doc) openPanel(ref, doc, calcStatus(doc));
+}
+
+// ══════════════════════════════════════════════════════
+// HELPER: Calcular data de entrega (pré-vistoria + 15 dias)
+// ══════════════════════════════════════════════════════
+function calcDataEntrega(dataPreVistoria) {
+  if (!dataPreVistoria) return null;
+  try {
+    const d = new Date(dataPreVistoria + 'T00:00:00');
+    d.setDate(d.getDate() + 15);
+    const dd = String(d.getDate()).padStart(2, '0');
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const yy = d.getFullYear();
+    return dd + '/' + mm + '/' + yy;
+  } catch (e) { return null; }
+}
+
 let DOCS = {};   // ref → doc
 let LOTES_EL;   // NodeList dos elementos SVG
 
@@ -1514,8 +1856,22 @@ function openPanel(ref, doc, status) {
             <div class="field-value">${parseDateBR(v.data_venda)}</div>
           </div>
           <div class="panel-field">
-            <div class="field-label">Entrega</div>
+            <div class="field-label">Entrega Casa</div>
             <div class="field-value" style="color:#fbbf24">${v.entregou_casa || '—'}</div>
+          </div>
+        </div>
+        <div class="group-row">
+          <div class="panel-field">
+            <div class="field-label">Agendou Pré-Vistoria?</div>
+            <div class="field-value" style="color:${(v.agendou_pre_vistoria||'').toUpperCase()==='SIM'?'#27c45e':'#fbbf24'}">${v.agendou_pre_vistoria || '—'}</div>
+          </div>
+          <div class="panel-field">
+            <div class="field-label">Data Pré-Vistoria</div>
+            <div class="field-value">${parseDateBR(v.data_pre_vistoria)}</div>
+          </div>
+          <div class="panel-field">
+            <div class="field-label">Data de Entrega</div>
+            <div class="field-value" style="color:#4fa8a8;font-weight:600">${calcDataEntrega(v.data_pre_vistoria) || '—'}</div>
           </div>
         </div>
       `).join('')}

@@ -3,7 +3,7 @@
 Busca dados do banco BASE DE DADOS DOCUMENTOS + VENDAS e gera data.json
 """
 import requests, json, os
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 # ─── CREDENCIAIS (via GitHub Secrets) ────────────────────────
 TOKEN_DOCS  = os.environ.get("NOTION_TOKEN_DOCS", "")
@@ -131,15 +131,139 @@ def parse_venda(page):
     endereco = t("ENDEREÇO") or tx("ENDEREÇO")
 
     return {
-        "endereco":      endereco,
-        "casa":          prop_number(get_prop(p, "CASA")),
-        "clientes":      s("CLIENTES") or tx("CLIENTES"),
-        "data_venda":    d("DATA DA VENDA"),
-        "entregou_casa": s("ENTEGOU A CASA E PEGOU TERMO DE ENTREGA?"),
+        "endereco":              endereco,
+        "casa":                  prop_number(get_prop(p, "CASA")),
+        "clientes":              s("CLIENTES") or tx("CLIENTES"),
+        "data_venda":            d("DATA DA VENDA"),
+        "entregou_casa":         s("ENTEGOU A CASA E PEGOU TERMO DE ENTREGA?"),
+        "agendou_pre_vistoria":  s("AGENDOU PRÉ VISTORIA?") or s("AGENDOU PRE VISTORIA?"),
+        "data_pre_vistoria":     d("DATA DA PRÉ-VISTORIA") or d("DATA DA PRE-VISTORIA"),
     }
+
+# ─── CÁLCULO DE STATUS (réplica da lógica JS) ────────────────
+PRAZO_DIAS = 150
+
+def _obra_iniciada(doc):
+    v = (doc.get('obra_iniciada') or '').upper().strip()
+    return v in ('SIM', 'SIM SEM PRAZO')
+
+def _obra_finalizada_com_prazo(doc):
+    return (doc.get('obra_finalizada') or '').upper().strip() == 'SIM'
+
+def _obra_finalizada_sem_prazo(doc):
+    return (doc.get('obra_finalizada') or '').upper().strip() == 'SIM SEM PRAZO'
+
+def _dias_de_obra(doc):
+    ini = doc.get('data_inicio_obra')
+    fim = doc.get('data_termino_obra')
+    if not ini or not fim:
+        return None
+    try:
+        d_ini = datetime.fromisoformat(ini[:10])
+        d_fim = datetime.fromisoformat(fim[:10])
+        return (d_fim - d_ini).days
+    except Exception:
+        return None
+
+def calc_status(doc):
+    if not doc:
+        return 'nao_comprado'
+    if _obra_finalizada_sem_prazo(doc):
+        return 'fin_sem_prazo'
+    if _obra_finalizada_com_prazo(doc):
+        dias = _dias_de_obra(doc)
+        if dias is not None and dias > PRAZO_DIAS:
+            return 'acima_prazo'
+        return 'fin_prazo'
+    if (doc.get('aprovou_habite_se') or '').upper() == 'SIM':
+        return 'habite_concluido'
+    if (doc.get('agendou_habite_se') or '').upper() == 'SIM':
+        return 'habite_agendado'
+    if _obra_iniciada(doc):
+        return 'em_andamento'
+    if doc.get('ref') or doc.get('endereco') or doc.get('previsao_inicio_obra'):
+        return 'nao_iniciado'
+    return 'nao_comprado'
+
+def semana_iso(dt=None):
+    dt = dt or datetime.now()
+    return dt.strftime('%G-W%V')
+
+def gerar_snapshot(documentos, vendas=None):
+    snap = {}
+    # Mapear pré-vistoria por endereço (vindas das vendas)
+    pre_vistoria_map = {}
+    for v in (vendas or []):
+        end = (v.get('endereco') or '').upper().strip()
+        if not end:
+            continue
+        agendou = (v.get('agendou_pre_vistoria') or '').upper().strip()
+        if agendou == 'SIM':
+            pre_vistoria_map[end] = {
+                'agendou': 'SIM',
+                'data': v.get('data_pre_vistoria') or '',
+                'casa': v.get('casa'),
+                'cliente': v.get('clientes') or '',
+            }
+
+    for doc in documentos:
+        ref = (doc.get('ref') or '').strip()
+        if not ref:
+            continue
+        end = (doc.get('endereco') or '').upper().strip()
+        lote = {
+            'status': calc_status(doc),
+            'endereco': doc.get('endereco') or '',
+            'setor': doc.get('setor') or '',
+        }
+        # Adicionar info de pré-vistoria se existir para este endereço
+        pv = pre_vistoria_map.get(end)
+        if pv:
+            lote['pre_vistoria'] = pv
+        snap[ref] = lote
+    return snap
+
+def atualizar_historico(historico_anterior, documentos, vendas=None):
+    """Mantém últimas 12 semanas de snapshots."""
+    semana_atual = semana_iso()
+    snapshot_atual = gerar_snapshot(documentos, vendas)
+
+    historico = list(historico_anterior or [])
+
+    # Se a semana atual já existe, atualiza
+    encontrou = False
+    for h in historico:
+        if h.get('semana') == semana_atual:
+            h['lotes'] = snapshot_atual
+            h['timestamp'] = datetime.now(timezone.utc).isoformat()
+            encontrou = True
+            break
+
+    if not encontrou:
+        historico.append({
+            'semana': semana_atual,
+            'timestamp': datetime.now(timezone.utc).isoformat(),
+            'lotes': snapshot_atual,
+        })
+
+    # Manter apenas últimas 12 semanas
+    historico.sort(key=lambda h: h['semana'])
+    if len(historico) > 12:
+        historico = historico[-12:]
+
+    return historico
 
 # ─── MAIN ─────────────────────────────────────────────────────
 def main():
+    # Ler histórico existente
+    historico_anterior = []
+    try:
+        with open("data.json", "r", encoding="utf-8") as f:
+            old_data = json.load(f)
+            historico_anterior = old_data.get("historico_semanal", [])
+    except Exception:
+        pass
+
     # 1. Documentos
     print("Buscando BASE DE DADOS DOCUMENTOS...")
     pages_docs = notion_pages(TOKEN_DOCS, DB_ID_DOCS)
@@ -160,10 +284,15 @@ def main():
         except Exception as e:
             print(f"  AVISO: falha ao buscar vendas: {e}")
 
+    # 3. Histórico semanal
+    historico = atualizar_historico(historico_anterior, documentos, vendas)
+    print(f"  Histórico semanal: {len(historico)} semanas armazenadas")
+
     output = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "documentos": documentos,
         "vendas":     vendas,
+        "historico_semanal": historico,
     }
 
     with open("data.json", "w", encoding="utf-8") as f:
