@@ -224,22 +224,19 @@ def gerar_snapshot(documentos, vendas=None):
     return snap
 
 def atualizar_historico(historico_anterior, documentos, vendas=None):
-    """Mantém últimas 12 semanas de snapshots."""
+    """Mantém últimas 12 semanas de snapshots congelados (um por semana)."""
     import copy
     semana_atual = semana_iso()
     snapshot_atual = gerar_snapshot(documentos, vendas)
 
     historico = list(historico_anterior or [])
 
-    # Bootstrap: se não existe uma semana anterior para comparação,
-    # cria uma entrada "semana anterior" como baseline.
-    # Assim, qualquer mudança a partir de agora já gera notificação.
     semanas_existentes = set(h.get('semana') for h in historico)
     dt_anterior = datetime.now() - timedelta(weeks=1)
     semana_ant = semana_iso(dt_anterior)
 
+    # Bootstrap: cria semana anterior como baseline se não existir
     if semana_ant not in semanas_existentes:
-        # Usar o snapshot mais antigo como baseline, ou o atual se não houver nenhum
         baseline = copy.deepcopy(historico[0]['lotes']) if historico else copy.deepcopy(snapshot_atual)
         historico.append({
             'semana': semana_ant,
@@ -247,20 +244,12 @@ def atualizar_historico(historico_anterior, documentos, vendas=None):
             'lotes': baseline,
         })
 
-    # Se a semana atual já existe, atualiza
-    encontrou = False
-    for h in historico:
-        if h.get('semana') == semana_atual:
-            h['lotes'] = snapshot_atual
-            h['timestamp'] = datetime.now(timezone.utc).isoformat()
-            encontrou = True
-            break
-
-    if not encontrou:
+    # Semana atual: congela apenas na PRIMEIRA execução da semana (nunca sobrescreve)
+    if semana_atual not in semanas_existentes:
         historico.append({
             'semana': semana_atual,
             'timestamp': datetime.now(timezone.utc).isoformat(),
-            'lotes': snapshot_atual,
+            'lotes': copy.deepcopy(snapshot_atual),
         })
 
     # Manter apenas últimas 12 semanas
@@ -268,7 +257,7 @@ def atualizar_historico(historico_anterior, documentos, vendas=None):
     if len(historico) > 12:
         historico = historico[-12:]
 
-    return historico
+    return historico, snapshot_atual
 
 # ─── MAIN ─────────────────────────────────────────────────────
 def main():
@@ -302,13 +291,14 @@ def main():
             print(f"  AVISO: falha ao buscar vendas: {e}")
 
     # 3. Histórico semanal
-    historico = atualizar_historico(historico_anterior, documentos, vendas)
+    historico, snapshot_atual = atualizar_historico(historico_anterior, documentos, vendas)
     print(f"  Histórico semanal: {len(historico)} semanas armazenadas")
 
     output = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "documentos": documentos,
         "vendas":     vendas,
+        "snapshot_atual": snapshot_atual,
         "historico_semanal": historico,
     }
 

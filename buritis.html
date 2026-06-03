@@ -1618,12 +1618,19 @@ function formatarSemana(semStr) {
   return m ? 'Semana ' + parseInt(m[1]) : semStr;
 }
 
-function initNotificacoes(historico) {
-  HISTORICO_SEMANAL = historico || [];
+function initNotificacoes(data) {
+  HISTORICO_SEMANAL = data.historico_semanal || [];
+  const snapshotAtual = data.snapshot_atual || null;
   const filters = document.getElementById('notif-filters');
   const badge = document.getElementById('notif-badge');
 
-  if (HISTORICO_SEMANAL.length < 2) {
+  // Monta a "semana ao vivo": snapshot_atual sempre atualizado a cada execução do workflow
+  const semanaLive = snapshotAtual
+    ? { semana: SEMANA_ATUAL + '-live', lotes: snapshotAtual }
+    : null;
+
+  // Precisamos de pelo menos 1 semana no histórico + semana live
+  if (HISTORICO_SEMANAL.length < 1 || !semanaLive) {
     filters.innerHTML = '';
     renderNotif([]);
     badge.textContent = '0';
@@ -1631,25 +1638,47 @@ function initNotificacoes(historico) {
     return;
   }
 
-  // Render week buttons
-  filters.innerHTML = HISTORICO_SEMANAL.map((h, i) => {
-    if (i === 0) return ''; // First week has no diff
-    const label = formatarSemana(h.semana);
-    return '<button class="notif-week-btn" onclick="selecionarSemanaNotif(' + i + ')">' + label + '</button>';
+  // Lista de semanas para os botões: semanas históricas + semana live
+  const todasSemanas = [...HISTORICO_SEMANAL, semanaLive];
+
+  // Render week buttons (a partir do índice 1, pois o 0 é o baseline)
+  filters.innerHTML = todasSemanas.map((h, i) => {
+    if (i === 0) return ''; // Primeira semana é só baseline, sem diff
+    const label = h.semana.endsWith('-live')
+      ? 'Esta semana'
+      : formatarSemana(h.semana);
+    return '<button class="notif-week-btn" onclick="selecionarSemanaNotifLive(' + i + ')">' + label + '</button>';
   }).join('');
 
-  // Auto-select latest week
-  const lastIdx = HISTORICO_SEMANAL.length - 1;
-  const mudancasAtual = diffSemanal(HISTORICO_SEMANAL[lastIdx - 1], HISTORICO_SEMANAL[lastIdx]);
+  // Auto-select última (semana live)
+  const lastIdx = todasSemanas.length - 1;
+  const mudancasAtual = diffSemanal(todasSemanas[lastIdx - 1], todasSemanas[lastIdx]);
   badge.textContent = mudancasAtual.length;
   badge.classList.toggle('zero', mudancasAtual.length === 0);
 
-  selecionarSemanaNotif(lastIdx);
+  // Salva referência global para uso nos botões
+  window._todasSemanas = todasSemanas;
+  selecionarSemanaNotifLive(lastIdx);
 
-  // Auto-open if there are changes
+  // Auto-open se houver mudanças
   if (mudancasAtual.length > 0) {
     document.getElementById('notif-bar').classList.add('open');
     document.getElementById('notif-toggle').classList.add('active');
+  }
+}
+
+function selecionarSemanaNotifLive(idx) {
+  NOTIF_SEMANA_SELECIONADA = idx;
+  document.querySelectorAll('.notif-week-btn').forEach((btn, i) => {
+    // botões começam no índice 1 (índice 0 não tem botão)
+    btn.classList.toggle('active', (i + 1) === idx);
+  });
+  const semanas = window._todasSemanas || [];
+  if (idx > 0 && semanas[idx - 1] && semanas[idx]) {
+    const mudancas = diffSemanal(semanas[idx - 1], semanas[idx]);
+    renderNotif(mudancas);
+  } else {
+    renderNotif([]);
   }
 }
 
@@ -1710,6 +1739,8 @@ function loadData() {
       pintarMapa();
       // Carrega medições do Supabase (chama renderizarMedicoes internamente)
       carregarMedicoes();
+      // Inicializa notificações com snapshot ao vivo
+      initNotificacoes(data);
     })
     .catch(err => console.warn('Erro ao carregar data.json:', err));
 }
