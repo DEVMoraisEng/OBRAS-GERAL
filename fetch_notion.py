@@ -225,10 +225,27 @@ def gerar_snapshot(documentos, vendas=None):
 
 def atualizar_historico(historico_anterior, documentos, vendas=None):
     """Mantém últimas 12 semanas de snapshots."""
+    import copy
     semana_atual = semana_iso()
     snapshot_atual = gerar_snapshot(documentos, vendas)
 
     historico = list(historico_anterior or [])
+
+    # Bootstrap: se não existe uma semana anterior para comparação,
+    # cria uma entrada "semana anterior" como baseline.
+    # Assim, qualquer mudança a partir de agora já gera notificação.
+    semanas_existentes = set(h.get('semana') for h in historico)
+    dt_anterior = datetime.now() - timedelta(weeks=1)
+    semana_ant = semana_iso(dt_anterior)
+
+    if semana_ant not in semanas_existentes:
+        # Usar o snapshot mais antigo como baseline, ou o atual se não houver nenhum
+        baseline = copy.deepcopy(historico[0]['lotes']) if historico else copy.deepcopy(snapshot_atual)
+        historico.append({
+            'semana': semana_ant,
+            'timestamp': dt_anterior.isoformat(),
+            'lotes': baseline,
+        })
 
     # Se a semana atual já existe, atualiza
     encontrou = False
