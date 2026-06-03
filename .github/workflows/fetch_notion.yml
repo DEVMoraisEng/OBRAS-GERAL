@@ -51,7 +51,7 @@ jobs:
             echo "data.json sem alterações — sem commit necessário"
           else
             git commit -m "chore: atualizar data.json [skip ci]"
-            git pull --rebase origin main
+            git pull --rebase -X theirs origin main
             git push origin main
             echo "data.json atualizado"
           fi
