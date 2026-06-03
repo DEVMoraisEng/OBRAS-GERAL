@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-03T19:04:02.476744+00:00",
+  "updated_at": "2026-06-03T19:06:21.493346+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -6709,6 +6709,15 @@
       "data_pre_vistoria": null
     },
     {
+      "endereco": "RPB 24 QD 26A LT 14",
+      "casa": 2,
+      "clientes": "tyiyti",
+      "data_venda": "2026-06-02",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-06"
+    },
+    {
       "endereco": "RPB 24 QD 26A LT 13",
       "casa": 2,
       "clientes": "BRUNA  IARA QUEIROZ  NEVES",
@@ -7967,7 +7976,13 @@
     "BR 16": {
       "status": "acima_prazo",
       "endereco": "RPB 24 QD 26A LT 14",
-      "setor": "PQ DOS BURITIS"
+      "setor": "PQ DOS BURITIS",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-06-06",
+        "casa": 2,
+        "cliente": "tyiyti"
+      }
     },
     "BR 15": {
       "status": "habite_concluido",
