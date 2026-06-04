@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-04T21:25:19.900761+00:00",
+  "updated_at": "2026-06-04T23:00:44.749988+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5813,7 +5813,7 @@
       "casa": 2,
       "clientes": "LARA CARREIRO MONSEF",
       "data_venda": "2026-03-30",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-05-21"
     },
