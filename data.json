@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-05T17:48:12.319218+00:00",
+  "updated_at": "2026-06-05T19:00:44.587740+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5588,6 +5588,15 @@
       "casa": 1,
       "clientes": "ANA LUCIA MACEDO DA CONCEIÇÃO SILVA",
       "data_venda": "2026-04-27",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "TB 21 QD 50 LT 39",
+      "casa": 1,
+      "clientes": "NADIA RAQUEL DO NASCIMENTO PINHEIRO",
+      "data_venda": "2026-06-03",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
