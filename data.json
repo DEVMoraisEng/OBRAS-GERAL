@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-04T23:00:44.749988+00:00",
+  "updated_at": "2026-06-05T02:36:26.164794+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -6381,7 +6381,7 @@
       "clientes": "SUZANE DOS SANTOS OLIVEIRA S NASCIMENTO",
       "data_venda": "2026-04-24",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "SIM",
+      "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
     },
     {
