@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-05T19:00:44.587740+00:00",
+  "updated_at": "2026-06-05T21:18:08.264379+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -1231,7 +1231,7 @@
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE",
-      "mestre": null,
+      "mestre": "ROSIVAN",
       "despachante": "YAN",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
@@ -1249,8 +1249,8 @@
       "art_feita_paga": "SIM",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
-      "contrato_investidor": "NÃO",
+      "contrato_mestre": "SIM",
+      "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
@@ -6718,15 +6718,6 @@
       "data_pre_vistoria": null
     },
     {
-      "endereco": "RPB 24 QD 26A LT 14",
-      "casa": 2,
-      "clientes": "tyiyti",
-      "data_venda": "2026-06-02",
-      "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": "2026-06-06"
-    },
-    {
       "endereco": "RPB 24 QD 26A LT 13",
       "casa": 2,
       "clientes": "BRUNA  IARA QUEIROZ  NEVES",
@@ -7985,13 +7976,7 @@
     "BR 16": {
       "status": "acima_prazo",
       "endereco": "RPB 24 QD 26A LT 14",
-      "setor": "PQ DOS BURITIS",
-      "pre_vistoria": {
-        "agendou": "SIM",
-        "data": "2026-06-06",
-        "casa": 2,
-        "cliente": "tyiyti"
-      }
+      "setor": "PQ DOS BURITIS"
     },
     "BR 15": {
       "status": "habite_concluido",
