@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-08T23:00:40.151374+00:00",
+  "updated_at": "2026-06-09T02:12:50.910455+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5589,8 +5589,8 @@
       "clientes": "ANA LUCIA MACEDO DA CONCEIÇÃO SILVA",
       "data_venda": "2026-04-27",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-10"
     },
     {
       "endereco": "TB 21 QD 50 LT 39",
@@ -6416,7 +6416,7 @@
       "casa": 1,
       "clientes": "JUSSIARA BARBOSA DA SILVA",
       "data_venda": "2026-03-11",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-05-21"
     },
@@ -6678,15 +6678,15 @@
       "clientes": "JADIEL NUNES DOS SANTOS",
       "data_venda": "2025-11-11",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-01"
     },
     {
       "endereco": "RPB 24 QD 26A LT 17",
       "casa": 1,
       "clientes": "HALANE EDUARA DE OLIVEIRA FEITOSA",
       "data_venda": "2026-01-13",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-05-19"
     },
@@ -6804,8 +6804,8 @@
       "clientes": "GABRIEL PORFIRIO MENCONÇA VECCI",
       "data_venda": "2026-05-05",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-02"
     },
     {
       "endereco": "RPB 24 QD 28 LT 01",
