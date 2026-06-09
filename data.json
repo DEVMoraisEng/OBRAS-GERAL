@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-09T21:42:14.209145+00:00",
+  "updated_at": "2026-06-09T23:00:45.852547+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -6957,8 +6957,8 @@
       "clientes": "JOHNY RIBEIRO DA SILVA ",
       "data_venda": "2026-04-30",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-12"
     },
     {
       "endereco": "W 6 QD 17 LT 06",
@@ -8114,7 +8114,13 @@
     "JB 1": {
       "status": "acima_prazo",
       "endereco": "FERROVIARIOS QD 01 LT 12",
-      "setor": "JOÃO BRAZ"
+      "setor": "JOÃO BRAZ",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-06-12",
+        "casa": 1,
+        "cliente": "JOHNY RIBEIRO DA SILVA "
+      }
     },
     "ITAIPU 1": {
       "status": "fin_sem_prazo",
