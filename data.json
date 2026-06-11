@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-11T15:37:40.383006+00:00",
+  "updated_at": "2026-06-11T18:41:46.343263+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -6695,7 +6695,7 @@
       "casa": 2,
       "clientes": "JULIARIA PAESLANDIN DOS SANTOS",
       "data_venda": "2026-01-14",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-05-15"
     },
@@ -6947,6 +6947,15 @@
       "casa": 3,
       "clientes": "LUCIANO ROSA DOS SANTOS",
       "data_venda": "2026-06-01",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "FERROVIARIOS QD 01 LT 12",
+      "casa": 2,
+      "clientes": "JAKSON DELFINO DOS SANTOS",
+      "data_venda": "2026-06-11",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
