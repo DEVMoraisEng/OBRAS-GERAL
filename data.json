@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-12T17:59:32.836849+00:00",
+  "updated_at": "2026-06-12T19:00:38.300019+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -1400,7 +1400,7 @@
       "incorporacao_finalizada": "INEXISTE",
       "ret_armazenado": "INEXISTE",
       "taxas_habite_se": "SIM",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
