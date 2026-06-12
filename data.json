@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-12T08:17:18.435210+00:00",
+  "updated_at": "2026-06-12T11:00:43.058281+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5597,6 +5597,15 @@
       "casa": 1,
       "clientes": "NADIA RAQUEL DO NASCIMENTO PINHEIRO",
       "data_venda": "2026-06-03",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "TB 21 QD 50 LT 32",
+      "casa": 1,
+      "clientes": "PEDRO THALISSON SILVA RODRIGUES",
+      "data_venda": "2026-06-10",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
