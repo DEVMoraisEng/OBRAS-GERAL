@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-13T11:00:40.229015+00:00",
+  "updated_at": "2026-06-13T13:28:18.945017+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5588,7 +5588,7 @@
       "casa": 1,
       "clientes": "ANA LUCIA MACEDO DA CONCEIÇÃO SILVA",
       "data_venda": "2026-04-27",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-10"
     },
@@ -5841,8 +5841,8 @@
       "clientes": "MARCIA CRISTINA DA  COSTA ",
       "data_venda": "2026-04-16",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-12"
     },
     {
       "endereco": "TB 14 QD 43 LT 27",
@@ -6952,6 +6952,15 @@
       "data_pre_vistoria": null
     },
     {
+      "endereco": "FERROVIARIOS QD 01 LT 13",
+      "casa": 1,
+      "clientes": "MARA SILVA",
+      "data_venda": "2026-06-12",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
       "endereco": "FERROVIARIOS QD 01 LT 12",
       "casa": 3,
       "clientes": "LUCIANO ROSA DOS SANTOS",
@@ -6992,7 +7001,7 @@
       "casa": 3,
       "clientes": "EDUARDA PRIMO DE SOUSA",
       "data_venda": "2026-02-28",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-05-07"
     },
@@ -7236,8 +7245,8 @@
       "clientes": "PEDRO  ELEOMAR  MENDONÇA  DA SILVA  JÚNIOR ",
       "data_venda": "2026-05-06",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-12"
     },
     {
       "endereco": "AV. FRANÇA QD 04 LT 15",
@@ -7726,9 +7735,9 @@
       "setor": "TERRABELA CERRADO",
       "pre_vistoria": {
         "agendou": "SIM",
-        "data": "2026-05-21",
-        "casa": 2,
-        "cliente": "LARA CARREIRO MONSEF"
+        "data": "2026-06-12",
+        "casa": 1,
+        "cliente": "MARCIA CRISTINA DA  COSTA "
       }
     },
     "TC 19": {
@@ -8234,9 +8243,9 @@
       "setor": "IPANEMA",
       "pre_vistoria": {
         "agendou": "SIM",
-        "data": "2026-02-03",
-        "casa": 2,
-        "cliente": "JESSICA BATISTA DA SILVA"
+        "data": "2026-06-12",
+        "casa": 1,
+        "cliente": "PEDRO  ELEOMAR  MENDONÇA  DA SILVA  JÚNIOR "
       }
     },
     "IP 4": {
