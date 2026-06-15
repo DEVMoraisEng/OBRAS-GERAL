@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-15T19:00:41.657579+00:00",
+  "updated_at": "2026-06-15T22:10:53.757072+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -956,7 +956,7 @@
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
-      "registro_pago": "NÃO",
+      "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
@@ -5603,6 +5603,15 @@
     },
     {
       "endereco": "TB 21 QD 50 LT 32",
+      "casa": 2,
+      "clientes": "JOSEVANIO ALMEIDA DOS SANTOS ",
+      "data_venda": "2026-06-15",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "TB 21 QD 50 LT 32",
       "casa": 1,
       "clientes": "PEDRO THALISSON SILVA RODRIGUES",
       "data_venda": "2026-06-10",
@@ -5796,8 +5805,8 @@
       "clientes": "IGOR LOPES DE SOUZA",
       "data_venda": "2026-03-12",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-01"
     },
     {
       "endereco": "TB 14 QD 43 LT 48",
@@ -6084,8 +6093,8 @@
       "clientes": "AUCIONE VIEIRA DE SOUSA",
       "data_venda": "2026-04-07",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-10"
     },
     {
       "endereco": "FADAS QD 49 LT 33",
@@ -7829,9 +7838,9 @@
       "setor": "TERRABELA CERRADO",
       "pre_vistoria": {
         "agendou": "SIM",
-        "data": "2026-03-09",
-        "casa": 2,
-        "cliente": "JOÃO VICTOR RODRIGUES EUROPEU"
+        "data": "2026-06-10",
+        "casa": 1,
+        "cliente": "AUCIONE VIEIRA DE SOUSA"
       }
     },
     "TC 8": {
