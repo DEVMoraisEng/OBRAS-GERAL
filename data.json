@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-15T15:00:45.317020+00:00",
+  "updated_at": "2026-06-15T17:00:41.021742+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -367,7 +367,7 @@
       "setor": "RAVENA",
       "cidade": "SENADOR CANEDO",
       "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE",
-      "mestre": null,
+      "mestre": "IRINEU",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
@@ -385,7 +385,7 @@
       "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "NÃO",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
@@ -403,7 +403,7 @@
       "setor": "RAVENA",
       "cidade": "SENADOR CANEDO",
       "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE",
-      "mestre": null,
+      "mestre": "IRINEU",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
@@ -421,7 +421,7 @@
       "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
