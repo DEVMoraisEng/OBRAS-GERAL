@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-15T17:00:41.021742+00:00",
+  "updated_at": "2026-06-15T19:00:41.657579+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5624,6 +5624,15 @@
       "casa": 2,
       "clientes": "WANDERSON GOMES DE FREITAS ",
       "data_venda": "2026-05-04",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "TB 21 QD 46 LT 18",
+      "casa": 1,
+      "clientes": "ISABELLA RENATA GONÇALVES DE FARIAS",
+      "data_venda": "2026-06-13",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
