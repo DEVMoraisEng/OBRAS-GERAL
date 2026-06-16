@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-16T11:00:38.595266+00:00",
+  "updated_at": "2026-06-16T15:00:54.912649+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5593,6 +5593,15 @@
       "data_pre_vistoria": "2026-06-10"
     },
     {
+      "endereco": "TB 21 QD 50 LT 40",
+      "casa": 2,
+      "clientes": "GILBERTO DA SILVA BRITO",
+      "data_venda": "2026-06-15",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
       "endereco": "TB 21 QD 50 LT 39",
       "casa": 1,
       "clientes": "NADIA RAQUEL DO NASCIMENTO PINHEIRO",
@@ -5739,7 +5748,7 @@
     {
       "endereco": "TB 17 QD 48 LT 46",
       "casa": 2,
-      "clientes": "RAIAN RODRIGUES MOREIRA",
+      "clientes": "RAILAN RODRIGUES MOREIRA",
       "data_venda": "2026-05-27",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
