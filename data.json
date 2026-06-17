@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-17T11:00:38.230069+00:00",
+  "updated_at": "2026-06-17T14:53:16.964945+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -1691,7 +1691,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "SIM",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "TB 21 QD 51 LT 33",
@@ -2012,7 +2012,7 @@
       "incorporacao_finalizada": "SIM",
       "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
