@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-18T19:00:40.718401+00:00",
+  "updated_at": "2026-06-18T21:58:21.010418+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -1348,7 +1348,7 @@
       "data_termino_obra": null,
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": "2026-06-26",
+      "data_habite_se": "2026-07-13",
       "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
@@ -1655,7 +1655,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "TB 21 QD 51 LT 34",
@@ -3542,10 +3542,10 @@
       "obra_finalizada": "NÃO",
       "data_inicio_obra": "2026-04-27",
       "data_termino_obra": null,
-      "agendou_habite_se": "NÃO",
+      "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": null,
-      "turno_habite_se": null,
+      "data_habite_se": "2026-07-01",
+      "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
@@ -3556,7 +3556,7 @@
       "contrato_mestre": "SIM",
       "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "SIM",
-      "projeto_aprovado": "SIM",
+      "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "INEXISTE",
       "ret_armazenado": "INEXISTE",
       "taxas_habite_se": "SIM",
@@ -3666,7 +3666,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": "NÃO",
+      "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
@@ -4242,7 +4242,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": null,
+      "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
@@ -4278,7 +4278,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": null,
+      "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
@@ -4314,7 +4314,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": null,
+      "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
@@ -5430,7 +5430,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": "NÃO",
+      "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
@@ -5470,8 +5470,8 @@
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
-      "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "armazenou_habite": "SIM",
+      "certidoes_matricula": "SIM"
     }
   ],
   "vendas": [
@@ -5639,7 +5639,7 @@
     },
     {
       "endereco": "TB 21 QD 46 LT 26",
-      "casa": 1,
+      "casa": 2,
       "clientes": "PETERSON DA SILVA ROSA",
       "data_venda": "2026-06-18",
       "entregou_casa": "NÃO",
@@ -5678,7 +5678,7 @@
       "casa": 1,
       "clientes": "FERNANDA ILARINDO MOURA",
       "data_venda": "2026-01-23",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-05-22"
     },
@@ -6722,7 +6722,7 @@
       "casa": 2,
       "clientes": "JADIEL NUNES DOS SANTOS",
       "data_venda": "2025-11-11",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-01"
     },
@@ -6848,7 +6848,7 @@
       "casa": 2,
       "clientes": "GABRIEL PORFIRIO MENCONÇA VECCI",
       "data_venda": "2026-05-05",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-02"
     },
@@ -6990,7 +6990,7 @@
     {
       "endereco": "FERROVIARIOS QD 01 LT 13",
       "casa": 1,
-      "clientes": "MARA SILVA",
+      "clientes": "MARIA SILVA",
       "data_venda": "2026-06-12",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
@@ -8001,7 +8001,7 @@
       "setor": "RAVENA"
     },
     "RV 3": {
-      "status": "em_andamento",
+      "status": "habite_agendado",
       "endereco": "RR 15 QD 02 LT 12",
       "setor": "RAVENA"
     },
