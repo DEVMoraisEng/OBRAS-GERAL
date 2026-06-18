@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-18T15:00:47.894985+00:00",
+  "updated_at": "2026-06-18T18:21:46.778680+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5638,13 +5638,22 @@
       "data_pre_vistoria": null
     },
     {
+      "endereco": "TB 21 QD 46 LT 26",
+      "casa": 1,
+      "clientes": "PETERSON DA SILVA ROSA",
+      "data_venda": "2026-06-18",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
       "endereco": "TB 21 QD 46 LT 18",
       "casa": 2,
       "clientes": "WANDERSON GOMES DE FREITAS ",
       "data_venda": "2026-05-04",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-02"
     },
     {
       "endereco": "TB 21 QD 46 LT 18",
@@ -7683,7 +7692,13 @@
     "TC 28": {
       "status": "fin_sem_prazo",
       "endereco": "TB 21 QD 46 LT 18",
-      "setor": "TERRABELA CERRADO"
+      "setor": "TERRABELA CERRADO",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-06-02",
+        "casa": 2,
+        "cliente": "WANDERSON GOMES DE FREITAS "
+      }
     },
     "TC 27": {
       "status": "fin_sem_prazo",
