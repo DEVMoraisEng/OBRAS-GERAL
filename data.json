@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-19T19:00:37.502741+00:00",
+  "updated_at": "2026-06-19T21:01:57.825431+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5255,7 +5255,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "SIM",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "APOLO LYKEIOS QD 01 LT 33",
@@ -5434,8 +5434,8 @@
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
-      "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "armazenou_habite": "SIM",
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "ATALANTA QD 01 LT 21",
