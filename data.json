@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-19T17:48:15.763323+00:00",
+  "updated_at": "2026-06-19T19:00:37.502741+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5398,8 +5398,8 @@
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
-      "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "armazenou_habite": "SIM",
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "ATALANTA QD 01 LT 22",
@@ -6309,7 +6309,7 @@
       "clientes": "FERNANDO ARAUJO DE SOUZA",
       "data_venda": "2025-10-06",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
+      "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": null
     },
     {
