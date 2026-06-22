@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-22T11:00:40.211715+00:00",
+  "updated_at": "2026-06-22T15:00:51.753360+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -4516,7 +4516,7 @@
       "data_termino_obra": null,
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": "2026-05-19",
+      "data_habite_se": "2026-06-24",
       "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
@@ -5323,7 +5323,7 @@
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "INEXISTE",
       "ret_armazenado": "INEXISTE",
-      "taxas_habite_se": "NÃO",
+      "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
