@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-22T16:30:30.309648+00:00",
+  "updated_at": "2026-06-22T19:00:45.952385+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -4027,7 +4027,7 @@
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
-      "taxas_habite_se": "NÃO",
+      "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
@@ -4063,7 +4063,7 @@
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
-      "taxas_habite_se": "NÃO",
+      "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
@@ -5363,7 +5363,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "ATALANTA QD 01 LT 23",
