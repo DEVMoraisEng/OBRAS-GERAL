@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-22T19:00:45.952385+00:00",
+  "updated_at": "2026-06-22T21:56:06.771195+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -1142,7 +1142,7 @@
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
-      "contrato_investidor": "NÃO",
+      "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "NÃO",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
@@ -1976,7 +1976,7 @@
       "incorporacao_finalizada": "SIM",
       "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
@@ -3556,7 +3556,7 @@
       "contrato_mestre": "SIM",
       "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "SIM",
-      "projeto_aprovado": "NÃO",
+      "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "INEXISTE",
       "ret_armazenado": "INEXISTE",
       "taxas_habite_se": "SIM",
@@ -3823,7 +3823,7 @@
       "setor": "PQ DOS BURITIS",
       "cidade": "SENADOR CANEDO",
       "proprietario": "MORAIS EMPREENDIMENTOS BURITIS",
-      "mestre": null,
+      "mestre": "WILLIAN RODRIGUES",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
@@ -3841,7 +3841,7 @@
       "art_feita_paga": "SIM",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
@@ -4061,7 +4061,7 @@
       "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
-      "incorporacao_finalizada": "NÃO",
+      "incorporacao_finalizada": "SIM",
       "ret_armazenado": null,
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
@@ -4075,7 +4075,7 @@
       "setor": "PQ DOS BURITIS",
       "cidade": "SENADOR CANEDO",
       "proprietario": "MORAIS EMPREENDIMENTOS BURITIS",
-      "mestre": null,
+      "mestre": "FELIPE",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
@@ -4093,7 +4093,7 @@
       "art_feita_paga": "SIM",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
@@ -5291,7 +5291,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "SIM",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "PATHERNON QD 01 LT 26",
@@ -5814,7 +5814,7 @@
       "clientes": "JESSICA CARA SANTOS DA CONCEIÇ",
       "data_venda": "2026-05-15",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
+      "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": null
     },
     {
@@ -7677,7 +7677,13 @@
     "TC 31": {
       "status": "habite_concluido",
       "endereco": "TB 17 QD 48 LT 40",
-      "setor": "TERRABELA CERRADO"
+      "setor": "TERRABELA CERRADO",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "",
+        "casa": 1,
+        "cliente": "JESSICA CARA SANTOS DA CONCEIÇ"
+      }
     },
     "TC 30": {
       "status": "em_andamento",
