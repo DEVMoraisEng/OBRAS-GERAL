@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23T19:00:42.676387+00:00",
+  "updated_at": "2026-06-23T21:24:39.103294+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -1020,7 +1020,7 @@
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-05-20",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -1056,7 +1056,7 @@
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": "2026-05-20",
+      "data_inicio_obra": null,
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
