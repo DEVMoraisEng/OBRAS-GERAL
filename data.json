@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23T17:45:32.951968+00:00",
+  "updated_at": "2026-06-23T19:00:42.676387+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -3826,9 +3826,9 @@
       "mestre": "WILLIAN RODRIGUES",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-06-15",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -3970,9 +3970,9 @@
       "mestre": "WILLIAN RODRIGUES",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-06-17",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -4078,9 +4078,9 @@
       "mestre": "FELIPE",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-06-22",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -5755,7 +5755,7 @@
       "data_pre_vistoria": null
     },
     {
-      "endereco": "TB 17 QD 48 LT 46t",
+      "endereco": "TB 17 QD 48 LT 46",
       "casa": 2,
       "clientes": "RAILAN RODRIGUES MOREIRA",
       "data_venda": "2026-05-27",
@@ -8059,7 +8059,7 @@
       "setor": "PQ DOS BURITIS"
     },
     "BR 14": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "RPB 24 QD 26A LT 12",
       "setor": "PQ DOS BURITIS"
     },
@@ -8079,7 +8079,7 @@
       "setor": "PQ DOS BURITIS"
     },
     "BR 10": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "RPB 24 QD 26A LT 08",
       "setor": "PQ DOS BURITIS"
     },
@@ -8094,7 +8094,7 @@
       "setor": "PQ DOS BURITIS"
     },
     "BR 7": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "RPB 24 QD 26A LT 05",
       "setor": "PQ DOS BURITIS"
     },
