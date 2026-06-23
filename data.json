@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23T11:00:36.066528+00:00",
+  "updated_at": "2026-06-23T14:29:57.622561+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -838,9 +838,9 @@
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-06-18",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -874,9 +874,9 @@
       "mestre": "CARLOS",
       "despachante": "YAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-06-18",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -910,9 +910,9 @@
       "mestre": "CARLOS",
       "despachante": "YAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-06-18",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -946,9 +946,9 @@
       "mestre": "MAYCON",
       "despachante": "YAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-06-01",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -1018,7 +1018,7 @@
       "mestre": "MAYCON",
       "despachante": "YAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
       "data_inicio_obra": null,
       "data_termino_obra": null,
@@ -1056,7 +1056,7 @@
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-05-20",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -1631,9 +1631,9 @@
       "despachante": "YAN",
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
-      "obra_finalizada": "NÃO",
+      "obra_finalizada": "SIM",
       "data_inicio_obra": "2026-01-05",
-      "data_termino_obra": null,
+      "data_termino_obra": "2026-06-25",
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "SIM",
       "data_habite_se": "2026-04-23",
@@ -1667,9 +1667,9 @@
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
-      "obra_finalizada": "NÃO",
+      "obra_finalizada": "SIM",
       "data_inicio_obra": "2026-01-15",
-      "data_termino_obra": null,
+      "data_termino_obra": "2026-06-25",
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "SIM",
       "data_habite_se": "2026-04-30",
@@ -5755,7 +5755,7 @@
       "data_pre_vistoria": null
     },
     {
-      "endereco": "TB 17 QD 48 LT 46",
+      "endereco": "TB 17 QD 48 LT 46t",
       "casa": 2,
       "clientes": "RAILAN RODRIGUES MOREIRA",
       "data_venda": "2026-05-27",
@@ -5858,7 +5858,7 @@
       "casa": 1,
       "clientes": "LEANDRO LIMA BERALDO",
       "data_venda": "2026-02-19",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-04-29"
     },
@@ -7494,22 +7494,22 @@
       "setor": "TERRABELA CERRADO"
     },
     "TC 66": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "TB 19 QD 51 LT 15",
       "setor": "TERRABELA CERRADO"
     },
     "TC 65": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "TB 19 QD 51 LT 14",
       "setor": "TERRABELA CERRADO"
     },
     "TC 64": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "TB 19 QD 51 LT 13",
       "setor": "TERRABELA CERRADO"
     },
     "TC 63": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "TB 21 QD 51 LT 26",
       "setor": "TERRABELA CERRADO"
     },
@@ -7519,7 +7519,7 @@
       "setor": "TERRABELA CERRADO"
     },
     "TC 61": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "TB 21 QD 51 LT 29",
       "setor": "TERRABELA CERRADO"
     },
@@ -7604,12 +7604,12 @@
       "setor": "TERRABELA CERRADO"
     },
     "TC 44": {
-      "status": "habite_concluido",
+      "status": "acima_prazo",
       "endereco": "TB 21 QD 51 LT 35",
       "setor": "TERRABELA CERRADO"
     },
     "TC 43": {
-      "status": "habite_concluido",
+      "status": "acima_prazo",
       "endereco": "TB 21 QD 51 LT 34",
       "setor": "TERRABELA CERRADO"
     },
