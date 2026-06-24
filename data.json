@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-24T14:09:18.110032+00:00",
+  "updated_at": "2026-06-24T15:00:38.896993+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5584,7 +5584,7 @@
       "data_pre_vistoria": "2026-04-23"
     },
     {
-      "endereco": "TB 5 QD 40 LT 01",
+      "endereco": "TB 5 QD 40 LT 018",
       "casa": 1,
       "clientes": "ANA LUCIA MACEDO DA CONCEIÇÃO SILVA",
       "data_venda": "2026-04-27",
@@ -5755,7 +5755,7 @@
       "data_pre_vistoria": null
     },
     {
-      "endereco": "TB 17 QD 48 LT 46",
+      "endereco": "TB 17 QD 48 LT 464",
       "casa": 2,
       "clientes": "RAILAN RODRIGUES MOREIRA",
       "data_venda": "2026-05-27",
@@ -5815,7 +5815,7 @@
       "data_venda": "2026-05-15",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": null
+      "data_pre_vistoria": "2026-06-17"
     },
     {
       "endereco": "TB 14 QD 43 LT 48",
@@ -7680,7 +7680,7 @@
       "setor": "TERRABELA CERRADO",
       "pre_vistoria": {
         "agendou": "SIM",
-        "data": "",
+        "data": "2026-06-17",
         "casa": 1,
         "cliente": "JESSICA CARA SANTOS DA CONCEIÇ"
       }
