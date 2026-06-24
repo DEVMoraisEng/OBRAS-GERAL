@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-24T11:00:36.521383+00:00",
+  "updated_at": "2026-06-24T14:09:18.110032+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -4570,7 +4570,7 @@
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
-      "armazenou_habite": "NÃO",
+      "armazenou_habite": "SIM",
       "certidoes_matricula": "SIM"
     },
     {
