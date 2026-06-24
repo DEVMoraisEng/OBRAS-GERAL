@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-24T15:00:38.896993+00:00",
+  "updated_at": "2026-06-24T17:47:52.290783+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -4328,7 +4328,7 @@
       "cidade": "GOIÂNIA",
       "proprietario": "MORAIS ENGENHARIA E CONSTRUCAO",
       "mestre": null,
-      "despachante": null,
+      "despachante": "MESSIAS",
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
@@ -4364,7 +4364,7 @@
       "cidade": "GOIÂNIA",
       "proprietario": "MORAIS ENGENHARIA E CONSTRUCAO",
       "mestre": null,
-      "despachante": null,
+      "despachante": "MESSIAS",
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
@@ -4400,7 +4400,7 @@
       "cidade": "GOIÂNIA",
       "proprietario": "MORAIS ENGENHARIA E CONSTRUCAO",
       "mestre": null,
-      "despachante": null,
+      "despachante": "MESSIAS",
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
@@ -5584,7 +5584,7 @@
       "data_pre_vistoria": "2026-04-23"
     },
     {
-      "endereco": "TB 5 QD 40 LT 018",
+      "endereco": "TB 5 QD 40 LT 01",
       "casa": 1,
       "clientes": "ANA LUCIA MACEDO DA CONCEIÇÃO SILVA",
       "data_venda": "2026-04-27",
@@ -5597,6 +5597,15 @@
       "casa": 2,
       "clientes": "GILBERTO DA SILVA BRITO",
       "data_venda": "2026-06-15",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "TB 21 QD 50 LT 40",
+      "casa": 1,
+      "clientes": "JOAO VICTOR SANTOS MENDES",
+      "data_venda": "2026-06-18",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
@@ -5752,10 +5761,10 @@
       "data_venda": "2026-05-12",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "data_pre_vistoria": "2026-06-12"
     },
     {
-      "endereco": "TB 17 QD 48 LT 464",
+      "endereco": "TB 17 QD 48 LT 46",
       "casa": 2,
       "clientes": "RAILAN RODRIGUES MOREIRA",
       "data_venda": "2026-05-27",
