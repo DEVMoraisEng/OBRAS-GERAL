@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-25T11:00:36.209789+00:00",
+  "updated_at": "2026-06-25T14:05:45.727351+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -235,7 +235,7 @@
       "data_habite_se": null,
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
@@ -1600,7 +1600,7 @@
       "data_termino_obra": null,
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": "2026-06-30",
+      "data_habite_se": "2026-07-02",
       "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
