@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-25T15:00:43.430240+00:00",
+  "updated_at": "2026-06-25T18:03:56.978783+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -835,7 +835,7 @@
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE",
-      "mestre": null,
+      "mestre": "CARLOS",
       "despachante": null,
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
@@ -853,7 +853,7 @@
       "art_feita_paga": "SIM",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "NÃO",
       "taxas_alvara_pagas": "NÃO",
       "projeto_aprovado": "NÃO",
@@ -4350,7 +4350,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": null,
+      "ret_armazenado": "SIM",
       "taxas_habite_se": "NÃO",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
@@ -4422,7 +4422,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": null,
+      "ret_armazenado": "SIM",
       "taxas_habite_se": "NÃO",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
@@ -4535,7 +4535,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "FERROVIARIOS QD 01 LT 14",
