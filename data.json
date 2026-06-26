@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-26T17:30:09.416351+00:00",
+  "updated_at": "2026-06-26T19:00:36.148032+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -6785,6 +6785,15 @@
       "casa": 1,
       "clientes": " MARIA EDUARDA ARAÚJO MELO",
       "data_venda": "2026-05-05",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 14",
+      "casa": 2,
+      "clientes": "WANDERSON PEREIRA SABOIA",
+      "data_venda": "2026-06-26",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
