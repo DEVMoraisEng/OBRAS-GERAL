@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-26T15:00:36.101855+00:00",
+  "updated_at": "2026-06-26T17:30:09.416351+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5750,6 +5750,15 @@
       "casa": 1,
       "clientes": "MARIA FRANCISCA OLIVEIRA DOS ANJOS",
       "data_venda": "2026-02-03",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "TB 19 QD 46 LT 07",
+      "casa": 2,
+      "clientes": "EDNA BISPO SANTOS ",
+      "data_venda": "2026-06-25",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
