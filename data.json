@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-26T14:05:09.324108+00:00",
+  "updated_at": "2026-06-26T15:00:36.101855+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -959,7 +959,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "SIM",
       "contrato_investidor": "SIM",
@@ -1067,7 +1067,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
