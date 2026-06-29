@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-29T18:04:09.304353+00:00",
+  "updated_at": "2026-06-29T19:00:37.670452+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -5823,8 +5823,8 @@
       "clientes": "ANA  PAULA PEIXOTO DOS SANTOS",
       "data_venda": "2026-04-22",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-22"
     },
     {
       "endereco": "TB 17 QD 48 LT 40",
