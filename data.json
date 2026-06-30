@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-30T15:00:39.351786+00:00",
+  "updated_at": "2026-06-30T17:47:25.725896+00:00",
   "documentos": [
     {
       "endereco": "RR 04 QD 03 LT 19",
@@ -1088,7 +1088,7 @@
       "cidade": "SENADOR CANEDO",
       "proprietario": "ROSILENE MARIA DOS SANTOS",
       "mestre": null,
-      "despachante": null,
+      "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
       "obra_finalizada": "NÃO",
@@ -1107,7 +1107,7 @@
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
-      "taxas_alvara_pagas": "NÃO",
+      "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
@@ -1124,7 +1124,7 @@
       "cidade": "SENADOR CANEDO",
       "proprietario": "ROGERIO COSTA PINTO",
       "mestre": null,
-      "despachante": null,
+      "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
       "obra_finalizada": "NÃO",
@@ -1143,7 +1143,7 @@
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
-      "taxas_alvara_pagas": "NÃO",
+      "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
@@ -1160,7 +1160,7 @@
       "cidade": "SENADOR CANEDO",
       "proprietario": "LUIZ FERNANDO BARBOSA MOREIRA",
       "mestre": null,
-      "despachante": null,
+      "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
       "obra_finalizada": "NÃO",
@@ -1179,7 +1179,7 @@
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "SIM",
-      "taxas_alvara_pagas": "NÃO",
+      "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
@@ -5550,7 +5550,7 @@
     {
       "endereco": "TB 6 QD 40 LT 35",
       "casa": 2,
-      "clientes": "NELA JANE DOS SANTOS OLIVEIRA",
+      "clientes": "NEILA JANE DOS SANTOS OLIVEIRA",
       "data_venda": "2025-11-29",
       "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
@@ -5696,7 +5696,7 @@
       "casa": 2,
       "clientes": "WANDERSON GOMES DE FREITAS ",
       "data_venda": "2026-05-04",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-02"
     },
@@ -5805,7 +5805,7 @@
       "clientes": "ROSILEIDE MARTINS DOS SANTOS",
       "data_venda": "2026-05-12",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
+      "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-12"
     },
     {
@@ -6164,7 +6164,7 @@
       "casa": 1,
       "clientes": "AUCIONE VIEIRA DE SOUSA",
       "data_venda": "2026-04-07",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-10"
     },
@@ -7091,7 +7091,7 @@
       "casa": 1,
       "clientes": "JOHNY RIBEIRO DA SILVA ",
       "data_venda": "2026-04-30",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-12"
     },
@@ -7781,7 +7781,13 @@
     "TC 27": {
       "status": "fin_sem_prazo",
       "endereco": "TB 19 QD 46 LT 07",
-      "setor": "TERRABELA CERRADO"
+      "setor": "TERRABELA CERRADO",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-06-12",
+        "casa": 1,
+        "cliente": "ROSILEIDE MARTINS DOS SANTOS"
+      }
     },
     "TC 26": {
       "status": "habite_concluido",
