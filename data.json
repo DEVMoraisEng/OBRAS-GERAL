@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-02T15:00:49.662751+00:00",
+  "updated_at": "2026-07-02T17:28:27.604487+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -6596,7 +6596,7 @@
       "casa": 2,
       "clientes": "SILVANIA  CALDEIRA DE MOURA",
       "data_venda": "2026-04-15",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-01"
     },
@@ -6813,8 +6813,8 @@
       "clientes": "SUZANE DOS SANTOS OLIVEIRA S NASCIMENTO",
       "data_venda": "2026-04-24",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-16"
     },
     {
       "endereco": "RR 02 QD 01 LT 17",
@@ -6823,7 +6823,7 @@
       "data_venda": "2026-04-14",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": null
+      "data_pre_vistoria": "2026-06-16"
     },
     {
       "endereco": "RR 15 QD 01 LT 15",
@@ -7389,8 +7389,8 @@
       "clientes": "MARIA SILVA",
       "data_venda": "2026-06-12",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-07-03"
     },
     {
       "endereco": "FERROVIARIOS QD 01 LT 12",
@@ -7398,8 +7398,8 @@
       "clientes": "LUCIANO ROSA DOS SANTOS",
       "data_venda": "2026-06-01",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-26"
     },
     {
       "endereco": "FERROVIARIOS QD 01 LT 12",
@@ -8592,7 +8592,13 @@
     "JB 2": {
       "status": "acima_prazo",
       "endereco": "FERROVIARIOS QD 01 LT 13",
-      "setor": "JOÃO BRAZ"
+      "setor": "JOÃO BRAZ",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-07-03",
+        "casa": 1,
+        "cliente": "MARIA SILVA"
+      }
     },
     "JB 1": {
       "status": "acima_prazo",
