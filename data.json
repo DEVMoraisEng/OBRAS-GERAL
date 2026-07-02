@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-02T13:40:02.846162+00:00",
+  "updated_at": "2026-07-02T15:00:49.662751+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -7146,8 +7146,8 @@
       "clientes": " MARIA EDUARDA ARAÚJO MELO",
       "data_venda": "2026-05-05",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-22"
     },
     {
       "endereco": "RPB 24 QD 26A LT 14",
@@ -8448,7 +8448,13 @@
     "BR 17": {
       "status": "acima_prazo",
       "endereco": "RPB 24 QD 26A LT 15",
-      "setor": "PQ DOS BURITIS"
+      "setor": "PQ DOS BURITIS",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-06-22",
+        "casa": 1,
+        "cliente": " MARIA EDUARDA ARAÚJO MELO"
+      }
     },
     "BR 16": {
       "status": "acima_prazo",
