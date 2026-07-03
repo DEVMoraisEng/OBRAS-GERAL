@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-03T17:14:24.927402+00:00",
+  "updated_at": "2026-07-03T19:00:47.984018+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -1124,7 +1124,7 @@
       "cidade": "SENADOR CANEDO",
       "proprietario": "ALEXANDRE AURELIO COSTA",
       "mestre": null,
-      "despachante": null,
+      "despachante": "YAN",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
       "obra_finalizada": "NÃO",
@@ -1143,7 +1143,7 @@
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
-      "taxas_alvara_pagas": "NÃO",
+      "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
