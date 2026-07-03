@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-03T19:00:47.984018+00:00",
+  "updated_at": "2026-07-03T20:54:23.322462+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -6254,7 +6254,7 @@
       "casa": 1,
       "clientes": "MARCIA CRISTINA DA  COSTA ",
       "data_venda": "2026-04-16",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-12"
     },
@@ -7796,6 +7796,15 @@
       "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2000-01-01"
+    },
+    {
+      "endereco": "APOLO LYKEIOS QD 01 LT 34",
+      "casa": 1,
+      "clientes": "LUCAS HENRIQUE FREITAS MENEZES",
+      "data_venda": "2026-07-03",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
     }
   ],
   "snapshot_atual": {
