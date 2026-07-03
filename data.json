@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-03T11:00:37.757073+00:00",
+  "updated_at": "2026-07-03T13:44:31.820659+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -4746,7 +4746,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": "NÃO",
+      "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
@@ -6128,7 +6128,7 @@
       "casa": 1,
       "clientes": "ROSILEIDE MARTINS DOS SANTOS",
       "data_venda": "2026-05-12",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-12"
     },
@@ -6191,7 +6191,7 @@
       "casa": 1,
       "clientes": "JESSICA CARA SANTOS DA CONCEIÇ",
       "data_venda": "2026-05-15",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-17"
     },
