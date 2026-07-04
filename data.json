@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-03T23:00:40.475211+00:00",
+  "updated_at": "2026-07-04T02:02:19.468688+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -6821,7 +6821,7 @@
       "casa": 1,
       "clientes": "JOÃO MARCOS",
       "data_venda": "2026-04-14",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-16"
     },
