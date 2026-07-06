@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-06T19:01:01.116400+00:00",
+  "updated_at": "2026-07-06T21:22:14.906456+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -675,7 +675,7 @@
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
-      "taxas_alvara_pagas": "NÃO",
+      "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": "NÃO",
@@ -1088,7 +1088,7 @@
       "cidade": "SENADOR CANEDO",
       "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE",
       "mestre": null,
-      "despachante": null,
+      "despachante": "YAN",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
       "obra_finalizada": "NÃO",
@@ -1107,7 +1107,7 @@
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
-      "taxas_alvara_pagas": "NÃO",
+      "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
@@ -4153,7 +4153,7 @@
       "obra_iniciada": "SIM",
       "obra_finalizada": "SIM",
       "data_inicio_obra": "2026-02-05",
-      "data_termino_obra": null,
+      "data_termino_obra": "2026-07-08",
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "SIM",
       "data_habite_se": "2026-05-20",
@@ -8471,7 +8471,7 @@
       "setor": "PQ DOS BURITIS"
     },
     "BR 15": {
-      "status": "fin_prazo",
+      "status": "acima_prazo",
       "endereco": "RPB 24 QD 26A LT 13",
       "setor": "PQ DOS BURITIS"
     },
