@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07T19:01:08.178277+00:00",
+  "updated_at": "2026-07-07T21:16:03.219897+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -1399,7 +1399,7 @@
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
-      "taxas_habite_se": "NÃO",
+      "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
@@ -1615,7 +1615,7 @@
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
-      "taxas_habite_se": "NÃO",
+      "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
@@ -4406,10 +4406,10 @@
       "obra_finalizada": "NÃO",
       "data_inicio_obra": "2026-01-09",
       "data_termino_obra": null,
-      "agendou_habite_se": "NÃO",
+      "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": null,
-      "turno_habite_se": null,
+      "data_habite_se": "2026-07-14",
+      "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
@@ -7159,6 +7159,15 @@
       "data_pre_vistoria": null
     },
     {
+      "endereco": "RPB 24 QD 26A LT 14",
+      "casa": 1,
+      "clientes": "MARCELO BATISTA DOS SANTOS",
+      "data_venda": "2026-07-07",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
       "endereco": "RPB 24 QD 26A LT 13",
       "casa": 2,
       "clientes": "BRUNA  IARA QUEIROZ  NEVES",
@@ -8515,7 +8524,7 @@
       "setor": "PQ DOS BURITIS"
     },
     "BR 8": {
-      "status": "em_andamento",
+      "status": "habite_agendado",
       "endereco": "RPB 24 QD 26A LT 06",
       "setor": "PQ DOS BURITIS"
     },
