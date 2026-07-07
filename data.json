@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-06T23:00:55.072184+00:00",
+  "updated_at": "2026-07-07T02:11:10.377995+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -6151,7 +6151,7 @@
       "data_pre_vistoria": null
     },
     {
-      "endereco": "TB 17 QD 48 LT 44",
+      "endereco": "TB 17 QD 48 LT 44 ",
       "casa": 2,
       "clientes": "FABIO CARDOSO DOS SANTOS",
       "data_venda": "2026-03-23",
@@ -6668,7 +6668,7 @@
       "casa": 2,
       "clientes": "JHON WILKER GUESES DE OLIVEIRA",
       "data_venda": "2026-01-13",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "ÁGIO",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": null
     },
@@ -6819,7 +6819,7 @@
     {
       "endereco": "RR 02 QD 01 LT 17",
       "casa": 1,
-      "clientes": "JOÃO MARCOS",
+      "clientes": "JOAO BATISTA GALVAO",
       "data_venda": "2026-04-14",
       "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
@@ -6831,7 +6831,7 @@
       "clientes": "LIELSON DE SOUSA RIBEIRO",
       "data_venda": "2026-05-06",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
+      "agendou_pre_vistoria": "ÁGIO",
       "data_pre_vistoria": null
     },
     {
@@ -7190,6 +7190,15 @@
       "casa": 1,
       "clientes": "JOAO MARIA DE ALBUQUERQUE ",
       "data_venda": "2026-05-12",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 07",
+      "casa": 1,
+      "clientes": "ANDREA DE SOUZA COSTA",
+      "data_venda": "2026-07-03",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
