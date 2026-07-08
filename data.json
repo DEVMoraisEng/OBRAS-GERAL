@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-08T17:20:20.722712+00:00",
+  "updated_at": "2026-07-08T19:00:55.055570+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -813,7 +813,7 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
