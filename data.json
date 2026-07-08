@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-08T13:42:52.977484+00:00",
+  "updated_at": "2026-07-08T15:00:59.610246+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -1649,7 +1649,7 @@
       "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
-      "incorporacao_finalizada": "NÃO",
+      "incorporacao_finalizada": "SIM",
       "ret_armazenado": "NÃO",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
@@ -1829,7 +1829,7 @@
       "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
-      "incorporacao_finalizada": "NÃO",
+      "incorporacao_finalizada": "SIM",
       "ret_armazenado": "NÃO",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
@@ -1937,7 +1937,7 @@
       "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
-      "incorporacao_finalizada": "NÃO",
+      "incorporacao_finalizada": "SIM",
       "ret_armazenado": "NÃO",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
@@ -7820,6 +7820,15 @@
       "casa": 1,
       "clientes": "LUCAS HENRIQUE FREITAS MENEZES",
       "data_venda": "2026-07-03",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "APOLO LYKEIOS QD 01 LT 33",
+      "casa": 2,
+      "clientes": "CAMILLA COSTA DE SOUZA",
+      "data_venda": "2026-07-07",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
