@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-08T19:00:55.055570+00:00",
+  "updated_at": "2026-07-08T20:57:48.457280+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -6182,7 +6182,7 @@
       "casa": 2,
       "clientes": "ANA  PAULA PEIXOTO DOS SANTOS",
       "data_venda": "2026-04-22",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-22"
     },
@@ -7389,8 +7389,8 @@
       "clientes": "LAILA RODRIGUES DA SILVA ",
       "data_venda": "2026-04-27",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-06-26"
     },
     {
       "endereco": "FERROVIARIOS QD 01 LT 13",
