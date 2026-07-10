@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-10T14:02:01.768825+00:00",
+  "updated_at": "2026-07-10T15:00:45.395420+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -814,7 +814,7 @@
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "SIM",
-      "art_feita_paga": "NÃO",
+      "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "SIM",
@@ -5966,6 +5966,15 @@
       "casa": 1,
       "clientes": "JOAO VICTOR SANTOS MENDES",
       "data_venda": "2026-06-18",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "TB 21 QD 50 LT 39",
+      "casa": 2,
+      "clientes": "DANIE DE SOUSA SIVA",
+      "data_venda": "2026-07-09",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
