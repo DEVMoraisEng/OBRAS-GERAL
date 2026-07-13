@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-12T23:00:51.946379+00:00",
+  "updated_at": "2026-07-13T01:55:29.743152+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -6443,7 +6443,7 @@
       "casa": 2,
       "clientes": "CLAUDENILTON PEREIRA DE ALENCAR",
       "data_venda": "2026-01-15",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-03-11"
     },
@@ -15721,6 +15721,1017 @@
         },
         "A9": {
           "status": "em_andamento",
+          "endereco": "APOLO LYKEIOS QD 01 LT 36",
+          "setor": "ACROPOLE"
+        },
+        "A8": {
+          "status": "em_andamento",
+          "endereco": "APOLO LYKEIOS QD 01 LT 35",
+          "setor": "ACROPOLE"
+        },
+        "A7": {
+          "status": "habite_concluido",
+          "endereco": "APOLO LYKEIOS QD 01 LT 34",
+          "setor": "ACROPOLE"
+        },
+        "A6": {
+          "status": "habite_concluido",
+          "endereco": "APOLO LYKEIOS QD 01 LT 33",
+          "setor": "ACROPOLE"
+        },
+        "A5": {
+          "status": "habite_concluido",
+          "endereco": "PATHERNON QD 01 LT 26",
+          "setor": "ACROPOLE"
+        },
+        "A4": {
+          "status": "habite_concluido",
+          "endereco": "ATALANTA QD 01 LT 24",
+          "setor": "ACROPOLE"
+        },
+        "A3": {
+          "status": "habite_concluido",
+          "endereco": "ATALANTA QD 01 LT 23",
+          "setor": "ACROPOLE"
+        },
+        "A2": {
+          "status": "habite_concluido",
+          "endereco": "ATALANTA QD 01 LT 22",
+          "setor": "ACROPOLE"
+        },
+        "A1": {
+          "status": "habite_concluido",
+          "endereco": "ATALANTA QD 01 LT 21",
+          "setor": "ACROPOLE"
+        }
+      }
+    },
+    {
+      "semana": "2026-W29",
+      "timestamp": "2026-07-13T01:55:29.742608+00:00",
+      "lotes": {
+        "TC 76": {
+          "status": "nao_iniciado",
+          "endereco": "TB 19 QD 50 LT 07",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 77": {
+          "status": "nao_iniciado",
+          "endereco": "TB 19 QD 50 LT 09",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 83": {
+          "status": "nao_iniciado",
+          "endereco": "TB 21 QD 51 LT 38",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 73": {
+          "status": "nao_iniciado",
+          "endereco": "TB 19 QD 51 LT 20",
+          "setor": "TERRABELA CERRADO"
+        },
+        "RV 5": {
+          "status": "em_andamento",
+          "endereco": "RR 02 QD 01 LT 23",
+          "setor": "RAVENA"
+        },
+        "RV 7": {
+          "status": "nao_iniciado",
+          "endereco": "RR 01 QD 01 LT 08",
+          "setor": "RAVENA"
+        },
+        "RV 8": {
+          "status": "nao_iniciado",
+          "endereco": "RR 01 QD 01 LT 09",
+          "setor": "RAVENA"
+        },
+        "TC 68": {
+          "status": "nao_iniciado",
+          "endereco": "TB 19 QD 51 LT 17",
+          "setor": "TERRABELA CERRADO"
+        },
+        "ES1": {
+          "status": "nao_iniciado",
+          "endereco": "66 QD 81 LT 08",
+          "setor": "COND. DAS ESMERALDAS"
+        },
+        "ES2": {
+          "status": "nao_iniciado",
+          "endereco": "52 QD 81 LT 09",
+          "setor": "COND. DAS ESMERALDAS"
+        },
+        "ES4": {
+          "status": "nao_iniciado",
+          "endereco": "52 QD 81 LT 11",
+          "setor": "COND. DAS ESMERALDAS"
+        },
+        "ES5": {
+          "status": "nao_iniciado",
+          "endereco": "52 QD 81 LT 12",
+          "setor": "COND. DAS ESMERALDAS"
+        },
+        "ES3": {
+          "status": "nao_iniciado",
+          "endereco": "52 QD 81 LT 10",
+          "setor": "COND. DAS ESMERALDAS"
+        },
+        "TC 71": {
+          "status": "nao_iniciado",
+          "endereco": "TB 17 QD 49 LT 15",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 70": {
+          "status": "nao_iniciado",
+          "endereco": "TB 17 QD 49 LT 10",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 69": {
+          "status": "nao_iniciado",
+          "endereco": "TB 15 QD 47 LT 18",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 72": {
+          "status": "nao_iniciado",
+          "endereco": "TB 19 QD 51 LT 19",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 67": {
+          "status": "nao_iniciado",
+          "endereco": "TB 19 QD 51 LT 16",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 66": {
+          "status": "em_andamento",
+          "endereco": "TB 19 QD 51 LT 15",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 65": {
+          "status": "em_andamento",
+          "endereco": "TB 19 QD 51 LT 14",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 64": {
+          "status": "em_andamento",
+          "endereco": "TB 19 QD 51 LT 13",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 63": {
+          "status": "em_andamento",
+          "endereco": "TB 21 QD 51 LT 26",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 62": {
+          "status": "nao_iniciado",
+          "endereco": "TB 21 QD 51 LT 23",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 61": {
+          "status": "em_andamento",
+          "endereco": "TB 21 QD 51 LT 29",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 60": {
+          "status": "em_andamento",
+          "endereco": "TB 21 QD 51 LT 28",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 59": {
+          "status": "nao_iniciado",
+          "endereco": "TB 21 QD 50 LT 34",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 58": {
+          "status": "nao_iniciado",
+          "endereco": "TB 14 QD 42 LT 19",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 57": {
+          "status": "nao_iniciado",
+          "endereco": "TB 25 QD 47 LT 44",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 56": {
+          "status": "nao_iniciado",
+          "endereco": "TB 16 QD 47 LT 40",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 55": {
+          "status": "em_andamento",
+          "endereco": "TB 01 QD 49 LT 40",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 54": {
+          "status": "habite_agendado",
+          "endereco": "TB 18 QD 49 LT 38",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 53": {
+          "status": "em_andamento",
+          "endereco": "TB 18 QD 49 LT 37",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 52": {
+          "status": "habite_agendado",
+          "endereco": "TB 18 QD 49 LT 32",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 51": {
+          "status": "habite_concluido",
+          "endereco": "TB 18 QD 49 LT 35",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 50": {
+          "status": "em_andamento",
+          "endereco": "TB 18 QD 49 LT 31",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 49": {
+          "status": "em_andamento",
+          "endereco": "TB 18 QD 49 LT 30",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 48": {
+          "status": "acima_prazo",
+          "endereco": "TB 18 QD 49 LT 29",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 47": {
+          "status": "acima_prazo",
+          "endereco": "TB 18 QD 49 LT 27",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 46": {
+          "status": "habite_concluido",
+          "endereco": "TB 18 QD 49 LT 26",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 45": {
+          "status": "habite_concluido",
+          "endereco": "TB 18 QD 49 LT 24",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 44": {
+          "status": "acima_prazo",
+          "endereco": "TB 21 QD 51 LT 35",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 43": {
+          "status": "acima_prazo",
+          "endereco": "TB 21 QD 51 LT 34",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 42": {
+          "status": "habite_agendado",
+          "endereco": "TB 21 QD 51 LT 33",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 41": {
+          "status": "habite_concluido",
+          "endereco": "TB 21 QD 51 LT 32",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 40": {
+          "status": "acima_prazo",
+          "endereco": "TB 21 QD 50 LT 40",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 39": {
+          "status": "acima_prazo",
+          "endereco": "TB 21 QD 50 LT 39",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 38": {
+          "status": "acima_prazo",
+          "endereco": "TB 21 QD 50 LT 32",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 37": {
+          "status": "acima_prazo",
+          "endereco": "TB 21 QD 50 LT 26",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 36": {
+          "status": "acima_prazo",
+          "endereco": "TB 21 QD 50 LT 25",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 35": {
+          "status": "fin_prazo",
+          "endereco": "TB 19  QD 50 LT 04",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 34": {
+          "status": "fin_prazo",
+          "endereco": "TB 19  QD 50 LT 03",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 33": {
+          "status": "habite_concluido",
+          "endereco": "TB 17 QD 48 LT 46",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 32": {
+          "status": "habite_concluido",
+          "endereco": "TB 17 QD 48 LT 44",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-04-20",
+            "casa": 2,
+            "cliente": "FABIO CARDOSO DOS SANTOS"
+          }
+        },
+        "TC 31": {
+          "status": "habite_concluido",
+          "endereco": "TB 17 QD 48 LT 40",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-06-17",
+            "casa": 1,
+            "cliente": "JESSICA CARA SANTOS DA CONCEIÇ"
+          }
+        },
+        "TC 30": {
+          "status": "em_andamento",
+          "endereco": "TB 17 QD 48 LT 38",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 29": {
+          "status": "acima_prazo",
+          "endereco": "TB 21 QD 46 LT 26",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 28": {
+          "status": "fin_sem_prazo",
+          "endereco": "TB 21 QD 46 LT 18",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-06-02",
+            "casa": 2,
+            "cliente": "WANDERSON GOMES DE FREITAS "
+          }
+        },
+        "TC 27": {
+          "status": "fin_sem_prazo",
+          "endereco": "TB 19 QD 46 LT 07",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-06-12",
+            "casa": 1,
+            "cliente": "ROSILEIDE MARTINS DOS SANTOS"
+          }
+        },
+        "TC 26": {
+          "status": "habite_concluido",
+          "endereco": "TB 14 QD 43 LT 27",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-04-27",
+            "casa": 1,
+            "cliente": "PABLO MICHEL MARCELO RODRIGUES"
+          }
+        },
+        "TC 25": {
+          "status": "habite_concluido",
+          "endereco": "TB 14 QD 43 LT 48",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-04-23",
+            "casa": 1,
+            "cliente": "GEOVANA MARQUES DA SILVA"
+          }
+        },
+        "TC 24": {
+          "status": "habite_concluido",
+          "endereco": "TB 14 QD 43 LT 35",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-04-22",
+            "casa": 2,
+            "cliente": "LUANA RODRIGUES DOS SANTOS"
+          }
+        },
+        "TC 23": {
+          "status": "habite_concluido",
+          "endereco": "TB 17 QD 48 LT 41",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-05-22",
+            "casa": 1,
+            "cliente": "JAILINE SANTOS DE SANTANA"
+          }
+        },
+        "TC 22": {
+          "status": "habite_concluido",
+          "endereco": "TB 14 QD 43 LT 31",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-04-29",
+            "casa": 1,
+            "cliente": "LEANDRO LIMA BERALDO"
+          }
+        },
+        "TC 21": {
+          "status": "habite_concluido",
+          "endereco": "TB 06 QD 39 LT 51",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-11-06",
+            "casa": 1,
+            "cliente": "PEDRO VITOR PEREIRA DE SÁ"
+          }
+        },
+        "TC 20": {
+          "status": "habite_concluido",
+          "endereco": "TB 14 QD 43 LT 29",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-06-12",
+            "casa": 1,
+            "cliente": "MARCIA CRISTINA DA  COSTA "
+          }
+        },
+        "TC 19": {
+          "status": "habite_concluido",
+          "endereco": "TB 05 QD 40 LT 01",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 18": {
+          "status": "habite_concluido",
+          "endereco": "TB 21 QD 42 LT 14",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-05-22",
+            "casa": 1,
+            "cliente": "FERNANDA ILARINDO MOURA"
+          }
+        },
+        "TC 17": {
+          "status": "habite_concluido",
+          "endereco": "TB 21 QD 42 LT 13",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-03-17",
+            "casa": 1,
+            "cliente": "INGRID VITORIA DOS SANTOS"
+          }
+        },
+        "TC 16": {
+          "status": "habite_concluido",
+          "endereco": "TB 06 QD 40 LT 38",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 15": {
+          "status": "habite_concluido",
+          "endereco": "TB 06 QD 40 LT 37",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 14": {
+          "status": "habite_concluido",
+          "endereco": "TB 06 QD 40 LT 35",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 13": {
+          "status": "habite_concluido",
+          "endereco": "TB 06 QD 40 LT 34",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 12": {
+          "status": "habite_concluido",
+          "endereco": "TB 06 QD 40 LT 33",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 11": {
+          "status": "habite_concluido",
+          "endereco": "TB 21 QD 40 LT 30",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-01-12",
+            "casa": 1,
+            "cliente": "FRANCIANE CRISTINA PERERA MATOS"
+          }
+        },
+        "TC 10": {
+          "status": "habite_concluido",
+          "endereco": "TB 20 QD 38 LT 01",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-11-18",
+            "casa": 2,
+            "cliente": "TAMILLIS RIBEIRO DA SILVA"
+          }
+        },
+        "TC 9": {
+          "status": "habite_concluido",
+          "endereco": "TB 20 QD 37 LT 17",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-06-10",
+            "casa": 1,
+            "cliente": "AUCIONE VIEIRA DE SOUSA"
+          }
+        },
+        "TC 8": {
+          "status": "habite_concluido",
+          "endereco": "TB 05 QD 37 LT 23",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-10-27",
+            "casa": 1,
+            "cliente": "CEZAR HENRIQUE JUNIO PONTES DE MORAIS"
+          }
+        },
+        "TC 7": {
+          "status": "habite_concluido",
+          "endereco": "TB 01 QD 39 LT 01",
+          "setor": "TERRABELA CERRADO"
+        },
+        "TC 6": {
+          "status": "habite_concluido",
+          "endereco": "TB 01 QD 39 LT 54",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-03-11",
+            "casa": 1,
+            "cliente": "BRENA DOS SANTOS PEREIRA"
+          }
+        },
+        "TC 5": {
+          "status": "habite_concluido",
+          "endereco": "TB 05 QD 37 LT 21",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-10-15",
+            "casa": 1,
+            "cliente": "ANTONIA JULIANE COSTA MOURÃO"
+          }
+        },
+        "TC 4": {
+          "status": "habite_concluido",
+          "endereco": "TB 06 QD 39 LT 53",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-02-19",
+            "casa": 1,
+            "cliente": "DUCICLEIA CARVALHO TORREJON"
+          }
+        },
+        "TC 3": {
+          "status": "habite_concluido",
+          "endereco": "TB 06 QD 39 LT 31",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-11-10",
+            "casa": 1,
+            "cliente": "ANDERSON FILIPE DE SOUSA SANTOS"
+          }
+        },
+        "TC 2": {
+          "status": "habite_concluido",
+          "endereco": "TB 06 QD 39 LT 29",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-09-09",
+            "casa": 1,
+            "cliente": "ALEXANDRE KAYNON CEROZIMO PAULINO"
+          }
+        },
+        "TC 1": {
+          "status": "habite_concluido",
+          "endereco": "TB 06 QD 39 LT 28",
+          "setor": "TERRABELA CERRADO",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-11-28",
+            "casa": 1,
+            "cliente": "ANTONIA NOGUEIRA SOARES"
+          }
+        },
+        "SE 2": {
+          "status": "fin_sem_prazo",
+          "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
+          "setor": "ST EFIGÊNIA"
+        },
+        "SE 1": {
+          "status": "fin_sem_prazo",
+          "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
+          "setor": "ST EFIGÊNIA",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-06-01",
+            "casa": 2,
+            "cliente": "SILVANIA  CALDEIRA DE MOURA"
+          }
+        },
+        "SV 6": {
+          "status": "nao_iniciado",
+          "endereco": "SV 26 QD 40 LT 17",
+          "setor": "SOLAR VILLE"
+        },
+        "SV 5": {
+          "status": "nao_iniciado",
+          "endereco": "SV 13 QD 40 LT 18",
+          "setor": "SOLAR VILLE"
+        },
+        "SV 4": {
+          "status": "nao_iniciado",
+          "endereco": "SV 13 QD 40 LT 19",
+          "setor": "SOLAR VILLE"
+        },
+        "SV 3": {
+          "status": "nao_iniciado",
+          "endereco": "SV 24 QD 40 LT 22",
+          "setor": "SOLAR VILLE"
+        },
+        "SV 2": {
+          "status": "nao_iniciado",
+          "endereco": "SV 24 QD 40 LT 21",
+          "setor": "SOLAR VILLE"
+        },
+        "SV 1": {
+          "status": "nao_iniciado",
+          "endereco": "SV 13 QD 40 LT 20",
+          "setor": "SOLAR VILLE"
+        },
+        "RV 4": {
+          "status": "nao_iniciado",
+          "endereco": "RR 02 QD 01 LT 29",
+          "setor": "RAVENA"
+        },
+        "RV 3": {
+          "status": "habite_agendado",
+          "endereco": "RR 15 QD 02 LT 12",
+          "setor": "RAVENA"
+        },
+        "RV 2": {
+          "status": "nao_iniciado",
+          "endereco": "RR 03 QD 02 LT 20",
+          "setor": "RAVENA"
+        },
+        "RV 1": {
+          "status": "em_andamento",
+          "endereco": "RR 01 QD 01 LT 12",
+          "setor": "RAVENA"
+        },
+        "BR 19": {
+          "status": "acima_prazo",
+          "endereco": "RPB 24 QD 26A LT 17",
+          "setor": "PQ DOS BURITIS",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-05-19",
+            "casa": 1,
+            "cliente": "HALANE EDUARA DE OLIVEIRA FEITOSA"
+          }
+        },
+        "BR 18": {
+          "status": "acima_prazo",
+          "endereco": "RPB 24 QD 26A LT 16",
+          "setor": "PQ DOS BURITIS",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-05-15",
+            "casa": 1,
+            "cliente": "EULER NASCIMENTO DE SOUZA"
+          }
+        },
+        "BR 17": {
+          "status": "acima_prazo",
+          "endereco": "RPB 24 QD 26A LT 15",
+          "setor": "PQ DOS BURITIS",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-06-22",
+            "casa": 1,
+            "cliente": " MARIA EDUARDA ARAÚJO MELO"
+          }
+        },
+        "BR 16": {
+          "status": "acima_prazo",
+          "endereco": "RPB 24 QD 26A LT 14",
+          "setor": "PQ DOS BURITIS"
+        },
+        "BR 15": {
+          "status": "acima_prazo",
+          "endereco": "RPB 24 QD 26A LT 13",
+          "setor": "PQ DOS BURITIS"
+        },
+        "BR 14": {
+          "status": "em_andamento",
+          "endereco": "RPB 24 QD 26A LT 12",
+          "setor": "PQ DOS BURITIS"
+        },
+        "BR 13": {
+          "status": "em_andamento",
+          "endereco": "RPB 24 QD 26A LT 11",
+          "setor": "PQ DOS BURITIS"
+        },
+        "BR 12": {
+          "status": "em_andamento",
+          "endereco": "RPB 24 QD 26A LT 10",
+          "setor": "PQ DOS BURITIS"
+        },
+        "BR 11": {
+          "status": "nao_iniciado",
+          "endereco": "RPB 24 QD 26A LT 09",
+          "setor": "PQ DOS BURITIS"
+        },
+        "BR 10": {
+          "status": "em_andamento",
+          "endereco": "RPB 24 QD 26A LT 08",
+          "setor": "PQ DOS BURITIS"
+        },
+        "BR 9": {
+          "status": "em_andamento",
+          "endereco": "RPB 24 QD 26A LT 07",
+          "setor": "PQ DOS BURITIS"
+        },
+        "BR 8": {
+          "status": "habite_agendado",
+          "endereco": "RPB 24 QD 26A LT 06",
+          "setor": "PQ DOS BURITIS"
+        },
+        "BR 7": {
+          "status": "em_andamento",
+          "endereco": "RPB 24 QD 26A LT 05",
+          "setor": "PQ DOS BURITIS"
+        },
+        "BR 6": {
+          "status": "em_andamento",
+          "endereco": "RPB 24 QD 26A LT 04",
+          "setor": "PQ DOS BURITIS"
+        },
+        "BR 5": {
+          "status": "nao_iniciado",
+          "endereco": "RPB 24 QD 26A LT 02",
+          "setor": "PQ DOS BURITIS"
+        },
+        "BR 4": {
+          "status": "nao_iniciado",
+          "endereco": "RPB 24 QD 26A LT 01",
+          "setor": "PQ DOS BURITIS"
+        },
+        "BR 3": {
+          "status": "acima_prazo",
+          "endereco": "RPB 24 QD 28 LT 01",
+          "setor": "PQ DOS BURITIS",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-05-19",
+            "casa": 1,
+            "cliente": "MARCELO AUGUSTO ALMEIDA COELHO"
+          }
+        },
+        "BR 2": {
+          "status": "fin_sem_prazo",
+          "endereco": "RPB 24 QD 29 LT 42",
+          "setor": "PQ DOS BURITIS",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-02-23",
+            "casa": 1,
+            "cliente": "ANTONY EDUARDO GODOY DANTAS"
+          }
+        },
+        "BR 1": {
+          "status": "fin_sem_prazo",
+          "endereco": "RPB 21 QD 26 LT 1--2",
+          "setor": "PQ DOS BURITIS",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-09-11",
+            "casa": 1,
+            "cliente": "KAMILLY DE SOUZA BORGES"
+          }
+        },
+        "MQA 3": {
+          "status": "em_andamento",
+          "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
+          "setor": "MARQUES DE ABREU"
+        },
+        "MQA 2": {
+          "status": "habite_concluido",
+          "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
+          "setor": "MARQUES DE ABREU"
+        },
+        "MQA 1": {
+          "status": "em_andamento",
+          "endereco": "DONA MORENA QD 18 LT 8-11 B1",
+          "setor": "MARQUES DE ABREU"
+        },
+        "JB 6": {
+          "status": "em_andamento",
+          "endereco": "FERROVIARIOS QD 01 LT 17",
+          "setor": "JOÃO BRAZ"
+        },
+        "JB 5": {
+          "status": "em_andamento",
+          "endereco": "FERROVIARIOS QD 01 LT 16",
+          "setor": "JOÃO BRAZ"
+        },
+        "JB 4": {
+          "status": "habite_concluido",
+          "endereco": "FERROVIARIOS QD 01 LT 15",
+          "setor": "JOÃO BRAZ"
+        },
+        "JB 3": {
+          "status": "habite_concluido",
+          "endereco": "FERROVIARIOS QD 01 LT 14",
+          "setor": "JOÃO BRAZ"
+        },
+        "JB 2": {
+          "status": "acima_prazo",
+          "endereco": "FERROVIARIOS QD 01 LT 13",
+          "setor": "JOÃO BRAZ",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-07-03",
+            "casa": 1,
+            "cliente": "MARIA SILVA"
+          }
+        },
+        "JB 1": {
+          "status": "acima_prazo",
+          "endereco": "FERROVIARIOS QD 01 LT 12",
+          "setor": "JOÃO BRAZ",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-06-12",
+            "casa": 1,
+            "cliente": "JOHNY RIBEIRO DA SILVA "
+          }
+        },
+        "ITAIPU 1": {
+          "status": "fin_sem_prazo",
+          "endereco": "W 6 QD 17 LT 06",
+          "setor": "ITAIPU",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-04-17",
+            "casa": 1,
+            "cliente": "ARIANE SOUZA DE MEDEIROS"
+          }
+        },
+        "IP 12": {
+          "status": "fin_sem_prazo",
+          "endereco": "I-4 QD 04 LT 23",
+          "setor": "IPANEMA",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-11-19",
+            "casa": 1,
+            "cliente": "PAULO HENRIQUE DA SLVA RODRIGUES"
+          }
+        },
+        "IP 11": {
+          "status": "fin_sem_prazo",
+          "endereco": "I-4 QD 04 LT 22",
+          "setor": "IPANEMA",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-01-09",
+            "casa": 1,
+            "cliente": "WANDERLAN NUNES LUIZ"
+          }
+        },
+        "IP 10": {
+          "status": "fin_sem_prazo",
+          "endereco": "I-4 QD 04 LT 21",
+          "setor": "IPANEMA",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-09-03",
+            "casa": 1,
+            "cliente": "MAIKA BATISTA DOS SANTO"
+          }
+        },
+        "IP 9": {
+          "status": "fin_sem_prazo",
+          "endereco": "I-4 QD 04 LT 20",
+          "setor": "IPANEMA",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-08-29",
+            "casa": 1,
+            "cliente": "ADEMILTON CORREA DE MORAIS"
+          }
+        },
+        "IP 8": {
+          "status": "fin_sem_prazo",
+          "endereco": "I-4 QD 04 LT 19",
+          "setor": "IPANEMA",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-09-08",
+            "casa": 1,
+            "cliente": "RENATA LARA DE FARIA"
+          }
+        },
+        "IP 7": {
+          "status": "fin_sem_prazo",
+          "endereco": "I-3 QD 04 LT 18",
+          "setor": "IPANEMA",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-10-20",
+            "casa": 1,
+            "cliente": "LUIZA RODRIGUES PEREIRA"
+          }
+        },
+        "IP 6": {
+          "status": "fin_sem_prazo",
+          "endereco": "I-3 QD 04 LT 17",
+          "setor": "IPANEMA",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2025-04-11",
+            "casa": 1,
+            "cliente": "MAURICIO AUGUSTO CENTENO"
+          }
+        },
+        "IP 5": {
+          "status": "fin_sem_prazo",
+          "endereco": "AV. FRANÇA QD 04 LT 16",
+          "setor": "IPANEMA",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-06-12",
+            "casa": 1,
+            "cliente": "PEDRO  ELEOMAR  MENDONÇA  DA SILVA  JÚNIOR "
+          }
+        },
+        "IP 4": {
+          "status": "fin_sem_prazo",
+          "endereco": "AV. FRANÇA QD 04 LT 15",
+          "setor": "IPANEMA",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-03-31",
+            "casa": 1,
+            "cliente": "JOSILENE ALVES DOS SANTOS"
+          }
+        },
+        "IP 3": {
+          "status": "fin_sem_prazo",
+          "endereco": "AV. FRANÇA QD 04 LT 14",
+          "setor": "IPANEMA",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-01-09",
+            "casa": 1,
+            "cliente": "MARIA EDILEUSA AVES PEREIRA"
+          }
+        },
+        "IP 2": {
+          "status": "fin_sem_prazo",
+          "endereco": "AV. FRANÇA QD 04 LT 13",
+          "setor": "IPANEMA",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-02-23",
+            "casa": 1,
+            "cliente": "DEBORAH RODRIGUES DA SILVA"
+          }
+        },
+        "IP 1": {
+          "status": "fin_sem_prazo",
+          "endereco": "AV. FRANÇA QD 04 LT 12",
+          "setor": "IPANEMA",
+          "pre_vistoria": {
+            "agendou": "SIM",
+            "data": "2026-01-22",
+            "casa": 1,
+            "cliente": "RUBENS DA COSTA SANTOS"
+          }
+        },
+        "A10": {
+          "status": "em_andamento",
+          "endereco": "APOLO LYKEIOS QD 01 LT 37",
+          "setor": "ACROPOLE"
+        },
+        "A9": {
+          "status": "habite_agendado",
           "endereco": "APOLO LYKEIOS QD 01 LT 36",
           "setor": "ACROPOLE"
         },
