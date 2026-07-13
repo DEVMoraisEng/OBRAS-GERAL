@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-13T03:00:44.430835+00:00",
+  "updated_at": "2026-07-13T06:45:58.444615+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -5973,7 +5973,7 @@
     {
       "endereco": "TB 21 QD 50 LT 39",
       "casa": 2,
-      "clientes": "DANIE DE SOUSA SIVA",
+      "clientes": "DANIEL DE SOUSA SIVA",
       "data_venda": "2026-07-09",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
@@ -6119,9 +6119,9 @@
       "casa": 1,
       "clientes": "MARIA FRANCISCA OLIVEIRA DOS ANJOS",
       "data_venda": "2026-02-03",
-      "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "entregou_casa": "SIM",
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-05-21"
     },
     {
       "endereco": "TB 19 QD 46 LT 07",
@@ -8322,9 +8322,9 @@
       "setor": "TERRABELA CERRADO",
       "pre_vistoria": {
         "agendou": "SIM",
-        "data": "2025-11-18",
-        "casa": 2,
-        "cliente": "TAMILLIS RIBEIRO DA SILVA"
+        "data": "2026-05-21",
+        "casa": 1,
+        "cliente": "MARIA FRANCISCA OLIVEIRA DOS ANJOS"
       }
     },
     "TC 9": {
