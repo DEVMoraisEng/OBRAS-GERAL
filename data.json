@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-13T15:00:56.805571+00:00",
+  "updated_at": "2026-07-13T17:48:41.275197+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -306,7 +306,7 @@
       "aprovou_habite_se": "NÃO",
       "data_habite_se": null,
       "turno_habite_se": null,
-      "escritura_assinada": "NÃO",
+      "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
@@ -342,7 +342,7 @@
       "aprovou_habite_se": "NÃO",
       "data_habite_se": null,
       "turno_habite_se": null,
-      "escritura_assinada": "NÃO",
+      "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
@@ -378,7 +378,7 @@
       "aprovou_habite_se": "NÃO",
       "data_habite_se": null,
       "turno_habite_se": null,
-      "escritura_assinada": "NÃO",
+      "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
@@ -6074,7 +6074,7 @@
       "casa": 1,
       "clientes": "INGRID VITORIA DOS SANTOS",
       "data_venda": "2026-02-10",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-03-17"
     },
@@ -6704,7 +6704,7 @@
       "casa": 3,
       "clientes": "FERNANDO ARAUJO DE SOUZA",
       "data_venda": "2025-10-06",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": null
     },
@@ -7412,15 +7412,6 @@
     },
     {
       "endereco": "FERROVIARIOS QD 01 LT 13",
-      "casa": 2,
-      "clientes": "ALESSANDRA DE SOUSA SILVA ",
-      "data_venda": "2026-05-19",
-      "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
-    },
-    {
-      "endereco": "FERROVIARIOS QD 01 LT 13",
       "casa": 1,
       "clientes": "MARIA SILVA",
       "data_venda": "2026-06-12",
@@ -7730,7 +7721,7 @@
       "casa": 2,
       "clientes": "LARA ESTER SOUSA ROCHA",
       "data_venda": "2026-04-07",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-05-07"
     },
