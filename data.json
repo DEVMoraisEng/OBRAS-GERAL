@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-13T17:48:41.275197+00:00",
+  "updated_at": "2026-07-13T19:00:52.076773+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -7163,7 +7163,7 @@
       "casa": 1,
       "clientes": " MARIA EDUARDA ARAÚJO MELO",
       "data_venda": "2026-05-05",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-22"
     },
@@ -7217,6 +7217,15 @@
       "casa": 1,
       "clientes": "JOAO MARIA DE ALBUQUERQUE ",
       "data_venda": "2026-05-12",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 07",
+      "casa": 2,
+      "clientes": "VICTOR AUGUSTO DOURADO ",
+      "data_venda": "2026-07-08",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
