@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-13T19:00:52.076773+00:00",
+  "updated_at": "2026-07-13T20:50:58.097542+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -819,7 +819,7 @@
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "SIM",
       "contrato_investidor": "NÃO",
-      "taxas_alvara_pagas": "NÃO",
+      "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": "NÃO",
@@ -1871,7 +1871,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "TB 18 QD 49 LT 27",
@@ -6830,7 +6830,7 @@
       "casa": 2,
       "clientes": "SUZANE DOS SANTOS OLIVEIRA S NASCIMENTO",
       "data_venda": "2026-04-24",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-16"
     },
