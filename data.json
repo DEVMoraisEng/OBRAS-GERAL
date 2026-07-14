@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-14T13:11:34.268537+00:00",
+  "updated_at": "2026-07-14T15:00:55.172874+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -5953,6 +5953,15 @@
       "data_pre_vistoria": "2026-06-10"
     },
     {
+      "endereco": "TB 21 QD 51 LT 35",
+      "casa": 2,
+      "clientes": "LETICIA MORAES FREITAS ",
+      "data_venda": "2026-07-13",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
       "endereco": "TB 21 QD 50 LT 40",
       "casa": 2,
       "clientes": "GILBERTO DA SILVA BRITO",
@@ -6129,8 +6138,8 @@
       "clientes": "EDNA BISPO SANTOS ",
       "data_venda": "2026-06-25",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-07-14"
     },
     {
       "endereco": "TB 19 QD 46 LT 07",
