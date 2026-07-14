@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-14T17:04:25.806588+00:00",
+  "updated_at": "2026-07-14T19:00:47.130516+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -4492,10 +4492,10 @@
       "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
-      "projeto_aprovado": "NÃO",
+      "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
-      "taxas_habite_se": "NÃO",
+      "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
