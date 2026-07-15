@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-15T20:51:01.334133+00:00",
+  "updated_at": "2026-07-15T23:00:48.535210+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -838,9 +838,9 @@
       "mestre": "MOACIR",
       "despachante": "MESSIAS",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-07-14",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -1342,9 +1342,9 @@
       "mestre": "MAYCON",
       "despachante": "YAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-07-13",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -1596,7 +1596,7 @@
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": "2026-07-06",
+      "data_inicio_obra": "2026-07-10",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -5591,9 +5591,9 @@
       "despachante": "MESSIAS",
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
-      "obra_finalizada": "NÃO",
+      "obra_finalizada": "SIM",
       "data_inicio_obra": "2025-11-13",
-      "data_termino_obra": null,
+      "data_termino_obra": "2026-07-08",
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "SIM",
       "data_habite_se": "2026-05-04",
@@ -5627,9 +5627,9 @@
       "despachante": "MESSIAS",
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
-      "obra_finalizada": "NÃO",
+      "obra_finalizada": "SIM",
       "data_inicio_obra": "2025-11-13",
-      "data_termino_obra": null,
+      "data_termino_obra": "2026-07-08",
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "SIM",
       "data_habite_se": "2026-05-04",
@@ -5735,9 +5735,9 @@
       "despachante": "MESSIAS",
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
-      "obra_finalizada": "NÃO",
+      "obra_finalizada": "SIM",
       "data_inicio_obra": "2025-11-16",
-      "data_termino_obra": null,
+      "data_termino_obra": "2026-07-16",
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "SIM",
       "data_habite_se": "2026-05-15",
@@ -5771,9 +5771,9 @@
       "despachante": "MESSIAS",
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
-      "obra_finalizada": "NÃO",
+      "obra_finalizada": "SIM",
       "data_inicio_obra": "2025-11-16",
-      "data_termino_obra": null,
+      "data_termino_obra": "2026-07-15",
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "SIM",
       "data_habite_se": "2026-05-15",
@@ -5807,9 +5807,9 @@
       "despachante": "MESSIAS",
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
-      "obra_finalizada": "NÃO",
+      "obra_finalizada": "SIM",
       "data_inicio_obra": "2025-11-16",
-      "data_termino_obra": null,
+      "data_termino_obra": "2026-07-08",
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "SIM",
       "data_habite_se": "2026-05-15",
@@ -7912,7 +7912,7 @@
       "setor": "TERRABELA CERRADO"
     },
     "ES1": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "66 QD 81 LT 08",
       "setor": "COND. DAS ESMERALDAS"
     },
@@ -7982,7 +7982,7 @@
       "setor": "TERRABELA CERRADO"
     },
     "TC 62": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "TB 21 QD 51 LT 23",
       "setor": "TERRABELA CERRADO"
     },
@@ -8842,12 +8842,12 @@
       "setor": "ACROPOLE"
     },
     "A7": {
-      "status": "habite_concluido",
+      "status": "acima_prazo",
       "endereco": "APOLO LYKEIOS QD 01 LT 34",
       "setor": "ACROPOLE"
     },
     "A6": {
-      "status": "habite_concluido",
+      "status": "acima_prazo",
       "endereco": "APOLO LYKEIOS QD 01 LT 33",
       "setor": "ACROPOLE"
     },
@@ -8862,17 +8862,17 @@
       "setor": "ACROPOLE"
     },
     "A3": {
-      "status": "habite_concluido",
+      "status": "acima_prazo",
       "endereco": "ATALANTA QD 01 LT 23",
       "setor": "ACROPOLE"
     },
     "A2": {
-      "status": "habite_concluido",
+      "status": "acima_prazo",
       "endereco": "ATALANTA QD 01 LT 22",
       "setor": "ACROPOLE"
     },
     "A1": {
-      "status": "habite_concluido",
+      "status": "acima_prazo",
       "endereco": "ATALANTA QD 01 LT 21",
       "setor": "ACROPOLE"
     }
