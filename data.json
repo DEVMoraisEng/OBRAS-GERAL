@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-15T23:00:48.535210+00:00",
+  "updated_at": "2026-07-16T01:48:49.994007+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -7420,11 +7420,20 @@
       "data_pre_vistoria": "2000-01-01"
     },
     {
+      "endereco": "FERROVIARIOS QD 01 LT 14",
+      "casa": 2,
+      "clientes": "LUANA KETHULLY SILVA SOUZA",
+      "data_venda": "2026-07-15",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
       "endereco": "FERROVIARIOS QD 01 LT 13",
       "casa": 3,
       "clientes": "LAILA RODRIGUES DA SILVA ",
       "data_venda": "2026-04-27",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-26"
     },
