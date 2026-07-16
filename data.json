@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-16T15:00:38.050182+00:00",
+  "updated_at": "2026-07-16T17:05:09.824514+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -1310,10 +1310,10 @@
       "obra_finalizada": "NÃO",
       "data_inicio_obra": "2026-06-01",
       "data_termino_obra": null,
-      "agendou_habite_se": "NÃO",
+      "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": null,
-      "turno_habite_se": null,
+      "data_habite_se": "2026-08-03",
+      "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
@@ -1382,10 +1382,10 @@
       "obra_finalizada": "NÃO",
       "data_inicio_obra": "2026-05-20",
       "data_termino_obra": null,
-      "agendou_habite_se": "NÃO",
+      "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": null,
-      "turno_habite_se": null,
+      "data_habite_se": "2026-08-03",
+      "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
@@ -1397,8 +1397,8 @@
       "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
-      "incorporacao_finalizada": "NÃO",
-      "ret_armazenado": null,
+      "incorporacao_finalizada": "INEXISTE",
+      "ret_armazenado": "INEXISTE",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
@@ -2500,7 +2500,7 @@
       "data_termino_obra": null,
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": "2026-07-17",
+      "data_habite_se": "2026-07-24",
       "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
@@ -5523,7 +5523,7 @@
       "data_inicio_obra": "2026-01-22",
       "data_termino_obra": null,
       "agendou_habite_se": "SIM",
-      "aprovou_habite_se": "NÃO",
+      "aprovou_habite_se": "SIM",
       "data_habite_se": "2026-07-13",
       "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
@@ -5558,10 +5558,10 @@
       "obra_finalizada": "NÃO",
       "data_inicio_obra": "2026-01-22",
       "data_termino_obra": null,
-      "agendou_habite_se": "NÃO",
-      "aprovou_habite_se": "NÃO",
-      "data_habite_se": null,
-      "turno_habite_se": null,
+      "agendou_habite_se": "SIM",
+      "aprovou_habite_se": "SIM",
+      "data_habite_se": "2026-07-13",
+      "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
@@ -6610,6 +6610,15 @@
       "data_pre_vistoria": "2025-01-01"
     },
     {
+      "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
+      "casa": 2,
+      "clientes": "VALQUIRIA FERREIRA DA COSTA",
+      "data_venda": "2026-07-14",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
       "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
       "casa": 2,
       "clientes": "SILVANIA  CALDEIRA DE MOURA",
@@ -7429,6 +7438,15 @@
       "data_pre_vistoria": null
     },
     {
+      "endereco": "FERROVIARIOS QD 01 LT 14",
+      "casa": 1,
+      "clientes": "WIILHAN SANTOS DA SILVA",
+      "data_venda": "2026-07-14",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
       "endereco": "FERROVIARIOS QD 01 LT 13",
       "casa": 3,
       "clientes": "LAILA RODRIGUES DA SILVA ",
@@ -7461,8 +7479,8 @@
       "clientes": "JAKSON DELFINO DOS SANTOS",
       "data_venda": "2026-06-11",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-07-17"
     },
     {
       "endereco": "FERROVIARIOS QD 01 LT 12",
@@ -7986,7 +8004,7 @@
       "setor": "TERRABELA CERRADO"
     },
     "TC 63": {
-      "status": "em_andamento",
+      "status": "habite_agendado",
       "endereco": "TB 21 QD 51 LT 26",
       "setor": "TERRABELA CERRADO"
     },
@@ -7996,7 +8014,7 @@
       "setor": "TERRABELA CERRADO"
     },
     "TC 61": {
-      "status": "em_andamento",
+      "status": "habite_agendado",
       "endereco": "TB 21 QD 51 LT 29",
       "setor": "TERRABELA CERRADO"
     },
@@ -8841,12 +8859,12 @@
       "setor": "ACROPOLE"
     },
     "A9": {
-      "status": "habite_agendado",
+      "status": "habite_concluido",
       "endereco": "APOLO LYKEIOS QD 01 LT 36",
       "setor": "ACROPOLE"
     },
     "A8": {
-      "status": "em_andamento",
+      "status": "habite_concluido",
       "endereco": "APOLO LYKEIOS QD 01 LT 35",
       "setor": "ACROPOLE"
     },
