@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-17T17:01:47.715354+00:00",
+  "updated_at": "2026-07-17T19:00:43.472342+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -4174,7 +4174,7 @@
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
-      "armazenou_habite": "NÃO",
+      "armazenou_habite": "SIM",
       "certidoes_matricula": "SIM"
     },
     {
