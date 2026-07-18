@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-18T01:42:30.528248+00:00",
+  "updated_at": "2026-07-18T03:00:34.438418+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -6526,7 +6526,7 @@
       "data_venda": "2025-02-10",
       "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": "2000-01-01"
+      "data_pre_vistoria": "2025-04-01"
     },
     {
       "endereco": "GYN 23 QD 86 LT 25",
@@ -6866,9 +6866,9 @@
       "casa": 2,
       "clientes": "LIELSON DE SOUSA RIBEIRO",
       "data_venda": "2026-05-06",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "ÁGIO",
-      "data_pre_vistoria": null
+      "data_pre_vistoria": "2026-06-16"
     },
     {
       "endereco": "RR 15 QD 01 LT 15",
