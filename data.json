@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-20T19:00:38.087121+00:00",
+  "updated_at": "2026-07-20T21:02:12.534138+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -6012,8 +6012,8 @@
       "clientes": "PEDRO THALISSON SILVA RODRIGUES",
       "data_venda": "2026-06-10",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-07-15"
     },
     {
       "endereco": "TB 21 QD 50 LT 26",
@@ -8140,7 +8140,13 @@
     "TC 38": {
       "status": "acima_prazo",
       "endereco": "TB 21 QD 50 LT 32",
-      "setor": "TERRABELA CERRADO"
+      "setor": "TERRABELA CERRADO",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-07-15",
+        "casa": 1,
+        "cliente": "PEDRO THALISSON SILVA RODRIGUES"
+      }
     },
     "TC 37": {
       "status": "acima_prazo",
