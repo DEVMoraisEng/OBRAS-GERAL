@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-20T13:49:45.087644+00:00",
+  "updated_at": "2026-07-20T15:00:47.498593+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -6011,6 +6011,15 @@
       "casa": 1,
       "clientes": "PEDRO THALISSON SILVA RODRIGUES",
       "data_venda": "2026-06-10",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "TB 21 QD 50 LT 26",
+      "casa": 2,
+      "clientes": "EVERCINO BARBOSA RODRIGUES",
+      "data_venda": "2026-07-16",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
