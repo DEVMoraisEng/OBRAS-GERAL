@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-20T21:02:12.534138+00:00",
+  "updated_at": "2026-07-20T23:00:43.365017+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -1650,7 +1650,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": "NÃO",
+      "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
@@ -1830,7 +1830,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": "NÃO",
+      "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
@@ -1938,7 +1938,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": "NÃO",
+      "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
