@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-22T23:00:38.278167+00:00",
+  "updated_at": "2026-07-23T01:56:56.798959+00:00",
   "documentos": [
     {
       "endereco": "XERENTES QD 129 LT 71B",
@@ -7209,8 +7209,8 @@
       "clientes": "WANDERSON PEREIRA SABOIA",
       "data_venda": "2026-06-26",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-07-22"
     },
     {
       "endereco": "RPB 24 QD 26A LT 14",
@@ -8582,7 +8582,13 @@
     "BR 16": {
       "status": "acima_prazo",
       "endereco": "RPB 24 QD 26A LT 14",
-      "setor": "PQ DOS BURITIS"
+      "setor": "PQ DOS BURITIS",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-07-22",
+        "casa": 2,
+        "cliente": "WANDERSON PEREIRA SABOIA"
+      }
     },
     "BR 15": {
       "status": "acima_prazo",
