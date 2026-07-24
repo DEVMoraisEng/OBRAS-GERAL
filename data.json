@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-24T17:21:01.881684+00:00",
+  "updated_at": "2026-07-24T19:00:39.600009+00:00",
   "documentos": [
     {
       "endereco": "RR 03 QD 03 LT 05",
@@ -343,7 +343,7 @@
       "data_habite_se": null,
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
@@ -379,7 +379,7 @@
       "data_habite_se": null,
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
@@ -596,10 +596,10 @@
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
-      "registro_pago": "NÃO",
+      "registro_pago": "SIM",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
@@ -7227,8 +7227,8 @@
       "clientes": "GLEICIENE RAMOS DE ALMEIDA",
       "data_venda": "2026-06-25",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-07-24"
     },
     {
       "endereco": "RPB 24 QD 26A LT 15",
@@ -7938,8 +7938,8 @@
       "clientes": "CAMILLA COSTA DE SOUZA",
       "data_venda": "2026-07-07",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-07-27"
     },
     {
       "endereco": "APOLO LYKEIOS QD 01 LT 33",
@@ -8942,7 +8942,13 @@
     "A6": {
       "status": "acima_prazo",
       "endereco": "APOLO LYKEIOS QD 01 LT 33",
-      "setor": "ACROPOLE"
+      "setor": "ACROPOLE",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-07-27",
+        "casa": 2,
+        "cliente": "CAMILLA COSTA DE SOUZA"
+      }
     },
     "A5": {
       "status": "habite_concluido",
