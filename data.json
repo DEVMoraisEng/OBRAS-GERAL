@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-24T15:00:43.059994+00:00",
+  "updated_at": "2026-07-24T17:21:01.881684+00:00",
   "documentos": [
     {
       "endereco": "RR 03 QD 03 LT 05",
@@ -5540,7 +5540,7 @@
       "incorporacao_finalizada": "SIM",
       "ret_armazenado": "SIM",
       "taxas_habite_se": "NÃO",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
@@ -5576,7 +5576,7 @@
       "incorporacao_finalizada": "SIM",
       "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
@@ -5720,7 +5720,7 @@
       "incorporacao_finalizada": "INEXISTE",
       "ret_armazenado": "INEXISTE",
       "taxas_habite_se": "SIM",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "SIM",
       "certidoes_matricula": "NÃO"
