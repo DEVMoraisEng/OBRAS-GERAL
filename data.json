@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-24T13:19:03.128384+00:00",
+  "updated_at": "2026-07-24T15:00:43.059994+00:00",
   "documentos": [
     {
       "endereco": "RR 03 QD 03 LT 05",
@@ -635,7 +635,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "SIM",
@@ -779,7 +779,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "SIM",
       "contrato_investidor": "NÃO",
@@ -815,7 +815,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
@@ -6093,8 +6093,8 @@
       "clientes": "ISABELLA RENATA GONÇALVES DE FARIAS",
       "data_venda": "2026-06-13",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-07-24"
     },
     {
       "endereco": "TB 21 QD 42 LT 14",
@@ -8256,9 +8256,9 @@
       "setor": "TERRABELA CERRADO",
       "pre_vistoria": {
         "agendou": "SIM",
-        "data": "2026-06-02",
-        "casa": 2,
-        "cliente": "WANDERSON GOMES DE FREITAS "
+        "data": "2026-07-24",
+        "casa": 1,
+        "cliente": "ISABELLA RENATA GONÇALVES DE FARIAS"
       }
     },
     "TC 27": {
