@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-24T19:00:39.600009+00:00",
+  "updated_at": "2026-07-24T20:55:34.330545+00:00",
   "documentos": [
     {
       "endereco": "RR 03 QD 03 LT 05",
@@ -668,7 +668,7 @@
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
-      "registro_pago": "NÃO",
+      "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
@@ -704,7 +704,7 @@
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
-      "registro_pago": "NÃO",
+      "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
@@ -847,7 +847,7 @@
       "data_habite_se": null,
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
