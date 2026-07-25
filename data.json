@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-25T13:03:53.457876+00:00",
+  "updated_at": "2026-07-25T15:00:40.372420+00:00",
   "documentos": [
     {
       "endereco": "RR 03 QD 03 LT 05",
@@ -6030,8 +6030,8 @@
       "clientes": "NADIA RAQUEL DO NASCIMENTO PINHEIRO",
       "data_venda": "2026-06-03",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-07-24"
     },
     {
       "endereco": "TB 21 QD 50 LT 32",
@@ -8180,7 +8180,13 @@
     "TC 39": {
       "status": "acima_prazo",
       "endereco": "TB 21 QD 50 LT 39",
-      "setor": "TERRABELA CERRADO"
+      "setor": "TERRABELA CERRADO",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-07-24",
+        "casa": 1,
+        "cliente": "NADIA RAQUEL DO NASCIMENTO PINHEIRO"
+      }
     },
     "TC 38": {
       "status": "acima_prazo",
