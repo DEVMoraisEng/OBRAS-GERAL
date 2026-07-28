@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-27T23:00:40.159568+00:00",
+  "updated_at": "2026-07-28T01:45:51.800917+00:00",
   "documentos": [
     {
       "endereco": "RPB 24 QD 26A LT 09",
@@ -6034,6 +6034,15 @@
       "data_pre_vistoria": null
     },
     {
+      "endereco": "TB 21 QD 51 LT 34",
+      "casa": 1,
+      "clientes": "RENITON SILVA OLIVEIRA",
+      "data_venda": "2026-07-27",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
       "endereco": "TB 21 QD 50 LT 40",
       "casa": 2,
       "clientes": "GILBERTO DA SILVA BRITO",
@@ -7299,8 +7308,8 @@
       "clientes": "MARCELO BATISTA DOS SANTOS",
       "data_venda": "2026-07-07",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-07-24"
     },
     {
       "endereco": "RPB 24 QD 26A LT 13",
@@ -8672,9 +8681,9 @@
       "setor": "PQ DOS BURITIS",
       "pre_vistoria": {
         "agendou": "SIM",
-        "data": "2026-07-22",
-        "casa": 2,
-        "cliente": "WANDERSON PEREIRA SABOIA"
+        "data": "2026-07-24",
+        "casa": 1,
+        "cliente": "MARCELO BATISTA DOS SANTOS"
       }
     },
     "BR 15": {
