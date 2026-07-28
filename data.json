@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-28T01:45:51.800917+00:00",
+  "updated_at": "2026-07-28T03:00:46.732653+00:00",
   "documentos": [
     {
       "endereco": "RPB 24 QD 26A LT 09",
@@ -7361,6 +7361,15 @@
       "casa": 1,
       "clientes": "ANDREA DE SOUZA COSTA",
       "data_venda": "2026-07-03",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 06",
+      "casa": 2,
+      "clientes": "ERICA PEREIRA DA COSTA",
+      "data_venda": "2026-07-23",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
