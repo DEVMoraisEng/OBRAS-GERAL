@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-28T19:00:41.567992+00:00",
+  "updated_at": "2026-07-28T20:59:40.854048+00:00",
   "documentos": [
     {
       "endereco": "RPB 24 QD 26A LT 09",
@@ -1834,7 +1834,7 @@
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
-      "armazenou_habite": "NÃO",
+      "armazenou_habite": "SIM",
       "certidoes_matricula": "SIM"
     },
     {
