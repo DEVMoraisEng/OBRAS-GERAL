@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-28T11:00:47.809698+00:00",
+  "updated_at": "2026-07-28T13:42:08.840562+00:00",
   "documentos": [
     {
       "endereco": "RPB 24 QD 26A LT 09",
@@ -884,13 +884,13 @@
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
-      "registro_pago": "NÃO",
+      "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "SIM",
-      "contrato_investidor": "NÃO",
+      "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
@@ -1178,7 +1178,7 @@
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
-      "contrato_investidor": "NÃO",
+      "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
@@ -1835,7 +1835,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "TB 18 QD 49 LT 31",
@@ -1850,10 +1850,10 @@
       "obra_finalizada": "NÃO",
       "data_inicio_obra": "2026-05-11",
       "data_termino_obra": null,
-      "agendou_habite_se": "NÃO",
+      "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": null,
-      "turno_habite_se": null,
+      "data_habite_se": "2026-08-19",
+      "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
@@ -1979,7 +1979,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "SIM",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "TB 18 QD 49 LT 26",
@@ -8186,7 +8186,7 @@
       "setor": "TERRABELA CERRADO"
     },
     "TC 50": {
-      "status": "em_andamento",
+      "status": "habite_agendado",
       "endereco": "TB 18 QD 49 LT 31",
       "setor": "TERRABELA CERRADO"
     },
