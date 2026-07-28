@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-28T15:00:45.432864+00:00",
+  "updated_at": "2026-07-28T17:19:22.334983+00:00",
   "documentos": [
     {
       "endereco": "RPB 24 QD 26A LT 09",
@@ -381,7 +381,7 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "NÃO",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
@@ -525,7 +525,7 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
@@ -597,7 +597,7 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "NÃO",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
