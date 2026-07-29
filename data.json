@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-29T15:00:39.771286+00:00",
+  "updated_at": "2026-07-29T17:05:26.809343+00:00",
   "documentos": [
     {
       "endereco": "RPB 24 QD 26A LT 09",
@@ -5907,6 +5907,15 @@
     }
   ],
   "vendas": [
+    {
+      "endereco": "RPB 24 QD 26A LT 04",
+      "casa": 2,
+      "clientes": "THAYS AUGUSTA SOUZA SANTOS",
+      "data_venda": "2026-07-28",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
     {
       "endereco": "TB 6 QD 40 LT 38",
       "casa": 2,
