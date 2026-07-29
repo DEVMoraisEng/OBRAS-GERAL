@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-29T19:00:40.109469+00:00",
+  "updated_at": "2026-07-29T20:43:49.241379+00:00",
   "documentos": [
     {
       "endereco": "RPB 24 QD 26A LT 09",
@@ -5908,15 +5908,6 @@
   ],
   "vendas": [
     {
-      "endereco": "RPB 24 QD 26A LT 04",
-      "casa": 2,
-      "clientes": "THAYS AUGUSTA SOUZA SANTOS",
-      "data_venda": "2026-07-28",
-      "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
-    },
-    {
       "endereco": "TB 6 QD 40 LT 38",
       "casa": 2,
       "clientes": "RAILMA MACARIO DA CRUZ",
@@ -7384,6 +7375,15 @@
       "data_pre_vistoria": null
     },
     {
+      "endereco": "RPB 24 QD 26A LT 04",
+      "casa": 1,
+      "clientes": "THAYS AUGUSTA SOUZA SANTOS",
+      "data_venda": "2026-07-28",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
       "endereco": "RPB 21 QD 26 LT 1--2",
       "casa": 5,
       "clientes": "VICTOR KAVINSCK GOMES LIMA",
@@ -8010,8 +8010,8 @@
       "clientes": "LUCAS HENRIQUE FREITAS MENEZES",
       "data_venda": "2026-07-03",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-07-31"
     },
     {
       "endereco": "APOLO LYKEIOS QD 01 LT 33",
@@ -9024,7 +9024,13 @@
     "A7": {
       "status": "acima_prazo",
       "endereco": "APOLO LYKEIOS QD 01 LT 34",
-      "setor": "ACROPOLE"
+      "setor": "ACROPOLE",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-07-31",
+        "casa": 1,
+        "cliente": "LUCAS HENRIQUE FREITAS MENEZES"
+      }
     },
     "A6": {
       "status": "acima_prazo",
