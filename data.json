@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-29T13:48:01.275947+00:00",
+  "updated_at": "2026-07-29T15:00:39.771286+00:00",
   "documentos": [
     {
       "endereco": "RPB 24 QD 26A LT 09",
@@ -3992,7 +3992,7 @@
       "incorporacao_finalizada": "INEXISTE",
       "ret_armazenado": "INEXISTE",
       "taxas_habite_se": "SIM",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
