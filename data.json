@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-30T17:16:15.773702+00:00",
+  "updated_at": "2026-07-30T19:00:49.295446+00:00",
   "documentos": [
     {
       "endereco": "RPB 24 QD 26A LT 09",
@@ -271,7 +271,7 @@
       "data_habite_se": null,
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
@@ -307,7 +307,7 @@
       "data_habite_se": null,
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
