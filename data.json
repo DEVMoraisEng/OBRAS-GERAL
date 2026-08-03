@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03T17:43:25.605435+00:00",
+  "updated_at": "2026-08-03T19:00:46.441290+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -668,7 +668,7 @@
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
-      "registro_pago": "NÃO",
+      "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
@@ -874,9 +874,9 @@
       "mestre": "IRINEU",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-07-07",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -910,9 +910,9 @@
       "mestre": "IRINEU",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-07-07",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -6160,7 +6160,7 @@
       "data_pre_vistoria": null
     },
     {
-      "endereco": "TB 21 QD 50 LT 32",
+      "endereco": "TB 21 QD 50 LT 3",
       "casa": 1,
       "clientes": "PEDRO THALISSON SILVA RODRIGUES",
       "data_venda": "2026-06-10",
@@ -8122,12 +8122,12 @@
       "setor": "RAVENA"
     },
     "RV 7": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "RR 01 QD 01 LT 08",
       "setor": "RAVENA"
     },
     "RV 8": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "RR 01 QD 01 LT 09",
       "setor": "RAVENA"
     },
@@ -8335,13 +8335,7 @@
     "TC 38": {
       "status": "acima_prazo",
       "endereco": "TB 21 QD 50 LT 32",
-      "setor": "TERRABELA CERRADO",
-      "pre_vistoria": {
-        "agendou": "SIM",
-        "data": "2026-07-15",
-        "casa": 1,
-        "cliente": "PEDRO THALISSON SILVA RODRIGUES"
-      }
+      "setor": "TERRABELA CERRADO"
     },
     "TC 37": {
       "status": "acima_prazo",
