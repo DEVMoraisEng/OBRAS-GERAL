@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-04T13:49:42.859908+00:00",
+  "updated_at": "2026-08-04T15:00:49.182390+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -6160,7 +6160,7 @@
       "data_pre_vistoria": null
     },
     {
-      "endereco": "TB 21 QD 50 LT 3",
+      "endereco": "TB 21 QD 50 LT 32",
       "casa": 1,
       "clientes": "PEDRO THALISSON SILVA RODRIGUES",
       "data_venda": "2026-06-10",
@@ -7646,6 +7646,15 @@
     },
     {
       "endereco": "FERROVIARIOS QD 01 LT 13",
+      "casa": 2,
+      "clientes": "LUANA NASCIMENTO NUNES",
+      "data_venda": "2026-08-03",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "FERROVIARIOS QD 01 LT 13",
       "casa": 1,
       "clientes": "MARIA SILVA",
       "data_venda": "2026-06-12",
@@ -8335,7 +8344,13 @@
     "TC 38": {
       "status": "acima_prazo",
       "endereco": "TB 21 QD 50 LT 32",
-      "setor": "TERRABELA CERRADO"
+      "setor": "TERRABELA CERRADO",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-07-15",
+        "casa": 1,
+        "cliente": "PEDRO THALISSON SILVA RODRIGUES"
+      }
     },
     "TC 37": {
       "status": "acima_prazo",
