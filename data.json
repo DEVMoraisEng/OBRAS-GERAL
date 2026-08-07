@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T11:00:45.190298+00:00",
+  "updated_at": "2026-08-07T12:42:01.561943+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -21,7 +21,7 @@
       "escritura_assinada": "NÃO",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
@@ -57,7 +57,7 @@
       "escritura_assinada": "NÃO",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
