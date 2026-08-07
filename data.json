@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T12:42:01.561943+00:00",
+  "updated_at": "2026-08-07T15:00:44.018239+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -435,7 +435,7 @@
     },
     {
       "endereco": "TB 19 QD 51 LT 03",
-      "ref": "TC 91",
+      "ref": "TC 85",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "proprietario": "MORAIS PARTICIPAÇOES IMOBILIARIAS",
@@ -471,7 +471,7 @@
     },
     {
       "endereco": "TB 19 QD 51 LT 02",
-      "ref": "TC 90",
+      "ref": "TC 86",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "proprietario": "MORAIS PARTICIPAÇOES IMOBILIARIAS",
@@ -525,7 +525,7 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "NÃO",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
@@ -579,7 +579,7 @@
     },
     {
       "endereco": "TB 18 QD 49 LT 25",
-      "ref": "TC 93",
+      "ref": "TC 89",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE",
@@ -615,7 +615,7 @@
     },
     {
       "endereco": "TB 06 QD 39 LT 50",
-      "ref": "TC 94",
+      "ref": "TC 88",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE",
@@ -651,7 +651,7 @@
     },
     {
       "endereco": "TB 06 QD 39 LT 47",
-      "ref": "TC 95",
+      "ref": "TC 87",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "proprietario": "MORAIS INCORPORAÇOES SENADOR CANEDO",
@@ -8153,12 +8153,12 @@
       "endereco": "TB 19 QD 50 LT 15",
       "setor": "TERRABELA CERRADO"
     },
-    "TC 91": {
+    "TC 85": {
       "status": "nao_iniciado",
       "endereco": "TB 19 QD 51 LT 03",
       "setor": "TERRABELA CERRADO"
     },
-    "TC 90": {
+    "TC 86": {
       "status": "nao_iniciado",
       "endereco": "TB 19 QD 51 LT 02",
       "setor": "TERRABELA CERRADO"
@@ -8168,17 +8168,17 @@
       "endereco": "TB 21 QD 51 LT 40",
       "setor": "TERRABELA CERRADO"
     },
-    "TC 93": {
+    "TC 89": {
       "status": "nao_iniciado",
       "endereco": "TB 18 QD 49 LT 25",
       "setor": "TERRABELA CERRADO"
     },
-    "TC 94": {
+    "TC 88": {
       "status": "nao_iniciado",
       "endereco": "TB 06 QD 39 LT 50",
       "setor": "TERRABELA CERRADO"
     },
-    "TC 95": {
+    "TC 87": {
       "status": "nao_iniciado",
       "endereco": "TB 06 QD 39 LT 47",
       "setor": "TERRABELA CERRADO"
