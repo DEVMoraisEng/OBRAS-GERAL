@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-08T19:00:33.945943+00:00",
+  "updated_at": "2026-08-08T20:18:23.653039+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -6623,7 +6623,7 @@
       "casa": 2,
       "clientes": "IZABELA BARREIRA DA CRUZ",
       "data_venda": "2025-09-24",
-      "entregou_casa": "SIM",
+      "entregou_casa": "ÁGIO",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2025-11-19"
     },
@@ -7406,6 +7406,15 @@
       "casa": 1,
       "clientes": "IASMIN DE SOUZA CHAGAS",
       "data_venda": "2026-03-24",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "RPB 24 QD 26A LT 11",
+      "casa": 1,
+      "clientes": "VINICIUS CARDOSO LIMIIRO",
+      "data_venda": "2026-08-06",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
