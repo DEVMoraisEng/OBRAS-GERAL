@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-10T16:43:29.325657+00:00",
+  "updated_at": "2026-08-10T19:00:44.359858+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -1815,7 +1815,7 @@
       "data_inicio_obra": "2026-04-22",
       "data_termino_obra": null,
       "agendou_habite_se": "SIM",
-      "aprovou_habite_se": "NÃO",
+      "aprovou_habite_se": "SIM",
       "data_habite_se": "2026-08-05",
       "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
@@ -4856,7 +4856,7 @@
       "incorporacao_finalizada": "SIM",
       "ret_armazenado": "SIM",
       "taxas_habite_se": "NÃO",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
@@ -6101,9 +6101,9 @@
       "casa": 2,
       "clientes": "LETICIA MORAES FREITAS ",
       "data_venda": "2026-07-13",
-      "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "entregou_casa": "SIM",
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-08-03"
     },
     {
       "endereco": "TB 21 QD 51 LT 34",
@@ -6192,8 +6192,8 @@
       "clientes": "IGOR CARVALHO MENDES ",
       "data_venda": "2026-05-29",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-08-11"
     },
     {
       "endereco": "TB 21 QD 50 LT 25",
@@ -8348,7 +8348,7 @@
       "setor": "TERRABELA CERRADO"
     },
     "TC 53": {
-      "status": "habite_agendado",
+      "status": "habite_concluido",
       "endereco": "TB 18 QD 49 LT 37",
       "setor": "TERRABELA CERRADO"
     },
@@ -8395,7 +8395,13 @@
     "TC 44": {
       "status": "acima_prazo",
       "endereco": "TB 21 QD 51 LT 35",
-      "setor": "TERRABELA CERRADO"
+      "setor": "TERRABELA CERRADO",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-08-03",
+        "casa": 2,
+        "cliente": "LETICIA MORAES FREITAS "
+      }
     },
     "TC 43": {
       "status": "acima_prazo",
@@ -8447,7 +8453,13 @@
     "TC 36": {
       "status": "acima_prazo",
       "endereco": "TB 21 QD 50 LT 25",
-      "setor": "TERRABELA CERRADO"
+      "setor": "TERRABELA CERRADO",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-08-11",
+        "casa": 2,
+        "cliente": "IGOR CARVALHO MENDES "
+      }
     },
     "TC 35": {
       "status": "fin_prazo",
