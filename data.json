@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-11T12:42:52.978190+00:00",
+  "updated_at": "2026-08-11T15:00:52.175955+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -766,9 +766,9 @@
       "mestre": "MAYCON",
       "despachante": "YAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-08-06",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -1306,7 +1306,7 @@
       "mestre": "CARLOS",
       "despachante": "YAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
       "data_inicio_obra": null,
       "data_termino_obra": null,
@@ -4006,9 +4006,9 @@
       "mestre": "ANTONIO",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-08-10",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -8203,7 +8203,7 @@
       "setor": "TERRABELA CERRADO"
     },
     "TC 83": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "TB 21 QD 51 LT 38",
       "setor": "TERRABELA CERRADO"
     },
@@ -8278,7 +8278,7 @@
       "setor": "TERRABELA CERRADO"
     },
     "TC 67": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "TB 19 QD 51 LT 16",
       "setor": "TERRABELA CERRADO"
     },
@@ -8821,7 +8821,7 @@
       "setor": "SOLAR VILLE"
     },
     "RV 4": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "RR 02 QD 01 LT 29",
       "setor": "RAVENA"
     },
