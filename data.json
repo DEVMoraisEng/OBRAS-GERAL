@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-12T11:00:37.434378+00:00",
+  "updated_at": "2026-08-12T12:46:25.416807+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -671,7 +671,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
@@ -847,7 +847,7 @@
       "data_habite_se": null,
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
@@ -5979,6 +5979,15 @@
     }
   ],
   "vendas": [
+    {
+      "endereco": "RPB 24 QD 26A LT 04",
+      "casa": 1,
+      "clientes": "THAYS AUGUSTA SOUZA SANTOS ",
+      "data_venda": "2026-07-28",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
     {
       "endereco": "TB 6 QD 40 LT 38",
       "casa": 2,
