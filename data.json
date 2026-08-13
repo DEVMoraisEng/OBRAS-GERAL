@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-13T12:48:35.704253+00:00",
+  "updated_at": "2026-08-13T15:00:39.370009+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -1577,7 +1577,7 @@
       "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
-      "incorporacao_finalizada": "NÃO",
+      "incorporacao_finalizada": "INEXISTE",
       "ret_armazenado": null,
       "taxas_habite_se": "NÃO",
       "issqn": "NÃO",
@@ -1613,7 +1613,7 @@
       "contrato_investidor": "NÃO",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
-      "incorporacao_finalizada": "NÃO",
+      "incorporacao_finalizada": "INEXISTE",
       "ret_armazenado": null,
       "taxas_habite_se": "NÃO",
       "issqn": "NÃO",
@@ -1649,7 +1649,7 @@
       "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
-      "incorporacao_finalizada": "NÃO",
+      "incorporacao_finalizada": "INEXISTE",
       "ret_armazenado": null,
       "taxas_habite_se": "NÃO",
       "issqn": "NÃO",
@@ -2158,7 +2158,7 @@
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
-      "armazenou_habite": "NÃO",
+      "armazenou_habite": "SIM",
       "certidoes_matricula": "SIM"
     },
     {
@@ -4895,7 +4895,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "DONA MORENA QD 18 LT 8-11 B1",
