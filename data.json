@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-14T16:41:06.355447+00:00",
+  "updated_at": "2026-08-14T19:00:38.428442+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -126,7 +126,7 @@
       "aprovou_habite_se": "NÃO",
       "data_habite_se": null,
       "turno_habite_se": null,
-      "escritura_assinada": "NÃO",
+      "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
@@ -4387,7 +4387,7 @@
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
-      "taxas_habite_se": "NÃO",
+      "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
