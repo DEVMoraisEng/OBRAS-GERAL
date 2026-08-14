@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-14T11:00:35.812434+00:00",
+  "updated_at": "2026-08-14T12:43:05.489267+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -2123,7 +2123,7 @@
       "issqn": "SIM",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "TB 21 QD 51 LT 35",
