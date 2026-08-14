@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-14T19:00:38.428442+00:00",
+  "updated_at": "2026-08-14T20:22:20.640831+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -817,7 +817,7 @@
       "art_feita_paga": "SIM",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "NÃO",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
@@ -1285,7 +1285,7 @@
       "art_feita_paga": "SIM",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "NÃO",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
@@ -2228,7 +2228,7 @@
       "incorporacao_finalizada": "SIM",
       "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
