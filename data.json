@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-15T00:43:08.553398+00:00",
+  "updated_at": "2026-08-15T03:00:37.710110+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -8156,6 +8156,24 @@
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-08-12"
+    },
+    {
+      "endereco": "ATALANTA QD 01 LT 24",
+      "casa": 2,
+      "clientes": "CAMILA TAVARES",
+      "data_venda": "2026-08-14",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "ATALANTA QD 01 LT 21",
+      "casa": 1,
+      "clientes": "WESLEY RAMOS OLIVEIRA",
+      "data_venda": "2026-08-14",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
     }
   ],
   "snapshot_atual": {
