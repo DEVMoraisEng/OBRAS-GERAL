@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-15T03:00:37.710110+00:00",
+  "updated_at": "2026-08-15T04:21:08.622187+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -6155,7 +6155,7 @@
       "casa": 1,
       "clientes": "NADIA RAQUEL DO NASCIMENTO PINHEIRO",
       "data_venda": "2026-06-03",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-07-24"
     },
@@ -6236,7 +6236,7 @@
       "casa": 1,
       "clientes": "ISABELLA RENATA GONÇALVES DE FARIAS",
       "data_venda": "2026-06-13",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-07-24"
     },
