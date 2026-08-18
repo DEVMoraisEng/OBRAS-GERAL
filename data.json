@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-18T20:13:21.610860+00:00",
+  "updated_at": "2026-08-18T23:00:42.635700+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -1286,7 +1286,7 @@
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "SIM",
-      "contrato_investidor": "NÃO",
+      "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
