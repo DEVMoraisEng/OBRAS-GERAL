@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-18T12:26:06.870949+00:00",
+  "updated_at": "2026-08-18T15:00:44.436136+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -4422,7 +4422,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": null,
+      "ret_armazenado": "NÃO",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
@@ -4532,7 +4532,7 @@
       "incorporacao_finalizada": "SIM",
       "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
@@ -4638,7 +4638,7 @@
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "SIM",
-      "ret_armazenado": null,
+      "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
@@ -5866,7 +5866,7 @@
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
-      "armazenou_habite": "NÃO",
+      "armazenou_habite": "SIM",
       "certidoes_matricula": "SIM"
     },
     {
@@ -8095,7 +8095,7 @@
       "data_pre_vistoria": "2026-01-19"
     },
     {
-      "endereco": "                                                                                                                     ",
+      "endereco": "AV. FRANÇA QD 04 LT 12",
       "casa": 2,
       "clientes": "VITOR HUGO SOARES DA SILVA",
       "data_venda": "2025-12-22",
