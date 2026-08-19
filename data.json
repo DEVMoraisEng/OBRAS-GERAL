@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19T16:20:12.024430+00:00",
+  "updated_at": "2026-08-19T19:00:54.071610+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -7713,8 +7713,8 @@
       "clientes": "LUANA NASCIMENTO NUNES",
       "data_venda": "2026-08-03",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-08-20"
     },
     {
       "endereco": "FERROVIARIOS QD 01 LT 13",
@@ -8155,7 +8155,7 @@
       "data_venda": "2026-07-07",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": "2026-07-27"
+      "data_pre_vistoria": "2026-08-11"
     },
     {
       "endereco": "APOLO LYKEIOS QD 01 LT 33",
