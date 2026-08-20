@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-20T16:23:32.673888+00:00",
+  "updated_at": "2026-08-20T19:00:41.482053+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -4067,7 +4067,7 @@
       "issqn": "SIM",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "RR 03 QD 02 LT 20",
@@ -4370,10 +4370,10 @@
       "obra_finalizada": "NÃO",
       "data_inicio_obra": "2026-04-13",
       "data_termino_obra": null,
-      "agendou_habite_se": "NÃO",
+      "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": null,
-      "turno_habite_se": null,
+      "data_habite_se": "2026-09-01",
+      "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
@@ -8973,7 +8973,7 @@
       "setor": "PQ DOS BURITIS"
     },
     "BR 13": {
-      "status": "em_andamento",
+      "status": "habite_agendado",
       "endereco": "RPB 24 QD 26A LT 11",
       "setor": "PQ DOS BURITIS"
     },
