@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-25T19:01:11.584683+00:00",
+  "updated_at": "2026-08-25T20:18:20.092269+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -1702,9 +1702,9 @@
       "mestre": "ROSIVAN",
       "despachante": "YAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-08-24",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -4438,9 +4438,9 @@
       "mestre": "WILLIAN RODRIGUES",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-08-24",
       "data_termino_obra": null,
       "agendou_habite_se": "NÃO",
       "aprovou_habite_se": "NÃO",
@@ -8405,7 +8405,7 @@
       "setor": "TERRABELA CERRADO"
     },
     "TC 56": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "TB 16 QD 47 LT 40",
       "setor": "TERRABELA CERRADO"
     },
@@ -8983,7 +8983,7 @@
       "setor": "PQ DOS BURITIS"
     },
     "BR 11": {
-      "status": "nao_iniciado",
+      "status": "em_andamento",
       "endereco": "RPB 24 QD 26A LT 09",
       "setor": "PQ DOS BURITIS"
     },
