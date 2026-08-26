@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-26T11:00:39.958956+00:00",
+  "updated_at": "2026-08-26T12:32:50.449216+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -7427,24 +7427,6 @@
       "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-07-24"
-    },
-    {
-      "endereco": "RPB 24 QD 26A LT 13",
-      "casa": 2,
-      "clientes": "BRUNA  IARA QUEIROZ  NEVES",
-      "data_venda": "2026-04-14",
-      "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
-    },
-    {
-      "endereco": "RPB 24 QD 26A LT 13",
-      "casa": 1,
-      "clientes": "IASMIN DE SOUZA CHAGAS",
-      "data_venda": "2026-03-24",
-      "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
     },
     {
       "endereco": "RPB 24 QD 26A LT 11",
