@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-28T19:00:40.540198+00:00",
+  "updated_at": "2026-08-28T23:00:41.092297+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -5993,6 +5993,15 @@
       "casa": 1,
       "clientes": "THAYS AUGUSTA SOUZA SANTOS ",
       "data_venda": "2026-07-28",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "TB 18 QD 49 LT 35",
+      "casa": 1,
+      "clientes": "EUFLAVIANO BARBOSA DE OLIVEIRA",
+      "data_venda": "2026-08-28",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
