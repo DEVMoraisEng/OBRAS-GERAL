@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-29T07:00:35.169159+00:00",
+  "updated_at": "2026-08-29T10:36:08.106326+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -6219,7 +6219,7 @@
       "clientes": "ALINE DE CAMPOS SILVA",
       "data_venda": "2026-07-22",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
+      "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": null
     },
     {
@@ -6408,7 +6408,7 @@
       "clientes": "RAILAN RODRIGUES MOREIRA",
       "data_venda": "2026-05-27",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
+      "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": null
     },
     {
@@ -6858,7 +6858,7 @@
       "clientes": "VALQUIRIA FERREIRA DA COSTA",
       "data_venda": "2026-07-14",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
+      "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": null
     },
     {
@@ -7713,7 +7713,7 @@
       "clientes": "LUANA KETHULLY SILVA SOUZA",
       "data_venda": "2026-07-15",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
+      "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": null
     },
     {
@@ -8544,7 +8544,13 @@
     "TC 37": {
       "status": "acima_prazo",
       "endereco": "TB 21 QD 50 LT 26",
-      "setor": "TERRABELA CERRADO"
+      "setor": "TERRABELA CERRADO",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "",
+        "casa": 1,
+        "cliente": "ALINE DE CAMPOS SILVA"
+      }
     },
     "TC 36": {
       "status": "acima_prazo",
@@ -8570,7 +8576,13 @@
     "TC 33": {
       "status": "habite_concluido",
       "endereco": "TB 17 QD 48 LT 46",
-      "setor": "TERRABELA CERRADO"
+      "setor": "TERRABELA CERRADO",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "",
+        "casa": 1,
+        "cliente": "RAILAN RODRIGUES MOREIRA"
+      }
     },
     "TC 32": {
       "status": "habite_concluido",
@@ -8873,7 +8885,13 @@
     "SE 2": {
       "status": "fin_sem_prazo",
       "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
-      "setor": "ST EFIGÊNIA"
+      "setor": "ST EFIGÊNIA",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "",
+        "casa": 2,
+        "cliente": "VALQUIRIA FERREIRA DA COSTA"
+      }
     },
     "SE 1": {
       "status": "fin_sem_prazo",
