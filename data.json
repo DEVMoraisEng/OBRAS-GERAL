@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-28T23:00:41.092297+00:00",
+  "updated_at": "2026-08-29T00:16:05.513641+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -7685,6 +7685,15 @@
       "casa": 3,
       "clientes": "PAULO CEZAR ARAUJ BRANDAO ",
       "data_venda": "2026-08-27",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
+      "casa": 1,
+      "clientes": "ANDRESSA ALVES DE SOUZA",
+      "data_venda": null,
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
