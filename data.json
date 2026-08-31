@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T15:00:43.190434+00:00",
+  "updated_at": "2026-08-31T18:28:53.607632+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -440,7 +440,7 @@
       "cidade": "SENADOR CANEDO",
       "proprietario": "MORAIS PARTICIPAÇOES IMOBILIARIAS",
       "mestre": null,
-      "despachante": null,
+      "despachante": "YAN",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
       "obra_finalizada": "NÃO",
@@ -7694,6 +7694,15 @@
       "casa": 1,
       "clientes": "ANDRESSA ALVES DE SOUZA",
       "data_venda": "2026-08-27",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "FERROVIARIOS QD 01 LT 15",
+      "casa": 2,
+      "clientes": "ELIANDRA APARECIDA GARCIA CAMPOS",
+      "data_venda": "2026-08-28",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
