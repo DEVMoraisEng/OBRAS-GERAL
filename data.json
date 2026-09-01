@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-01T15:47:37.012183+00:00",
+  "updated_at": "2026-09-01T19:00:37.539658+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -6147,8 +6147,8 @@
       "clientes": "RENITON SILVA OLIVEIRA",
       "data_venda": "2026-07-27",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-09-01"
     },
     {
       "endereco": "TB 21 QD 50 LT 40",
@@ -8505,7 +8505,13 @@
     "TC 43": {
       "status": "acima_prazo",
       "endereco": "TB 21 QD 51 LT 34",
-      "setor": "TERRABELA CERRADO"
+      "setor": "TERRABELA CERRADO",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-09-01",
+        "casa": 1,
+        "cliente": "RENITON SILVA OLIVEIRA"
+      }
     },
     "TC 42": {
       "status": "habite_concluido",
