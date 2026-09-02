@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-02T15:40:19.515994+00:00",
+  "updated_at": "2026-09-02T19:00:44.749942+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -1545,7 +1545,7 @@
       "ret_armazenado": "INEXISTE",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
     },
@@ -6409,7 +6409,7 @@
       "data_venda": "2026-05-27",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": null
+      "data_pre_vistoria": "2026-08-24"
     },
     {
       "endereco": "TB 17 QD 48 LT 44 ",
@@ -8594,7 +8594,7 @@
       "setor": "TERRABELA CERRADO",
       "pre_vistoria": {
         "agendou": "SIM",
-        "data": "",
+        "data": "2026-08-24",
         "casa": 1,
         "cliente": "RAILAN RODRIGUES MOREIRA"
       }
