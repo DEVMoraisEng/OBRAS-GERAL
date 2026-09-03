@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-03T19:00:38.543616+00:00",
+  "updated_at": "2026-09-03T22:02:10.573308+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -5984,6 +5984,15 @@
       "casa": 2,
       "clientes": "VAGNER RODRIGUES DE ARRUDA",
       "data_venda": "2026-08-27",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "TB 18 QD 49 LT 29",
+      "casa": 2,
+      "clientes": "ANDREY TAVARES FERREIRA ",
+      "data_venda": "2026-09-03",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
