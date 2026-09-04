@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-04T11:00:36.396613+00:00",
+  "updated_at": "2026-09-04T15:00:43.875837+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -2230,8 +2230,8 @@
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
-      "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "armazenou_habite": "SIM",
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "TB 21 QD 51 LT 32",
