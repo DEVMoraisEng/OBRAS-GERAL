@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-10T15:32:26.459617+00:00",
+  "updated_at": "2026-09-10T18:50:10.735411+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -6229,7 +6229,7 @@
       "data_venda": "2026-07-22",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": null
+      "data_pre_vistoria": "2026-09-01"
     },
     {
       "endereco": "TB 21 QD 50 LT 25",
@@ -6246,8 +6246,8 @@
       "clientes": "ICARO RIBEIRO DA SILVA",
       "data_venda": "2026-08-04",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-09-11"
     },
     {
       "endereco": "TB 21 QD 46 LT 26",
@@ -6255,8 +6255,8 @@
       "clientes": "PETERSON DA SILVA ROSA",
       "data_venda": "2026-06-18",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-09-10"
     },
     {
       "endereco": "TB 21 QD 46 LT 18",
@@ -6408,8 +6408,8 @@
       "clientes": "COSME RIBEIRO DA COSTA ",
       "data_venda": "2026-05-27",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
+      "agendou_pre_vistoria": "SIM",
+      "data_pre_vistoria": "2026-09-10"
     },
     {
       "endereco": "TB 17 QD 48 LT 46",
@@ -7759,7 +7759,7 @@
       "data_venda": "2026-07-15",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": null
+      "data_pre_vistoria": "2026-08-31"
     },
     {
       "endereco": "FERROVIARIOS QD 01 LT 14",
@@ -8598,7 +8598,7 @@
       "setor": "TERRABELA CERRADO",
       "pre_vistoria": {
         "agendou": "SIM",
-        "data": "",
+        "data": "2026-09-01",
         "casa": 1,
         "cliente": "ALINE DE CAMPOS SILVA"
       }
@@ -8609,9 +8609,9 @@
       "setor": "TERRABELA CERRADO",
       "pre_vistoria": {
         "agendou": "SIM",
-        "data": "2026-08-11",
-        "casa": 2,
-        "cliente": "IGOR CARVALHO MENDES "
+        "data": "2026-09-11",
+        "casa": 1,
+        "cliente": "ICARO RIBEIRO DA SILVA"
       }
     },
     "TC 35": {
@@ -8665,7 +8665,13 @@
     "TC 29": {
       "status": "acima_prazo",
       "endereco": "TB 21 QD 46 LT 26",
-      "setor": "TERRABELA CERRADO"
+      "setor": "TERRABELA CERRADO",
+      "pre_vistoria": {
+        "agendou": "SIM",
+        "data": "2026-09-10",
+        "casa": 2,
+        "cliente": "PETERSON DA SILVA ROSA"
+      }
     },
     "TC 28": {
       "status": "fin_sem_prazo",
