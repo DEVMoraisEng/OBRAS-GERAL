@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-12T11:00:38.706158+00:00",
+  "updated_at": "2026-09-12T14:40:39.719698+00:00",
   "documentos": [
     {
       "endereco": "TB 17 QD 49 LT 14",
@@ -6173,7 +6173,7 @@
       "casa": 1,
       "clientes": "JOAO VICTOR SANTOS MENDES",
       "data_venda": "2026-06-18",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-08-24"
     },
