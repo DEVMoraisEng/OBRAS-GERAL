@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-14T15:00:41.747636+00:00",
+  "updated_at": "2026-09-14T17:17:23.452167+00:00",
   "documentos": [
     {
       "endereco": "PR 06 QD 07 LT 29",
@@ -5668,7 +5668,7 @@
       "data_termino_obra": null,
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": "2026-08-26",
+      "data_habite_se": "2026-09-16",
       "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
@@ -5687,7 +5687,7 @@
       "issqn": "SIM",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "APOLO LYKEIOS QD 01 LT 36",
