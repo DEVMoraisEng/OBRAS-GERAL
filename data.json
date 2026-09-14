@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-14T17:17:23.452167+00:00",
+  "updated_at": "2026-09-14T19:01:15.208369+00:00",
   "documentos": [
     {
       "endereco": "PR 06 QD 07 LT 29",
@@ -152,7 +152,7 @@
       "cidade": "SENADOR CANEDO",
       "proprietario": "MORAIS INCORPORAÇOES SENADOR CANEDO",
       "mestre": null,
-      "despachante": null,
+      "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
       "obra_finalizada": "NÃO",
@@ -171,7 +171,7 @@
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "INEXISTE",
-      "taxas_alvara_pagas": "NÃO",
+      "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": "NÃO",
@@ -1832,7 +1832,7 @@
       "incorporacao_finalizada": "SIM",
       "ret_armazenado": "SIM",
       "taxas_habite_se": "SIM",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
       "certidoes_matricula": "NÃO"
@@ -6228,7 +6228,7 @@
       "clientes": "DANIEL DE SOUSA SIVA",
       "data_venda": "2026-07-09",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
+      "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": null
     },
     {
@@ -6920,7 +6920,7 @@
       "casa": 2,
       "clientes": "VALQUIRIA FERREIRA DA COSTA",
       "data_venda": "2026-07-14",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-08-20"
     },
