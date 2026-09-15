@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-15T19:00:40.916824+00:00",
+  "updated_at": "2026-09-15T19:26:52.904278+00:00",
   "documentos": [
     {
       "endereco": "PR 06 QD 07 LT 29",
@@ -1108,7 +1108,7 @@
       "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
-      "projeto_aprovado": "NÃO",
+      "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": "NÃO",
       "taxas_habite_se": "NÃO",
