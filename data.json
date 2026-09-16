@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-16T11:00:38.197668+00:00",
+  "updated_at": "2026-09-16T15:00:45.003321+00:00",
   "documentos": [
     {
       "endereco": "PR 06 QD 07 LT 29",
@@ -54,7 +54,7 @@
       "aprovou_habite_se": "NÃO",
       "data_habite_se": null,
       "turno_habite_se": null,
-      "escritura_assinada": "NÃO",
+      "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
@@ -1036,10 +1036,10 @@
       "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
-      "projeto_aprovado": "NÃO",
+      "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": "NÃO",
-      "taxas_habite_se": "NÃO",
+      "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
@@ -1432,10 +1432,10 @@
       "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
-      "projeto_aprovado": "NÃO",
+      "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
-      "taxas_habite_se": "NÃO",
+      "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
@@ -1576,10 +1576,10 @@
       "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
-      "projeto_aprovado": "NÃO",
+      "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
-      "taxas_habite_se": "NÃO",
+      "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
@@ -4606,8 +4606,8 @@
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
-      "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "armazenou_habite": "SIM",
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "RPB 24 QD 26A LT 06",
@@ -5758,8 +5758,8 @@
       "taxas_habite_se": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
-      "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "armazenou_habite": "SIM",
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "APOLO LYKEIOS QD 01 LT 35",
