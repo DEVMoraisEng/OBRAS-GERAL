@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-16T15:48:40.107364+00:00",
+  "updated_at": "2026-09-16T19:00:39.360544+00:00",
   "documentos": [
     {
       "endereco": "PR 06 QD 07 LT 29",
@@ -1253,8 +1253,8 @@
       "contrato_investidor": "NÃO",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
-      "incorporacao_finalizada": "NÃO",
-      "ret_armazenado": null,
+      "incorporacao_finalizada": "INEXISTE",
+      "ret_armazenado": "INEXISTE",
       "taxas_habite_se": "NÃO",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
@@ -1289,8 +1289,8 @@
       "contrato_investidor": "NÃO",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "NÃO",
-      "incorporacao_finalizada": "NÃO",
-      "ret_armazenado": null,
+      "incorporacao_finalizada": "INEXISTE",
+      "ret_armazenado": "INEXISTE",
       "taxas_habite_se": "NÃO",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
@@ -1360,10 +1360,10 @@
       "contrato_mestre": "SIM",
       "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "SIM",
-      "projeto_aprovado": "NÃO",
-      "incorporacao_finalizada": "NÃO",
-      "ret_armazenado": null,
-      "taxas_habite_se": "NÃO",
+      "projeto_aprovado": "SIM",
+      "incorporacao_finalizada": "INEXISTE",
+      "ret_armazenado": "INEXISTE",
+      "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
@@ -6977,15 +6977,6 @@
       "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-01"
-    },
-    {
-      "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 02 ",
-      "casa": 1,
-      "clientes": "VALMIRA DOS SANTOS OLIVEIRA",
-      "data_venda": "2026-07-08",
-      "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
-      "data_pre_vistoria": null
     },
     {
       "endereco": "PROF DARCI QD 11 LT 23",
