@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-16T22:30:03.737766+00:00",
+  "updated_at": "2026-09-16T23:00:35.725740+00:00",
   "documentos": [
     {
       "endereco": "PR 06 QD 07 LT 29",
@@ -7055,6 +7055,15 @@
       "casa": 1,
       "clientes": "THAYS AUGUSTA SOUZA SANTOS ",
       "data_venda": "2026-07-28",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "TB 18 QD 49 LT 35",
+      "casa": 2,
+      "clientes": "ANDRESA DE JESUS CARVALHO",
+      "data_venda": null,
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
