@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-16T23:00:35.725740+00:00",
+  "updated_at": "2026-09-17T02:34:11.483381+00:00",
   "documentos": [
     {
       "endereco": "PR 06 QD 07 LT 29",
@@ -7063,7 +7063,7 @@
       "endereco": "TB 18 QD 49 LT 35",
       "casa": 2,
       "clientes": "ANDRESA DE JESUS CARVALHO",
-      "data_venda": null,
+      "data_venda": "2026-09-16",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null
