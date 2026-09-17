@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-17T15:55:49.763652+00:00",
+  "updated_at": "2026-09-17T19:00:35.257651+00:00",
   "documentos": [
     {
       "endereco": "PR 06 QD 07 LT 29",
@@ -9270,7 +9270,7 @@
       "clientes": "JUCILIANO PEREIRA DE SOUSA",
       "data_venda": "2026-07-28",
       "entregou_casa": "NÃO",
-      "agendou_pre_vistoria": "NÃO",
+      "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": null
     },
     {
