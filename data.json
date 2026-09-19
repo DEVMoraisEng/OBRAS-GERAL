@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-19T11:00:38.752092+00:00",
+  "updated_at": "2026-09-19T15:00:37.948182+00:00",
   "documentos": [
     {
       "endereco": "PR 06 QD 07 LT 29",
@@ -7255,7 +7255,7 @@
       "data_venda": "2026-07-09",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": null
+      "data_pre_vistoria": "2026-09-18"
     },
     {
       "endereco": "TB 21 QD 50 LT 39",
@@ -7271,7 +7271,7 @@
       "casa": 2,
       "clientes": "JOSEVANIO ALMEIDA DOS SANTOS ",
       "data_venda": "2026-06-15",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-09-01"
     },
@@ -7298,7 +7298,7 @@
       "casa": 1,
       "clientes": "ALINE DE CAMPOS SILVA",
       "data_venda": "2026-07-22",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-09-01"
     },
@@ -7327,7 +7327,7 @@
       "data_venda": "2026-06-18",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": "2026-09-10"
+      "data_pre_vistoria": "2026-09-21"
     },
     {
       "endereco": "TB 21 QD 46 LT 18",
@@ -7487,7 +7487,7 @@
       "casa": 1,
       "clientes": "RAILAN RODRIGUES MOREIRA",
       "data_venda": "2026-05-27",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-08-24"
     },
@@ -9271,7 +9271,7 @@
       "data_venda": "2026-07-28",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": null
+      "data_pre_vistoria": "2026-09-03"
     },
     {
       "endereco": "APOLO LYKEIOS QD 01 LT 34",
@@ -9756,7 +9756,7 @@
       "setor": "TERRABELA CERRADO",
       "pre_vistoria": {
         "agendou": "SIM",
-        "data": "2026-09-10",
+        "data": "2026-09-21",
         "casa": 2,
         "cliente": "PETERSON DA SILVA ROSA"
       }
