@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-21T17:29:05.996994+00:00",
+  "updated_at": "2026-09-21T19:00:40.022372+00:00",
   "documentos": [
     {
       "endereco": "PR 06 QD 07 LT 29",
@@ -8819,7 +8819,7 @@
       "casa": 2,
       "clientes": "LUANA KETHULLY SILVA SOUZA",
       "data_venda": "2026-07-15",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-08-31"
     },
