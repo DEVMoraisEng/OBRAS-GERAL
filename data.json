@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-21T19:00:40.022372+00:00",
+  "updated_at": "2026-09-21T22:56:26.648080+00:00",
   "documentos": [
     {
       "endereco": "PR 06 QD 07 LT 29",
@@ -112,9 +112,9 @@
     {
       "endereco": "FL 27 QD 38 LT 23",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -148,9 +148,9 @@
     {
       "endereco": "FL 27 QD 38 LT 22",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -184,9 +184,9 @@
     {
       "endereco": "FL 27 QD 38 LT 21",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -220,9 +220,9 @@
     {
       "endereco": "FL 27 QD 38 LT 20",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -256,9 +256,9 @@
     {
       "endereco": "FL 27 QD 38 LT 19",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -292,9 +292,9 @@
     {
       "endereco": "FL 27 QD 28 LT 18",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -328,9 +328,9 @@
     {
       "endereco": "FL 29 QD 38 LT 12",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -364,9 +364,9 @@
     {
       "endereco": "FL 29 QD 38 LT 07",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -400,9 +400,9 @@
     {
       "endereco": "FL 29 QD 38 LT 11",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -436,9 +436,9 @@
     {
       "endereco": "FL 29 QD 38 LT 10",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -472,9 +472,9 @@
     {
       "endereco": "FL 29 QD 38 LT 09",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -508,9 +508,9 @@
     {
       "endereco": "FL 29 QD 38 LT 08",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -544,9 +544,9 @@
     {
       "endereco": "FL 29 QD 38 LT 06",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -580,9 +580,9 @@
     {
       "endereco": "FL 29 QD 38 LT 05",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -616,9 +616,9 @@
     {
       "endereco": "FL 17 QD 26 LT 05",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -652,9 +652,9 @@
     {
       "endereco": "FL 17 QD 26 LT 04",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -690,7 +690,7 @@
       "ref": null,
       "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -724,9 +724,9 @@
     {
       "endereco": "FL 17 QD 26 LT 02",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS FLORENCA SPE LTDA",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -762,7 +762,7 @@
       "ref": null,
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
-      "proprietario": "MORAIS INCORPORAÇOES SENADOR CANEDO",
+      "proprietario": "MORAIS INCORPORAÇÕES SENADOR CANEDO SPE",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -798,7 +798,7 @@
       "ref": null,
       "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS PARTICIPAÇÕES",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -832,9 +832,9 @@
     {
       "endereco": "FL 27 QD 38 LT 15",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS PARTICIPAÇÕES",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -870,7 +870,7 @@
       "ref": null,
       "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS PARTICIPAÇÕES",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -904,9 +904,9 @@
     {
       "endereco": "FL 27 QD 37 LT 09",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS PARTICIPAÇÕES",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -940,9 +940,9 @@
     {
       "endereco": "FL 27 QD 37 LT 08",
       "ref": null,
-      "setor": null,
+      "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS PARTICIPAÇÕES",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -978,7 +978,7 @@
       "ref": null,
       "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS PARTICIPAÇÕES",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -1014,7 +1014,7 @@
       "ref": null,
       "setor": "FLORENÇA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": null,
+      "proprietario": "MORAIS PARTICIPAÇÕES",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -1118,6 +1118,42 @@
       "certidoes_matricula": "NÃO"
     },
     {
+      "endereco": "PARAISO QD XX LT XX",
+      "ref": null,
+      "setor": null,
+      "cidade": "SENADOR CANEDO",
+      "proprietario": "MORAIS INCORPORAÇÕES SENADOR CANEDO SPE",
+      "mestre": null,
+      "despachante": null,
+      "previsao_inicio_obra": null,
+      "obra_iniciada": "NÃO",
+      "obra_finalizada": "NÃO",
+      "data_inicio_obra": null,
+      "data_termino_obra": null,
+      "agendou_habite_se": "NÃO",
+      "aprovou_habite_se": "NÃO",
+      "data_habite_se": null,
+      "turno_habite_se": null,
+      "escritura_assinada": "NÃO",
+      "itbi_pago": "NÃO",
+      "registro_pago": "NÃO",
+      "projeto_feito": "NÃO",
+      "art_feita_paga": "NÃO",
+      "escritura_registrada": "NÃO",
+      "certidao_lote": "INEXISTE",
+      "contrato_mestre": "NÃO",
+      "contrato_investidor": "NÃO",
+      "taxas_alvara_pagas": "NÃO",
+      "projeto_aprovado": "NÃO",
+      "incorporacao_finalizada": "NÃO",
+      "ret_armazenado": "NÃO",
+      "taxas_habite_se": "NÃO",
+      "issqn": "NÃO",
+      "cno_cnd": "NÃO",
+      "armazenou_habite": "NÃO",
+      "certidoes_matricula": "NÃO"
+    },
+    {
       "endereco": "RPB 24 QD 26A LT 09",
       "ref": "BR 11",
       "setor": "PQ DOS BURITIS",
@@ -1158,7 +1194,7 @@
       "ref": "RV 10",
       "setor": "RAVENA",
       "cidade": "SENADOR CANEDO",
-      "proprietario": "MORAIS INCORPORAÇOES SENADOR CANEDO",
+      "proprietario": "MORAIS INCORPORAÇÕES SENADOR CANEDO SPE",
       "mestre": null,
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
@@ -1302,7 +1338,7 @@
       "ref": "TC 79",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
-      "proprietario": "MORAIS PARTICIPAÇOES IMOBILIARIAS",
+      "proprietario": "MORAIS PARTICIPAÇÕES",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -1338,7 +1374,7 @@
       "ref": "TC 78",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
-      "proprietario": "MORAIS PARTICIPAÇOES IMOBILIARIAS",
+      "proprietario": "MORAIS PARTICIPAÇÕES",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -1374,7 +1410,7 @@
       "ref": "TC 81",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
-      "proprietario": "MORAIS INCORPORAÇOES SENADOR CANEDO",
+      "proprietario": "MORAIS INCORPORAÇÕES SENADOR CANEDO SPE",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -1410,7 +1446,7 @@
       "ref": "TC 80",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
-      "proprietario": "MORAIS INCORPORAÇOES SENADOR CANEDO",
+      "proprietario": "MORAIS INCORPORAÇÕES SENADOR CANEDO SPE",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -1482,7 +1518,7 @@
       "ref": "TC 85",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
-      "proprietario": "MORAIS PARTICIPAÇOES IMOBILIARIAS",
+      "proprietario": "MORAIS PARTICIPAÇÕES",
       "mestre": null,
       "despachante": "YAN",
       "previsao_inicio_obra": null,
@@ -1518,7 +1554,7 @@
       "ref": "TC 86",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
-      "proprietario": "MORAIS PARTICIPAÇOES IMOBILIARIAS",
+      "proprietario": "MORAIS PARTICIPAÇÕES",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -1554,7 +1590,7 @@
       "ref": "TC 84",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
-      "proprietario": "MORAIS PARTICIPAÇOES IMOBILIARIAS",
+      "proprietario": "MORAIS PARTICIPAÇÕES",
       "mestre": "MAYCON",
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
@@ -1698,7 +1734,7 @@
       "ref": "TC 87",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
-      "proprietario": "MORAIS INCORPORAÇOES SENADOR CANEDO",
+      "proprietario": "MORAIS INCORPORAÇÕES SENADOR CANEDO SPE",
       "mestre": null,
       "despachante": "YAN",
       "previsao_inicio_obra": null,
@@ -1770,7 +1806,7 @@
       "ref": "TC 77",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
-      "proprietario": "MORAIS PARTICIPAÇOES IMOBILIARIAS",
+      "proprietario": "MORAIS PARTICIPAÇÕES",
       "mestre": null,
       "despachante": null,
       "previsao_inicio_obra": null,
@@ -2020,7 +2056,7 @@
     {
       "endereco": "66 QD 81 LT 08",
       "ref": "ES1",
-      "setor": "COND. DAS ESMERALDAS",
+      "setor": "COND. ESMERALDAS",
       "cidade": "GOIÂNIA",
       "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
       "mestre": "MOACIR",
@@ -2056,7 +2092,7 @@
     {
       "endereco": "52 QD 81 LT 09",
       "ref": "ES2",
-      "setor": "COND. DAS ESMERALDAS",
+      "setor": "COND. ESMERALDAS",
       "cidade": "GOIÂNIA",
       "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
       "mestre": "MOACIR",
@@ -2092,7 +2128,7 @@
     {
       "endereco": "52 QD 81 LT 11",
       "ref": "ES4",
-      "setor": "COND. DAS ESMERALDAS",
+      "setor": "COND. ESMERALDAS",
       "cidade": "GOIÂNIA",
       "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
       "mestre": "RONIVALDO",
@@ -2128,7 +2164,7 @@
     {
       "endereco": "52 QD 81 LT 12",
       "ref": "ES5",
-      "setor": "COND. DAS ESMERALDAS",
+      "setor": "COND. ESMERALDAS",
       "cidade": "GOIÂNIA",
       "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
       "mestre": "RONIVALDO",
@@ -2164,7 +2200,7 @@
     {
       "endereco": "52 QD 81 LT 10",
       "ref": "ES3",
-      "setor": "COND. DAS ESMERALDAS",
+      "setor": "COND. ESMERALDAS",
       "cidade": "GOIÂNIA",
       "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
       "mestre": "RONIVALDO",
@@ -2202,7 +2238,7 @@
       "ref": "TC 71",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
-      "proprietario": "ROSILENE MARIA DOS SANTOS",
+      "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE",
       "mestre": null,
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
@@ -2238,7 +2274,7 @@
       "ref": "TC 70",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
-      "proprietario": "ROSILENE MARIA DOS SANTOS",
+      "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE",
       "mestre": null,
       "despachante": "LIDIANA",
       "previsao_inicio_obra": null,
@@ -3494,7 +3530,7 @@
       "certidoes_matricula": "SIM"
     },
     {
-      "endereco": "TB 19  QD 50 LT 04",
+      "endereco": "TB 19 QD 50 LT 04",
       "ref": "TC 35",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
@@ -3530,7 +3566,7 @@
       "certidoes_matricula": "SIM"
     },
     {
-      "endereco": "TB 19  QD 50 LT 03",
+      "endereco": "TB 19 QD 50 LT 03",
       "ref": "TC 34",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
@@ -5834,7 +5870,7 @@
       "certidoes_matricula": "SIM"
     },
     {
-      "endereco": "RPB 21 QD 26 LT 1--2",
+      "endereco": "RPB 21 QD 26 LT 01-02",
       "ref": "BR 1",
       "setor": "PQ DOS BURITIS",
       "cidade": "SENADOR CANEDO",
@@ -5870,7 +5906,7 @@
       "certidoes_matricula": "SIM"
     },
     {
-      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B3",
       "ref": "MQA 3",
       "setor": "MARQUES DE ABREU",
       "cidade": "GOIÂNIA",
@@ -5906,7 +5942,7 @@
       "certidoes_matricula": "NÃO"
     },
     {
-      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B2",
       "ref": "MQA 2",
       "setor": "MARQUES DE ABREU",
       "cidade": "GOIÂNIA",
@@ -5942,7 +5978,7 @@
       "certidoes_matricula": "SIM"
     },
     {
-      "endereco": "DONA MORENA QD 18 LT 8-11 B1",
+      "endereco": "DONA MORENA QD 18 LT 08-11 B1",
       "ref": "MQA 1",
       "setor": "MARQUES DE ABREU",
       "cidade": "GOIÂNIA",
@@ -6230,7 +6266,7 @@
       "certidoes_matricula": "SIM"
     },
     {
-      "endereco": "I-4 QD 04 LT 23",
+      "endereco": "I 4 QD 04 LT 23",
       "ref": "IP 12",
       "setor": "IPANEMA",
       "cidade": "GOIÂNIA",
@@ -6266,7 +6302,7 @@
       "certidoes_matricula": "SIM"
     },
     {
-      "endereco": "I-4 QD 04 LT 22",
+      "endereco": "I 4 QD 04 LT 22",
       "ref": "IP 11",
       "setor": "IPANEMA",
       "cidade": "GOIÂNIA",
@@ -6302,7 +6338,7 @@
       "certidoes_matricula": "SIM"
     },
     {
-      "endereco": "I-4 QD 04 LT 21",
+      "endereco": "I 4 QD 04 LT 21",
       "ref": "IP 10",
       "setor": "IPANEMA",
       "cidade": "GOIÂNIA",
@@ -6338,7 +6374,7 @@
       "certidoes_matricula": "SIM"
     },
     {
-      "endereco": "I-4 QD 04 LT 20",
+      "endereco": "I 4 QD 04 LT 20",
       "ref": "IP 9",
       "setor": "IPANEMA",
       "cidade": "GOIÂNIA",
@@ -6374,7 +6410,7 @@
       "certidoes_matricula": "SIM"
     },
     {
-      "endereco": "I-4 QD 04 LT 19",
+      "endereco": "I 4 QD 04 LT 19",
       "ref": "IP 8",
       "setor": "IPANEMA",
       "cidade": "GOIÂNIA",
@@ -6410,7 +6446,7 @@
       "certidoes_matricula": "SIM"
     },
     {
-      "endereco": "I-3 QD 04 LT 18",
+      "endereco": "I 3 QD 04 LT 18",
       "ref": "IP 7",
       "setor": "IPANEMA",
       "cidade": "GOIÂNIA",
@@ -6446,7 +6482,7 @@
       "certidoes_matricula": "SIM"
     },
     {
-      "endereco": "I-3 QD 04 LT 17",
+      "endereco": "I 3 QD 04 LT 17",
       "ref": "IP 6",
       "setor": "IPANEMA",
       "cidade": "GOIÂNIA",
@@ -7429,7 +7465,7 @@
       "data_pre_vistoria": "2026-05-21"
     },
     {
-      "endereco": "TB 19  QD 50 LT 04",
+      "endereco": "TB 19 QD 50 LT 04",
       "casa": 2,
       "clientes": "MARCELO ALVES RODRIGUES",
       "data_venda": "2026-08-12",
@@ -7438,7 +7474,7 @@
       "data_pre_vistoria": null
     },
     {
-      "endereco": "TB 19  QD 50 LT 04",
+      "endereco": "TB 19 QD 50 LT 04",
       "casa": 1,
       "clientes": "VANESSA ALMEIDA DE OLIVEIRA",
       "data_venda": "2026-08-27",
@@ -7447,7 +7483,7 @@
       "data_pre_vistoria": null
     },
     {
-      "endereco": "TB 19  QD 50 LT 03",
+      "endereco": "TB 19 QD 50 LT 03",
       "casa": 2,
       "clientes": "ISMENIA MARA DAS GRAÇAS GUTEMBERG",
       "data_venda": "2026-08-17",
@@ -7492,7 +7528,7 @@
       "data_pre_vistoria": "2026-08-24"
     },
     {
-      "endereco": "TB 17 QD 48 LT 44 ",
+      "endereco": "TB 17 QD 48 LT 44",
       "casa": 2,
       "clientes": "FABIO CARDOSO DOS SANTOS",
       "data_venda": "2026-03-23",
@@ -7924,7 +7960,7 @@
       "data_pre_vistoria": "2000-01-01"
     },
     {
-      "endereco": "LUIS ALBERTO MONTEIRO ESPIRITO SANTO  QD 11 LT 22",
+      "endereco": "LUIS ALBERTO MONTEIRO ESPIRITO SANTO QD 11 LT 22",
       "casa": 1,
       "clientes": "DEUSENIR DOS SANTOS VIEIRA",
       "data_venda": "2025-04-08",
@@ -8599,7 +8635,7 @@
       "data_pre_vistoria": null
     },
     {
-      "endereco": "RPB 21 QD 26 LT 1--2",
+      "endereco": "RPB 21 QD 26 LT 01-02",
       "casa": 5,
       "clientes": "VICTOR KAVINSCK GOMES LIMA",
       "data_venda": "2025-08-01",
@@ -8608,7 +8644,7 @@
       "data_pre_vistoria": null
     },
     {
-      "endereco": "RPB 21 QD 26 LT 1--2",
+      "endereco": "RPB 21 QD 26 LT 01-02",
       "casa": 4,
       "clientes": "THAYNA MATISSE SOARES MARQUES",
       "data_venda": "2025-05-14",
@@ -8617,7 +8653,7 @@
       "data_pre_vistoria": "2025-08-13"
     },
     {
-      "endereco": "RPB 21 QD 26 LT 1--2",
+      "endereco": "RPB 21 QD 26 LT 01-02",
       "casa": 3,
       "clientes": "JORDANA SALES RODRIGUES",
       "data_venda": "2025-09-01",
@@ -8626,7 +8662,7 @@
       "data_pre_vistoria": "2025-09-25"
     },
     {
-      "endereco": "RPB 21 QD 26 LT 1--2",
+      "endereco": "RPB 21 QD 26 LT 01-02",
       "casa": 2,
       "clientes": "IARA QUEIROZ DE BRITO",
       "data_venda": "2025-08-13",
@@ -8635,7 +8671,7 @@
       "data_pre_vistoria": "2025-09-04"
     },
     {
-      "endereco": "RPB 21 QD 26 LT 1--2",
+      "endereco": "RPB 21 QD 26 LT 01-02",
       "casa": 1,
       "clientes": "KAMILLY DE SOUZA BORGES",
       "data_venda": "2025-08-22",
@@ -8770,7 +8806,7 @@
       "data_pre_vistoria": "2000-01-01"
     },
     {
-      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B2",
       "casa": 3,
       "clientes": "PAULO CEZAR ARAUJ BRANDAO ",
       "data_venda": "2026-08-27",
@@ -8779,7 +8815,7 @@
       "data_pre_vistoria": null
     },
     {
-      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B2",
       "casa": 2,
       "clientes": "GABRIELA BORGES DA SILVA",
       "data_venda": "2026-09-02",
@@ -8788,7 +8824,7 @@
       "data_pre_vistoria": null
     },
     {
-      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B2",
       "casa": 1,
       "clientes": "ANDRESSA ALVES DE SOUZA",
       "data_venda": "2026-08-27",
@@ -8923,7 +8959,7 @@
       "data_pre_vistoria": "2026-04-17"
     },
     {
-      "endereco": "I-4 QD 04 LT 23",
+      "endereco": "I 4 QD 04 LT 23",
       "casa": 3,
       "clientes": "LUCINALVA PAULA DE SALES",
       "data_venda": "2025-09-22",
@@ -8932,7 +8968,7 @@
       "data_pre_vistoria": "2026-01-30"
     },
     {
-      "endereco": "I-4 QD 04 LT 23",
+      "endereco": "I 4 QD 04 LT 23",
       "casa": 2,
       "clientes": "JOÃO MARCOS SILVA MARTINS",
       "data_venda": "2026-01-14",
@@ -8941,7 +8977,7 @@
       "data_pre_vistoria": "2026-02-23"
     },
     {
-      "endereco": "I-4 QD 04 LT 23",
+      "endereco": "I 4 QD 04 LT 23",
       "casa": 1,
       "clientes": "PAULO HENRIQUE DA SLVA RODRIGUES",
       "data_venda": "2025-09-12",
@@ -8950,7 +8986,7 @@
       "data_pre_vistoria": "2025-11-19"
     },
     {
-      "endereco": "I-4 QD 04 LT 22",
+      "endereco": "I 4 QD 04 LT 22",
       "casa": 3,
       "clientes": "LUCAS LINCOLN ROCHA",
       "data_venda": "2025-08-07",
@@ -8959,7 +8995,7 @@
       "data_pre_vistoria": "2025-09-23"
     },
     {
-      "endereco": "I-4 QD 04 LT 22",
+      "endereco": "I 4 QD 04 LT 22",
       "casa": 2,
       "clientes": "AURILEIDE OLIVEIRA SOUSA",
       "data_venda": "2025-08-21",
@@ -8968,7 +9004,7 @@
       "data_pre_vistoria": "2025-10-01"
     },
     {
-      "endereco": "I-4 QD 04 LT 22",
+      "endereco": "I 4 QD 04 LT 22",
       "casa": 1,
       "clientes": "WANDERLAN NUNES LUIZ",
       "data_venda": "2025-11-24",
@@ -8977,7 +9013,7 @@
       "data_pre_vistoria": "2026-01-09"
     },
     {
-      "endereco": "I-4 QD 04 LT 21",
+      "endereco": "I 4 QD 04 LT 21",
       "casa": 3,
       "clientes": "ANTONIO FRANQUELANE PEREIRA DA SILVA",
       "data_venda": "2025-06-25",
@@ -8986,7 +9022,7 @@
       "data_pre_vistoria": "2025-10-14"
     },
     {
-      "endereco": "I-4 QD 04 LT 21",
+      "endereco": "I 4 QD 04 LT 21",
       "casa": 2,
       "clientes": "FABIANA GOMES DA ROCHA GALVÃO",
       "data_venda": "2026-01-16",
@@ -8995,7 +9031,7 @@
       "data_pre_vistoria": "2026-02-19"
     },
     {
-      "endereco": "I-4 QD 04 LT 21",
+      "endereco": "I 4 QD 04 LT 21",
       "casa": 1,
       "clientes": "MAIKA BATISTA DOS SANTO",
       "data_venda": "2025-01-07",
@@ -9004,7 +9040,7 @@
       "data_pre_vistoria": "2025-09-03"
     },
     {
-      "endereco": "I-4 QD 04 LT 20",
+      "endereco": "I 4 QD 04 LT 20",
       "casa": 3,
       "clientes": "CAMILA OLIVEIRA DA CUNHA",
       "data_venda": "2026-02-03",
@@ -9013,7 +9049,7 @@
       "data_pre_vistoria": "2026-03-13"
     },
     {
-      "endereco": "I-4 QD 04 LT 20",
+      "endereco": "I 4 QD 04 LT 20",
       "casa": 2,
       "clientes": "ANA CLAUDIA BULHOES DE SENE",
       "data_venda": "2025-02-17",
@@ -9022,7 +9058,7 @@
       "data_pre_vistoria": "2025-08-29"
     },
     {
-      "endereco": "I-4 QD 04 LT 20",
+      "endereco": "I 4 QD 04 LT 20",
       "casa": 1,
       "clientes": "ADEMILTON CORREA DE MORAIS",
       "data_venda": "2025-07-03",
@@ -9031,7 +9067,7 @@
       "data_pre_vistoria": "2025-08-29"
     },
     {
-      "endereco": "I-4 QD 04 LT 19",
+      "endereco": "I 4 QD 04 LT 19",
       "casa": 3,
       "clientes": "POLIANA FIGUEREDO RAMOS",
       "data_venda": "2025-07-03",
@@ -9040,7 +9076,7 @@
       "data_pre_vistoria": "2025-09-17"
     },
     {
-      "endereco": "I-4 QD 04 LT 19",
+      "endereco": "I 4 QD 04 LT 19",
       "casa": 2,
       "clientes": "ALICE LIMA ROCHA",
       "data_venda": "2025-05-15",
@@ -9049,7 +9085,7 @@
       "data_pre_vistoria": "2025-10-06"
     },
     {
-      "endereco": "I-4 QD 04 LT 19",
+      "endereco": "I 4 QD 04 LT 19",
       "casa": 1,
       "clientes": "RENATA LARA DE FARIA",
       "data_venda": "2025-05-13",
@@ -9058,7 +9094,7 @@
       "data_pre_vistoria": "2025-09-08"
     },
     {
-      "endereco": "I-3 QD 04 LT 18",
+      "endereco": "I 3 QD 04 LT 18",
       "casa": 3,
       "clientes": "WELBER SANDRO CALIXTO",
       "data_venda": "2025-06-25",
@@ -9067,7 +9103,7 @@
       "data_pre_vistoria": "2025-10-27"
     },
     {
-      "endereco": "I-3 QD 04 LT 18",
+      "endereco": "I 3 QD 04 LT 18",
       "casa": 2,
       "clientes": "CLAUDIA GOMES DE OLIVEIRA ROSA",
       "data_venda": "2025-04-14",
@@ -9076,7 +9112,7 @@
       "data_pre_vistoria": "2025-10-06"
     },
     {
-      "endereco": "I-3 QD 04 LT 18",
+      "endereco": "I 3 QD 04 LT 18",
       "casa": 1,
       "clientes": "LUIZA RODRIGUES PEREIRA",
       "data_venda": "2025-06-16",
@@ -9085,7 +9121,7 @@
       "data_pre_vistoria": "2025-10-20"
     },
     {
-      "endereco": "I-3 QD 04 LT 17",
+      "endereco": "I 3 QD 04 LT 17",
       "casa": 4,
       "clientes": "ANDRESSA CAROLINY ALVES FARIA",
       "data_venda": "2025-06-02",
@@ -9094,7 +9130,7 @@
       "data_pre_vistoria": "2025-07-11"
     },
     {
-      "endereco": "I-3 QD 04 LT 17",
+      "endereco": "I 3 QD 04 LT 17",
       "casa": 3,
       "clientes": "NORMELIA GOMES",
       "data_venda": "2025-06-02",
@@ -9103,7 +9139,7 @@
       "data_pre_vistoria": "2025-07-11"
     },
     {
-      "endereco": "I-3 QD 04 LT 17",
+      "endereco": "I 3 QD 04 LT 17",
       "casa": 2,
       "clientes": "DILEMI MOURA DE OLIVEIRA",
       "data_venda": "2026-02-18",
@@ -9112,7 +9148,7 @@
       "data_pre_vistoria": "2026-10-03"
     },
     {
-      "endereco": "I-3 QD 04 LT 17",
+      "endereco": "I 3 QD 04 LT 17",
       "casa": 1,
       "clientes": "MAURICIO AUGUSTO CENTENO",
       "data_venda": "2025-02-19",
@@ -9458,27 +9494,27 @@
     "ES1": {
       "status": "em_andamento",
       "endereco": "66 QD 81 LT 08",
-      "setor": "COND. DAS ESMERALDAS"
+      "setor": "COND. ESMERALDAS"
     },
     "ES2": {
       "status": "nao_iniciado",
       "endereco": "52 QD 81 LT 09",
-      "setor": "COND. DAS ESMERALDAS"
+      "setor": "COND. ESMERALDAS"
     },
     "ES4": {
       "status": "em_andamento",
       "endereco": "52 QD 81 LT 11",
-      "setor": "COND. DAS ESMERALDAS"
+      "setor": "COND. ESMERALDAS"
     },
     "ES5": {
       "status": "em_andamento",
       "endereco": "52 QD 81 LT 12",
-      "setor": "COND. DAS ESMERALDAS"
+      "setor": "COND. ESMERALDAS"
     },
     "ES3": {
       "status": "nao_iniciado",
       "endereco": "52 QD 81 LT 10",
-      "setor": "COND. DAS ESMERALDAS"
+      "setor": "COND. ESMERALDAS"
     },
     "TC 71": {
       "status": "nao_iniciado",
@@ -9704,12 +9740,12 @@
     },
     "TC 35": {
       "status": "fin_prazo",
-      "endereco": "TB 19  QD 50 LT 04",
+      "endereco": "TB 19 QD 50 LT 04",
       "setor": "TERRABELA CERRADO"
     },
     "TC 34": {
       "status": "fin_prazo",
-      "endereco": "TB 19  QD 50 LT 03",
+      "endereco": "TB 19 QD 50 LT 03",
       "setor": "TERRABELA CERRADO"
     },
     "TC 33": {
@@ -10217,7 +10253,7 @@
     },
     "BR 1": {
       "status": "fin_sem_prazo",
-      "endereco": "RPB 21 QD 26 LT 1--2",
+      "endereco": "RPB 21 QD 26 LT 01-02",
       "setor": "PQ DOS BURITIS",
       "pre_vistoria": {
         "agendou": "SIM",
@@ -10228,17 +10264,17 @@
     },
     "MQA 3": {
       "status": "habite_agendado",
-      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B3",
       "setor": "MARQUES DE ABREU"
     },
     "MQA 2": {
       "status": "habite_concluido",
-      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B2",
       "setor": "MARQUES DE ABREU"
     },
     "MQA 1": {
       "status": "em_andamento",
-      "endereco": "DONA MORENA QD 18 LT 8-11 B1",
+      "endereco": "DONA MORENA QD 18 LT 08-11 B1",
       "setor": "MARQUES DE ABREU"
     },
     "JB 6": {
@@ -10302,7 +10338,7 @@
     },
     "IP 12": {
       "status": "fin_sem_prazo",
-      "endereco": "I-4 QD 04 LT 23",
+      "endereco": "I 4 QD 04 LT 23",
       "setor": "IPANEMA",
       "pre_vistoria": {
         "agendou": "SIM",
@@ -10313,7 +10349,7 @@
     },
     "IP 11": {
       "status": "fin_sem_prazo",
-      "endereco": "I-4 QD 04 LT 22",
+      "endereco": "I 4 QD 04 LT 22",
       "setor": "IPANEMA",
       "pre_vistoria": {
         "agendou": "SIM",
@@ -10324,7 +10360,7 @@
     },
     "IP 10": {
       "status": "fin_sem_prazo",
-      "endereco": "I-4 QD 04 LT 21",
+      "endereco": "I 4 QD 04 LT 21",
       "setor": "IPANEMA",
       "pre_vistoria": {
         "agendou": "SIM",
@@ -10335,7 +10371,7 @@
     },
     "IP 9": {
       "status": "fin_sem_prazo",
-      "endereco": "I-4 QD 04 LT 20",
+      "endereco": "I 4 QD 04 LT 20",
       "setor": "IPANEMA",
       "pre_vistoria": {
         "agendou": "SIM",
@@ -10346,7 +10382,7 @@
     },
     "IP 8": {
       "status": "fin_sem_prazo",
-      "endereco": "I-4 QD 04 LT 19",
+      "endereco": "I 4 QD 04 LT 19",
       "setor": "IPANEMA",
       "pre_vistoria": {
         "agendou": "SIM",
@@ -10357,7 +10393,7 @@
     },
     "IP 7": {
       "status": "fin_sem_prazo",
-      "endereco": "I-3 QD 04 LT 18",
+      "endereco": "I 3 QD 04 LT 18",
       "setor": "IPANEMA",
       "pre_vistoria": {
         "agendou": "SIM",
@@ -10368,7 +10404,7 @@
     },
     "IP 6": {
       "status": "fin_sem_prazo",
-      "endereco": "I-3 QD 04 LT 17",
+      "endereco": "I 3 QD 04 LT 17",
       "setor": "IPANEMA",
       "pre_vistoria": {
         "agendou": "SIM",
