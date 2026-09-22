@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-22T11:00:42.226511+00:00",
+  "updated_at": "2026-09-22T15:00:45.764604+00:00",
   "documentos": [
     {
       "endereco": "PR 06 QD 07 LT 29",
@@ -6911,7 +6911,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "SIM",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "ATALANTA QD 01 LT 24",
