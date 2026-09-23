@@ -1,6 +1,42 @@
 {
-  "updated_at": "2026-09-23T11:00:49.568244+00:00",
+  "updated_at": "2026-09-23T15:07:29.553627+00:00",
   "documentos": [
+    {
+      "endereco": "TESTE QD 01 LT 01",
+      "ref": null,
+      "setor": "RAVENA",
+      "cidade": "SENADOR CANEDO",
+      "proprietario": "CAIO MANABU DIAS YOSHIDA",
+      "mestre": null,
+      "despachante": null,
+      "previsao_inicio_obra": null,
+      "obra_iniciada": null,
+      "obra_finalizada": null,
+      "data_inicio_obra": null,
+      "data_termino_obra": null,
+      "agendou_habite_se": null,
+      "aprovou_habite_se": null,
+      "data_habite_se": null,
+      "turno_habite_se": null,
+      "escritura_assinada": null,
+      "itbi_pago": null,
+      "registro_pago": null,
+      "projeto_feito": null,
+      "art_feita_paga": null,
+      "escritura_registrada": null,
+      "certidao_lote": null,
+      "contrato_mestre": null,
+      "contrato_investidor": null,
+      "taxas_alvara_pagas": null,
+      "projeto_aprovado": null,
+      "incorporacao_finalizada": null,
+      "ret_armazenado": null,
+      "taxas_habite_se": null,
+      "issqn": null,
+      "cno_cnd": null,
+      "armazenou_habite": null,
+      "certidoes_matricula": null
+    },
     {
       "endereco": "TESTE QD 00 LT 00",
       "ref": null,
@@ -1425,7 +1461,7 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
@@ -1605,7 +1641,7 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
@@ -1821,7 +1857,7 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
@@ -1857,7 +1893,7 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
@@ -2291,7 +2327,7 @@
       "registro_pago": "NÃO",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
@@ -2327,7 +2363,7 @@
       "registro_pago": "NÃO",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
@@ -2443,7 +2479,7 @@
       "projeto_aprovado": "NÃO",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": null,
-      "taxas_habite_se": "NÃO",
+      "taxas_habite_se": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
       "armazenou_habite": "NÃO",
@@ -3203,7 +3239,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "SIM",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "TB 18 QD 49 LT 24",
@@ -5609,7 +5645,7 @@
       "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
       "projeto_aprovado": "SIM",
-      "incorporacao_finalizada": "NÃO",
+      "incorporacao_finalizada": "SIM",
       "ret_armazenado": "NÃO",
       "taxas_habite_se": "SIM",
       "issqn": "NÃO",
@@ -5955,7 +5991,7 @@
       "data_inicio_obra": "2026-02-10",
       "data_termino_obra": null,
       "agendou_habite_se": "SIM",
-      "aprovou_habite_se": "NÃO",
+      "aprovou_habite_se": "SIM",
       "data_habite_se": "2026-09-11",
       "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
@@ -7295,6 +7331,15 @@
     },
     {
       "endereco": "TB 21 QD 51 LT 32",
+      "casa": 2,
+      "clientes": "LIGIA CRISTINA FRANCISA SALES",
+      "data_venda": "2026-09-21",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
+      "endereco": "TB 21 QD 51 LT 32",
       "casa": 1,
       "clientes": "AMANDA SILVA RODRIGUES",
       "data_venda": "2026-09-12",
@@ -7399,7 +7444,7 @@
       "data_venda": "2026-06-18",
       "entregou_casa": "NÃO",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": "2026-09-21"
+      "data_pre_vistoria": "2026-09-24"
     },
     {
       "endereco": "TB 21 QD 46 LT 18",
@@ -9837,7 +9882,7 @@
       "setor": "TERRABELA CERRADO",
       "pre_vistoria": {
         "agendou": "SIM",
-        "data": "2026-09-21",
+        "data": "2026-09-24",
         "casa": 2,
         "cliente": "PETERSON DA SILVA ROSA"
       }
@@ -10308,7 +10353,7 @@
       }
     },
     "MQA 3": {
-      "status": "habite_agendado",
+      "status": "habite_concluido",
       "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B3",
       "setor": "MARQUES DE ABREU"
     },
