@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-24T11:00:39.591479+00:00",
+  "updated_at": "2026-09-24T15:00:43.961408+00:00",
   "documentos": [
     {
       "endereco": "TESTE CONTA QD 01 LT 01",
@@ -1498,7 +1498,7 @@
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
-      "art_feita_paga": "NÃO",
+      "art_feita_paga": "SIM",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
@@ -1678,7 +1678,7 @@
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
-      "art_feita_paga": "NÃO",
+      "art_feita_paga": "SIM",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "SIM",
@@ -1894,7 +1894,7 @@
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
-      "art_feita_paga": "NÃO",
+      "art_feita_paga": "SIM",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
@@ -1930,7 +1930,7 @@
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
-      "art_feita_paga": "NÃO",
+      "art_feita_paga": "SIM",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
@@ -2296,7 +2296,7 @@
       "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
-      "projeto_aprovado": "NÃO",
+      "projeto_aprovado": "SIM",
       "incorporacao_finalizada": "NÃO",
       "ret_armazenado": "NÃO",
       "taxas_habite_se": "NÃO",
@@ -7361,7 +7361,7 @@
       "casa": 1,
       "clientes": "RENITON SILVA OLIVEIRA",
       "data_venda": "2026-07-27",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-09-01"
     },
@@ -8120,6 +8120,15 @@
       "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-06-01"
+    },
+    {
+      "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
+      "casa": 1,
+      "clientes": "HEMILLY SOARES DE ARAUJO ",
+      "data_venda": "2026-09-21",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
     },
     {
       "endereco": "PROF DARCI QD 11 LT 23",
