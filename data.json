@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-25T11:00:35.900194+00:00",
+  "updated_at": "2026-09-25T15:00:40.282298+00:00",
   "documentos": [
     {
       "endereco": "TESTE CONTA QD 01 LT 01",
@@ -884,7 +884,7 @@
       "turno_habite_se": null,
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
-      "registro_pago": "NÃO",
+      "registro_pago": "SIM",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
@@ -2534,10 +2534,10 @@
       "obra_finalizada": "NÃO",
       "data_inicio_obra": "2026-06-18",
       "data_termino_obra": null,
-      "agendou_habite_se": "NÃO",
+      "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": null,
-      "turno_habite_se": null,
+      "data_habite_se": "2026-10-01",
+      "turno_habite_se": "TARDE",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
@@ -2930,10 +2930,10 @@
       "obra_finalizada": "NÃO",
       "data_inicio_obra": "2026-07-10",
       "data_termino_obra": null,
-      "agendou_habite_se": "NÃO",
+      "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": null,
-      "turno_habite_se": null,
+      "data_habite_se": "2026-10-08",
+      "turno_habite_se": "TARDE",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
@@ -5308,8 +5308,8 @@
       "data_termino_obra": null,
       "agendou_habite_se": "SIM",
       "aprovou_habite_se": "NÃO",
-      "data_habite_se": "2026-09-16",
-      "turno_habite_se": "MANHÃ",
+      "data_habite_se": "2026-10-05",
+      "turno_habite_se": "TARDE",
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
       "registro_pago": "SIM",
@@ -7195,6 +7195,15 @@
       "data_pre_vistoria": null
     },
     {
+      "endereco": "TB 18 QD 49 LT 29",
+      "casa": 1,
+      "clientes": "AMANDA CAROLINA SOUZA BARBOSA ",
+      "data_venda": "2026-09-23",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
+    },
+    {
       "endereco": "RPB 24 QD 26A LT 04",
       "casa": 1,
       "clientes": "THAYS AUGUSTA SOUZA SANTOS ",
@@ -7364,6 +7373,15 @@
       "entregou_casa": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-09-01"
+    },
+    {
+      "endereco": "TB 21 QD 51 LT 33",
+      "casa": 2,
+      "clientes": "MARIA ANTONIA DE OLIVEIRA ASSIS",
+      "data_venda": "2026-09-24",
+      "entregou_casa": "NÃO",
+      "agendou_pre_vistoria": "NÃO",
+      "data_pre_vistoria": null
     },
     {
       "endereco": "TB 21 QD 51 LT 32",
@@ -9677,7 +9695,7 @@
       "setor": "TERRABELA CERRADO"
     },
     "TC 66": {
-      "status": "em_andamento",
+      "status": "habite_agendado",
       "endereco": "TB 19 QD 51 LT 15",
       "setor": "TERRABELA CERRADO"
     },
@@ -9732,7 +9750,7 @@
       "setor": "TERRABELA CERRADO"
     },
     "TC 55": {
-      "status": "em_andamento",
+      "status": "habite_agendado",
       "endereco": "TB 01 QD 49 LT 40",
       "setor": "TERRABELA CERRADO"
     },
