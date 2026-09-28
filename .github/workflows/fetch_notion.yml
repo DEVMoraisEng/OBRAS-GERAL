@@ -4,8 +4,17 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+  # 28/09/26: o Apps Script do portal (MapaObras.gs) dispara este evento quando
+  # alguém grava pelo mapa ou mexe na BASE DE DADOS DOCUMENTOS / VENDAS no Notion
+  repository_dispatch:
+    types: [obras_notion_update]
   schedule:
-    - cron: '0 */4 * * *'   # fallback — use cron-job.org como fonte primária
+    - cron: '0 */4 * * *'   # rede de segurança
+
+# duas execuções ao mesmo tempo brigariam pelo commit do data.json
+concurrency:
+  group: mapa-obras
+  cancel-in-progress: false
 
 jobs:
   build:
