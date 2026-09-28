@@ -160,18 +160,20 @@ function aplicarEdicoes(docs,publicadoEm){
     const e=ed[chave];
     if(pub&&pub>e.t+3*60*1000){ delete ed[chave]; mudou=true; return; }       // o site já publicou depois: vale o do Notion
     if(Date.now()-e.t>24*3600*1000){ delete ed[chave]; mudou=true; return; }
-    const d=docs.find(x=>x.id===e.id); if(d) d[e.k]=e.v;
+    const d=(e.alvo==="v"?(vendasLista||[]):docs).find(x=>x.id===e.id); if(d) d[e.k]=e.v;
   });
   if(mudou) lsSet(K_EDITS,ed);
 }
+let vendasLista=[];
 
 /* ---------------- dados ---------------- */
 let DADOS=null, DOCS=[], VENDAS={};
 function prepararDados(d){
   DADOS=d; const docs=(d.documentos||[]).map(x=>Object.assign({},x));
+  vendasLista=(d.vendas||[]).map(x=>Object.assign({},x));
   aplicarEdicoes(docs,d.updated_at);
   DOCS=INDICE?docs:docs.filter(CFG.filtro);
-  VENDAS={}; (d.vendas||[]).forEach(v=>{ const k=N(v.endereco); if(k) (VENDAS[k]=VENDAS[k]||[]).push(v); });
+  VENDAS={}; vendasLista.forEach(v=>{ const k=N(v.endereco); if(k) (VENDAS[k]=VENDAS[k]||[]).push(v); });
 }
 function vendasPendentes(doc){ if(!doc) return []; return (VENDAS[N(doc.endereco)]||[]).filter(v=>POSITIVOS.indexOf(up(v.entregou_casa))<0); }
 let _ultimaPub=null;
@@ -364,25 +366,28 @@ function pintarMapa(){
   if(!SVG) return;
   POR_REF={}; DOCS.forEach(d=>{ const r=N(d.ref); if(r) POR_REF[r]=d; });
   SVG.querySelectorAll(".al-150,.al-180,.al-venda").forEach(n=>n.remove());
+  /* 28/09 (fim do dia): o círculo de "casa vendida" saiu (virou a lista de
+     entregas abaixo do mapa). Sobra só a bolinha de PRAZO, do tamanho do
+     lote: antes tinha tamanho mínimo fixo e, com o mapa afastado, as
+     bolinhas passavam por cima dos lotes vizinhos. */
   const NS="http://www.w3.org/2000/svg";
   LOTES.forEach(el=>{
     const ref=N(el.dataset.ref), d=docDe(ref), st=calcStatus(d);
     el.style.fill=ST[st].c; el.style.fillOpacity=".58"; el.style.cursor="pointer";
     if(!d) return;
     const bb=pontos(el); if(!bb||!bb.w) return;
-    const cx=bb.x+bb.w/2, cy=bb.y+bb.h/2, dim=Math.min(bb.w,bb.h), np=nivelPrazo(d), vp=vendasPendentes(d).length>0;
-    if(np){ const c=document.createElementNS(NS,"circle"); c.setAttribute("class",np==="r"?"al-180":"al-150");
-      c.setAttribute("cx",cx); c.setAttribute("cy",cy); c.setAttribute("r",Math.max(20,Math.min(70,dim*.18))); SVG.appendChild(c); }
-    if(vp){ const r=Math.max(18,Math.min(60,dim*.16)), c=document.createElementNS(NS,"circle"); c.setAttribute("class","al-venda");
-      c.setAttribute("cx",cx); c.setAttribute("cy",cy+(np?-r*2.6:0)); c.setAttribute("r",r); SVG.appendChild(c); }
+    const cx=bb.x+bb.w/2, cy=bb.y+bb.h/2, dim=Math.min(bb.w,bb.h), np=nivelPrazo(d);
+    if(np){ const r=Math.min(dim*.28,90), c=document.createElementNS(NS,"circle"); c.setAttribute("class",np==="r"?"al-180":"al-150");
+      c.setAttribute("cx",cx); c.setAttribute("cy",cy); c.setAttribute("r",r); c.setAttribute("stroke-width",Math.max(2,r*.22)); SVG.appendChild(c); }
   });
   if(ATIVO) marcarAtivo(ATIVO);
 }
-function marcarAtivo(ref){ LOTES.forEach(el=>el.classList.toggle("ativo",N(el.dataset.ref)===ref)); }
+function marcarAtivo(ref){ LOTES.forEach(el=>{ const on=N(el.dataset.ref)===ref; el.classList.toggle("ativo",on);
+  if(on){ const bb=pontos(el); el.style.strokeWidth=bb?Math.max(4,Math.min(bb.w,bb.h)*.07):""; } else el.style.strokeWidth=""; }); }
 function dica(e,el){ const ref=N(el.dataset.ref), d=docDe(ref), st=calcStatus(d), np=nivelPrazo(d), n=diasObra(d);
   const t=$("tooltip"); t.innerHTML=`<b>${esc(ref)}</b> ${esc(d?d.endereco:"sem dados")}<br><span style="color:${ST[st].c}">●</span> ${esc(ST[st].l)}`+
     (np?`<br><span style="color:${np==="r"?"#ff8a80":"#ffd54f"}">${np==="r"?"⛔ estourou o prazo":"⚠ atenção ao prazo"} · ${n} dias</span>`:"")+
-    (vendasPendentes(d).length?`<br><span style="color:#ff8a80">Casa vendida pendente de entrega</span>`:"");
+    (vendasPendentes(d).length?`<br><span style="color:#ffd54f">🏠 ${vendasPendentes(d).length} casa(s) vendida(s) a entregar</span>`:"");
   t.style.display="block"; moverDica(e); }
 function moverDica(e){ const t=$("tooltip"); t.style.left=Math.min(e.clientX+14,innerWidth-290)+"px"; t.style.top=(e.clientY+14)+"px"; }
 
@@ -391,7 +396,8 @@ function pintarResumo(){
   const ob=DOCS.filter(d=>iniciada(d)&&!finalizada(d));
   const it=[["Lotes",DOCS.length,""],["Em obra",ob.length,""],["⚠ 150 dias",DOCS.filter(d=>nivelPrazo(d)==="a").length,"a"],
     ["⛔ Estouraram 180",DOCS.filter(d=>nivelPrazo(d)==="r").length,"r"],["Finalizadas",DOCS.filter(finalizada).length,"v"],
-    ["Habite-se agendado",DOCS.filter(d=>calcStatus(d)==="habite_agendado").length,""]];
+    ["Habite-se agendado",DOCS.filter(d=>calcStatus(d)==="habite_agendado").length,""],
+    ["🏠 Entregas atrasadas",entregasPendentes().filter(v=>{ const p=prazoEntrega(v); return p&&p.n==="r"; }).length,"r"]];
   r.innerHTML=it.map(([l,n,c])=>`<div class="icard"><div class="ival ${n&&c?c:""}">${n}</div><div class="ilab">${l}</div></div>`).join("");
 }
 
@@ -406,6 +412,7 @@ async function carregarBoot(){
   else if(!BOOT){ BOOT={ok:false,podeEditar:false,erro:(r&&r.erro)||"sem resposta"};
     if(r&&r.erro==="NAO_AUTORIZADO") BOOT.erro="login vencido — entre no portal de novo"; }
   if(ATIVO) abrir(ATIVO,true);
+  pintarEntregas();
 }
 const podeEditar=()=>!!(S&&S.token&&BOOT&&BOOT.podeEditar);
 function campoEdit(d,f){
@@ -449,11 +456,7 @@ function abrir(ref,semRolar){
         <div class="campo"><label>Aprovado?</label><div class="v ${d.aprovou_habite_se?"":"vz"}">${esc(d.aprovou_habite_se||"—")}</div></div>
         <div class="campo"><label>Data</label><div class="v ${d.data_habite_se?"":"vz"}">${br(d.data_habite_se)}</div></div>
         <div class="campo"><label>Turno</label><div class="v ${d.turno_habite_se?"":"vz"}">${esc(d.turno_habite_se||"—")}</div></div></div>
-      ${vp.length?`<div class="p-sec" style="color:var(--verm)">Casas vendidas — pendentes de entrega</div>${vp.map(v=>`<div class="venda"><div class="grade">
-        <div class="campo"><label>Casa</label><div class="v">${esc(v.casa||"—")}</div></div>
-        <div class="campo"><label>Data da venda</label><div class="v">${br(v.data_venda)}</div></div>
-        <div class="campo"><label>Pré-vistoria</label><div class="v">${esc(v.agendou_pre_vistoria||"—")} ${v.data_pre_vistoria?"· "+brc(v.data_pre_vistoria):""}</div></div>
-        <div class="campo"><label>Entrega prevista</label><div class="v">${v.data_pre_vistoria?br(maisDias(v.data_pre_vistoria,15)):"—"}</div></div></div></div>`).join("")}`:""}
+      ${vp.length?`<div class="p-sec">🏠 Casas vendidas a entregar</div>${vp.map(v=>cartaoEntrega(v,true)).join("")}`:""}
       <div class="p-sec">Documentação</div>
       ${CAMPOS_DOC.map(([k,l])=>`<div class="ck">${ico(d[k])}<span>${esc(l)}</span>${d[k]?`<span class="val">${esc(d[k])}</span>`:""}</div>`).join("")}
     </div>`;
@@ -520,11 +523,79 @@ async function medir(ref,endereco,status){
   if(!r.ok){ toast("Não gravou a medição: "+r.erro); carregarMedicoes(); } else if(r.fila) toast("Sem internet: medição guardada, sobe sozinha.");
 }
 
+/* =====================================================================
+ * ENTREGAS — casas vendidas e ainda não entregues (BANCO DE DADOS VENDAS).
+ * Os alertas seguem a fórmula "PRAZO ATÉ A ENTREGA" do Notion:
+ *   agendou pré-vistoria = SIM e reparos = SIM → processo finalizado
+ *   < 7 dias da pré-vistoria  → 🟡 N dias corridos
+ *   < 15                      → 🔧 verificar se os reparos foram iniciados
+ *   = 15                      → ⏰ data final hoje
+ *   > 15                      → 🔴 prazo estourado (N dias em atraso)
+ * e o da vistoria: processo conforme = SIM e casa apta = NÃO / EXECUTANDO
+ * REPAROS → 🔧 casa não apta para a vistoria.
+ * Quem tem acesso a VENDAS ou OBRAS preenche aqui (grava no Notion).
+ * ===================================================================== */
+const ENT=[{k:"processo_conforme",l:"Processo conforme?"},{k:"casa_apta_vistoria",l:"Casa apta p/ vistoria"},
+  {k:"agendou_pre_vistoria",l:"Agendou pré-vistoria?"},{k:"data_pre_vistoria",l:"Data da pré-vistoria",tipo:"date"},
+  {k:"reparos_pre_vistoria",l:"Reparos da pré-vistoria"},{k:"entregou_casa",l:"Entregou a casa?"}];
+function prazoEntrega(v){
+  if(up(v.agendou_pre_vistoria)!=="SIM") return null;
+  if(up(v.reparos_pre_vistoria)==="SIM") return {n:"ok",t:"✅ Processo de entrega finalizado",o:8};
+  if(!v.data_pre_vistoria) return {n:"a",t:"Pré-vistoria agendada sem data",o:5};
+  const d=difDias(v.data_pre_vistoria,hojeISO());
+  if(d<0) return {n:"i",t:`📅 Pré-vistoria em ${brc(v.data_pre_vistoria)} (faltam ${-d} dia${d===-1?"":"s"})`,o:6};
+  if(d<7) return {n:"a",t:`🟡 ${d} dia${d===1?"":"s"} corridos`,o:4};
+  if(d<15) return {n:"w",t:`🔧 Verificar se os reparos foram iniciados (${d} dias corridos)`,o:2};
+  if(d===15) return {n:"h",t:"⏰ Data final hoje",o:1};
+  return {n:"r",t:`🔴 Prazo estourado (${d-15} dia${d-15===1?"":"s"} em atraso / ${d} dias corridos)`,o:0};
+}
+function naoApta(v){ return up(v.processo_conforme)==="SIM"&&["NAO","EXECUTANDO REPAROS"].indexOf(up(v.casa_apta_vistoria))>=0; }
+function entregasPendentes(){
+  const ends=new Set(DOCS.map(d=>N(d.endereco)));
+  return vendasLista.filter(v=>POSITIVOS.indexOf(up(v.entregou_casa))<0&&(INDICE||ends.has(N(v.endereco))));
+}
+function ordemEntrega(v){ const p=prazoEntrega(v); return (p?p.o:7)-(naoApta(v)?.5:0); }
+const podeVendas=()=>!!(S&&S.token&&BOOT&&BOOT.podeVendas);
+function cartaoEntrega(v,noPainel){
+  const p=prazoEntrega(v), na=naoApta(v), ed=podeVendas();
+  const campo=f=>{ const val=v[f.k]||"";
+    if(!ed) return `<div class="campo"><label>${f.l}</label><div class="v ${val?"":"vz"}">${f.tipo==="date"?br(val):esc(val||"—")}</div></div>`;
+    if(f.tipo==="date") return `<div class="campo" id="v-${esc(v.id)}-${f.k}"><label>${f.l}</label><input type="date" value="${esc(String(val).slice(0,10))}" onchange="MapaObras.salvarVenda('${esc(v.id)}','${f.k}',this.value)"></div>`;
+    const ops=(((BOOT&&BOOT.opcoesVendas)||{})[f.k]||[]).slice(); if(val&&ops.indexOf(val)<0) ops.unshift(val);
+    return `<div class="campo" id="v-${esc(v.id)}-${f.k}"><label>${f.l}</label><select onchange="MapaObras.salvarVenda('${esc(v.id)}','${f.k}',this.value)"><option value="">—</option>${ops.map(o=>`<option ${o===val?"selected":""}>${esc(o)}</option>`).join("")}</select></div>`; };
+  const doc=DOCS.find(d=>N(d.endereco)===N(v.endereco));
+  const ir=doc?(INDICE?`MapaObras.irPara('${esc(doc.setor||"")}','${esc(doc.ref||"")}')`:`MapaObras.focar('${esc(doc.ref||"")}')`):"";
+  return `<div class="entrega ${p?"p-"+p.n:""} ${na?"na":""}">
+    <div class="en-top">${noPainel?"":`<b class="en-end" ${ir?`onclick="${ir}"`:""}>${esc(v.endereco||"")}</b>`}
+      <span class="pill">Casa ${esc(v.casa!=null?v.casa:"—")}</span>${v.data_venda?`<span class="en-mini">vendida ${brc(v.data_venda)}</span>`:""}${v.eng?`<span class="en-mini">👷 ${esc(v.eng)}</span>`:""}</div>
+    ${p||na?`<div class="en-al">${p?`<span class="chip en-${p.n}">${esc(p.t)}</span>`:""}${na?`<span class="chip en-w">🔧 Casa não apta para a vistoria (${esc(v.casa_apta_vistoria)})</span>`:""}</div>`:""}
+    <div class="grade g3">${ENT.map(campo).join("")}</div></div>`;
+}
+function pintarEntregas(){
+  const box=$("ent"); if(!box) return;
+  const l=entregasPendentes().sort((a,b)=>ordemEntrega(a)-ordemEntrega(b)||String(a.endereco).localeCompare(String(b.endereco))||(a.casa||0)-(b.casa||0));
+  const nr=l.filter(v=>{ const p=prazoEntrega(v); return p&&(p.n==="r"||p.n==="h"); }).length, nw=l.filter(v=>{ const p=prazoEntrega(v); return p&&p.n==="w"; }).length, na=l.filter(naoApta).length;
+  const n=$("ent-n"); if(n) n.textContent=l.length;
+  const ch=$("ent-chips"); if(ch) ch.innerHTML=(nr?`<span class="chip en-r">${nr} estourado${nr>1?"s":""}/hoje</span>`:"")+(nw?`<span class="chip en-w">${nw} verificar reparos</span>`:"")+(na?`<span class="chip en-w">${na} não apta${na>1?"s":""} p/ vistoria</span>`:"");
+  const aviso=!S||!S.token?`<div class="en-info"><a href="${PORTAL}login.html">Entre no portal</a> para preencher.</div>`:(BOOT&&!BOOT.podeVendas&&!BOOT.erro?`<div class="en-info">Só leitura: preencher precisa de acesso a VENDAS ou OBRAS.</div>`:"");
+  box.innerHTML=l.length?aviso+`<div class="ent-lista">${l.map(v=>cartaoEntrega(v,false)).join("")}</div>`:`<div class="vazio" style="border:0">Nenhuma casa vendida esperando entrega.</div>`;
+}
+async function salvarVenda(id,k,valor){
+  const v=vendasLista.find(x=>x.id===id); if(!v) return;
+  const antes=v[k]; v[k]=valor||null;
+  const ed=lsGet(K_EDITS,{}); ed["v:"+id+"|"+k]={alvo:"v",id,k,v:valor||null,t:Date.now()}; lsSet(K_EDITS,ed);
+  const el=$("v-"+id+"-"+k); if(el) el.classList.add("salvando");
+  const r=await gravar({action:"mapaVendaUpdate",pageId:id,campo:k,valor:valor||null},"Entrega");
+  if(r.ok){ toast(r.fila?"Sem internet: guardado, grava sozinho depois.":"Gravado no Notion ✓"); pintarEntregas(); if(ATIVO) abrir(ATIVO,true); return; }
+  v[k]=antes; delete ed["v:"+id+"|"+k]; lsSet(K_EDITS,ed);
+  toast("Não gravou: "+(r.erro==="SEM_PERMISSAO"?"sem acesso a VENDAS/OBRAS":r.erro)); pintarEntregas(); if(ATIVO) abrir(ATIVO,true);
+}
+
 /* ---------------- montagem ---------------- */
 function pintarTudo(){
   pintarAtualizado();
-  if(INDICE){ pintarIndice(); pintarNotif(); pintarCal(); return; }
-  pintarMapa(); pintarResumo(); pintarNotif(); pintarMedicoes(); pintarCal();
+  if(INDICE){ pintarIndice(); pintarNotif(); pintarEntregas(); pintarCal(); return; }
+  pintarMapa(); pintarResumo(); pintarNotif(); pintarEntregas(); pintarMedicoes(); pintarCal();
   if(ATIVO) abrir(ATIVO,true);
 }
 function irPara(setor,ref){ const s=SETORES.find(x=>x.chaves.some(c=>N(setor).indexOf(N(c))>=0)); if(s) location.href=s.arq+"#"+encodeURIComponent(ref||""); }
@@ -534,7 +605,7 @@ window.MapaObras={
   calTipo:t=>{ CAL_TIPO=t; pintarCal(); },
   calMes:n=>{ if(!n){ CAL_MES=new Date(); CAL_MES.setDate(1); } else CAL_MES.setMonth(CAL_MES.getMonth()+n); pintarCal(); },
   verFin:()=>{ VER_FIN=!VER_FIN; pintarIndice(); },
-  irPara, focar, medir, salvarCampo,
+  irPara, focar, medir, salvarCampo, salvarVenda,
   fechar:()=>{ ATIVO=null; marcarAtivo(""); $("painel").innerHTML=`<div class="p-vazio"><b>📍</b>Toque em um lote no mapa para ver e preencher o status da obra.</div>`; history.replaceState(null,"",location.pathname); },
   toggle:id=>{ const e=$(id); if(!e) return; const ab=e.style.display==="none"; e.style.display=ab?"":"none"; const s=$(id+"-seta"); if(s) s.textContent=ab?"▾":"▸"; }
 };
@@ -549,12 +620,18 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
   const c=lsGet(K_DADOS,null); if(c){ _ultimaPub=c.updated_at; prepararDados(c); pintarTudo(); }
   carregarDados(false).then(()=>{ if(!INDICE){ const h=decodeURIComponent(location.hash.slice(1)); if(h) setTimeout(()=>focar(h),200); } });
-  if(!INDICE){ carregarBoot(); carregarMedicoes(); }
+  carregarBoot(); if(!INDICE) carregarMedicoes();
   setInterval(()=>{ if(!document.hidden) carregarDados(true); },120000);          // quase ao vivo: relê o data.json a cada 2 min
   document.addEventListener("visibilitychange",()=>{ if(!document.hidden){ carregarDados(true); if(!INDICE) carregarMedicoes(); } });
   window.addEventListener("online",()=>{ pintarAtualizado(); carregarDados(true); if(!INDICE&&BOOT&&BOOT.erro){ lsSet(K_BOOT,null); BOOT=null; carregarBoot(); } });
   window.addEventListener("offline",pintarAtualizado);
   sincronizar();
-  if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
+  /* offline: registra o service worker e pede para guardar ESTA página e o
+     data.json já na primeira visita */
+  if("serviceWorker" in navigator){
+    navigator.serviceWorker.register("sw.js").catch(()=>{});
+    navigator.serviceWorker.ready.then(reg=>{ const w=reg.active||navigator.serviceWorker.controller; if(!w) return;
+      w.postMessage({cachear:[location.href.split("#")[0],new URL("data.json",location.href).href,new URL("index.html",location.href).href]}); }).catch(()=>{});
+  }
 });
 })();

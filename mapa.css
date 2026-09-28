@@ -84,11 +84,11 @@ html[data-tema="escuro"] .zoom button{color:#e7f3ff}
 #mapa-svg svg polygon:not(.lote){fill:#b0bec5;fill-opacity:.55;stroke:rgba(0,0,0,.35);stroke-width:2}
 #mapa-svg .lote{stroke:rgba(20,40,60,.55);stroke-width:3;transition:fill-opacity .15s}
 #mapa-svg .lote:hover{fill-opacity:.8!important}
-#mapa-svg .lote.ativo{stroke:#0b2233;stroke-width:34;stroke-linejoin:round}
+#mapa-svg .lote.ativo{stroke:#0b2233;stroke-linejoin:round}
 #mapa-svg .lote.apagado{opacity:.15}
-#mapa-svg .al-150{fill:#f5b400;stroke:#fff;stroke-width:5;pointer-events:none}
-#mapa-svg .al-180{fill:#dc2626;stroke:#fff;stroke-width:5;pointer-events:none}
-#mapa-svg .al-venda{fill:#fff;stroke:#dc2626;stroke-width:6;pointer-events:none}
+/* bolinha de prazo: tamanho e contorno vêm do JS, proporcionais ao lote */
+#mapa-svg .al-150{fill:#f5b400;stroke:#fff;pointer-events:none}
+#mapa-svg .al-180{fill:#dc2626;stroke:#fff;pointer-events:none}
 
 .painel{background:var(--sup);border:1px solid var(--border2);border-radius:12px;max-height:min(66vh,640px);min-height:360px;overflow:auto;position:sticky;top:10px}
 .p-vazio{padding:40px 22px;text-align:center;color:var(--text3)}
@@ -172,6 +172,24 @@ html[data-tema="escuro"] .med td.end{color:#e7f3ff}
 .med select{min-width:210px;border-left:6px solid var(--mc,#9aaac5)}
 .med .quem{font-size:11px;color:var(--text3)}
 
+/* ---------- entregas (casas vendidas e não entregues) ---------- */
+.ent-lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:10px}
+.entrega{background:var(--sup);border:1px solid var(--border2);border-left:5px solid var(--border);border-radius:10px;padding:10px 12px}
+.entrega.p-r,.entrega.p-h{border-left-color:#dc2626;background:linear-gradient(90deg,rgba(220,38,38,.06),transparent 40%)}
+.entrega.p-w,.entrega.na{border-left-color:#E67E22}
+.entrega.p-a{border-left-color:#f5b400}.entrega.p-ok{border-left-color:var(--verde)}.entrega.p-i{border-left-color:var(--azul)}
+.en-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.en-end{color:var(--azul-esc);cursor:pointer;font-size:13.5px}
+html[data-tema="escuro"] .en-end{color:#e7f3ff}
+.en-end:hover{text-decoration:underline}
+.en-mini{font-size:11.5px;color:var(--text3);font-weight:600}
+.en-al{display:flex;gap:6px;flex-wrap:wrap;margin:7px 0 2px}
+.en-al .chip{white-space:normal}
+.chip.en-r,.chip.en-h{background:#dc2626}.chip.en-w{background:#E67E22}.chip.en-a{background:#d4a106}.chip.en-ok{background:var(--verde)}.chip.en-i{background:var(--azul)}
+.grade.g3{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:8px}
+.en-info{font-size:12px;color:var(--text3);margin:0 2px 8px;font-weight:600}
+.painel .entrega{margin-bottom:8px}.painel .grade.g3{grid-template-columns:1fr 1fr}
+
 /* ---------- calendários ---------- */
 .cal-box{background:var(--sup);border:1px solid var(--border2);border-radius:10px;padding:10px 12px}
 .cal-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
@@ -214,4 +232,4 @@ html[data-tema="escuro"] .emp .nums b{color:#e7f3ff}
 .toast.on{transform:translateX(-50%) translateY(0)}
 
 @media(max-width:1100px){ .mapa-linha{grid-template-columns:1fr} .painel{position:static;max-height:none} }
-@media(max-width:640px){ .wrap{padding:0 12px} .hbar{gap:8px} .htitle{font-size:19px} .info-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px} .icard{min-width:0;padding:8px 6px} .ilab{font-size:9px} .mapa-box{height:58vh;min-height:320px} .busca-mapa{right:58px} .busca-mapa input{min-width:0;width:100%} .sec .cond{font-size:17px} .med select{min-width:0;width:100%} .p-topo .end{font-size:19px} .hbt{padding:5px 8px;font-size:11px} .ntf{grid-template-columns:1fr} .ntf .mud{justify-content:flex-start} .hupd{display:none} }
+@media(max-width:640px){ .wrap{padding:0 12px} .hbar{gap:8px} .htitle{font-size:19px} .info-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px} .icard{min-width:0;padding:8px 6px} .ilab{font-size:9px} .mapa-box{height:58vh;min-height:320px} .busca-mapa{right:58px} .busca-mapa input{min-width:0;width:100%} .sec .cond{font-size:17px} .med select{min-width:0;width:100%} .p-topo .end{font-size:19px} .ent-lista{grid-template-columns:1fr} .grade.g3{grid-template-columns:1fr 1fr} .hbt{padding:5px 8px;font-size:11px} .ntf{grid-template-columns:1fr} .ntf .mud{justify-content:flex-start} .hupd{display:none} }

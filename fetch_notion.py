@@ -135,23 +135,39 @@ def parse_doc(page):
 
 # ─── PARSE VENDAS ─────────────────────────────────────────────
 def parse_venda(page):
+    """28/09 (fim do dia): + id da página, engenheiro e as colunas do
+    processo de ENTREGA (conformidade, casa apta para a vistoria, reparos da
+    pré-vistoria) — o mapa mostra os alertas e deixa preencher."""
     p = page.get("properties", {})
-    def s(nome): return prop_select(get_prop(p, nome))
+    def s(nome):
+        v = get_prop(p, nome)
+        return prop_select(v) or ((v.get("status") or {}).get("name") if isinstance(v, dict) and v.get("status") else None)
     def t(nome): return prop_title(get_prop(p, nome))
     def tx(nome): return prop_text(get_prop(p, nome))
     def d(nome): return prop_date(get_prop(p, nome))
+    def pessoas(*nomes):
+        for n in nomes:
+            v = get_prop(p, n)
+            if v and v.get("people") is not None:
+                return ", ".join((u.get("name") or "") for u in v.get("people") or []) or None
+        return None
 
     # ENDEREÇO pode ser title ou rich_text dependendo do banco
     endereco = t("ENDEREÇO") or tx("ENDEREÇO")
 
     return {
+        "id":                    (page.get("id") or "").replace("-", ""),
         "endereco":              endereco,
         "casa":                  prop_number(get_prop(p, "CASA")),
-        "clientes":              s("CLIENTES") or tx("CLIENTES"),
+        "clientes":              s("CLIENTES") or tx("CLIENTES"),      # só para filtrar; NÃO é publicado
         "data_venda":            d("DATA DA VENDA"),
+        "eng":                   pessoas("ENG. RESPONSÁEL", "ENG. RESPONSÁVEL"),
         "entregou_casa":         s("ENTEGOU A CASA E PEGOU TERMO DE ENTREGA?"),
-        "agendou_pre_vistoria":  s("AGENDOU PRÉ VISTORIA?") or s("AGENDOU PRE VISTORIA?"),
+        "processo_conforme":     s("PROCESSO CONFORME?"),
+        "casa_apta_vistoria":    s("CASA APTA PARA A VISTORIA"),
+        "agendou_pre_vistoria":  s("AGENDOU PRE VISTORIA?") or s("AGENDOU PRÉ VISTORIA?"),
         "data_pre_vistoria":     d("DATA DA PRÉ-VISTORIA") or d("DATA DA PRE-VISTORIA"),
+        "reparos_pre_vistoria":  s("REPAROS PRE VISTORIA REALIZADOS"),
     }
 
 # ─── CÁLCULO DE STATUS (réplica da lógica JS) ────────────────
