@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-28T11:00:43.318375+00:00",
+  "updated_at": "2026-09-28T15:00:44.228477+00:00",
   "documentos": [
     {
       "endereco": "TESTE CONTA QD 01 LT 01",
@@ -5523,7 +5523,7 @@
       "data_inicio_obra": "2026-06-15",
       "data_termino_obra": null,
       "agendou_habite_se": "SIM",
-      "aprovou_habite_se": "NÃO",
+      "aprovou_habite_se": "SIM",
       "data_habite_se": "2026-09-23",
       "turno_habite_se": "MANHÃ",
       "escritura_assinada": "SIM",
@@ -6047,7 +6047,7 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "armazenou_habite": "NÃO",
-      "certidoes_matricula": "NÃO"
+      "certidoes_matricula": "SIM"
     },
     {
       "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B2",
@@ -10338,7 +10338,7 @@
       "setor": "PQ DOS BURITIS"
     },
     "BR 14": {
-      "status": "habite_agendado",
+      "status": "habite_concluido",
       "endereco": "RPB 24 QD 26A LT 12",
       "setor": "PQ DOS BURITIS"
     },
