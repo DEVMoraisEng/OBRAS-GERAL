@@ -1,0 +1,10 @@
+{
+  "name": "Mapa de Obras · Morais Engenharia",
+  "short_name": "Mapa de Obras",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EAF1F3",
+  "theme_color": "#295778",
+  "icons": [{ "src": "logo.png", "sizes": "360x360", "type": "image/png", "purpose": "any" }]
+}

@@ -1,6 +1,19 @@
 # -*- coding: utf-8 -*-
 """
 Busca dados do banco BASE DE DADOS DOCUMENTOS + VENDAS e gera data.json
+
+28/09/26 — MAPA DE OBRAS novo:
+  * "id" da página em cada documento (o mapa grava o STATUS DA OBRA direto no
+    Notion pelo Apps Script do portal e precisa saber QUAL página);
+  * prazo de obra: ALERTA aos 150 dias e ESTOUROU aos 180 (antes: só 150);
+  * NOTIFICAÇÕES DE VERDADE: a cada execução, compara com a execução anterior
+    e registra EVENTOS com data e hora (mudou de status, chegou a 150/180
+    dias, pré-vistoria agendada, habite-se marcado, obra nova). A tela filtra
+    "esta semana" (desde terça), "semana passada" e "30 dias". O histórico
+    antigo por semana (historico_semanal) saiu: ele congelava a semana na
+    primeira execução e por isso quase nunca mostrava nada;
+  * o NOME DO CLIENTE das vendas não é mais publicado (este site é público);
+    fica só casa, datas e situação da entrega.
 """
 import requests, json, os
 from datetime import datetime, timezone, timedelta
@@ -75,6 +88,7 @@ def parse_doc(page):
 
     return {
         # Identificação
+        "id":                     (page.get("id") or "").replace("-", ""),
         "endereco":               prop_title(get_prop(p, "ENDEREÇO")),
         "ref":                    prop_text(get_prop(p, "REF.")),
         "setor":                  s("SETOR"),
@@ -141,7 +155,8 @@ def parse_venda(page):
     }
 
 # ─── CÁLCULO DE STATUS (réplica da lógica JS) ────────────────
-PRAZO_DIAS = 150
+PRAZO_ALERTA = 150     # dias: "atenção ao prazo"
+PRAZO_ESTOURO = 180    # dias: "estourou o prazo" (e finalizada depois disso = acima do prazo)
 
 def _obra_iniciada(doc):
     v = (doc.get('obra_iniciada') or '').upper().strip()
@@ -153,17 +168,31 @@ def _obra_finalizada_com_prazo(doc):
 def _obra_finalizada_sem_prazo(doc):
     return (doc.get('obra_finalizada') or '').upper().strip() == 'SIM SEM PRAZO'
 
-def _dias_de_obra(doc):
+def _hoje():
+    return (datetime.now(timezone.utc) - timedelta(hours=3)).date()
+
+def _dias_de_obra(doc, ate_hoje=False):
     ini = doc.get('data_inicio_obra')
     fim = doc.get('data_termino_obra')
-    if not ini or not fim:
+    if not ini or (not fim and not ate_hoje):
         return None
     try:
-        d_ini = datetime.fromisoformat(ini[:10])
-        d_fim = datetime.fromisoformat(fim[:10])
+        d_ini = datetime.fromisoformat(ini[:10]).date()
+        d_fim = datetime.fromisoformat(fim[:10]).date() if fim else _hoje()
         return (d_fim - d_ini).days
     except Exception:
         return None
+
+def nivel_prazo(doc):
+    """'a' = 150+ dias, 'r' = 180+ dias. Só obra iniciada COM prazo e não finalizada."""
+    if (doc.get('obra_iniciada') or '').upper().strip() != 'SIM':
+        return None
+    if _obra_finalizada_com_prazo(doc) or _obra_finalizada_sem_prazo(doc):
+        return None
+    dias = _dias_de_obra(doc, ate_hoje=True)
+    if dias is None:
+        return None
+    return 'r' if dias >= PRAZO_ESTOURO else ('a' if dias >= PRAZO_ALERTA else None)
 
 def calc_status(doc):
     if not doc:
@@ -172,7 +201,7 @@ def calc_status(doc):
         return 'fin_sem_prazo'
     if _obra_finalizada_com_prazo(doc):
         dias = _dias_de_obra(doc)
-        if dias is not None and dias > PRAZO_DIAS:
+        if dias is not None and dias >= PRAZO_ESTOURO:
             return 'acima_prazo'
         return 'fin_prazo'
     if (doc.get('aprovou_habite_se') or '').upper() == 'SIM':
@@ -185,88 +214,61 @@ def calc_status(doc):
         return 'nao_iniciado'
     return 'nao_comprado'
 
-def semana_iso(dt=None):
-    dt = dt or datetime.now()
-    return dt.strftime('%G-W%V')
-
 def gerar_snapshot(documentos, vendas=None):
-    snap = {}
-    # Mapear pré-vistoria por endereço (vindas das vendas)
-    pre_vistoria_map = {}
+    """Estado de cada lote nesta execução — é o que a próxima compara."""
+    pv = {}
     for v in (vendas or []):
         end = (v.get('endereco') or '').upper().strip()
-        if not end:
-            continue
-        agendou = (v.get('agendou_pre_vistoria') or '').upper().strip()
-        if agendou == 'SIM':
-            pre_vistoria_map[end] = {
-                'agendou': 'SIM',
-                'data': v.get('data_pre_vistoria') or '',
-                'casa': v.get('casa'),
-                'cliente': v.get('clientes') or '',
-            }
-
+        if end and (v.get('agendou_pre_vistoria') or '').upper().strip() == 'SIM':
+            pv.setdefault(end, {})[str(v.get('casa') or '')] = v.get('data_pre_vistoria') or ''
+    snap = {}
     for doc in documentos:
         ref = (doc.get('ref') or '').strip()
         if not ref:
             continue
         end = (doc.get('endereco') or '').upper().strip()
-        lote = {
+        snap[ref] = {
             'status': calc_status(doc),
+            'prazo': nivel_prazo(doc),
             'endereco': doc.get('endereco') or '',
             'setor': doc.get('setor') or '',
+            'habite': [doc.get('data_habite_se') or '', doc.get('turno_habite_se') or ''] if doc.get('data_habite_se') else None,
+            'pv': pv.get(end, {}),
         }
-        # Adicionar info de pré-vistoria se existir para este endereço
-        pv = pre_vistoria_map.get(end)
-        if pv:
-            lote['pre_vistoria'] = pv
-        snap[ref] = lote
     return snap
 
-def atualizar_historico(historico_anterior, documentos, vendas=None):
-    """Mantém últimas 12 semanas de snapshots congelados (um por semana)."""
-    import copy
-    semana_atual = semana_iso()
-    snapshot_atual = gerar_snapshot(documentos, vendas)
+NIVEL = {None: 0, 'a': 1, 'r': 2}
 
-    historico = list(historico_anterior or [])
-
-    semanas_existentes = set(h.get('semana') for h in historico)
-    dt_anterior = datetime.now() - timedelta(weeks=1)
-    semana_ant = semana_iso(dt_anterior)
-
-    # Bootstrap: cria semana anterior como baseline se não existir
-    if semana_ant not in semanas_existentes:
-        baseline = copy.deepcopy(historico[0]['lotes']) if historico else copy.deepcopy(snapshot_atual)
-        historico.append({
-            'semana': semana_ant,
-            'timestamp': dt_anterior.isoformat(),
-            'lotes': baseline,
-        })
-
-    # Semana atual: congela apenas na PRIMEIRA execução da semana (nunca sobrescreve)
-    if semana_atual not in semanas_existentes:
-        historico.append({
-            'semana': semana_atual,
-            'timestamp': datetime.now(timezone.utc).isoformat(),
-            'lotes': copy.deepcopy(snapshot_atual),
-        })
-
-    # Manter apenas últimas 12 semanas
-    historico.sort(key=lambda h: h['semana'])
-    if len(historico) > 12:
-        historico = historico[-12:]
-
-    return historico, snapshot_atual
+def gerar_eventos(anterior, atual, agora_iso):
+    ev = []
+    for ref, a in atual.items():
+        base = {'em': agora_iso, 'ref': ref, 'endereco': a.get('endereco', ''), 'setor': a.get('setor', '')}
+        b = anterior.get(ref)
+        if b is None:
+            if a.get('status') not in ('nao_comprado',):
+                ev.append(dict(base, tipo='novo', para=a.get('status')))
+            continue
+        if b.get('status') != a.get('status'):
+            ev.append(dict(base, tipo='status', de=b.get('status'), para=a.get('status')))
+        if NIVEL.get(a.get('prazo'), 0) > NIVEL.get(b.get('prazo'), 0):
+            ev.append(dict(base, tipo='prazo', para=a.get('prazo')))
+        if a.get('habite') and a.get('habite') != b.get('habite'):
+            ev.append(dict(base, tipo='habite', data=a['habite'][0], turno=a['habite'][1]))
+        for casa, data in (a.get('pv') or {}).items():
+            if casa not in (b.get('pv') or {}):
+                ev.append(dict(base, tipo='pre_vistoria', casa=casa, data_pv=data))
+    return ev
 
 # ─── MAIN ─────────────────────────────────────────────────────
 def main():
-    # Ler histórico existente
-    historico_anterior = []
+    # Execução anterior: é com ela que os eventos são calculados
+    anterior, eventos, tinha_eventos = {}, [], False
     try:
         with open("data.json", "r", encoding="utf-8") as f:
             old_data = json.load(f)
-            historico_anterior = old_data.get("historico_semanal", [])
+            anterior = old_data.get("snapshot_atual", {}) or {}
+            tinha_eventos = "eventos" in old_data
+            eventos = old_data.get("eventos", []) or []
     except Exception:
         pass
 
@@ -290,22 +292,35 @@ def main():
         except Exception as e:
             print(f"  AVISO: falha ao buscar vendas: {e}")
 
-    # 3. Histórico semanal
-    historico, snapshot_atual = atualizar_historico(historico_anterior, documentos, vendas)
-    print(f"  Histórico semanal: {len(historico)} semanas armazenadas")
+    # 3. Eventos (notificações). Na PRIMEIRA execução com este código não gera
+    #    nada: a regra de prazo mudou (150 → 180) e tudo pareceria "mudou".
+    snapshot_atual = gerar_snapshot(documentos, vendas)
+    agora = datetime.now(timezone.utc).isoformat()
+    if tinha_eventos and anterior:
+        novos = gerar_eventos(anterior, snapshot_atual, agora)
+        eventos = novos + eventos
+        print(f"  {len(novos)} evento(s) novo(s)")
+    else:
+        print("  Primeira execução com eventos: só guarda o retrato (sem notificação).")
+    limite = (datetime.now(timezone.utc) - timedelta(days=120)).isoformat()
+    eventos = [e for e in eventos if (e.get("em") or "") >= limite][:3000]
+
+    # 4. O site é público: o nome do cliente não sai daqui
+    for v in vendas:
+        v.pop("clientes", None)
 
     output = {
-        "updated_at": datetime.now(timezone.utc).isoformat(),
+        "updated_at": agora,
         "documentos": documentos,
         "vendas":     vendas,
         "snapshot_atual": snapshot_atual,
-        "historico_semanal": historico,
+        "eventos":    eventos,
     }
 
     with open("data.json", "w", encoding="utf-8") as f:
-        json.dump(output, f, ensure_ascii=False, indent=2)
+        json.dump(output, f, ensure_ascii=False, indent=1)
 
-    print(f"data.json gerado: {len(documentos)} docs, {len(vendas)} vendas")
+    print(f"data.json gerado: {len(documentos)} docs, {len(vendas)} vendas, {len(eventos)} eventos")
 
 if __name__ == "__main__":
     main()
