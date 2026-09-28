@@ -9,7 +9,7 @@
  *   - data.json: rede primeiro; sem internet, a última cópia;
  *   - sem internet numa página nunca aberta: mostra o índice.
  * Suba o número do CACHE sempre que mudar mapa.js/mapa.css/as páginas. */
-const CACHE = "mapa-obras-v3";
+const CACHE = "mapa-obras-v4";
 const BASE = ["./", "./index.html", "./mapa.css", "./mapa.js", "./logo.png", "./manifest.json", "./data.json"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => Promise.all(BASE.map(u => c.add(new Request(u, { cache: "reload" })).catch(() => null))))

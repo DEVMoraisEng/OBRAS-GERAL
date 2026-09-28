@@ -173,7 +173,7 @@ html[data-tema="escuro"] .med td.end{color:#e7f3ff}
 .med .quem{font-size:11px;color:var(--text3)}
 
 /* ---------- entregas (casas vendidas e não entregues) ---------- */
-.ent-lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:10px}
+.ent-lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:10px}
 .entrega{background:var(--sup);border:1px solid var(--border2);border-left:5px solid var(--border);border-radius:10px;padding:10px 12px}
 .entrega.p-r,.entrega.p-h{border-left-color:#dc2626;background:linear-gradient(90deg,rgba(220,38,38,.06),transparent 40%)}
 .entrega.p-w,.entrega.na{border-left-color:#E67E22}
@@ -187,6 +187,14 @@ html[data-tema="escuro"] .en-end{color:#e7f3ff}
 .en-al .chip{white-space:normal}
 .chip.en-r,.chip.en-h{background:#dc2626}.chip.en-w{background:#E67E22}.chip.en-a{background:#d4a106}.chip.en-ok{background:var(--verde)}.chip.en-i{background:var(--azul)}
 .grade.g3{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:8px}
+.grade.en-g{grid-template-columns:repeat(auto-fill,minmax(132px,1fr));margin-top:8px}
+.en-abas{margin:0 0 10px}.en-abas .pill b{margin-left:4px}
+.en-eng{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;letter-spacing:.3px;text-transform:uppercase;color:var(--azul-esc);margin:14px 0 7px;display:flex;align-items:center;gap:8px}
+html[data-tema="escuro"] .en-eng{color:var(--teal)}
+.en-eng .qtd{background:var(--border2);color:var(--text3);border-radius:999px;padding:1px 9px;font-size:12px;font-family:Inter,sans-serif}
+.notif-exp{font-size:12px;color:var(--text3);margin:0 2px 8px;line-height:1.45}
+.cal .ev.pv,.cal-lista .ev.pv{background:#2d8a8a}.cal .ev.pv-w,.cal-lista .ev.pv-w{background:#E67E22}
+.cal .ev.pv-r,.cal .ev.pv-h,.cal-lista .ev.pv-r,.cal-lista .ev.pv-h{background:#dc2626}.cal .ev.pv-ok,.cal-lista .ev.pv-ok{background:#27c45e}
 .en-info{font-size:12px;color:var(--text3);margin:0 2px 8px;font-weight:600}
 .painel .entrega{margin-bottom:8px}.painel .grade.g3{grid-template-columns:1fr 1fr}
 
@@ -232,4 +240,4 @@ html[data-tema="escuro"] .emp .nums b{color:#e7f3ff}
 .toast.on{transform:translateX(-50%) translateY(0)}
 
 @media(max-width:1100px){ .mapa-linha{grid-template-columns:1fr} .painel{position:static;max-height:none} }
-@media(max-width:640px){ .wrap{padding:0 12px} .hbar{gap:8px} .htitle{font-size:19px} .info-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px} .icard{min-width:0;padding:8px 6px} .ilab{font-size:9px} .mapa-box{height:58vh;min-height:320px} .busca-mapa{right:58px} .busca-mapa input{min-width:0;width:100%} .sec .cond{font-size:17px} .med select{min-width:0;width:100%} .p-topo .end{font-size:19px} .ent-lista{grid-template-columns:1fr} .grade.g3{grid-template-columns:1fr 1fr} .hbt{padding:5px 8px;font-size:11px} .ntf{grid-template-columns:1fr} .ntf .mud{justify-content:flex-start} .hupd{display:none} }
+@media(max-width:640px){ .wrap{padding:0 12px} .hbar{gap:8px} .htitle{font-size:19px} .info-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px} .icard{min-width:0;padding:8px 6px} .ilab{font-size:9px} .mapa-box{height:58vh;min-height:320px} .busca-mapa{right:58px} .busca-mapa input{min-width:0;width:100%} .sec .cond{font-size:17px} .med select{min-width:0;width:100%} .p-topo .end{font-size:19px} .ent-lista{grid-template-columns:1fr} .grade.g3,.grade.en-g{grid-template-columns:1fr 1fr} .hbt{padding:5px 8px;font-size:11px} .ntf{grid-template-columns:1fr} .ntf .mud{justify-content:flex-start} .hupd{display:none} }
