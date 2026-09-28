@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-28T16:35:23.882851+00:00",
+ "updated_at": "2026-09-28T17:07:11.919130+00:00",
  "documentos": [
   {
    "id": "3e4c5ab532d381049537c08dd5b28b28",
@@ -7367,2092 +7367,3397 @@
  ],
  "vendas": [
   {
+   "id": "3b5c5ab532d380079289c0666cd04106",
    "endereco": "TB 18 QD 49 LT 27",
    "casa": 2,
    "data_venda": "2026-08-27",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "3b5c5ab532d380f6b741d326b05da933",
    "endereco": "TB 18 QD 49 LT 27",
    "casa": 1,
    "data_venda": "2026-09-14",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "3adc5ab532d3806e84b0f668979b47b0",
    "endereco": "TB 18 QD 49 LT 29",
    "casa": 2,
    "data_venda": "2026-09-03",
+   "eng": "Caio Araujo",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "3adc5ab532d380c6bec1fbe4b2d86aa6",
    "endereco": "TB 18 QD 49 LT 29",
    "casa": 1,
    "data_venda": "2026-09-23",
+   "eng": "Caio Araujo",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "35fc5ab532d380059f06d9ca969111cd",
    "endereco": "RPB 24 QD 26A LT 04",
    "casa": 1,
    "data_venda": "2026-07-28",
+   "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d38078b846c2eba774eb8b",
    "endereco": "TB 18 QD 49 LT 35",
    "casa": 2,
    "data_venda": "2026-09-16",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380259b92d2c23860977f",
    "endereco": "TB 18 QD 49 LT 35",
    "casa": 1,
    "data_venda": "2026-08-28",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380a6811ee83e89555554",
    "endereco": "TB 6 QD 40 LT 38",
    "casa": 2,
    "data_venda": "2026-01-17",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-06"
+   "data_pre_vistoria": "2026-05-06",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380139556c2cefc314e18",
    "endereco": "TB 6 QD 40 LT 38",
    "casa": 1,
    "data_venda": "2026-01-30",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-03-03"
+   "data_pre_vistoria": "2026-03-03",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380feb894c0b55d94f3f1",
    "endereco": "TB 6 QD 40 LT 37",
    "casa": 2,
    "data_venda": "2025-10-15",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-11-24"
+   "data_pre_vistoria": "2025-11-24",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3805cb1d1cf04d41dacf8",
    "endereco": "TB 6 QD 40 LT 37",
    "casa": 1,
    "data_venda": "2025-10-14",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-11-05"
+   "data_pre_vistoria": "2025-11-05",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3803f8587f42746dc0946",
    "endereco": "TB 6 QD 40 LT 35",
    "casa": 2,
    "data_venda": "2025-11-29",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-07"
+   "data_pre_vistoria": "2026-01-07",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380cc845cdb4d860733a4",
    "endereco": "TB 6 QD 40 LT 35",
    "casa": 1,
    "data_venda": "2025-11-21",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-12-19"
+   "data_pre_vistoria": "2025-12-19",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38074a51dd8031fbcc304",
    "endereco": "TB 6 QD 40 LT 34",
    "casa": 2,
    "data_venda": "2025-10-31",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-21"
+   "data_pre_vistoria": "2026-01-21",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380129078d7a8b6a29186",
    "endereco": "TB 6 QD 40 LT 34",
    "casa": 1,
    "data_venda": "2026-03-26",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-05"
+   "data_pre_vistoria": "2026-05-05",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380108483e1c199bf9dc8",
    "endereco": "TB 6 QD 40 LT 33",
    "casa": 2,
    "data_venda": "2025-12-02",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-12-10"
+   "data_pre_vistoria": "2025-12-10",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380538f00d82fea7d80a1",
    "endereco": "TB 6 QD 40 LT 33",
    "casa": 1,
    "data_venda": "2025-12-09",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-12"
+   "data_pre_vistoria": "2026-01-12",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380c7bed0ced9ee78990f",
    "endereco": "TB 5 QD 40 LT 01",
    "casa": 3,
    "data_venda": "2025-11-18",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-06"
+   "data_pre_vistoria": "2026-02-06",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380f292b6f1896dda2974",
    "endereco": "TB 5 QD 40 LT 01",
    "casa": 2,
    "data_venda": "2026-02-13",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-04-23"
+   "data_pre_vistoria": "2026-04-23",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3805a9005fec0349bc3f9",
    "endereco": "TB 5 QD 40 LT 01",
    "casa": 1,
    "data_venda": "2026-04-27",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-10"
+   "data_pre_vistoria": "2026-06-10",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3807d9ceccba61d5fc1f3",
    "endereco": "TB 21 QD 51 LT 35",
    "casa": 2,
    "data_venda": "2026-07-13",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-08-03"
+   "data_pre_vistoria": "2026-08-03",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38067a630e5ae3a193c92",
    "endereco": "TB 21 QD 51 LT 35",
    "casa": 1,
    "data_venda": "2026-08-19",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d3805d88e0f77096e4b12e",
    "endereco": "TB 21 QD 51 LT 34",
    "casa": 1,
    "data_venda": "2026-07-27",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "EXECUTANDO REPAROS",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-09-01"
+   "data_pre_vistoria": "2026-09-01",
+   "reparos_pre_vistoria": "EXECUTANDO REPAROS"
   },
   {
+   "id": "33cc5ab532d380d2a69bd9f25f5a67b5",
    "endereco": "TB 21 QD 51 LT 33",
    "casa": 2,
    "data_venda": "2026-09-24",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380589e60f104dd2d48f5",
    "endereco": "TB 21 QD 51 LT 32",
    "casa": 2,
    "data_venda": "2026-09-21",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d38025bd6bcb77a53c9235",
    "endereco": "TB 21 QD 51 LT 32",
    "casa": 1,
    "data_venda": "2026-09-12",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380e3b37ad0c8cecf0812",
    "endereco": "TB 21 QD 50 LT 40",
    "casa": 2,
    "data_venda": "2026-06-15",
+   "eng": "Caio Araujo, José Arthur",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-08-11"
+   "data_pre_vistoria": "2026-08-11",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3800481cfd558f8cf141c",
    "endereco": "TB 21 QD 50 LT 40",
    "casa": 1,
    "data_venda": "2026-06-18",
+   "eng": "João Marcos Vieira Cabral Menezes, Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-08-24"
+   "data_pre_vistoria": "2026-08-24",
+   "reparos_pre_vistoria": "EXECUTANDO REPAROS"
   },
   {
+   "id": "33cc5ab532d380e9a9eded0f7c7a8a09",
    "endereco": "TB 21 QD 50 LT 39",
    "casa": 2,
    "data_venda": "2026-07-09",
+   "eng": "Caio Araujo",
    "entregou_casa": "NÃO",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-09-18"
+   "data_pre_vistoria": "2026-09-18",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380e68682e8de7e7d60bf",
    "endereco": "TB 21 QD 50 LT 39",
    "casa": 1,
    "data_venda": "2026-06-03",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-07-24"
+   "data_pre_vistoria": "2026-07-24",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380f3b6b8cfb7ae2738c3",
    "endereco": "TB 21 QD 50 LT 32",
    "casa": 2,
    "data_venda": "2026-06-15",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-09-01"
+   "data_pre_vistoria": "2026-09-01",
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d38040b8ebd9f971e3bf20",
    "endereco": "TB 21 QD 50 LT 32",
    "casa": 1,
    "data_venda": "2026-06-10",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-07-15"
+   "data_pre_vistoria": "2026-07-15",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38034bc48feb628c45e03",
    "endereco": "TB 21 QD 50 LT 26",
    "casa": 2,
    "data_venda": "2026-07-16",
+   "eng": "Caio Araujo",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380a58b3bd9e8ed761688",
    "endereco": "TB 21 QD 50 LT 26",
    "casa": 1,
    "data_venda": "2026-07-22",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-09-01"
+   "data_pre_vistoria": "2026-09-01",
+   "reparos_pre_vistoria": "EXECUTANDO REPAROS"
   },
   {
+   "id": "33cc5ab532d3803ca6d8fa6c5fceeec3",
    "endereco": "TB 21 QD 50 LT 25",
    "casa": 2,
    "data_venda": "2026-05-29",
+   "eng": "Caio Araujo",
    "entregou_casa": "NÃO",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-08-11"
+   "data_pre_vistoria": "2026-08-11",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3806a8660ccdf23c79128",
    "endereco": "TB 21 QD 50 LT 25",
    "casa": 1,
    "data_venda": "2026-08-04",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": null,
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-09-11"
+   "data_pre_vistoria": "2026-09-11",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38073a0dbee953f476216",
    "endereco": "TB 21 QD 46 LT 26",
    "casa": 2,
    "data_venda": "2026-06-18",
+   "eng": "Caio Araujo",
    "entregou_casa": "NÃO",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-09-24"
+   "data_pre_vistoria": "2026-09-24",
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d3803aaec3fbedd0aa783f",
    "endereco": "TB 21 QD 46 LT 18",
    "casa": 2,
    "data_venda": "2026-05-04",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-02"
+   "data_pre_vistoria": "2026-06-02",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3801fa266cf9ce99cb750",
    "endereco": "TB 21 QD 46 LT 18",
    "casa": 1,
    "data_venda": "2026-06-13",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-07-24"
+   "data_pre_vistoria": "2026-07-24",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38092a2e5dcae131e2dd7",
    "endereco": "TB 21 QD 42 LT 14",
    "casa": 2,
    "data_venda": "2026-03-10",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-08"
+   "data_pre_vistoria": "2026-05-08",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380648a36f9368e7cad55",
    "endereco": "TB 21 QD 42 LT 14",
    "casa": 1,
    "data_venda": "2026-01-23",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-22"
+   "data_pre_vistoria": "2026-05-22",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380b7be1efc791fde0c82",
    "endereco": "TB 21 QD 42 LT 13",
    "casa": 2,
    "data_venda": "2026-02-13",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-04-23"
+   "data_pre_vistoria": "2026-04-23",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3803a8595d3ff2fae0adf",
    "endereco": "TB 21 QD 42 LT 13",
    "casa": 1,
    "data_venda": "2026-02-10",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-03-17"
+   "data_pre_vistoria": "2026-03-17",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38008b2defbcac3dade2a",
    "endereco": "TB 21 QD 40 LT 30",
    "casa": 2,
    "data_venda": "2025-11-07",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-26"
+   "data_pre_vistoria": "2026-02-26",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3802a985df1221cf64071",
    "endereco": "TB 21 QD 40 LT 30",
    "casa": 1,
    "data_venda": "2025-12-01",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-12"
+   "data_pre_vistoria": "2026-01-12",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3802c9d60d044e496c260",
    "endereco": "TB 20 QD 38 LT 01",
    "casa": 3,
    "data_venda": "2025-10-01",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-10-27"
+   "data_pre_vistoria": "2025-10-27",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a1b04df0863ea2fcb1",
    "endereco": "TB 20 QD 38 LT 01",
    "casa": 2,
    "data_venda": "2025-09-30",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-11-18"
+   "data_pre_vistoria": "2025-11-18",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380e68da4dc9f1b95dbd9",
    "endereco": "TB 20 QD 38 LT 01",
    "casa": 1,
    "data_venda": "2026-02-03",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-21"
+   "data_pre_vistoria": "2026-05-21",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3800eb6d5f8f734455c3f",
    "endereco": "TB 19 QD 50 LT 04",
    "casa": 2,
    "data_venda": "2026-08-12",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380d3a62af248c08d3c8e",
    "endereco": "TB 19 QD 50 LT 04",
    "casa": 1,
    "data_venda": "2026-08-27",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380bab32bde51425600e0",
    "endereco": "TB 19 QD 50 LT 03",
    "casa": 2,
    "data_venda": "2026-08-17",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d38050b7ede5657c11aa10",
    "endereco": "TB 19 QD 46 LT 07",
    "casa": 2,
    "data_venda": "2026-06-25",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-07-14"
+   "data_pre_vistoria": "2026-07-14",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a6ad41e71ddae68117",
    "endereco": "TB 19 QD 46 LT 07",
    "casa": 1,
    "data_venda": "2026-05-12",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-12"
+   "data_pre_vistoria": "2026-06-12",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38013bc4cf18ad847e13e",
    "endereco": "TB 17 QD 48 LT 46",
    "casa": 2,
    "data_venda": "2026-05-27",
+   "eng": "Caio Araujo",
    "entregou_casa": "NÃO",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-09-10"
+   "data_pre_vistoria": "2026-09-10",
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d3804a8dfdd78402ca7d51",
    "endereco": "TB 17 QD 48 LT 46",
    "casa": 1,
    "data_venda": "2026-05-27",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-08-24"
+   "data_pre_vistoria": "2026-08-24",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a59667cc3c23d398d2",
    "endereco": "TB 17 QD 48 LT 44",
    "casa": 2,
    "data_venda": "2026-03-23",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-04-20"
+   "data_pre_vistoria": "2026-04-20",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38089bc3ffc7bf476c133",
    "endereco": "TB 17 QD 48 LT 41",
    "casa": 2,
    "data_venda": "2026-03-19",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-04"
+   "data_pre_vistoria": "2026-05-04",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380439c0bd24344550665",
    "endereco": "TB 17 QD 48 LT 41",
    "casa": 1,
    "data_venda": "2026-03-20",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-22"
+   "data_pre_vistoria": "2026-05-22",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38057b445e10bd46882c3",
    "endereco": "TB 17 QD 48 LT 40",
    "casa": 2,
    "data_venda": "2026-04-22",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-22"
+   "data_pre_vistoria": "2026-06-22",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380edab7ee3cf69a64a43",
    "endereco": "TB 17 QD 48 LT 40",
    "casa": 1,
    "data_venda": "2026-05-15",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-17"
+   "data_pre_vistoria": "2026-06-17",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3808fbf21f6a9c7c56957",
    "endereco": "TB 14 QD 43 LT 48",
    "casa": 2,
    "data_venda": "2026-03-12",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-01"
+   "data_pre_vistoria": "2026-06-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3803b9f2efded702d6b87",
    "endereco": "TB 14 QD 43 LT 48",
    "casa": 1,
    "data_venda": "2026-03-04",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-04-23"
+   "data_pre_vistoria": "2026-04-23",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380b1b5acc2d3197e99dd",
    "endereco": "TB 14 QD 43 LT 35",
    "casa": 2,
    "data_venda": "2026-03-02",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-04-22"
+   "data_pre_vistoria": "2026-04-22",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38052a0bfe784045922d3",
    "endereco": "TB 14 QD 43 LT 35",
    "casa": 1,
    "data_venda": "2026-09-08",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d3800ca85aedfe58b433e0",
    "endereco": "TB 14 QD 43 LT 31",
    "casa": 2,
    "data_venda": "2026-02-25",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-04-09"
+   "data_pre_vistoria": "2026-04-09",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380d6b7d0e035d889da32",
    "endereco": "TB 14 QD 43 LT 31",
    "casa": 1,
    "data_venda": "2026-02-19",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-04-29"
+   "data_pre_vistoria": "2026-04-29",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38047a369e568c58d8f39",
    "endereco": "TB 14 QD 43 LT 29",
    "casa": 2,
    "data_venda": "2026-03-30",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-21"
+   "data_pre_vistoria": "2026-05-21",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380bb9b28f4637f93f30f",
    "endereco": "TB 14 QD 43 LT 29",
    "casa": 1,
    "data_venda": "2026-04-16",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-12"
+   "data_pre_vistoria": "2026-06-12",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3809c9293c728c3b513d4",
    "endereco": "TB 14 QD 43 LT 27",
    "casa": 3,
    "data_venda": "2026-01-26",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-03-17"
+   "data_pre_vistoria": "2026-03-17",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38070be03e858e1214435",
    "endereco": "TB 14 QD 43 LT 27",
    "casa": 2,
    "data_venda": "2026-02-14",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-04-01"
+   "data_pre_vistoria": "2026-04-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38000a63dec3df1375977",
    "endereco": "TB 14 QD 43 LT 27",
    "casa": 1,
    "data_venda": "2026-02-11",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-04-27"
+   "data_pre_vistoria": "2026-04-27",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38064b2a7c1db187c4d91",
    "endereco": "TB 1 QD 39 LT 01",
    "casa": 3,
    "data_venda": "2025-11-18",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-06"
+   "data_pre_vistoria": "2026-02-06",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380c1bda6c20f5627c7bb",
    "endereco": "TB 1 QD 39 LT 01",
    "casa": 2,
    "data_venda": "2025-10-13",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-11-28"
+   "data_pre_vistoria": "2025-11-28",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38024a2eff76755a563bb",
    "endereco": "TB 1 QD 39 LT 01",
    "casa": 1,
    "data_venda": "2025-12-05",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-25"
+   "data_pre_vistoria": "2026-02-25",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3809d9332c39a65d94f46",
    "endereco": "TB 06 QD 39 LT 53",
    "casa": 3,
    "data_venda": "2025-12-02",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-13"
+   "data_pre_vistoria": "2026-01-13",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380e3b4cfe1c98e5075bc",
    "endereco": "TB 06 QD 39 LT 53",
    "casa": 2,
    "data_venda": "2025-12-02",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-13"
+   "data_pre_vistoria": "2026-01-13",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380d1b377f433bd3e9460",
    "endereco": "TB 06 QD 39 LT 53",
    "casa": 1,
    "data_venda": "2026-01-07",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-19"
+   "data_pre_vistoria": "2026-02-19",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3804c817dd03585003a4c",
    "endereco": "TB 06 QD 39 LT 51",
    "casa": 2,
    "data_venda": "2025-10-01",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-11-11"
+   "data_pre_vistoria": "2025-11-11",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3802abcd8c2550282380f",
    "endereco": "TB 06 QD 39 LT 51",
    "casa": 1,
    "data_venda": "2025-10-10",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-11-06"
+   "data_pre_vistoria": "2025-11-06",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380b79543f0500f15f8d0",
    "endereco": "TB 06 QD 39 LT 31",
    "casa": 2,
    "data_venda": "2025-10-09",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-11-04"
+   "data_pre_vistoria": "2025-11-04",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38084a309e9314c5cca01",
    "endereco": "TB 06 QD 39 LT 31",
    "casa": 1,
    "data_venda": "2025-10-08",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-11-10"
+   "data_pre_vistoria": "2025-11-10",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38023b2dfc42262bb5601",
    "endereco": "TB 06 QD 39 LT 29",
    "casa": 2,
    "data_venda": "2025-08-05",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-09-04"
+   "data_pre_vistoria": "2025-09-04",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380c2a585ead6869fa4e1",
    "endereco": "TB 06 QD 39 LT 29",
    "casa": 1,
    "data_venda": "2025-08-13",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-09-09"
+   "data_pre_vistoria": "2025-09-09",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380d391a2f53b2510662a",
    "endereco": "TB 06 QD 39 LT 28",
    "casa": 2,
    "data_venda": "2025-08-29",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "ÁGIO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38099a30fe6eb19602e13",
    "endereco": "TB 06 QD 39 LT 28",
    "casa": 1,
    "data_venda": "2025-08-11",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-11-28"
+   "data_pre_vistoria": "2025-11-28",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38087978cccdb507f4aa7",
    "endereco": "TB 05 QD 37 LT 23",
    "casa": 2,
    "data_venda": "2025-09-24",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "ÁGIO",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-11-19"
+   "data_pre_vistoria": "2025-11-19",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380149d6de61f47aec013",
    "endereco": "TB 05 QD 37 LT 23",
    "casa": 1,
    "data_venda": "2025-10-07",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-10-27"
+   "data_pre_vistoria": "2025-10-27",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380e3b855c19ceeb51f4b",
    "endereco": "TB 05 QD 37 LT 21",
    "casa": 2,
    "data_venda": "2026-01-15",
+   "eng": "Caio Araujo",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-03-11"
+   "data_pre_vistoria": "2026-03-11",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a39d28dfa1a830ae26",
    "endereco": "TB 05 QD 37 LT 21",
    "casa": 1,
    "data_venda": "2025-08-25",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-10-15"
+   "data_pre_vistoria": "2025-10-15",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3804b9a0adc8fbbfc1eda",
    "endereco": "TB 01 QD 39 LT 54",
    "casa": 2,
    "data_venda": "2025-12-29",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-26"
+   "data_pre_vistoria": "2026-01-26",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38056859adbffa3ab660a",
    "endereco": "TB 01 QD 39 LT 54",
    "casa": 1,
    "data_venda": "2025-11-25",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-03-11"
+   "data_pre_vistoria": "2026-03-11",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3809c9b4af6928a412991",
    "endereco": "TB 20 QD 37 LT 17",
    "casa": 3,
    "data_venda": "2026-01-23",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-26"
+   "data_pre_vistoria": "2026-02-26",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38097a67edf7cb575303a",
    "endereco": "TB 20 QD 37 LT 17",
    "casa": 2,
    "data_venda": "2025-12-30",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-03-09"
+   "data_pre_vistoria": "2026-03-09",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380bd9b8ef39f05a11712",
    "endereco": "TB 20 QD 37 LT 17",
    "casa": 1,
    "data_venda": "2026-04-07",
+   "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-10"
+   "data_pre_vistoria": "2026-06-10",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3803584c8e1a2b4682ea4",
    "endereco": "FADAS QD 49 LT 33",
    "casa": 1,
    "data_venda": "2025-02-07",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-03-19"
+   "data_pre_vistoria": "2025-03-19",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3806fbfc7e45ea6b2193b",
    "endereco": "FADAS QD 49 LT 33",
    "casa": 2,
    "data_venda": "2025-02-10",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-04-01"
+   "data_pre_vistoria": "2025-04-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380b981b8e54e4d04d915",
    "endereco": "GYN 23 QD 86 LT 25",
    "casa": 2,
    "data_venda": "2025-05-14",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-06-02"
+   "data_pre_vistoria": "2025-06-02",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a98d05c937137307f6",
    "endereco": "GYN 23 QD 86 LT 25",
    "casa": 1,
    "data_venda": "2025-04-11",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-05-15"
+   "data_pre_vistoria": "2025-05-15",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3806fb240fadde01e2f62",
    "endereco": "GYN 23 QD 86 LT 36",
    "casa": 1,
    "data_venda": "2025-03-31",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-04-25"
+   "data_pre_vistoria": "2025-04-25",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38000b24fed9c1931c6af",
    "endereco": "GYN 23 QD 86 LT 36",
    "casa": 2,
    "data_venda": "2025-04-08",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-05-19"
+   "data_pre_vistoria": "2025-05-19",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380b59934ef18a59fe89b",
    "endereco": "DARCI ACCORSI QD 25 LT 31",
    "casa": 1,
    "data_venda": "2025-02-28",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a1a116e6b3385f349a",
    "endereco": "PROF DARCI QD 11 LT 23",
    "casa": 2,
    "data_venda": "2025-01-17",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38082a998e034053f25e5",
    "endereco": "MOLINESIA QD 11 LT 24",
    "casa": 1,
    "data_venda": "2025-03-10",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3805b884af3002639bc46",
    "endereco": "LUIS ALBERTO MONTEIRO ESPIRITO SANTO QD 11 LT 22",
    "casa": 1,
    "data_venda": "2025-04-08",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380329c8feb81fd8c6e54",
    "endereco": "MANDI QD 25 LT 11",
    "casa": 2,
    "data_venda": "2025-04-01",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-01-01"
+   "data_pre_vistoria": "2025-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380eabc57eceef247bc1c",
    "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
    "casa": 2,
    "data_venda": "2026-07-14",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-08-20"
+   "data_pre_vistoria": "2026-08-20",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3804ab502de06cf4b826e",
    "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
    "casa": 1,
    "data_venda": "2026-09-21",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380c783e3d73527611b00",
    "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
    "casa": 2,
    "data_venda": "2026-04-15",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-01"
+   "data_pre_vistoria": "2026-06-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3809481efe99a810c18a0",
    "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
    "casa": 1,
    "data_venda": "2026-09-21",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d3809a8757e04aa2970ee0",
    "endereco": "PROF DARCI QD 11 LT 23",
    "casa": 1,
    "data_venda": "2025-04-23",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-05-27"
+   "data_pre_vistoria": "2025-05-27",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380deaf8ece9f53392015",
    "endereco": "PROF DARCI QD 25 LT 22",
    "casa": 2,
    "data_venda": "2025-06-19",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-10-08"
+   "data_pre_vistoria": "2025-10-08",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380e3bc35eed67f58c242",
    "endereco": "PROF DARCI QD 25 LT 31",
    "casa": 2,
    "data_venda": "2025-06-10",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-06-25"
+   "data_pre_vistoria": "2025-06-25",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3803bb9c8e777b3f4280d",
    "endereco": "PROF DARCI QD 11 LT 24",
    "casa": 2,
    "data_venda": "2025-04-30",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-05-20"
+   "data_pre_vistoria": "2025-05-20",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38089a166d341f822921a",
    "endereco": "RR 21 QD 17 LT 38",
    "casa": 3,
    "data_venda": "2025-08-14",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-09-26"
+   "data_pre_vistoria": "2025-09-26",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380e786b5cee15ec8e240",
    "endereco": "RR 21 QD 17 LT 38",
    "casa": 2,
    "data_venda": "2025-08-13",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "ÁGIO",
-   "data_pre_vistoria": "2025-09-23"
+   "data_pre_vistoria": "2025-09-23",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3800b8cd6c3785f673553",
    "endereco": "RR 21 QD 17 LT 38",
    "casa": 1,
    "data_venda": "2025-08-14",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-10-17"
+   "data_pre_vistoria": "2025-10-17",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3809b877cd3228bcdb72d",
    "endereco": "RR 04 QD 03 LT 19",
    "casa": 2,
    "data_venda": "2026-01-13",
+   "eng": "Isaac Natan",
    "entregou_casa": "ÁGIO",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a8afb2fc974ce6aad9",
    "endereco": "RR 04 QD 03 LT 19",
    "casa": 1,
    "data_venda": "2026-01-13",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-03-25"
+   "data_pre_vistoria": "2026-03-25",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3800990b5e4d9a59cc82d",
    "endereco": "RR 04 QD 03 LT 18",
    "casa": 3,
    "data_venda": "2025-10-06",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d3805485e9d9bf1edfa028",
    "endereco": "RR 04 QD 03 LT 18",
    "casa": 2,
    "data_venda": "2025-04-24",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "ÁGIO",
-   "data_pre_vistoria": "2025-11-06"
+   "data_pre_vistoria": "2025-11-06",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38098b3edd7949b2f3133",
    "endereco": "RR 04 QD 03 LT 18",
    "casa": 1,
    "data_venda": "2025-06-27",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-07-31"
+   "data_pre_vistoria": "2025-07-31",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38016b0dee43f34d040d1",
    "endereco": "RR 15 QD 03 LT 17",
    "casa": 2,
    "data_venda": "2025-05-19",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-06-13"
+   "data_pre_vistoria": "2025-06-13",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380e29e88ffcafda172f8",
    "endereco": "RR 15 QD 03 LT 17",
    "casa": 1,
    "data_venda": "2025-04-17",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "ÁGIO",
-   "data_pre_vistoria": "2025-05-29"
+   "data_pre_vistoria": "2025-05-29",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380fcb6ecdc8be9a271f8",
    "endereco": "RR 17 QD 02 LT 27",
    "casa": 3,
    "data_venda": "2025-06-17",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "ÁGIO",
-   "data_pre_vistoria": "2025-01-01"
+   "data_pre_vistoria": "2025-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380cfb132da616c96ebdc",
    "endereco": "RR 17 QD 02 LT 27",
    "casa": 2,
    "data_venda": "2025-06-12",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "ÁGIO",
-   "data_pre_vistoria": "2025-01-01"
+   "data_pre_vistoria": "2025-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3807abb84d91a883d8914",
    "endereco": "RR 17 QD 02 LT 27",
    "casa": 1,
    "data_venda": "2025-07-17",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-08-31"
+   "data_pre_vistoria": "2025-08-31",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380fb8d74eab82c3c1590",
    "endereco": "RR 17 QD 02 LT 26",
    "casa": 3,
    "data_venda": "2025-06-03",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-07-15"
+   "data_pre_vistoria": "2025-07-15",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38017b241e2deb964a1d6",
    "endereco": "RR 17 QD 02 LT 26",
    "casa": 2,
    "data_venda": "2025-05-29",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-02-07"
+   "data_pre_vistoria": "2025-02-07",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a18726e5009e5ad789",
    "endereco": "RR 17 QD 02 LT 26",
    "casa": 1,
    "data_venda": "2024-10-09",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-06-25"
+   "data_pre_vistoria": "2025-06-25",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380bc8c95c837632b22f9",
    "endereco": "RR 15 QD 01 LT 14",
    "casa": 3,
    "data_venda": "2025-09-25",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-11-19"
+   "data_pre_vistoria": "2025-11-19",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3808cba1fc22fbc11337b",
    "endereco": "RR 15 QD 01 LT 14",
    "casa": 2,
    "data_venda": "2025-05-21",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-09-23"
+   "data_pre_vistoria": "2025-09-23",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38047ac26e602dde6bd96",
    "endereco": "RR 15 QD 01 LT 14",
    "casa": 1,
    "data_venda": "2025-09-22",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-10-31"
+   "data_pre_vistoria": "2025-10-31",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380b4b3ebcb44eb0c0941",
    "endereco": "RR 02 QD 01 LT 17",
    "casa": 2,
    "data_venda": "2026-04-24",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-16"
+   "data_pre_vistoria": "2026-06-16",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380fa8245db0d0b7edd98",
    "endereco": "RR 02 QD 01 LT 17",
    "casa": 1,
    "data_venda": "2026-04-14",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-16"
+   "data_pre_vistoria": "2026-06-16",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380558a5ed16f7cf1e4b0",
    "endereco": "RR 15 QD 01 LT 15",
    "casa": 2,
    "data_venda": "2026-05-06",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "ÁGIO",
-   "data_pre_vistoria": "2026-06-16"
+   "data_pre_vistoria": "2026-06-16",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380129f91f0a6b369f671",
    "endereco": "RR 15 QD 01 LT 15",
    "casa": 1,
    "data_venda": "2026-03-11",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-21"
+   "data_pre_vistoria": "2026-05-21",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38080b2e7d957956f2fe4",
    "endereco": "RR 12 QD 19 LT 01",
    "casa": 2,
    "data_venda": "2025-05-29",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-06-17"
+   "data_pre_vistoria": "2025-06-17",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a28f4bec3b2c4406b7",
    "endereco": "RR 12 QD 19 LT 01",
    "casa": 1,
    "data_venda": "2025-05-19",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-07-01"
+   "data_pre_vistoria": "2025-07-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3805eb80ceb64950f119a",
    "endereco": "RR 09 QD 11 LT 29",
    "casa": 2,
    "data_venda": "2025-04-22",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-11-06"
+   "data_pre_vistoria": "2025-11-06",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38051a3d7e36f8c097d9d",
    "endereco": "RR 09 QD 11 LT 29",
    "casa": 1,
    "data_venda": "2025-05-15",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-03-07"
+   "data_pre_vistoria": "2025-03-07",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3803782fad0f7c6ee6748",
    "endereco": "RR 02 QD 02 LT 02",
    "casa": 2,
    "data_venda": "2025-07-01",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-02-15"
+   "data_pre_vistoria": "2025-02-15",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380869bcdd7e27080b9f8",
    "endereco": "RR 02 QD 02 LT 02",
    "casa": 1,
    "data_venda": "2025-10-02",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-12-09"
+   "data_pre_vistoria": "2025-12-09",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380828465f7e7431b8a1b",
    "endereco": "RR 02 QD 01 LT 28",
    "casa": 2,
    "data_venda": "2025-01-09",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-01-01"
+   "data_pre_vistoria": "2025-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a38f34f131bfd1c588",
    "endereco": "RR 02 QD 01 LT 28",
    "casa": 1,
    "data_venda": "2025-01-09",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "ÁGIO",
-   "data_pre_vistoria": "2025-01-01"
+   "data_pre_vistoria": "2025-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3800aa8c5e32f23488530",
    "endereco": "RR 02 QD 01 LT 21",
    "casa": 2,
    "data_venda": "2025-07-15",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "ÁGIO",
-   "data_pre_vistoria": "2025-09-11"
+   "data_pre_vistoria": "2025-09-11",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3806a9a44e7c70949c686",
    "endereco": "RR 02 QD 01 LT 21",
    "casa": 1,
    "data_venda": "2025-07-10",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-08-18"
+   "data_pre_vistoria": "2025-08-18",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380f6a2eacf9c971a04d0",
    "endereco": "RR 01 QD 01 LT 13",
    "casa": 2,
    "data_venda": "2025-10-10",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-12-11"
+   "data_pre_vistoria": "2025-12-11",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380acb22ce8fa43d84188",
    "endereco": "RR 01 QD 01 LT 13",
    "casa": 1,
    "data_venda": "2025-05-09",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "INEXISTE",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3808797e3e65826fc70d6",
    "endereco": "RR 01 QD 01 LT 11",
    "casa": 2,
    "data_venda": "2025-07-18",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-03-09"
+   "data_pre_vistoria": "2025-03-09",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38045878cc8296b353270",
    "endereco": "RR 01 QD 01 LT 11",
    "casa": 1,
    "data_venda": "2025-11-25",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-12-19"
+   "data_pre_vistoria": "2025-12-19",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3801fa35eeb198afdcd94",
    "endereco": "IVO RODRIGUES QD 33 LT 08",
    "casa": 2,
    "data_venda": "2025-01-17",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3807fabc0e93e2978b750",
    "endereco": "IVO RODRIGUES QD 33 LT 08",
    "casa": 4,
    "data_venda": "2025-01-02",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3808e879cfd73ecebe1a2",
    "endereco": "IVO RODRIGUES QD 33 LT 06",
    "casa": 4,
    "data_venda": "2025-02-05",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380bfb8bfdf2d461c41e8",
    "endereco": "IVO RODRIGUES QD 33 LT 06",
    "casa": 3,
    "data_venda": "2025-02-04",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3808f8e8fde98151459a9",
    "endereco": "IVO RODRIGUES QD 33 LT 06",
    "casa": 2,
    "data_venda": "2025-02-04",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3806d8762eb0b9dc12b9d",
    "endereco": "IVO RODRIGUES QD 33 LT 08",
    "casa": 3,
    "data_venda": "2025-02-04",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38007bf79f44de956bfc8",
    "endereco": "IVO RODRIGUES QD 33 LT 07",
    "casa": 1,
    "data_venda": "2025-02-24",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3807ba0c4ca965307901a",
    "endereco": "IVO RODRIGUES QD 33 LT 07",
    "casa": 2,
    "data_venda": "2025-02-24",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380b989d1c0d2d38e6362",
    "endereco": "IVO RODRIGUES QD 33 LT 07",
    "casa": 3,
    "data_venda": "2025-02-24",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380f4b363c396a821525d",
    "endereco": "IVO RODRIGUES QD 33 LT 06",
    "casa": 1,
    "data_venda": "2025-04-03",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-07-04"
+   "data_pre_vistoria": "2025-07-04",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38096bd69ff4377a26d1d",
    "endereco": "RPB 18 QD 21 LT 02",
    "casa": 2,
    "data_venda": "2025-03-29",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-04-17"
+   "data_pre_vistoria": "2025-04-17",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3805abdeff339f0088a73",
    "endereco": "RPB 18 QD 21 LT 02",
    "casa": 1,
    "data_venda": "2025-04-17",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-04-22"
+   "data_pre_vistoria": "2025-04-22",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380348cf0fd4c3299e6f9",
    "endereco": "RPB 24 QD 29 LT 42",
    "casa": 2,
    "data_venda": "2025-11-13",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-02"
+   "data_pre_vistoria": "2026-02-02",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38088aca1ecbef3d4d7f1",
    "endereco": "RPB 24 QD 29 LT 42",
    "casa": 1,
    "data_venda": "2026-01-14",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-23"
+   "data_pre_vistoria": "2026-02-23",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38022a375fbff3dc4cd7f",
    "endereco": "RPB 24 QD 26A LT 17",
    "casa": 2,
    "data_venda": "2025-11-11",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-01"
+   "data_pre_vistoria": "2026-06-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380b0b893ed0511db9903",
    "endereco": "RPB 24 QD 26A LT 17",
    "casa": 1,
    "data_venda": "2026-01-13",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-19"
+   "data_pre_vistoria": "2026-05-19",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3808ca373d7743273419d",
    "endereco": "RPB 24 QD 26A LT 16",
    "casa": 2,
    "data_venda": "2026-01-14",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-15"
+   "data_pre_vistoria": "2026-05-15",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38097bc63d595ecd39ca8",
    "endereco": "RPB 24 QD 26A LT 16",
    "casa": 1,
    "data_venda": "2026-01-26",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-15"
+   "data_pre_vistoria": "2026-05-15",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380469fc0e39894dc4bb6",
    "endereco": "RPB 24 QD 26A LT 15",
    "casa": 2,
    "data_venda": "2026-06-25",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-07-24"
+   "data_pre_vistoria": "2026-07-24",
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d3809bac77f7b29ee07d4b",
    "endereco": "RPB 24 QD 26A LT 15",
    "casa": 1,
    "data_venda": "2026-05-05",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-22"
+   "data_pre_vistoria": "2026-06-22",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380559f1dc72dea82af90",
    "endereco": "RPB 24 QD 26A LT 14",
    "casa": 2,
    "data_venda": "2026-06-26",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-07-22"
+   "data_pre_vistoria": "2026-07-22",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380188af3c354ba421c76",
    "endereco": "RPB 24 QD 26A LT 14",
    "casa": 1,
    "data_venda": "2026-07-07",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-07-24"
+   "data_pre_vistoria": "2026-07-24",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380c99de4d2259b7420d8",
    "endereco": "RPB 24 QD 26A LT 13",
    "casa": 1,
    "data_venda": "2026-03-24",
+   "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d3807bbc10c3d1fbf21f33",
    "endereco": "RPB 24 QD 26A LT 11",
    "casa": 1,
    "data_venda": "2026-08-06",
+   "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d38060ad68f34d1d02bcfd",
    "endereco": "RPB 24 QD 26A LT 10",
    "casa": 2,
    "data_venda": "2026-05-05",
+   "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380d88813c2b839f4f32c",
    "endereco": "RPB 24 QD 26A LT 10",
    "casa": 1,
    "data_venda": "2026-05-12",
+   "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d3806586f7d5900b6c1d5b",
    "endereco": "RPB 24 QD 26A LT 07",
    "casa": 2,
    "data_venda": "2026-07-08",
+   "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d38064a0f7ecde692b0140",
    "endereco": "RPB 24 QD 26A LT 07",
    "casa": 1,
    "data_venda": "2026-07-03",
+   "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d3802da8e6e162bb1a680d",
    "endereco": "RPB 24 QD 26A LT 06",
    "casa": 2,
    "data_venda": "2026-07-23",
+   "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380809e24d109944da54c",
    "endereco": "RPB 24 QD 26A LT 06",
    "casa": 1,
    "data_venda": "2026-08-12",
+   "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380b69719cf7bf0c3f856",
    "endereco": "RPB 21 QD 26 LT 01-02",
    "casa": 5,
    "data_venda": "2025-08-01",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "ÁGIO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3807799cefdd236f851a5",
    "endereco": "RPB 21 QD 26 LT 01-02",
    "casa": 4,
    "data_venda": "2025-05-14",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-08-13"
+   "data_pre_vistoria": "2025-08-13",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380678a13d129e20f5556",
    "endereco": "RPB 21 QD 26 LT 01-02",
    "casa": 3,
    "data_venda": "2025-09-01",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-09-25"
+   "data_pre_vistoria": "2025-09-25",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3807e85d7c2399896d5d4",
    "endereco": "RPB 21 QD 26 LT 01-02",
    "casa": 2,
    "data_venda": "2025-08-13",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-09-04"
+   "data_pre_vistoria": "2025-09-04",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380c19182ca3571bb581c",
    "endereco": "RPB 21 QD 26 LT 01-02",
    "casa": 1,
    "data_venda": "2025-08-22",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-09-11"
+   "data_pre_vistoria": "2025-09-11",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380e8b383cf90d4d0d2ab",
    "endereco": "RPB 24 QD 28 LT 01",
    "casa": 2,
    "data_venda": "2026-05-05",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-02"
+   "data_pre_vistoria": "2026-06-02",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38021b493d326b7189fd1",
    "endereco": "RPB 24 QD 28 LT 01",
    "casa": 1,
    "data_venda": "2025-12-18",
+   "eng": "Isaac Natan",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-19"
+   "data_pre_vistoria": "2026-05-19",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380848b44ff714d15f711",
    "endereco": "PS 16 QD 23 LT 08",
    "casa": 3,
    "data_venda": "2025-04-03",
+   "eng": null,
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3808ebac6e4266d656cf3",
    "endereco": "PS 16 QD 23 LT 08",
    "casa": 1,
    "data_venda": "2025-01-31",
+   "eng": null,
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380168903d752e7dcae3d",
    "endereco": "PS 16 QD 23 LT 10",
    "casa": 4,
    "data_venda": "2025-03-31",
+   "eng": null,
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3809bbdb6c8cd60a0d58f",
    "endereco": "PS 16 QD 23 LT 10",
    "casa": 3,
    "data_venda": "2025-03-25",
+   "eng": null,
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3808e8c6af59237789ad4",
    "endereco": "PS 16 QD 23 LT 10",
    "casa": 1,
    "data_venda": "2025-03-20",
+   "eng": null,
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38006a161d05ed1359207",
    "endereco": "PS 16 QD 23 LT 04",
    "casa": 3,
    "data_venda": "2025-01-23",
+   "eng": null,
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3802cb65add6f88683070",
    "endereco": "PS 16 QD 23 LT 10",
    "casa": 2,
    "data_venda": "2025-03-25",
+   "eng": null,
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3801abbe3f5b52ab7acea",
    "endereco": "PS 16 QD 23 LT 09",
    "casa": 2,
    "data_venda": "2025-05-15",
+   "eng": null,
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-05-30"
+   "data_pre_vistoria": "2025-05-30",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38036b2a0db71d50fccb9",
    "endereco": "PS 16 QD 23 LT 09",
    "casa": 4,
    "data_venda": "2025-03-11",
+   "eng": null,
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-06-26"
+   "data_pre_vistoria": "2025-06-26",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380c9ae81daae1f6aec1e",
    "endereco": "PS 16 QD 23 LT 03",
    "casa": 3,
    "data_venda": "2025-01-31",
+   "eng": null,
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380f6a6a3c44ce8c16955",
    "endereco": "PS 16 QD 23 LT 03",
    "casa": 4,
    "data_venda": "2024-11-26",
+   "eng": null,
    "entregou_casa": "ÁGIO",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "ÁGIO",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a0a5defc1f48ae61d8",
    "endereco": "PS 16 QD 23 LT 09",
    "casa": 1,
    "data_venda": "2024-11-18",
+   "eng": null,
    "entregou_casa": "ÁGIO",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "ÁGIO",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380fb9d5dd4dde5ebfd21",
    "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B2",
    "casa": 3,
    "data_venda": "2026-08-27",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380aebcafcd78115d868b",
    "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B2",
    "casa": 2,
    "data_venda": "2026-09-02",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d38076834bf832356f270f",
    "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B2",
    "casa": 1,
    "data_venda": "2026-08-27",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380d1a6b0f0ae96deb125",
    "endereco": "FERROVIARIOS QD 01 LT 15",
    "casa": 2,
    "data_venda": "2026-08-28",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380ea832dfaedec19b215",
    "endereco": "FERROVIARIOS QD 01 LT 14",
    "casa": 3,
    "data_venda": "2026-08-04",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380b88d2de9a5c6c4a199",
    "endereco": "FERROVIARIOS QD 01 LT 14",
    "casa": 2,
    "data_venda": "2026-07-15",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-08-31"
+   "data_pre_vistoria": "2026-08-31",
+   "reparos_pre_vistoria": "EXECUTANDO REPAROS"
   },
   {
+   "id": "33cc5ab532d380ed95b2cd486f23c4ca",
    "endereco": "FERROVIARIOS QD 01 LT 14",
    "casa": 1,
    "data_venda": "2026-07-14",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-08-12"
+   "data_pre_vistoria": "2026-08-12",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3809f9a41caa693b1007f",
    "endereco": "FERROVIARIOS QD 01 LT 13",
    "casa": 3,
    "data_venda": "2026-04-27",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-26"
+   "data_pre_vistoria": "2026-06-26",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3809194b7d41e1f018bf7",
    "endereco": "FERROVIARIOS QD 01 LT 13",
    "casa": 2,
    "data_venda": "2026-08-03",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-08-20"
+   "data_pre_vistoria": "2026-08-20",
+   "reparos_pre_vistoria": "EXECUTANDO REPAROS"
   },
   {
+   "id": "33cc5ab532d380ba812edbbf5be79f33",
    "endereco": "FERROVIARIOS QD 01 LT 13",
    "casa": 1,
    "data_venda": "2026-06-12",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-07-03"
+   "data_pre_vistoria": "2026-07-03",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380e3bd19fcde062878f2",
    "endereco": "FERROVIARIOS QD 01 LT 12",
    "casa": 3,
    "data_venda": "2026-06-01",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-26"
+   "data_pre_vistoria": "2026-06-26",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3804dae82ccf3898c1754",
    "endereco": "FERROVIARIOS QD 01 LT 12",
    "casa": 2,
    "data_venda": "2026-06-11",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-07-17"
+   "data_pre_vistoria": "2026-07-17",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380ee8b76fc081a0eedd9",
    "endereco": "FERROVIARIOS QD 01 LT 12",
    "casa": 1,
    "data_venda": "2026-04-30",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-12"
+   "data_pre_vistoria": "2026-06-12",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380498c4fd5016683beb4",
    "endereco": "W 6 QD 17 LT 06",
    "casa": 4,
    "data_venda": "2026-02-26",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-04-27"
+   "data_pre_vistoria": "2026-04-27",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380deb288f5f480b17b36",
    "endereco": "W 6 QD 17 LT 06",
    "casa": 3,
    "data_venda": "2026-02-28",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-07"
+   "data_pre_vistoria": "2026-05-07",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38008a102cf3703bc0795",
    "endereco": "W 6 QD 17 LT 06",
    "casa": 2,
    "data_venda": "2026-03-20",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-04-14"
+   "data_pre_vistoria": "2026-04-14",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38066b40be1116ad75d34",
    "endereco": "W 6 QD 17 LT 06",
    "casa": 1,
    "data_venda": "2026-03-03",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-04-17"
+   "data_pre_vistoria": "2026-04-17",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38067b4b7da5e5b9b3d30",
    "endereco": "I 4 QD 04 LT 23",
    "casa": 3,
    "data_venda": "2025-09-22",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-30"
+   "data_pre_vistoria": "2026-01-30",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380f39c46f1a9d460f417",
    "endereco": "I 4 QD 04 LT 23",
    "casa": 2,
    "data_venda": "2026-01-14",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-23"
+   "data_pre_vistoria": "2026-02-23",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38001a5c0fc9b581282e0",
    "endereco": "I 4 QD 04 LT 23",
    "casa": 1,
    "data_venda": "2025-09-12",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-11-19"
+   "data_pre_vistoria": "2025-11-19",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a18d68f4f717ea1f8d",
    "endereco": "I 4 QD 04 LT 22",
    "casa": 3,
    "data_venda": "2025-08-07",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-09-23"
+   "data_pre_vistoria": "2025-09-23",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380bea41ffef0dffe617b",
    "endereco": "I 4 QD 04 LT 22",
    "casa": 2,
    "data_venda": "2025-08-21",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-10-01"
+   "data_pre_vistoria": "2025-10-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380b39184c98920dffcdf",
    "endereco": "I 4 QD 04 LT 22",
    "casa": 1,
    "data_venda": "2025-11-24",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-09"
+   "data_pre_vistoria": "2026-01-09",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a2bb56e88b0205154d",
    "endereco": "I 4 QD 04 LT 21",
    "casa": 3,
    "data_venda": "2025-06-25",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-10-14"
+   "data_pre_vistoria": "2025-10-14",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380608868f13be2992618",
    "endereco": "I 4 QD 04 LT 21",
    "casa": 2,
    "data_venda": "2026-01-16",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-19"
+   "data_pre_vistoria": "2026-02-19",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3807197a7d18e82d27416",
    "endereco": "I 4 QD 04 LT 21",
    "casa": 1,
    "data_venda": "2025-01-07",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-09-03"
+   "data_pre_vistoria": "2025-09-03",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3805e9457e8cbc8a5a127",
    "endereco": "I 4 QD 04 LT 20",
    "casa": 3,
    "data_venda": "2026-02-03",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-03-13"
+   "data_pre_vistoria": "2026-03-13",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3805396e5d56628457972",
    "endereco": "I 4 QD 04 LT 20",
    "casa": 2,
    "data_venda": "2025-02-17",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-08-29"
+   "data_pre_vistoria": "2025-08-29",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3804f9045e5b1db78db9a",
    "endereco": "I 4 QD 04 LT 20",
    "casa": 1,
    "data_venda": "2025-07-03",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-08-29"
+   "data_pre_vistoria": "2025-08-29",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380058d18c27523fa9794",
    "endereco": "I 4 QD 04 LT 19",
    "casa": 3,
    "data_venda": "2025-07-03",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-09-17"
+   "data_pre_vistoria": "2025-09-17",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380209363fef3e428a981",
    "endereco": "I 4 QD 04 LT 19",
    "casa": 2,
    "data_venda": "2025-05-15",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-10-06"
+   "data_pre_vistoria": "2025-10-06",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380228bd5fdd31c9f9379",
    "endereco": "I 4 QD 04 LT 19",
    "casa": 1,
    "data_venda": "2025-05-13",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-09-08"
+   "data_pre_vistoria": "2025-09-08",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3806083f9ea7081ce630c",
    "endereco": "I 3 QD 04 LT 18",
    "casa": 3,
    "data_venda": "2025-06-25",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-10-27"
+   "data_pre_vistoria": "2025-10-27",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380c497a2c24b80f7dc85",
    "endereco": "I 3 QD 04 LT 18",
    "casa": 2,
    "data_venda": "2025-04-14",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-10-06"
+   "data_pre_vistoria": "2025-10-06",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38089a0fad802836c470d",
    "endereco": "I 3 QD 04 LT 18",
    "casa": 1,
    "data_venda": "2025-06-16",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-10-20"
+   "data_pre_vistoria": "2025-10-20",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380bd9f0bfa6bf200ff6a",
    "endereco": "I 3 QD 04 LT 17",
    "casa": 4,
    "data_venda": "2025-06-02",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-07-11"
+   "data_pre_vistoria": "2025-07-11",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38098a516ef2b70791e2d",
    "endereco": "I 3 QD 04 LT 17",
    "casa": 3,
    "data_venda": "2025-06-02",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-07-11"
+   "data_pre_vistoria": "2025-07-11",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380f5933be0892a300de0",
    "endereco": "I 3 QD 04 LT 17",
    "casa": 2,
    "data_venda": "2026-02-18",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-10-03"
+   "data_pre_vistoria": "2026-10-03",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38091a107d142d1a38e55",
    "endereco": "I 3 QD 04 LT 17",
    "casa": 1,
    "data_venda": "2025-02-19",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2025-04-11"
+   "data_pre_vistoria": "2025-04-11",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3807b82d3f0cd6227cfdb",
    "endereco": "AV. FRANÇA QD 04 LT 16",
    "casa": 3,
    "data_venda": "2025-05-21",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-03"
+   "data_pre_vistoria": "2026-02-03",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38047b193d854ee5fb76b",
    "endereco": "AV. FRANÇA QD 04 LT 16",
    "casa": 2,
    "data_venda": "2025-05-21",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-03"
+   "data_pre_vistoria": "2026-02-03",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380b182bac76a4451acca",
    "endereco": "AV. FRANÇA QD 04 LT 16",
    "casa": 1,
    "data_venda": "2026-05-06",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-06-12"
+   "data_pre_vistoria": "2026-06-12",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380008ba1e9a0278b0cd8",
    "endereco": "AV. FRANÇA QD 04 LT 15",
    "casa": 3,
    "data_venda": "2025-11-17",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-03-20"
+   "data_pre_vistoria": "2026-03-20",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380e5bc8de6b97ad403ed",
    "endereco": "AV. FRANÇA QD 04 LT 15",
    "casa": 2,
    "data_venda": "2026-04-07",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-05-07"
+   "data_pre_vistoria": "2026-05-07",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a8bc27d75e2182621f",
    "endereco": "AV. FRANÇA QD 04 LT 15",
    "casa": 1,
    "data_venda": "2025-06-30",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-03-31"
+   "data_pre_vistoria": "2026-03-31",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3801a9134ea12d389a398",
    "endereco": "AV. FRANÇA QD 04 LT 14",
    "casa": 3,
    "data_venda": "2025-10-08",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-12"
+   "data_pre_vistoria": "2026-01-12",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38066a221ca02f36e13f5",
    "endereco": "AV. FRANÇA QD 04 LT 14",
    "casa": 2,
    "data_venda": "2025-05-27",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-16"
+   "data_pre_vistoria": "2026-01-16",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3809fa766d27da5515dbd",
    "endereco": "AV. FRANÇA QD 04 LT 14",
    "casa": 1,
    "data_venda": "2025-11-28",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-09"
+   "data_pre_vistoria": "2026-01-09",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38045a32ff03d9cb07458",
    "endereco": "AV. FRANÇA QD 04 LT 13",
    "casa": 3,
    "data_venda": "2026-01-22",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-03-20"
+   "data_pre_vistoria": "2026-03-20",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a09e98c71579eaec21",
    "endereco": "AV. FRANÇA QD 04 LT 13",
    "casa": 2,
    "data_venda": "2026-02-17",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-03-31"
+   "data_pre_vistoria": "2026-03-31",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d380a3820defae46ac0030",
    "endereco": "AV. FRANÇA QD 04 LT 13",
    "casa": 1,
    "data_venda": "2026-01-26",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-23"
+   "data_pre_vistoria": "2026-02-23",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38055b1cbdac09574e9de",
    "endereco": "AV. FRANÇA QD 04 LT 12",
    "casa": 3,
    "data_venda": "2025-12-24",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-19"
+   "data_pre_vistoria": "2026-01-19",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3803f8ac3e1f2a14b22bd",
    "endereco": "AV. FRANÇA QD 04 LT 12",
    "casa": 2,
    "data_venda": "2025-12-22",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-02-04"
+   "data_pre_vistoria": "2026-02-04",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38083b91ecbcafc9d36b4",
    "endereco": "AV. FRANÇA QD 04 LT 12",
    "casa": 1,
    "data_venda": "2026-01-06",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-01-22"
+   "data_pre_vistoria": "2026-01-22",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3802b94a6c4cac6f8d98a",
    "endereco": "PS 16 QD 23 LT 08",
    "casa": 4,
    "data_venda": "2025-02-24",
+   "eng": null,
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2000-01-01"
+   "data_pre_vistoria": "2000-01-01",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3809da6cacad683689432",
    "endereco": "APOLO LYKEIOS QD 01 LT 34",
    "casa": 2,
    "data_venda": "2026-07-28",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-09-03"
+   "data_pre_vistoria": "2026-09-03",
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380bc8628c48a55cfe3a8",
    "endereco": "APOLO LYKEIOS QD 01 LT 34",
    "casa": 1,
    "data_venda": "2026-07-03",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-07-31"
+   "data_pre_vistoria": "2026-07-31",
+   "reparos_pre_vistoria": "EXECUTANDO REPAROS"
   },
   {
+   "id": "33cc5ab532d38007bdf8e2fe0b64abe4",
    "endereco": "APOLO LYKEIOS QD 01 LT 33",
    "casa": 2,
    "data_venda": "2026-07-07",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-08-11"
+   "data_pre_vistoria": "2026-08-11",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d3805387eafa36e5eaaf88",
    "endereco": "APOLO LYKEIOS QD 01 LT 33",
    "casa": 1,
    "data_venda": "2026-07-08",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "SIM",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": "2026-08-12"
+   "data_pre_vistoria": "2026-08-12",
+   "reparos_pre_vistoria": "SIM"
   },
   {
+   "id": "33cc5ab532d38077abc9f8a0fe5dde04",
    "endereco": "ATALANTA QD 01 LT 24",
    "casa": 2,
    "data_venda": "2026-08-14",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d380b595f8d1677aaf41b1",
    "endereco": "ATALANTA QD 01 LT 21",
    "casa": 2,
    "data_venda": "2026-08-18",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   },
   {
+   "id": "33cc5ab532d38063935cf5f7ffdef64c",
    "endereco": "ATALANTA QD 01 LT 21",
    "casa": 1,
    "data_venda": "2026-08-14",
+   "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
+   "processo_conforme": "SIM",
+   "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO"
   }
  ],
  "snapshot_atual": {
