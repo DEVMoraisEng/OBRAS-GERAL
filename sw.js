@@ -9,7 +9,7 @@
  *   - data.json: rede primeiro; sem internet, a última cópia;
  *   - sem internet numa página nunca aberta: mostra o índice.
  * Suba o número do CACHE sempre que mudar mapa.js/mapa.css/as páginas. */
-const CACHE = "mapa-obras-v5";
+const CACHE = "mapa-obras-v6";
 const BASE = ["./", "./index.html", "./mapa.css", "./mapa.js", "./logo.png", "./manifest.json", "./data.json"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => Promise.all(BASE.map(u => c.add(new Request(u, { cache: "reload" })).catch(() => null))))
@@ -35,6 +35,13 @@ self.addEventListener("fetch", e => {
   if (url.pathname.endsWith("/data.json")) {                        // dado: rede primeiro
     e.respondWith(fetch(req).then(r => { if (r && r.ok) { const cp = r.clone(); caches.open(CACHE).then(c => c.put("./data.json", cp)); } return r; })
       .catch(() => caches.match("./data.json")));
+    return;
+  }
+  /* v6: arquivos pequenos (mapa.js, mapa.css, índice): REDE PRIMEIRO — a
+     versão nova aparece já na primeira abertura; sem internet, a cópia */
+  if (/\/(mapa\.js|mapa\.css|index\.html|manifest\.json)$/.test(url.pathname) || url.pathname === raiz) {
+    e.respondWith(fetch(req).then(r => { if (r && r.ok) { const cp = r.clone(); caches.open(CACHE).then(c => c.put(req.url.replace(/[?#].*$/, ""), cp)); } return r; })
+      .catch(() => caches.match(req, { ignoreSearch: true }).then(h => h || caches.match("./index.html"))));
     return;
   }
   e.respondWith(caches.open(CACHE).then(c => c.match(req, { ignoreSearch: true }).then(hit => {
