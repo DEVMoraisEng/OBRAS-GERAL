@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-29T00:03:52.286994+00:00",
+ "updated_at": "2026-09-29T03:00:36.963635+00:00",
  "documentos": [
   {
    "id": "3e4c5ab532d381049537c08dd5b28b28",
@@ -12360,7 +12360,7 @@
   },
   "A10": {
    "status": "habite_agendado",
-   "prazo": "a",
+   "prazo": "r",
    "endereco": "APOLO LYKEIOS QD 01 LT 37",
    "setor": "ACROPOLE",
    "habite": [
@@ -12475,5 +12475,14 @@
    "pv": {}
   }
  },
- "eventos": []
+ "eventos": [
+  {
+   "em": "2026-09-29T03:00:36.963635+00:00",
+   "ref": "A10",
+   "endereco": "APOLO LYKEIOS QD 01 LT 37",
+   "setor": "ACROPOLE",
+   "tipo": "prazo",
+   "para": "r"
+  }
+ ]
 }
