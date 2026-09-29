@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-29T12:35:21.653259+00:00",
+ "updated_at": "2026-09-29T12:45:16.002178+00:00",
  "documentos": [
   {
    "id": "3e4c5ab532d381049537c08dd5b28b28",
@@ -2141,7 +2141,7 @@
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
    "ret_armazenado": "NÃO",
-   "taxas_habite_se": "NÃO",
+   "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
@@ -2178,7 +2178,7 @@
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
    "ret_armazenado": "NÃO",
-   "taxas_habite_se": "NÃO",
+   "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
@@ -5360,7 +5360,7 @@
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
    "ret_armazenado": null,
-   "taxas_habite_se": "NÃO",
+   "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
@@ -5826,7 +5826,7 @@
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": "2026-10-02",
+   "data_habite_se": "2026-10-15",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
@@ -12007,7 +12007,7 @@
    "endereco": "RPB 24 QD 26A LT 08",
    "setor": "PQ DOS BURITIS",
    "habite": [
-    "2026-10-02",
+    "2026-10-15",
     "MANHÃ"
    ],
    "pv": {}
@@ -12479,6 +12479,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-09-29T12:45:16.002178+00:00",
+   "ref": "BR 10",
+   "endereco": "RPB 24 QD 26A LT 08",
+   "setor": "PQ DOS BURITIS",
+   "tipo": "habite",
+   "data": "2026-10-15",
+   "turno": "MANHÃ"
+  },
   {
    "em": "2026-09-29T12:35:21.653259+00:00",
    "ref": "TC 60",
