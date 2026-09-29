@@ -1,43 +1,6 @@
 {
- "updated_at": "2026-09-29T14:25:23.076416+00:00",
+ "updated_at": "2026-09-29T14:35:19.665460+00:00",
  "documentos": [
-  {
-   "id": "3e6c5ab532d380f9b59dd7d674b226bc",
-   "endereco": "TB 15 QD 45 LT 27",
-   "ref": "TC 90",
-   "setor": "TERRABELA CERRADO",
-   "cidade": "SENADOR CANEDO",
-   "proprietario": null,
-   "mestre": null,
-   "despachante": null,
-   "previsao_inicio_obra": null,
-   "obra_iniciada": null,
-   "obra_finalizada": null,
-   "data_inicio_obra": null,
-   "data_termino_obra": null,
-   "agendou_habite_se": null,
-   "aprovou_habite_se": "SIM",
-   "data_habite_se": null,
-   "turno_habite_se": null,
-   "escritura_assinada": "SIM",
-   "itbi_pago": null,
-   "registro_pago": null,
-   "projeto_feito": "NÃO",
-   "art_feita_paga": "NÃO",
-   "escritura_registrada": "NÃO",
-   "certidao_lote": "INEXISTE",
-   "contrato_mestre": null,
-   "contrato_investidor": null,
-   "taxas_alvara_pagas": "NÃO",
-   "projeto_aprovado": "NÃO",
-   "incorporacao_finalizada": null,
-   "ret_armazenado": null,
-   "taxas_habite_se": "NÃO",
-   "issqn": "NÃO",
-   "cno_cnd": "NÃO",
-   "armazenou_habite": null,
-   "certidoes_matricula": null
-  },
   {
    "id": "3e4c5ab532d381049537c08dd5b28b28",
    "endereco": "TESTE CONTA QD 01 LT 01",
@@ -929,7 +892,7 @@
   {
    "id": "3cdc5ab532d3800299fcf4837e947d58",
    "endereco": "TB 15 QD 45 LT 29",
-   "ref": "TC 91",
+   "ref": "TC 82",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
    "proprietario": "MORAIS INCORPORACOES SENADOR CANEDO SPE LTDA",
@@ -10837,15 +10800,7 @@
   }
  ],
  "snapshot_atual": {
-  "TC 90": {
-   "status": "habite_concluido",
-   "prazo": null,
-   "endereco": "TB 15 QD 45 LT 27",
-   "setor": "TERRABELA CERRADO",
-   "habite": null,
-   "pv": {}
-  },
-  "TC 91": {
+  "TC 82": {
    "status": "nao_iniciado",
    "prazo": null,
    "endereco": "TB 15 QD 45 LT 29",
@@ -12532,6 +12487,14 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-09-29T14:35:19.665460+00:00",
+   "ref": "TC 82",
+   "endereco": "TB 15 QD 45 LT 29",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "novo",
+   "para": "nao_iniciado"
+  },
   {
    "em": "2026-09-29T14:15:17.208591+00:00",
    "ref": "TC 90",
