@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-29T17:45:11.560301+00:00",
+ "updated_at": "2026-09-29T18:25:21.413074+00:00",
  "documentos": [
   {
    "id": "3e4c5ab532d381049537c08dd5b28b28",
@@ -5732,7 +5732,7 @@
    "ret_armazenado": null,
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
-   "cno_cnd": "NÃO",
+   "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO"
   },
@@ -5769,7 +5769,7 @@
    "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
-   "cno_cnd": "NÃO",
+   "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO"
   },
@@ -5991,7 +5991,7 @@
    "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
-   "cno_cnd": "NÃO",
+   "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO"
   },
