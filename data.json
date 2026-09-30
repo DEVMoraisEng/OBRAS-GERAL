@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-30T13:12:02.599435+00:00",
+ "updated_at": "2026-09-30T13:41:56.529916+00:00",
  "documentos": [
   {
    "id": "3e4c5ab532d381049537c08dd5b28b28",
@@ -2582,7 +2582,7 @@
    "contrato_mestre": "SIM",
    "contrato_investidor": "INEXISTE",
    "taxas_alvara_pagas": "SIM",
-   "projeto_aprovado": "NÃO",
+   "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
    "ret_armazenado": null,
    "taxas_habite_se": "SIM",
