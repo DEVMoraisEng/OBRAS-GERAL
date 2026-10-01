@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-01T19:12:05.682427+00:00",
+ "updated_at": "2026-10-01T19:26:50.922367+00:00",
  "documentos": [
   {
    "id": "3e4c5ab532d381049537c08dd5b28b28",
@@ -8087,7 +8087,7 @@
    "casa": 2,
    "data_venda": "2026-05-27",
    "eng": "Caio Araujo",
-   "entregou_casa": "NÃO",
+   "entregou_casa": "SIM",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
