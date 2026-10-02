@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-02T18:11:51.858104+00:00",
+ "updated_at": "2026-10-02T18:56:55.965302+00:00",
  "documentos": [
   {
    "id": "3e4c5ab532d381049537c08dd5b28b28",
@@ -10064,7 +10064,7 @@
    "data_venda": "2026-08-28",
    "eng": "Guilherme Gouveia",
    "entregou_casa": null,
-   "processo_conforme": "NÃO",
+   "processo_conforme": "SIM",
    "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
