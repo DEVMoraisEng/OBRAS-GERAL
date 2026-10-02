@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-02T15:00:42.495065+00:00",
+ "updated_at": "2026-10-02T15:12:10.005510+00:00",
  "documentos": [
   {
    "id": "3e4c5ab532d381049537c08dd5b28b28",
@@ -5066,7 +5066,7 @@
    "ret_armazenado": "INEXISTE",
    "taxas_habite_se": "INEXISTE",
    "issqn": "SIM",
-   "cno_cnd": "INEXISTE",
+   "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
    "certidoes_matricula": "SIM"
   },
@@ -5103,7 +5103,7 @@
    "ret_armazenado": "INEXISTE",
    "taxas_habite_se": "INEXISTE",
    "issqn": "SIM",
-   "cno_cnd": "INEXISTE",
+   "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
    "certidoes_matricula": "SIM"
   },
