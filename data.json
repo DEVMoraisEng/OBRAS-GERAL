@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-05T11:01:06.330768+00:00",
+ "updated_at": "2026-10-05T13:41:49.034337+00:00",
  "documentos": [
   {
    "id": "3e4c5ab532d381049537c08dd5b28b28",
@@ -2606,7 +2606,7 @@
    "data_inicio_obra": "2026-06-18",
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
-   "aprovou_habite_se": "NÃO",
+   "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-10-01",
    "turno_habite_se": "TARDE",
    "escritura_assinada": "SIM",
@@ -3938,7 +3938,7 @@
    "data_inicio_obra": "2026-04-20",
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
-   "aprovou_habite_se": "NÃO",
+   "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-09-02",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
@@ -5768,7 +5768,7 @@
    "incorporacao_finalizada": "SIM",
    "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
-   "issqn": "NÃO",
+   "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO"
@@ -11113,7 +11113,7 @@
    "pv": {}
   },
   "TC 66": {
-   "status": "habite_agendado",
+   "status": "habite_concluido",
    "prazo": null,
    "endereco": "TB 19 QD 51 LT 15",
    "setor": "TERRABELA CERRADO",
@@ -11517,7 +11517,7 @@
    }
   },
   "TC 30": {
-   "status": "habite_agendado",
+   "status": "habite_concluido",
    "prazo": "a",
    "endereco": "TB 17 QD 48 LT 38",
    "setor": "TERRABELA CERRADO",
@@ -12522,6 +12522,24 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-05T13:41:49.034337+00:00",
+   "ref": "TC 66",
+   "endereco": "TB 19 QD 51 LT 15",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_agendado",
+   "para": "habite_concluido"
+  },
+  {
+   "em": "2026-10-05T13:41:49.034337+00:00",
+   "ref": "TC 30",
+   "endereco": "TB 17 QD 48 LT 38",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_agendado",
+   "para": "habite_concluido"
+  },
   {
    "em": "2026-10-02T17:27:01.115572+00:00",
    "ref": "MQA 1",
