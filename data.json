@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-06T19:56:50.117356+00:00",
+ "updated_at": "2026-10-06T20:56:49.009374+00:00",
  "documentos": [
   {
    "id": "3e4c5ab532d381049537c08dd5b28b28",
@@ -5729,7 +5729,7 @@
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "SIM",
-   "ret_armazenado": null,
+   "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "SIM",
@@ -5840,7 +5840,7 @@
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "SIM",
-   "ret_armazenado": "NÃO",
+   "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
