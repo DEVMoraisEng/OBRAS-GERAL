@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-07T21:20:57.085884+00:00",
+ "updated_at": "2026-10-07T21:22:57.314249+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -3008,9 +3008,9 @@
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
    "previsao_inicio_obra": "2026-11-02",
-   "obra_iniciada": "NÃO",
+   "obra_iniciada": "SIM",
    "obra_finalizada": "NÃO",
-   "data_inicio_obra": null,
+   "data_inicio_obra": "2026-09-21",
    "data_termino_obra": null,
    "agendou_habite_se": "NÃO",
    "aprovou_habite_se": "NÃO",
@@ -11377,7 +11377,7 @@
    "pv": {}
   },
   "TC 59": {
-   "status": "nao_iniciado",
+   "status": "em_andamento",
    "prazo": null,
    "endereco": "TB 21 QD 50 LT 34",
    "setor": "TERRABELA CERRADO",
@@ -12711,6 +12711,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-07T21:22:57.314249+00:00",
+   "ref": "TC 59",
+   "endereco": "TB 21 QD 50 LT 34",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "nao_iniciado",
+   "para": "em_andamento"
+  },
   {
    "em": "2026-10-07T21:20:57.085884+00:00",
    "ref": "ES2",
