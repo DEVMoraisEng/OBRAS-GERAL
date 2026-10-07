@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-07T21:16:57.928720+00:00",
+ "updated_at": "2026-10-07T21:20:57.085884+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -2416,9 +2416,9 @@
    "mestre": "MOACIR",
    "despachante": "MESSIAS",
    "previsao_inicio_obra": "2026-09-30",
-   "obra_iniciada": "NÃO",
+   "obra_iniciada": "SIM",
    "obra_finalizada": "NÃO",
-   "data_inicio_obra": null,
+   "data_inicio_obra": "2026-09-15",
    "data_termino_obra": null,
    "agendou_habite_se": "NÃO",
    "aprovou_habite_se": "NÃO",
@@ -11228,7 +11228,7 @@
    "pv": {}
   },
   "ES2": {
-   "status": "nao_iniciado",
+   "status": "em_andamento",
    "prazo": null,
    "endereco": "52 QD 81 LT 09",
    "setor": "COND. ESMERALDAS",
@@ -12711,6 +12711,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-07T21:20:57.085884+00:00",
+   "ref": "ES2",
+   "endereco": "52 QD 81 LT 09",
+   "setor": "COND. ESMERALDAS",
+   "tipo": "status",
+   "de": "nao_iniciado",
+   "para": "em_andamento"
+  },
   {
    "em": "2026-10-07T18:41:55.434200+00:00",
    "ref": "TC 62",
