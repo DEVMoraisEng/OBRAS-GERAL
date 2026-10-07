@@ -268,3 +268,6 @@ html[data-tema="escuro"] .emp .nums b{color:#e7f3ff}
   .en-sel select{min-width:0;width:100%} .en-sel{width:100%}
 }
 @media(max-width:640px){ .wrap{padding:0 12px} .hbar{gap:8px} .htitle{font-size:19px} .info-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px} .icard{min-width:0;padding:8px 6px} .ilab{font-size:9px} .mapa-box{height:58vh;min-height:320px} .busca-mapa{right:58px} .busca-mapa input{min-width:0;width:100%} .sec .cond{font-size:17px} .med select{min-width:0;width:100%} .p-topo .end{font-size:19px} .ent-lista{grid-template-columns:1fr} .grade.g3,.grade.en-g{grid-template-columns:1fr 1fr} .hbt{padding:5px 8px;font-size:11px} .ntf{grid-template-columns:1fr} .ntf .mud{justify-content:flex-start} .hupd{display:none} }
+
+/* 07/10/2026: calendário mostra o ENDEREÇO completo (não a REF.) — quebra linha em vez de cortar com "…" */
+.cal .ev{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25;overflow-wrap:anywhere}
