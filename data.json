@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-07T15:48:01.724322+00:00",
+ "updated_at": "2026-10-07T15:48:51.486795+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -6008,7 +6008,7 @@
    "obra_iniciada": "SIM",
    "obra_finalizada": "SIM",
    "data_inicio_obra": "2026-01-09",
-   "data_termino_obra": "2026-08-07",
+   "data_termino_obra": "2026-08-28",
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-07-14",
@@ -6043,9 +6043,9 @@
    "despachante": "LIDIANA",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM",
    "data_inicio_obra": "2026-01-09",
-   "data_termino_obra": null,
+   "data_termino_obra": "2026-08-28",
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-07-14",
@@ -12250,8 +12250,8 @@
    "pv": {}
   },
   "BR 8": {
-   "status": "habite_concluido",
-   "prazo": "r",
+   "status": "acima_prazo",
+   "prazo": null,
    "endereco": "RPB 24 QD 26A LT 06",
    "setor": "PQ DOS BURITIS",
    "habite": [
@@ -12712,9 +12712,18 @@
  },
  "eventos": [
   {
-   "em": "2026-10-07T15:48:01.724322+00:00",
+   "em": "2026-10-07T15:48:51.486795+00:00",
    "ref": "BR 9",
    "endereco": "RPB 24 QD 26A LT 07",
+   "setor": "PQ DOS BURITIS",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "acima_prazo"
+  },
+  {
+   "em": "2026-10-07T15:48:51.486795+00:00",
+   "ref": "BR 8",
+   "endereco": "RPB 24 QD 26A LT 06",
    "setor": "PQ DOS BURITIS",
    "tipo": "status",
    "de": "habite_concluido",
