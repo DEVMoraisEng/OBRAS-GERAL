@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-07T18:10:03.285696+00:00",
+ "updated_at": "2026-10-07T18:41:55.434200+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -2081,7 +2081,7 @@
    "cidade": "SENADOR CANEDO",
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": null,
-   "despachante": null,
+   "despachante": "YAN",
    "previsao_inicio_obra": "2026-10-13",
    "obra_iniciada": "NÃO",
    "obra_finalizada": "NÃO",
@@ -2100,7 +2100,7 @@
    "certidao_lote": "INEXISTE",
    "contrato_mestre": "NÃO",
    "contrato_investidor": "NÃO",
-   "taxas_alvara_pagas": "NÃO",
+   "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "NÃO",
    "incorporacao_finalizada": "NÃO",
    "ret_armazenado": "NÃO",
@@ -2118,7 +2118,7 @@
    "cidade": "SENADOR CANEDO",
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
-   "despachante": null,
+   "despachante": "YAN",
    "previsao_inicio_obra": "2026-10-30",
    "obra_iniciada": "NÃO",
    "obra_finalizada": "NÃO",
@@ -2137,7 +2137,7 @@
    "certidao_lote": "INEXISTE",
    "contrato_mestre": "NÃO",
    "contrato_investidor": "SIM",
-   "taxas_alvara_pagas": "NÃO",
+   "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "NÃO",
    "incorporacao_finalizada": "NÃO",
    "ret_armazenado": "NÃO",
@@ -2903,7 +2903,7 @@
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": "2026-10-06",
+   "data_habite_se": "2026-10-08",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
@@ -3162,7 +3162,7 @@
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": "2026-10-08",
+   "data_habite_se": "2026-10-23",
    "turno_habite_se": "TARDE",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
@@ -11349,7 +11349,7 @@
    "endereco": "TB 21 QD 51 LT 23",
    "setor": "TERRABELA CERRADO",
    "habite": [
-    "2026-10-06",
+    "2026-10-08",
     "MANHÃ"
    ],
    "pv": {}
@@ -11414,7 +11414,7 @@
    "endereco": "TB 01 QD 49 LT 40",
    "setor": "TERRABELA CERRADO",
    "habite": [
-    "2026-10-08",
+    "2026-10-23",
     "TARDE"
    ],
    "pv": {}
@@ -12711,6 +12711,24 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-07T18:41:55.434200+00:00",
+   "ref": "TC 62",
+   "endereco": "TB 21 QD 51 LT 23",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "habite",
+   "data": "2026-10-08",
+   "turno": "MANHÃ"
+  },
+  {
+   "em": "2026-10-07T18:41:55.434200+00:00",
+   "ref": "TC 55",
+   "endereco": "TB 01 QD 49 LT 40",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "habite",
+   "data": "2026-10-23",
+   "turno": "TARDE"
+  },
   {
    "em": "2026-10-07T15:48:51.486795+00:00",
    "ref": "BR 9",
