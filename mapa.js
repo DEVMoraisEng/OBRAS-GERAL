@@ -238,15 +238,15 @@ function eventosCal(){
     entregasPendentes(true).forEach(v=>{ if(!v.data_pre_vistoria) return;
       const doc=DOCS.find(x=>N(x.endereco)===N(v.endereco))||{endereco:v.endereco,setor:"",ref:""}, p=prazoEntrega(v);
       const entregue=POSITIVOS.indexOf(up(v.entregou_casa))>=0;
-      add(v.data_pre_vistoria,{d:doc,cls:"pv "+(entregue?"pv-ok":p?"pv-"+p.n:""),t:(doc.ref||v.endereco)+" · casa "+(v.casa!=null?v.casa:"—")}); });
+      add(v.data_pre_vistoria,{d:doc,cls:"pv "+(entregue?"pv-ok":p?"pv-"+p.n:""),t:(v.endereco||doc.endereco||doc.ref||"")+" · casa "+(v.casa!=null?v.casa:"—")}); });   // 07/10: endereço completo, não a REF.
     return ev;
   }
   DOCS.forEach(d=>{
     if(CAL_TIPO==="hab"){
-      if(d.data_habite_se) add(d.data_habite_se,{d,cls:"hab"+(up(d.aprovou_habite_se)==="SIM"?" ok":""),t:(d.ref||"")+" "+(d.turno_habite_se?"· "+d.turno_habite_se:"")});
+      if(d.data_habite_se) add(d.data_habite_se,{d,cls:"hab"+(up(d.aprovou_habite_se)==="SIM"?" ok":""),t:(d.endereco||d.ref||"")+(d.turno_habite_se?" · "+d.turno_habite_se:"")});
     } else {
-      if(d.data_inicio_obra) add(d.data_inicio_obra,{d,cls:"ini",t:d.ref||d.endereco});
-      else if(d.previsao_inicio_obra) add(d.previsao_inicio_obra,{d,cls:"prev",t:(d.ref||d.endereco)+" (prev.)"});
+      if(d.data_inicio_obra) add(d.data_inicio_obra,{d,cls:"ini",t:d.endereco||d.ref||""});
+      else if(d.previsao_inicio_obra) add(d.previsao_inicio_obra,{d,cls:"prev",t:(d.endereco||d.ref||"")+" (prev.)"});
     }
   });
   return ev;
@@ -267,7 +267,7 @@ function pintarCal(){
   if(window.innerWidth<640){                                   // celular: agenda do mês em lista
     const dias=Object.keys(ev).filter(k=>k.slice(0,7)===chaveMes).sort();
     h+=dias.length?dias.map(k=>`<div class="ntf" style="cursor:default"><div class="qd">${brc(k)}${k===hoje?" · hoje":""}</div>
-        <div class="o cal-lista">${ev[k].map(o=>`<span class="ev ${o.cls}" onclick="${alvo(o)}">${esc(o.t)} · ${esc(o.d.endereco||"")}</span>`).join("")}</div><div></div></div>`).join("")
+        <div class="o cal-lista">${ev[k].map(o=>`<span class="ev ${o.cls}" onclick="${alvo(o)}">${esc(o.t)}${o.d.setor?" · "+esc(o.d.setor):""}</span>`).join("")}</div><div></div></div>`).join("")
       :`<div class="vazio" style="border:0">Nada neste mês.</div>`;
   } else {
     const ini=new Date(ano,mes,1); ini.setDate(1-ini.getDay());
@@ -276,7 +276,7 @@ function pintarCal(){
       const d=new Date(ini); d.setDate(ini.getDate()+i);
       const iso=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
       h+=`<div class="dia ${d.getMonth()!==mes?"fora":""} ${iso===hoje?"hj":""}"><div class="dn">${d.getDate()}</div>${(ev[iso]||[]).map(o=>
-        `<span class="ev ${o.cls}" title="${esc((o.d.endereco||"")+" · "+(o.d.setor||""))}" onclick="${alvo(o)}">${esc(o.t)}</span>`).join("")}</div>`;
+        `<span class="ev ${o.cls}" title="${esc(o.t+(o.d.setor?" · "+o.d.setor:"")+(o.d.ref?" · REF. "+o.d.ref:""))}" onclick="${alvo(o)}">${esc(o.t)}</span>`).join("")}</div>`;
       if(i===34&&new Date(ini.getFullYear(),ini.getMonth(),ini.getDate()+35).getMonth()!==mes) break;
     }
     h+=`</div>`;
