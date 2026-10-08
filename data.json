@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-08T16:56:47.790881+00:00",
+ "updated_at": "2026-10-08T17:11:55.684728+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -10989,7 +10989,7 @@
    "id": "33cc5ab532d3804ea90eda1630675a7d",
    "endereco": "PATHERNON QD 01 LT 26",
    "casa": 1,
-   "data_venda": null,
+   "data_venda": "2026-10-08",
    "eng": "Guilherme Gouveia",
    "entregou_casa": null,
    "processo_conforme": "NÃO",
