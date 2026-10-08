@@ -10,7 +10,7 @@
 <title>Florença · Mapa de Obras · Morais</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="mapa.css?v=1">
+<link rel="stylesheet" href="mapa.css?v=2">
 </head>
 <body>
 <header><div class="wrap hbar">
@@ -29,8 +29,8 @@
   </div>
   <div class="info-bar" id="resumo"></div>
 
-  <div class="sec clic" onclick="MapaObras.toggle('notif')"><span class="seta" id="notif-seta">▾</span><span class="cond">🔔 Notificações de status</span><span class="nb zero" id="notif-n">0</span></div>
-  <div class="notif" id="notif"></div>
+  <div class="sec clic" onclick="MapaObras.toggle('notif')"><span class="seta" id="notif-seta">▸</span><span class="cond">🔔 Notificações de status</span><span class="nb zero" id="notif-n">0</span></div>
+  <div class="notif" id="notif" style="display:none"></div>
 
   <div class="sec"><span class="cond">🗺 Mapa</span><span class="dir" style="font-size:12px;color:var(--text3);font-weight:600">arraste para mover · roda do mouse ou pinça para zoom</span></div>
   <div class="mapa-linha">
@@ -68,6 +68,6 @@ const CONFIG = {
 };
 window.CONFIG = CONFIG;
 </script>
-<script src="mapa.js?v=1"></script>
+<script src="mapa.js?v=2"></script>
 </body>
 </html>
