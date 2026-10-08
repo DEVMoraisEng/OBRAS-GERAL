@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-07T23:56:24.555451+00:00",
+ "updated_at": "2026-10-08T03:00:32.872603+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -11465,7 +11465,7 @@
   },
   "TC 50": {
    "status": "habite_concluido",
-   "prazo": null,
+   "prazo": "a",
    "endereco": "TB 18 QD 49 LT 31",
    "setor": "TERRABELA CERRADO",
    "habite": [
@@ -11476,7 +11476,7 @@
   },
   "TC 49": {
    "status": "habite_agendado",
-   "prazo": null,
+   "prazo": "a",
    "endereco": "TB 18 QD 49 LT 30",
    "setor": "TERRABELA CERRADO",
    "habite": [
@@ -12711,6 +12711,22 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-08T03:00:32.872603+00:00",
+   "ref": "TC 50",
+   "endereco": "TB 18 QD 49 LT 31",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "prazo",
+   "para": "a"
+  },
+  {
+   "em": "2026-10-08T03:00:32.872603+00:00",
+   "ref": "TC 49",
+   "endereco": "TB 18 QD 49 LT 30",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "prazo",
+   "para": "a"
+  },
   {
    "em": "2026-10-07T21:22:57.314249+00:00",
    "ref": "TC 59",
