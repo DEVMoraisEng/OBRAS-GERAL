@@ -609,6 +609,12 @@ function cartaoEntrega(v,noPainel,camposAba){
 /* 28/09 (noite): escolha do ENGENHEIRO + tabela alinhada (uma linha por
    casa, as mesmas colunas em todas). No celular cada linha vira um cartão. */
 let ENT_ENG=lsGet("og_ent_eng","");
+/* 08/10: pesquisa por obra (endereço, nº da casa ou engenheiro) — todas as
+   palavras digitadas têm de aparecer, em qualquer ordem, sem acento/caixa */
+let ENT_BUSCA="";
+const entBate=(v,q)=>{ const t=N(q).replace(/\s+/g," "); if(!t) return true;
+  const alvo=N(`${v.endereco||""} CASA ${v.casa!=null?v.casa:""} CS ${v.casa!=null?v.casa:""} ${v.eng||""}`).replace(/\s+/g," ");
+  return t.split(" ").every(p=>alvo.indexOf(p)>=0); };
 function campoEntrega(v,k){
   const f=ENT_CAMPOS[k], val=v[k]||"";
   if(!podeVendas()) return `<span class="${val?"":"vz"}">${f.tipo==="date"?br(val):esc(val||"—")}</span>`;
@@ -622,7 +628,7 @@ function pintarEntregas(){
   const aba=ENT_ABAS.find(a=>a.k===ENT_ABA)||ENT_ABAS[0];
   const engs=[...new Set(porAba[aba.k].map(v=>v.eng||"Sem engenheiro"))].sort((a,b)=>(a==="Sem engenheiro")-(b==="Sem engenheiro")||a.localeCompare(b,"pt-BR"));
   if(ENT_ENG&&engs.indexOf(ENT_ENG)<0&&porAba[aba.k].length) ENT_ENG="";
-  const l=porAba[aba.k].filter(v=>!ENT_ENG||(v.eng||"Sem engenheiro")===ENT_ENG)
+  const l=porAba[aba.k].filter(v=>(!ENT_ENG||(v.eng||"Sem engenheiro")===ENT_ENG)&&entBate(v,ENT_BUSCA))
     .sort((a,b)=>ordemEntrega(a)-ordemEntrega(b)||String(a.endereco).localeCompare(String(b.endereco))||(a.casa||0)-(b.casa||0));
   const nr=porAba.reparos.filter(v=>{ const p=prazoEntrega(v); return p&&(p.n==="r"||p.n==="h"); }).length;
   const n=$("ent-n"); if(n) n.textContent=todas.length;
@@ -630,8 +636,9 @@ function pintarEntregas(){
   const aviso=!S||!S.token?`<div class="en-info"><a href="${PORTAL}login.html">Entre no portal</a> para preencher.</div>`:(BOOT&&!BOOT.podeVendas&&!BOOT.erro?`<div class="en-info">Só leitura: preencher precisa de acesso a VENDAS ou OBRAS.</div>`:"");
   const qtdEng=e=>porAba[aba.k].filter(v=>(v.eng||"Sem engenheiro")===e).length;
   const barra=`<div class="en-barra"><div class="flt en-abas">${ENT_ABAS.map(a=>`<button class="pill ${a.k===aba.k?"on":""}" onclick="MapaObras.entAba('${a.k}')">${a.l} <b>${porAba[a.k].length}</b></button>`).join("")}</div>
-    <label class="en-sel">👷 Engenheiro <select onchange="MapaObras.entEng(this.value)"><option value="">Todos (${porAba[aba.k].length})</option>${engs.map(e=>`<option value="${esc(e)}" ${e===ENT_ENG?"selected":""}>${esc(e)} (${qtdEng(e)})</option>`).join("")}</select></label></div>`;
-  if(!l.length){ box.innerHTML=barra+aviso+`<div class="vazio" style="border:0">${aba.k==="todas"?"Nenhuma casa vendida esperando entrega.":aba.k==="apta"?"Nenhuma casa esperando ser marcada como apta para a vistoria.":"Nenhuma casa com reparos da pré-vistoria em aberto."}</div>`; return; }
+    <div class="en-dir"><label class="en-sel en-busca">🔎 <input id="ent-busca" type="search" placeholder="Pesquisar obra (ex.: TB 21 QD 51 LT 34)" value="${esc(ENT_BUSCA)}" oninput="MapaObras.entBusca(this.value)" autocomplete="off"></label>
+    <label class="en-sel">👷 Engenheiro <select onchange="MapaObras.entEng(this.value)"><option value="">Todos (${porAba[aba.k].length})</option>${engs.map(e=>`<option value="${esc(e)}" ${e===ENT_ENG?"selected":""}>${esc(e)} (${qtdEng(e)})</option>`).join("")}</select></label></div></div>`;
+  if(!l.length){ box.innerHTML=barra+aviso+`<div class="vazio" style="border:0">${N(ENT_BUSCA)?`Nenhuma casa encontrada para “${esc(ENT_BUSCA.trim())}”${ENT_ENG?` com o engenheiro ${esc(ENT_ENG)}`:""}.`:aba.k==="todas"?"Nenhuma casa vendida esperando entrega.":aba.k==="apta"?"Nenhuma casa esperando ser marcada como apta para a vistoria.":"Nenhuma casa com reparos da pré-vistoria em aberto."}</div>`; return; }
   const cab=`<tr><th>Casa</th><th>Engenheiro</th><th>Vendida</th>${aba.campos.map(k=>`<th>${ENT_CAMPOS[k].l}</th>`).join("")}<th>Situação</th></tr>`;
   const linha=v=>{
     const p=prazoEntrega(v), na=precisaApta(v), doc=DOCS.find(d=>N(d.endereco)===N(v.endereco));
@@ -674,6 +681,8 @@ window.MapaObras={
   irPara, focar, medir, verFinalizadas, salvarCampo, salvarVenda,
   entAba:k=>{ ENT_ABA=k; pintarEntregas(); },
   entEng:e=>{ ENT_ENG=e; lsSet("og_ent_eng",e); pintarEntregas(); },
+  /* a barra é redesenhada a cada letra: devolve o foco e o cursor ao campo */
+  entBusca:q=>{ ENT_BUSCA=q; pintarEntregas(); const i=$("ent-busca"); if(i){ i.focus(); const n=i.value.length; try{ i.setSelectionRange(n,n); }catch(e){} } },
   fechar:()=>{ ATIVO=null; marcarAtivo(""); $("painel").innerHTML=`<div class="p-vazio"><b>📍</b>Toque em um lote no mapa para ver e preencher o status da obra.</div>`; history.replaceState(null,"",location.pathname); },
   toggle:id=>{ const e=$(id); if(!e) return; const ab=e.style.display==="none"; e.style.display=ab?"":"none"; const s=$(id+"-seta"); if(s) s.textContent=ab?"▾":"▸"; }
 };

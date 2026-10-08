@@ -204,6 +204,8 @@ html[data-tema="escuro"] .en-eng{color:var(--teal)}
 .en-sel{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;color:var(--azul-esc)}
 html[data-tema="escuro"] .en-sel{color:#e7f3ff}
 .en-sel select{min-width:220px}
+.en-dir{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.en-busca input{min-width:260px;padding:8px 10px;border:1px solid var(--border2);border-radius:8px;font:inherit;font-weight:600;background:var(--sup);color:inherit}
 .en-wrap{background:var(--sup);border:1px solid var(--border2);border-radius:10px;overflow:auto}
 .ent-tab{width:100%;border-collapse:collapse;font-size:12.5px}
 .ent-tab th{background:var(--azul);color:#fff;text-align:left;padding:8px 10px;font-size:10px;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;position:sticky;top:0}
@@ -265,7 +267,7 @@ html[data-tema="escuro"] .emp .nums b{color:#e7f3ff}
   .ent-tab td{border:0;padding:3px 0;display:grid;grid-template-columns:130px 1fr;gap:8px;align-items:center}
   .ent-tab td::before{content:attr(data-l);font-size:10px;font-weight:800;text-transform:uppercase;color:var(--text3)}
   .ent-tab td:first-child{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.ent-tab td:first-child::before{content:none}
-  .en-sel select{min-width:0;width:100%} .en-sel{width:100%}
+  .en-sel select{min-width:0;width:100%} .en-sel{width:100%} .en-dir{width:100%} .en-busca input{min-width:0;width:100%}
 }
 @media(max-width:640px){ .wrap{padding:0 12px} .hbar{gap:8px} .htitle{font-size:19px} .info-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px} .icard{min-width:0;padding:8px 6px} .ilab{font-size:9px} .mapa-box{height:58vh;min-height:320px} .busca-mapa{right:58px} .busca-mapa input{min-width:0;width:100%} .sec .cond{font-size:17px} .med select{min-width:0;width:100%} .p-topo .end{font-size:19px} .ent-lista{grid-template-columns:1fr} .grade.g3,.grade.en-g{grid-template-columns:1fr 1fr} .hbt{padding:5px 8px;font-size:11px} .ntf{grid-template-columns:1fr} .ntf .mud{justify-content:flex-start} .hupd{display:none} }
 
