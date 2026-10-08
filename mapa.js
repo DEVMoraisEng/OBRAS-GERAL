@@ -497,7 +497,7 @@ function buscar(q){ q=N(q); let achou=[];
 /* ---------------- medições da semana (zera toda terça) ---------------- */
 const MED=[{v:"nao_realizada",l:"Não realizada",c:"#9aaac5"},{v:"lancada_aguardando",l:"Lançada – ag. revisão",c:"#e8c84a"},
   {v:"em_andamento",l:"Em andamento",c:"#4a90d9"},{v:"finalizada",l:"Finalizada",c:"#27c45e"}];
-let MEDS={semana:tercaDe(),itens:{}}, MED_ABERTO=true;
+let MEDS={semana:tercaDe(),itens:{}}, MED_ABERTO=true, MED_VER_FIN=false;
 const K_MED=()=>"og_med_"+(CFG?N(CFG.setor):"")+"_"+tercaDe();
 async function carregarMedicoes(){
   const c=lsGet(K_MED(),null); if(c) MEDS=c; else MEDS={semana:tercaDe(),itens:{}};
@@ -514,18 +514,25 @@ function pintarMedicoes(){
   const t=MEDS.semana||tercaDe(), fimS=maisDias(t,6);
   const lab=$("med-sem"); if(lab) lab.textContent=`de ${brc(t)} (ter) a ${brc(fimS)} (seg) · zera toda terça`;
   const obras=DOCS.filter(d=>iniciada(d)&&!finalizada(d)).sort((a,b)=>String(a.endereco).localeCompare(String(b.endereco),"pt-BR"));
-  const nEl=$("med-n"); if(nEl) nEl.textContent=obras.length;
+  const stDe=d=>{ const m=MEDS.itens[N(d.ref||d.endereco)]; return (m&&m.status)||"nao_realizada"; };
+  const feitas=obras.filter(d=>stDe(d)==="finalizada").length;
+  /* medições finalizadas somem da lista (dá para reexibir pelo rodapé) */
+  const vis=MED_VER_FIN?obras:obras.filter(d=>stDe(d)!=="finalizada");
+  const nEl=$("med-n"); if(nEl) nEl.textContent=obras.length-feitas;
   if(!obras.length){ box.innerHTML=`<div class="vazio" style="border:0">Nenhuma obra em andamento neste setor.</div>`; return; }
   const pode=S&&S.token&&MEDS.podeMedir!==false;
-  const feitas=obras.filter(d=>{ const m=MEDS.itens[N(d.ref||d.endereco)]; return m&&m.status==="finalizada"; }).length;
-  box.innerHTML=`<table><thead><tr><th>Obra</th><th>Medição da semana</th></tr></thead><tbody>${obras.map(d=>{
+  const lnk=feitas?` · <a href="#" onclick="MapaObras.verFinalizadas();return false" style="color:var(--text2);font-weight:600">${MED_VER_FIN?"ocultar finalizadas":"mostrar finalizadas"}</a>`:"";
+  const tabela=vis.length?`<table><thead><tr><th>Obra</th><th>Medição da semana</th></tr></thead><tbody>${vis.map(d=>{
       const ref=N(d.ref||d.endereco), m=MEDS.itens[ref]||{}, st=m.status||"nao_realizada", o=MED.find(x=>x.v===st)||MED[0];
       return `<tr><td class="end" onclick="MapaObras.focar('${esc(ref)}')">${esc(d.endereco||ref)}<div class="quem">${esc(d.ref||"")}${d.mestre?" · "+esc(d.mestre):""}</div></td>
         <td>${pode?`<select style="--mc:${o.c}" onchange="MapaObras.medir('${esc(ref)}','${esc(d.endereco||"")}',this.value)">${MED.map(x=>`<option value="${x.v}" ${x.v===st?"selected":""}>${x.l}</option>`).join("")}</select>`
           :`<span class="chip" style="background:${o.c}">${o.l}</span>`}${m.por?`<div class="quem">${esc(m.por)}${m.em?" · "+new Date(m.em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`:""}</td></tr>`;
-    }).join("")}</tbody></table>`+(!S||!S.token?`<div class="vazio" style="border:0;border-top:1px solid var(--border2);border-radius:0"><a href="${PORTAL}login.html">Entre no portal</a> para lançar as medições.</div>`
-      :`<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${feitas} de ${obras.length} finalizadas nesta semana</div>`);
+    }).join("")}</tbody></table>`
+    :`<div class="vazio" style="border:0">✅ Todas as medições desta semana estão finalizadas.</div>`;
+  box.innerHTML=tabela+(!S||!S.token?`<div class="vazio" style="border:0;border-top:1px solid var(--border2);border-radius:0"><a href="${PORTAL}login.html">Entre no portal</a> para lançar as medições.</div>`
+      :`<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${feitas} de ${obras.length} finalizadas nesta semana${lnk}</div>`);
 }
+function verFinalizadas(){ MED_VER_FIN=!MED_VER_FIN; pintarMedicoes(); }
 async function medir(ref,endereco,status){
   MEDS.itens[ref]={status,por:(S&&S.nome)||"",em:new Date().toISOString()}; lsSet(K_MED(),MEDS); pintarMedicoes();
   const r=await gravar({action:"medSalvar",setor:CFG.setor,ref,endereco,status},"Medição");
@@ -664,7 +671,7 @@ window.MapaObras={
   calTipo:t=>{ CAL_TIPO=t; pintarCal(); },
   calMes:n=>{ if(!n){ CAL_MES=new Date(); CAL_MES.setDate(1); } else CAL_MES.setMonth(CAL_MES.getMonth()+n); pintarCal(); },
   verFin:()=>{ VER_FIN=!VER_FIN; pintarIndice(); },
-  irPara, focar, medir, salvarCampo, salvarVenda,
+  irPara, focar, medir, verFinalizadas, salvarCampo, salvarVenda,
   entAba:k=>{ ENT_ABA=k; pintarEntregas(); },
   entEng:e=>{ ENT_ENG=e; lsSet("og_ent_eng",e); pintarEntregas(); },
   fechar:()=>{ ATIVO=null; marcarAtivo(""); $("painel").innerHTML=`<div class="p-vazio"><b>📍</b>Toque em um lote no mapa para ver e preencher o status da obra.</div>`; history.replaceState(null,"",location.pathname); },
