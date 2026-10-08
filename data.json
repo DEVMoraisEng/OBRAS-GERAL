@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-08T11:12:09.644649+00:00",
+ "updated_at": "2026-10-08T11:41:48.967820+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -2808,7 +2808,7 @@
    "incorporacao_finalizada": "INEXISTE",
    "ret_armazenado": "INEXISTE",
    "taxas_habite_se": "SIM",
-   "issqn": "NÃO",
+   "issqn": "SIM",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO"
@@ -2956,7 +2956,7 @@
    "incorporacao_finalizada": "INEXISTE",
    "ret_armazenado": "INEXISTE",
    "taxas_habite_se": "SIM",
-   "issqn": "NÃO",
+   "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO"
