@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-08T18:12:35.422967+00:00",
+ "updated_at": "2026-10-08T18:41:55.496490+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -1491,9 +1491,9 @@
    "mestre": null,
    "despachante": "LIDIANA",
    "previsao_inicio_obra": "2026-09-28",
-   "obra_iniciada": "NÃO",
+   "obra_iniciada": "SIM",
    "obra_finalizada": "NÃO",
-   "data_inicio_obra": null,
+   "data_inicio_obra": "2026-09-24",
    "data_termino_obra": null,
    "agendou_habite_se": "NÃO",
    "aprovou_habite_se": "NÃO",
@@ -11072,7 +11072,7 @@
    "pv": {}
   },
   "RV 10": {
-   "status": "nao_iniciado",
+   "status": "em_andamento",
    "prazo": null,
    "endereco": "RR 03 QD 03 LT 05",
    "setor": "RAVENA",
@@ -12737,6 +12737,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-08T18:41:55.496490+00:00",
+   "ref": "RV 10",
+   "endereco": "RR 03 QD 03 LT 05",
+   "setor": "RAVENA",
+   "tipo": "status",
+   "de": "nao_iniciado",
+   "para": "em_andamento"
+  },
   {
    "em": "2026-10-08T12:26:56.162114+00:00",
    "ref": "SV 1",
