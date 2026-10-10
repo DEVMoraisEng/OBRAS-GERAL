@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-09T23:43:30.469959+00:00",
+ "updated_at": "2026-10-10T03:00:35.833468+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -12246,7 +12246,7 @@
   },
   "BR 13": {
    "status": "habite_concluido",
-   "prazo": "a",
+   "prazo": "r",
    "endereco": "RPB 24 QD 26A LT 11",
    "setor": "PQ DOS BURITIS",
    "habite": [
@@ -12750,6 +12750,14 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-10T03:00:35.833468+00:00",
+   "ref": "BR 13",
+   "endereco": "RPB 24 QD 26A LT 11",
+   "setor": "PQ DOS BURITIS",
+   "tipo": "prazo",
+   "para": "r"
+  },
   {
    "em": "2026-10-08T18:41:55.496490+00:00",
    "ref": "RV 10",
