@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-14T22:26:56.019106+00:00",
+ "updated_at": "2026-10-14T22:41:51.205931+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -1791,10 +1791,10 @@
    "obra_finalizada": "NÃO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
-   "agendou_habite_se": "NÃO",
+   "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": null,
-   "turno_habite_se": null,
+   "data_habite_se": "2026-10-27",
+   "turno_habite_se": "MANHÃ",
    "escritura_assinada": "NÃO",
    "itbi_pago": "NÃO",
    "registro_pago": "NÃO",
@@ -1842,10 +1842,10 @@
    "contrato_mestre": "SIM",
    "contrato_investidor": "SIM",
    "taxas_alvara_pagas": "SIM",
-   "projeto_aprovado": "NÃO",
+   "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
    "ret_armazenado": "NÃO",
-   "taxas_habite_se": "NÃO",
+   "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
@@ -2064,10 +2064,10 @@
    "contrato_mestre": "NÃO",
    "contrato_investidor": "NÃO",
    "taxas_alvara_pagas": "SIM",
-   "projeto_aprovado": "NÃO",
+   "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
    "ret_armazenado": "NÃO",
-   "taxas_habite_se": "NÃO",
+   "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
@@ -2250,7 +2250,7 @@
    "contrato_investidor": "INEXISTE",
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
-   "incorporacao_finalizada": "NÃO",
+   "incorporacao_finalizada": "SIM",
    "ret_armazenado": "NÃO",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
@@ -2272,10 +2272,10 @@
    "obra_finalizada": "NÃO",
    "data_inicio_obra": "2026-07-07",
    "data_termino_obra": null,
-   "agendou_habite_se": "NÃO",
+   "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": null,
-   "turno_habite_se": null,
+   "data_habite_se": "2026-10-28",
+   "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
    "registro_pago": "SIM",
@@ -2287,7 +2287,7 @@
    "contrato_investidor": "INEXISTE",
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
-   "incorporacao_finalizada": "NÃO",
+   "incorporacao_finalizada": "SIM",
    "ret_armazenado": "NÃO",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
@@ -2309,10 +2309,10 @@
    "obra_finalizada": "NÃO",
    "data_inicio_obra": "2026-07-07",
    "data_termino_obra": null,
-   "agendou_habite_se": "NÃO",
+   "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": null,
-   "turno_habite_se": null,
+   "data_habite_se": "2026-10-29",
+   "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
    "registro_pago": "SIM",
@@ -2324,7 +2324,7 @@
    "contrato_investidor": "INEXISTE",
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
-   "incorporacao_finalizada": "NÃO",
+   "incorporacao_finalizada": "SIM",
    "ret_armazenado": "NÃO",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
@@ -2656,10 +2656,10 @@
    "contrato_mestre": "NÃO",
    "contrato_investidor": "INEXISTE",
    "taxas_alvara_pagas": "SIM",
-   "projeto_aprovado": "NÃO",
+   "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
    "ret_armazenado": null,
-   "taxas_habite_se": "NÃO",
+   "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
@@ -2845,7 +2845,7 @@
    "incorporacao_finalizada": "SIM",
    "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
-   "issqn": "NÃO",
+   "issqn": "SIM",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO"
@@ -2902,7 +2902,7 @@
    "data_inicio_obra": "2026-07-13",
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
-   "aprovou_habite_se": "NÃO",
+   "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-10-08",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
@@ -5491,10 +5491,10 @@
    "obra_finalizada": "NÃO",
    "data_inicio_obra": "2026-08-10",
    "data_termino_obra": null,
-   "agendou_habite_se": "NÃO",
+   "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": null,
-   "turno_habite_se": null,
+   "data_habite_se": "2026-11-03",
+   "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
    "registro_pago": "SIM",
@@ -5506,7 +5506,7 @@
    "contrato_investidor": "INEXISTE",
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
-   "incorporacao_finalizada": "NÃO",
+   "incorporacao_finalizada": "SIM",
    "ret_armazenado": null,
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
@@ -5603,7 +5603,7 @@
    "data_inicio_obra": "2026-05-25",
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
-   "aprovou_habite_se": "NÃO",
+   "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-10-05",
    "turno_habite_se": "TARDE",
    "escritura_assinada": "SIM",
@@ -6120,10 +6120,10 @@
    "obra_finalizada": "NÃO",
    "data_inicio_obra": "2026-05-25",
    "data_termino_obra": null,
-   "agendou_habite_se": "NÃO",
+   "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": null,
-   "turno_habite_se": null,
+   "data_habite_se": "2026-10-23",
+   "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
    "registro_pago": "SIM",
@@ -6417,7 +6417,7 @@
    "data_inicio_obra": "2026-03-01",
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
-   "aprovou_habite_se": "NÃO",
+   "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-10-06",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
@@ -6434,7 +6434,7 @@
    "incorporacao_finalizada": "SIM",
    "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
-   "issqn": "NÃO",
+   "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO"
@@ -11472,19 +11472,25 @@
    "pv": {}
   },
   "RV 7": {
-   "status": "em_andamento",
+   "status": "habite_agendado",
    "prazo": null,
    "endereco": "RR 01 QD 01 LT 08",
    "setor": "RAVENA",
-   "habite": null,
+   "habite": [
+    "2026-10-28",
+    "MANHÃ"
+   ],
    "pv": {}
   },
   "RV 8": {
-   "status": "em_andamento",
+   "status": "habite_agendado",
    "prazo": null,
    "endereco": "RR 01 QD 01 LT 09",
    "setor": "RAVENA",
-   "habite": null,
+   "habite": [
+    "2026-10-29",
+    "MANHÃ"
+   ],
    "pv": {}
   },
   "TC 68": {
@@ -11620,7 +11626,7 @@
    "pv": {}
   },
   "TC 62": {
-   "status": "habite_agendado",
+   "status": "habite_concluido",
    "prazo": null,
    "endereco": "TB 21 QD 51 LT 23",
    "setor": "TERRABELA CERRADO",
@@ -12375,11 +12381,14 @@
    "pv": {}
   },
   "RV 4": {
-   "status": "em_andamento",
+   "status": "habite_agendado",
    "prazo": null,
    "endereco": "RR 02 QD 01 LT 29",
    "setor": "RAVENA",
-   "habite": null,
+   "habite": [
+    "2026-11-03",
+    "MANHÃ"
+   ],
    "pv": {}
   },
   "RV 3": {
@@ -12405,7 +12414,7 @@
    "pv": {}
   },
   "RV 1": {
-   "status": "habite_agendado",
+   "status": "habite_concluido",
    "prazo": null,
    "endereco": "RR 01 QD 01 LT 12",
    "setor": "RAVENA",
@@ -12537,11 +12546,14 @@
    "pv": {}
   },
   "BR 6": {
-   "status": "em_andamento",
+   "status": "habite_agendado",
    "prazo": null,
    "endereco": "RPB 24 QD 26A LT 04",
    "setor": "PQ DOS BURITIS",
-   "habite": null,
+   "habite": [
+    "2026-10-23",
+    "MANHÃ"
+   ],
    "pv": {}
   },
   "BR 5": {
@@ -12624,7 +12636,7 @@
    "pv": {}
   },
   "MQA 1": {
-   "status": "habite_agendado",
+   "status": "habite_concluido",
    "prazo": "r",
    "endereco": "DONA MORENA QD 18 LT 08-11 B1",
    "setor": "MARQUES DE ABREU",
@@ -12987,6 +12999,105 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-14T22:41:51.205931+00:00",
+   "ref": "RV 7",
+   "endereco": "RR 01 QD 01 LT 08",
+   "setor": "RAVENA",
+   "tipo": "status",
+   "de": "em_andamento",
+   "para": "habite_agendado"
+  },
+  {
+   "em": "2026-10-14T22:41:51.205931+00:00",
+   "ref": "RV 7",
+   "endereco": "RR 01 QD 01 LT 08",
+   "setor": "RAVENA",
+   "tipo": "habite",
+   "data": "2026-10-28",
+   "turno": "MANHÃ"
+  },
+  {
+   "em": "2026-10-14T22:41:51.205931+00:00",
+   "ref": "RV 8",
+   "endereco": "RR 01 QD 01 LT 09",
+   "setor": "RAVENA",
+   "tipo": "status",
+   "de": "em_andamento",
+   "para": "habite_agendado"
+  },
+  {
+   "em": "2026-10-14T22:41:51.205931+00:00",
+   "ref": "RV 8",
+   "endereco": "RR 01 QD 01 LT 09",
+   "setor": "RAVENA",
+   "tipo": "habite",
+   "data": "2026-10-29",
+   "turno": "MANHÃ"
+  },
+  {
+   "em": "2026-10-14T22:41:51.205931+00:00",
+   "ref": "TC 62",
+   "endereco": "TB 21 QD 51 LT 23",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_agendado",
+   "para": "habite_concluido"
+  },
+  {
+   "em": "2026-10-14T22:41:51.205931+00:00",
+   "ref": "RV 4",
+   "endereco": "RR 02 QD 01 LT 29",
+   "setor": "RAVENA",
+   "tipo": "status",
+   "de": "em_andamento",
+   "para": "habite_agendado"
+  },
+  {
+   "em": "2026-10-14T22:41:51.205931+00:00",
+   "ref": "RV 4",
+   "endereco": "RR 02 QD 01 LT 29",
+   "setor": "RAVENA",
+   "tipo": "habite",
+   "data": "2026-11-03",
+   "turno": "MANHÃ"
+  },
+  {
+   "em": "2026-10-14T22:41:51.205931+00:00",
+   "ref": "RV 1",
+   "endereco": "RR 01 QD 01 LT 12",
+   "setor": "RAVENA",
+   "tipo": "status",
+   "de": "habite_agendado",
+   "para": "habite_concluido"
+  },
+  {
+   "em": "2026-10-14T22:41:51.205931+00:00",
+   "ref": "BR 6",
+   "endereco": "RPB 24 QD 26A LT 04",
+   "setor": "PQ DOS BURITIS",
+   "tipo": "status",
+   "de": "em_andamento",
+   "para": "habite_agendado"
+  },
+  {
+   "em": "2026-10-14T22:41:51.205931+00:00",
+   "ref": "BR 6",
+   "endereco": "RPB 24 QD 26A LT 04",
+   "setor": "PQ DOS BURITIS",
+   "tipo": "habite",
+   "data": "2026-10-23",
+   "turno": "MANHÃ"
+  },
+  {
+   "em": "2026-10-14T22:41:51.205931+00:00",
+   "ref": "MQA 1",
+   "endereco": "DONA MORENA QD 18 LT 08-11 B1",
+   "setor": "MARQUES DE ABREU",
+   "tipo": "status",
+   "de": "habite_agendado",
+   "para": "habite_concluido"
+  },
   {
    "em": "2026-10-13T18:42:23.048589+00:00",
    "ref": "TC 98",
