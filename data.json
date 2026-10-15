@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15T19:56:53.601827+00:00",
+ "updated_at": "2026-10-15T20:26:33.651652+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -7847,7 +7847,7 @@
    "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": null,
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "EXECUTANDO REPAROS",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-09-01",
    "reparos_pre_vistoria": "EXECUTANDO REPAROS"
