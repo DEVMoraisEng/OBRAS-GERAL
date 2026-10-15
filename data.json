@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15T20:38:22.953969+00:00",
+ "updated_at": "2026-10-15T20:41:39.908473+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -10294,7 +10294,7 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-08-31",
-   "reparos_pre_vistoria": "EXECUTANDO REPAROS"
+   "reparos_pre_vistoria": "SIM"
   },
   {
    "id": "33cc5ab532d380ed95b2cd486f23c4ca",
@@ -10333,7 +10333,7 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-08-20",
-   "reparos_pre_vistoria": "EXECUTANDO REPAROS"
+   "reparos_pre_vistoria": "SIM"
   },
   {
    "id": "33cc5ab532d380ba812edbbf5be79f33",
@@ -10970,7 +10970,7 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-09-03",
-   "reparos_pre_vistoria": "NÃO"
+   "reparos_pre_vistoria": "SIM"
   },
   {
    "id": "33cc5ab532d380bc8628c48a55cfe3a8",
