@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15T20:42:19.261375+00:00",
+ "updated_at": "2026-10-15T20:44:04.670489+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -7928,7 +7928,7 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-08-24",
-   "reparos_pre_vistoria": "EXECUTANDO REPAROS"
+   "reparos_pre_vistoria": "SIM"
   },
   {
    "id": "33cc5ab532d380e9a9eded0f7c7a8a09",
@@ -7967,7 +7967,7 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-09-01",
-   "reparos_pre_vistoria": "NÃO"
+   "reparos_pre_vistoria": "SIM"
   },
   {
    "id": "33cc5ab532d38040b8ebd9f971e3bf20",
@@ -8006,7 +8006,7 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-09-01",
-   "reparos_pre_vistoria": "EXECUTANDO REPAROS"
+   "reparos_pre_vistoria": "SIM"
   },
   {
    "id": "33cc5ab532d3803ca6d8fa6c5fceeec3",
@@ -9800,7 +9800,7 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-07-24",
-   "reparos_pre_vistoria": "NÃO"
+   "reparos_pre_vistoria": "SIM"
   },
   {
    "id": "33cc5ab532d3809bac77f7b29ee07d4b",
