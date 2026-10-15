@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15T20:26:33.651652+00:00",
+ "updated_at": "2026-10-15T20:27:15.417644+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -10265,7 +10265,7 @@
    "eng": "Guilherme Gouveia",
    "entregou_casa": null,
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "NÃO",
+   "casa_apta_vistoria": "EXECUTANDO REPAROS",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO"
@@ -10278,7 +10278,7 @@
    "eng": "Guilherme Gouveia",
    "entregou_casa": null,
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "NÃO",
+   "casa_apta_vistoria": "EXECUTANDO REPAROS",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO"
@@ -11058,7 +11058,7 @@
    "eng": "Guilherme Gouveia",
    "entregou_casa": null,
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "NÃO",
+   "casa_apta_vistoria": "EXECUTANDO REPAROS",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-10-16",
    "reparos_pre_vistoria": "NÃO"
