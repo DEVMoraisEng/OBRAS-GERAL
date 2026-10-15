@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15T21:01:38.136382+00:00",
+ "updated_at": "2026-10-15T21:04:01.331579+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -8227,7 +8227,7 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-10-07",
-   "reparos_pre_vistoria": "NÃO"
+   "reparos_pre_vistoria": "EXECUTANDO REPAROS"
   },
   {
    "id": "33cc5ab532d38050b7ede5657c11aa10",
