@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15T16:26:52.225427+00:00",
+ "updated_at": "2026-10-15T16:41:53.764372+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -11059,7 +11059,7 @@
    "entregou_casa": null,
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "NÃO",
-   "agendou_pre_vistoria": "NÃO",
+   "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO"
   }
@@ -13003,10 +13003,21 @@
     "2026-05-15",
     "TARDE"
    ],
-   "pv": {}
+   "pv": {
+    "1": ""
+   }
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-15T16:41:53.764372+00:00",
+   "ref": "A1",
+   "endereco": "ATALANTA QD 01 LT 21",
+   "setor": "ACROPOLE",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": ""
+  },
   {
    "em": "2026-10-15T12:41:43.639357+00:00",
    "ref": "FL 9",
