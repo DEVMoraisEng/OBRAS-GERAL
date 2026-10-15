@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-15T20:34:10.369280+00:00",
+ "updated_at": "2026-10-15T20:38:22.953969+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -558,7 +558,7 @@
   },
   {
    "id": "3cfc5ab532d38079ae5ac3d0f0706cd2",
-   "endereco": "FL 27 QD 28 LT 18",
+   "endereco": "FL 27 QD 38 LT 18",
    "ref": "FL 20",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
@@ -7626,7 +7626,7 @@
    "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": null,
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "NÃO",
+   "casa_apta_vistoria": "EXECUTANDO REPAROS",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO"
@@ -7821,7 +7821,7 @@
    "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": null,
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "NÃO",
+   "casa_apta_vistoria": "EXECUTANDO REPAROS",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO"
@@ -10983,7 +10983,7 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-07-31",
-   "reparos_pre_vistoria": "EXECUTANDO REPAROS"
+   "reparos_pre_vistoria": "SIM"
   },
   {
    "id": "33cc5ab532d38007bdf8e2fe0b64abe4",
@@ -11140,7 +11140,7 @@
   "FL 20": {
    "status": "nao_iniciado",
    "prazo": null,
-   "endereco": "FL 27 QD 28 LT 18",
+   "endereco": "FL 27 QD 38 LT 18",
    "setor": "FLORENÇA",
    "habite": null,
    "pv": {}
