@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-16T12:26:49.409108+00:00",
+ "updated_at": "2026-10-16T12:56:46.733210+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -3292,7 +3292,7 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "SIM"
   },
   {
    "id": "32fc5ab532d38010ad3feceb00faceff",
