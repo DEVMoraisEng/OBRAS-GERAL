@@ -592,6 +592,7 @@ const entregue=v=>POSITIVOS.indexOf(up(v.entregou_casa))>=0;
 function contDe(v){
   let c={}; try{ c=JSON.parse(v.contador||"{}")||{}; }catch(e){ c={}; }
   const a=Object.assign({},c.a||{}), r=Object.assign({},c.r||{});
+  if(a.ini&&c.origem==="venda") a.src="venda";
   if(!a.ini){ a.ini=v.apta_desde||v.data_venda||null; a.src=v.apta_desde?"atv":"venda"; a.acc=0; a.ret=a.ini; a.trav=(a.ini&&up(v.casa_apta_vistoria)==="SIM")?"?":null; }
   if(!r.ini&&v.data_pre_vistoria){ r.ini=String(v.data_pre_vistoria).slice(0,10); r.acc=0; r.ret=r.ini; r.trav=up(v.reparos_pre_vistoria)==="SIM"?"?":null; }
   return {a,r};
