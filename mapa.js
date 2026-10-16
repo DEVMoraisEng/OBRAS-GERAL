@@ -572,8 +572,8 @@ const ENT_CAMPOS={
    - Reparos: sem "Vendida" e sem "Agendou pré-vistoria?"; a data da
      pré-vistoria fica só para leitura; sai da lista só com ENTREGOU = SIM. */
 const ENT_ABAS=[
-  {k:"todas", l:"🏠 Não entregues", vendida:true, vistoria:true, campos:["casa_apta_vistoria","conferencia","agendou_pre_vistoria","data_pre_vistoria","reparos_pre_vistoria","entregou_casa"]},
-  {k:"apta",  l:"🔧 Casa apta p/ vistoria", criada:true, vistoria:true, campos:["casa_apta_vistoria","conferencia","obs_conferencia"]},
+  {k:"todas", l:"🏠 Não entregues", vendida:true, campos:["casa_apta_vistoria","conferencia","agendou_pre_vistoria","data_pre_vistoria","reparos_pre_vistoria","entregou_casa"]},
+  {k:"apta",  l:"🔧 Casa apta p/ vistoria", criada:true, campos:["casa_apta_vistoria","conferencia","obs_conferencia"]},
   {k:"reparos",l:"🛠 Reparos da pré-vistoria", vistoria:true, campos:["data_pre_vistoria","reparos_pre_vistoria","entregou_casa"], soLeitura:["data_pre_vistoria"]}
 ];
 let ENT_ABA="todas";
@@ -677,6 +677,9 @@ function campoEntrega(v,k,aba){
   if(f.tipo==="date") return `<input type="date" id="v-${esc(v.id)}-${k}" value="${esc(String(val).slice(0,10))}" onchange="MapaObras.salvarVenda('${esc(v.id)}','${k}',this.value)">`;
   return `<select id="v-${esc(v.id)}-${k}" onchange="MapaObras.salvarVenda('${esc(v.id)}','${k}',this.value)"><option value="">—</option>${opcoesDe(k,val).map(o=>`<option ${o===val?"selected":""}>${esc(o)}</option>`).join("")}</select>`;
 }
+/* 16/10 (tarde): o formulário de vistoria é da etapa de REPAROS (pré-vistoria
+   marcada) — na "casa apta" não aparece. Casa com PDF já salvo também mostra. */
+function naVistoria(v){ return precisaReparos(v)||!!v.data_pre_vistoria||((v.vist_completo||0)+(v.vist_prestador||0))>0; }
 function botaoVistoria(v){
   const n=(v.vist_completo||0)+(v.vist_prestador||0), loc=(window.Vistoria&&Vistoria.contar)?Vistoria.contar(v.id):0;
   return `<button type="button" class="bt bt-mini az vist-bt" onclick="MapaObras.vistoria('${esc(v.id)}')" title="Formulário de vistoria desta casa (funciona sem internet)">📋 Vistoria${n?` · ${n} PDF`:""}${loc?` · ${loc} no aparelho`:""}</button>`;
@@ -695,7 +698,7 @@ function cartaoEntrega(v,noPainel){
   const al=situacao(v,"todas");
   return `<div class="entrega ${p?"p-"+p.n:""} ${precisaApta(v)?"na":""}">
     <div class="en-top">${noPainel?"":`<b class="en-end" ${ir?`onclick="${ir}"`:""}>${esc(v.endereco||"")}</b>`}
-      <span class="pill">Casa ${esc(v.casa!=null?v.casa:"—")}</span>${v.data_venda?`<span class="en-mini">vendida ${brc(v.data_venda)}</span>`:""}${botaoVistoria(v)}</div>
+      <span class="pill">Casa ${esc(v.casa!=null?v.casa:"—")}</span>${v.data_venda?`<span class="en-mini">vendida ${brc(v.data_venda)}</span>`:""}${naVistoria(v)?botaoVistoria(v):""}</div>
     ${al.length?`<div class="en-al">${al.join("")}</div>`:""}
     <div class="grade en-g" style="--n:${campos.length}">${campos.map(campo).join("")}</div>
     <div class="campo cheio" style="margin-top:6px"><label>Observações da conferência</label>${campoEntrega(v,"obs_conferencia",aba)}</div></div>`;
@@ -736,7 +739,7 @@ function pintarEntregas(){
     return `<tr class="${p?"p-"+p.n:""} ${aba.k==="todas"&&precisaApta(v)?"na":""}">
       <td data-l="Casa"><b class="en-end" ${ir?`onclick="${ir}"`:""}>${esc(v.endereco||"")}</b> <span class="pill">Casa ${esc(v.casa!=null?v.casa:"—")}</span></td>
       <td data-l="Engenheiro">${esc(v.eng||"—")}</td>${aba.vendida?`<td data-l="Vendida">${brc(v.data_venda)}</td>`:""}
-      ${aba.criada?(()=>{ const a=contDe(v).a; return `<td data-l="Atividade criada" ${a.src==="venda"?'title="Sem a atividade VISTORIA PRÉVIA no Notion: contando da data da venda"':""}>${a.ini?br(a.ini):"—"}${a.src==="venda"?' <small class="vz">(venda)</small>':""}</td>`; })():""}
+      ${aba.criada?(()=>{ const a=contDe(v).a; return `<td data-l="Atividade criada" ${a.src==="venda"?'title="Não achei a atividade VISTORIA PRÉVIA desta casa no Notion (criada quando PROCESSO CONFORME? = SIM)"':""}>${a.ini&&a.src!=="venda"?br(a.ini):"—"}${a.src==="venda"?' <small class="vz">sem atividade</small>':""}</td>`; })():""}
       ${aba.campos.map(k=>`<td data-l="${esc(ENT_CAMPOS[k].l)}">${campoEntrega(v,k,aba)}</td>`).join("")}
       ${aba.vistoria?`<td data-l="Vistoria">${botaoVistoria(v)}</td>`:""}
       <td data-l="Situação" class="en-sit">${al.join("")||`<span class="vz">—</span>`}</td></tr>`;
@@ -892,9 +895,14 @@ function abrirCasa(ref,semRolar){
           <div class="campo"><label>Reparos</label><div class="v">${esc(v.reparos_pre_vistoria||"—")}</div></div>
           <div class="campo"><label>Entregou?</label><div class="v">${esc(v.entregou_casa||"—")}</div></div></div>
           ${(()=>{ const pa=precisaApta(v)?prazoApta(v):null, pe=prazoEntrega(v); return (pa||pe)?`<div class="en-al">${pa?`<span class="chip en-${pa.n}">${esc(pa.t)}</span>`:""}${pe?`<span class="chip en-${pe.n}">${esc(pe.t)}</span>`:""}</div>`:""; })()}
-          <div class="cc-bts">${botaoVistoria(v)}<button type="button" class="bt bt-mini ghost" onclick="MapaObras.docs('${esc(v.id)}')">📄 Documentos</button></div>`
+          ${naVistoria(v)?`<div class="cc-bts">${botaoVistoria(v)}</div>`:""}
+          <div class="cc-vt">📄 Vistorias e documentos</div><div class="vist vist-in" id="cc-vist-${esc(v.id)}"><div class="info">Carregando…</div></div>`
           :`<div class="en-info">${x.st==="entr"?"Entregue.":x.st==="vend"?"Vendida — ainda sem os dados da entrega no mapa.":"Disponível para venda."}</div>`}</div>`; }).join("")}</div>`;
   if(!semRolar&&window.innerWidth<1100) p.scrollIntoView({behavior:"smooth",block:"start"});
+  const vs=l.map(x=>x.v).filter(Boolean);
+  if(vs.length) carregarVistoria().then(async()=>{ for(const v of vs){ if(ATIVO!==ref) return;
+      await Vistoria.resumo({id:v.id,endereco:v.endereco,casa:v.casa},{api,toast},"cc-vist-"+v.id).catch(()=>{}); } })
+    .catch(()=>vs.forEach(v=>{ const a=$("cc-vist-"+v.id); if(a) a.innerHTML=`<div class="info am">Sem internet e o formulário ainda não foi aberto neste aparelho.</div>`; }));
 }
 function montarModoMapa(){
   if(INDICE) return;

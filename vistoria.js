@@ -142,7 +142,19 @@ async function abrir(venda,ctx){
       ${v.status==="rascunho"?`<button class="bt vm" onclick="Vistoria._excluir('${esc(v.id)}')">🗑</button>`:""}</div></div>`).join("")
       :`<div class="info">Nenhuma vistoria desta casa neste aparelho.</div>`}
     <div class="ct" style="margin-top:14px">Documentos da vistoria salvos na casa</div>
-    <div id="vist-docs"><div class="info">${venda.docs?venda.docs+" PDF(s) no Notion. ":""}<button class="bt gh" onclick="Vistoria.documentos(null,null,'vist-docs')">Ver documentos</button></div></div>`;
+    <div id="vist-docs"><div class="info">Carregando os documentos…</div></div>`;
+  const alvo=$("vist-docs"); if(alvo) docsHtml(venda).then(h=>{ const a=$("vist-docs"); if(a&&VENDA===venda) a.innerHTML=h; });
+}
+/* 16/10 (tarde): resumo das vistorias de uma casa DENTRO de outro lugar
+   (painel do mapa de casas) — rascunhos/vistorias deste aparelho + todos os
+   PDFs salvos na casa, sem precisar abrir a janela. */
+async function resumo(venda,ctx,alvoId){
+  estilo(); if(ctx) CTX=Object.assign({},CTX||{},ctx);
+  const alvo=$(alvoId); if(!alvo) return;
+  let lista=[]; try{ lista=(await todos("vist")).filter(v=>v.vendaId===venda.id).sort((a,b)=>String(b.criadoEm).localeCompare(String(a.criadoEm))); }catch(e){}
+  const vs=lista.length?`<div class="ct">Vistorias neste aparelho</div>`+lista.map(v=>`<div class="lst"><div class="i"><b>${br(v.dados.dataVistoria)} · ${v.itens.length} item(ns)</b><span>${esc(v.dados.respNome||"")}${v.status==="enviada"?" · ✓ salva na casa":v.status==="rascunho"?" · rascunho":" · ⏳ enviando"}</span></div></div>`).join(""):"";
+  alvo.innerHTML=vs+`<div class="info">Carregando os documentos…</div>`;
+  const h=await docsHtml(venda); const a=$(alvoId); if(a) a.innerHTML=vs+h;
 }
 async function nova(){
   const S=(CTX&&CTX.sessao)||{}, B=(CTX&&CTX.boot)||{};
@@ -429,19 +441,22 @@ async function sincronizar(ctx){
 setInterval(()=>{ if(navigator.onLine&&PEND&&CTX) sincronizar(CTX); },60000);
 
 /* ---------------- documentos da casa ---------------- */
-async function documentos(venda,ctx,alvoId){
-  estilo(); if(ctx) CTX=Object.assign({},CTX||{},ctx); if(venda) VENDA=venda;
-  const html=async()=>{
-    let loc=[]; try{ loc=(await todos("pdfs")).filter(p=>p.vendaId===VENDA.id).sort((a,b)=>String(b.criadoEm).localeCompare(String(a.criadoEm))); }catch(e){}
+/* 16/10 (tarde): o HTML dos documentos recebe a casa (não usa a casa "aberta"),
+   assim o painel do mapa de casas mostra várias casas ao mesmo tempo. */
+async function docsHtml(V0){
+    let loc=[]; try{ loc=(await todos("pdfs")).filter(p=>p.vendaId===V0.id).sort((a,b)=>String(b.criadoEm).localeCompare(String(a.criadoEm))); }catch(e){}
     let srv=null, err="";
-    if(navigator.onLine&&CTX&&CTX.api){ try{ const r=await CTX.api({action:"vistoriaArquivos",pageId:VENDA.id},30000); if(r&&r.ok) srv=r; else err=(r&&r.erro)||"sem resposta"; }catch(e){ err="sem resposta"; } }
+    if(navigator.onLine&&CTX&&CTX.api){ try{ const r=await CTX.api({action:"vistoriaArquivos",pageId:V0.id},30000); if(r&&r.ok) srv=r; else err=(r&&r.erro)||"sem resposta"; }catch(e){ err="sem resposta"; } }
     const lnk=f=>`<div class="lst"><div class="i"><b>${esc(f.nome)}</b></div><a class="bt az" href="${esc(f.url)}" target="_blank" rel="noopener">Abrir</a></div>`;
     return `${srv?`<div class="ct">Salvos na casa (Notion)</div>${(srv.completo||[]).concat(srv.prestador||[]).length?(srv.completo||[]).map(lnk).join("")+(srv.prestador||[]).map(lnk).join(""):`<div class="info">Nenhum PDF de vistoria salvo nesta casa ainda.</div>`}`
         :`<div class="info am">${navigator.onLine?"Não consegui ler os documentos do Notion ("+esc(err)+").":"Sem internet: os documentos do Notion abrem quando a conexão voltar. Abaixo, os que estão neste aparelho."}</div>`}
       <div class="ct" style="margin-top:12px">Neste aparelho (abrem sem internet)</div>
       ${loc.length?loc.map(p=>`<div class="lst"><div class="i"><b>${esc(p.nome)}</b><span>${p.enviado?"✓ já salvo na casa":"⏳ aguardando envio"}</span></div><button class="bt gh" onclick="Vistoria._abrirPdf('${esc(p.id)}')">Abrir</button></div>`).join("")
         :`<div class="info">Nenhum PDF de vistoria desta casa neste aparelho.</div>`}`;
-  };
+}
+async function documentos(venda,ctx,alvoId){
+  estilo(); if(ctx) CTX=Object.assign({},CTX||{},ctx); if(venda) VENDA=venda;
+  const V0=VENDA, html=()=>docsHtml(V0);
   if(alvoId&&$(alvoId)){ $(alvoId).innerHTML=`<div class="info">Carregando…</div>`; $(alvoId).innerHTML=await html(); return; }
   document.body.style.overflow="hidden";
   const o=ov(); o.innerHTML=`<div class="vist"><div class="vist-h"><div><div class="t">📄 Documentos da vistoria</div><div class="s">${esc(VENDA.endereco||"")} · Casa ${esc(VENDA.casa!=null?VENDA.casa:"—")}</div></div><button class="x" onclick="Vistoria._fechar()">✕ Fechar</button></div><div class="vist-c" id="vist-c"><div class="info">Carregando…</div></div></div>`;
@@ -452,7 +467,7 @@ async function abrirPdf(id){ const p=await pegar("pdfs",id); if(!p) return; cons
 recontar();
 window.addEventListener("online",pintarPend); window.addEventListener("offline",pintarPend);
 window.Vistoria={
-  abrir, documentos, sincronizar, contar:id=>CONT[id]||0, pendentes:()=>PEND,
+  abrir, documentos, resumo, sincronizar, contar:id=>CONT[id]||0, pendentes:()=>PEND,
   _fechar:fechar, _lista:()=>{ capturarSigs(); salvarJa().then(()=>abrir(VENDA,CTX)); }, _nova:nova, _continuar:continuar, _excluir:excluir,
   _passo:irPasso, _avancar:avancar, _dado:dado, _item:item, _cls:cls, _addFotos:addFotos, _remFoto:i=>{ FOTOS.splice(i,1); pintarFotos(); },
   _salvarItem:salvarItem, _fecharModal:fecharModal, _remItem:remItem, _abreItem:abreItem, _foto:verFoto, _limparSig:limparSig,

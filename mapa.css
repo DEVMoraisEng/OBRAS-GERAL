@@ -313,3 +313,10 @@ html[data-tema="escuro"] .pill{background:#1c3b4d;color:#cfe6f2}
 html[data-tema="escuro"] .pill.on{background:var(--azul);color:#fff}
 html[data-tema="escuro"] .mapa-vp{background:#1a2e3c}
 @media(max-width:760px){.obs-bt{max-width:none}}
+/* 16/10 (tarde): vistorias e documentos dentro do painel do mapa de casas */
+.casa-card .cc-vt{font-size:11px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin:12px 0 6px}
+.casa-card .vist-in{font-size:13px}
+.casa-card .vist-in .ct{margin:8px 0 6px}
+.casa-card .vist-in .info{margin-bottom:8px}
+.casa-card .vist-in .lst{padding:8px 10px}
+.casa-card .vist-in .bt{padding:6px 11px;font-size:12px}
