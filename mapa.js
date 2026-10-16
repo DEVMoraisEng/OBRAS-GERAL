@@ -935,8 +935,27 @@ window.MapaObras={
   /* a barra é redesenhada a cada letra: devolve o foco e o cursor ao campo */
   entBusca:q=>{ ENT_BUSCA=q; pintarEntregas(); const i=$("ent-busca"); if(i){ i.focus(); const n=i.value.length; try{ i.setSelectionRange(n,n); }catch(e){} } },
   fechar:()=>{ ATIVO=null; marcarAtivo(""); if(MODO==="casas") pintarCasas(); const pn=$("painel"); if(pn) pn.innerHTML=MODO==="casas"?`<div class="p-vazio"><b>🏠</b>Toque em um lote no mapa de casas para ver a situação de cada casa, as datas e os documentos da vistoria.</div>`:`<div class="p-vazio"><b>📍</b>Toque em um lote no mapa para ver e preencher o status da obra.</div>`; history.replaceState(null,"",location.pathname); },
-  toggle:id=>{ const e=$(id); if(!e) return; const ab=e.style.display==="none"; e.style.display=ab?"":"none"; const s=$(id+"-seta"); if(s) s.textContent=ab?"▾":"▸"; }
+  toggle:id=>{ const e=$(id); if(!e) return; secAbrir(id, e.style.display==="none"); lsSet("og_sec_"+id, e.style.display==="none"?"0":"1"); }
 };
+/* 16/10: seções que abrem e fecham (Medições, Notificações). A seta ficou maior,
+   com "abrir/fechar" escrito ao lado, e cada aparelho lembra a última escolha.
+   MEDIÇÕES DA SEMANA vem FECHADA por padrão. */
+const SEC_PADRAO={ med:"0", notif:"1" };
+function secAbrir(id,ab){
+  const e=$(id); if(!e) return; e.style.display=ab?"":"none";
+  const s=$(id+"-seta"); if(s) s.textContent=ab?"▾":"▸";
+  const t=document.querySelector(`[data-tog="${id}"]`); if(t) t.textContent=ab?"fechar ▴":"abrir ▾";
+  const h=s&&s.closest(".sec"); if(h) h.classList.toggle("fechada",!ab);
+}
+function montarSecoes(){
+  Object.keys(SEC_PADRAO).forEach(id=>{
+    const s=$(id+"-seta"), h=s&&s.closest(".sec"); if(!h) return;
+    if(!h.querySelector("[data-tog]")){ const b=document.createElement("span"); b.className="tog"; b.dataset.tog=id;
+      const d=h.querySelector(".dir"); h.insertBefore(b,d||null); }
+    h.title="Clique para abrir ou fechar";
+    secAbrir(id, lsGet("og_sec_"+id,SEC_PADRAO[id])!=="0");
+  });
+}
 
 /* 16/10: o mesmo ajuste de contraste do tema escuro do portal */
 try{ const g=document.createElement("script"); g.src="../PORTAL-MORAIS/tema-escuro.js?v=1"; g.async=true; document.head.appendChild(g); }catch(e){}
@@ -945,7 +964,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   if(!INDICE){
     document.title=CFG.nome+" · Mapa de Obras · Morais";
     const hn=$("h-emp"); if(hn) hn.textContent=CFG.nome;
-    iniciarMapa(); montarModoMapa(); carregarMV();
+    montarSecoes(); iniciarMapa(); montarModoMapa(); carregarMV();
     const bi=$("busca"); if(bi) bi.addEventListener("input",()=>buscar(bi.value));
   }
   const c=lsGet(K_DADOS,null); if(c){ _ultimaPub=c.updated_at; prepararDados(c); pintarTudo(); }

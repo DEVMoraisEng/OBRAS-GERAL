@@ -9,7 +9,7 @@
  *   - data.json: rede primeiro; sem internet, a última cópia;
  *   - sem internet numa página nunca aberta: mostra o índice.
  * Suba o número do CACHE sempre que mudar mapa.js/mapa.css/as páginas. */
-const CACHE = "mapa-obras-v10";  /* 16/10: vistorias de entrega, formulário de vistoria offline e mapa de casas */
+const CACHE = "mapa-obras-v11";  /* 16/10 (v11: Medições abre/fecha, vem fechada): vistorias de entrega, formulário de vistoria offline e mapa de casas */
 const BASE = ["./", "./index.html", "./mapa.css", "./mapa.js", "./vistoria.js", "./jspdf.umd.min.js", "./logo.png", "./manifest.json", "./data.json",
   "../PORTAL-MORAIS/tema-escuro.js", "../PORTAL-MORAIS/dist/mapa_vendas.json"];
 self.addEventListener("install", e => {
