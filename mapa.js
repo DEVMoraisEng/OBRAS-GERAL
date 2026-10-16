@@ -1,5 +1,5 @@
 /* =====================================================================
- * mapa.js · MAPA DE OBRAS · Morais Engenharia (28/09/26)
+ * mapa.js · MAPA DE OBRAS · Morais Engenharia (28/09/26 · 16/10/26: vistorias de entrega, formulário de vistoria e mapa de casas)
  * ---------------------------------------------------------------------
  * Um arquivo só para o índice e para as páginas de setor. A página de setor
  * define CONFIG = {nome, setor, filtro} antes de carregar este arquivo; o
@@ -490,6 +490,9 @@ function focar(ref){ ref=N(ref); const els=LOTES.filter(el=>N(el.dataset.ref)===
 
 /* ---------------- busca ---------------- */
 function buscar(q){ q=N(q); let achou=[];
+  if(MODO==="casas"){ CASAS_EL.forEach(el=>{ const l=casasDoRef(el.id), ok=!q||refK(el.id).indexOf(q.replace(/\s+/g,""))>=0||l.some(x=>N(x.mv.endereco).indexOf(q)>=0);
+      el.classList.toggle("apagado",!ok); if(q&&ok) achou.push(el); });
+    if(q&&achou.length) enquadrar(uniao(achou.map(pontos)),achou.length===1?5:1.3); return; }
   LOTES.forEach(el=>{ const ref=N(el.dataset.ref), d=docDe(ref), ok=!q||ref.indexOf(q)>=0||N(d&&d.endereco).indexOf(q)>=0||N(d&&d.proprietario).indexOf(q)>=0;
     el.classList.toggle("apagado",!ok); if(q&&ok) achou.push(el); });
   if(q&&achou.length) enquadrar(uniao(achou.map(pontos)),achou.length===1?5:1.3); }
@@ -555,113 +558,358 @@ async function medir(ref,endereco,status){
    decide quem entra em "Casa apta p/ vistoria"). */
 const ENT_CAMPOS={
   casa_apta_vistoria:  {l:"Casa apta p/ vistoria"},
+  conferencia:         {l:"Conferência da conclusão"},
+  obs_conferencia:     {l:"Observações",tipo:"obs"},
   agendou_pre_vistoria:{l:"Agendou pré-vistoria?"},
   data_pre_vistoria:   {l:"Data da pré-vistoria",tipo:"date"},
   reparos_pre_vistoria:{l:"Reparos da pré-vistoria"},
   entregou_casa:       {l:"Entregou a casa?"}
 };
+/* 16/10: cada marcador com as suas colunas.
+   - Casa apta: sem "Vendida" e sem "Entregou"; entra a DATA EM QUE A ATIVIDADE
+     FOI CRIADA (o contador parte dela), a CONFERÊNCIA DA CONCLUSÃO (Caio/ADM)
+     e as OBSERVAÇÕES.
+   - Reparos: sem "Vendida" e sem "Agendou pré-vistoria?"; a data da
+     pré-vistoria fica só para leitura; sai da lista só com ENTREGOU = SIM. */
 const ENT_ABAS=[
-  {k:"todas", l:"🏠 Não entregues",          campos:["casa_apta_vistoria","agendou_pre_vistoria","data_pre_vistoria","reparos_pre_vistoria","entregou_casa"]},
-  {k:"apta",  l:"🔧 Casa apta p/ vistoria",   campos:["casa_apta_vistoria","entregou_casa"]},
-  {k:"reparos",l:"🛠 Reparos da pré-vistoria",campos:["agendou_pre_vistoria","data_pre_vistoria","reparos_pre_vistoria","entregou_casa"]}
+  {k:"todas", l:"🏠 Não entregues", vendida:true, vistoria:true, campos:["casa_apta_vistoria","conferencia","agendou_pre_vistoria","data_pre_vistoria","reparos_pre_vistoria","entregou_casa"]},
+  {k:"apta",  l:"🔧 Casa apta p/ vistoria", criada:true, vistoria:true, campos:["casa_apta_vistoria","conferencia","obs_conferencia"]},
+  {k:"reparos",l:"🛠 Reparos da pré-vistoria", vistoria:true, campos:["data_pre_vistoria","reparos_pre_vistoria","entregou_casa"], soLeitura:["data_pre_vistoria"]}
 ];
 let ENT_ABA="todas";
+const PRAZO_APTA=7, PRAZO_REPAROS=15;
+const CONF_OK="CONFERIDO OK", CONF_NAO="NECESSITA DE INTERVENÇÕES";
+const ENT_NOVAS="NÃO ENTREGUE - NOVAS OBSERVAÇÕES", ENT_FALTOU="NÃO ENTREGUE - FALTOU CORREÇÕES", EXEC="EXECUTANDO REPAROS";
+/* opções que o servidor cria no Notion — aparecem mesmo se o boot guardado for de antes */
+const OPC_EXTRA={conferencia:[CONF_OK,CONF_NAO],entregou_casa:["SIM","NÃO",ENT_NOVAS,ENT_FALTOU],casa_apta_vistoria:["SIM","NÃO",EXEC],reparos_pre_vistoria:["SIM","NÃO",EXEC]};
+const entregue=v=>POSITIVOS.indexOf(up(v.entregou_casa))>=0;
+
+/* ---------- contadores (iguais aos do servidor, MapaObras.gs mo3) ----------
+   a = casa apta (parte da criação da atividade VISTORIA PRÉVIA, prazo 7 dias)
+   r = reparos  (parte da data da pré-vistoria, prazo 15 dias)
+   {ini, acc, ret, trav}: acc = dias já somados, ret = contando desde,
+   trav = travado em. "?" = travado antes do contador existir (sem nº de dias). */
+function contDe(v){
+  let c={}; try{ c=JSON.parse(v.contador||"{}")||{}; }catch(e){ c={}; }
+  const a=Object.assign({},c.a||{}), r=Object.assign({},c.r||{});
+  if(!a.ini){ a.ini=v.apta_desde||v.data_venda||null; a.src=v.apta_desde?"atv":"venda"; a.acc=0; a.ret=a.ini; a.trav=(a.ini&&up(v.casa_apta_vistoria)==="SIM")?"?":null; }
+  if(!r.ini&&v.data_pre_vistoria){ r.ini=String(v.data_pre_vistoria).slice(0,10); r.acc=0; r.ret=r.ini; r.trav=up(v.reparos_pre_vistoria)==="SIM"?"?":null; }
+  return {a,r};
+}
+function diasCont(t){ if(!t||!t.ini||t.trav==="?") return null; return (t.acc||0)+((t.trav||!t.ret)?0:Math.max(0,difDias(t.ret,hojeISO()))); }
+function normCont(t,d){ if(t.trav==="?"){ t.acc=t.ini?Math.max(0,difDias(t.ini,d)):0; t.trav=d; } }
+function travar(t,d){ normCont(t,d); if(t.ret&&!t.trav){ t.acc=(t.acc||0)+Math.max(0,difDias(t.ret,d)); t.trav=d; } }
+function retomar(t,d){ normCont(t,d); if(t.trav||!t.ret){ t.ret=d; t.trav=null; } }
+function reiniciar(t,d){ t.ini=d; t.acc=0; t.ret=d; t.trav=null; }
+/* o que muda junto quando uma coluna é gravada (a mesma regra do servidor) */
+function aplicarLocal(v,k,valor,d){
+  const c=contDe(v), a=c.a, r=c.r, V=up(valor), mud={}; mud[k]=valor;
+  if(k==="casa_apta_vistoria"){ if(V==="SIM"){ travar(a,d); if(up(v.conferencia)===up(CONF_NAO)) mud.conferencia=null; } else retomar(a,d); }
+  else if(k==="conferencia"){ if(V===up(CONF_NAO)){ mud.casa_apta_vistoria=EXEC; retomar(a,d); } else if(V===up(CONF_OK)) travar(a,d); }
+  else if(k==="data_pre_vistoria"){ if(valor&&(!r.ini||(!r.acc&&!r.trav))){ r.ini=valor; r.ret=valor; r.acc=0; r.trav=null; } }
+  else if(k==="reparos_pre_vistoria"){ if(!r.ini) reiniciar(r,d); if(V==="SIM") travar(r,d); else retomar(r,d); }
+  else if(k==="entregou_casa"){
+    if(V===up(ENT_NOVAS)){ mud.reparos_pre_vistoria=EXEC; reiniciar(r,d); }
+    else if(V===up(ENT_FALTOU)){ mud.reparos_pre_vistoria=EXEC; if(!r.ini) reiniciar(r,d); else retomar(r,d); }
+    else if(V==="SIM"){ travar(a,d); travar(r,d); }
+  }
+  mud.contador=JSON.stringify({a,r});
+  return mud;
+}
+const pl=(n,s)=>n+" dia"+(n===1?"":"s")+(s||"");
+/* situação da CASA APTA (prazo 7 dias a partir da criação da atividade) */
+function prazoApta(v){
+  if(up(v.conferencia)===up(CONF_OK)) return {n:"ok",t:"✅ Conclusão conferida",o:8};
+  const d=diasCont(contDe(v).a);
+  if(up(v.casa_apta_vistoria)==="SIM") return {n:"i",t:`⏸ Aguardando a conferência da conclusão${d!=null?` (${pl(d," corridos")})`:""}`,o:3};
+  if(d==null) return {n:"a",t:"Sem data de criação da atividade",o:5};
+  const ex=up(v.casa_apta_vistoria)===up(EXEC)?" · executando reparos":"";
+  if(d<4) return {n:"a",t:`🟡 ${pl(d," corridos")}${ex}`,o:4};
+  if(d<PRAZO_APTA) return {n:"w",t:`🔧 Deixar a casa apta (${pl(d," corridos")})${ex}`,o:2};
+  if(d===PRAZO_APTA) return {n:"h",t:"⏰ Prazo vence hoje"+ex,o:1};
+  return {n:"r",t:`🔴 Prazo estourado (${pl(d-PRAZO_APTA," em atraso")} / ${pl(d," corridos")})${ex}`,o:0};
+}
+/* situação dos REPAROS (prazo 15 dias a partir da pré-vistoria) */
 function prazoEntrega(v){
   if(up(v.agendou_pre_vistoria)!=="SIM") return null;
-  if(up(v.reparos_pre_vistoria)==="SIM") return {n:"ok",t:"✅ Processo de entrega finalizado",o:8};
+  if(entregue(v)) return {n:"ok",t:"✅ Casa entregue",o:8};
   if(!v.data_pre_vistoria) return {n:"a",t:"Pré-vistoria agendada sem data",o:5};
-  const d=difDias(v.data_pre_vistoria,hojeISO());
-  if(d<0) return {n:"i",t:`📅 Pré-vistoria em ${brc(v.data_pre_vistoria)} (faltam ${-d} dia${d===-1?"":"s"})`,o:6};
-  if(d<7) return {n:"a",t:`🟡 ${d} dia${d===1?"":"s"} corridos`,o:4};
-  if(d<15) return {n:"w",t:`🔧 Verificar se os reparos foram iniciados (${d} dias corridos)`,o:2};
-  if(d===15) return {n:"h",t:"⏰ Data final hoje",o:1};
-  return {n:"r",t:`🔴 Prazo estourado (${d-15} dia${d-15===1?"":"s"} em atraso / ${d} dias corridos)`,o:0};
+  const c=contDe(v).r, ate=difDias(v.data_pre_vistoria,hojeISO()), d=diasCont(c);
+  if(ate<0&&!(c.acc>0)) return {n:"i",t:`📅 Pré-vistoria em ${brc(v.data_pre_vistoria)} (faltam ${pl(-ate)})`,o:6};
+  if(up(v.reparos_pre_vistoria)==="SIM") return {n:"i",t:`⏸ Reparos concluídos — aguardando a entrega${d!=null?` (${pl(d," corridos")})`:""}`,o:3};
+  if(d==null) return {n:"a",t:"Reparos em aberto",o:5};
+  if(d<7) return {n:"a",t:`🟡 ${pl(d," corridos")}`,o:4};
+  if(d<PRAZO_REPAROS) return {n:"w",t:`🔧 Verificar se os reparos foram iniciados (${pl(d," corridos")})`,o:2};
+  if(d===PRAZO_REPAROS) return {n:"h",t:"⏰ Data final hoje",o:1};
+  return {n:"r",t:`🔴 Prazo estourado (${pl(d-PRAZO_REPAROS," em atraso")} / ${pl(d," corridos")})`,o:0};
 }
-/* marcador "Casa apta": processo conforme = SIM e a casa ainda não está apta */
-function precisaApta(v){ return up(v.processo_conforme)==="SIM"&&up(v.casa_apta_vistoria)!=="SIM"; }
+/* marcador "Casa apta": processo conforme = SIM, casa não entregue, pré-vistoria
+   ainda não agendada e a conclusão ainda não conferida (Caio/ADM) */
+function precisaApta(v){ return up(v.processo_conforme)==="SIM"&&!entregue(v)&&up(v.agendou_pre_vistoria)!=="SIM"&&up(v.conferencia)!==up(CONF_OK); }
 function naoApta(v){ return precisaApta(v); }
-/* marcador "Reparos": pré-vistoria agendada e reparos ainda não concluídos */
-function precisaReparos(v){ return up(v.agendou_pre_vistoria)==="SIM"&&up(v.reparos_pre_vistoria)!=="SIM"; }
+/* marcador "Reparos": pré-vistoria agendada e casa ainda não entregue */
+function precisaReparos(v){ return up(v.agendou_pre_vistoria)==="SIM"&&!entregue(v); }
 function entregasPendentes(todasAsVendas){
   const ends=new Set(DOCS.map(d=>N(d.endereco)));
-  return vendasLista.filter(v=>(todasAsVendas||POSITIVOS.indexOf(up(v.entregou_casa))<0)&&(INDICE||ends.has(N(v.endereco))));
+  return vendasLista.filter(v=>(todasAsVendas||!entregue(v))&&(INDICE||ends.has(N(v.endereco))));
 }
-function ordemEntrega(v){ const p=prazoEntrega(v); return (p?p.o:7)-(naoApta(v)?.5:0); }
+function ordemEntrega(v){ const p=prazoEntrega(v)||(precisaApta(v)?prazoApta(v):null); return p?p.o:7; }
 const podeVendas=()=>!!(S&&S.token&&BOOT&&BOOT.podeVendas);
-function cartaoEntrega(v,noPainel,camposAba){
-  const campos=camposAba||ENT_ABAS[0].campos, p=prazoEntrega(v), na=precisaApta(v), ed=podeVendas();
-  const campo=k=>{ const f=ENT_CAMPOS[k], val=v[k]||"";
-    if(!ed) return `<div class="campo"><label>${f.l}</label><div class="v ${val?"":"vz"}">${f.tipo==="date"?br(val):esc(val||"—")}</div></div>`;
-    if(f.tipo==="date") return `<div class="campo" id="v-${esc(v.id)}-${k}"><label>${f.l}</label><input type="date" value="${esc(String(val).slice(0,10))}" onchange="MapaObras.salvarVenda('${esc(v.id)}','${k}',this.value)"></div>`;
-    const ops=(((BOOT&&BOOT.opcoesVendas)||{})[k]||[]).slice(); if(val&&ops.indexOf(val)<0) ops.unshift(val);
-    return `<div class="campo" id="v-${esc(v.id)}-${k}"><label>${f.l}</label><select onchange="MapaObras.salvarVenda('${esc(v.id)}','${k}',this.value)"><option value="">—</option>${ops.map(o=>`<option ${o===val?"selected":""}>${esc(o)}</option>`).join("")}</select></div>`; };
+const podeConferir=()=>!!(S&&S.token&&BOOT&&BOOT.podeConferir);
+function opcoesDe(k,val){
+  const ops=(((BOOT&&BOOT.opcoesVendas)||{})[k]||[]).slice();
+  (OPC_EXTRA[k]||[]).forEach(o=>{ if(!ops.some(x=>up(x)===up(o))) ops.push(o); });
+  if(val&&!ops.some(x=>x===val)) ops.unshift(val);
+  return ops;
+}
+function editavel(k,aba){
+  if((aba&&aba.soLeitura||[]).indexOf(k)>=0) return false;
+  if(k==="conferencia") return podeConferir();
+  if(k==="obs_conferencia") return podeConferir()||podeVendas();
+  return podeVendas();
+}
+function txtObs(v){ const t=String(v.obs_conferencia||"").trim(); return t?t.split("\n")[0].slice(0,60)+(t.length>60||t.indexOf("\n")>=0?"…":""):""; }
+function campoEntrega(v,k,aba){
+  const f=ENT_CAMPOS[k], val=v[k]||"", ed=editavel(k,aba);
+  if(f.tipo==="obs") return `<button type="button" class="obs-bt ${val?"":"vz"}" onclick="MapaObras.obs('${esc(v.id)}')" title="${esc(val||"Escrever o que ficou pendente")}">${val?"📝 "+esc(txtObs(v)):(ed?"✎ escrever":"—")}</button>`;
+  if(!ed) return `<span class="${val?"":"vz"}" ${k==="conferencia"&&!podeConferir()?'title="Só o Caio ou um ADM fazem a conferência"':""}>${f.tipo==="date"?br(val):esc(val||"—")}</span>`;
+  if(f.tipo==="date") return `<input type="date" id="v-${esc(v.id)}-${k}" value="${esc(String(val).slice(0,10))}" onchange="MapaObras.salvarVenda('${esc(v.id)}','${k}',this.value)">`;
+  return `<select id="v-${esc(v.id)}-${k}" onchange="MapaObras.salvarVenda('${esc(v.id)}','${k}',this.value)"><option value="">—</option>${opcoesDe(k,val).map(o=>`<option ${o===val?"selected":""}>${esc(o)}</option>`).join("")}</select>`;
+}
+function botaoVistoria(v){
+  const n=(v.vist_completo||0)+(v.vist_prestador||0), loc=(window.Vistoria&&Vistoria.contar)?Vistoria.contar(v.id):0;
+  return `<button type="button" class="bt bt-mini az vist-bt" onclick="MapaObras.vistoria('${esc(v.id)}')" title="Formulário de vistoria desta casa (funciona sem internet)">📋 Vistoria${n?` · ${n} PDF`:""}${loc?` · ${loc} no aparelho`:""}</button>`;
+}
+function situacao(v,aba){
+  const al=[];
+  if(aba!=="reparos"&&(precisaApta(v)||up(v.conferencia)===up(CONF_OK)&&aba==="apta")){ const p=prazoApta(v); al.push(`<span class="chip en-${p.n}">${esc(p.t)}</span>`); }
+  if(aba!=="apta"){ const p=prazoEntrega(v); if(p) al.push(`<span class="chip en-${p.n}">${esc(p.t)}</span>`); }
+  return al;
+}
+function cartaoEntrega(v,noPainel){
+  const aba=ENT_ABAS[0], campos=aba.campos, p=prazoEntrega(v);
+  const campo=k=>`<div class="campo" id="c-v-${esc(v.id)}-${k}"><label>${ENT_CAMPOS[k].l}</label>${campoEntrega(v,k,aba)}</div>`;
   const doc=DOCS.find(d=>N(d.endereco)===N(v.endereco));
   const ir=doc?(INDICE?`MapaObras.irPara('${esc(doc.setor||"")}','${esc(doc.ref||"")}')`:`MapaObras.focar('${esc(doc.ref||"")}')`):"";
-  const alertas=[];
-  if(p&&(ENT_ABA!=="apta"||noPainel)) alertas.push(`<span class="chip en-${p.n}">${esc(p.t)}</span>`);
-  if(na&&(ENT_ABA!=="reparos"||noPainel)) alertas.push(`<span class="chip en-w">🔧 Marcar casa apta p/ vistoria (${esc(v.casa_apta_vistoria||"vazio")})</span>`);
-  return `<div class="entrega ${p?"p-"+p.n:""} ${na?"na":""}">
+  const al=situacao(v,"todas");
+  return `<div class="entrega ${p?"p-"+p.n:""} ${precisaApta(v)?"na":""}">
     <div class="en-top">${noPainel?"":`<b class="en-end" ${ir?`onclick="${ir}"`:""}>${esc(v.endereco||"")}</b>`}
-      <span class="pill">Casa ${esc(v.casa!=null?v.casa:"—")}</span>${v.data_venda?`<span class="en-mini">vendida ${brc(v.data_venda)}</span>`:""}</div>
-    ${alertas.length?`<div class="en-al">${alertas.join("")}</div>`:""}
-    <div class="grade en-g" style="--n:${campos.length}">${campos.map(campo).join("")}</div></div>`;
+      <span class="pill">Casa ${esc(v.casa!=null?v.casa:"—")}</span>${v.data_venda?`<span class="en-mini">vendida ${brc(v.data_venda)}</span>`:""}${botaoVistoria(v)}</div>
+    ${al.length?`<div class="en-al">${al.join("")}</div>`:""}
+    <div class="grade en-g" style="--n:${campos.length}">${campos.map(campo).join("")}</div>
+    <div class="campo cheio" style="margin-top:6px"><label>Observações da conferência</label>${campoEntrega(v,"obs_conferencia",aba)}</div></div>`;
 }
 /* 28/09 (noite): escolha do ENGENHEIRO + tabela alinhada (uma linha por
    casa, as mesmas colunas em todas). No celular cada linha vira um cartão. */
 let ENT_ENG=lsGet("og_ent_eng","");
-/* 08/10: pesquisa por obra (endereço, nº da casa ou engenheiro) — todas as
-   palavras digitadas têm de aparecer, em qualquer ordem, sem acento/caixa */
 let ENT_BUSCA="";
 const entBate=(v,q)=>{ const t=N(q).replace(/\s+/g," "); if(!t) return true;
   const alvo=N(`${v.endereco||""} CASA ${v.casa!=null?v.casa:""} CS ${v.casa!=null?v.casa:""} ${v.eng||""}`).replace(/\s+/g," ");
   return t.split(" ").every(p=>alvo.indexOf(p)>=0); };
-function campoEntrega(v,k){
-  const f=ENT_CAMPOS[k], val=v[k]||"";
-  if(!podeVendas()) return `<span class="${val?"":"vz"}">${f.tipo==="date"?br(val):esc(val||"—")}</span>`;
-  if(f.tipo==="date") return `<input type="date" id="v-${esc(v.id)}-${k}" value="${esc(String(val).slice(0,10))}" onchange="MapaObras.salvarVenda('${esc(v.id)}','${k}',this.value)">`;
-  const ops=(((BOOT&&BOOT.opcoesVendas)||{})[k]||[]).slice(); if(val&&ops.indexOf(val)<0) ops.unshift(val);
-  return `<select id="v-${esc(v.id)}-${k}" onchange="MapaObras.salvarVenda('${esc(v.id)}','${k}',this.value)"><option value="">—</option>${ops.map(o=>`<option ${o===val?"selected":""}>${esc(o)}</option>`).join("")}</select>`;
-}
 function pintarEntregas(){
   const box=$("ent"); if(!box) return;
   const todas=entregasPendentes(), porAba={todas, apta:todas.filter(precisaApta), reparos:todas.filter(precisaReparos)};
   const aba=ENT_ABAS.find(a=>a.k===ENT_ABA)||ENT_ABAS[0];
   const engs=[...new Set(porAba[aba.k].map(v=>v.eng||"Sem engenheiro"))].sort((a,b)=>(a==="Sem engenheiro")-(b==="Sem engenheiro")||a.localeCompare(b,"pt-BR"));
   if(ENT_ENG&&engs.indexOf(ENT_ENG)<0&&porAba[aba.k].length) ENT_ENG="";
+  const ord=v=>aba.k==="apta"?prazoApta(v).o:aba.k==="reparos"?((prazoEntrega(v)||{}).o||7):ordemEntrega(v);
   const l=porAba[aba.k].filter(v=>(!ENT_ENG||(v.eng||"Sem engenheiro")===ENT_ENG)&&entBate(v,ENT_BUSCA))
-    .sort((a,b)=>ordemEntrega(a)-ordemEntrega(b)||String(a.endereco).localeCompare(String(b.endereco))||(a.casa||0)-(b.casa||0));
+    .sort((a,b)=>ord(a)-ord(b)||String(a.endereco).localeCompare(String(b.endereco))||(a.casa||0)-(b.casa||0));
   const nr=porAba.reparos.filter(v=>{ const p=prazoEntrega(v); return p&&(p.n==="r"||p.n==="h"); }).length;
+  const na=porAba.apta.filter(v=>{ const p=prazoApta(v); return p.n==="r"||p.n==="h"; }).length;
   const n=$("ent-n"); if(n) n.textContent=todas.length;
-  const ch=$("ent-chips"); if(ch) ch.innerHTML=(nr?`<span class="chip en-r">${nr} prazo estourado/hoje</span>`:"")+(porAba.apta.length?`<span class="chip en-w">${porAba.apta.length} marcar casa apta</span>`:"");
+  const ch=$("ent-chips"); if(ch) ch.innerHTML=(nr?`<span class="chip en-r">${nr} reparo(s) com prazo estourado/hoje</span>`:"")+(na?`<span class="chip en-r">${na} casa(s) apta(s) atrasada(s)</span>`:"")+(porAba.apta.length?`<span class="chip en-w">${porAba.apta.length} casa apta p/ vistoria</span>`:"");
   const aviso=!S||!S.token?`<div class="en-info"><a href="${PORTAL}login.html">Entre no portal</a> para preencher.</div>`:(BOOT&&!BOOT.podeVendas&&!BOOT.erro?`<div class="en-info">Só leitura: preencher precisa de acesso a VENDAS ou OBRAS.</div>`:"");
+  const ajuda=aba.k==="apta"?`<div class="en-info">O contador começa na criação da atividade (prazo ${PRAZO_APTA} dias). Marcar <b>SIM</b> trava o contador até a <b>conferência da conclusão</b> (Caio): <b>Conferido OK</b> conclui; <b>Necessita de intervenções</b> volta para executando reparos e o contador continua.</div>`
+    :aba.k==="reparos"?`<div class="en-info">O contador começa na data da pré-vistoria (prazo ${PRAZO_REPAROS} dias). Reparos = <b>SIM</b> trava o contador; a casa só sai daqui com <b>Entregou = SIM</b>. <b>Não entregue - novas observações</b> começa um período novo; <b>Não entregue - faltou correções</b> continua a contagem.</div>`:"";
   const qtdEng=e=>porAba[aba.k].filter(v=>(v.eng||"Sem engenheiro")===e).length;
   const barra=`<div class="en-barra"><div class="flt en-abas">${ENT_ABAS.map(a=>`<button class="pill ${a.k===aba.k?"on":""}" onclick="MapaObras.entAba('${a.k}')">${a.l} <b>${porAba[a.k].length}</b></button>`).join("")}</div>
     <div class="en-dir"><label class="en-sel en-busca">🔎 <input id="ent-busca" type="search" placeholder="Pesquisar obra (ex.: TB 21 QD 51 LT 34)" value="${esc(ENT_BUSCA)}" oninput="MapaObras.entBusca(this.value)" autocomplete="off"></label>
     <label class="en-sel">👷 Engenheiro <select onchange="MapaObras.entEng(this.value)"><option value="">Todos (${porAba[aba.k].length})</option>${engs.map(e=>`<option value="${esc(e)}" ${e===ENT_ENG?"selected":""}>${esc(e)} (${qtdEng(e)})</option>`).join("")}</select></label></div></div>`;
-  if(!l.length){ box.innerHTML=barra+aviso+`<div class="vazio" style="border:0">${N(ENT_BUSCA)?`Nenhuma casa encontrada para “${esc(ENT_BUSCA.trim())}”${ENT_ENG?` com o engenheiro ${esc(ENT_ENG)}`:""}.`:aba.k==="todas"?"Nenhuma casa vendida esperando entrega.":aba.k==="apta"?"Nenhuma casa esperando ser marcada como apta para a vistoria.":"Nenhuma casa com reparos da pré-vistoria em aberto."}</div>`; return; }
-  const cab=`<tr><th>Casa</th><th>Engenheiro</th><th>Vendida</th>${aba.campos.map(k=>`<th>${ENT_CAMPOS[k].l}</th>`).join("")}<th>Situação</th></tr>`;
+  if(!l.length){ box.innerHTML=barra+aviso+ajuda+`<div class="vazio" style="border:0">${N(ENT_BUSCA)?`Nenhuma casa encontrada para “${esc(ENT_BUSCA.trim())}”${ENT_ENG?` com o engenheiro ${esc(ENT_ENG)}`:""}.`:aba.k==="todas"?"Nenhuma casa vendida esperando entrega.":aba.k==="apta"?"Nenhuma casa esperando ficar apta / ser conferida.":"Nenhuma casa com reparos da pré-vistoria em aberto."}</div>`; return; }
+  const cab=`<tr><th>Casa</th><th>Engenheiro</th>${aba.vendida?"<th>Vendida</th>":""}${aba.criada?"<th>Atividade criada</th>":""}${aba.campos.map(k=>`<th>${ENT_CAMPOS[k].l}</th>`).join("")}${aba.vistoria?"<th>Vistoria</th>":""}<th>Situação</th></tr>`;
   const linha=v=>{
-    const p=prazoEntrega(v), na=precisaApta(v), doc=DOCS.find(d=>N(d.endereco)===N(v.endereco));
+    const p=aba.k==="apta"?prazoApta(v):prazoEntrega(v), doc=DOCS.find(d=>N(d.endereco)===N(v.endereco));
     const ir=doc?(INDICE?`MapaObras.irPara('${esc(doc.setor||"")}','${esc(doc.ref||"")}')`:`MapaObras.focar('${esc(doc.ref||"")}')`):"";
-    const al=[]; if(p&&aba.k!=="apta") al.push(`<span class="chip en-${p.n}">${esc(p.t)}</span>`);
-    if(na&&aba.k!=="reparos") al.push(`<span class="chip en-w">🔧 Marcar casa apta (${esc(v.casa_apta_vistoria||"vazio")})</span>`);
-    return `<tr class="${p?"p-"+p.n:""} ${na?"na":""}">
+    const al=situacao(v,aba.k);
+    return `<tr class="${p?"p-"+p.n:""} ${aba.k==="todas"&&precisaApta(v)?"na":""}">
       <td data-l="Casa"><b class="en-end" ${ir?`onclick="${ir}"`:""}>${esc(v.endereco||"")}</b> <span class="pill">Casa ${esc(v.casa!=null?v.casa:"—")}</span></td>
-      <td data-l="Engenheiro">${esc(v.eng||"—")}</td><td data-l="Vendida">${brc(v.data_venda)}</td>
-      ${aba.campos.map(k=>`<td data-l="${esc(ENT_CAMPOS[k].l)}">${campoEntrega(v,k)}</td>`).join("")}
+      <td data-l="Engenheiro">${esc(v.eng||"—")}</td>${aba.vendida?`<td data-l="Vendida">${brc(v.data_venda)}</td>`:""}
+      ${aba.criada?(()=>{ const a=contDe(v).a; return `<td data-l="Atividade criada" ${a.src==="venda"?'title="Sem a atividade VISTORIA PRÉVIA no Notion: contando da data da venda"':""}>${a.ini?br(a.ini):"—"}${a.src==="venda"?' <small class="vz">(venda)</small>':""}</td>`; })():""}
+      ${aba.campos.map(k=>`<td data-l="${esc(ENT_CAMPOS[k].l)}">${campoEntrega(v,k,aba)}</td>`).join("")}
+      ${aba.vistoria?`<td data-l="Vistoria">${botaoVistoria(v)}</td>`:""}
       <td data-l="Situação" class="en-sit">${al.join("")||`<span class="vz">—</span>`}</td></tr>`;
   };
-  box.innerHTML=barra+aviso+`<div class="en-wrap"><table class="ent-tab">${cab}${l.map(linha).join("")}</table></div>`;
+  box.innerHTML=barra+aviso+ajuda+`<div class="en-wrap"><table class="ent-tab">${cab}${l.map(linha).join("")}</table></div>`;
 }
 async function salvarVenda(id,k,valor){
   const v=vendasLista.find(x=>x.id===id); if(!v) return;
-  const antes=v[k]; v[k]=valor||null;
-  const ed=lsGet(K_EDITS,{}); ed["v:"+id+"|"+k]={alvo:"v",id,k,v:valor||null,t:Date.now()}; lsSet(K_EDITS,ed);
+  if(k==="conferencia"&&!podeConferir()){ toast("Só o Caio ou um ADM fazem a conferência da conclusão."); pintarEntregas(); return; }
+  const dia=hojeISO(), mud=aplicarLocal(v,k,valor||null,dia), antes={}, ed=lsGet(K_EDITS,{});
+  Object.keys(mud).forEach(c=>{ antes[c]=v[c]; v[c]=mud[c]; ed["v:"+id+"|"+c]={alvo:"v",id,k:c,v:mud[c],t:Date.now()}; });
+  lsSet(K_EDITS,ed);
   const el=$("v-"+id+"-"+k); if(el) el.classList.add("salvando");
-  const r=await gravar({action:"mapaVendaUpdate",pageId:id,campo:k,valor:valor||null},"Entrega");
-  if(r.ok){ toast(r.fila?"Sem internet: guardado, grava sozinho depois.":"Gravado no Notion ✓"); pintarEntregas(); if(ATIVO) abrir(ATIVO,true); return; }
-  v[k]=antes; delete ed["v:"+id+"|"+k]; lsSet(K_EDITS,ed);
-  toast("Não gravou: "+(r.erro==="SEM_PERMISSAO"?"sem acesso a VENDAS/OBRAS":r.erro)); pintarEntregas(); if(ATIVO) abrir(ATIVO,true);
+  pintarEntregas(); if(ATIVO) reabrirPainel();
+  const r=await gravar({action:"mapaVendaUpdate",pageId:id,campo:k,valor:valor||null,quando:dia},"Entrega");
+  if(r.ok){
+    const res=r.r||{};
+    if(res.valores||res.contador){ const ed2=lsGet(K_EDITS,{});
+      Object.keys(res.valores||{}).forEach(c=>{ v[c]=res.valores[c]; ed2["v:"+id+"|"+c]={alvo:"v",id,k:c,v:res.valores[c],t:Date.now()}; });
+      if(res.contador){ v.contador=JSON.stringify(res.contador); ed2["v:"+id+"|contador"]={alvo:"v",id,k:"contador",v:v.contador,t:Date.now()}; }
+      lsSet(K_EDITS,ed2); }
+    toast(r.fila?"Sem internet: guardado, grava sozinho depois.":"Gravado no Notion ✓"); pintarEntregas(); if(ATIVO) reabrirPainel(); return;
+  }
+  Object.keys(mud).forEach(c=>{ v[c]=antes[c]; delete ed["v:"+id+"|"+c]; }); lsSet(K_EDITS,ed);
+  toast("Não gravou: "+(r.erro==="SEM_PERMISSAO"?"sem acesso a VENDAS/OBRAS":r.erro==="SO_CAIO_OU_ADM_CONFEREM"?"só o Caio ou um ADM conferem":r.erro)); pintarEntregas(); if(ATIVO) reabrirPainel();
+}
+/* janela simples (observações) */
+function janela(html){ let m=$("og-janela"); if(!m){ m=document.createElement("div"); m.id="og-janela"; m.className="og-jan"; document.body.appendChild(m);
+    m.addEventListener("click",e=>{ if(e.target===m) fecharJanela(); }); }
+  m.innerHTML=`<div class="og-jan-c">${html}</div>`; m.classList.add("on"); }
+function fecharJanela(){ const m=$("og-janela"); if(m) m.classList.remove("on"); }
+function obs(id){
+  const v=vendasLista.find(x=>x.id===id); if(!v) return;
+  const ed=editavel("obs_conferencia");
+  janela(`<div class="og-jan-t">📝 Observações da conferência</div>
+    <div class="og-jan-s">${esc(v.endereco||"")} · Casa ${esc(v.casa!=null?v.casa:"—")}</div>
+    <textarea id="obs-txt" rows="10" ${ed?"":"readonly"} placeholder="O que ficou pendente (Enter quebra a linha)">${esc(v.obs_conferencia||"")}</textarea>
+    <div class="og-jan-b"><button class="bt ghost" onclick="MapaObras.fecharJanela()">${ed?"Cancelar":"Fechar"}</button>${ed?`<button class="bt" onclick="MapaObras.salvarObs('${esc(id)}')">Salvar</button>`:""}</div>`);
+  setTimeout(()=>{ const t=$("obs-txt"); if(t&&ed) t.focus(); },50);
+}
+function salvarObs(id){ const t=$("obs-txt"); if(!t) return; const v=vendasLista.find(x=>x.id===id); if(!v) return;
+  const val=t.value.replace(/\s+$/,""); fecharJanela(); if(val===(v.obs_conferencia||"")) return; salvarVenda(id,"obs_conferencia",val); }
+function vendaPorId(id){ return vendasLista.find(x=>x.id===id)||null; }
+async function abrirVistoria(id){
+  const v=vendaPorId(id); if(!v) return;
+  try{ await carregarVistoria(); }catch(e){ toast("Não consegui abrir o formulário"+(navigator.onLine?"":" — abra uma vez com internet neste aparelho")); return; }
+  Vistoria.abrir({id:v.id,endereco:v.endereco,casa:v.casa,eng:v.eng,setor:(DOCS.find(d=>N(d.endereco)===N(v.endereco))||{}).setor||"",
+    docs:(v.vist_completo||0)+(v.vist_prestador||0)},{api,boot:BOOT,sessao:S,toast,aoMudar:()=>{ pintarEntregas(); if(ATIVO) reabrirPainel(); }});
+}
+let _vistP=null;
+function carregarScript(src){ return new Promise((ok,er)=>{ const s=document.createElement("script"); s.src=src; s.onload=ok; s.onerror=er; document.head.appendChild(s); }); }
+function carregarVistoria(){
+  if(window.Vistoria&&window.jspdf) return Promise.resolve();
+  if(!_vistP) _vistP=Promise.all([window.jspdf?null:carregarScript("jspdf.umd.min.js?v=1"),window.Vistoria?null:carregarScript("vistoria.js?v=1")])
+    .catch(e=>{ _vistP=null; throw e; });
+  return _vistP;
+}
+function reabrirPainel(){ if(!ATIVO) return; if(MODO==="casas") abrirCasa(ATIVO,true); else abrir(ATIVO,true); }
+
+/* =====================================================================
+ * MAPA DE CASAS (16/10) — dentro do setor, escolha entre o mapa de LOTES
+ * (obras) e o de CASAS. O desenho das casas é o mesmo do mapa de vendas
+ * (repositório SITE-DE-VENDAS, mesmo endereço → sem CORS) e a situação de
+ * cada casa vem do mapa_vendas.json do portal + o data.json daqui.
+ * Versão do engenheiro, simplificada: Disponível · Vendida · Vistoria
+ * marcada · Entregue. Abre sem internet depois da primeira vez.
+ * ===================================================================== */
+const VENDAS_ARQ={acropole:"acropole",esmeraldas:"esmeraldas",florenca:"florenca",ipanema:"ipanema",joaobraz:"joaobraz2",
+  marques:"marquesdeabreu",buritis:"pqdosburitis",ravena:"ravena",solarville:"solarville",terrabela:"terrabela"};
+const CS={vist:{l:"Vistoria marcada",c:"#f57c00"},vend:{l:"Vendida",c:"#4a90d9"},disp:{l:"Disponível",c:"#27c45e"},entr:{l:"Entregue",c:"#8e44ad"},sem:{l:"Sem cadastro",c:"#b0bec5"}};
+const CS_ORDEM=["vist","vend","disp","entr"];
+const K_MV="og_mv_v1";
+let MODO="lotes", CASAS_SVG=null, CASAS_EL=[], MV=lsGet(K_MV,null), Z_LOTES=null, Z_CASAS=null, SVG_LOTES=null, LEG_LOTES="";
+const refK=r=>N(r).replace(/\s+/g,"");
+const paginaArq=()=>(location.pathname.split("/").pop()||"").replace(/\.html?$/i,"").toLowerCase();
+async function carregarMV(){
+  try{ const r=await fetch("../PORTAL-MORAIS/dist/mapa_vendas.json?t="+Date.now(),{cache:"no-store"}); if(!r.ok) throw 0;
+    const d=await r.json(); if(d&&d.rows){ MV=d; lsSet(K_MV,{rows:d.rows.map(x=>({id:x.id,endereco:x.endereco,casa:x.casa,ref:x.ref,setor:x.setor,vendida:x.vendida,entregou:x.entregou,modelo:x.modelo})),updated_at:d.updated_at}); } }
+  catch(e){ if(!MV) MV=lsGet(K_MV,null); }
+  if(MODO==="casas") pintarCasas();
+}
+function casasDoRef(ref){
+  const k=refK(ref), rows=((MV&&MV.rows)||[]).filter(x=>refK(x.ref)===k);
+  return rows.map(x=>{ const v=vendaPorId(String(x.id||"").replace(/-/g,""))||vendasLista.find(y=>N(y.endereco)===N(x.endereco)&&String(y.casa)===String(x.casa))||null;
+    const ent=POSITIVOS.indexOf(up((v&&v.entregou_casa)||x.entregou))>=0;
+    let st="disp"; if(ent) st="entr"; else if(v&&(up(v.agendou_pre_vistoria)==="SIM"||v.data_pre_vistoria)) st="vist"; else if(x.vendida||v) st="vend";
+    return {mv:x,v,st}; }).sort((a,b)=>(+a.mv.casa||0)-(+b.mv.casa||0));
+}
+function stDoRef(ref){ const l=casasDoRef(ref); if(!l.length) return "sem"; for(const s of CS_ORDEM) if(l.some(x=>x.st===s)) return s; return "sem"; }
+function pintarCasas(){
+  if(!CASAS_SVG) return;
+  CASAS_EL.forEach(el=>{ const st=stDoRef(el.id); el.style.fill=CS[st].c; el.style.fillOpacity=st==="sem"?".35":".62"; el.style.cursor="pointer";
+    el.classList.toggle("ativo",refK(el.id)===refK(ATIVO||"")); });
+  const ag=$("casas-resumo"); if(ag){ const c={}; CASAS_EL.forEach(el=>casasDoRef(el.id).forEach(x=>{ c[x.st]=(c[x.st]||0)+1; }));
+    ag.innerHTML=CS_ORDEM.map(s=>`<span><i style="background:${CS[s].c}"></i>${CS[s].l} <b>${c[s]||0}</b></span>`).join(""); }
+}
+function legendaCasas(){ return `<span class="leg-tit">Casas:</span>${CS_ORDEM.map(s=>`<span><i style="background:${CS[s].c}"></i>${CS[s].l}</span>`).join("")}<span><i style="background:${CS.sem.c}"></i>${CS.sem.l}</span><span class="sep"></span><span class="leg-tot" id="casas-resumo"></span>`; }
+async function modoMapa(m){
+  if(m===MODO) return;
+  const vp=$("vp"), lot=$("mapa-svg"); if(!vp||!lot) return;
+  document.querySelectorAll(".modo-mapa button").forEach(b=>b.classList.toggle("on",b.dataset.m===m));
+  const leg=document.querySelector(".legenda");
+  if(m==="casas"){
+    if(!CASAS_SVG){
+      const arq=VENDAS_ARQ[paginaArq()];
+      if(!arq){ toast("Este setor ainda não tem mapa de casas."); document.querySelectorAll(".modo-mapa button").forEach(b=>b.classList.toggle("on",b.dataset.m==="lotes")); return; }
+      const carr=document.createElement("div"); carr.className="casas-carregando"; carr.innerHTML=`<span class="load"></span> Abrindo o mapa de casas…`; vp.appendChild(carr);
+      try{
+        const r=await fetch("../SITE-DE-VENDAS/"+arq+".html"); if(!r.ok) throw new Error("HTTP "+r.status);
+        const doc=new DOMParser().parseFromString(await r.text(),"text/html");
+        const svg=doc.querySelector("svg#Map")||[...doc.querySelectorAll("svg")].sort((a,b)=>b.innerHTML.length-a.innerHTML.length)[0];
+        if(!svg) throw new Error("sem desenho");
+        const box=document.createElement("div"); box.id="mapa-casas"; box.appendChild(document.importNode(svg,true)); vp.appendChild(box);
+        CASAS_SVG=box.querySelector("svg"); CASAS_SVG.removeAttribute("width"); CASAS_SVG.removeAttribute("height"); CASAS_SVG.removeAttribute("style");
+        CASAS_EL=[...CASAS_SVG.querySelectorAll("polygon[id],path[id],rect[id]")];
+        CASAS_EL.forEach(el=>{ el.removeAttribute("class"); el.addEventListener("click",()=>abrirCasa(el.id));
+          if(!ehToque()){ el.addEventListener("mouseenter",e=>dicaCasa(e,el)); el.addEventListener("mousemove",moverDica); el.addEventListener("mouseleave",()=>{ $("tooltip").style.display="none"; }); } });
+      }catch(e){ carr.remove(); toast("Não consegui abrir o mapa de casas"+(navigator.onLine?" ("+e.message+")":" — sem internet e ainda não aberto neste aparelho"));
+        document.querySelectorAll(".modo-mapa button").forEach(b=>b.classList.toggle("on",b.dataset.m==="lotes")); return; }
+      carr.remove();
+      if(!MV) await carregarMV(); else carregarMV();
+    }
+    Z_LOTES=Object.assign({},Z); SVG_LOTES=SVG; lot.style.display="none"; $("mapa-casas").style.display="";
+    SVG=CASAS_SVG; MODO="casas";
+    const vb=SVG.viewBox&&SVG.viewBox.baseVal; Z.W=(vb&&vb.width)||1000; Z.H=(vb&&vb.height)||1000;
+    const cw=vp.clientWidth||800, ch=vp.clientHeight||500;
+    Z.fitLotes=uniao(CASAS_EL.map(pontos))||{x:0,y:0,w:Z.W,h:Z.H};
+    Z.min=Math.min(cw/Z.W,ch/Z.H)*0.9; Z.max=Math.min(cw/(Z.fitLotes.w||Z.W),ch/(Z.fitLotes.h||Z.H))*8;
+    if(Z_CASAS) Object.assign(Z,Z_CASAS); else enquadrar(Z.fitLotes,1.2);
+    aplicarZoom();
+    if(leg){ if(!LEG_LOTES) LEG_LOTES=leg.innerHTML; leg.innerHTML=legendaCasas(); }
+    pintarCasas(); ATIVO=null; MapaObras.fechar();
+  } else {
+    Z_CASAS=Object.assign({},Z); if($("mapa-casas")) $("mapa-casas").style.display="none"; lot.style.display="";
+    SVG=SVG_LOTES||lot.querySelector("svg"); MODO="lotes"; if(Z_LOTES) Object.assign(Z,Z_LOTES); aplicarZoom();
+    if(leg&&LEG_LOTES) leg.innerHTML=LEG_LOTES; ATIVO=null; MapaObras.fechar();
+  }
+  lsSet("og_modo_mapa",MODO);
+}
+function dicaCasa(e,el){ const l=casasDoRef(el.id), t=$("tooltip");
+  t.innerHTML=`<b>${esc(el.id)}</b> ${esc((l[0]&&l[0].mv.endereco)||"sem cadastro")}`+l.map(x=>`<br><span style="color:${CS[x.st].c}">●</span> Casa ${esc(x.mv.casa||"—")}: ${esc(CS[x.st].l)}`).join("");
+  t.style.display="block"; moverDica(e); }
+function abrirCasa(ref,semRolar){
+  ATIVO=ref; $("tooltip").style.display="none"; pintarCasas();
+  const p=$("painel"), l=casasDoRef(ref), end=(l[0]&&l[0].mv.endereco)||"";
+  const dt=(lab,v)=>`<div class="campo"><label>${lab}</label><div class="v ${v?"":"vz"}">${v?br(v):"—"}</div></div>`;
+  p.innerHTML=`<div class="p-topo"><button class="x" onclick="MapaObras.fechar()" title="Fechar">✕</button>
+      <div class="end">${esc(end||ref)}</div><div class="lin"><span class="ref">${esc(ref)}</span><span class="st"><i style="background:${CS[stDoRef(ref)].c}"></i>${esc(CS[stDoRef(ref)].l)}</span></div></div>
+    <div class="p-corpo">${!l.length?`<div class="p-vazio">Nenhuma casa com este REF no banco de vendas.</div>`:l.map(x=>{ const v=x.v;
+      return `<div class="casa-card"><div class="cc-top"><b>Casa ${esc(x.mv.casa||"—")}</b><span class="chip" style="background:${CS[x.st].c}">${esc(CS[x.st].l)}</span>${x.mv.modelo&&up(x.mv.modelo)==="SIM"?`<span class="pill">Modelo</span>`:""}</div>
+        <div class="grade g3">${dt("Data da venda",v&&v.data_venda)}${dt("Data da vistoria",v&&v.data_pre_vistoria)}${dt("Data da entrega",v&&v.data_entrega)}</div>
+        ${v?`<div class="grade g3"><div class="campo"><label>Casa apta</label><div class="v">${esc(v.casa_apta_vistoria||"—")}</div></div>
+          <div class="campo"><label>Reparos</label><div class="v">${esc(v.reparos_pre_vistoria||"—")}</div></div>
+          <div class="campo"><label>Entregou?</label><div class="v">${esc(v.entregou_casa||"—")}</div></div></div>
+          ${(()=>{ const pa=precisaApta(v)?prazoApta(v):null, pe=prazoEntrega(v); return (pa||pe)?`<div class="en-al">${pa?`<span class="chip en-${pa.n}">${esc(pa.t)}</span>`:""}${pe?`<span class="chip en-${pe.n}">${esc(pe.t)}</span>`:""}</div>`:""; })()}
+          <div class="cc-bts">${botaoVistoria(v)}<button type="button" class="bt bt-mini ghost" onclick="MapaObras.docs('${esc(v.id)}')">📄 Documentos</button></div>`
+          :`<div class="en-info">${x.st==="entr"?"Entregue.":x.st==="vend"?"Vendida — ainda sem os dados da entrega no mapa.":"Disponível para venda."}</div>`}</div>`; }).join("")}</div>`;
+  if(!semRolar&&window.innerWidth<1100) p.scrollIntoView({behavior:"smooth",block:"start"});
+}
+function montarModoMapa(){
+  if(INDICE) return;
+  const box=$("mapa-box"); if(!box) return;
+  const sec=box.closest(".mapa-linha")&&box.closest(".mapa-linha").previousElementSibling;
+  const alvo=sec&&sec.classList.contains("sec")?sec:null;
+  const w=document.createElement("div"); w.className="modo-mapa";
+  w.innerHTML=`<button type="button" data-m="lotes" class="on">🧱 Lotes</button><button type="button" data-m="casas">🏠 Casas</button>`;
+  w.querySelectorAll("button").forEach(b=>b.addEventListener("click",ev=>{ ev.stopPropagation(); modoMapa(b.dataset.m); }));
+  if(alvo) alvo.insertBefore(w,alvo.querySelector(".dir")||null); else box.parentElement.insertBefore(w,box);
+  if(lsGet("og_modo_mapa","lotes")==="casas") setTimeout(()=>modoMapa("casas"),300);
+}
+async function docsCasa(id){
+  try{ await carregarVistoria(); }catch(e){ toast("Sem internet e o formulário ainda não foi aberto neste aparelho."); return; }
+  const v=vendaPorId(id); if(!v) return;
+  Vistoria.documentos({id:v.id,endereco:v.endereco,casa:v.casa},{api,toast});
 }
 
 /* ---------------- montagem ---------------- */
@@ -679,24 +927,31 @@ window.MapaObras={
   calMes:n=>{ if(!n){ CAL_MES=new Date(); CAL_MES.setDate(1); } else CAL_MES.setMonth(CAL_MES.getMonth()+n); pintarCal(); },
   verFin:()=>{ VER_FIN=!VER_FIN; pintarIndice(); },
   irPara, focar, medir, verFinalizadas, salvarCampo, salvarVenda,
+  /* 16/10: observações, formulário de vistoria, documentos e mapa de casas */
+  obs, salvarObs, fecharJanela, vistoria:abrirVistoria, docs:docsCasa, modoMapa,
   entAba:k=>{ ENT_ABA=k; pintarEntregas(); },
   entEng:e=>{ ENT_ENG=e; lsSet("og_ent_eng",e); pintarEntregas(); },
   /* a barra é redesenhada a cada letra: devolve o foco e o cursor ao campo */
   entBusca:q=>{ ENT_BUSCA=q; pintarEntregas(); const i=$("ent-busca"); if(i){ i.focus(); const n=i.value.length; try{ i.setSelectionRange(n,n); }catch(e){} } },
-  fechar:()=>{ ATIVO=null; marcarAtivo(""); $("painel").innerHTML=`<div class="p-vazio"><b>📍</b>Toque em um lote no mapa para ver e preencher o status da obra.</div>`; history.replaceState(null,"",location.pathname); },
+  fechar:()=>{ ATIVO=null; marcarAtivo(""); if(MODO==="casas") pintarCasas(); const pn=$("painel"); if(pn) pn.innerHTML=MODO==="casas"?`<div class="p-vazio"><b>🏠</b>Toque em um lote no mapa de casas para ver a situação de cada casa, as datas e os documentos da vistoria.</div>`:`<div class="p-vazio"><b>📍</b>Toque em um lote no mapa para ver e preencher o status da obra.</div>`; history.replaceState(null,"",location.pathname); },
   toggle:id=>{ const e=$(id); if(!e) return; const ab=e.style.display==="none"; e.style.display=ab?"":"none"; const s=$(id+"-seta"); if(s) s.textContent=ab?"▾":"▸"; }
 };
 
+/* 16/10: o mesmo ajuste de contraste do tema escuro do portal */
+try{ const g=document.createElement("script"); g.src="../PORTAL-MORAIS/tema-escuro.js?v=1"; g.async=true; document.head.appendChild(g); }catch(e){}
 document.addEventListener("DOMContentLoaded",()=>{
   pintarUsuario(); pintarFila();
   if(!INDICE){
     document.title=CFG.nome+" · Mapa de Obras · Morais";
     const hn=$("h-emp"); if(hn) hn.textContent=CFG.nome;
-    iniciarMapa();
+    iniciarMapa(); montarModoMapa(); carregarMV();
     const bi=$("busca"); if(bi) bi.addEventListener("input",()=>buscar(bi.value));
   }
   const c=lsGet(K_DADOS,null); if(c){ _ultimaPub=c.updated_at; prepararDados(c); pintarTudo(); }
-  carregarDados(false).then(()=>{ if(!INDICE){ const h=decodeURIComponent(location.hash.slice(1)); if(h) setTimeout(()=>focar(h),200); } });
+  carregarDados(false).then(()=>{ const h=decodeURIComponent(location.hash.slice(1));
+    /* 16/10: vindo da aba Atividades do portal — abre o formulário de vistoria da casa */
+    if(h.indexOf("vist=")===0){ const id=h.slice(5).replace(/-/g,""); setTimeout(()=>{ if(vendaPorId(id)) abrirVistoria(id); else toast("Casa não encontrada no mapa (ainda não publicada)."); },300); return; }
+    if(!INDICE&&h) setTimeout(()=>focar(h),200); });
   carregarBoot(); if(!INDICE) carregarMedicoes();
   setInterval(()=>{ if(!document.hidden) carregarDados(true); },120000);          // quase ao vivo: relê o data.json a cada 2 min
   document.addEventListener("visibilitychange",()=>{ if(!document.hidden){ carregarDados(true); if(!INDICE) carregarMedicoes(); } });
@@ -708,7 +963,16 @@ document.addEventListener("DOMContentLoaded",()=>{
   if("serviceWorker" in navigator){
     navigator.serviceWorker.register("sw.js").catch(()=>{});
     navigator.serviceWorker.ready.then(reg=>{ const w=reg.active||navigator.serviceWorker.controller; if(!w) return;
-      w.postMessage({cachear:[location.href.split("#")[0],new URL("data.json",location.href).href,new URL("index.html",location.href).href]}); }).catch(()=>{});
+      const l=[location.href.split("#")[0],new URL("data.json",location.href).href,new URL("index.html",location.href).href,
+        new URL("vistoria.js",location.href).href,new URL("jspdf.umd.min.js",location.href).href,new URL("../PORTAL-MORAIS/dist/mapa_vendas.json",location.href).href];
+      /* 16/10: o mapa de casas do setor fica guardado para abrir sem internet (só fora do 2G/3G e do "economia de dados") */
+      const cn=navigator.connection, leve=cn&&(cn.saveData||/2g|3g/.test(cn.effectiveType||""));
+      const arq=!INDICE&&VENDAS_ARQ[paginaArq()]; if(arq&&!leve) l.push(new URL("../SITE-DE-VENDAS/"+arq+".html",location.href).href);
+      w.postMessage({cachear:l}); }).catch(()=>{});
   }
+  /* 16/10: o formulário de vistoria fica pronto em segundo plano (sem internet ele precisa estar guardado) e
+     os PDFs que ficaram na fila sobem sozinhos */
+  if(navigator.onLine) setTimeout(()=>{ carregarVistoria().then(()=>{ if(window.Vistoria) Vistoria.sincronizar({api,toast}); }).catch(()=>{}); },2500);
+  window.addEventListener("online",()=>{ if(window.Vistoria) Vistoria.sincronizar({api,toast}); });
 });
 })();

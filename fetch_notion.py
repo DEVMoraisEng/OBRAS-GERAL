@@ -162,13 +162,55 @@ def parse_venda(page):
         "clientes":              s("CLIENTES") or tx("CLIENTES"),      # só para filtrar; NÃO é publicado
         "data_venda":            d("DATA DA VENDA"),
         "eng":                   pessoas("ENG. RESPONSÁEL", "ENG. RESPONSÁVEL"),
-        "entregou_casa":         s("ENTEGOU A CASA E PEGOU TERMO DE ENTREGA?"),
+        # 16/10: o nome da coluna foi corrigido no Notion em 01/10 (era ENTEGOU) —
+        # com o nome antigo vinha sempre vazio e TODAS as casas apareciam como não entregues
+        "entregou_casa":         s("ENTREGOU A CASA E PEGOU TERMO DE ENTREGA?") or s("ENTEGOU A CASA E PEGOU TERMO DE ENTREGA?"),
         "processo_conforme":     s("PROCESSO CONFORME?"),
         "casa_apta_vistoria":    s("CASA APTA PARA A VISTORIA"),
         "agendou_pre_vistoria":  s("AGENDOU PRE VISTORIA?") or s("AGENDOU PRÉ VISTORIA?"),
         "data_pre_vistoria":     d("DATA DA PRÉ-VISTORIA") or d("DATA DA PRE-VISTORIA"),
         "reparos_pre_vistoria":  s("REPAROS PRE VISTORIA REALIZADOS"),
+        # 16/10: conferência da conclusão (Caio), observações, contadores e documentos da vistoria
+        "conferencia":           s("CONFERÊNCIA DA CONCLUSÃO"),
+        "obs_conferencia":       tx("OBS. CONFERÊNCIA"),
+        "contador":              tx("CONTADOR VISTORIA (PORTAL)"),
+        "data_entrega":          d("DATA DA ENTREGA"),
+        "vist_completo":         len(get_prop(p, "VISTORIA - RELATÓRIO COMPLETO").get("files") or []),
+        "vist_prestador":        len(get_prop(p, "VISTORIA - POR PRESTADOR").get("files") or []),
     }
+
+# ─── 16/10: data em que a atividade VISTORIA PRÉVIA foi criada ───
+# O contador da "Casa apta p/ vistoria" parte dela (prazo de 7 dias).
+DB_ID_ATV_VENDAS = os.environ.get("NOTION_DB_ATV_VENDAS", "33dc5ab532d380abaa00fecd5c2d88c2")
+
+def datas_vistoria_previa(token):
+    """{id da venda (sem hífen): data mais antiga} das atividades VISTORIA PRÉVIA."""
+    out = {}
+    url = f"https://api.notion.com/v1/databases/{DB_ID_ATV_VENDAS}/query"
+    headers = {"Authorization": f"Bearer {token}", "Notion-Version": "2022-06-28", "Content-Type": "application/json"}
+    body = {"filter": {"property": "TIPO", "select": {"equals": "VISTORIA PRÉVIA"}}}
+    cursor = None
+    while True:
+        b = dict(body)
+        if cursor:
+            b["start_cursor"] = cursor
+        r = requests.post(url, headers=headers, json=b, timeout=60)
+        if r.status_code != 200:
+            print(f"  AVISO atividades VISTORIA PRÉVIA: {r.status_code} {r.text[:160]}")
+            break
+        data = r.json()
+        for pg in data.get("results", []):
+            pr = pg.get("properties", {})
+            rel = (get_prop(pr, "OBRA").get("relation") or [])
+            dt = prop_date(get_prop(pr, "DATA INICIAL")) or (pg.get("created_time") or "")[:10]
+            for x in rel:
+                k = (x.get("id") or "").replace("-", "")
+                if k and dt and (k not in out or dt[:10] < out[k]):
+                    out[k] = dt[:10]
+        if not data.get("has_more"):
+            break
+        cursor = data.get("next_cursor")
+    return out
 
 # ─── CÁLCULO DE STATUS (réplica da lógica JS) ────────────────
 PRAZO_ALERTA = 150     # dias: "atenção ao prazo"
@@ -305,6 +347,13 @@ def main():
             vendas = [parse_venda(p) for p in pages_vendas]
             vendas = [v for v in vendas if v.get("endereco") and v.get("clientes")]
             print(f"  {len(vendas)} vendas com cliente preenchido")
+            try:
+                apta = datas_vistoria_previa(TOKEN_VENDAS)
+                for v in vendas:
+                    v["apta_desde"] = apta.get(v["id"])
+                print(f"  {len(apta)} casa(s) com atividade VISTORIA PRÉVIA")
+            except Exception as e:
+                print(f"  AVISO: datas da VISTORIA PRÉVIA: {e}")
         except Exception as e:
             print(f"  AVISO: falha ao buscar vendas: {e}")
 

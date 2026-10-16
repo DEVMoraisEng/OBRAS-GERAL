@@ -9,8 +9,9 @@
  *   - data.json: rede primeiro; sem internet, a última cópia;
  *   - sem internet numa página nunca aberta: mostra o índice.
  * Suba o número do CACHE sempre que mudar mapa.js/mapa.css/as páginas. */
-const CACHE = "mapa-obras-v9";  /* 08/10: pesquisa de obra nas casas não entregues */
-const BASE = ["./", "./index.html", "./mapa.css", "./mapa.js", "./logo.png", "./manifest.json", "./data.json"];
+const CACHE = "mapa-obras-v10";  /* 16/10: vistorias de entrega, formulário de vistoria offline e mapa de casas */
+const BASE = ["./", "./index.html", "./mapa.css", "./mapa.js", "./vistoria.js", "./jspdf.umd.min.js", "./logo.png", "./manifest.json", "./data.json",
+  "../PORTAL-MORAIS/tema-escuro.js", "../PORTAL-MORAIS/dist/mapa_vendas.json"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => Promise.all(BASE.map(u => c.add(new Request(u, { cache: "reload" })).catch(() => null))))
     .then(() => self.skipWaiting()));
@@ -31,6 +32,23 @@ self.addEventListener("fetch", e => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;                 // Apps Script, fontes: direto
   const raiz = new URL("./", self.location).pathname;
+  /* 16/10: de fora deste site, só o que o mapa usa offline — o desenho do mapa
+     de casas (SITE-DE-VENDAS), a situação das casas e o ajuste do tema escuro (portal) */
+  const casas = /\/SITE-DE-VENDAS\/[a-z0-9]+\.html$/i.test(url.pathname);
+  const mv = /\/PORTAL-MORAIS\/dist\/mapa_vendas\.json$/.test(url.pathname);
+  const tema = /\/PORTAL-MORAIS\/tema-escuro\.js$/.test(url.pathname);
+  if (mv) {                                                         // dado: rede primeiro
+    e.respondWith(fetch(req).then(r => { if (r && r.ok) { const cp = r.clone(); caches.open(CACHE).then(c => c.put(url.origin + url.pathname, cp)); } return r; })
+      .catch(() => caches.match(url.origin + url.pathname)));
+    return;
+  }
+  if (casas || tema) {                                              // cópia na hora + atualiza por trás
+    e.respondWith(caches.open(CACHE).then(c => c.match(url.origin + url.pathname).then(hit => {
+      const rede = fetch(req).then(r => { if (r && r.ok) c.put(url.origin + url.pathname, r.clone()); return r; }).catch(() => hit);
+      return hit || rede;
+    })));
+    return;
+  }
   if (!url.pathname.startsWith(raiz)) return;                       // só o que é deste site
   if (url.pathname.endsWith("/data.json")) {                        // dado: rede primeiro
     e.respondWith(fetch(req).then(r => { if (r && r.ok) { const cp = r.clone(); caches.open(CACHE).then(c => c.put("./data.json", cp)); } return r; })
@@ -39,7 +57,7 @@ self.addEventListener("fetch", e => {
   }
   /* v6: arquivos pequenos (mapa.js, mapa.css, índice): REDE PRIMEIRO — a
      versão nova aparece já na primeira abertura; sem internet, a cópia */
-  if (/\/(mapa\.js|mapa\.css|index\.html|manifest\.json)$/.test(url.pathname) || url.pathname === raiz) {
+  if (/\/(mapa\.js|mapa\.css|vistoria\.js|index\.html|manifest\.json)$/.test(url.pathname) || url.pathname === raiz) {
     e.respondWith(fetch(req).then(r => { if (r && r.ok) { const cp = r.clone(); caches.open(CACHE).then(c => c.put(req.url.replace(/[?#].*$/, ""), cp)); } return r; })
       .catch(() => caches.match(req, { ignoreSearch: true }).then(h => h || caches.match("./index.html"))));
     return;
