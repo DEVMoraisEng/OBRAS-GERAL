@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-19T20:41:59.435219+00:00",
+ "updated_at": "2026-10-19T21:27:14.786375+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -12476,7 +12476,7 @@
   },
   {
    "id": "33cc5ab532d3807b82d3f0cd6227cfdb",
-   "endereco": "AV. FRANÇA QD 04 LT 16",
+   "endereco": "FRANÇA QD 04 LT 16",
    "casa": 3,
    "data_venda": "2025-05-21",
    "eng": "Guilherme Gouveia",
@@ -12496,7 +12496,7 @@
   },
   {
    "id": "33cc5ab532d38047b193d854ee5fb76b",
-   "endereco": "AV. FRANÇA QD 04 LT 16",
+   "endereco": "FRANÇA QD 04 LT 16",
    "casa": 2,
    "data_venda": "2025-05-21",
    "eng": "Guilherme Gouveia",
@@ -12516,7 +12516,7 @@
   },
   {
    "id": "33cc5ab532d380b182bac76a4451acca",
-   "endereco": "AV. FRANÇA QD 04 LT 16",
+   "endereco": "FRANÇA QD 04 LT 16",
    "casa": 1,
    "data_venda": "2026-05-06",
    "eng": "Guilherme Gouveia",
@@ -12536,7 +12536,7 @@
   },
   {
    "id": "33cc5ab532d380008ba1e9a0278b0cd8",
-   "endereco": "AV. FRANÇA QD 04 LT 15",
+   "endereco": "FRANÇA QD 04 LT 15",
    "casa": 3,
    "data_venda": "2025-11-17",
    "eng": "Guilherme Gouveia",
@@ -12556,7 +12556,7 @@
   },
   {
    "id": "33cc5ab532d380e5bc8de6b97ad403ed",
-   "endereco": "AV. FRANÇA QD 04 LT 15",
+   "endereco": "FRANÇA QD 04 LT 15",
    "casa": 2,
    "data_venda": "2026-04-07",
    "eng": "Guilherme Gouveia",
@@ -12576,7 +12576,7 @@
   },
   {
    "id": "33cc5ab532d380a8bc27d75e2182621f",
-   "endereco": "AV. FRANÇA QD 04 LT 15",
+   "endereco": "FRANÇA QD 04 LT 15",
    "casa": 1,
    "data_venda": "2025-06-30",
    "eng": "Guilherme Gouveia",
@@ -12596,7 +12596,7 @@
   },
   {
    "id": "33cc5ab532d3801a9134ea12d389a398",
-   "endereco": "AV. FRANÇA QD 04 LT 14",
+   "endereco": "FRANÇA QD 04 LT 14",
    "casa": 3,
    "data_venda": "2025-10-08",
    "eng": "Guilherme Gouveia",
@@ -12616,7 +12616,7 @@
   },
   {
    "id": "33cc5ab532d38066a221ca02f36e13f5",
-   "endereco": "AV. FRANÇA QD 04 LT 14",
+   "endereco": "FRANÇA QD 04 LT 14",
    "casa": 2,
    "data_venda": "2025-05-27",
    "eng": "Guilherme Gouveia",
@@ -12636,7 +12636,7 @@
   },
   {
    "id": "33cc5ab532d3809fa766d27da5515dbd",
-   "endereco": "AV. FRANÇA QD 04 LT 14",
+   "endereco": "FRANÇA QD 04 LT 14",
    "casa": 1,
    "data_venda": "2025-11-28",
    "eng": "Guilherme Gouveia",
@@ -12656,7 +12656,7 @@
   },
   {
    "id": "33cc5ab532d38045a32ff03d9cb07458",
-   "endereco": "AV. FRANÇA QD 04 LT 13",
+   "endereco": "FRANÇA QD 04 LT 13",
    "casa": 3,
    "data_venda": "2026-01-22",
    "eng": "Guilherme Gouveia",
@@ -12676,7 +12676,7 @@
   },
   {
    "id": "33cc5ab532d380a09e98c71579eaec21",
-   "endereco": "AV. FRANÇA QD 04 LT 13",
+   "endereco": "FRANÇA QD 04 LT 13",
    "casa": 2,
    "data_venda": "2026-02-17",
    "eng": "Guilherme Gouveia",
@@ -12696,7 +12696,7 @@
   },
   {
    "id": "33cc5ab532d380a3820defae46ac0030",
-   "endereco": "AV. FRANÇA QD 04 LT 13",
+   "endereco": "FRANÇA QD 04 LT 13",
    "casa": 1,
    "data_venda": "2026-01-26",
    "eng": "Guilherme Gouveia",
@@ -12716,7 +12716,7 @@
   },
   {
    "id": "33cc5ab532d38055b1cbdac09574e9de",
-   "endereco": "AV. FRANÇA QD 04 LT 12",
+   "endereco": "FRANÇA QD 04 LT 12",
    "casa": 3,
    "data_venda": "2025-12-24",
    "eng": "Guilherme Gouveia",
@@ -12736,7 +12736,7 @@
   },
   {
    "id": "33cc5ab532d3803f8ac3e1f2a14b22bd",
-   "endereco": "AV. FRANÇA QD 04 LT 12",
+   "endereco": "FRANÇA QD 04 LT 12",
    "casa": 2,
    "data_venda": "2025-12-22",
    "eng": "Guilherme Gouveia",
@@ -12756,7 +12756,7 @@
   },
   {
    "id": "33cc5ab532d38083b91ecbcafc9d36b4",
-   "endereco": "AV. FRANÇA QD 04 LT 12",
+   "endereco": "FRANÇA QD 04 LT 12",
    "casa": 1,
    "data_venda": "2026-01-06",
    "eng": "Guilherme Gouveia",
@@ -14829,11 +14829,7 @@
    "endereco": "AV. FRANÇA QD 04 LT 16",
    "setor": "IPANEMA",
    "habite": null,
-   "pv": {
-    "3": "2026-02-03",
-    "2": "2026-02-03",
-    "1": "2026-06-12"
-   }
+   "pv": {}
   },
   "IP 4": {
    "status": "fin_sem_prazo",
@@ -14841,11 +14837,7 @@
    "endereco": "AV. FRANÇA QD 04 LT 15",
    "setor": "IPANEMA",
    "habite": null,
-   "pv": {
-    "3": "2026-03-20",
-    "2": "2026-05-07",
-    "1": "2026-03-31"
-   }
+   "pv": {}
   },
   "IP 3": {
    "status": "fin_sem_prazo",
@@ -14853,11 +14845,7 @@
    "endereco": "AV. FRANÇA QD 04 LT 14",
    "setor": "IPANEMA",
    "habite": null,
-   "pv": {
-    "3": "2026-01-12",
-    "2": "2026-01-16",
-    "1": "2026-01-09"
-   }
+   "pv": {}
   },
   "IP 2": {
    "status": "fin_sem_prazo",
@@ -14865,11 +14853,7 @@
    "endereco": "AV. FRANÇA QD 04 LT 13",
    "setor": "IPANEMA",
    "habite": null,
-   "pv": {
-    "3": "2026-03-20",
-    "2": "2026-03-31",
-    "1": "2026-02-23"
-   }
+   "pv": {}
   },
   "IP 1": {
    "status": "fin_sem_prazo",
@@ -14877,11 +14861,7 @@
    "endereco": "AV. FRANÇA QD 04 LT 12",
    "setor": "IPANEMA",
    "habite": null,
-   "pv": {
-    "3": "2026-01-19",
-    "2": "2026-02-04",
-    "1": "2026-01-22"
-   }
+   "pv": {}
   },
   "A10": {
    "status": "habite_agendado",
