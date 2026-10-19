@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-19T16:08:35.740974+00:00",
+ "updated_at": "2026-10-19T16:29:30.920303+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -12930,6 +12930,26 @@
    "obs_conferencia": null,
    "contador": null,
    "data_entrega": "2026-08-28",
+   "vist_completo": 0,
+   "vist_prestador": 0,
+   "apta_desde": null
+  },
+  {
+   "id": "33cc5ab532d380e6a2c5f744c0e8891a",
+   "endereco": "PATHERNON QD 01 LT 26",
+   "casa": 2,
+   "data_venda": "2026-10-16",
+   "eng": "Guilherme Gouveia",
+   "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
+   "agendou_pre_vistoria": "NÃO",
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO",
+   "conferencia": null,
+   "obs_conferencia": null,
+   "contador": null,
+   "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
    "apta_desde": null
