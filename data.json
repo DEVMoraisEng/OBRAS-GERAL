@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-19T11:00:39.847820+00:00",
+ "updated_at": "2026-10-19T13:12:13.589956+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -306,7 +306,7 @@
    "proprietario": "MORAIS EMPREENDIMENTOS GOIANIA SPE I LTDA",
    "mestre": null,
    "despachante": null,
-   "previsao_inicio_obra": "0020-10-03",
+   "previsao_inicio_obra": "0002-11-03",
    "obra_iniciada": "NÃO",
    "obra_finalizada": "NÃO",
    "data_inicio_obra": null,
@@ -3218,7 +3218,7 @@
    "issqn": "SIM",
    "cno_cnd": "NÃO",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "SIM"
   },
   {
    "id": "32fc5ab532d380ac997feba823f584bc",
