@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-19T19:00:42.184396+00:00",
+ "updated_at": "2026-10-19T19:12:01.435881+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -7696,7 +7696,7 @@
   },
   {
    "id": "33cc5ab532d380a6811ee83e89555554",
-   "endereco": "TB 6 QD 40 LT 38",
+   "endereco": "TB 06 QD 40 LT 38",
    "casa": 2,
    "data_venda": "2026-01-17",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -7716,7 +7716,7 @@
   },
   {
    "id": "33cc5ab532d380139556c2cefc314e18",
-   "endereco": "TB 6 QD 40 LT 38",
+   "endereco": "TB 06 QD 40 LT 38",
    "casa": 1,
    "data_venda": "2026-01-30",
    "eng": "Caio Araujo",
@@ -7736,7 +7736,7 @@
   },
   {
    "id": "33cc5ab532d380feb894c0b55d94f3f1",
-   "endereco": "TB 6 QD 40 LT 37",
+   "endereco": "TB 06 QD 40 LT 37",
    "casa": 2,
    "data_venda": "2025-10-15",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -7756,7 +7756,7 @@
   },
   {
    "id": "33cc5ab532d3805cb1d1cf04d41dacf8",
-   "endereco": "TB 6 QD 40 LT 37",
+   "endereco": "TB 06 QD 40 LT 37",
    "casa": 1,
    "data_venda": "2025-10-14",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -7776,7 +7776,7 @@
   },
   {
    "id": "33cc5ab532d3803f8587f42746dc0946",
-   "endereco": "TB 6 QD 40 LT 35",
+   "endereco": "TB 06 QD 40 LT 35",
    "casa": 2,
    "data_venda": "2025-11-29",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -7796,7 +7796,7 @@
   },
   {
    "id": "33cc5ab532d380cc845cdb4d860733a4",
-   "endereco": "TB 6 QD 40 LT 35",
+   "endereco": "TB 06 QD 40 LT 35",
    "casa": 1,
    "data_venda": "2025-11-21",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -7816,7 +7816,7 @@
   },
   {
    "id": "33cc5ab532d38074a51dd8031fbcc304",
-   "endereco": "TB 6 QD 40 LT 34",
+   "endereco": "TB 06 QD 40 LT 34",
    "casa": 2,
    "data_venda": "2025-10-31",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -7836,7 +7836,7 @@
   },
   {
    "id": "33cc5ab532d380129078d7a8b6a29186",
-   "endereco": "TB 6 QD 40 LT 34",
+   "endereco": "TB 06 QD 40 LT 34",
    "casa": 1,
    "data_venda": "2026-03-26",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -7856,7 +7856,7 @@
   },
   {
    "id": "33cc5ab532d380108483e1c199bf9dc8",
-   "endereco": "TB 6 QD 40 LT 33",
+   "endereco": "TB 06 QD 40 LT 33",
    "casa": 2,
    "data_venda": "2025-12-02",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -7876,7 +7876,7 @@
   },
   {
    "id": "33cc5ab532d380538f00d82fea7d80a1",
-   "endereco": "TB 6 QD 40 LT 33",
+   "endereco": "TB 06 QD 40 LT 33",
    "casa": 1,
    "data_venda": "2025-12-09",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -7896,7 +7896,7 @@
   },
   {
    "id": "33cc5ab532d380c7bed0ced9ee78990f",
-   "endereco": "TB 5 QD 40 LT 01",
+   "endereco": "TB 05 QD 40 LT 01",
    "casa": 3,
    "data_venda": "2025-11-18",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -7916,7 +7916,7 @@
   },
   {
    "id": "33cc5ab532d380f292b6f1896dda2974",
-   "endereco": "TB 5 QD 40 LT 01",
+   "endereco": "TB 05 QD 40 LT 01",
    "casa": 2,
    "data_venda": "2026-02-13",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -7936,7 +7936,7 @@
   },
   {
    "id": "33cc5ab532d3805a9005fec0349bc3f9",
-   "endereco": "TB 5 QD 40 LT 01",
+   "endereco": "TB 05 QD 40 LT 01",
    "casa": 1,
    "data_venda": "2026-04-27",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -9036,7 +9036,7 @@
   },
   {
    "id": "33cc5ab532d38064b2a7c1db187c4d91",
-   "endereco": "TB 1 QD 39 LT 01",
+   "endereco": "TB 01 QD 39 LT 01",
    "casa": 3,
    "data_venda": "2025-11-18",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -9056,7 +9056,7 @@
   },
   {
    "id": "33cc5ab532d380c1bda6c20f5627c7bb",
-   "endereco": "TB 1 QD 39 LT 01",
+   "endereco": "TB 01 QD 39 LT 01",
    "casa": 2,
    "data_venda": "2025-10-13",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -9076,7 +9076,7 @@
   },
   {
    "id": "33cc5ab532d38024a2eff76755a563bb",
-   "endereco": "TB 1 QD 39 LT 01",
+   "endereco": "TB 01 QD 39 LT 01",
    "casa": 1,
    "data_venda": "2025-12-05",
    "eng": "João Marcos Vieira Cabral Menezes",
@@ -14104,7 +14104,11 @@
    "endereco": "TB 05 QD 40 LT 01",
    "setor": "TERRABELA CERRADO",
    "habite": null,
-   "pv": {}
+   "pv": {
+    "3": "2026-02-06",
+    "2": "2026-04-23",
+    "1": "2026-06-10"
+   }
   },
   "TC 18": {
    "status": "habite_concluido",
@@ -14134,7 +14138,10 @@
    "endereco": "TB 06 QD 40 LT 38",
    "setor": "TERRABELA CERRADO",
    "habite": null,
-   "pv": {}
+   "pv": {
+    "2": "2026-05-06",
+    "1": "2026-03-03"
+   }
   },
   "TC 15": {
    "status": "habite_concluido",
@@ -14142,7 +14149,10 @@
    "endereco": "TB 06 QD 40 LT 37",
    "setor": "TERRABELA CERRADO",
    "habite": null,
-   "pv": {}
+   "pv": {
+    "2": "2025-11-24",
+    "1": "2025-11-05"
+   }
   },
   "TC 14": {
    "status": "habite_concluido",
@@ -14150,7 +14160,10 @@
    "endereco": "TB 06 QD 40 LT 35",
    "setor": "TERRABELA CERRADO",
    "habite": null,
-   "pv": {}
+   "pv": {
+    "2": "2026-01-07",
+    "1": "2025-12-19"
+   }
   },
   "TC 13": {
    "status": "habite_concluido",
@@ -14158,7 +14171,10 @@
    "endereco": "TB 06 QD 40 LT 34",
    "setor": "TERRABELA CERRADO",
    "habite": null,
-   "pv": {}
+   "pv": {
+    "2": "2026-01-21",
+    "1": "2026-05-05"
+   }
   },
   "TC 12": {
    "status": "habite_concluido",
@@ -14166,7 +14182,10 @@
    "endereco": "TB 06 QD 40 LT 33",
    "setor": "TERRABELA CERRADO",
    "habite": null,
-   "pv": {}
+   "pv": {
+    "2": "2025-12-10",
+    "1": "2026-01-12"
+   }
   },
   "TC 11": {
    "status": "habite_concluido",
@@ -14223,7 +14242,11 @@
    "endereco": "TB 01 QD 39 LT 01",
    "setor": "TERRABELA CERRADO",
    "habite": null,
-   "pv": {}
+   "pv": {
+    "3": "2026-02-06",
+    "2": "2025-11-28",
+    "1": "2026-02-25"
+   }
   },
   "TC 6": {
    "status": "habite_concluido",
@@ -14980,6 +15003,150 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 19",
+   "endereco": "TB 05 QD 40 LT 01",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "3",
+   "data_pv": "2026-02-06"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 19",
+   "endereco": "TB 05 QD 40 LT 01",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "2",
+   "data_pv": "2026-04-23"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 19",
+   "endereco": "TB 05 QD 40 LT 01",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": "2026-06-10"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 16",
+   "endereco": "TB 06 QD 40 LT 38",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "2",
+   "data_pv": "2026-05-06"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 16",
+   "endereco": "TB 06 QD 40 LT 38",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": "2026-03-03"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 15",
+   "endereco": "TB 06 QD 40 LT 37",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "2",
+   "data_pv": "2025-11-24"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 15",
+   "endereco": "TB 06 QD 40 LT 37",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": "2025-11-05"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 14",
+   "endereco": "TB 06 QD 40 LT 35",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "2",
+   "data_pv": "2026-01-07"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 14",
+   "endereco": "TB 06 QD 40 LT 35",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": "2025-12-19"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 13",
+   "endereco": "TB 06 QD 40 LT 34",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "2",
+   "data_pv": "2026-01-21"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 13",
+   "endereco": "TB 06 QD 40 LT 34",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": "2026-05-05"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 12",
+   "endereco": "TB 06 QD 40 LT 33",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "2",
+   "data_pv": "2025-12-10"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 12",
+   "endereco": "TB 06 QD 40 LT 33",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": "2026-01-12"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 7",
+   "endereco": "TB 01 QD 39 LT 01",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "3",
+   "data_pv": "2026-02-06"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 7",
+   "endereco": "TB 01 QD 39 LT 01",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "2",
+   "data_pv": "2025-11-28"
+  },
+  {
+   "em": "2026-10-19T19:12:01.435881+00:00",
+   "ref": "TC 7",
+   "endereco": "TB 01 QD 39 LT 01",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": "2026-02-25"
+  },
   {
    "em": "2026-10-18T02:15:07.893071+00:00",
    "ref": "IP 5",
