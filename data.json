@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20T15:11:57.847608+00:00",
+ "updated_at": "2026-10-20T15:42:07.389026+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -8320,7 +8320,7 @@
    "casa": 2,
    "data_venda": "2026-06-18",
    "eng": "Caio Araujo",
-   "entregou_casa": "NÃO",
+   "entregou_casa": "SIM",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
@@ -8329,7 +8329,7 @@
    "conferencia": null,
    "obs_conferencia": null,
    "contador": "{\"a\":{\"ini\":\"2026-07-16\",\"acc\":92,\"ret\":\"2026-07-16\",\"trav\":\"2026-10-16\"},\"r\":{\"ini\":\"2026-09-24\",\"acc\":22,\"ret\":\"2026-09-24\",\"trav\":\"2026-10-16\"},\"em\":\"2026-10-16T16:40:48.807Z\",\"por\":\"sistema\",\"origem\":\"atividade\"}",
-   "data_entrega": null,
+   "data_entrega": "2026-10-20",
    "vist_completo": 0,
    "vist_prestador": 0,
    "apta_desde": null
@@ -11803,7 +11803,7 @@
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "EXECUTANDO REPAROS",
-   "agendou_pre_vistoria": "NÃO",
+   "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
@@ -14708,6 +14708,7 @@
     "MANHÃ"
    ],
    "pv": {
+    "3": "",
     "2": "2026-08-31",
     "1": "2026-08-12"
    }
@@ -15003,6 +15004,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-20T15:42:07.389026+00:00",
+   "ref": "JB 3",
+   "endereco": "FERROVIARIOS QD 01 LT 14",
+   "setor": "JOÃO BRAZ",
+   "tipo": "pre_vistoria",
+   "casa": "3",
+   "data_pv": ""
+  },
   {
    "em": "2026-10-19T19:12:01.435881+00:00",
    "ref": "TC 19",
