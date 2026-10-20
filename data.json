@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20T16:56:53.287930+00:00",
+ "updated_at": "2026-10-20T17:41:56.263273+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -1724,8 +1724,8 @@
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
    "registro_pago": "SIM",
-   "projeto_feito": "NÃO",
-   "art_feita_paga": "NÃO",
+   "projeto_feito": "SIM",
+   "art_feita_paga": "SIM",
    "escritura_registrada": "SIM",
    "certidao_lote": "INEXISTE",
    "contrato_mestre": "NÃO",
@@ -1761,8 +1761,8 @@
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
    "registro_pago": "SIM",
-   "projeto_feito": "NÃO",
-   "art_feita_paga": "NÃO",
+   "projeto_feito": "SIM",
+   "art_feita_paga": "SIM",
    "escritura_registrada": "SIM",
    "certidao_lote": "INEXISTE",
    "contrato_mestre": "NÃO",
@@ -5567,7 +5567,7 @@
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": "2026-10-20",
+   "data_habite_se": "2026-11-09",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
@@ -14430,7 +14430,7 @@
    "endereco": "RR 03 QD 02 LT 20",
    "setor": "RAVENA",
    "habite": [
-    "2026-10-20",
+    "2026-11-09",
     "MANHÃ"
    ],
    "pv": {}
@@ -15004,6 +15004,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-20T17:41:56.263273+00:00",
+   "ref": "RV 2",
+   "endereco": "RR 03 QD 02 LT 20",
+   "setor": "RAVENA",
+   "tipo": "habite",
+   "data": "2026-11-09",
+   "turno": "MANHÃ"
+  },
   {
    "em": "2026-10-20T15:42:07.389026+00:00",
    "ref": "JB 3",
