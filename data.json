@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20T16:27:04.328914+00:00",
+ "updated_at": "2026-10-20T16:56:53.287930+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -1650,8 +1650,8 @@
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
    "registro_pago": "SIM",
-   "projeto_feito": "NÃO",
-   "art_feita_paga": "NÃO",
+   "projeto_feito": "SIM",
+   "art_feita_paga": "SIM",
    "escritura_registrada": "SIM",
    "certidao_lote": "INEXISTE",
    "contrato_mestre": "NÃO",
