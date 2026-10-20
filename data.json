@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20T14:12:05.259566+00:00",
+ "updated_at": "2026-10-20T15:00:44.748790+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -8605,7 +8605,7 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-10-07",
-   "reparos_pre_vistoria": "EXECUTANDO REPAROS",
+   "reparos_pre_vistoria": "SIM",
    "conferencia": null,
    "obs_conferencia": null,
    "contador": "{\"a\":{\"ini\":\"2026-10-01\",\"acc\":15,\"ret\":\"2026-10-01\",\"trav\":\"2026-10-16\"},\"r\":{\"ini\":\"2026-10-07\",\"acc\":0,\"ret\":\"2026-10-07\",\"trav\":null},\"em\":\"2026-10-16T16:40:49.327Z\",\"por\":\"sistema\",\"origem\":\"atividade\"}",
