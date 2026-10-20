@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20T17:41:56.263273+00:00",
+ "updated_at": "2026-10-20T17:57:03.047088+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -8609,7 +8609,7 @@
    "conferencia": null,
    "obs_conferencia": null,
    "contador": "{\"a\":{\"ini\":\"2026-10-01\",\"acc\":15,\"ret\":\"2026-10-01\",\"trav\":\"2026-10-16\"},\"r\":{\"ini\":\"2026-10-07\",\"acc\":13,\"ret\":\"2026-10-07\",\"trav\":\"2026-10-20\"},\"em\":\"2026-10-20T15:06:22.004Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
-   "data_entrega": null,
+   "data_entrega": "2026-10-19",
    "vist_completo": 0,
    "vist_prestador": 0,
    "apta_desde": null
@@ -11723,8 +11723,8 @@
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "NÃO",
-   "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null,
+   "agendou_pre_vistoria": "SIM",
+   "data_pre_vistoria": "2026-10-21",
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
@@ -14655,7 +14655,9 @@
     "2026-05-19",
     "MANHÃ"
    ],
-   "pv": {}
+   "pv": {
+    "1": "2026-10-21"
+   }
   },
   "MQA 1": {
    "status": "habite_concluido",
@@ -15004,6 +15006,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-20T17:57:03.047088+00:00",
+   "ref": "MQA 2",
+   "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B2",
+   "setor": "MARQUES DE ABREU",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": "2026-10-21"
+  },
   {
    "em": "2026-10-20T17:41:56.263273+00:00",
    "ref": "RV 2",
