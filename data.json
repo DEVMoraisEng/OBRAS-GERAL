@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20T18:11:53.237651+00:00",
+ "updated_at": "2026-10-20T18:51:23.097507+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -13045,10 +13045,10 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-10-16",
-   "reparos_pre_vistoria": "NÃO",
+   "reparos_pre_vistoria": "EXECUTANDO REPAROS",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-09-17\",\"acc\":29,\"ret\":\"2026-09-17\",\"trav\":\"2026-10-16\"},\"r\":{\"ini\":\"2026-10-16\",\"acc\":0,\"ret\":\"2026-10-16\",\"trav\":null},\"em\":\"2026-10-16T16:40:51.259Z\",\"por\":\"sistema\",\"origem\":\"atividade\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-09-17\",\"acc\":29,\"ret\":\"2026-09-17\",\"trav\":\"2026-10-16\"},\"r\":{\"ini\":\"2026-10-16\",\"acc\":0,\"ret\":\"2026-10-16\",\"trav\":null},\"em\":\"2026-10-20T18:50:48.707Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
