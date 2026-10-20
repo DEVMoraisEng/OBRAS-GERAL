@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20T15:00:44.748790+00:00",
+ "updated_at": "2026-10-20T15:07:56.399220+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -8600,7 +8600,7 @@
    "casa": 2,
    "data_venda": "2026-08-17",
    "eng": "João Marcos Vieira Cabral Menezes",
-   "entregou_casa": "NÃO",
+   "entregou_casa": "SIM",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
@@ -8608,7 +8608,7 @@
    "reparos_pre_vistoria": "SIM",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-10-01\",\"acc\":15,\"ret\":\"2026-10-01\",\"trav\":\"2026-10-16\"},\"r\":{\"ini\":\"2026-10-07\",\"acc\":0,\"ret\":\"2026-10-07\",\"trav\":null},\"em\":\"2026-10-16T16:40:49.327Z\",\"por\":\"sistema\",\"origem\":\"atividade\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-01\",\"acc\":15,\"ret\":\"2026-10-01\",\"trav\":\"2026-10-16\"},\"r\":{\"ini\":\"2026-10-07\",\"acc\":13,\"ret\":\"2026-10-07\",\"trav\":\"2026-10-20\"},\"em\":\"2026-10-20T15:06:22.004Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
