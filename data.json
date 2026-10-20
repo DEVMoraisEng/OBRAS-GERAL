@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-20T19:26:55.514415+00:00",
+ "updated_at": "2026-10-20T20:41:53.587597+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -5973,7 +5973,7 @@
    "data_inicio_obra": "2026-06-17",
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
-   "aprovou_habite_se": "NÃO",
+   "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-10-15",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
@@ -14535,7 +14535,7 @@
    "pv": {}
   },
   "BR 10": {
-   "status": "habite_agendado",
+   "status": "habite_concluido",
    "prazo": null,
    "endereco": "RPB 24 QD 26A LT 08",
    "setor": "PQ DOS BURITIS",
@@ -15006,6 +15006,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-20T20:41:53.587597+00:00",
+   "ref": "BR 10",
+   "endereco": "RPB 24 QD 26A LT 08",
+   "setor": "PQ DOS BURITIS",
+   "tipo": "status",
+   "de": "habite_agendado",
+   "para": "habite_concluido"
+  },
   {
    "em": "2026-10-20T17:57:03.047088+00:00",
    "ref": "MQA 2",
