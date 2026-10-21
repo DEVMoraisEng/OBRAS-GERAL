@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-21T19:00:40.791424+00:00",
+ "updated_at": "2026-10-21T20:12:06.465665+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -3254,7 +3254,7 @@
    "taxas_habite_se": "SIM",
    "issqn": "SIM",
    "cno_cnd": "SIM",
-   "armazenou_habite": "NÃO",
+   "armazenou_habite": "SIM",
    "certidoes_matricula": "SIM"
   },
   {
