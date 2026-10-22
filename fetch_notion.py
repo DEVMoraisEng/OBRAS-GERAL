@@ -216,23 +216,37 @@ def datas_vistoria_previa(token):
     return out
 
 # ─── MODELO 3D (coluna MODELO 3D da obra na (EMP) Projeto 2.0) ─────
-def obras_com_modelo3d(token, obra_ids):
-    """{id da obra: data do 3D (ou True)} das obras com arquivo na coluna
-    MODELO 3D. A base de obras sai da própria página (parent), sem precisar de
-    outro secret. None = não deu para conferir (o mapa mostra o botão assim
-    mesmo e o visualizador avisa se não tiver modelo)."""
-    ids = [i for i in obra_ids if i]
-    if not ids:
-        return {}
-    headers = {"Authorization": f"Bearer {token}", "Notion-Version": "2022-06-28", "Content-Type": "application/json"}
-    r = requests.get(f"https://api.notion.com/v1/pages/{ids[0]}", headers=headers, timeout=60)
+DB_ID_OBRAS = os.environ.get("NOTION_DB_OBRAS", "")
+TITULO_DB_OBRAS = "(EMP) Projeto 2.0"
+
+def _norm_end(t):
+    import re
+    return re.sub(r"\s+", " ", (t or "").replace("-", " ")).strip().upper()
+
+def _achar_db_obras(headers):
+    if DB_ID_OBRAS:
+        return DB_ID_OBRAS
+    r = requests.post("https://api.notion.com/v1/search", headers=headers, timeout=60,
+                      json={"query": TITULO_DB_OBRAS, "filter": {"property": "object", "value": "database"}})
     if r.status_code != 200:
-        print(f"  AVISO modelo 3D: {r.status_code} {r.text[:160]}")
+        print(f"  AVISO modelo 3D (busca da base de obras): {r.status_code} {r.text[:160]}")
         return None
-    db = (r.json().get("parent") or {}).get("database_id")
+    for db in r.json().get("results", []):
+        t = "".join(x.get("plain_text", "") for x in db.get("title") or [])
+        if _norm_end(t) == _norm_end(TITULO_DB_OBRAS):
+            return db["id"].replace("-", "")
+    return None
+
+def obras_com_modelo3d(token):
+    """({id da obra: data do 3D ou True}, {endereço normalizado: id da obra})
+    das obras da (EMP) Projeto 2.0 com arquivo na coluna MODELO 3D (Publicar 3D
+    do pyRevit). None = não deu para conferir."""
+    headers = {"Authorization": f"Bearer {token}", "Notion-Version": "2022-06-28", "Content-Type": "application/json"}
+    db = _achar_db_obras(headers)
     if not db:
+        print("  AVISO modelo 3D: base (EMP) Projeto 2.0 não encontrada pelo token")
         return None
-    out, cursor = {}, None
+    por_id, por_end, cursor = {}, {}, None
     while True:
         body = {"page_size": 100, "filter": {"property": "MODELO 3D", "files": {"is_not_empty": True}}}
         if cursor:
@@ -243,12 +257,17 @@ def obras_com_modelo3d(token, obra_ids):
             return None
         data = r.json()
         for pg in data.get("results", []):
-            dt = prop_date(get_prop(pg.get("properties", {}), "3D ATUALIZADO EM"))
-            out[(pg.get("id") or "").replace("-", "")] = dt or True
+            pid = (pg.get("id") or "").replace("-", "")
+            props = pg.get("properties", {})
+            dt = prop_date(get_prop(props, "3D ATUALIZADO EM"))
+            por_id[pid] = dt or True
+            for v in props.values():
+                if v.get("type") == "title":
+                    por_end[_norm_end(prop_title(v))] = pid
         if not data.get("has_more"):
             break
         cursor = data.get("next_cursor")
-    return out
+    return por_id, por_end
 
 # ─── CÁLCULO DE STATUS (réplica da lógica JS) ────────────────
 PRAZO_ALERTA = 150     # dias: "atenção ao prazo"
@@ -375,19 +394,23 @@ def main():
     documentos = [parse_doc(p) for p in pages_docs]
     documentos = [d for d in documentos if d.get("ref") or d.get("endereco")]
 
-    # 1b. Modelo 3D publicado (Publicar 3D do pyRevit) na obra de cada lote
+    # 1b. Modelo 3D publicado (Publicar 3D do pyRevit) na obra de cada lote:
+    #     pela relação OBRA-AUTO e, nas obras sem ela, pelo endereço (= título da obra)
     modelo3d_ok = True
     try:
-        m3d = obras_com_modelo3d(TOKEN_DOCS, sorted(set(d.get("obra_id") for d in documentos if d.get("obra_id"))))
+        res3d = obras_com_modelo3d(TOKEN_DOCS)
     except Exception as e:
         print(f"  AVISO modelo 3D: {e}")
-        m3d = None
-    if m3d is None:
-        modelo3d_ok = False
-        m3d = {}
+        res3d = None
+    if res3d is None:
+        modelo3d_ok, m3d, por_end = False, {}, {}
+    else:
+        m3d, por_end = res3d
     for d in documentos:
+        if not d.get("obra_id"):
+            d["obra_id"] = por_end.get(_norm_end(d.get("endereco")))
         d["modelo3d"] = m3d.get(d.get("obra_id")) if d.get("obra_id") else None
-    print(f"  {len(m3d)} obra(s) com modelo 3D publicado")
+    print(f"  {len(m3d)} obra(s) com modelo 3D publicado; {sum(1 for d in documentos if d.get('modelo3d'))} lote(s) no mapa com o botão")
 
     # 2. Vendas
     vendas = []
