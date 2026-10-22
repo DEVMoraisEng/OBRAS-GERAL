@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22T13:42:10.118303+00:00",
+ "updated_at": "2026-10-22T13:57:11.773179+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -11729,6 +11729,26 @@
    "conferencia": null,
    "obs_conferencia": null,
    "contador": "{\"a\":{\"ini\":\"2026-10-15\",\"acc\":0,\"ret\":\"2026-10-15\",\"trav\":null},\"r\":{},\"em\":\"2026-10-16T16:40:49.816Z\",\"por\":\"sistema\",\"origem\":\"atividade\"}",
+   "data_entrega": null,
+   "vist_completo": 0,
+   "vist_prestador": 0,
+   "apta_desde": null
+  },
+  {
+   "id": "33cc5ab532d380aaa6efd374fd93ca0e",
+   "endereco": "FERROVIARIOS QD 01 LT 16",
+   "casa": 3,
+   "data_venda": "2026-10-21",
+   "eng": "Guilherme Gouveia",
+   "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
+   "agendou_pre_vistoria": "NÃO",
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO",
+   "conferencia": null,
+   "obs_conferencia": null,
+   "contador": null,
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
