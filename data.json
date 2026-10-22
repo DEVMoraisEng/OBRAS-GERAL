@@ -1,5 +1,6 @@
 {
- "updated_at": "2026-10-22T19:39:08.215737+00:00",
+ "updated_at": "2026-10-22T19:39:44.141126+00:00",
+ "modelo3d_conferido": true,
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -7,6 +8,7 @@
    "ref": "TC 98",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MARCOS DE SIQUEIRA PINTO",
    "mestre": null,
    "despachante": null,
@@ -36,7 +38,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3f1c5ab532d380958e30f990cdb12ca1",
@@ -44,6 +47,7 @@
    "ref": "TC 97",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS INCORPORACOES SENADOR CANEDO SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -73,7 +77,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3f1c5ab532d380dc9fb7dec8e7eceb8b",
@@ -81,6 +86,7 @@
    "ref": "TC 95",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "ALEXANDRE AURELIO COSTA",
    "mestre": null,
    "despachante": null,
@@ -110,7 +116,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3f1c5ab532d380a1872df1dec5c25ddc",
@@ -118,6 +125,7 @@
    "ref": "TC 96",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "despachante": null,
@@ -147,7 +155,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3d8c5ab532d38089bfe2c00bb7c3e685",
@@ -155,6 +164,7 @@
    "ref": null,
    "setor": "PORTAL DO ORIENTE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS GOIANIA SPE I LTDA",
    "mestre": null,
    "despachante": "MESSIAS",
@@ -184,7 +194,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3d8c5ab532d3805a8d03e0e118248134",
@@ -192,6 +203,7 @@
    "ref": null,
    "setor": "PORTAL DO ORIENTE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS GOIANIA SPE I LTDA",
    "mestre": null,
    "despachante": "MESSIAS",
@@ -221,7 +233,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3d8c5ab532d380f3958ad1c0d9e074a1",
@@ -229,6 +242,7 @@
    "ref": null,
    "setor": "PORTAL DO ORIENTE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS GOIANIA SPE I LTDA",
    "mestre": null,
    "despachante": "MESSIAS",
@@ -258,7 +272,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d380bdac38d1c3eddd1d47",
@@ -266,6 +281,7 @@
    "ref": "FL 25",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -295,7 +311,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d38034a1dcd399ccbf621e",
@@ -303,6 +320,7 @@
    "ref": "FL 24",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -332,7 +350,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d380ec9491efe0bd082349",
@@ -340,6 +359,7 @@
    "ref": "FL 23",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -369,7 +389,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d38078bc12c5928e12cde7",
@@ -377,6 +398,7 @@
    "ref": "FL 22",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -406,7 +428,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d380aba00ac4a663cb9a40",
@@ -414,6 +437,7 @@
    "ref": "FL 21",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -443,7 +467,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d38079ae5ac3d0f0706cd2",
@@ -451,6 +476,7 @@
    "ref": "FL 20",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -480,7 +506,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d380f5bb08fd886637d5d9",
@@ -488,6 +515,7 @@
    "ref": "FL 16",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -517,7 +545,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d38052bbaff4c9b220c9ac",
@@ -525,6 +554,7 @@
    "ref": "FL 11",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -554,7 +584,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d380cfb097f3846dd29537",
@@ -562,6 +593,7 @@
    "ref": "FL 15",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -591,7 +623,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d38078b50bf35ee6dc1090",
@@ -599,6 +632,7 @@
    "ref": "FL 14",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -628,7 +662,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d380ef86cef0d8063e08ec",
@@ -636,6 +671,7 @@
    "ref": "FL 13",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -665,7 +701,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d3804a85accbfe284124fc",
@@ -673,6 +710,7 @@
    "ref": "FL 12",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -702,7 +740,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d38065967ae84716ab6dd7",
@@ -710,6 +749,7 @@
    "ref": "FL 10",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -739,7 +779,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d3800586e3e81fc500787a",
@@ -747,6 +788,7 @@
    "ref": "FL 9",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -776,7 +818,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d380d6bd74d3aabda11da4",
@@ -784,6 +827,7 @@
    "ref": "FL 4",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -813,7 +857,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d3802fb32bf0c4d3e45168",
@@ -821,6 +866,7 @@
    "ref": "FL 3",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -850,7 +896,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d380449cece34f7594b0ab",
@@ -858,6 +905,7 @@
    "ref": "FL 2",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -887,7 +935,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cfc5ab532d380ca8727fd09760ae71d",
@@ -895,6 +944,7 @@
    "ref": "FL 1",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -924,7 +974,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3cdc5ab532d3800299fcf4837e947d58",
@@ -932,6 +983,7 @@
    "ref": "TC 82",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS INCORPORACOES SENADOR CANEDO SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -961,7 +1013,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3c2c5ab532d38095b727c29407deb49d",
@@ -969,6 +1022,7 @@
    "ref": "FL 18",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "despachante": null,
@@ -998,7 +1052,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3c2c5ab532d380068d53ec5146a3ba3b",
@@ -1006,6 +1061,7 @@
    "ref": "FL 17",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "despachante": null,
@@ -1035,7 +1091,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3c2c5ab532d3800987a9d29cd952c6be",
@@ -1043,6 +1100,7 @@
    "ref": "FL 8",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "despachante": null,
@@ -1072,7 +1130,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3c2c5ab532d380ba9041e78034d35262",
@@ -1080,6 +1139,7 @@
    "ref": "FL 7",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "despachante": null,
@@ -1109,7 +1169,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3c2c5ab532d3804699affda8c1e62b2c",
@@ -1117,6 +1178,7 @@
    "ref": "FL 6",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "despachante": null,
@@ -1146,7 +1208,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3c2c5ab532d380ffa15cecdce4fffc0f",
@@ -1154,6 +1217,7 @@
    "ref": "FL 5",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "despachante": null,
@@ -1183,7 +1247,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3c2c5ab532d380c482b6d3e585ce5d08",
@@ -1191,6 +1256,7 @@
    "ref": "FL 19",
    "setor": "FLORENÇA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "despachante": null,
@@ -1220,7 +1286,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3abc5ab532d3804cab18f4f288e531f3",
@@ -1228,6 +1295,7 @@
    "ref": "TC 75",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MOURA DANTAS EMPREENDIMENTOS LTDA",
    "mestre": null,
    "despachante": "LIDIANA",
@@ -1257,7 +1325,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3abc5ab532d380b694e7ed680745610a",
@@ -1265,6 +1334,7 @@
    "ref": "TC 74",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MOURA DANTAS EMPREENDIMENTOS LTDA",
    "mestre": null,
    "despachante": "LIDIANA",
@@ -1294,7 +1364,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3a7c5ab532d380b0bc52d7519fa7f189",
@@ -1302,6 +1373,7 @@
    "ref": null,
    "setor": null,
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS INCORPORACOES SENADOR CANEDO SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -1331,7 +1403,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3a7c5ab532d380edb3ade425d671ced1",
@@ -1339,6 +1412,7 @@
    "ref": "BR 11",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -1368,7 +1442,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "3a6c5ab532d3809bb0fbffde8da3711a",
@@ -1376,6 +1451,7 @@
    "ref": "RV 10",
    "setor": "RAVENA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS INCORPORACOES SENADOR CANEDO SPE LTDA",
    "mestre": null,
    "despachante": "LIDIANA",
@@ -1405,7 +1481,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "390c5ab532d3803b964ae2adbc985ba9",
@@ -1413,6 +1490,7 @@
    "ref": null,
    "setor": "JARDIM PETROPOLIS",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS GOIANIA SPE I LTDA",
    "mestre": null,
    "despachante": null,
@@ -1442,7 +1520,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "390c5ab532d3800da295f8ff0a6cc3e4",
@@ -1450,6 +1529,7 @@
    "ref": null,
    "setor": "JARDIM PETROPOLIS",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS GOIANIA SPE I LTDA",
    "mestre": null,
    "despachante": null,
@@ -1479,7 +1559,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "390c5ab532d38061b788c6d110793b9a",
@@ -1487,6 +1568,7 @@
    "ref": null,
    "setor": "JARDIM PETROPOLIS",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS GOIANIA SPE I LTDA",
    "mestre": null,
    "despachante": null,
@@ -1516,7 +1598,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "38fc5ab532d380699c3fd2665ed59613",
@@ -1524,6 +1607,7 @@
    "ref": "TC 79",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "despachante": null,
@@ -1553,7 +1637,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "38fc5ab532d3803497f3e872277bdad4",
@@ -1561,6 +1646,7 @@
    "ref": "TC 78",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "despachante": "YAN",
@@ -1590,7 +1676,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "38fc5ab532d380d4827df1c62e4014a8",
@@ -1598,6 +1685,7 @@
    "ref": "TC 81",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS INCORPORACOES SENADOR CANEDO SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -1627,7 +1715,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "38fc5ab532d3802697c5dab2051693d6",
@@ -1635,6 +1724,7 @@
    "ref": "TC 80",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS INCORPORACOES SENADOR CANEDO SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -1664,7 +1754,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "387c5ab532d38088842de054ce1c1d11",
@@ -1672,6 +1763,7 @@
    "ref": "BR 7",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -1701,7 +1793,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "372c5ab532d3802ba7a1e2e0da3edb1d",
@@ -1709,6 +1802,7 @@
    "ref": "TC 85",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "despachante": "YAN",
@@ -1738,7 +1832,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "372c5ab532d380ceb502c0c3e6feeafb",
@@ -1746,6 +1841,7 @@
    "ref": "TC 86",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "despachante": "YAN",
@@ -1775,7 +1871,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "372c5ab532d3808791f2ed21a7f28f66",
@@ -1783,6 +1880,7 @@
    "ref": "TC 84",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -1812,7 +1910,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "372c5ab532d380deabc4ee495d08ad3f",
@@ -1820,6 +1919,7 @@
    "ref": "RV 9",
    "setor": "RAVENA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MARIA EUNICE BUENO",
    "mestre": null,
    "despachante": null,
@@ -1849,7 +1949,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "368c5ab532d380f39884d3021ff43772",
@@ -1857,6 +1958,7 @@
    "ref": "TC 89",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": null,
    "despachante": "YAN",
@@ -1886,7 +1988,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "368c5ab532d380749086dcdb86a5b005",
@@ -1894,6 +1997,7 @@
    "ref": "TC 88",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -1923,7 +2027,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "368c5ab532d38084b44ec4d20bb44101",
@@ -1931,6 +2036,7 @@
    "ref": "TC 87",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS INCORPORACOES SENADOR CANEDO SPE LTDA",
    "mestre": null,
    "despachante": "YAN",
@@ -1960,7 +2066,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "352c5ab532d380dea9bec0553f57b17e",
@@ -1968,6 +2075,7 @@
    "ref": "TC 76",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": null,
    "despachante": "YAN",
@@ -1997,7 +2105,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "352c5ab532d3807da813fe00f3e5ed9d",
@@ -2005,6 +2114,7 @@
    "ref": "TC 77",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "despachante": "YAN",
@@ -2034,7 +2144,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "352c5ab532d38009adc4eb8961e434f0",
@@ -2042,6 +2153,7 @@
    "ref": "TC 83",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "MAYCON",
    "despachante": "YAN",
@@ -2071,7 +2183,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "352c5ab532d380778826fc8ce7092164",
@@ -2079,6 +2192,7 @@
    "ref": "TC 73",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": null,
    "despachante": "YAN",
@@ -2108,7 +2222,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "34ac5ab532d38054a141e3c66254c7d5",
@@ -2116,6 +2231,7 @@
    "ref": "RV 5",
    "setor": "RAVENA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "ANTONIO",
    "despachante": "LIDIANA",
@@ -2145,7 +2261,8 @@
    "issqn": "NÃO",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "34ac5ab532d3801c9d06f122ff8b66d7",
@@ -2153,6 +2270,7 @@
    "ref": "RV 7",
    "setor": "RAVENA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "IRINEU",
    "despachante": "LIDIANA",
@@ -2182,7 +2300,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "335c5ab532d38071a885f6be818fd4ac",
@@ -2190,6 +2309,7 @@
    "ref": "RV 8",
    "setor": "RAVENA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "IRINEU",
    "despachante": "LIDIANA",
@@ -2219,7 +2339,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "335c5ab532d38097b382d21a1335f666",
@@ -2227,6 +2348,7 @@
    "ref": "TC 68",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -2256,7 +2378,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "335c5ab532d38054bf03ea9b76dc0782",
@@ -2264,6 +2387,7 @@
    "ref": "ES1",
    "setor": "COND. ESMERALDAS",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "MOACIR",
    "despachante": "MESSIAS",
@@ -2293,7 +2417,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "335c5ab532d38028ba81cc48b7a4e146",
@@ -2301,6 +2426,7 @@
    "ref": "ES2",
    "setor": "COND. ESMERALDAS",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "MOACIR",
    "despachante": "MESSIAS",
@@ -2330,7 +2456,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "335c5ab532d380949fadd363e10ec57c",
@@ -2338,6 +2465,7 @@
    "ref": "ES4",
    "setor": "COND. ESMERALDAS",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -2367,7 +2495,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "335c5ab532d380b88993d8c6c2ef70af",
@@ -2375,6 +2504,7 @@
    "ref": "ES5",
    "setor": "COND. ESMERALDAS",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -2404,7 +2534,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "335c5ab532d380a99032ceda17330acf",
@@ -2412,6 +2543,7 @@
    "ref": "ES3",
    "setor": "COND. ESMERALDAS",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -2441,7 +2573,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380a3a436c8b2b0fc9aff",
@@ -2449,6 +2582,7 @@
    "ref": "TC 71",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": null,
    "despachante": "LIDIANA",
@@ -2478,7 +2612,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380c19b00dac9eefadbaf",
@@ -2486,6 +2621,7 @@
    "ref": "TC 70",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": null,
    "despachante": "LIDIANA",
@@ -2515,7 +2651,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38070b28cc1f2839480aa",
@@ -2523,6 +2660,7 @@
    "ref": "TC 69",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": null,
    "despachante": "YAN",
@@ -2552,7 +2690,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380dc8d9bd51554495b8c",
@@ -2560,6 +2699,7 @@
    "ref": "TC 72",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "ALEXANDRE AURELIO COSTA",
    "mestre": null,
    "despachante": "YAN",
@@ -2589,7 +2729,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3801ca699dce8c9164327",
@@ -2597,6 +2738,7 @@
    "ref": "TC 67",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -2626,7 +2768,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380f2ac4fd4890ae1b930",
@@ -2634,6 +2777,7 @@
    "ref": "TC 66",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -2663,7 +2807,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38010b90ecc36ccd5acd9",
@@ -2671,6 +2816,7 @@
    "ref": "TC 65",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MATHEUS SAMPAIO MELLO",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -2700,7 +2846,8 @@
    "issqn": "SIM",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380d98309dbbbfacdd100",
@@ -2708,6 +2855,7 @@
    "ref": "TC 64",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -2737,7 +2885,8 @@
    "issqn": "SIM",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380f3bab7f1f801001c22",
@@ -2745,6 +2894,7 @@
    "ref": "TC 63",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "MAYCON",
    "despachante": "YAN",
@@ -2774,7 +2924,8 @@
    "issqn": "SIM",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380ebaf60daf1d8470415",
@@ -2782,6 +2933,7 @@
    "ref": "TC 62",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "MAYCON",
    "despachante": "YAN",
@@ -2811,7 +2963,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3800683aed0f964cbe4ec",
@@ -2819,6 +2972,7 @@
    "ref": "TC 61",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "ROGERIO COSTA PINTO",
    "mestre": "MAYCON",
    "despachante": "YAN",
@@ -2848,7 +3002,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380fba9b8c6fa279e0c97",
@@ -2856,6 +3011,7 @@
    "ref": "TC 60",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "ROSILENE MARIA DOS SANTOS",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -2885,7 +3041,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380a0b69af6e28fdfaa29",
@@ -2893,6 +3050,7 @@
    "ref": "TC 59",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "ROGERIO COSTA PINTO",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -2922,7 +3080,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380dfae55ea0bd05ef3aa",
@@ -2930,6 +3089,7 @@
    "ref": "TC 58",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "LUIZ FERNANDO BARBOSA MOREIRA",
    "mestre": "ROSIVAN",
    "despachante": "LIDIANA",
@@ -2959,7 +3119,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38083899def25de480a1a",
@@ -2967,6 +3128,7 @@
    "ref": "TC 57",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "IVANA MACHADO NUNES BENTO",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -2996,7 +3158,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380e8aa9edad69ae73613",
@@ -3004,6 +3167,7 @@
    "ref": "TC 56",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "KARLLA FLEURY SOARES ARAUJO",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -3033,7 +3197,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38099ac9ee0b149483fdd",
@@ -3041,6 +3206,7 @@
    "ref": "TC 55",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -3070,7 +3236,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380d79695ddb495bf62ca",
@@ -3078,6 +3245,7 @@
    "ref": "TC 54",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MOURA DANTAS EMPREENDIMENTOS LTDA",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -3107,7 +3275,8 @@
    "issqn": "SIM",
    "cno_cnd": "NÃO",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380ac997feba823f584bc",
@@ -3115,6 +3284,7 @@
    "ref": "TC 53",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "ROGERIO COSTA PINTO",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -3144,7 +3314,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38022a13ff8c3fc00a6bd",
@@ -3152,6 +3323,7 @@
    "ref": "TC 52",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "ROSILENE MARIA DOS SANTOS",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -3181,7 +3353,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38010ad3feceb00faceff",
@@ -3189,6 +3362,7 @@
    "ref": "TC 51",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "ROSIVAN CORREIA DE SOUSA",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -3218,7 +3392,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38044a254e33a6dc1ed1c",
@@ -3226,6 +3401,7 @@
    "ref": "TC 50",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "DARTAGNAN VASCONCELOS",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -3255,7 +3431,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380d68781ff507f73eb80",
@@ -3263,6 +3440,7 @@
    "ref": "TC 49",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MOURA DANTAS EMPREENDIMENTOS LTDA",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -3292,7 +3470,8 @@
    "issqn": "SIM",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380afbae6e818b6ef0454",
@@ -3300,6 +3479,7 @@
    "ref": "TC 48",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "LEONARDO NUNES DE CASTRO VIEIRA",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -3329,7 +3509,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3801391cfc33feaa1b4a3",
@@ -3337,6 +3518,7 @@
    "ref": "TC 47",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TIAGO DA SILVA ALEIXO",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -3366,7 +3548,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3801fafdaf9dc48b34c7f",
@@ -3374,6 +3557,7 @@
    "ref": "TC 46",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MOURA DANTAS EMPREENDIMENTOS LTDA",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -3403,7 +3587,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3801593f5e21e316e36e2",
@@ -3411,6 +3596,7 @@
    "ref": "TC 45",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "CAIO MANABU DIAS YOSHIDA",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -3440,7 +3626,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3807b9d63f8b7871795bf",
@@ -3448,6 +3635,7 @@
    "ref": "TC 44",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "NEUSELY VIEIRA CABRAL",
    "mestre": "MAYCON",
    "despachante": "YAN",
@@ -3477,7 +3665,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38077929cf8ab84e701a4",
@@ -3485,6 +3674,7 @@
    "ref": "TC 43",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "DARCY VIEIRA CABRAL",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -3514,7 +3704,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3802a8b15e8f825120e91",
@@ -3522,6 +3713,7 @@
    "ref": "TC 42",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -3551,7 +3743,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380d4aaa3c8c0e111cd7b",
@@ -3559,6 +3752,7 @@
    "ref": "TC 41",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -3588,7 +3782,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38039960dd902cc5921f9",
@@ -3596,6 +3791,7 @@
    "ref": "TC 40",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -3625,7 +3821,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38048b14ac0c7256dd89d",
@@ -3633,6 +3830,7 @@
    "ref": "TC 39",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -3662,7 +3860,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38017b8f5c36b2bb3f3e9",
@@ -3670,6 +3869,7 @@
    "ref": "TC 38",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "LEONARDO NUNES DE CASTRO VIEIRA",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -3699,7 +3899,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3800f8f15e28a6d85f0d2",
@@ -3707,6 +3908,7 @@
    "ref": "TC 37",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "ISABELA CABRAL DE MORAIS",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -3736,7 +3938,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38003a864e9f29810dcac",
@@ -3744,6 +3947,7 @@
    "ref": "TC 36",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "ALEXANDRE AURELIO COSTA",
    "mestre": "ROSIVAN",
    "despachante": "LIDIANA",
@@ -3773,7 +3977,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3800284c4da8ade39be95",
@@ -3781,6 +3986,7 @@
    "ref": "TC 35",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "LIDIANA",
@@ -3810,7 +4016,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380388825f79a27bd9b07",
@@ -3818,6 +4025,7 @@
    "ref": "TC 34",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "LIDIANA",
@@ -3847,7 +4055,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380d8b084e6db2bd091de",
@@ -3855,6 +4064,7 @@
    "ref": "TC 33",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MOURA DANTAS EMPREENDIMENTOS LTDA",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -3884,7 +4094,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380f1ba6ec5cabddc2b3b",
@@ -3892,6 +4103,7 @@
    "ref": "TC 32",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "ANTONIO LUCAS VIEIRA CABRAL MENEZES",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -3921,7 +4133,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38079a0bad4994425b7c1",
@@ -3929,6 +4142,7 @@
    "ref": "TC 31",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MOURA DANTAS EMPREENDIMENTOS LTDA",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -3958,7 +4172,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380288202cd4259fdb51b",
@@ -3966,6 +4181,7 @@
    "ref": "TC 30",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "IRACEMA DA SILVA NUNES",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -3995,7 +4211,8 @@
    "issqn": "NÃO",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3802da297f949afcfb0c4",
@@ -4003,6 +4220,7 @@
    "ref": "TC 29",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "LIDIANA",
@@ -4032,7 +4250,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3804e8917e1d89bca6030",
@@ -4040,6 +4259,7 @@
    "ref": "TC 28",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -4069,7 +4289,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38035a71ed30fa8bebd91",
@@ -4077,6 +4298,7 @@
    "ref": "TC 27",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "RODRIGO RODRIGUES CABRAL",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -4106,7 +4328,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380fe9dbefc56fbcae36c",
@@ -4114,6 +4337,7 @@
    "ref": "TC 26",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -4143,7 +4367,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3805c90caf460412667d2",
@@ -4151,6 +4376,7 @@
    "ref": "TC 25",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MOURA DANTAS EMPREENDIMENTOS LTDA",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -4180,7 +4406,8 @@
    "issqn": "SIM",
    "cno_cnd": "NÃO",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380929edbe22faa2b8bcb",
@@ -4188,6 +4415,7 @@
    "ref": "TC 24",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "IRACEMA DA SILVA NUNES",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -4217,7 +4445,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380589166e6b3e9df5c78",
@@ -4225,6 +4454,7 @@
    "ref": "TC 23",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "LEONARDO NUNES DE CASTRO VIEIRA",
    "mestre": "MAYCON",
    "despachante": "YAN",
@@ -4254,7 +4484,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380579496e2133054368f",
@@ -4262,6 +4493,7 @@
    "ref": "TC 22",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -4291,7 +4523,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380f3bd2ec338323a540d",
@@ -4299,6 +4532,7 @@
    "ref": "TC 21",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "CAIO MANABU DIAS YOSHIDA",
    "mestre": "EDNALDO",
    "despachante": "YAN",
@@ -4328,7 +4562,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38062b1a0e28701887556",
@@ -4336,6 +4571,7 @@
    "ref": "TC 20",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -4365,7 +4601,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380ffb043df1453a50aea",
@@ -4373,6 +4610,7 @@
    "ref": "TC 19",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "LUIZ FERNANDO BARBOSA MOREIRA",
    "mestre": "CARLOS",
    "despachante": "LIDIANA",
@@ -4402,7 +4640,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380eebc56d6f7f722c59f",
@@ -4410,6 +4649,7 @@
    "ref": "TC 18",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -4439,7 +4679,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380138700d965d8a9f776",
@@ -4447,6 +4688,7 @@
    "ref": "TC 17",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -4476,7 +4718,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380b2b433d9298f86c1fc",
@@ -4484,6 +4727,7 @@
    "ref": "TC 16",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -4513,7 +4757,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3806ba99ee5109068da99",
@@ -4521,6 +4766,7 @@
    "ref": "TC 15",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MOURA DANTAS EMPREENDIMENTOS LTDA",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -4550,7 +4796,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380729948ca2d657b4873",
@@ -4558,6 +4805,7 @@
    "ref": "TC 14",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "ROSILENE MARIA DOS SANTOS",
    "mestre": "ROSIVAN",
    "despachante": "LIDIANA",
@@ -4587,7 +4835,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380be9d1bff31135e1bed",
@@ -4595,6 +4844,7 @@
    "ref": "TC 13",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "LEONARDO NUNES DE CASTRO VIEIRA",
    "mestre": "ROSIVAN",
    "despachante": "LIDIANA",
@@ -4624,7 +4874,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380dcb914f327f488eb92",
@@ -4632,6 +4883,7 @@
    "ref": "TC 12",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "JOÃO MARCOS VIEIRA CABRAL MENEZES",
    "mestre": "ROSIVAN",
    "despachante": "LIDIANA",
@@ -4661,7 +4913,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3803aa502f56ae8421adc",
@@ -4669,6 +4922,7 @@
    "ref": "TC 11",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -4698,7 +4952,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380e39bedce9919214f8b",
@@ -4706,6 +4961,7 @@
    "ref": "TC 10",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -4735,7 +4991,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3804fb17af1394e19a96f",
@@ -4743,6 +5000,7 @@
    "ref": "TC 9",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MOURA DANTAS EMPREENDIMENTOS LTDA",
    "mestre": "MAYCON",
    "despachante": "LIDIANA",
@@ -4772,7 +5030,8 @@
    "issqn": "SIM",
    "cno_cnd": "NÃO",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380348b86ef39f26c3f84",
@@ -4780,6 +5039,7 @@
    "ref": "TC 8",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "DARTAGNAN VASCONCELOS",
    "mestre": "FRANCLIN",
    "despachante": "YAN",
@@ -4809,7 +5069,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38099af20dd95b4c5db39",
@@ -4817,6 +5078,7 @@
    "ref": "TC 7",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "LIDIANA",
@@ -4846,7 +5108,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38010ae9be45b97780e7b",
@@ -4854,6 +5117,7 @@
    "ref": "TC 6",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "EDNALDO",
    "despachante": "YAN",
@@ -4883,7 +5147,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380b28382ec7cf85aee83",
@@ -4891,6 +5156,7 @@
    "ref": "TC 5",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TIAGO DA SILVA ALEIXO",
    "mestre": "CARLOS",
    "despachante": "YAN",
@@ -4920,7 +5186,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3809ebe5de0e14173eef0",
@@ -4928,6 +5195,7 @@
    "ref": "TC 4",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "CARLOS",
    "despachante": "LIDIANA",
@@ -4957,7 +5225,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38059b477f71a776216f8",
@@ -4965,6 +5234,7 @@
    "ref": "TC 3",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "LEONARDO NUNES DE CASTRO VIEIRA",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -4994,7 +5264,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3805081dedd7adb943a7d",
@@ -5002,6 +5273,7 @@
    "ref": "TC 2",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -5031,7 +5303,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380faa8cfc7877eb16051",
@@ -5039,6 +5312,7 @@
    "ref": "TC 1",
    "setor": "TERRABELA CERRADO",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "ROSIVAN",
    "despachante": "YAN",
@@ -5068,7 +5342,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380d58302ffa02af351ca",
@@ -5076,6 +5351,7 @@
    "ref": "SE 2",
    "setor": "ST EFIGÊNIA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "JOAO VITOR CABRAL DE MORAIS",
    "mestre": null,
    "despachante": "MESSIAS",
@@ -5105,7 +5381,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380249245d7b75796e4d2",
@@ -5113,6 +5390,7 @@
    "ref": "SE 1",
    "setor": "ST EFIGÊNIA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "JULIO CESAR GOMES DE MORAIS FILHO",
    "mestre": null,
    "despachante": "MESSIAS",
@@ -5142,7 +5420,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380f8a92bc4b75c83cace",
@@ -5150,6 +5429,7 @@
    "ref": "SV 6",
    "setor": "SOLAR VILLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "CAPIXABA",
    "despachante": null,
@@ -5179,7 +5459,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380af8fbfc04ef13e0944",
@@ -5187,6 +5468,7 @@
    "ref": "SV 5",
    "setor": "SOLAR VILLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "CAPIXABA",
    "despachante": null,
@@ -5216,7 +5498,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38005b20dd641b14743fc",
@@ -5224,6 +5507,7 @@
    "ref": "SV 4",
    "setor": "SOLAR VILLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "CAPIXABA",
    "despachante": null,
@@ -5253,7 +5537,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380faa7cbfd2e0b472767",
@@ -5261,6 +5546,7 @@
    "ref": "SV 1",
    "setor": "SOLAR VILLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "LIVIAN VIEIRA CABRAL DE MORAIS",
    "mestre": "CAPIXABA",
    "despachante": null,
@@ -5290,7 +5576,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38023bfede3532c4dfe83",
@@ -5298,6 +5585,7 @@
    "ref": "SV 2",
    "setor": "SOLAR VILLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "JULIO CESAR GOMES DE MORAIS FILHO",
    "mestre": "CAPIXABA",
    "despachante": null,
@@ -5327,7 +5615,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380369b3ac54e0325e7e1",
@@ -5335,6 +5624,7 @@
    "ref": "SV 3",
    "setor": "SOLAR VILLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "JOAO VITOR CABRAL DE MORAIS",
    "mestre": "CAPIXABA",
    "despachante": null,
@@ -5364,7 +5654,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3808fb0b9c9df1327d2ee",
@@ -5372,6 +5663,7 @@
    "ref": "RV 4",
    "setor": "RAVENA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "TERRA BELA MORAIS ENGENHARIA SPE LTDA",
    "mestre": "ANTONIO",
    "despachante": "LIDIANA",
@@ -5401,7 +5693,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380979268e928e0819a05",
@@ -5409,6 +5702,7 @@
    "ref": "RV 3",
    "setor": "RAVENA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MARCOS DE SIQUEIRA PINTO",
    "mestre": "IRINEU",
    "despachante": "YAN",
@@ -5438,7 +5732,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380babce5cc87e9952e11",
@@ -5446,6 +5741,7 @@
    "ref": "RV 2",
    "setor": "RAVENA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "RENATOS SANTOS E ESPOSA",
    "mestre": "KENEDY",
    "despachante": "YAN",
@@ -5475,7 +5771,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3801f827dfea19e98be44",
@@ -5483,6 +5780,7 @@
    "ref": "RV 1",
    "setor": "RAVENA",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "JULIA MORAES OLIVEIRA",
    "mestre": "IRINEU",
    "despachante": "YAN",
@@ -5512,7 +5810,8 @@
    "issqn": "NÃO",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380549920dccf787d26f1",
@@ -5520,6 +5819,7 @@
    "ref": "BR 19",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "ROMERITO",
    "despachante": "YAN",
@@ -5549,7 +5849,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3801c9a55d602d46e4fa0",
@@ -5557,6 +5858,7 @@
    "ref": "BR 18",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "ROMERITO",
    "despachante": "YAN",
@@ -5586,7 +5888,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3806e93c6f5879377a80e",
@@ -5594,6 +5897,7 @@
    "ref": "BR 17",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "WILLIAN RODRIGUES",
    "despachante": "YAN",
@@ -5623,7 +5927,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3809db95efba6392c3d39",
@@ -5631,6 +5936,7 @@
    "ref": "BR 16",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "WILLIAN RODRIGUES",
    "despachante": "YAN",
@@ -5660,7 +5966,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380958fbbd6c763e6313d",
@@ -5668,6 +5975,7 @@
    "ref": "BR 15",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "WILLIAN RODRIGUES",
    "despachante": "YAN",
@@ -5697,7 +6005,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380a7b8c4f0206f432da8",
@@ -5705,6 +6014,7 @@
    "ref": "BR 14",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "WILLIAN RODRIGUES",
    "despachante": "LIDIANA",
@@ -5734,7 +6044,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3804290e4cb32a1609ca8",
@@ -5742,6 +6053,7 @@
    "ref": "BR 13",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "WILLIAN RODRIGUES",
    "despachante": "LIDIANA",
@@ -5771,7 +6083,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380bc9dc5fbd2f1ec6f91",
@@ -5779,6 +6092,7 @@
    "ref": "BR 12",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "ROMERITO",
    "despachante": "LIDIANA",
@@ -5808,7 +6122,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3805faa84cf0e6992ecf7",
@@ -5816,6 +6131,7 @@
    "ref": "BR 11",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "WILLIAN RODRIGUES",
    "despachante": "LIDIANA",
@@ -5845,7 +6161,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3806cadf9ee90f6554e17",
@@ -5853,6 +6170,7 @@
    "ref": "BR 10",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "WILLIAN RODRIGUES",
    "despachante": "LIDIANA",
@@ -5882,7 +6200,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3804fa9dde546d5f03871",
@@ -5890,6 +6209,7 @@
    "ref": "BR 9",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "(NEY - DESCANSIDERAR)",
    "despachante": "LIDIANA",
@@ -5919,7 +6239,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380ac9489f52b2dcda4d0",
@@ -5927,6 +6248,7 @@
    "ref": "BR 8",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "(NEY - DESCANSIDERAR)",
    "despachante": "LIDIANA",
@@ -5956,7 +6278,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380e7b925d887848d5415",
@@ -5964,6 +6287,7 @@
    "ref": "BR 7",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "FELIPE",
    "despachante": "LIDIANA",
@@ -5993,7 +6317,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380d6a6a9e086874d141b",
@@ -6001,6 +6326,7 @@
    "ref": "BR 6",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "FELIPE",
    "despachante": "LIDIANA",
@@ -6030,7 +6356,8 @@
    "issqn": "NÃO",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380739189fc183b5dfe99",
@@ -6038,6 +6365,7 @@
    "ref": "BR 5",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -6067,7 +6395,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380b6ac3ed9a829d62523",
@@ -6075,6 +6404,7 @@
    "ref": "BR 4",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": null,
    "despachante": null,
@@ -6104,7 +6434,8 @@
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38042917fc8b9a9e1a214",
@@ -6112,6 +6443,7 @@
    "ref": "BR 3",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "RENATO/ GENIVAL",
    "despachante": "LIDIANA",
@@ -6141,7 +6473,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380d9bfdfc51a4ab4785e",
@@ -6149,6 +6482,7 @@
    "ref": "BR 2",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "ROMERITO",
    "despachante": "LIDIANA",
@@ -6178,7 +6512,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3807dafc7e4457eaa92a1",
@@ -6186,6 +6521,7 @@
    "ref": "BR 1",
    "setor": "PQ DOS BURITIS",
    "cidade": "SENADOR CANEDO",
+   "obra_id": null,
    "proprietario": "MORAIS EMPREENDIMENTOS BURITIS SPE LTDA",
    "mestre": "ROMERITO",
    "despachante": "LIDIANA",
@@ -6215,7 +6551,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380a8a26efb3bcc2ca52b",
@@ -6223,6 +6560,7 @@
    "ref": "MQA 3",
    "setor": "MARQUES DE ABREU",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "MORAIS ENGENHARIA E CONSTRUCAO LTDA",
    "mestre": "MOACIR",
    "despachante": "MESSIAS",
@@ -6252,7 +6590,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3806d8f62c4247ed6d73c",
@@ -6260,6 +6599,7 @@
    "ref": "MQA 2",
    "setor": "MARQUES DE ABREU",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "MORAIS ENGENHARIA E CONSTRUCAO LTDA",
    "mestre": "MOACIR",
    "despachante": "MESSIAS",
@@ -6289,7 +6629,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38015a167c2b7e4aed8f0",
@@ -6297,6 +6638,7 @@
    "ref": "MQA 1",
    "setor": "MARQUES DE ABREU",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "MORAIS ENGENHARIA E CONSTRUCAO LTDA",
    "mestre": null,
    "despachante": "MESSIAS",
@@ -6326,7 +6668,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380f9aecad2a3c9cbdfdf",
@@ -6334,6 +6677,7 @@
    "ref": "JB 6",
    "setor": "JOÃO BRAZ",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "MORAIS ENGENHARIA E CONSTRUCAO LTDA",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -6363,7 +6707,8 @@
    "issqn": "NÃO",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380069c87f0766ad738aa",
@@ -6371,6 +6716,7 @@
    "ref": "JB 5",
    "setor": "JOÃO BRAZ",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "MORAIS ENGENHARIA E CONSTRUCAO LTDA",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -6400,7 +6746,8 @@
    "issqn": "NÃO",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO"
+   "certidoes_matricula": "NÃO",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3804a959dc059af06ffec",
@@ -6408,6 +6755,7 @@
    "ref": "JB 4",
    "setor": "JOÃO BRAZ",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "JOAO VITOR CABRAL DE MORAIS",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -6437,7 +6785,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380ee82c6efb25fcdb491",
@@ -6445,6 +6794,7 @@
    "ref": "JB 3",
    "setor": "JOÃO BRAZ",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "JULIO CESAR GOMES DE MORAIS FILHO",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -6474,7 +6824,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380c3b78dcd227d1f1f50",
@@ -6482,6 +6833,7 @@
    "ref": "JB 2",
    "setor": "JOÃO BRAZ",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "JOAO VITOR CABRAL DE MORAIS",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -6511,7 +6863,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38056914ad58d2c8adb8d",
@@ -6519,6 +6872,7 @@
    "ref": "JB 1",
    "setor": "JOÃO BRAZ",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "JULIO CESAR GOMES DE MORAIS FILHO",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -6548,7 +6902,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38019a672cd46e3056fe3",
@@ -6556,6 +6911,7 @@
    "ref": "ITAIPU 1",
    "setor": "ITAIPU",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "JOAO VITOR CABRAL DE MORAIS",
    "mestre": "MOACIR",
    "despachante": null,
@@ -6585,7 +6941,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38032ab95eb0fd1382396",
@@ -6593,6 +6950,7 @@
    "ref": "IP 12",
    "setor": "IPANEMA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "JULIA MORAES OLIVEIRA",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -6622,7 +6980,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380acae80f10078d50e7e",
@@ -6630,6 +6989,7 @@
    "ref": "IP 11",
    "setor": "IPANEMA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -6659,7 +7019,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380b88581c140773afcae",
@@ -6667,6 +7028,7 @@
    "ref": "IP 10",
    "setor": "IPANEMA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "ELIZENE GONÇALVES FERREIRA",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -6696,7 +7058,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3800d9da3e34b3f9ad437",
@@ -6704,6 +7067,7 @@
    "ref": "IP 9",
    "setor": "IPANEMA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -6733,7 +7097,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380828cbad81411765a2f",
@@ -6741,6 +7106,7 @@
    "ref": "IP 8",
    "setor": "IPANEMA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "LETICIA GUIMARAES OKA",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -6770,7 +7136,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380fcb4fdf675f8f9d734",
@@ -6778,6 +7145,7 @@
    "ref": "IP 7",
    "setor": "IPANEMA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "JOAO VITOR CABRAL DE MORAIS",
    "mestre": "ROMERITO",
    "despachante": "MESSIAS",
@@ -6807,7 +7175,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3808594afecc7fdbe6be2",
@@ -6815,6 +7184,7 @@
    "ref": "IP 6",
    "setor": "IPANEMA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "JULIO CESAR GOMES DE MORAIS FILHO",
    "mestre": "ROMERITO",
    "despachante": "MESSIAS",
@@ -6844,7 +7214,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380d6a641d3e24af21e6b",
@@ -6852,6 +7223,7 @@
    "ref": "IP 5",
    "setor": "IPANEMA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "ROMERITO",
    "despachante": "MESSIAS",
@@ -6881,7 +7253,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38025b553e9b9c806be8c",
@@ -6889,6 +7262,7 @@
    "ref": "IP 4",
    "setor": "IPANEMA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "ROMERITO",
    "despachante": "MESSIAS",
@@ -6918,7 +7292,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380faa08fcf39a7aa4ae9",
@@ -6926,6 +7301,7 @@
    "ref": "IP 3",
    "setor": "IPANEMA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "MOACIR",
    "despachante": "MESSIAS",
@@ -6955,7 +7331,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380468f9ad2d00b97fd10",
@@ -6963,6 +7340,7 @@
    "ref": "IP 2",
    "setor": "IPANEMA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -6992,7 +7370,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38064bb09cfbf8c3385a7",
@@ -7000,6 +7379,7 @@
    "ref": "IP 1",
    "setor": "IPANEMA",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "RONIVALDO",
    "despachante": "MESSIAS",
@@ -7029,7 +7409,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380e98224ff6cb098a865",
@@ -7037,6 +7418,7 @@
    "ref": "A10",
    "setor": "ACROPOLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "ROMERITO",
    "despachante": "MESSIAS",
@@ -7066,7 +7448,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380b7bb8dc5b75a5f2e78",
@@ -7074,6 +7457,7 @@
    "ref": "A9",
    "setor": "ACROPOLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "ROMERITO",
    "despachante": "MESSIAS",
@@ -7103,7 +7487,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3804bbd18d2783f4b19a8",
@@ -7111,6 +7496,7 @@
    "ref": "A8",
    "setor": "ACROPOLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "ROMERITO",
    "despachante": "MESSIAS",
@@ -7140,7 +7526,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380cb9bd4d020bd6ea743",
@@ -7148,6 +7535,7 @@
    "ref": "A7",
    "setor": "ACROPOLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "ROMERITO",
    "despachante": "MESSIAS",
@@ -7177,7 +7565,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3800989cad37e432e0cab",
@@ -7185,6 +7574,7 @@
    "ref": "A6",
    "setor": "ACROPOLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "ROMERITO",
    "despachante": "MESSIAS",
@@ -7214,7 +7604,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380e391fced2a653de9a2",
@@ -7222,6 +7613,7 @@
    "ref": "A5",
    "setor": "ACROPOLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "ELIZENE GONÇALVES FERREIRA",
    "mestre": "CAPIXABA",
    "despachante": "MESSIAS",
@@ -7251,7 +7643,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380ea8531d048443f3480",
@@ -7259,6 +7652,7 @@
    "ref": "A4",
    "setor": "ACROPOLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "LETICIA GUIMARAES OKA",
    "mestre": "CAPIXABA",
    "despachante": "MESSIAS",
@@ -7288,7 +7682,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d38026b4a6f904f6b4800d",
@@ -7296,6 +7691,7 @@
    "ref": "A3",
    "setor": "ACROPOLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "CAPIXABA",
    "despachante": "MESSIAS",
@@ -7325,7 +7721,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d380549b70efe6f017eb0f",
@@ -7333,6 +7730,7 @@
    "ref": "A2",
    "setor": "ACROPOLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "CAPIXABA",
    "despachante": "MESSIAS",
@@ -7362,7 +7760,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   },
   {
    "id": "32fc5ab532d3800083fefa20bcbc64b3",
@@ -7370,6 +7769,7 @@
    "ref": "A1",
    "setor": "ACROPOLE",
    "cidade": "GOIÂNIA",
+   "obra_id": null,
    "proprietario": "IPANEMA MORAIS INCORPORACOES SPE LTDA",
    "mestre": "CAPIXABA",
    "despachante": "MESSIAS",
@@ -7399,7 +7799,8 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "SIM"
+   "certidoes_matricula": "SIM",
+   "modelo3d": null
   }
  ],
  "vendas": [
