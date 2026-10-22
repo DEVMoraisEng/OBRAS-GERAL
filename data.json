@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22T02:35:02.344890+00:00",
+ "updated_at": "2026-10-22T03:00:44.303475+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -13441,7 +13441,7 @@
   },
   "RV 5": {
    "status": "habite_concluido",
-   "prazo": null,
+   "prazo": "a",
    "endereco": "RR 02 QD 01 LT 23",
    "setor": "RAVENA",
    "habite": [
@@ -14417,7 +14417,7 @@
   },
   "RV 1": {
    "status": "habite_concluido",
-   "prazo": null,
+   "prazo": "a",
    "endereco": "RR 01 QD 01 LT 12",
    "setor": "RAVENA",
    "habite": [
@@ -14549,7 +14549,7 @@
   },
   "BR 6": {
    "status": "habite_agendado",
-   "prazo": null,
+   "prazo": "a",
    "endereco": "RPB 24 QD 26A LT 04",
    "setor": "PQ DOS BURITIS",
    "habite": [
@@ -14986,6 +14986,30 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-22T03:00:44.303475+00:00",
+   "ref": "RV 5",
+   "endereco": "RR 02 QD 01 LT 23",
+   "setor": "RAVENA",
+   "tipo": "prazo",
+   "para": "a"
+  },
+  {
+   "em": "2026-10-22T03:00:44.303475+00:00",
+   "ref": "RV 1",
+   "endereco": "RR 01 QD 01 LT 12",
+   "setor": "RAVENA",
+   "tipo": "prazo",
+   "para": "a"
+  },
+  {
+   "em": "2026-10-22T03:00:44.303475+00:00",
+   "ref": "BR 6",
+   "endereco": "RPB 24 QD 26A LT 04",
+   "setor": "PQ DOS BURITIS",
+   "tipo": "prazo",
+   "para": "a"
+  },
   {
    "em": "2026-10-21T21:26:58.849936+00:00",
    "ref": "TC 60",
