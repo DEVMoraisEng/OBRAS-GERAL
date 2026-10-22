@@ -93,6 +93,9 @@ def parse_doc(page):
         "ref":                    prop_text(get_prop(p, "REF.")),
         "setor":                  s("SETOR"),
         "cidade":                 s("CIDADE"),
+        # 22/10/26: obra da (EMP) Projeto 2.0 (relação OBRA-AUTO) — é nela que
+        # fica o MODELO 3D (botão "Abrir modelo 3D" no painel do lote)
+        "obra_id":                ((get_prop(p, "OBRA-AUTO").get("relation") or [{}])[0].get("id") or "").replace("-", "") or None,
 
         # Pessoas
         "proprietario":           s("PROPRIETARIO DOCUMENTO"),
@@ -207,6 +210,41 @@ def datas_vistoria_previa(token):
                 k = (x.get("id") or "").replace("-", "")
                 if k and dt and (k not in out or dt[:10] < out[k]):
                     out[k] = dt[:10]
+        if not data.get("has_more"):
+            break
+        cursor = data.get("next_cursor")
+    return out
+
+# ─── MODELO 3D (coluna MODELO 3D da obra na (EMP) Projeto 2.0) ─────
+def obras_com_modelo3d(token, obra_ids):
+    """{id da obra: data do 3D (ou True)} das obras com arquivo na coluna
+    MODELO 3D. A base de obras sai da própria página (parent), sem precisar de
+    outro secret. None = não deu para conferir (o mapa mostra o botão assim
+    mesmo e o visualizador avisa se não tiver modelo)."""
+    ids = [i for i in obra_ids if i]
+    if not ids:
+        return {}
+    headers = {"Authorization": f"Bearer {token}", "Notion-Version": "2022-06-28", "Content-Type": "application/json"}
+    r = requests.get(f"https://api.notion.com/v1/pages/{ids[0]}", headers=headers, timeout=60)
+    if r.status_code != 200:
+        print(f"  AVISO modelo 3D: {r.status_code} {r.text[:160]}")
+        return None
+    db = (r.json().get("parent") or {}).get("database_id")
+    if not db:
+        return None
+    out, cursor = {}, None
+    while True:
+        body = {"page_size": 100, "filter": {"property": "MODELO 3D", "files": {"is_not_empty": True}}}
+        if cursor:
+            body["start_cursor"] = cursor
+        r = requests.post(f"https://api.notion.com/v1/databases/{db}/query", headers=headers, json=body, timeout=60)
+        if r.status_code != 200:
+            print(f"  AVISO modelo 3D: {r.status_code} {r.text[:160]}")
+            return None
+        data = r.json()
+        for pg in data.get("results", []):
+            dt = prop_date(get_prop(pg.get("properties", {}), "3D ATUALIZADO EM"))
+            out[(pg.get("id") or "").replace("-", "")] = dt or True
         if not data.get("has_more"):
             break
         cursor = data.get("next_cursor")
@@ -337,6 +375,20 @@ def main():
     documentos = [parse_doc(p) for p in pages_docs]
     documentos = [d for d in documentos if d.get("ref") or d.get("endereco")]
 
+    # 1b. Modelo 3D publicado (Publicar 3D do pyRevit) na obra de cada lote
+    modelo3d_ok = True
+    try:
+        m3d = obras_com_modelo3d(TOKEN_DOCS, sorted(set(d.get("obra_id") for d in documentos if d.get("obra_id"))))
+    except Exception as e:
+        print(f"  AVISO modelo 3D: {e}")
+        m3d = None
+    if m3d is None:
+        modelo3d_ok = False
+        m3d = {}
+    for d in documentos:
+        d["modelo3d"] = m3d.get(d.get("obra_id")) if d.get("obra_id") else None
+    print(f"  {len(m3d)} obra(s) com modelo 3D publicado")
+
     # 2. Vendas
     vendas = []
     if TOKEN_VENDAS and DB_ID_VENDAS:
@@ -376,6 +428,7 @@ def main():
 
     output = {
         "updated_at": agora,
+        "modelo3d_conferido": modelo3d_ok,
         "documentos": documentos,
         "vendas":     vendas,
         "snapshot_atual": snapshot_atual,

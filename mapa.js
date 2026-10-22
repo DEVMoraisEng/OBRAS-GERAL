@@ -433,6 +433,18 @@ function campoEdit(d,f){
     <option value="">—</option>${ops.map(o=>`<option ${o===v?"selected":""}>${esc(o)}</option>`).join("")}</select></div>`;
 }
 function ico(v){ const u=up(v); if(POSITIVOS.indexOf(u)>=0) return `<span class="ic sim">✓</span>`; if(u==="NAO") return `<span class="ic nao">✗</span>`; if(!u) return `<span class="ic vz">—</span>`; return `<span class="ic ou">?</span>`; }
+/* 22/10/26: MODELO 3D da obra (Publicar 3D do pyRevit → coluna MODELO 3D da
+   (EMP) Projeto 2.0). Abre o visualizador do portal (mesmo login); o "← Mapa"
+   de lá volta para este lote. Sem conferência possível no data.json, o botão
+   aparece em toda obra ligada e o visualizador avisa se ainda não tem modelo. */
+function botao3d(d){
+  if(!d||!d.obra_id) return "";
+  const conferido=DADOS&&DADOS.modelo3d_conferido!==false;
+  if(conferido&&!d.modelo3d) return "";
+  const quando=typeof d.modelo3d==="string"?` · ${br(d.modelo3d.slice(0,10))}`:"";
+  const url=`${PORTAL}visualizador-3d.html?obra=${encodeURIComponent(d.obra_id)}&de=mapa&volta=${encodeURIComponent((location.pathname.split("/").pop()||"index.html")+"#"+(d.ref||""))}`;
+  return `<a class="b3d" href="${esc(url)}" title="Abrir o modelo 3D com as tabelas de quantitativo">🧊 Abrir modelo 3D${quando}</a>`;
+}
 function abrir(ref,semRolar){
   ref=N(ref); ATIVO=ref; marcarAtivo(ref); $("tooltip").style.display="none";
   const p=$("painel"), d=docDe(ref);
@@ -450,7 +462,8 @@ function abrir(ref,semRolar){
               :!BOOT?`<span class="ok"><span class="load"></span></span>`:BOOT.erro?`<span class="ok">só leitura agora (${esc(BOOT.erro)})</span>`:!BOOT.podeEditar?`<span class="ok">só leitura (precisa de acesso a DOCUMENTOS)</span>`:`<span class="ok" id="ed-ok">grava direto no Notion</span>`;
   p.innerHTML=`<div class="p-topo"><button class="x" onclick="MapaObras.fechar()" title="Fechar">✕</button>
       <div class="end">${esc(d.endereco||ref)}</div>
-      <div class="lin"><span class="ref">${esc(d.ref||"—")}</span><span class="st"><i style="background:${ST[st].c}"></i>${esc(ST[st].l)}</span></div></div>
+      <div class="lin"><span class="ref">${esc(d.ref||"—")}</span><span class="st"><i style="background:${ST[st].c}"></i>${esc(ST[st].l)}</span></div>
+      ${botao3d(d)}</div>
     <div class="p-corpo">
       <div class="destaque"><div class="p-sec">Status da obra ${edInfo}</div>
         <div class="grade">${EDIT.map(f=>campoEdit(d,f)).join("")}</div>${prazo}${aviso}</div>

@@ -320,3 +320,7 @@ html[data-tema="escuro"] .mapa-vp{background:#1a2e3c}
 .casa-card .vist-in .info{margin-bottom:8px}
 .casa-card .vist-in .lst{padding:8px 10px}
 .casa-card .vist-in .bt{padding:6px 11px;font-size:12px}
+/* 22/10/26: botão do modelo 3D no topo do painel do lote */
+.p-topo .b3d{display:inline-flex;align-items:center;gap:6px;margin-top:9px;background:#fff;color:var(--azul-esc);border-radius:8px;
+  padding:7px 12px;font-weight:800;font-size:12.5px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.p-topo .b3d:hover{background:var(--teal,#8FDCD2)}
