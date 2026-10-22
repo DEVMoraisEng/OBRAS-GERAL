@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22T14:38:50.016182+00:00",
+ "updated_at": "2026-10-22T14:48:15.215710+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -8477,7 +8477,7 @@
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": null,
+   "contador": "{\"a\":{\"ini\":\"2026-10-22\",\"acc\":0,\"ret\":\"2026-10-22\",\"trav\":null},\"r\":{},\"em\":\"2026-10-22T14:41:48.952Z\",\"por\":\"sistema\",\"origem\":\"atividade\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
