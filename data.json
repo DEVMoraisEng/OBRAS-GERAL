@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22T18:26:58.111665+00:00",
+ "updated_at": "2026-10-22T19:39:08.215737+00:00",
  "documentos": [
   {
    "id": "3f1c5ab532d380b9b81fd058e365eb5c",
@@ -7403,6 +7403,26 @@
   }
  ],
  "vendas": [
+  {
+   "id": "3cec5ab532d3806ea354e456c343d798",
+   "endereco": "TB 18 QD 49 LT 26",
+   "casa": 2,
+   "data_venda": "2026-10-22",
+   "eng": "Caio Araujo",
+   "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
+   "agendou_pre_vistoria": "NÃO",
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO",
+   "conferencia": null,
+   "obs_conferencia": null,
+   "contador": null,
+   "data_entrega": null,
+   "vist_completo": 0,
+   "vist_prestador": 0,
+   "apta_desde": null
+  },
   {
    "id": "3b5c5ab532d380079289c0666cd04106",
    "endereco": "TB 18 QD 49 LT 27",
