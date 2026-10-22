@@ -216,7 +216,7 @@ def datas_vistoria_previa(token):
     return out
 
 # ─── MODELO 3D (coluna MODELO 3D da obra na (EMP) Projeto 2.0) ─────
-DB_ID_OBRAS = os.environ.get("NOTION_DB_OBRAS", "")
+DB_ID_OBRAS = os.environ.get("NOTION_DB_OBRAS", "306c5ab532d3812fa14fe9a281510128")   # (EMP) Projeto 2.0
 TITULO_DB_OBRAS = "(EMP) Projeto 2.0"
 
 def _norm_end(t):
