@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-23T00:26:51.317010+00:00",
+ "updated_at": "2026-10-23T00:57:00.653902+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8610,7 +8610,7 @@
    "casa": 2,
    "data_venda": "2026-05-29",
    "eng": "Caio Araujo",
-   "entregou_casa": "NÃO",
+   "entregou_casa": "ÁGIO",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
