@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-23T15:00:50.756618+00:00",
+ "updated_at": "2026-10-23T15:12:08.737512+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -6914,7 +6914,7 @@
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "SIM",
-   "ret_armazenado": "NÃO",
+   "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "SIM",
