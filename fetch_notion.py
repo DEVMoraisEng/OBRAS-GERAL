@@ -267,6 +267,30 @@ def obras_com_modelo3d(token):
         if not data.get("has_more"):
             break
         cursor = data.get("next_cursor")
+    # 23/10/26: obras de MESMO LAYOUT (coluna 3D DA OBRA) abrem o 3D da obra-base
+    cursor = None
+    while True:
+        body = {"page_size": 100, "filter": {"property": "3D DA OBRA", "relation": {"is_not_empty": True}}}
+        if cursor:
+            body["start_cursor"] = cursor
+        r = requests.post(f"https://api.notion.com/v1/databases/{db}/query", headers=headers, json=body, timeout=60)
+        if r.status_code != 200:
+            break                      # coluna ainda não existe: só as obras com 3D próprio
+        data = r.json()
+        for pg in data.get("results", []):
+            pid = (pg.get("id") or "").replace("-", "")
+            props = pg.get("properties", {})
+            rel = (get_prop(props, "3D DA OBRA").get("relation") or [])
+            base = (rel[0].get("id") or "").replace("-", "") if rel else ""
+            if pid in por_id or base not in por_id:
+                continue
+            por_id[pid] = por_id[base]
+            for v in props.values():
+                if v.get("type") == "title":
+                    por_end[_norm_end(prop_title(v))] = pid
+        if not data.get("has_more"):
+            break
+        cursor = data.get("next_cursor")
     return por_id, por_end
 
 # ─── CÁLCULO DE STATUS (réplica da lógica JS) ────────────────
