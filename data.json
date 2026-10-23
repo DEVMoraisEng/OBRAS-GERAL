@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-23T19:00:47.748211+00:00",
+ "updated_at": "2026-10-23T20:26:55.544019+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8513,7 +8513,7 @@
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
-   "agendou_pre_vistoria": "NÃO",
+   "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
@@ -14342,7 +14342,8 @@
     "MANHÃ"
    ],
    "pv": {
-    "2": "2026-08-03"
+    "2": "2026-08-03",
+    "1": ""
    }
   },
   "TC 43": {
@@ -15531,6 +15532,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-23T20:26:55.544019+00:00",
+   "ref": "TC 44",
+   "endereco": "TB 21 QD 51 LT 35",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": ""
+  },
   {
    "em": "2026-10-23T12:19:40.047100+00:00",
    "ref": "JB 6",
