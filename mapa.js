@@ -528,12 +528,14 @@ const MED=[{v:"nao_realizada",l:"Não realizada",c:"#9aaac5"},{v:"lancada_aguard
 let MEDS={semana:tercaDe(),itens:{}}, MED_ABERTO=true, MED_VER_FIN=false;
 const K_MED=()=>"og_med_"+(CFG?N(CFG.setor):"")+"_"+tercaDe();
 const URL_CONTR=PORTAL+"dist/mc_medicoes/contratos.json", K_CONTR="og_contratos_v1";
-let CONTR=null, CONTR_POR_END={};
+let CONTR=null, CONTR_POR_END={}, CONTR_100=0;
 let MED_ENG=lsGet("og_med_eng",""), MED_BUSCA="";
 const endK=s=>N(s).replace(/[^A-Z0-9]+/g," ").replace(/\b0+(\d)/g,"$1").trim();
 function prepararContratos(j){
-  CONTR=j&&j.contratos?j:null; CONTR_POR_END={};
-  ((CONTR&&CONTR.contratos)||[]).forEach(c=>{ const k=endK(c.obra); if(k) (CONTR_POR_END[k]=CONTR_POR_END[k]||[]).push(c); });
+  CONTR=j&&j.contratos?j:null; CONTR_POR_END={}; CONTR_100=0;
+  /* 23/10: contrato já 100% medido sai das medições (não tem mais o que medir) */
+  ((CONTR&&CONTR.contratos)||[]).forEach(c=>{ if(c.ultima&&Number(c.ultima.pct)>=100){ CONTR_100++; return; }
+    const k=endK(c.obra); if(k) (CONTR_POR_END[k]=CONTR_POR_END[k]||[]).push(c); });
 }
 async function carregarContratos(){
   const c=lsGet(K_CONTR,null); if(c&&!CONTR){ prepararContratos(c); repintarMed(); }
@@ -685,7 +687,7 @@ function pintarMedIndice(){
   box.innerHTML=barra+(vis.length?`<table><thead><tr><th>Obra</th><th>Contrato (Mais Controle)</th><th>Medição da semana</th></tr></thead><tbody>${corpo}</tbody></table>`
       :`<div class="vazio" style="border:0">✅ Nenhuma medição em aberto nesta semana${eng?" para "+esc(eng):""}.</div>`)+
     (!S||!S.token?`<div class="vazio" style="border:0;border-top:1px solid var(--border2);border-radius:0"><a href="${PORTAL}login.html">Entre no portal</a> para ver e lançar as medições.</div>`
-      :`<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${abertas.length} em aberto · ${feitas} finalizada${feitas===1?"":"s"} nesta semana${lnk}${emFin?` · <span title="Contratos que continuam em aberto no Mais Controle, mas a obra já está finalizada no DOCUMENTOS — não aparecem aqui; vale encerrar no MC">${emFin} contrato${emFin===1?"":"s"} em aberto no MC em obras já finalizadas</span>`:""}</div>`);
+      :`<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${abertas.length} em aberto · ${feitas} finalizada${feitas===1?"":"s"} nesta semana${lnk}${emFin?` · <span title="Contratos que continuam em aberto no Mais Controle, mas a obra já está finalizada no DOCUMENTOS — não aparecem aqui; vale encerrar no MC">${emFin} contrato${emFin===1?"":"s"} em aberto no MC em obras já finalizadas</span>`:""}${CONTR_100?` · <span title="Contratos com 100% medido no Mais Controle — saem da lista">${CONTR_100} contrato${CONTR_100===1?"":"s"} 100% medido${CONTR_100===1?"":"s"} (fora da lista)</span>`:""}</div>`);
 }
 
 /* =====================================================================
@@ -1093,14 +1095,15 @@ window.MapaObras={
   /* a barra é redesenhada a cada letra: devolve o foco e o cursor ao campo */
   entBusca:q=>{ ENT_BUSCA=q; pintarEntregas(); const i=$("ent-busca"); if(i){ i.focus(); const n=i.value.length; try{ i.setSelectionRange(n,n); }catch(e){} } },
   fechar:()=>{ ATIVO=null; marcarAtivo(""); if(MODO==="casas") pintarCasas(); const pn=$("painel"); if(pn) pn.innerHTML=MODO==="casas"?`<div class="p-vazio"><b>🏠</b>Toque em um lote no mapa de casas para ver a situação de cada casa, as datas e os documentos da vistoria.</div>`:`<div class="p-vazio"><b>📍</b>Toque em um lote no mapa para ver e preencher o status da obra.</div>`; history.replaceState(null,"",location.pathname); },
-  toggle:id=>{ const e=$(id); if(!e) return; secAbrir(id, e.style.display==="none"); lsSet("og_sec_"+(INDICE&&id==="med"?"i_":"")+id, e.style.display==="none"?"0":"1"); }
+  toggle:id=>{ const e=$(id); if(!e) return; secAbrir(id, e.style.display==="none"); lsSet("og_sec_"+(INDICE&&id==="med"?"i2_":"")+id, e.style.display==="none"?"0":"1"); }
 };
 /* 16/10: seções que abrem e fecham (Medições, Notificações). A seta ficou maior,
    com "abrir/fechar" escrito ao lado, e cada aparelho lembra a última escolha.
    MEDIÇÕES DA SEMANA vem FECHADA por padrão. */
 const SEC_PADRAO={ med:"0", notif:"1" };
-/* 23/10: no índice as medições vêm ABERTAS (é para o engenheiro ver as dele) */
-const SEC_PADRAO_IDX={ med:"1" };
+/* 23/10: no índice as medições vêm FECHADAS por padrão (chave nova "i2_" para
+   valer também para quem já tinha aberto) */
+const SEC_PADRAO_IDX={ med:"0" };
 function secAbrir(id,ab){
   const e=$(id); if(!e) return; e.style.display=ab?"":"none";
   const s=$(id+"-seta"); if(s) s.textContent=ab?"▾":"▸";
@@ -1113,7 +1116,7 @@ function montarSecoes(){
     if(!h.querySelector("[data-tog]")){ const b=document.createElement("span"); b.className="tog"; b.dataset.tog=id;
       const d=h.querySelector(".dir"); h.insertBefore(b,d||null); }
     h.title="Clique para abrir ou fechar";
-    secAbrir(id, lsGet("og_sec_"+(INDICE?"i_":"")+id,(INDICE&&SEC_PADRAO_IDX[id])||SEC_PADRAO[id])!=="0");
+    secAbrir(id, lsGet("og_sec_"+(INDICE?"i2_":"")+id,(INDICE&&SEC_PADRAO_IDX[id])||SEC_PADRAO[id])!=="0");
   });
 }
 
