@@ -10,7 +10,7 @@
 <title>Empreendimentos · Mapa de Obras · Morais</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="mapa.css?v=2">
+<link rel="stylesheet" href="mapa.css?v=3">
 </head>
 <body>
 <header><div class="wrap hbar">
@@ -29,6 +29,10 @@
   <div class="info-bar" id="resumo"></div>
   <div id="conteudo"><div class="vazio"><span class="load"></span> Carregando…</div></div>
 
+  <!-- 23/10/26: medições em aberto de TODAS as obras (contratos do Mais Controle), por engenheiro -->
+  <div class="sec clic" onclick="MapaObras.toggle('med')"><span class="seta" id="med-seta">▾</span><span class="cond">📏 Medições da semana — todas as obras</span><span class="qtd" id="med-n">0</span><span class="dir" style="font-size:12px;color:var(--text3);font-weight:600" id="med-sem"></span></div>
+  <div class="med" id="med"><div class="vazio" style="border:0"><span class="load"></span> Carregando…</div></div>
+
   <div class="sec clic" onclick="MapaObras.toggle('ent')"><span class="seta" id="ent-seta">▸</span><span class="cond">🏠 Casas vendidas e não entregues</span><span class="qtd" id="ent-n">0</span><span class="dir" id="ent-chips"></span></div>
   <div id="ent" style="display:none"></div>
 
@@ -41,20 +45,22 @@
 <script>
 window.PAGINA = "indice";
 /* Empreendimentos com mapa. "chaves": pedaços do SETOR no Notion.
+   "setor": o MESMO CONFIG.setor da página do setor (é a chave com que as
+   medições da semana são gravadas — 23/10/26).
    Setor novo = uma linha aqui + a página dele (copiar uma existente). */
 window.SETORES = [
-  { arq: "acropole.html",   nome: "Acrópole",         sub: "Setor Acrópole",           cidade: "Goiânia",        chaves: ["ACROPOLE"] },
-  { arq: "esmeraldas.html", nome: "Esmeraldas",       sub: "Cond. das Esmeraldas",     cidade: "Goiânia",        chaves: ["ESMERALDAS"] },
-  { arq: "ipanema.html",    nome: "Ipanema",          sub: "Setor Ipanema",            cidade: "Goiânia",        chaves: ["IPANEMA"] },
-  { arq: "joaobraz.html",   nome: "João Braz 2",      sub: "Setor João Braz",          cidade: "Goiânia",        chaves: ["JOAO BRAZ", "BRAZ"] },
-  { arq: "marques.html",    nome: "Marques de Abreu", sub: "Rua Marques de Abreu",     cidade: "Goiânia",        chaves: ["MARQUES"] },
-  { arq: "solarville.html", nome: "Solar Ville",      sub: "Residencial Solar Ville",  cidade: "Goiânia",        chaves: ["SOLAR"] },
-  { arq: "buritis.html",    nome: "Pq. dos Buritis",  sub: "Parque dos Buritis",       cidade: "Senador Canedo", chaves: ["BURITIS"] },
-  { arq: "ravena.html",     nome: "Ravena",           sub: "Residencial Ravena",       cidade: "Senador Canedo", chaves: ["RAVENA"] },
-  { arq: "florenca.html",   nome: "Florença",         sub: "Residencial Florença",     cidade: "Senador Canedo", chaves: ["FLORENCA", "FLORENÇA"] },
-  { arq: "terrabela.html",  nome: "Terrabela",        sub: "Terrabela do Cerrado II",  cidade: "Senador Canedo", chaves: ["TERRABELA"] }
+  { arq: "acropole.html", setor: "ACROPOLE",   nome: "Acrópole",         sub: "Setor Acrópole",           cidade: "Goiânia",        chaves: ["ACROPOLE"] },
+  { arq: "esmeraldas.html", setor: "COND. DAS ESMERALDAS", nome: "Esmeraldas",       sub: "Cond. das Esmeraldas",     cidade: "Goiânia",        chaves: ["ESMERALDAS"] },
+  { arq: "ipanema.html", setor: "IPANEMA",    nome: "Ipanema",          sub: "Setor Ipanema",            cidade: "Goiânia",        chaves: ["IPANEMA"] },
+  { arq: "joaobraz.html", setor: "JOÃO BRAZ 2",   nome: "João Braz 2",      sub: "Setor João Braz",          cidade: "Goiânia",        chaves: ["JOAO BRAZ", "BRAZ"] },
+  { arq: "marques.html", setor: "MARQUES DE ABREU",    nome: "Marques de Abreu", sub: "Rua Marques de Abreu",     cidade: "Goiânia",        chaves: ["MARQUES"] },
+  { arq: "solarville.html", setor: "SOLAR VILLE", nome: "Solar Ville",      sub: "Residencial Solar Ville",  cidade: "Goiânia",        chaves: ["SOLAR"] },
+  { arq: "buritis.html", setor: "PQ DOS BURITIS",    nome: "Pq. dos Buritis",  sub: "Parque dos Buritis",       cidade: "Senador Canedo", chaves: ["BURITIS"] },
+  { arq: "ravena.html", setor: "RAVENA",     nome: "Ravena",           sub: "Residencial Ravena",       cidade: "Senador Canedo", chaves: ["RAVENA"] },
+  { arq: "florenca.html", setor: "FLORENÇA",   nome: "Florença",         sub: "Residencial Florença",     cidade: "Senador Canedo", chaves: ["FLORENCA", "FLORENÇA"] },
+  { arq: "terrabela.html", setor: "TERRABELA DO CERRADO",  nome: "Terrabela",        sub: "Terrabela do Cerrado II",  cidade: "Senador Canedo", chaves: ["TERRABELA"] }
 ];
 </script>
-<script src="mapa.js?v=2"></script>
+<script src="mapa.js?v=3"></script>
 </body>
 </html>

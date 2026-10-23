@@ -85,6 +85,20 @@ def parse_doc(page):
     p = page.get("properties", {})
     def s(nome): return prop_select(get_prop(p, nome))
     def d(nome): return prop_date(get_prop(p, nome))
+    def pessoas(*nomes):
+        """23/10/26: engenheiro da obra — coluna Pessoa (ou seleção/texto, se mudar)."""
+        for n in nomes:
+            v = get_prop(p, n)
+            if not v:
+                continue
+            if v.get("people") is not None:
+                nm = ", ".join((u.get("name") or "") for u in v.get("people") or [] if u.get("name"))
+                if nm:
+                    return nm
+            sv = prop_select(v)
+            if sv:
+                return sv
+        return None
 
     return {
         # Identificação
@@ -100,6 +114,8 @@ def parse_doc(page):
         # Pessoas
         "proprietario":           s("PROPRIETARIO DOCUMENTO"),
         "mestre":                 s("MESTRE"),
+        # 23/10/26: engenheiro da obra — filtro "Medições da semana" por engenheiro no índice
+        "eng":                    pessoas("ENG. EXECUÇÃO", "ENG. EXECUCAO", "ENG. RESPONSÁEL", "ENG. RESPONSÁVEL"),
         "despachante":            s("DESPACHANTE"),
 
         # Datas de obra

@@ -510,17 +510,79 @@ function buscar(q){ q=N(q); let achou=[];
     el.classList.toggle("apagado",!ok); if(q&&ok) achou.push(el); });
   if(q&&achou.length) enquadrar(uniao(achou.map(pontos)),achou.length===1?5:1.3); }
 
-/* ---------------- medições da semana (zera toda terça) ---------------- */
+/* ---------------- medições da semana (zera toda terça) ----------------
+ * 23/10/26 — MEDIÇÃO POR CONTRATO. Antes era UMA medição por obra, presa ao
+ * MESTRE da base DOCUMENTOS. Agora cada obra mostra TODOS os contratos em
+ * aberto no Mais Controle (mestre, pintor, eletricista, ceramista…), lidos
+ * pelo robô "Robô MC - Medições de contratos" do PORTAL-MORAIS (de 2 em 2 h)
+ * em PORTAL-MORAIS/dist/mc_medicoes/contratos.json. Se o mestre mudar no meio
+ * da obra, muda o contrato no MC e o mapa acompanha — a coluna MESTRE do
+ * DOCUMENTOS deixou de ser a base.
+ *   - cada contrato tem o seu status da semana (mesmo esquema: Não realizada →
+ *     Lançada → Em andamento → Finalizada), gravado com ref "OBRA#C<nº>";
+ *   - no índice (tela principal) aparecem as medições em aberto de TODAS as
+ *     obras, com filtro por ENGENHEIRO (ENG. EXECUÇÃO do DOCUMENTOS);
+ *   - sem o arquivo do robô (primeira vez offline), volta ao jeito antigo. */
 const MED=[{v:"nao_realizada",l:"Não realizada",c:"#9aaac5"},{v:"lancada_aguardando",l:"Lançada – ag. revisão",c:"#e8c84a"},
   {v:"em_andamento",l:"Em andamento",c:"#4a90d9"},{v:"finalizada",l:"Finalizada",c:"#27c45e"}];
 let MEDS={semana:tercaDe(),itens:{}}, MED_ABERTO=true, MED_VER_FIN=false;
 const K_MED=()=>"og_med_"+(CFG?N(CFG.setor):"")+"_"+tercaDe();
+const URL_CONTR=PORTAL+"dist/mc_medicoes/contratos.json", K_CONTR="og_contratos_v1";
+let CONTR=null, CONTR_POR_END={};
+let MED_ENG=lsGet("og_med_eng",""), MED_BUSCA="";
+const endK=s=>N(s).replace(/[^A-Z0-9]+/g," ").replace(/\b0+(\d)/g,"$1").trim();
+function prepararContratos(j){
+  CONTR=j&&j.contratos?j:null; CONTR_POR_END={};
+  ((CONTR&&CONTR.contratos)||[]).forEach(c=>{ const k=endK(c.obra); if(k) (CONTR_POR_END[k]=CONTR_POR_END[k]||[]).push(c); });
+}
+async function carregarContratos(){
+  const c=lsGet(K_CONTR,null); if(c&&!CONTR){ prepararContratos(c); repintarMed(); }
+  if(!navigator.onLine) return;
+  try{ const r=await fetch(URL_CONTR+"?t="+Math.floor(Date.now()/60000),{cache:"no-store"}); if(!r.ok) throw 0;
+    const j=await r.json(); if(j&&j.contratos){ lsSet(K_CONTR,j); prepararContratos(j); repintarMed(); } }catch(e){}
+}
+function repintarMed(){ if(INDICE) pintarMedIndice(); else pintarMedicoes(); }
+const contratosDe=d=>CONTR_POR_END[endK(d&&d.endereco)]||[];
+const refContrato=(d,c)=>N(d.ref||d.endereco)+"#C"+String(c.codigo||String(c.id||"").slice(0,8)).toUpperCase();
+const engDe=d=>(d&&d.eng)||"Sem engenheiro";
+function engsDe(lista){ const m={}; lista.forEach(x=>{ String(x.eng).split(/\s*,\s*/).forEach(e=>{ m[e]=(m[e]||0)+1; }); });
+  return Object.keys(m).sort((a,b)=>(a==="Sem engenheiro")-(b==="Sem engenheiro")||a.localeCompare(b,"pt-BR")).map(e=>({e,n:m[e]})); }
+const bateEng=(x,e)=>!e||String(x.eng).split(/\s*,\s*/).indexOf(e)>=0;
+/* engenheiro escolhido que não tem nada nesta lista (veio de outra tela): mostra todos */
+const engValido=lista=>MED_ENG&&engsDe(lista).some(x=>x.e===MED_ENG)?MED_ENG:"";
+/* a obra entra nas medições: contrato em aberto e obra não finalizada (ou iniciada, mesmo sem contrato) */
+function linhasMedicao(docs){
+  const out=[];
+  docs.filter(d=>!finalizada(d)).forEach(d=>{
+    const cs=contratosDe(d);
+    if(cs.length) cs.forEach(c=>out.push({d,c,ref:refContrato(d,c),eng:engDe(d)}));
+    else if(iniciada(d)) out.push({d,c:null,ref:N(d.ref||d.endereco),eng:engDe(d)});
+  });
+  return out.sort((a,b)=>String(a.d.endereco).localeCompare(String(b.d.endereco),"pt-BR")||String(a.c&&a.c.servico||"").localeCompare(String(b.c&&b.c.servico||""),"pt-BR"));
+}
+function descContrato(c){
+  if(!c) return `<span class="quem">sem contrato em aberto no Mais Controle</span>`;
+  const u=c.ultima||{}, n=c.medicoes;
+  const ult=u.data_aprovacao?`última aprovada ${brc(u.data_aprovacao)}`:(n?`${n} medição(ões)`:"nenhuma medição no MC");
+  return `<b>${esc(c.servico||"Contrato")}</b> · ${esc(c.fornecedor||"—")}
+    <div class="quem">Contrato ${esc(c.codigo||"")}${c.status_txt?" · "+esc(c.status_txt):""} · ${ult}${u.pct?` · ${String(u.pct).replace(".",",")}% medido`:""}</div>`;
+}
+function seletorMed(l,setor,st){
+  const o=MED.find(x=>x.v===st)||MED[0];
+  return `<select style="--mc:${o.c}" onchange="MapaObras.medir('${esc(l.ref)}','${esc(l.d.endereco||"")}',this.value,'${esc(setor)}')">${MED.map(x=>`<option value="${x.v}" ${x.v===st?"selected":""}>${x.l}</option>`).join("")}</select>`;
+}
+function chipMed(st){ const o=MED.find(x=>x.v===st)||MED[0]; return `<span class="chip" style="background:${o.c}">${o.l}</span>`; }
+function quemMed(m){ return m&&m.por?`<div class="quem">${esc(m.por)}${m.em?" · "+new Date(m.em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`:""; }
+function barraEng(lista,idSel,fn){
+  const engs=engsDe(lista);
+  return `<label class="en-sel">👷 Engenheiro <select id="${idSel}" onchange="MapaObras.${fn}(this.value)"><option value="">Todos (${lista.length})</option>${engs.map(x=>`<option value="${esc(x.e)}" ${x.e===engValido(lista)?"selected":""}>${esc(x.e)} (${x.n})</option>`).join("")}</select></label>`;
+}
 async function carregarMedicoes(){
   const c=lsGet(K_MED(),null); if(c) MEDS=c; else MEDS={semana:tercaDe(),itens:{}};
   pintarMedicoes();
   if(!S||!S.token||!navigator.onLine) return;
   try{ const r=await api({action:"medLista",setor:CFG.setor},30000);
-    if(r&&r.ok){ MEDS={semana:r.semana,itens:r.itens||{},podeMedir:r.podeMedir}; 
+    if(r&&r.ok){ MEDS={semana:r.semana,itens:r.itens||{},podeMedir:r.podeMedir};
       /* o que está na fila (sem internet) vale por cima */
       lsGet(K_FILA,[]).forEach(it=>{ const p=it.payload; if(p.action==="medSalvar"&&N(p.setor)===N(CFG.setor)) MEDS.itens[N(p.ref)]={status:p.status,por:"(enviando)"}; });
       lsSet(K_MED(),MEDS); pintarMedicoes(); } }catch(e){}
@@ -529,30 +591,101 @@ function pintarMedicoes(){
   const box=$("med"); if(!box||INDICE) return;
   const t=MEDS.semana||tercaDe(), fimS=maisDias(t,6);
   const lab=$("med-sem"); if(lab) lab.textContent=`de ${brc(t)} (ter) a ${brc(fimS)} (seg) · zera toda terça`;
+  const pode=S&&S.token&&MEDS.podeMedir!==false;
+  if(!CONTR){ pintarMedicoesAntigo(box,pode); return; }
+  const todas=linhasMedicao(DOCS);
+  const stDe=l=>{ const m=MEDS.itens[N(l.ref)]; return (m&&m.status)||"nao_realizada"; };
+  const eng=engValido(todas);
+  const comC=todas.filter(l=>l.c), daEng=todas.filter(l=>bateEng(l,eng));
+  const feitas=daEng.filter(l=>l.c&&stDe(l)==="finalizada").length, nC=daEng.filter(l=>l.c).length;
+  const vis=daEng.filter(l=>MED_VER_FIN||!l.c||stDe(l)!=="finalizada");
+  const nEl=$("med-n"); if(nEl) nEl.textContent=comC.filter(l=>stDe(l)!=="finalizada").length;
+  if(!todas.length){ box.innerHTML=`<div class="vazio" style="border:0">Nenhuma obra em andamento e nenhum contrato em aberto neste setor.</div>`; return; }
+  const barra=`<div class="med-barra">${barraEng(todas,"med-eng","medEng")}<span class="quem">Contratos em aberto no Mais Controle · atualizado ${CONTR.gerado_em?new Date(CONTR.gerado_em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):"—"}</span></div>`;
+  let ant="";
+  const corpo=vis.map(l=>{
+    const m=MEDS.itens[N(l.ref)]||{}, st=stDe(l), nova=l.d.endereco!==ant; ant=l.d.endereco;
+    return `<tr class="${nova?"med-obra":""}"><td class="end" onclick="MapaObras.focar('${esc(N(l.d.ref||l.d.endereco))}')">${nova?`${esc(l.d.endereco||l.d.ref)}<div class="quem">${esc(l.d.ref||"")}${l.d.eng?" · 👷 "+esc(l.d.eng):""}</div>`:""}</td>
+      <td>${descContrato(l.c)}</td>
+      <td>${l.c?(pode?seletorMed(l,CFG.setor,st):chipMed(st))+quemMed(m):""}</td></tr>`;
+  }).join("");
+  const lnk=feitas?` · <a href="#" onclick="MapaObras.verFinalizadas();return false" style="color:var(--text2);font-weight:600">${MED_VER_FIN?"ocultar finalizadas":"mostrar finalizadas"}</a>`:"";
+  box.innerHTML=barra+(vis.length?`<table><thead><tr><th>Obra</th><th>Contrato (Mais Controle)</th><th>Medição da semana</th></tr></thead><tbody>${corpo}</tbody></table>`
+      :`<div class="vazio" style="border:0">✅ Todas as medições desta semana estão finalizadas${eng?" para "+esc(eng):""}.</div>`)+
+    (!S||!S.token?`<div class="vazio" style="border:0;border-top:1px solid var(--border2);border-radius:0"><a href="${PORTAL}login.html">Entre no portal</a> para lançar as medições.</div>`
+      :`<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${feitas} de ${nC} contratos com medição finalizada nesta semana${lnk}</div>`);
+}
+/* jeito antigo (uma medição por obra) — só enquanto o arquivo do robô não chegou */
+function pintarMedicoesAntigo(box,pode){
   const obras=DOCS.filter(d=>iniciada(d)&&!finalizada(d)).sort((a,b)=>String(a.endereco).localeCompare(String(b.endereco),"pt-BR"));
   const stDe=d=>{ const m=MEDS.itens[N(d.ref||d.endereco)]; return (m&&m.status)||"nao_realizada"; };
   const feitas=obras.filter(d=>stDe(d)==="finalizada").length;
-  /* medições finalizadas somem da lista (dá para reexibir pelo rodapé) */
   const vis=MED_VER_FIN?obras:obras.filter(d=>stDe(d)!=="finalizada");
   const nEl=$("med-n"); if(nEl) nEl.textContent=obras.length-feitas;
   if(!obras.length){ box.innerHTML=`<div class="vazio" style="border:0">Nenhuma obra em andamento neste setor.</div>`; return; }
-  const pode=S&&S.token&&MEDS.podeMedir!==false;
-  const lnk=feitas?` · <a href="#" onclick="MapaObras.verFinalizadas();return false" style="color:var(--text2);font-weight:600">${MED_VER_FIN?"ocultar finalizadas":"mostrar finalizadas"}</a>`:"";
-  const tabela=vis.length?`<table><thead><tr><th>Obra</th><th>Medição da semana</th></tr></thead><tbody>${vis.map(d=>{
-      const ref=N(d.ref||d.endereco), m=MEDS.itens[ref]||{}, st=m.status||"nao_realizada", o=MED.find(x=>x.v===st)||MED[0];
-      return `<tr><td class="end" onclick="MapaObras.focar('${esc(ref)}')">${esc(d.endereco||ref)}<div class="quem">${esc(d.ref||"")}${d.mestre?" · "+esc(d.mestre):""}</div></td>
-        <td>${pode?`<select style="--mc:${o.c}" onchange="MapaObras.medir('${esc(ref)}','${esc(d.endereco||"")}',this.value)">${MED.map(x=>`<option value="${x.v}" ${x.v===st?"selected":""}>${x.l}</option>`).join("")}</select>`
-          :`<span class="chip" style="background:${o.c}">${o.l}</span>`}${m.por?`<div class="quem">${esc(m.por)}${m.em?" · "+new Date(m.em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`:""}</td></tr>`;
-    }).join("")}</tbody></table>`
-    :`<div class="vazio" style="border:0">✅ Todas as medições desta semana estão finalizadas.</div>`;
-  box.innerHTML=tabela+(!S||!S.token?`<div class="vazio" style="border:0;border-top:1px solid var(--border2);border-radius:0"><a href="${PORTAL}login.html">Entre no portal</a> para lançar as medições.</div>`
-      :`<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${feitas} de ${obras.length} finalizadas nesta semana${lnk}</div>`);
+  box.innerHTML=(vis.length?`<table><thead><tr><th>Obra</th><th>Medição da semana</th></tr></thead><tbody>${vis.map(d=>{
+      const l={d,ref:N(d.ref||d.endereco)}, m=MEDS.itens[l.ref]||{}, st=stDe(d);
+      return `<tr><td class="end" onclick="MapaObras.focar('${esc(l.ref)}')">${esc(d.endereco||l.ref)}<div class="quem">${esc(d.ref||"")}</div></td>
+        <td>${pode?seletorMed(l,CFG.setor,st):chipMed(st)}${quemMed(m)}</td></tr>`; }).join("")}</tbody></table>`
+    :`<div class="vazio" style="border:0">✅ Todas as medições desta semana estão finalizadas.</div>`)+
+    `<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)"><span class="load"></span> buscando os contratos do Mais Controle…</div>`;
 }
-function verFinalizadas(){ MED_VER_FIN=!MED_VER_FIN; pintarMedicoes(); }
-async function medir(ref,endereco,status){
-  MEDS.itens[ref]={status,por:(S&&S.nome)||"",em:new Date().toISOString()}; lsSet(K_MED(),MEDS); pintarMedicoes();
-  const r=await gravar({action:"medSalvar",setor:CFG.setor,ref,endereco,status},"Medição");
-  if(!r.ok){ toast("Não gravou a medição: "+r.erro); carregarMedicoes(); } else if(r.fila) toast("Sem internet: medição guardada, sobe sozinha.");
+function verFinalizadas(){ MED_VER_FIN=!MED_VER_FIN; repintarMed(); }
+async function medir(ref,endereco,status,setor){
+  setor=setor||(CFG&&CFG.setor)||"";
+  const it={status,por:(S&&S.nome)||"",em:new Date().toISOString()};
+  if(INDICE){ (MEDS_TODAS[setor]=MEDS_TODAS[setor]||{itens:{}}).itens[N(ref)]=it; lsSet(K_MED_TODAS(),MEDS_TODAS); pintarMedIndice(); }
+  else { MEDS.itens[N(ref)]=it; lsSet(K_MED(),MEDS); pintarMedicoes(); }
+  const r=await gravar({action:"medSalvar",setor,ref,endereco,status},"Medição");
+  if(!r.ok){ toast("Não gravou a medição: "+r.erro); if(INDICE) carregarMedTodas(); else carregarMedicoes(); } else if(r.fila) toast("Sem internet: medição guardada, sobe sozinha.");
+}
+
+/* ---------- índice: medições em aberto de TODAS as obras, por engenheiro ---------- */
+let MEDS_TODAS={}, MED_IDX_VER_FIN=false;
+const K_MED_TODAS=()=>"og_med_todas_"+tercaDe();
+const OUTRAS="OUTRAS OBRAS";
+function setorPag(d){ const s=SETORES.find(x=>pertence(d,x)); return s?{setor:s.setor||s.nome,arq:s.arq,nome:s.nome}:{setor:OUTRAS,arq:"",nome:"Outras obras"}; }
+async function carregarMedTodas(){
+  MEDS_TODAS=lsGet(K_MED_TODAS(),{})||{}; pintarMedIndice();
+  if(!S||!S.token||!navigator.onLine) return;
+  const setores=[...new Set(SETORES.map(s=>s.setor||s.nome).concat([OUTRAS]))];
+  const rs=await Promise.all(setores.map(st=>api({action:"medLista",setor:st},30000).then(r=>[st,r]).catch(()=>[st,null])));
+  rs.forEach(([st,r])=>{ if(r&&r.ok) MEDS_TODAS[st]={itens:r.itens||{},podeMedir:r.podeMedir}; });
+  lsGet(K_FILA,[]).forEach(it=>{ const p=it.payload; if(p.action==="medSalvar"){ (MEDS_TODAS[p.setor]=MEDS_TODAS[p.setor]||{itens:{}}).itens[N(p.ref)]={status:p.status,por:"(enviando)"}; } });
+  lsSet(K_MED_TODAS(),MEDS_TODAS); pintarMedIndice();
+}
+function pintarMedIndice(){
+  const box=$("med"); if(!box||!INDICE) return;
+  const t=tercaDe(), lab=$("med-sem"); if(lab) lab.textContent=`de ${brc(t)} (ter) a ${brc(maisDias(t,6))} (seg) · zera toda terça`;
+  if(!CONTR){ box.innerHTML=`<div class="vazio" style="border:0"><span class="load"></span> Carregando os contratos do Mais Controle…</div>`; return; }
+  /* obras do DOCUMENTOS + obras que só existem no MC (condomínio, escritório…) */
+  const docs=DOCS.slice(), conhecidas=new Set(docs.map(d=>endK(d.endereco)));
+  Object.keys(CONTR_POR_END).forEach(k=>{ if(!conhecidas.has(k)){ const c=CONTR_POR_END[k][0]; docs.push({endereco:c.obra,ref:"",setor:"",eng:null,obra_iniciada:"SIM",_soMC:true}); } });
+  const todas=linhasMedicao(docs).filter(l=>l.c);
+  /* contrato ainda aberto no MC numa obra já finalizada no DOCUMENTOS: não entra (só a contagem, para fechar lá) */
+  const emFin=docs.filter(finalizada).reduce((n,d)=>n+contratosDe(d).length,0);
+  const stDe=l=>{ const sp=setorPag(l.d), m=((MEDS_TODAS[sp.setor]||{}).itens||{})[N(l.ref)]; return (m&&m.status)||"nao_realizada"; };
+  const pode=S&&S.token&&Object.values(MEDS_TODAS).every(x=>x.podeMedir!==false);
+  const eng=engValido(todas);
+  const daEng=todas.filter(l=>bateEng(l,eng)&&(!MED_BUSCA||N(l.d.endereco+" "+(l.c.fornecedor||"")+" "+(l.c.servico||"")).indexOf(N(MED_BUSCA))>=0));
+  const abertas=daEng.filter(l=>stDe(l)!=="finalizada"), feitas=daEng.length-abertas.length;
+  const vis=MED_IDX_VER_FIN?daEng:abertas;
+  const nEl=$("med-n"); if(nEl) nEl.textContent=todas.filter(l=>bateEng(l,eng)&&stDe(l)!=="finalizada").length;
+  const barra=`<div class="med-barra">${barraEng(todas,"med-eng","medEng")}
+    <input class="med-busca" id="med-busca" type="search" placeholder="Buscar obra, fornecedor ou serviço…" value="${esc(MED_BUSCA)}" oninput="MapaObras.medBusca(this.value)">
+    <span class="quem">${CONTR.gerado_em?"Mais Controle · "+new Date(CONTR.gerado_em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</span></div>`;
+  let ant="";
+  const corpo=vis.map(l=>{
+    const sp=setorPag(l.d), m=((MEDS_TODAS[sp.setor]||{}).itens||{})[N(l.ref)]||{}, st=stDe(l), nova=l.d.endereco!==ant; ant=l.d.endereco;
+    const ir=sp.arq&&l.d.ref?`onclick="MapaObras.irPara('${esc(l.d.setor||"")}','${esc(l.d.ref)}')"`:"";
+    return `<tr class="${nova?"med-obra":""}"><td class="end" ${ir}>${nova?`${esc(l.d.endereco)}<div class="quem">${esc(sp.nome)}${l.d.eng?" · 👷 "+esc(l.d.eng):""}</div>`:""}</td>
+      <td>${descContrato(l.c)}</td><td>${pode?seletorMed(l,sp.setor,st):chipMed(st)}${quemMed(m)}</td></tr>`;
+  }).join("");
+  const lnk=feitas?` · <a href="#" onclick="MapaObras.verFinIdx();return false" style="color:var(--text2);font-weight:600">${MED_IDX_VER_FIN?"ocultar finalizadas":"mostrar finalizadas"}</a>`:"";
+  box.innerHTML=barra+(vis.length?`<table><thead><tr><th>Obra</th><th>Contrato (Mais Controle)</th><th>Medição da semana</th></tr></thead><tbody>${corpo}</tbody></table>`
+      :`<div class="vazio" style="border:0">✅ Nenhuma medição em aberto nesta semana${eng?" para "+esc(eng):""}.</div>`)+
+    (!S||!S.token?`<div class="vazio" style="border:0;border-top:1px solid var(--border2);border-radius:0"><a href="${PORTAL}login.html">Entre no portal</a> para ver e lançar as medições.</div>`
+      :`<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${abertas.length} em aberto · ${feitas} finalizada${feitas===1?"":"s"} nesta semana${lnk}${emFin?` · <span title="Contratos que continuam em aberto no Mais Controle, mas a obra já está finalizada no DOCUMENTOS — não aparecem aqui; vale encerrar no MC">${emFin} contrato${emFin===1?"":"s"} em aberto no MC em obras já finalizadas</span>`:""}</div>`);
 }
 
 /* =====================================================================
@@ -937,7 +1070,7 @@ async function docsCasa(id){
 /* ---------------- montagem ---------------- */
 function pintarTudo(){
   pintarAtualizado();
-  if(INDICE){ pintarIndice(); pintarNotif(); pintarEntregas(); pintarCal(); return; }
+  if(INDICE){ pintarIndice(); pintarNotif(); pintarEntregas(); pintarMedIndice(); pintarCal(); return; }
   pintarMapa(); pintarResumo(); pintarNotif(); pintarEntregas(); pintarMedicoes(); pintarCal();
   if(ATIVO) abrir(ATIVO,true);
 }
@@ -949,6 +1082,10 @@ window.MapaObras={
   calMes:n=>{ if(!n){ CAL_MES=new Date(); CAL_MES.setDate(1); } else CAL_MES.setMonth(CAL_MES.getMonth()+n); pintarCal(); },
   verFin:()=>{ VER_FIN=!VER_FIN; pintarIndice(); },
   irPara, focar, medir, verFinalizadas, salvarCampo, salvarVenda,
+  /* 23/10: medições por contrato (Mais Controle) e filtro por engenheiro */
+  medEng:e=>{ MED_ENG=e; lsSet("og_med_eng",e); repintarMed(); },
+  medBusca:q=>{ MED_BUSCA=q; pintarMedIndice(); const i=$("med-busca"); if(i){ i.focus(); const n=i.value.length; try{ i.setSelectionRange(n,n); }catch(e){} } },
+  verFinIdx:()=>{ MED_IDX_VER_FIN=!MED_IDX_VER_FIN; pintarMedIndice(); },
   /* 16/10: observações, formulário de vistoria, documentos e mapa de casas */
   obs, salvarObs, fecharJanela, vistoria:abrirVistoria, docs:docsCasa, modoMapa,
   entAba:k=>{ ENT_ABA=k; pintarEntregas(); },
@@ -956,12 +1093,14 @@ window.MapaObras={
   /* a barra é redesenhada a cada letra: devolve o foco e o cursor ao campo */
   entBusca:q=>{ ENT_BUSCA=q; pintarEntregas(); const i=$("ent-busca"); if(i){ i.focus(); const n=i.value.length; try{ i.setSelectionRange(n,n); }catch(e){} } },
   fechar:()=>{ ATIVO=null; marcarAtivo(""); if(MODO==="casas") pintarCasas(); const pn=$("painel"); if(pn) pn.innerHTML=MODO==="casas"?`<div class="p-vazio"><b>🏠</b>Toque em um lote no mapa de casas para ver a situação de cada casa, as datas e os documentos da vistoria.</div>`:`<div class="p-vazio"><b>📍</b>Toque em um lote no mapa para ver e preencher o status da obra.</div>`; history.replaceState(null,"",location.pathname); },
-  toggle:id=>{ const e=$(id); if(!e) return; secAbrir(id, e.style.display==="none"); lsSet("og_sec_"+id, e.style.display==="none"?"0":"1"); }
+  toggle:id=>{ const e=$(id); if(!e) return; secAbrir(id, e.style.display==="none"); lsSet("og_sec_"+(INDICE&&id==="med"?"i_":"")+id, e.style.display==="none"?"0":"1"); }
 };
 /* 16/10: seções que abrem e fecham (Medições, Notificações). A seta ficou maior,
    com "abrir/fechar" escrito ao lado, e cada aparelho lembra a última escolha.
    MEDIÇÕES DA SEMANA vem FECHADA por padrão. */
 const SEC_PADRAO={ med:"0", notif:"1" };
+/* 23/10: no índice as medições vêm ABERTAS (é para o engenheiro ver as dele) */
+const SEC_PADRAO_IDX={ med:"1" };
 function secAbrir(id,ab){
   const e=$(id); if(!e) return; e.style.display=ab?"":"none";
   const s=$(id+"-seta"); if(s) s.textContent=ab?"▾":"▸";
@@ -969,12 +1108,12 @@ function secAbrir(id,ab){
   const h=s&&s.closest(".sec"); if(h) h.classList.toggle("fechada",!ab);
 }
 function montarSecoes(){
-  Object.keys(SEC_PADRAO).forEach(id=>{
+  Object.keys(INDICE?SEC_PADRAO_IDX:SEC_PADRAO).forEach(id=>{
     const s=$(id+"-seta"), h=s&&s.closest(".sec"); if(!h) return;
     if(!h.querySelector("[data-tog]")){ const b=document.createElement("span"); b.className="tog"; b.dataset.tog=id;
       const d=h.querySelector(".dir"); h.insertBefore(b,d||null); }
     h.title="Clique para abrir ou fechar";
-    secAbrir(id, lsGet("og_sec_"+id,SEC_PADRAO[id])!=="0");
+    secAbrir(id, lsGet("og_sec_"+(INDICE?"i_":"")+id,(INDICE&&SEC_PADRAO_IDX[id])||SEC_PADRAO[id])!=="0");
   });
 }
 
@@ -982,6 +1121,7 @@ function montarSecoes(){
 try{ const g=document.createElement("script"); g.src="../PORTAL-MORAIS/tema-escuro.js?v=1"; g.async=true; document.head.appendChild(g); }catch(e){}
 document.addEventListener("DOMContentLoaded",()=>{
   pintarUsuario(); pintarFila();
+  if(INDICE&&$("med")) montarSecoes();
   if(!INDICE){
     document.title=CFG.nome+" · Mapa de Obras · Morais";
     const hn=$("h-emp"); if(hn) hn.textContent=CFG.nome;
@@ -993,9 +1133,10 @@ document.addEventListener("DOMContentLoaded",()=>{
     /* 16/10: vindo da aba Atividades do portal — abre o formulário de vistoria da casa */
     if(h.indexOf("vist=")===0){ const id=h.slice(5).replace(/-/g,""); setTimeout(()=>{ if(vendaPorId(id)) abrirVistoria(id); else toast("Casa não encontrada no mapa (ainda não publicada)."); },300); return; }
     if(!INDICE&&h) setTimeout(()=>focar(h),200); });
-  carregarBoot(); if(!INDICE) carregarMedicoes();
+  carregarBoot(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas();
+  carregarContratos();
   setInterval(()=>{ if(!document.hidden) carregarDados(true); },120000);          // quase ao vivo: relê o data.json a cada 2 min
-  document.addEventListener("visibilitychange",()=>{ if(!document.hidden){ carregarDados(true); if(!INDICE) carregarMedicoes(); } });
+  document.addEventListener("visibilitychange",()=>{ if(!document.hidden){ carregarDados(true); carregarContratos(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas(); } });
   window.addEventListener("online",()=>{ pintarAtualizado(); carregarDados(true); if(!INDICE&&BOOT&&BOOT.erro){ lsSet(K_BOOT,null); BOOT=null; carregarBoot(); } });
   window.addEventListener("offline",pintarAtualizado);
   sincronizar();

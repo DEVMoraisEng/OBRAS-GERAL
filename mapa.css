@@ -177,6 +177,13 @@ html[data-tema="escuro"] .med td.end{color:#e7f3ff}
 .med td.end:hover{text-decoration:underline}
 .med select{min-width:210px;border-left:6px solid var(--mc,#9aaac5)}
 .med .quem{font-size:11px;color:var(--text3)}
+/* 23/10/26: medição por contrato (Mais Controle) + filtro por engenheiro */
+.med-barra{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:9px 12px;border-bottom:1px solid var(--border2);background:var(--bg2,transparent)}
+.med-barra .en-sel{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--text2)}
+.med-barra .en-sel select{min-width:220px;border-left:1px solid var(--border2)}
+.med-busca{flex:1;min-width:200px;padding:7px 10px;border:1px solid var(--border2);border-radius:8px;font:inherit;font-size:13px;background:var(--sup);color:var(--text)}
+.med tr.med-obra td{border-top:2px solid var(--border)}
+.med td b{color:var(--text)}
 
 /* ---------- entregas (casas vendidas e não entregues) ---------- */
 .ent-lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:10px}
@@ -275,7 +282,7 @@ html[data-tema="escuro"] .emp .nums b{color:#e7f3ff}
   .ent-tab td:first-child{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.ent-tab td:first-child::before{content:none}
   .en-sel select{min-width:0;width:100%} .en-sel{width:100%} .en-dir{width:100%} .en-busca input{min-width:0;width:100%}
 }
-@media(max-width:640px){ .wrap{padding:0 12px} .hbar{gap:8px} .htitle{font-size:19px} .info-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px} .icard{min-width:0;padding:8px 6px} .ilab{font-size:9px} .mapa-box{height:58vh;min-height:320px} .busca-mapa{right:58px} .busca-mapa input{min-width:0;width:100%} .sec .cond{font-size:17px} .med select{min-width:0;width:100%} .p-topo .end{font-size:19px} .ent-lista{grid-template-columns:1fr} .grade.g3,.grade.en-g{grid-template-columns:1fr 1fr} .hbt{padding:5px 8px;font-size:11px} .ntf{grid-template-columns:1fr} .ntf .mud{justify-content:flex-start} .hupd{display:none} }
+@media(max-width:640px){ .wrap{padding:0 12px} .hbar{gap:8px} .htitle{font-size:19px} .info-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px} .icard{min-width:0;padding:8px 6px} .ilab{font-size:9px} .mapa-box{height:58vh;min-height:320px} .busca-mapa{right:58px} .busca-mapa input{min-width:0;width:100%} .sec .cond{font-size:17px} .med select{min-width:0;width:100%} .med-barra .en-sel{width:100%} .med-barra .en-sel select{min-width:0;flex:1} .med table, .med tbody, .med tr, .med td{display:block;width:100%} .med thead{display:none} .med td{border-top:0;padding:4px 12px} .med tr{border-top:1px solid var(--border2);padding:6px 0} .med tr.med-obra{border-top:2px solid var(--border)} .p-topo .end{font-size:19px} .ent-lista{grid-template-columns:1fr} .grade.g3,.grade.en-g{grid-template-columns:1fr 1fr} .hbt{padding:5px 8px;font-size:11px} .ntf{grid-template-columns:1fr} .ntf .mud{justify-content:flex-start} .hupd{display:none} }
 
 /* 07/10/2026: calendário mostra o ENDEREÇO completo (não a REF.) — quebra linha em vez de cortar com "…" */
 .cal .ev{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.25;overflow-wrap:anywhere}
