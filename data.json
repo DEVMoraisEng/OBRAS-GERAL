@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-26T17:11:58.180174+00:00",
+ "updated_at": "2026-10-26T17:56:54.705764+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -1820,7 +1820,7 @@
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": "2026-10-27",
+   "data_habite_se": "2026-11-10",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "NÃO",
    "itbi_pago": "NÃO",
@@ -6279,7 +6279,7 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO",
+   "certidoes_matricula": "SIM",
    "modelo3d": null
   },
   {
