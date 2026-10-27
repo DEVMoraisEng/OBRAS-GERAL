@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-27T17:57:52.476459+00:00",
+ "updated_at": "2026-10-27T18:41:57.281339+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -6278,7 +6278,7 @@
    "taxas_habite_se": "SIM",
    "issqn": "SIM",
    "cno_cnd": "SIM",
-   "armazenou_habite": "NÃO",
+   "armazenou_habite": "SIM",
    "certidoes_matricula": "SIM",
    "modelo3d": null
   },
@@ -6499,7 +6499,7 @@
    "data_inicio_obra": "2026-05-25",
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
-   "aprovou_habite_se": "NÃO",
+   "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-10-23",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
@@ -15171,7 +15171,7 @@
    "pv": {}
   },
   "BR 6": {
-   "status": "habite_agendado",
+   "status": "habite_concluido",
    "prazo": "a",
    "endereco": "RPB 24 QD 26A LT 04",
    "setor": "PQ DOS BURITIS",
@@ -15612,6 +15612,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-27T18:41:57.281339+00:00",
+   "ref": "BR 6",
+   "endereco": "RPB 24 QD 26A LT 04",
+   "setor": "PQ DOS BURITIS",
+   "tipo": "status",
+   "de": "habite_agendado",
+   "para": "habite_concluido"
+  },
   {
    "em": "2026-10-23T20:26:55.544019+00:00",
    "ref": "TC 44",
