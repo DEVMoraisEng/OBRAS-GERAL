@@ -935,13 +935,16 @@ async function abrirVistoria(id){
   const v=vendaPorId(id); if(!v) return;
   try{ await carregarVistoria(); }catch(e){ toast("Não consegui abrir o formulário"+(navigator.onLine?"":" — abra uma vez com internet neste aparelho")); return; }
   Vistoria.abrir({id:v.id,endereco:v.endereco,casa:v.casa,eng:v.eng,setor:(DOCS.find(d=>N(d.endereco)===N(v.endereco))||{}).setor||"",
-    docs:(v.vist_completo||0)+(v.vist_prestador||0)},{api,boot:BOOT,sessao:S,toast,aoMudar:()=>{ pintarEntregas(); if(ATIVO) reabrirPainel(); }});
+    docs:(v.vist_completo||0)+(v.vist_prestador||0)},{api,boot:BOOT,sessao:S,toast,aoMudar:()=>{ pintarEntregas(); if(ATIVO) reabrirPainel(); },
+    /* 27/10: conferência com tudo executado → Reparos = SIM; novo relatório (novas pontuações) → Não entregue - novas observações */
+    reparosFeitos:vid=>{ if(!editavel("reparos_pre_vistoria")) return false; salvarVenda(vid,"reparos_pre_vistoria","SIM"); return true; },
+    novasObservacoes:vid=>{ if(!editavel("entregou_casa")) return false; salvarVenda(vid,"entregou_casa",ENT_NOVAS); return true; }});
 }
 let _vistP=null;
 function carregarScript(src){ return new Promise((ok,er)=>{ const s=document.createElement("script"); s.src=src; s.onload=ok; s.onerror=er; document.head.appendChild(s); }); }
 function carregarVistoria(){
   if(window.Vistoria&&window.jspdf) return Promise.resolve();
-  if(!_vistP) _vistP=Promise.all([window.jspdf?null:carregarScript("jspdf.umd.min.js?v=1"),window.Vistoria?null:carregarScript("vistoria.js?v=1")])
+  if(!_vistP) _vistP=Promise.all([window.jspdf?null:carregarScript("jspdf.umd.min.js?v=1"),window.Vistoria?null:carregarScript("vistoria.js?v=2")])
     .catch(e=>{ _vistP=null; throw e; });
   return _vistP;
 }
