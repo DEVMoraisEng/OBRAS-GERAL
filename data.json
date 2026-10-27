@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-27T13:42:02.829357+00:00",
+ "updated_at": "2026-10-27T13:57:54.457765+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -9400,6 +9400,26 @@
    "obs_conferencia": null,
    "contador": null,
    "data_entrega": "2026-07-01",
+   "vist_completo": 0,
+   "vist_prestador": 0,
+   "apta_desde": null
+  },
+  {
+   "id": "33cc5ab532d3807ea74ce50fbe794e16",
+   "endereco": "TB 17 QD 48 LT 38",
+   "casa": 2,
+   "data_venda": "2026-10-26",
+   "eng": "João Marcos Vieira Cabral Menezes",
+   "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
+   "agendou_pre_vistoria": "NÃO",
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO",
+   "conferencia": null,
+   "obs_conferencia": null,
+   "contador": null,
+   "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
    "apta_desde": null
