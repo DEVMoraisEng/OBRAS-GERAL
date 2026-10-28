@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-28T17:56:52.597815+00:00",
+ "updated_at": "2026-10-28T18:00:52.209236+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -12378,7 +12378,7 @@
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": null,
+   "contador": "{\"a\":{\"ini\":\"2026-04-08\",\"acc\":0,\"ret\":\"2026-04-08\",\"trav\":null},\"r\":{\"ini\":\"2026-10-28\",\"ret\":\"2026-10-28\",\"acc\":0,\"trav\":null},\"em\":\"2026-10-28T18:00:24.532Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -12393,12 +12393,12 @@
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
-   "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null,
+   "agendou_pre_vistoria": "SIM",
+   "data_pre_vistoria": "2026-10-28",
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-10-02\",\"acc\":18,\"ret\":\"2026-10-02\",\"trav\":\"2026-10-20\"},\"r\":{},\"em\":\"2026-10-20T18:51:33.321Z\",\"por\":\"Guilherme Gouveia\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-02\",\"acc\":18,\"ret\":\"2026-10-02\",\"trav\":\"2026-10-20\"},\"r\":{\"ini\":\"2026-10-28\",\"ret\":\"2026-10-28\",\"acc\":0,\"trav\":null},\"em\":\"2026-10-28T18:00:34.222Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -15344,7 +15344,9 @@
     "2026-06-24",
     "MANHÃ"
    ],
-   "pv": {}
+   "pv": {
+    "2": "2026-10-28"
+   }
   },
   "JB 3": {
    "status": "acima_prazo",
@@ -15652,6 +15654,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-28T18:00:52.209236+00:00",
+   "ref": "JB 4",
+   "endereco": "FERROVIARIOS QD 01 LT 15",
+   "setor": "JOÃO BRAZ",
+   "tipo": "pre_vistoria",
+   "casa": "2",
+   "data_pv": "2026-10-28"
+  },
   {
    "em": "2026-10-28T14:56:58.579291+00:00",
    "ref": "RV 4",
