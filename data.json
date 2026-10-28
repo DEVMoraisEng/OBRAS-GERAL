@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-28T20:28:10.455338+00:00",
+ "updated_at": "2026-10-28T21:35:02.978605+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -2254,9 +2254,9 @@
    "eng": "João Marcos Vieira Cabral Menezes",
    "despachante": "YAN",
    "previsao_inicio_obra": "2026-10-07",
-   "obra_iniciada": "NÃO",
+   "obra_iniciada": "SIM",
    "obra_finalizada": "NÃO",
-   "data_inicio_obra": null,
+   "data_inicio_obra": "2026-10-28",
    "data_termino_obra": null,
    "agendou_habite_se": "NÃO",
    "aprovou_habite_se": "NÃO",
@@ -2774,9 +2774,9 @@
    "eng": "João Marcos Vieira Cabral Menezes",
    "despachante": "YAN",
    "previsao_inicio_obra": "2026-10-07",
-   "obra_iniciada": "NÃO",
+   "obra_iniciada": "SIM",
    "obra_finalizada": "NÃO",
-   "data_inicio_obra": null,
+   "data_inicio_obra": "2026-10-28",
    "data_termino_obra": null,
    "agendou_habite_se": "NÃO",
    "aprovou_habite_se": "NÃO",
@@ -14082,7 +14082,7 @@
    "pv": {}
   },
   "TC 73": {
-   "status": "nao_iniciado",
+   "status": "em_andamento",
    "prazo": null,
    "endereco": "TB 19 QD 51 LT 20",
    "setor": "TERRABELA CERRADO",
@@ -14198,7 +14198,7 @@
    "pv": {}
   },
   "TC 72": {
-   "status": "nao_iniciado",
+   "status": "em_andamento",
    "prazo": null,
    "endereco": "TB 19 QD 51 LT 19",
    "setor": "TERRABELA CERRADO",
@@ -15654,6 +15654,24 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-28T21:35:02.978605+00:00",
+   "ref": "TC 73",
+   "endereco": "TB 19 QD 51 LT 20",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "nao_iniciado",
+   "para": "em_andamento"
+  },
+  {
+   "em": "2026-10-28T21:35:02.978605+00:00",
+   "ref": "TC 72",
+   "endereco": "TB 19 QD 51 LT 19",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "nao_iniciado",
+   "para": "em_andamento"
+  },
   {
    "em": "2026-10-28T18:00:52.209236+00:00",
    "ref": "JB 4",
