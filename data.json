@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-28T19:27:00.199027+00:00",
+ "updated_at": "2026-10-28T19:42:17.055292+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8028,7 +8028,7 @@
    "id": "3cec5ab532d3800399c9e503892ac9c7",
    "endereco": "TB 18 QD 49 LT 26",
    "casa": 1,
-   "data_venda": null,
+   "data_venda": "2026-10-28",
    "eng": "Caio Araujo",
    "entregou_casa": "NÃO",
    "processo_conforme": "NÃO",
