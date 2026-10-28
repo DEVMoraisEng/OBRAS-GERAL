@@ -179,6 +179,9 @@ html[data-tema="escuro"] .med td.end{color:#e7f3ff}
 .med .quem{font-size:11px;color:var(--text3)}
 /* 23/10/26: medição por contrato (Mais Controle) + filtro por engenheiro */
 .med-barra{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:9px 12px;border-bottom:1px solid var(--border2);background:var(--bg2,transparent)}
+.med-flt{display:flex;gap:6px;flex-wrap:wrap;width:100%}
+.med-flt .pill{border:0;cursor:pointer;font:inherit;font-size:11.5px;font-weight:800;padding:5px 12px}
+.med .chip.st-contr{font-size:9.5px;padding:1px 7px;vertical-align:1px;margin-left:2px}
 .med-barra .en-sel{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--text2)}
 .med-barra .en-sel select{min-width:220px;border-left:1px solid var(--border2)}
 .med-busca{flex:1;min-width:200px;padding:7px 10px;border:1px solid var(--border2);border-radius:8px;font:inherit;font-size:13px;background:var(--sup);color:var(--text)}

@@ -9,7 +9,7 @@
  *   - data.json: rede primeiro; sem internet, a última cópia;
  *   - sem internet numa página nunca aberta: mostra o índice.
  * Suba o número do CACHE sempre que mudar mapa.js/mapa.css/as páginas. */
-const CACHE = "mapa-obras-v16";  /* 27/10 (v16: vistoria — fotos da galeria, editor de foto, conferência dos reparos e relatório Nº 2+); 23/10 (v15: contrato 100% medido sai; medições do índice vêm fechadas; v14: medições por contrato do Mais Controle + filtro por engenheiro no índice); 22/10 (v13: botão Abrir modelo 3D no painel do lote); 16/10 (v12: vistorias no painel da casa, formulário só nos reparos; v11: Medições abre/fecha, vem fechada): vistorias de entrega, formulário de vistoria offline e mapa de casas */
+const CACHE = "mapa-obras-v17";  /* 28/10 (v17: medições — status do contrato do MC, filtro Paralisados / finalizados); 27/10 (v16: vistoria — fotos da galeria, editor de foto, conferência dos reparos e relatório Nº 2+); 23/10 (v15: contrato 100% medido sai; medições do índice vêm fechadas; v14: medições por contrato do Mais Controle + filtro por engenheiro no índice); 22/10 (v13: botão Abrir modelo 3D no painel do lote); 16/10 (v12: vistorias no painel da casa, formulário só nos reparos; v11: Medições abre/fecha, vem fechada): vistorias de entrega, formulário de vistoria offline e mapa de casas */
 const BASE = ["./", "./index.html", "./mapa.css", "./mapa.js", "./vistoria.js", "./jspdf.umd.min.js", "./logo.png", "./manifest.json", "./data.json",
   "../PORTAL-MORAIS/tema-escuro.js", "../PORTAL-MORAIS/dist/mapa_vendas.json"];
 self.addEventListener("install", e => {
