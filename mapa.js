@@ -528,7 +528,7 @@ const MED=[{v:"nao_realizada",l:"Não realizada",c:"#9aaac5"},{v:"lancada_aguard
 let MEDS={semana:tercaDe(),itens:{}}, MED_ABERTO=true, MED_VER_FIN=false;
 const K_MED=()=>"og_med_"+(CFG?N(CFG.setor):"")+"_"+tercaDe();
 const URL_CONTR=PORTAL+"dist/mc_medicoes/contratos.json", K_CONTR="og_contratos_v1";
-let CONTR=null, CONTR_POR_END={}, CONTR_FORA_POR_END={}, CONTR_FORA=0, MED_VER_FORA=false;
+let CONTR=null, CONTR_POR_END={}, CONTR_FORA_POR_END={}, CONTR_FORA=0, MED_VER_FORA=false, OBRAS_MC={};
 let MED_ENG=lsGet("og_med_eng",""), MED_BUSCA="", MED_STOB="", MED_FORN="", MED_SERV="";
 const MC_ERP="https://acessar.maiscontroleerp.com.br/";
 const endK=s=>N(s).replace(/[^A-Z0-9]+/g," ").replace(/\b0+(\d)/g,"$1").trim();
@@ -553,7 +553,10 @@ const pctContr=c=>c&&c.ultima?Number(c.ultima.pct)||0:0;
 /* por que o contrato saiu das medições (null = continua na lista) */
 function motivoFora(c){ const k=stContr(c).k; if(k==="PARALYZED") return "Paralisado"; if(k==="FINISHED") return "Finalizado"; if(pctContr(c)>=100) return "100% medido"; return null; }
 function prepararContratos(j){
-  CONTR=j&&j.contratos?j:null; CONTR_POR_END={}; CONTR_FORA_POR_END={}; CONTR_FORA=0;
+  CONTR=j&&j.contratos?j:null; CONTR_POR_END={}; CONTR_FORA_POR_END={}; CONTR_FORA=0; OBRAS_MC={};
+  /* 29/10: status da OBRA no Mais Controle (robô lê a tela Minhas Obras) */
+  Object.values((j&&j.obras)||{}).forEach(o=>{ const k=endK(o.nome); if(k&&o.status_txt) OBRAS_MC[k]=o.status_txt; });
+  ((CONTR&&CONTR.contratos)||[]).forEach(c=>{ const k=endK(c.obra); if(k&&c.obra_status_txt&&!OBRAS_MC[k]) OBRAS_MC[k]=c.obra_status_txt; });
   ((CONTR&&CONTR.contratos)||[]).forEach(c=>{ const k=endK(c.obra); if(!k) return;
     const fora=!!motivoFora(c); if(fora) CONTR_FORA++;
     const alvo=fora?CONTR_FORA_POR_END:CONTR_POR_END; (alvo[k]=alvo[k]||[]).push(c); });
@@ -578,11 +581,15 @@ const engValido=lista=>MED_ENG&&engsDe(lista).some(x=>x.e===MED_ENG)?MED_ENG:"";
    que seja o status da obra) e a obra iniciada e não finalizada sem contrato.
    fora=true: só os contratos paralisados / finalizados / 100% medidos. */
 function linhasMedicao(docs,fora){
-  const out=[];
+  /* 29/10: a mesma obra pode vir duas vezes (duas linhas no DOCUMENTOS com o
+     mesmo endereço) — cada obra e cada contrato entram uma vez só */
+  const out=[], obrasVistas=new Set(), contrVistos=new Set();
   docs.forEach(d=>{
+    const ek=endK(d&&d.endereco); if(ek){ if(obrasVistas.has(ek)) return; obrasVistas.add(ek); }
     const cs=fora?contratosForaDe(d):contratosDe(d);
-    if(cs.length) cs.forEach(c=>out.push({d,c,ref:refContrato(d,c),eng:engDe(d),fora:!!fora}));
-    else if(!fora&&iniciada(d)&&!finalizada(d)) out.push({d,c:null,ref:N(d.ref||d.endereco),eng:engDe(d)});
+    const novos=cs.filter(c=>{ const k=c.id||c.codigo; if(!k) return true; if(contrVistos.has(k)) return false; contrVistos.add(k); return true; });
+    if(novos.length) novos.forEach(c=>out.push({d,c,ref:refContrato(d,c),eng:engDe(d),fora:!!fora}));
+    else if(!cs.length&&!fora&&iniciada(d)&&!finalizada(d)) out.push({d,c:null,ref:N(d.ref||d.endereco),eng:engDe(d)});
   });
   return out.sort((a,b)=>String(a.d.endereco).localeCompare(String(b.d.endereco),"pt-BR")||String(a.c&&a.c.servico||"").localeCompare(String(b.c&&b.c.servico||""),"pt-BR"));
 }
@@ -595,10 +602,10 @@ function descContrato(c){
   return `<b>${esc(c.servico||"Contrato")}</b> · ${esc(c.fornecedor||"—")} <span class="chip st-contr" style="background:${st.c}" title="Status do contrato no Mais Controle">${esc(st.l)}</span>
     <div class="quem">Contrato ${esc(c.codigo||"")} · ${ult}${u.pct?` · ${String(u.pct).replace(".",",")}% medido`:""}${lnk}</div>`;
 }
-/* 29/10: status da OBRA (DOCUMENTOS) — separado do status do contrato */
-const ST_OBRA_COR={"Em andamento":"#4a90d9","Não iniciada":"#9aaac5","Finalizada":"#27a35e","Só no Mais Controle":"#7c8ea0"};
-function stObra(d){ if(d&&d._soMC) return "Só no Mais Controle"; return finalizada(d)?"Finalizada":iniciada(d)?"Em andamento":"Não iniciada"; }
-function chipObra(d){ const s=stObra(d); return `<span class="chip st-obra" style="background:${ST_OBRA_COR[s]||"#7c8ea0"}" title="Status da obra (DOCUMENTOS)">obra: ${esc(s)}</span>`; }
+/* 29/10: status da OBRA no MAIS CONTROLE (Minhas Obras) — separado do status do contrato */
+const ST_OBRA_COR={"Em andamento":"#4a90d9","A iniciar":"#d9922b","Em orçamento":"#9aaac5","Paralisada":"#dc5b2f","Finalizada":"#27a35e","Cancelada":"#b03a2e","Sem status no MC":"#b0bec5"};
+function stObra(d){ return OBRAS_MC[endK(d&&d.endereco)]||"Sem status no MC"; }
+function chipObra(d){ const s=stObra(d); return `<span class="chip st-obra" style="background:${ST_OBRA_COR[s]||"#7c8ea0"}" title="Status da obra no Mais Controle">obra: ${esc(s)}</span>`; }
 const fornDe=l=>(l.c&&l.c.fornecedor)||"", servDe=l=>(l.c&&l.c.servico)||"";
 function contagem(lista,fn){ const m={}; lista.forEach(l=>{ const v=fn(l); if(v) m[v]=(m[v]||0)+1; });
   return Object.keys(m).sort((a,b)=>a.localeCompare(b,"pt-BR")).map(k=>({k,n:m[k]})); }
@@ -1031,7 +1038,7 @@ let _vistP=null;
 function carregarScript(src){ return new Promise((ok,er)=>{ const s=document.createElement("script"); s.src=src; s.onload=ok; s.onerror=er; document.head.appendChild(s); }); }
 function carregarVistoria(){
   if(window.Vistoria&&window.jspdf) return Promise.resolve();
-  if(!_vistP) _vistP=Promise.all([window.jspdf?null:carregarScript("jspdf.umd.min.js?v=1"),window.Vistoria?null:carregarScript("vistoria.js?v=2")])
+  if(!_vistP) _vistP=Promise.all([window.jspdf?null:carregarScript("jspdf.umd.min.js?v=1"),window.Vistoria?null:carregarScript("vistoria.js?v=3")])
     .catch(e=>{ _vistP=null; throw e; });
   return _vistP;
 }
