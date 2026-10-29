@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-29T11:00:38.904089+00:00",
+ "updated_at": "2026-10-29T12:12:08.343872+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -2797,7 +2797,7 @@
    "ret_armazenado": "INEXISTE",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
-   "cno_cnd": "NÃO",
+   "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
    "modelo3d": null
@@ -2917,7 +2917,7 @@
    "ret_armazenado": "INEXISTE",
    "taxas_habite_se": "SIM",
    "issqn": "SIM",
-   "cno_cnd": "NÃO",
+   "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
    "modelo3d": null
@@ -2998,8 +2998,8 @@
    "taxas_habite_se": "SIM",
    "issqn": "SIM",
    "cno_cnd": "NÃO",
-   "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO",
+   "armazenou_habite": "SIM",
+   "certidoes_matricula": "SIM",
    "modelo3d": null
   },
   {
@@ -3117,7 +3117,7 @@
    "ret_armazenado": "INEXISTE",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
-   "cno_cnd": "NÃO",
+   "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
    "modelo3d": null
@@ -3237,7 +3237,7 @@
    "ret_armazenado": "INEXISTE",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
-   "cno_cnd": "NÃO",
+   "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
    "modelo3d": null
@@ -3299,7 +3299,7 @@
    "data_inicio_obra": "2026-07-10",
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
-   "aprovou_habite_se": "NÃO",
+   "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-10-23",
    "turno_habite_se": "TARDE",
    "escritura_assinada": "SIM",
@@ -4316,7 +4316,7 @@
    "incorporacao_finalizada": "INEXISTE",
    "ret_armazenado": "INEXISTE",
    "taxas_habite_se": "SIM",
-   "issqn": "NÃO",
+   "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
@@ -5917,7 +5917,7 @@
    "ret_armazenado": "INEXISTE",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
-   "cno_cnd": "NÃO",
+   "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
    "modelo3d": null
@@ -6238,7 +6238,7 @@
    "taxas_habite_se": "SIM",
    "issqn": "SIM",
    "cno_cnd": "SIM",
-   "armazenou_habite": "NÃO",
+   "armazenou_habite": "SIM",
    "certidoes_matricula": "NÃO",
    "modelo3d": null
   },
@@ -14332,7 +14332,7 @@
    "pv": {}
   },
   "TC 55": {
-   "status": "habite_agendado",
+   "status": "habite_concluido",
    "prazo": null,
    "endereco": "TB 01 QD 49 LT 40",
    "setor": "TERRABELA CERRADO",
@@ -15654,6 +15654,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-29T12:12:08.343872+00:00",
+   "ref": "TC 55",
+   "endereco": "TB 01 QD 49 LT 40",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_agendado",
+   "para": "habite_concluido"
+  },
   {
    "em": "2026-10-29T03:00:36.264900+00:00",
    "ref": "TC 63",
