@@ -591,7 +591,7 @@ function descContrato(c){
   const u=c.ultima||{}, n=c.medicoes;
   const ult=u.data_aprovacao?`última aprovada ${brc(u.data_aprovacao)}`:(n?`${n} medição(ões)`:"nenhuma medição no MC");
   const st=stContr(c);
-  const lnk=c.id?` <a class="mc-lnk" href="${MC_ERP}#/contracts/${encodeURIComponent(c.id)}" target="_blank" rel="noopener" title="Abrir este contrato no Mais Controle">Abrir no MC ↗</a>`:"";
+  const lnk=c.id?` <a class="mc-lnk" href="${MC_ERP}#/contracts/${encodeURIComponent(c.id)}/measurements" target="_blank" rel="noopener" title="Abrir as medições deste contrato no Mais Controle">Medições no MC ↗</a>`:"";
   return `<b>${esc(c.servico||"Contrato")}</b> · ${esc(c.fornecedor||"—")} <span class="chip st-contr" style="background:${st.c}" title="Status do contrato no Mais Controle">${esc(st.l)}</span>
     <div class="quem">Contrato ${esc(c.codigo||"")} · ${ult}${u.pct?` · ${String(u.pct).replace(".",",")}% medido`:""}${lnk}</div>`;
 }
@@ -649,7 +649,7 @@ function pintarMedicoes(){
   const box=$("med"); if(!box||INDICE) return;
   const t=MEDS.semana||tercaDe(), fimS=maisDias(t,6);
   const lab=$("med-sem"); if(lab) lab.textContent=`de ${brc(t)} (ter) a ${brc(fimS)} (seg) · zera toda terça`;
-  const pode=S&&S.token&&MEDS.podeMedir!==false;
+  const pode=S&&S.token&&MEDS.podeMedir===true;
   if(!CONTR){ pintarMedicoesAntigo(box,pode); return; }
   if(MED_VER_FORA){ pintarMedFora(box,DOCS,false); return; }
   const todas=linhasMedicao(DOCS);
@@ -692,13 +692,25 @@ function pintarMedicoesAntigo(box,pode){
     `<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)"><span class="load"></span> buscando os contratos do Mais Controle…</div>`;
 }
 function verFinalizadas(){ MED_VER_FIN=!MED_VER_FIN; repintarMed(); }
+/* 29/10: antes o status escolhido ia para a memória do aparelho ANTES de o
+   servidor responder e, se a gravação falhava (ex.: sem permissão), ficava
+   lá — a pessoa via a medição lançada e os outros não. Agora, se o servidor
+   recusa, a tela volta ao que era e o aviso diz o motivo. */
+const ERRO_MED={SEM_PERMISSAO:"você não tem permissão para lançar medição (peça ao ADM para liberar no LOGINS)",SEM_LOGIN:"entre no portal de novo",MODO_TESTE:"perfil de teste não grava"};
 async function medir(ref,endereco,status,setor){
   setor=setor||(CFG&&CFG.setor)||"";
-  const it={status,por:(S&&S.nome)||"",em:new Date().toISOString()};
-  if(INDICE){ (MEDS_TODAS[setor]=MEDS_TODAS[setor]||{itens:{}}).itens[N(ref)]=it; lsSet(K_MED_TODAS(),MEDS_TODAS); pintarMedIndice(); }
-  else { MEDS.itens[N(ref)]=it; lsSet(K_MED(),MEDS); pintarMedicoes(); }
+  const it={status,por:(S&&S.nome)||"",em:new Date().toISOString()}, k=N(ref);
+  const alvo=INDICE?(MEDS_TODAS[setor]=MEDS_TODAS[setor]||{itens:{}}):MEDS, antes=alvo.itens[k];
+  const guardar=()=>{ if(INDICE){ lsSet(K_MED_TODAS(),MEDS_TODAS); pintarMedIndice(); } else { lsSet(K_MED(),MEDS); pintarMedicoes(); } };
+  alvo.itens[k]=it; guardar();
   const r=await gravar({action:"medSalvar",setor,ref,endereco,status},"Medição");
-  if(!r.ok){ toast("Não gravou a medição: "+r.erro); if(INDICE) carregarMedTodas(); else carregarMedicoes(); } else if(r.fila) toast("Sem internet: medição guardada, sobe sozinha.");
+  if(!r.ok){
+    if(antes) alvo.itens[k]=antes; else delete alvo.itens[k];
+    guardar(); toast("⚠ Medição NÃO gravada: "+(ERRO_MED[r.erro]||r.erro));
+    if(r.erro==="SEM_PERMISSAO"){ alvo.podeMedir=false; guardar(); }
+    return;
+  }
+  if(r.fila) toast("Sem internet: medição guardada, sobe sozinha.");
 }
 
 /* ---------- índice: medições em aberto de TODAS as obras, por engenheiro ---------- */
@@ -725,7 +737,7 @@ function pintarMedIndice(){
   if(MED_VER_FORA){ pintarMedFora(box,docs,true); return; }
   const todas=linhasMedicao(docs).filter(l=>l.c);
   const stDe=l=>{ const sp=setorPag(l.d), m=((MEDS_TODAS[sp.setor]||{}).itens||{})[N(l.ref)]; return (m&&m.status)||"nao_realizada"; };
-  const pode=S&&S.token&&Object.values(MEDS_TODAS).every(x=>x.podeMedir!==false);
+  const vals=Object.values(MEDS_TODAS), pode=S&&S.token&&vals.some(x=>x.podeMedir===true)&&vals.every(x=>x.podeMedir!==false);
   const eng=engValido(todas);
   const doEng=todas.filter(l=>bateEng(l,eng)), f=filtrosAtivos(doEng);
   const daEng=doEng.filter(l=>bateFiltros(l,f)&&bateBusca(l));
