@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-28T23:44:04.254903+00:00",
+ "updated_at": "2026-10-29T03:00:36.264900+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -14251,7 +14251,7 @@
   },
   "TC 63": {
    "status": "habite_concluido",
-   "prazo": null,
+   "prazo": "a",
    "endereco": "TB 21 QD 51 LT 26",
    "setor": "TERRABELA CERRADO",
    "habite": [
@@ -15654,6 +15654,14 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-10-29T03:00:36.264900+00:00",
+   "ref": "TC 63",
+   "endereco": "TB 21 QD 51 LT 26",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "prazo",
+   "para": "a"
+  },
   {
    "em": "2026-10-28T21:41:56.710765+00:00",
    "ref": "BR 12",
