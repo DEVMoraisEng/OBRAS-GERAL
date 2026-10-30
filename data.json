@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-30T23:22:53.052022+00:00",
+ "updated_at": "2026-10-30T23:41:53.684859+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -13670,7 +13670,7 @@
    "casa": 1,
    "data_venda": "2026-08-14",
    "eng": "Guilherme Gouveia",
-   "entregou_casa": "NÃO",
+   "entregou_casa": "SIM",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
@@ -13679,7 +13679,7 @@
    "conferencia": null,
    "obs_conferencia": null,
    "contador": "{\"a\":{\"ini\":\"2026-09-17\",\"acc\":29,\"ret\":\"2026-09-17\",\"trav\":\"2026-10-16\"},\"r\":{\"ini\":\"2026-10-16\",\"acc\":14,\"ret\":\"2026-10-16\",\"trav\":\"2026-10-30\"},\"em\":\"2026-10-30T18:58:43.230Z\",\"por\":\"Guilherme Gouveia\"}",
-   "data_entrega": null,
+   "data_entrega": "2026-10-30",
    "vist_completo": 0,
    "vist_prestador": 0,
    "apta_desde": null
