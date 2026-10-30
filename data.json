@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-30T17:29:26.736750+00:00",
+ "updated_at": "2026-10-30T19:02:47.438537+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -12395,10 +12395,10 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-10-28",
-   "reparos_pre_vistoria": "NÃO",
+   "reparos_pre_vistoria": "EXECUTANDO REPAROS",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-10-02\",\"acc\":18,\"ret\":\"2026-10-02\",\"trav\":\"2026-10-20\"},\"r\":{\"ini\":\"2026-10-28\",\"ret\":\"2026-10-28\",\"acc\":0,\"trav\":null},\"em\":\"2026-10-28T18:00:34.222Z\",\"por\":\"Guilherme Gouveia\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-02\",\"acc\":18,\"ret\":\"2026-10-02\",\"trav\":\"2026-10-20\"},\"r\":{\"ini\":\"2026-10-28\",\"ret\":\"2026-10-28\",\"acc\":0,\"trav\":null},\"em\":\"2026-10-30T18:59:06.920Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 1,
    "vist_prestador": 1,
@@ -13675,10 +13675,10 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-10-16",
-   "reparos_pre_vistoria": "EXECUTANDO REPAROS",
+   "reparos_pre_vistoria": "SIM",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-09-17\",\"acc\":29,\"ret\":\"2026-09-17\",\"trav\":\"2026-10-16\"},\"r\":{\"ini\":\"2026-10-16\",\"acc\":0,\"ret\":\"2026-10-16\",\"trav\":null},\"em\":\"2026-10-20T18:50:48.707Z\",\"por\":\"Guilherme Gouveia\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-09-17\",\"acc\":29,\"ret\":\"2026-09-17\",\"trav\":\"2026-10-16\"},\"r\":{\"ini\":\"2026-10-16\",\"acc\":14,\"ret\":\"2026-10-16\",\"trav\":\"2026-10-30\"},\"em\":\"2026-10-30T18:58:43.230Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
