@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-04T16:57:24.264605+00:00",
+ "updated_at": "2026-11-04T17:12:10.672485+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -186,7 +186,7 @@
    "itbi_pago": "SIM",
    "registro_pago": "SIM",
    "projeto_feito": "NÃO",
-   "art_feita_paga": "NÃO",
+   "art_feita_paga": "SIM",
    "escritura_registrada": "NÃO",
    "certidao_lote": "SIM",
    "contrato_mestre": "NÃO",
@@ -226,7 +226,7 @@
    "itbi_pago": "SIM",
    "registro_pago": "SIM",
    "projeto_feito": "NÃO",
-   "art_feita_paga": "NÃO",
+   "art_feita_paga": "SIM",
    "escritura_registrada": "NÃO",
    "certidao_lote": "SIM",
    "contrato_mestre": "NÃO",
@@ -266,7 +266,7 @@
    "itbi_pago": "SIM",
    "registro_pago": "SIM",
    "projeto_feito": "NÃO",
-   "art_feita_paga": "NÃO",
+   "art_feita_paga": "SIM",
    "escritura_registrada": "NÃO",
    "certidao_lote": "SIM",
    "contrato_mestre": "NÃO",
