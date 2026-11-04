@@ -341,3 +341,10 @@ html[data-tema="escuro"] .mapa-vp{background:#1a2e3c}
 .p-topo .b3d{display:inline-flex;align-items:center;gap:6px;margin-top:9px;background:#fff;color:var(--azul-esc);border-radius:8px;
   padding:7px 12px;font-weight:800;font-size:12.5px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .p-topo .b3d:hover{background:var(--teal,#8FDCD2)}
+/* 04/11/26 — observações da conferência com histórico (data, hora e quem escreveu) */
+.obs-hist{max-height:260px;overflow:auto;border:1px solid var(--border);border-radius:8px;padding:6px 10px;margin:0 0 8px;background:var(--bg2,#F2F7F9)}
+.obs-h-it{padding:7px 0;border-top:1px dashed var(--border)}
+.obs-h-it:first-child{border-top:0}
+.obs-h-q{font-size:11px;font-weight:800;color:var(--text3);letter-spacing:.2px}
+.obs-h-t{font-size:13.5px;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:2px}
+.obs-h-vz{font-size:12.5px;color:var(--text3);padding:6px 0}

@@ -800,7 +800,7 @@ function pintarMedFora(box,docs,idx){
    decide quem entra em "Casa apta p/ vistoria"). */
 const ENT_CAMPOS={
   casa_apta_vistoria:  {l:"Casa apta p/ vistoria"},
-  conferencia:         {l:"Conferência da conclusão"},
+  conferencia:         {l:"Conferência Caio"},          // 04/11/26: era "Conferência da conclusão"
   obs_conferencia:     {l:"Observações",tipo:"obs"},
   agendou_pre_vistoria:{l:"Agendou pré-vistoria?"},
   data_pre_vistoria:   {l:"Data da pré-vistoria",tipo:"date"},
@@ -815,11 +815,11 @@ const ENT_CAMPOS={
      pré-vistoria fica só para leitura; sai da lista só com ENTREGOU = SIM. */
 const ENT_ABAS=[
   {k:"todas", l:"🏠 Não entregues", vendida:true, campos:["casa_apta_vistoria","conferencia","agendou_pre_vistoria","data_pre_vistoria","reparos_pre_vistoria","entregou_casa"]},
-  {k:"apta",  l:"🔧 Casa apta p/ vistoria", criada:true, campos:["casa_apta_vistoria","conferencia","obs_conferencia"]},
-  {k:"reparos",l:"🛠 Reparos da pré-vistoria", vistoria:true, campos:["data_pre_vistoria","reparos_pre_vistoria","entregou_casa"], soLeitura:["data_pre_vistoria"]}
+  {k:"apta",  l:"🔧 Casa apta p/ vistoria · 7 dias", criada:true, campos:["casa_apta_vistoria","conferencia","obs_conferencia"]},
+  {k:"reparos",l:"🛠 Reparos da pré-vistoria · 15 dias", vistoria:true, campos:["data_pre_vistoria","reparos_pre_vistoria","entregou_casa"], soLeitura:["data_pre_vistoria"]}
 ];
 let ENT_ABA="todas";
-const PRAZO_APTA=7, PRAZO_REPAROS=15;
+const PRAZO_APTA=7, PRAZO_REPAROS=15, PRAZO_CAIO=7;   // 04/11/26: Caio confere em até 7 dias corridos depois do SIM
 const CONF_OK="CONFERIDO OK", CONF_NAO="NECESSITA DE INTERVENÇÕES";
 const ENT_NOVAS="NÃO ENTREGUE - NOVAS OBSERVAÇÕES", ENT_FALTOU="NÃO ENTREGUE - FALTOU CORREÇÕES", EXEC="EXECUTANDO REPAROS";
 /* opções que o servidor cria no Notion — aparecem mesmo se o boot guardado for de antes */
@@ -861,16 +861,32 @@ function aplicarLocal(v,k,valor,d){
 }
 const pl=(n,s)=>n+" dia"+(n===1?"":"s")+(s||"");
 /* situação da CASA APTA (prazo 7 dias a partir da criação da atividade) */
+/* 04/11/26: cada aviso diz o PRAZO da etapa ("3 de 7 dias"). Depois do SIM o
+   contador da casa trava e começa o prazo do CAIO (PRAZO_CAIO dias corridos a
+   partir do dia em que marcaram SIM — a data em que o contador travou). */
+function prazoCaio(v){
+  const a=contDe(v).a;
+  if(!a.trav||a.trav==="?") return null;           // travado antes do contador existir: sem data do SIM
+  return {passou:Math.max(0,difDias(a.trav,hojeISO())), desde:a.trav};
+}
 function prazoApta(v){
-  if(up(v.conferencia)===up(CONF_OK)) return {n:"ok",t:"✅ Conclusão conferida",o:8};
+  if(up(v.conferencia)===up(CONF_OK)) return {n:"ok",t:"✅ Conclusão conferida pelo Caio",o:8};
   const d=diasCont(contDe(v).a);
-  if(up(v.casa_apta_vistoria)==="SIM") return {n:"i",t:`⏸ Aguardando a conferência da conclusão${d!=null?` (${pl(d," corridos")})`:""}`,o:3};
+  if(up(v.casa_apta_vistoria)==="SIM"){
+    const base=`⏸️ Aguardando a conferência do Caio${d!=null?` (${pl(d," corridos")})`:""}`, c=prazoCaio(v);
+    if(!c) return {n:"i",t:`${base} · prazo do Caio ${PRAZO_CAIO} dias`,o:3};
+    const falta=PRAZO_CAIO-c.passou;
+    if(falta>0) return {n:"i",t:`${base} · faltam ${pl(falta)} para o Caio (prazo ${PRAZO_CAIO} dias)`,o:3};
+    if(falta===0) return {n:"h",t:`${base} · prazo do Caio vence hoje (${PRAZO_CAIO} dias)`,o:1};
+    return {n:"r",t:`${base} · 🔴 prazo do Caio estourado (${pl(-falta," em atraso")} · prazo ${PRAZO_CAIO} dias)`,o:0};
+  }
   if(d==null) return {n:"a",t:"Sem data de criação da atividade",o:5};
   const ex=up(v.casa_apta_vistoria)===up(EXEC)?" · executando reparos":"";
-  if(d<4) return {n:"a",t:`🟡 ${pl(d," corridos")}${ex}`,o:4};
-  if(d<PRAZO_APTA) return {n:"w",t:`🔧 Deixar a casa apta (${pl(d," corridos")})${ex}`,o:2};
-  if(d===PRAZO_APTA) return {n:"h",t:"⏰ Prazo vence hoje"+ex,o:1};
-  return {n:"r",t:`🔴 Prazo estourado (${pl(d-PRAZO_APTA," em atraso")} / ${pl(d," corridos")})${ex}`,o:0};
+  const pz=` de ${PRAZO_APTA} dias corridos`;
+  if(d<4) return {n:"a",t:`🟡 ${d}${pz}${ex}`,o:4};
+  if(d<PRAZO_APTA) return {n:"w",t:`🔧 Deixar a casa apta (${d}${pz})${ex}`,o:2};
+  if(d===PRAZO_APTA) return {n:"h",t:`⏰ Prazo vence hoje (${PRAZO_APTA} dias)${ex}`,o:1};
+  return {n:"r",t:`🔴 Prazo estourado (${pl(d-PRAZO_APTA," em atraso")} / ${pl(d," corridos")} · prazo ${PRAZO_APTA} dias)${ex}`,o:0};
 }
 /* situação dos REPAROS (prazo 15 dias a partir da pré-vistoria) */
 function prazoEntrega(v){
@@ -881,10 +897,11 @@ function prazoEntrega(v){
   if(ate<0&&!(c.acc>0)) return {n:"i",t:`📅 Pré-vistoria em ${brc(v.data_pre_vistoria)} (faltam ${pl(-ate)})`,o:6};
   if(up(v.reparos_pre_vistoria)==="SIM") return {n:"i",t:`⏸ Reparos concluídos — aguardando a entrega${d!=null?` (${pl(d," corridos")})`:""}`,o:3};
   if(d==null) return {n:"a",t:"Reparos em aberto",o:5};
-  if(d<7) return {n:"a",t:`🟡 ${pl(d," corridos")}`,o:4};
-  if(d<PRAZO_REPAROS) return {n:"w",t:`🔧 Verificar se os reparos foram iniciados (${pl(d," corridos")})`,o:2};
-  if(d===PRAZO_REPAROS) return {n:"h",t:"⏰ Data final hoje",o:1};
-  return {n:"r",t:`🔴 Prazo estourado (${pl(d-PRAZO_REPAROS," em atraso")} / ${pl(d," corridos")})`,o:0};
+  const pz=` de ${PRAZO_REPAROS} dias corridos`;
+  if(d<7) return {n:"a",t:`🟡 ${d}${pz}`,o:4};
+  if(d<PRAZO_REPAROS) return {n:"w",t:`🔧 Verificar se os reparos foram iniciados (${d}${pz})`,o:2};
+  if(d===PRAZO_REPAROS) return {n:"h",t:`⏰ Data final hoje (${PRAZO_REPAROS} dias)`,o:1};
+  return {n:"r",t:`🔴 Prazo estourado (${pl(d-PRAZO_REPAROS," em atraso")} / ${pl(d," corridos")} · prazo ${PRAZO_REPAROS} dias)`,o:0};
 }
 /* marcador "Casa apta": processo conforme = SIM, casa não entregue, pré-vistoria
    ainda não agendada e a conclusão ainda não conferida (Caio/ADM) */
@@ -911,7 +928,35 @@ function editavel(k,aba){
   if(k==="obs_conferencia") return podeConferir()||podeVendas();
   return podeVendas();
 }
-function txtObs(v){ const t=String(v.obs_conferencia||"").trim(); return t?t.split("\n")[0].slice(0,60)+(t.length>60||t.indexOf("\n")>=0?"…":""):""; }
+/* 04/11/26 — OBSERVAÇÕES COM HISTÓRICO (igual às Ligações e Propostas): cada
+   registro novo entra no TOPO como "▸ dd/mm/aaaa hh:mm · Nome" + texto; os
+   anteriores ficam só para leitura. Texto antigo, sem marca, aparece como o
+   registro mais antigo ("registro sem data") e continua lá. */
+const OBS_MARCA="▸ ";
+function obsHistorico(texto){
+  const s=String(texto==null?"":texto).trim(); if(!s) return [];
+  return s.split(/^▸ /m).map((parte,i)=>{
+    const t=parte.replace(/\s+$/,""); if(!t.trim()) return null;
+    if(i===0&&!s.startsWith(OBS_MARCA)) return {quando:"",texto:t.trim()};
+    const nl=t.indexOf("\n");
+    return {quando:(nl<0?t:t.slice(0,nl)).trim(),texto:(nl<0?"":t.slice(nl+1)).trim()};
+  }).filter(Boolean);
+}
+function obsNovaEntrada(texto){
+  const d=new Date(), q=d.toLocaleDateString("pt-BR")+" "+d.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});
+  const quem=(S&&(S.nome||S.login))||"";
+  return OBS_MARCA+q+(quem?" · "+quem:"")+"\n"+String(texto).trim();
+}
+function obsHistoricoHtml(texto){
+  const h=obsHistorico(texto);
+  if(!h.length) return `<div class="obs-h-vz">Nenhum registro ainda.</div>`;
+  return h.map(x=>`<div class="obs-h-it"><div class="obs-h-q">${esc(x.quando||"registro sem data")}</div><div class="obs-h-t">${esc(x.texto)}</div></div>`).join("");
+}
+function txtObs(v){
+  const h=obsHistorico(v.obs_conferencia); if(!h.length) return "";
+  const t=h[0].texto.split("\n")[0], dt=(h[0].quando||"").split(" · ")[0].split(" ")[0];
+  return (dt?dt+" — ":"")+t.slice(0,55)+(t.length>55||h[0].texto.indexOf("\n")>=0?"…":"")+(h.length>1?` (+${h.length-1})`:"");
+}
 function campoEntrega(v,k,aba){
   const f=ENT_CAMPOS[k], val=v[k]||"", ed=editavel(k,aba);
   if(f.tipo==="obs") return `<button type="button" class="obs-bt ${val?"":"vz"}" onclick="MapaObras.obs('${esc(v.id)}')" title="${esc(val||"Escrever o que ficou pendente")}">${val?"📝 "+esc(txtObs(v)):(ed?"✎ escrever":"—")}</button>`;
@@ -966,8 +1011,8 @@ function pintarEntregas(){
   const n=$("ent-n"); if(n) n.textContent=todas.length;
   const ch=$("ent-chips"); if(ch) ch.innerHTML=(nr?`<span class="chip en-r">${nr} reparo(s) com prazo estourado/hoje</span>`:"")+(na?`<span class="chip en-r">${na} casa(s) apta(s) atrasada(s)</span>`:"")+(porAba.apta.length?`<span class="chip en-w">${porAba.apta.length} casa apta p/ vistoria</span>`:"");
   const aviso=!S||!S.token?`<div class="en-info"><a href="${PORTAL}login.html">Entre no portal</a> para preencher.</div>`:(BOOT&&!BOOT.podeVendas&&!BOOT.erro?`<div class="en-info">Só leitura: preencher precisa de acesso a VENDAS ou OBRAS.</div>`:"");
-  const ajuda=aba.k==="apta"?`<div class="en-info">O contador começa na criação da atividade (prazo ${PRAZO_APTA} dias). Marcar <b>SIM</b> trava o contador até a <b>conferência da conclusão</b> (Caio): <b>Conferido OK</b> conclui; <b>Necessita de intervenções</b> volta para executando reparos e o contador continua.</div>`
-    :aba.k==="reparos"?`<div class="en-info">O contador começa na data da pré-vistoria (prazo ${PRAZO_REPAROS} dias). Reparos = <b>SIM</b> trava o contador; a casa só sai daqui com <b>Entregou = SIM</b>. <b>Não entregue - novas observações</b> começa um período novo; <b>Não entregue - faltou correções</b> continua a contagem.</div>`:"";
+  const ajuda=aba.k==="apta"?`<div class="en-info"><b>Prazos:</b> deixar a casa apta em <b>${PRAZO_APTA} dias corridos</b> (contados da criação da atividade) · conferência do Caio em <b>${PRAZO_CAIO} dias corridos</b> (contados do dia em que marcaram SIM). Marcar <b>SIM</b> trava o contador da casa e começa o do Caio: <b>Conferido OK</b> conclui; <b>Necessita de intervenções</b> volta para executando reparos e o contador da casa continua.</div>`
+    :aba.k==="reparos"?`<div class="en-info"><b>Prazo:</b> reparos em <b>${PRAZO_REPAROS} dias corridos</b>, contados da data da pré-vistoria. Reparos = <b>SIM</b> trava o contador; a casa só sai daqui com <b>Entregou = SIM</b>. <b>Não entregue - novas observações</b> começa um período novo; <b>Não entregue - faltou correções</b> continua a contagem.</div>`:"";
   const qtdEng=e=>porAba[aba.k].filter(v=>(v.eng||"Sem engenheiro")===e).length;
   const barra=`<div class="en-barra"><div class="flt en-abas">${ENT_ABAS.map(a=>`<button class="pill ${a.k===aba.k?"on":""}" onclick="MapaObras.entAba('${a.k}')">${a.l} <b>${porAba[a.k].length}</b></button>`).join("")}</div>
     <div class="en-dir"><label class="en-sel en-busca">🔎 <input id="ent-busca" type="search" placeholder="Pesquisar obra (ex.: TB 21 QD 51 LT 34)" value="${esc(ENT_BUSCA)}" oninput="MapaObras.entBusca(this.value)" autocomplete="off"></label>
@@ -990,7 +1035,7 @@ function pintarEntregas(){
 }
 async function salvarVenda(id,k,valor){
   const v=vendasLista.find(x=>x.id===id); if(!v) return;
-  if(k==="conferencia"&&!podeConferir()){ toast("Só o Caio ou um ADM fazem a conferência da conclusão."); pintarEntregas(); return; }
+  if(k==="conferencia"&&!podeConferir()){ toast("Só o Caio ou um ADM fazem a Conferência Caio."); pintarEntregas(); return; }
   const dia=hojeISO(), mud=aplicarLocal(v,k,valor||null,dia), antes={}, ed=lsGet(K_EDITS,{});
   Object.keys(mud).forEach(c=>{ antes[c]=v[c]; v[c]=mud[c]; ed["v:"+id+"|"+c]={alvo:"v",id,k:c,v:mud[c],t:Date.now()}; });
   lsSet(K_EDITS,ed);
@@ -1018,12 +1063,16 @@ function obs(id){
   const ed=editavel("obs_conferencia");
   janela(`<div class="og-jan-t">📝 Observações da conferência</div>
     <div class="og-jan-s">${esc(v.endereco||"")} · Casa ${esc(v.casa!=null?v.casa:"—")}</div>
-    <textarea id="obs-txt" rows="10" ${ed?"":"readonly"} placeholder="O que ficou pendente (Enter quebra a linha)">${esc(v.obs_conferencia||"")}</textarea>
-    <div class="og-jan-b"><button class="bt ghost" onclick="MapaObras.fecharJanela()">${ed?"Cancelar":"Fechar"}</button>${ed?`<button class="bt" onclick="MapaObras.salvarObs('${esc(id)}')">Salvar</button>`:""}</div>`);
+    <div class="obs-hist">${obsHistoricoHtml(v.obs_conferencia)}</div>
+    ${ed?`<textarea id="obs-txt" rows="5" placeholder="Novo registro — entra no topo do histórico com a data, a hora e o seu nome. Enter pula de linha."></textarea>`:""}
+    <div class="og-jan-b"><button class="bt ghost" onclick="MapaObras.fecharJanela()">${ed?"Cancelar":"Fechar"}</button>${ed?`<button class="bt" onclick="MapaObras.salvarObs('${esc(id)}')">Salvar registro</button>`:""}</div>`);
   setTimeout(()=>{ const t=$("obs-txt"); if(t&&ed) t.focus(); },50);
 }
 function salvarObs(id){ const t=$("obs-txt"); if(!t) return; const v=vendasLista.find(x=>x.id===id); if(!v) return;
-  const val=t.value.replace(/\s+$/,""); fecharJanela(); if(val===(v.obs_conferencia||"")) return; salvarVenda(id,"obs_conferencia",val); }
+  const novo=t.value.replace(/\s+$/,""); fecharJanela(); if(!novo.trim()) return;
+  let ant=String(v.obs_conferencia||"").trim();
+  if(ant&&!ant.startsWith(OBS_MARCA)) ant=OBS_MARCA+"registro anterior (sem data)\n"+ant;   // texto antigo vira o registro mais velho
+  salvarVenda(id,"obs_conferencia",obsNovaEntrada(novo)+(ant?"\n\n"+ant:"")); }
 function vendaPorId(id){ return vendasLista.find(x=>x.id===id)||null; }
 async function abrirVistoria(id){
   const v=vendaPorId(id); if(!v) return;
@@ -1239,7 +1288,18 @@ document.addEventListener("DOMContentLoaded",()=>{
   carregarContratos();
   setInterval(()=>{ if(!document.hidden) carregarDados(true); },120000);          // quase ao vivo: relê o data.json a cada 2 min
   document.addEventListener("visibilitychange",()=>{ if(!document.hidden){ carregarDados(true); carregarContratos(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas(); } });
-  window.addEventListener("online",()=>{ pintarAtualizado(); carregarDados(true); if(!INDICE&&BOOT&&BOOT.erro){ lsSet(K_BOOT,null); BOOT=null; carregarBoot(); } });
+  /* 04/11/26 — VOLTOU A INTERNET: primeiro sobe a fila do que foi feito offline
+     (status, medições, entregas, observações), DEPOIS relê tudo — dados do mapa,
+     contratos/medições do MC, situação das casas e permissões — para a tela
+     não mostrar o valor velho por cima do que acabou de ser gravado. */
+  window.addEventListener("online",async()=>{
+    pintarAtualizado();
+    try{ await sincronizar(); }catch(e){}
+    carregarDados(true); carregarContratos();
+    if(!INDICE){ carregarMedicoes(); carregarMV(); } else if($("med")) carregarMedTodas();
+    if(BOOT&&BOOT.erro) BOOT=null;
+    const cb=lsGet(K_BOOT,null); if(cb&&cb.t&&Date.now()-cb.t>=30*60*1000||!BOOT) carregarBoot();
+  });
   window.addEventListener("offline",pintarAtualizado);
   sincronizar();
   /* offline: registra o service worker e pede para guardar ESTA página e o
