@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-04T12:12:05.094489+00:00",
+ "updated_at": "2026-11-04T12:26:50.133896+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -2314,7 +2314,7 @@
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "SIM",
-   "ret_armazenado": "NÃO",
+   "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "SIM",
@@ -2354,7 +2354,7 @@
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "SIM",
-   "ret_armazenado": "NÃO",
+   "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
@@ -2394,7 +2394,7 @@
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "SIM",
-   "ret_armazenado": "NÃO",
+   "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
@@ -3260,7 +3260,7 @@
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": "2026-11-06",
+   "data_habite_se": "2026-11-25",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
@@ -5834,7 +5834,7 @@
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "SIM",
-   "ret_armazenado": "NÃO",
+   "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
@@ -14346,7 +14346,7 @@
    "endereco": "TB 16 QD 47 LT 40",
    "setor": "TERRABELA CERRADO",
    "habite": [
-    "2026-11-06",
+    "2026-11-25",
     "MANHÃ"
    ],
    "pv": {}
@@ -15676,6 +15676,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-04T12:26:50.133896+00:00",
+   "ref": "TC 56",
+   "endereco": "TB 16 QD 47 LT 40",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "habite",
+   "data": "2026-11-25",
+   "turno": "MANHÃ"
+  },
   {
    "em": "2026-11-04T12:10:54.518030+00:00",
    "ref": "BR 15",
