@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-04T18:13:38.241541+00:00",
+ "updated_at": "2026-11-04T18:28:26.580022+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -9557,8 +9557,8 @@
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
-   "obs_conferencia": "▸ 04/11/2026 15:06 · felipe berçan\nteste",
-   "contador": "{\"a\":{\"ini\":\"2026-10-27\",\"acc\":0,\"ret\":\"2026-10-27\",\"trav\":null},\"r\":{},\"em\":\"2026-11-04T18:07:02.384Z\",\"por\":\"felipe berçan\"}",
+   "obs_conferencia": "▸ 04/11/2026 15:28 · Caio Araujo\nSolicitado atualização.\n\n▸ 04/11/2026 15:06 · felipe berçan\nteste",
+   "contador": "{\"a\":{\"ini\":\"2026-10-27\",\"acc\":0,\"ret\":\"2026-10-27\",\"trav\":null},\"r\":{},\"em\":\"2026-11-04T18:28:16.590Z\",\"por\":\"Caio Araujo\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -12337,8 +12337,8 @@
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
-   "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":0,\"ret\":\"2026-10-26\",\"trav\":null},\"r\":{},\"em\":\"2026-10-26T20:11:33.417Z\",\"por\":\"sistema\",\"origem\":\"atividade\"}",
+   "obs_conferencia": "▸ 04/11/2026 15:27 · Caio Araujo\nestá atualiado na data de hoje",
+   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":0,\"ret\":\"2026-10-26\",\"trav\":null},\"r\":{},\"em\":\"2026-11-04T18:27:51.961Z\",\"por\":\"Caio Araujo\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
