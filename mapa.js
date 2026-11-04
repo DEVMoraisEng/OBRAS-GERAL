@@ -24,7 +24,7 @@
 "use strict";
 const API_ESCRITA="https://script.google.com/macros/s/AKfycbyoEOQfmuuN_jG817TeDK_aVMv6BiD6WFv61ZkgulUQBgYfxxyYPttzv1AMH2PcmZ31Jw/exec";
 const PORTAL="https://devmoraiseng.github.io/PORTAL-MORAIS/";
-const K_SESSAO="morais_sessao", K_TEMA="morais_tema", K_DADOS="og_dados_v1", K_EDITS="og_edits_v1", K_FILA="og_fila_v1", K_BOOT="og_boot_v1";
+const K_SESSAO="morais_sessao", K_TEMA="morais_tema", K_DADOS="og_dados_v1", K_EDITS="og_edits_v1", K_FILA="og_fila_v1", K_BOOT="og_boot_v2";   // 04/11/26: v2 traz podeObs (Pós Obra/Caio preenchem Conferência Caio e Observações)
 const PRAZO_ALERTA=150, PRAZO_ESTOURO=180;
 const INDICE=window.PAGINA==="indice";
 const CFG=window.CONFIG||null;
@@ -916,6 +916,8 @@ function entregasPendentes(todasAsVendas){
 function ordemEntrega(v){ const p=prazoEntrega(v)||(precisaApta(v)?prazoApta(v):null); return p?p.o:7; }
 const podeVendas=()=>!!(S&&S.token&&BOOT&&BOOT.podeVendas);
 const podeConferir=()=>!!(S&&S.token&&BOOT&&BOOT.podeConferir);
+/* 04/11/26: OBSERVAÇÕES — Caio, quem tem PÓS OBRA ou VENDAS/OBRAS (o servidor confere: moPodeConfObs_) */
+const podeObs=()=>!!(S&&S.token&&BOOT&&(BOOT.podeObs||BOOT.podeConferir||BOOT.podeVendas));
 function opcoesDe(k,val){
   const ops=(((BOOT&&BOOT.opcoesVendas)||{})[k]||[]).slice();
   (OPC_EXTRA[k]||[]).forEach(o=>{ if(!ops.some(x=>up(x)===up(o))) ops.push(o); });
@@ -925,7 +927,7 @@ function opcoesDe(k,val){
 function editavel(k,aba){
   if((aba&&aba.soLeitura||[]).indexOf(k)>=0) return false;
   if(k==="conferencia") return podeConferir();
-  if(k==="obs_conferencia") return podeConferir()||podeVendas();
+  if(k==="obs_conferencia") return podeObs();
   return podeVendas();
 }
 /* 04/11/26 — OBSERVAÇÕES COM HISTÓRICO (igual às Ligações e Propostas): cada
@@ -1010,7 +1012,7 @@ function pintarEntregas(){
   const na=porAba.apta.filter(v=>{ const p=prazoApta(v); return p.n==="r"||p.n==="h"; }).length;
   const n=$("ent-n"); if(n) n.textContent=todas.length;
   const ch=$("ent-chips"); if(ch) ch.innerHTML=(nr?`<span class="chip en-r">${nr} reparo(s) com prazo estourado/hoje</span>`:"")+(na?`<span class="chip en-r">${na} casa(s) apta(s) atrasada(s)</span>`:"")+(porAba.apta.length?`<span class="chip en-w">${porAba.apta.length} casa apta p/ vistoria</span>`:"");
-  const aviso=!S||!S.token?`<div class="en-info"><a href="${PORTAL}login.html">Entre no portal</a> para preencher.</div>`:(BOOT&&!BOOT.podeVendas&&!BOOT.erro?`<div class="en-info">Só leitura: preencher precisa de acesso a VENDAS ou OBRAS.</div>`:"");
+  const aviso=!S||!S.token?`<div class="en-info"><a href="${PORTAL}login.html">Entre no portal</a> para preencher.</div>`:(BOOT&&!BOOT.podeVendas&&!BOOT.erro?(podeConferir()||podeObs()?`<div class="en-info">Você preenche ${podeConferir()?"a <b>Conferência Caio</b> e ":""}as <b>Observações</b>. As outras colunas precisam de acesso a VENDAS ou OBRAS.</div>`:`<div class="en-info">Só leitura: preencher precisa de acesso a VENDAS ou OBRAS.</div>`):"");
   const ajuda=aba.k==="apta"?`<div class="en-info"><b>Prazos:</b> deixar a casa apta em <b>${PRAZO_APTA} dias corridos</b> (contados da criação da atividade) · conferência do Caio em <b>${PRAZO_CAIO} dias corridos</b> (contados do dia em que marcaram SIM). Marcar <b>SIM</b> trava o contador da casa e começa o do Caio: <b>Conferido OK</b> conclui; <b>Necessita de intervenções</b> volta para executando reparos e o contador da casa continua.</div>`
     :aba.k==="reparos"?`<div class="en-info"><b>Prazo:</b> reparos em <b>${PRAZO_REPAROS} dias corridos</b>, contados da data da pré-vistoria. Reparos = <b>SIM</b> trava o contador; a casa só sai daqui com <b>Entregou = SIM</b>. <b>Não entregue - novas observações</b> começa um período novo; <b>Não entregue - faltou correções</b> continua a contagem.</div>`:"";
   const qtdEng=e=>porAba[aba.k].filter(v=>(v.eng||"Sem engenheiro")===e).length;
