@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-04T14:45:06.311127+00:00",
+ "updated_at": "2026-11-04T14:56:34.624857+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -10457,8 +10457,8 @@
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
-   "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-10-28\",\"acc\":7,\"ret\":\"2026-10-28\",\"trav\":\"2026-11-04\"},\"r\":{},\"em\":\"2026-11-04T14:34:48.974Z\",\"por\":\"Guilherme Gouveia\"}",
+   "obs_conferencia": "teste",
+   "contador": "{\"a\":{\"ini\":\"2026-10-28\",\"acc\":7,\"ret\":\"2026-10-28\",\"trav\":\"2026-11-04\"},\"r\":{},\"em\":\"2026-11-04T14:55:51.041Z\",\"por\":\"Paula Morais\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
