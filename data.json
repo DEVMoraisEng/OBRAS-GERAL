@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-04T11:00:45.116646+00:00",
+ "updated_at": "2026-11-04T12:10:54.518030+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -11792,13 +11792,13 @@
    "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "NÃO",
-   "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null,
+   "casa_apta_vistoria": "SIM",
+   "agendou_pre_vistoria": "SIM",
+   "data_pre_vistoria": "2026-11-04",
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-10-29\",\"acc\":0,\"ret\":\"2026-10-29\",\"trav\":null},\"r\":{},\"em\":\"2026-10-29T21:11:40.960Z\",\"por\":\"sistema\",\"origem\":\"atividade\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-29\",\"acc\":6,\"ret\":\"2026-10-29\",\"trav\":\"2026-11-04\"},\"r\":{\"ini\":\"2026-11-04\",\"ret\":\"2026-11-04\",\"acc\":0,\"trav\":null},\"em\":\"2026-11-04T12:10:32.218Z\",\"por\":\"Isaac Natan\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -15162,7 +15162,9 @@
     "2026-05-20",
     "MANHÃ"
    ],
-   "pv": {}
+   "pv": {
+    "1": "2026-11-04"
+   }
   },
   "BR 14": {
    "status": "habite_concluido",
@@ -15674,6 +15676,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-04T12:10:54.518030+00:00",
+   "ref": "BR 15",
+   "endereco": "RPB 24 QD 26A LT 13",
+   "setor": "PQ DOS BURITIS",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": "2026-11-04"
+  },
   {
    "em": "2026-10-29T12:12:08.343872+00:00",
    "ref": "TC 55",
