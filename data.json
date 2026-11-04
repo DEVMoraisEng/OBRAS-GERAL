@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-04T19:00:39.234831+00:00",
+ "updated_at": "2026-11-04T19:03:47.961003+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -11795,10 +11795,10 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-11-04",
-   "reparos_pre_vistoria": "NÃO",
+   "reparos_pre_vistoria": "EXECUTANDO REPAROS",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-10-29\",\"acc\":6,\"ret\":\"2026-10-29\",\"trav\":\"2026-11-04\"},\"r\":{\"ini\":\"2026-11-04\",\"ret\":\"2026-11-04\",\"acc\":0,\"trav\":null},\"em\":\"2026-11-04T12:10:32.218Z\",\"por\":\"Isaac Natan\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-29\",\"acc\":6,\"ret\":\"2026-10-29\",\"trav\":\"2026-11-04\"},\"r\":{\"ini\":\"2026-11-04\",\"ret\":\"2026-11-04\",\"acc\":0,\"trav\":null},\"em\":\"2026-11-04T19:03:19.875Z\",\"por\":\"Isaac Natan\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
