@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05T20:42:10.185807+00:00",
+ "updated_at": "2026-11-05T20:50:42.144693+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8318,7 +8318,7 @@
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:29 · Caio Araujo\nVerificação será na sexta 06/11",
-   "contador": "{\"a\":{\"ini\":\"2026-09-16\",\"acc\":0,\"ret\":\"2026-09-16\",\"trav\":null},\"r\":{},\"em\":\"2026-11-04T18:29:17.849Z\",\"por\":\"Caio Araujo\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":0,\"ret\":\"2026-10-26\",\"trav\":null},\"r\":{},\"em\":\"2026-11-05T20:50:05.619Z\",\"por\":\"Caio Araujo\",\"origem\":\"atividade\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -8338,7 +8338,7 @@
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:28 · Caio Araujo\nVerificação será na sexta 06/11",
-   "contador": "{\"a\":{\"ini\":\"2026-10-07\",\"acc\":0,\"ret\":\"2026-10-07\",\"trav\":null},\"r\":{},\"em\":\"2026-11-04T18:28:56.944Z\",\"por\":\"Caio Araujo\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":0,\"ret\":\"2026-10-26\",\"trav\":null},\"r\":{},\"em\":\"2026-11-05T20:50:06.172Z\",\"por\":\"Caio Araujo\",\"origem\":\"atividade\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -8698,7 +8698,7 @@
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:30 · Caio Araujo\nVistoria será realizada na sexta 06/11",
-   "contador": "{\"a\":{\"ini\":\"2026-09-24\",\"acc\":0,\"ret\":\"2026-09-24\",\"trav\":null},\"r\":{},\"em\":\"2026-11-04T18:30:05.636Z\",\"por\":\"Caio Araujo\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-11-04\",\"acc\":0,\"ret\":\"2026-11-04\",\"trav\":null},\"r\":{},\"em\":\"2026-11-05T20:50:07.032Z\",\"por\":\"Caio Araujo\",\"origem\":\"atividade\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -8758,7 +8758,7 @@
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:29 · Caio Araujo\nvistoria será realizada na sexta 06/11",
-   "contador": "{\"a\":{\"ini\":\"2026-09-12\",\"acc\":0,\"ret\":\"2026-09-12\",\"trav\":null},\"r\":{},\"em\":\"2026-11-04T18:29:50.003Z\",\"por\":\"Caio Araujo\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":0,\"ret\":\"2026-10-26\",\"trav\":null},\"r\":{},\"em\":\"2026-11-05T20:50:07.580Z\",\"por\":\"Caio Araujo\",\"origem\":\"atividade\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
