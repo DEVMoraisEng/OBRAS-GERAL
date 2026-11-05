@@ -35,6 +35,18 @@
  * Supabase Storage). Quem CRIOU edita de qualquer aparelho em que estiver
  * logado; os outros abrem só para ler. Sem internet continua tudo igual:
  * fica no aparelho e sobe quando a conexão voltar.
+ *
+ * 05/11/26 (2):
+ *   - CONFERÊNCIA DOS REPAROS saiu de dentro da vistoria: botão ✅ Reparos na
+ *     linha da casa, qualquer engenheiro marca de qualquer aparelho. Cada
+ *     marcação vai sozinha para o servidor (arquivo de checks da casa,
+ *     separado da vistoria) e, sem internet, fica numa fila no aparelho;
+ *   - quem CRIOU pode EDITAR a vistoria finalizada (✏️ Editar) e gerar os PDFs
+ *     de novo — os novos substituem os anteriores na casa;
+ *   - 📤 Reenviar os PDFs (recupera os por prestador que o Notion perdia);
+ *   - assinatura: grava na hora em que a pessoa solta o dedo, o servidor
+ *     nunca troca uma assinatura por "vazio" (só o botão Limpar apaga) e, ao
+ *     trocar de app/travar a tela, o que estava na tela é gravado.
  * ===================================================================== */
 (function(){
 "use strict";
@@ -65,9 +77,13 @@ const apagar=(st,id)=>op(st,"readwrite",s=>s.delete(id));
 const todos=st=>op(st,"readonly",s=>s.getAll()).then(l=>l||[]);
 
 /* contagem síncrona para o botão "📋 Vistoria" (vistorias guardadas neste aparelho) */
-const CONT={}; let PEND=0;
+const CONT={}, EST={}; let PEND=0;
 function recontar(){ return Promise.all([todos("vist"),todos("envios")]).then(([vs,en])=>{
-  Object.keys(CONT).forEach(k=>delete CONT[k]); vs.forEach(v=>{ CONT[v.vendaId]=(CONT[v.vendaId]||0)+1; }); PEND=en.length; pintarPend(); }).catch(()=>{}); }
+  Object.keys(CONT).forEach(k=>delete CONT[k]); Object.keys(EST).forEach(k=>delete EST[k]);
+  const st=id=>EST[id]=EST[id]||{rasc:0,fin:0,fila:0};
+  vs.forEach(v=>{ CONT[v.vendaId]=(CONT[v.vendaId]||0)+1; if(v.status==="rascunho"||v.editando) st(v.vendaId).rasc++; else st(v.vendaId).fin++; });
+  en.forEach(x=>{ st(x.vendaId).fila++; });
+  PEND=en.length; pintarPend(); }).catch(()=>{}); }
 function pintarPend(){
   let e=$("vist-pend"); if(!e){ e=document.createElement("div"); e.id="vist-pend"; e.className="vist-pend"; e.onclick=()=>sincronizar(CTX||{}); document.body.appendChild(e); }
   e.style.display=PEND?"":"none";
@@ -82,7 +98,8 @@ const CSS=`
 .vist-h .t{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:19px;letter-spacing:.4px;text-transform:uppercase;line-height:1.05}
 .vist-h .s{font-size:11.5px;color:#8FDCD2;font-weight:700}
 .vist-h .x{margin-left:auto;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:6px 11px;font:inherit;font-weight:800;cursor:pointer}
-.vist-passos{position:sticky;top:52px;z-index:2;display:flex;overflow-x:auto;background:#16303f;scrollbar-width:none}
+.vist-passos{position:sticky;top:52px;z-index:2;display:flex;flex:0 0 auto;overflow-x:auto;background:#16303f;scrollbar-width:none}
+.vist-ov .vist>.vist-h{flex:0 0 auto}.vist-ov .vist>.vist-c{flex:1 0 auto}   /* 05/11: a barra de passos encolhia até sumir com a vistoria longa */
 .vist-passos button{flex:0 0 auto;border:0;background:none;color:rgba(255,255,255,.55);padding:10px 14px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;border-bottom:3px solid transparent}
 .vist-passos button.on{color:#fff;border-bottom-color:#8FDCD2}.vist-passos button.feito{color:#8FDCD2}
 .vist-c{padding:14px;flex:1}
@@ -165,6 +182,7 @@ html[data-tema="escuro"] .vist .tag.ok{background:#16341f;color:#8ce0a5}html[dat
 .vist .cf.on .i b{text-decoration:line-through;opacity:.7}.vist .cf.on small{color:#1a6b40;font-weight:700}
 .vist .prog{height:9px;border-radius:9px;background:var(--bg3,#dceaef);overflow:hidden;margin:4px 0 10px}.vist .prog i{display:block;height:100%;background:#2a9d5c;transition:width .25s}
 .vist .tag.rd{background:#efe7fb;color:#6b3fa0}
+.vist-ov.vist-ck{z-index:9100}
 html[data-tema="escuro"] .vist .chk{background:rgba(0,0,0,.25)}html[data-tema="escuro"] .vist .tag.rd{background:#2d2140;color:#cdb2f2}`;
 function estilo(){ if($("vist-css")) return; const s=document.createElement("style"); s.id="vist-css"; s.textContent=CSS; document.head.appendChild(s); }
 
@@ -175,8 +193,10 @@ function ov(){ let o=$("vist-ov"); if(!o){ o=document.createElement("div"); o.id
 const eu=()=>String((((CTX&&CTX.sessao)||{}).login)||"").trim().toLowerCase();
 const souAdm=()=>String((((CTX&&CTX.sessao)||{}).tipo)||"").toUpperCase()==="ADM";
 const meu=v=>!!v&&(!v.criador||v.criador===eu()||souAdm());           // sem dono = feita neste aparelho antes de 29/10
-const podeEd=()=>!!E&&E.status==="rascunho"&&meu(E);                     // editar o rascunho
-const podeConf=()=>!!E&&E.status!=="rascunho"&&meu(E);                   // conferência (depois de finalizada)
+const podeEd=()=>!!E&&meu(E)&&(E.status==="rascunho"||!!E.editando);     // rascunho ou finalizada reaberta para edição (05/11)
+/* chave estável de cada item (os checks ficam guardados por ela) */
+const chave=it=>it&&it.uid?String(it.uid):"n"+String((it&&it.num)||"");
+const novoUid=()=>"i"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 function fechar(){ clearTimeout(salvarT); if(podeEd()&&PASSO===2) capturarSigs(); const pend=E?salvarJa():Promise.resolve(); const o=$("vist-ov"); if(o) o.remove(); document.body.style.overflow="";
   pend.then(()=>{ E=null; return recontar(); }).then(()=>{ if(CTX&&CTX.aoMudar) CTX.aoMudar(); }); }
 function toast(t){ if(CTX&&CTX.toast) CTX.toast(t); }
@@ -202,7 +222,9 @@ async function nuvemEnviar(){
       let r=null; try{ r=await CTX.api({action:"vistNuvemSalvar",vist:copia},fx.legado?180000:90000); }catch(e){ r=null; }
       const atual=await pegar("vist",v.id); if(!atual) continue;
       if(r&&r.ok){ atual.criador=r.criador; atual.criadorNome=r.criadorNome; atual.nuvemEm=r.em; if(atual.atualizadoEm===v.atualizadoEm) atual.nuvemPend=false;
-        await gravarDB("vist",atual); if(E&&E.id===v.id){ E.criador=r.criador; E.criadorNome=r.criadorNome; E.nuvemEm=r.em; if(E.atualizadoEm===v.atualizadoEm) E.nuvemPend=false; pintarNuvem(); } }
+        await gravarDB("vist",atual); if(E&&E.id===v.id){ E.criador=r.criador; E.criadorNome=r.criadorNome; E.nuvemEm=r.em; if(E.atualizadoEm===v.atualizadoEm) E.nuvemPend=false; pintarNuvem(); }
+        /* 05/11 (2): a nuvem tinha a assinatura e este aparelho não → traz de volta */
+        if(r.restaurouSig&&!atual.nuvemPend){ try{ const full=await trazerDaNuvem(v); if(E&&E.id===v.id){ ["Resp","Cliente"].forEach(t=>{ if(!E["sig"+t]&&full["sig"+t]) E["sig"+t]=full["sig"+t]; }); if(PASSO>=2) pintarPasso(); } }catch(e){} } }
       else if(r&&r.erro==="SEM_PERMISSAO"){ atual.nuvemPend=false; atual.nuvemEm=atual.nuvemEm||"recusada"; if(r.criador&&!atual.criador) atual.criador="?"; await gravarDB("vist",atual); }
       else { falhou=true; break; }    // sem resposta / servidor antigo: tenta de novo depois
     }
@@ -241,7 +263,7 @@ async function nuvemLista(vendaId){
 /* resumo da nuvem -> objeto com a mesma cara da vistoria (para a lista) */
 function deMeta(m){ return {id:m.id,vendaId:m.vendaId,status:m.status,rodada:m.rodada,anteriorData:m.anteriorData,criadoEm:m.criadoEm,atualizadoEm:m.atualizadoEm,
   criador:m.criador,criadorNome:m.criadorNome,_nuvem:true,dados:{dataVistoria:m.dataVistoria,respNome:m.respNome,clienteNome:m.clienteNome},
-  itens:Array.from({length:m.nItens||0},(_,i)=>({feito:i<(m.nFeitos||0)}))}; }
+  editando:!!m.editando,itens:m.itens?m.itens.map(x=>Object.assign({fotos:[]},x)):Array.from({length:m.nItens||0},(_,i)=>({feito:i<(m.nFeitos||0),fotos:[]}))}; }
 /* junta aparelho + nuvem: a mais nova vence (a do aparelho com alteração ainda não enviada vence sempre) */
 function juntar(locais,nuvem){
   const m={}; locais.forEach(v=>{ m[v.id]=v; });
@@ -265,15 +287,15 @@ async function abrir(venda,ctx){
   const nuvem=await nuvemLista(venda.id); if(VENDA!==venda) return;
   const lista=juntar(locais,nuvem);
   let envios=[]; try{ envios=await todos("envios"); }catch(e){}
-  const tagDe=v=>{ const p=envios.filter(x=>x.vistId===v.id); if(v.status==="enviada") return `<span class="tag ok">✓ salva na casa</span>`;
+  const tagDe=v=>{ const p=envios.filter(x=>x.vistId===v.id); if(v.editando) return `<span class="tag r">✏️ em edição</span>`; if(v.status==="enviada") return `<span class="tag ok">✓ salva na casa</span>`;
     if(p.some(x=>x.erro)) return `<span class="tag er">erro no envio</span>`; if(v.status==="enviando"||p.length) return `<span class="tag e">⏳ ${p.length} PDF(s) na fila</span>`; return `<span class="tag r">rascunho</span>`; };
   $("vist-c").innerHTML=`
     ${navigator.onLine?"":`<div class="info am">Sem internet: pode preencher normalmente. Tudo fica guardado neste aparelho e os PDFs sobem sozinhos quando voltar a conexão.</div>`}
     <button class="bt lg" onclick="Vistoria._nova()">+ Nova vistoria desta casa</button>
     <div class="ct" style="margin-top:6px">Vistorias desta casa${nuvem?"":" (neste aparelho — sem conexão com a nuvem agora)"}</div>
     ${lista.length?lista.map(v=>`<div class="lst"><div class="i"><b>${rotRel(v)}${br(v.dados.dataVistoria)} · ${v.itens.length} item(ns)</b><span>${esc(v.dados.respNome||"")} ${v.dados.clienteNome?"· cliente "+esc(v.dados.clienteNome):""}${v.status!=="rascunho"&&v.itens.length?" · ✅ "+nFeitos(v)+"/"+v.itens.length+" executados":""}${v.criadorNome?" · criada por "+esc(v.criadorNome):""}${v._nuvem?" · ☁":""}</span></div>${tagDe(v)}
-      <div class="bts"><button class="bt az" onclick="Vistoria._continuar('${esc(v.id)}')">${v.status==="rascunho"&&meu(v)?"Continuar":"Abrir"}</button>
-      ${v.status==="rascunho"?(meu(v)?`<button class="bt vm" onclick="Vistoria._excluir('${esc(v.id)}')">🗑</button>`:""):`<button class="bt gh" title="Novo relatório: o cliente encontrou novas pontuações" onclick="Vistoria._novoRel('${esc(v.id)}')">➕ Novas pontuações</button>`}</div></div>`).join("")
+      <div class="bts"><button class="bt az" onclick="Vistoria._continuar('${esc(v.id)}')">${meu(v)&&(v.status==="rascunho"||v.editando)?"Continuar":"Abrir"}</button>
+      ${v.status==="rascunho"?(meu(v)?`<button class="bt vm" onclick="Vistoria._excluir('${esc(v.id)}')">🗑</button>`:""):`<button class="bt" title="Marcar os reparos executados" onclick="Vistoria._conferirCasa()">✅ Reparos</button><button class="bt gh" title="Novo relatório: o cliente encontrou novas pontuações" onclick="Vistoria._novoRel('${esc(v.id)}')">➕ Novas pontuações</button>`}</div></div>`).join("")
       :`<div class="info">Nenhuma vistoria desta casa ainda.</div>`}
     <div class="ct" style="margin-top:14px">Documentos da vistoria salvos na casa</div>
     <div id="vist-docs"><div class="info">Carregando os documentos…</div></div>`;
@@ -313,7 +335,7 @@ async function continuar(id){
   if(m&&(!v||(!v.nuvemPend&&String(m.atualizadoEm||"")>String(v.atualizadoEm||"")))){
     toast("Baixando a vistoria…"); try{ v=await trazerDaNuvem(m); }catch(e){ if(!v){ toast("Não consegui baixar a vistoria: "+e.message); return; } } }
   if(!v) return;
-  E=v; PASSO=v.status==="rascunho"&&meu(v)?(v.passo||0):(v.status==="rascunho"?0:3); form(); }
+  E=v; PASSO=meu(v)&&(v.status==="rascunho"||v.editando)?(v.passo||0):(v.status==="rascunho"?0:3); form(); }
 async function excluir(id){ if(!confirm("Excluir este rascunho de vistoria? (some deste aparelho e da nuvem)")) return;
   const v=await pegar("vist",id);
   if(navigator.onLine&&CTX&&CTX.api){ try{ const r=await CTX.api({action:"vistNuvemApagar",vendaId:(v&&v.vendaId)||VENDA.id,id},30000); if(r&&!r.ok&&r.erro==="SEM_PERMISSAO"){ toast("Só quem criou pode excluir"); return; } }catch(e){} }
@@ -341,7 +363,7 @@ async function novoRel(prevId){
   const eu=quem(), cid=(String(p.dados.localAssinatura||"").match(/^([^,]*-GO)\s*,/i)||[])[1];
   const d=Object.assign({},p.dados,{dataVistoria:hoje(),obsGerais:"",localAssinatura:(cid?cid+", ":"")+porExtenso(hoje())});
   if(eu){ d.respNome=eu; d.sigRespNome=eu; }
-  const itens=trazer?pend.map((it,j)=>Object.assign(JSON.parse(JSON.stringify(it)),{num:pad2(j+1),feito:false,feitoEm:null,feitoPor:null,deAnterior:true,
+  const itens=trazer?pend.map((it,j)=>Object.assign(JSON.parse(JSON.stringify(it)),{num:pad2(j+1),uid:novoUid(),feito:false,feitoEm:null,feitoPor:null,deAnterior:true,
     obs:"Pendente do relatório de "+br(p.dados.dataVistoria)+(it.obs?" · "+it.obs:"")})):[];
   E={id:"v_"+p.vendaId+"_"+Date.now(),vendaId:p.vendaId,endereco:p.endereco,casa:p.casa,criadoEm:new Date().toISOString(),status:"rascunho",
      rodada,anteriorId:p.id,anteriorData:p.dados.dataVistoria,dados:d,itens,sigResp:null,sigCliente:null,
@@ -351,47 +373,30 @@ async function novoRel(prevId){
     if(CTX.novasObservacoes(p.vendaId)===false) toast("Sem permissão para alterar “Entregou a casa?” — peça a quem cuida de Vendas"); }
   PASSO=1; form(); toast("Relatório Nº "+rodada+" aberto — adicione as novas pontuações");
 }
-/* check "Executado" de cada item, depois de finalizado */
-function feito(i,on){
-  if(!podeConf()) return; const it=E.itens[i]; if(!it) return;
-  const antes=nFeitos(E);
-  it.feito=!!on; it.feitoEm=on?hoje():null; it.feitoPor=on?quem():null; E.confPendente=true;
-  salvarJa();
-  if(PASSO===3) pintarPasso();
-  else { const el=$("it-"+i); if(el) el.classList.toggle("feito",!!on); const ck=$("ck-"+i); if(ck) ck.classList.toggle("on",!!on); const sp=$("ckt-"+i); if(sp) sp.textContent=on?"Executado "+br(it.feitoEm).slice(0,5):"Executado"; }
-  const n=nFeitos(E);
-  if(on&&n===E.itens.length&&antes<n) setTimeout(()=>{ toast("Todos os reparos executados ✓");
-    if(CTX&&CTX.reparosFeitos&&confirm(`Os ${n} reparo(s) deste relatório foram marcados como executados.\n\nMarcar “REPAROS DA PRÉ-VISTORIA” = SIM nesta casa? (trava o contador)`)){
-      if(CTX.reparosFeitos(E.vendaId)===false) toast("Sem permissão para alterar os reparos — peça a quem cuida de Vendas"); } },80);
+/* 05/11/26 (2): o check "Executado" saiu daqui — ver CONFERÊNCIA DOS REPAROS, no fim do arquivo */
+/* ✏️ quem criou reabre a vistoria finalizada para editar; ao Finalizar de novo,
+   os PDFs são gerados outra vez e substituem os anteriores na casa */
+function editar(){
+  if(!E||!meu(E)||E.status==="rascunho") return;
+  if(!confirm("Editar esta vistoria finalizada?\n\nAs assinaturas e a conferência dos reparos ficam como estão. Ao terminar, toque em “Concluir edição” para gerar os PDFs de novo — eles substituem os anteriores na casa.")) return;
+  (E.itens||[]).forEach(it=>{ if(!it.uid) it.uid=chave(it); });   // congela a chave antes de renumerar
+  E.editando=true; salvarJa().then(recontar); PASSO=0; form(); toast("Vistoria aberta para edição ✏️");
 }
-function feitoTodos(on){ if(!podeConf()) return;
-  if(!confirm(on?"Marcar TODOS os itens como executados (data de hoje)?":"Desmarcar todos os itens?")) return;
-  const antes=nFeitos(E);
-  E.itens.forEach(it=>{ if(on&&it.feito) return; it.feito=!!on; it.feitoEm=on?hoje():null; it.feitoPor=on?quem():null; }); E.confPendente=true; salvarJa(); pintarPasso();
-  if(on&&E.itens.length&&antes<E.itens.length&&CTX&&CTX.reparosFeitos&&confirm("Marcar “REPAROS DA PRÉ-VISTORIA” = SIM nesta casa? (trava o contador)")){
-    if(CTX.reparosFeitos(E.vendaId)===false) toast("Sem permissão para alterar os reparos"); }
-}
-/* PDF da conferência → mesma fila dos PDFs (sobe para VISTORIA - RELATÓRIO COMPLETO) */
-async function salvarConf(){
-  if(!podeConf()) return;
-  if(!confirm(`Salvar a conferência dos reparos na casa?\n\nVai ${navigator.onLine?"subir":"ficar na fila (sem internet)"} um PDF com ${nFeitos(E)} de ${E.itens.length} reparo(s) executado(s).`)) return;
-  toast("Gerando o PDF da conferência…");
-  try{
-    const blob=await gerarPDF(E,null,{conf:true}), nome=nomeArq(E,null,true), id="p_"+E.id+"_conf_"+Date.now().toString(36);
-    await gravarDB("pdfs",{id,vendaId:E.vendaId,vistId:E.id,nome,blob,criadoEm:new Date().toISOString(),enviado:false});
-    await gravarDB("envios",{id:"e_"+id,pdfId:id,vistId:E.id,vendaId:E.vendaId,tipo:"completo",filename:nome,opId:"vist_"+id.replace(/[^A-Za-z0-9_]/g,"").slice(-60)+"_"+Date.now().toString(36),criadoEm:new Date().toISOString()});
-    E.confPendente=false; E.confSalvaEm=new Date().toISOString(); await salvarJa(); await recontar();
-  }catch(e){ toast("Não consegui gerar o PDF da conferência: "+e.message); return; }
-  toast(navigator.onLine?"Conferência gerada — enviando para a casa…":"Sem internet: conferência guardada, sobe sozinha depois ✓");
+async function reenviar(){
+  if(!E||!meu(E)||E.status==="rascunho"||E.editando) return;
+  const prest=[...new Set(E.itens.map(i=>i.responsavel).filter(Boolean))];
+  if(!confirm(`Gerar e enviar de novo os PDFs desta vistoria para a casa?\n\n${1+prest.length} PDF(s): o completo${prest.length?" e "+prest.join(", "):""}. Os anteriores desta vistoria são substituídos.`)) return;
+  toast("Gerando os PDFs…");
+  try{ await gerarFila(); E.status="enviando"; await salvarJa(); await recontar(); }catch(e){ toast("Não consegui gerar os PDFs: "+e.message); return; }
+  toast(navigator.onLine?"PDFs gerados — enviando para a casa…":"Sem internet: PDFs guardados, sobem sozinhos depois ✓");
   pintarPasso(); sincronizar(CTX);
 }
-async function baixarConf(){ toast("Gerando o PDF…"); try{ baixarBlob(await gerarPDF(E,null,{conf:true}),nomeArq(E,null,true)); }catch(e){ toast("Não consegui gerar o PDF: "+e.message); } }
 
 /* ---------------- formulário ---------------- */
 const PASSOS=["Dados","Reparos","Assinaturas","Relatório"];
 function form(){
   const o=ov(); const leitura=!podeEd();
-  o.innerHTML=`<div class="vist"><div class="vist-h"><button class="x" style="margin:0" onclick="Vistoria._lista()">← Casa</button><div><div class="t">${E.rodada>1?"Relatório "+E.rodada:"Vistoria"} · ${br(E.dados.dataVistoria)}</div><div class="s">${esc(E.endereco||"")} · Casa ${esc(E.casa!=null?E.casa:"—")}${E.status!=="rascunho"?" · finalizada":""} · <span id="vist-nuvem"></span></div></div><button class="x" onclick="Vistoria._fechar()">✕</button></div>
+  o.innerHTML=`<div class="vist"><div class="vist-h"><button class="x" style="margin:0" onclick="Vistoria._lista()">← Casa</button><div><div class="t">${E.rodada>1?"Relatório "+E.rodada:"Vistoria"} · ${br(E.dados.dataVistoria)}</div><div class="s">${esc(E.endereco||"")} · Casa ${esc(E.casa!=null?E.casa:"—")}${E.status!=="rascunho"?(E.editando?" · em edição":" · finalizada"):""} · <span id="vist-nuvem"></span></div></div><button class="x" onclick="Vistoria._fechar()">✕</button></div>
     <div class="vist-passos">${PASSOS.map((p,i)=>`<button class="${i===PASSO?"on":i<PASSO?"feito":""}" onclick="Vistoria._passo(${i})">${i+1}. ${p}</button>`).join("")}</div>
     <div class="vist-c" id="vist-c"></div></div>`;
   pintarPasso();
@@ -415,7 +420,8 @@ function pintarPasso(){
       <button class="bt az lg" onclick="Vistoria._avancar(0)">Avançar para os itens de reparo →</button>`;
   } else if(PASSO===1){
     c.innerHTML=`${avisoDono}${ro?"":avisoRod}<div class="info"><b>Classificação:</b> A = Urgente/Estrutural · B = Necessário · C = Estético</div>
-      ${fin&&meu(E)&&E.itens.length?`<div class="info vd">Relatório finalizado: marque <b>Executado</b> em cada reparo concluído. O resumo e o PDF da conferência ficam no passo 4.</div>`:""}
+      ${fin&&!E.editando&&E.itens.length?`<div class="info vd">Relatório finalizado. O que já foi executado é marcado em <b>✅ Reparos</b> (passo 4 ou na linha da casa) — por qualquer engenheiro, de qualquer aparelho.</div>`:""}
+      ${E.editando&&meu(E)?`<div class="info am">✏️ Editando a vistoria finalizada. Ao terminar, vá ao passo 4 e toque em <b>Concluir edição</b> para gerar os PDFs de novo.</div>`:""}
       <div class="ct">Itens de reparo · ${E.itens.length}</div>
       ${E.itens.length?E.itens.map((it,i)=>itemHtml(it,i,ro)).join(""):`<div class="info">Nenhum item ainda.${ro?"":" Toque abaixo para adicionar."}</div>`}
       ${ro?"":`<button class="bt lg" onclick="Vistoria._item()">+ Adicionar item de reparo</button>`}
@@ -435,37 +441,33 @@ function pintarPasso(){
     const prest=[...new Set(E.itens.map(i=>i.responsavel).filter(Boolean))];
     const nf=nFeitos(E), tot=E.itens.length, pct=tot?Math.round(nf*100/tot):0;
     const conf=fin?`<div class="card"><div class="ct">✅ Conferência dos reparos · ${nf} de ${tot} executado(s)</div>
-        ${tot?`<div class="prog"><i style="width:${pct}%"></i></div>
-        ${E.itens.map((it,i)=>{ const k=CLS[it.classif]||CLS.C; return `<label class="cf ${it.feito?"on":""}"><input type="checkbox" ${it.feito?"checked":""} ${podeConf()?"":"disabled"} onchange="Vistoria._feito(${i},this.checked)">
-          <div class="i"><b><span style="color:${k.c}">${esc(it.num)} · ${esc(it.comodo)}</span> — ${esc(it.descricao)}</b>
-          <small>${it.feito?"✓ Executado em "+br(it.feitoEm)+(it.feitoPor?" · "+esc(it.feitoPor):""):"Pendente"+(it.responsavel?" · "+esc(it.responsavel):"")+(it.prazo?" · "+esc(it.prazo):"")}</small></div></label>`; }).join("")}
-        <div class="bts" style="margin-top:10px">${podeConf()?`<button class="bt gh" onclick="Vistoria._feitoTodos(${nf<tot})">${nf<tot?"☑ Marcar todos":"☐ Desmarcar todos"}</button>`:""}<button class="bt gh" onclick="Vistoria._baixarConf()">⬇ PDF da conferência</button></div>
-        ${nf===tot?`<div class="info vd" style="margin:10px 0 0">Todos os reparos deste relatório foram executados.</div>`:""}
-        ${E.confSalvaEm&&!E.confPendente?`<div class="ok">✓ Conferência salva na casa em ${br(E.confSalvaEm.slice(0,10))}</div>`:""}
-        ${podeConf()?`<button class="bt lg" style="margin:10px 0 0" onclick="Vistoria._salvarConf()">📤 Salvar conferência na casa (PDF)</button>`:""}`
-        :`<div class="info">Este relatório não tem itens de reparo.</div>`}</div>
-      <div class="card"><div class="ct">🆕 O cliente encontrou novas pontuações?</div>
+        ${tot?`<div class="prog"><i style="width:${pct}%"></i></div>`:""}
+        <div style="font-size:13px;margin-bottom:10px">Os engenheiros marcam o que foi executado em <b>✅ Reparos</b> — aqui ou na linha da casa, de qualquer aparelho.</div>
+        <button class="bt lg" style="margin:0" onclick="Vistoria._conferirAqui()">✅ Abrir a conferência dos reparos</button></div>
+      ${E.editando?"":`<div class="card"><div class="ct">🆕 O cliente encontrou novas pontuações?</div>
         <div style="font-size:13px;margin-bottom:10px">Abre o <b>relatório Nº ${(E.rodada||1)+1}</b> desta casa, com os dados deste, e pode trazer os itens ainda não executados.</div>
-        <button class="bt az lg" style="margin:0" onclick="Vistoria._novoRel('${esc(E.id)}')">➕ Criar novo relatório</button></div>`:"";
-    c.innerHTML=`${avisoDono}${fin?`<div class="info vd">${E.rodada>1?"Relatório Nº "+E.rodada:"Vistoria"} finalizada. ${E.status==="enviada"?"Os PDFs já estão salvos na casa.":"Os PDFs sobem para a casa assim que houver internet."}</div>`:avisoRod}
+        <button class="bt az lg" style="margin:0" onclick="Vistoria._novoRel('${esc(E.id)}')">➕ Criar novo relatório</button></div>`}
+      ${meu(E)&&!E.editando?`<div class="card"><div class="ct">✏️ Corrigir esta vistoria</div>
+        <div style="font-size:13px;margin-bottom:10px">Só quem criou a vistoria (pelo login) edita, de qualquer aparelho. Os PDFs novos substituem os anteriores na casa.</div>
+        <div class="bts"><button class="bt az" onclick="Vistoria._editar()">✏️ Editar vistoria</button><button class="bt gh" onclick="Vistoria._reenviar()">📤 Reenviar os PDFs para a casa</button></div></div>`:""}`:"";
+    c.innerHTML=`${avisoDono}${fin&&!E.editando?`<div class="info vd">${E.rodada>1?"Relatório Nº "+E.rodada:"Vistoria"} finalizada. ${E.status==="enviada"?"Os PDFs já estão salvos na casa.":"Os PDFs sobem para a casa assim que houver internet."}</div>`:avisoRod}
       ${conf}
       <div class="card"><div class="ct">📍 Imóvel</div><b style="font-size:16px">${esc(E.dados.endereco)}</b><div style="color:var(--text3);font-size:13px">${esc(E.dados.unidade)} · ${br(E.dados.dataVistoria)}${E.rodada>1?" · relatório Nº "+E.rodada+" (complementar ao de "+br(E.anteriorData)+")":""}</div>
         <div style="margin-top:8px;font-size:13px">Responsável: <b>${esc(E.dados.respNome||"—")}</b> · Cliente: <b>${esc(E.dados.clienteNome||"—")}</b></div></div>
       <div class="card"><div class="ct">📊 Resumo</div><div class="stats">${["A","B","C"].map(k=>`<div style="background:${CLS[k].bg};color:${CLS[k].c}"><b>${cont(k)}</b>Tipo ${k}</div>`).join("")}</div>
         ${E.itens.length?`<table><tr><th>#</th><th>Cômodo</th><th>Reparo</th><th>Prestador</th></tr>${E.itens.map(it=>`<tr><td><b>${esc(it.num)}</b></td><td>${esc(it.comodo)}</td><td>${esc(it.descricao)}${it.fotos.length?` · 📷 ${it.fotos.length}`:""}</td><td>${esc(it.responsavel||"—")}</td></tr>`).join("")}</table>`:`<div class="info">Nenhum item de reparo.</div>`}</div>
       <div class="card"><div class="ct">✍️ Assinaturas</div>Responsável: ${E.sigResp?"✓":"—"} · Cliente: ${E.sigCliente?"✓":"—"}</div>
-      ${ro?"":`<button class="bt lg" onclick="Vistoria._finalizar()">✅ Finalizar e salvar na casa (PDF completo + ${prest.length} por prestador)</button>`}
+      ${ro?"":`<button class="bt lg" onclick="Vistoria._finalizar()">${E.editando?"✅ Concluir edição e gerar os PDFs de novo":"✅ Finalizar e salvar na casa"} (PDF completo + ${prest.length} por prestador)</button>`}
       <div class="bts" style="margin-bottom:10px"><button class="bt az" onclick="Vistoria._baixar(null)">⬇ PDF completo</button>
         ${prest.map(p=>`<button class="bt gh" onclick="Vistoria._baixar('${esc(p)}')">⬇ ${esc(p)} (${E.itens.filter(i=>i.responsavel===p).length})</button>`).join("")}</div>
       <div class="info">O PDF completo e um PDF para cada prestador são salvos na linha da casa no Notion (colunas VISTORIA - RELATÓRIO COMPLETO e VISTORIA - POR PRESTADOR).</div>`;
   }
 }
 const TERMO="Declaro ter vistoriado o imóvel acima referenciado e estou ciente dos itens de reparo identificados e registrados neste documento. Os itens classificados como Tipo A (urgente/estrutural) serão priorizados para execução. Os itens Tipo B e Tipo C serão programados conforme cronograma a ser acordado. Este documento será parte integrante do processo de entrega do imóvel.";
-function itemHtml(it,i,ro){ const k=CLS[it.classif]||CLS.C, fin=E.status!=="rascunho", pc=podeConf();
+function itemHtml(it,i,ro){ const k=CLS[it.classif]||CLS.C, fin=E.status!=="rascunho";
   return `<div class="it ${fin&&it.feito?"feito":""}" id="it-${i}" style="border-color:${k.c}55"><div class="it-h" style="background:${k.bg}" onclick="Vistoria._abreItem(${i})"><div class="it-n" style="background:${k.c}">${esc(it.num)}</div>
     <div class="it-i"><b style="color:${k.c}">${esc(it.comodo)}${it.deAnterior?` <span class="tag rd" style="display:inline;font-size:10px">pendente anterior</span>`:""}</b><span>${esc(it.descricao)}</span></div>
-    ${fin?`<label class="chk ${it.feito?"on":""}" id="ck-${i}" onclick="event.stopPropagation()"><input type="checkbox" ${it.feito?"checked":""} ${pc?"":"disabled"} onchange="Vistoria._feito(${i},this.checked)"><span id="ckt-${i}">${it.feito?"Executado "+br(it.feitoEm).slice(0,5):"Executado"}</span></label>`
-      :`<span class="bdg" style="background:#fff;color:${k.c}">${esc(k.l)}</span>`}</div>
+    ${fin&&it.feito?`<span class="bdg" style="background:#e8f6ee;color:#1a6b40">✓ Executado ${br(it.feitoEm).slice(0,5)}</span>`:`<span class="bdg" style="background:#fff;color:${k.c}">${esc(k.l)}</span>`}</div>
     <div class="it-b" id="itb-${i}" style="display:none"><p style="margin:8px 0">${esc(it.descricao)}</p>
       ${it.prazo||it.responsavel?`<div style="font-size:12px;color:var(--text3)">${[it.prazo?"Prazo: "+esc(it.prazo):"",it.responsavel?"Prestador: <b>"+esc(it.responsavel)+"</b>":""].filter(Boolean).join(" · ")}</div>`:""}
       ${it.obs?`<div style="font-size:12px;color:var(--text3);font-style:italic">${esc(it.obs)}</div>`:""}
@@ -518,12 +520,13 @@ function salvarItem(){
   const cr=$("i-com").value, out=$("i-out").value.trim(), desc=$("i-desc").value.trim();
   let ok=true; if(!cr){ $("i-com").classList.add("erro"); ok=false; } if(!desc){ $("i-desc").classList.add("erro"); ok=false; } if(!CLASSIF){ toast("Escolha a classificação ⚠️"); ok=false; }
   if(!ok){ toast("Preencha os campos obrigatórios"); return; }
-  const it={num:EDIT!==null?E.itens[EDIT].num:String(E.itens.length+1).padStart(2,"0"),comodo:cr==="Outro"?(out||"Outro"):cr,_comodoRaw:cr,_comodoOutro:out,
+  const ant=EDIT!==null?E.itens[EDIT]:null;
+  const it={num:ant?ant.num:String(E.itens.length+1).padStart(2,"0"),uid:ant?chave(ant):novoUid(),comodo:cr==="Outro"?(out||"Outro"):cr,_comodoRaw:cr,_comodoOutro:out,
     descricao:desc,classif:CLASSIF,prazo:$("i-prazo").value,responsavel:$("i-resp").value,obs:$("i-obs").value.trim(),fotos:FOTOS.slice()};
-  if(EDIT!==null) E.itens[EDIT]=it; else E.itens.push(it);
+  if(ant){ ["feito","feitoEm","feitoPor","deAnterior"].forEach(k=>{ if(ant[k]!==undefined) it[k]=ant[k]; }); E.itens[EDIT]=it; } else E.itens.push(it);
   fecharModal(); salvarJa(); pintarPasso(); toast("Item salvo ✓");
 }
-function remItem(i){ if(!confirm("Remover este item?")) return; E.itens.splice(i,1); E.itens.forEach((it,j)=>{ it.num=String(j+1).padStart(2,"0"); }); salvarJa(); pintarPasso(); }
+function remItem(i){ if(!confirm("Remover este item?")) return; E.itens.forEach(it=>{ if(!it.uid) it.uid=chave(it); }); E.itens.splice(i,1); E.itens.forEach((it,j)=>{ it.num=String(j+1).padStart(2,"0"); }); salvarJa(); pintarPasso(); }
 function abreItem(i){ const b=$("itb-"+i); if(b) b.style.display=b.style.display==="none"?"":"none"; }
 function verFoto(i,j){ const src=E.itens[i].fotos[j]; const l=document.createElement("div"); l.className="vist-lb";
   const ed=podeEd();
@@ -643,14 +646,19 @@ function iniciarSig(t){
   const pos=e=>{ const r=cv.getBoundingClientRect(); return {x:e.clientX-r.left,y:e.clientY-r.top}; };
   cv.addEventListener("pointerdown",e=>{ e.preventDefault(); cv.setPointerCapture(e.pointerId); SIG[t].des=true; SIG[t].ult=pos(e); });
   cv.addEventListener("pointermove",e=>{ const s=SIG[t]; if(!s.des) return; e.preventDefault(); const p=pos(e); s.g.beginPath(); s.g.moveTo(s.ult.x,s.ult.y); s.g.lineTo(p.x,p.y); s.g.stroke(); s.ult=p; s.mexeu=true; });
-  const fim=()=>{ const s=SIG[t]; if(!s||!s.des) return; s.des=false; if(s.mexeu){ const ph=$("ph-"+t); if(ph) ph.style.display="none"; E["sig"+t]=sigExport(cv); autosave(); } };
+  const fim=()=>{ const s=SIG[t]; if(!s||!s.des) return; s.des=false; if(s.mexeu){ const ph=$("ph-"+t); if(ph) ph.style.display="none"; E["sig"+t]=sigExport(cv); if(E.sigLimpa) delete E.sigLimpa[t]; salvarJa(); } };   // 05/11: grava já
   cv.addEventListener("pointerup",fim); cv.addEventListener("pointercancel",fim);
 }
 /* assinatura em JPEG de 700 px (fundo branco): leve no aparelho e no PDF */
 function sigExport(cv){ const w=700, h=Math.round(cv.height*w/cv.width), c=document.createElement("canvas"); c.width=w; c.height=h;
   const g=c.getContext("2d"); g.fillStyle="#fff"; g.fillRect(0,0,w,h); g.drawImage(cv,0,0,w,h); return c.toDataURL("image/jpeg",0.85); }
 function capturarSigs(){ ["Resp","Cliente"].forEach(t=>{ const s=SIG[t]; if(s&&s.mexeu&&s.cv&&document.body.contains(s.cv)) E["sig"+t]=sigExport(s.cv); }); }
-function limparSig(t){ E["sig"+t]=null; delete SIG[t]; salvarJa(); pintarPasso(); }
+function limparSig(t){ if(E["sig"+t]&&!confirm("Apagar a assinatura registrada e assinar de novo?")) return;
+  E["sig"+t]=null; E.sigLimpa=Object.assign({},E.sigLimpa||{}); E.sigLimpa[t]=new Date().toISOString(); delete SIG[t]; salvarJa(); pintarPasso(); }
+/* 05/11: celular — ao trocar de app / travar a tela / fechar, grava o que está na tela */
+function guardarAoSair(){ if(E&&podeEd()){ clearTimeout(salvarT); if(PASSO===2) capturarSigs(); salvarJa(); } }
+document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="hidden") guardarAoSair(); });
+window.addEventListener("pagehide",guardarAoSair);
 
 /* ---------------- PDF (jsPDF) ---------------- */
 function dims(src){ return new Promise(ok=>{ const i=new Image(); i.onload=()=>ok({w:i.naturalWidth||1,h:i.naturalHeight||1}); i.onerror=()=>ok({w:4,h:3}); i.src=src; }); }
@@ -760,23 +768,31 @@ function baixarBlob(blob,nome){ const u=URL.createObjectURL(blob), a=document.cr
 async function baixar(filtro){ capturarSigs(); toast("Gerando o PDF…"); try{ baixarBlob(await gerarPDF(E,filtro||null),nomeArq(E,filtro)); }catch(e){ toast("Não consegui gerar o PDF: "+e.message); } }
 
 /* ---------------- finalizar → fila de envio ---------------- */
+/* gera o completo + 1 por prestador e põe na fila; os nomes da geração
+   anterior desta vistoria vão em "substituir" (o servidor tira os antigos) */
+async function gerarFila(){
+  const prest=[...new Set(E.itens.map(i=>i.responsavel).filter(Boolean))];
+  const lista=[{tipo:"completo",filtro:null}].concat(prest.map(p=>({tipo:"prestador",filtro:p})));
+  const nomes=lista.map(x=>nomeArq(E,x.filtro)), subst=[...new Set((E.pdfNomes||[]).concat(nomes))];
+  for(let i=0;i<lista.length;i++){ const x=lista[i];
+    const blob=await gerarPDF(E,x.filtro), nome=nomes[i], id="p_"+E.id+"_"+(x.filtro?limpaNome(x.filtro):"completo");
+    await gravarDB("pdfs",{id,vendaId:E.vendaId,vistId:E.id,nome,blob,criadoEm:new Date().toISOString(),enviado:false});
+    await gravarDB("envios",{id:"e_"+id,pdfId:id,vistId:E.id,vendaId:E.vendaId,tipo:x.tipo,filename:nome,substituir:subst,opId:"vist_"+id.replace(/[^A-Za-z0-9_]/g,"").slice(-60)+"_"+Date.now().toString(36),criadoEm:new Date().toISOString()});
+  }
+  E.pdfNomes=nomes;
+}
 async function finalizar(){
   if(!podeEd()){ toast("Só quem criou a vistoria pode finalizar"); return; }
   capturarSigs();
   const falta=["endereco","dataVistoria","respNome","clienteNome"].filter(k=>!String(E.dados[k]||"").trim());
   if(falta.length){ toast("Faltam dados obrigatórios no passo 1"); irPasso(0); return; }
   if(!E.sigResp||!E.sigCliente){ if(!confirm("Falta "+(!E.sigResp&&!E.sigCliente?"as duas assinaturas":!E.sigResp?"a assinatura do responsável":"a assinatura do cliente")+". Finalizar mesmo assim?")) return; }
-  const prest=[...new Set(E.itens.map(i=>i.responsavel).filter(Boolean))];
-  if(!confirm(`Finalizar a vistoria e salvar na casa?\n\nVão ${navigator.onLine?"subir":"ficar na fila (sem internet)"} ${1+prest.length} PDF(s): o completo${prest.length?" e "+prest.join(", "):""}.`)) return;
+  const prest=[...new Set(E.itens.map(i=>i.responsavel).filter(Boolean))], sem=E.itens.filter(i=>!i.responsavel).length;
+  if(!confirm(`${E.editando?"Concluir a edição e gerar os PDFs de novo?":"Finalizar a vistoria e salvar na casa?"}\n\nVão ${navigator.onLine?"subir":"ficar na fila (sem internet)"} ${1+prest.length} PDF(s): o completo${prest.length?" e um de cada prestador ("+prest.join(", ")+")":""}.${sem?"\n\n"+sem+" item(ns) sem prestador definido entram só no completo.":""}${E.editando?"\n\nOs PDFs anteriores desta vistoria na casa são substituídos.":""}`)) return;
   toast("Gerando os PDFs…");
   try{
-    const lista=[{tipo:"completo",filtro:null}].concat(prest.map(p=>({tipo:"prestador",filtro:p})));
-    for(const x of lista){
-      const blob=await gerarPDF(E,x.filtro), nome=nomeArq(E,x.filtro), id="p_"+E.id+"_"+(x.filtro?limpaNome(x.filtro):"completo");
-      await gravarDB("pdfs",{id,vendaId:E.vendaId,vistId:E.id,nome,blob,criadoEm:new Date().toISOString(),enviado:false});
-      await gravarDB("envios",{id:"e_"+id,pdfId:id,vistId:E.id,vendaId:E.vendaId,tipo:x.tipo,filename:nome,opId:"vist_"+id.replace(/[^A-Za-z0-9_]/g,"").slice(-60)+"_"+Date.now().toString(36),criadoEm:new Date().toISOString()});
-    }
-    E.status="enviando"; await salvarJa(); await recontar();
+    await gerarFila();
+    E.status="enviando"; E.editando=false; await salvarJa(); await recontar();
   }catch(e){ toast("Não consegui gerar os PDFs: "+e.message); return; }
   toast(navigator.onLine?"PDFs gerados — enviando para a casa…":"Sem internet: PDFs guardados, sobem sozinhos depois ✓");
   pintarPasso(); sincronizar(CTX);
@@ -793,7 +809,7 @@ async function sincronizar(ctx){
   try{
     for(const en of fila.sort((a,b)=>String(a.criadoEm).localeCompare(String(b.criadoEm)))){
       const pdf=await pegar("pdfs",en.pdfId); if(!pdf){ await apagar("envios",en.id); continue; }
-      let r=null; try{ r=await CTX.api({action:"vistoriaEnviar",pageId:en.vendaId,tipo:en.tipo,filename:en.filename,mimeType:"application/pdf",dataBase64:await paraB64(pdf.blob),opId:en.opId},240000); }catch(e){ r=null; }
+      let r=null; try{ r=await CTX.api({action:"vistoriaEnviar",pageId:en.vendaId,tipo:en.tipo,filename:en.filename,mimeType:"application/pdf",dataBase64:await paraB64(pdf.blob),opId:en.opId,substituir:en.substituir||undefined},240000); }catch(e){ r=null; }
       if(r&&r.ok){ ok++; await apagar("envios",en.id); pdf.enviado=true; await gravarDB("pdfs",pdf);
         const resto=(await todos("envios")).filter(x=>x.vistId===en.vistId);
         if(!resto.length){ const v=await pegar("vist",en.vistId); if(v){ v.status="enviada"; v.atualizadoEm=new Date().toISOString(); v.nuvemPend=true; await gravarDB("vist",v);
@@ -807,8 +823,127 @@ async function sincronizar(ctx){
   if(E&&PASSO===3) pintarPasso();
   if(CTX&&CTX.aoMudar) CTX.aoMudar();
 }
-setInterval(()=>{ if(navigator.onLine&&PEND&&CTX) sincronizar(CTX); if(navigator.onLine&&CTX&&CTX.api) nuvemEnviar(); },60000);
-window.addEventListener("online",()=>nuvemAgendar(2000));
+setInterval(()=>{ if(navigator.onLine&&PEND&&CTX) sincronizar(CTX); if(navigator.onLine&&CTX&&CTX.api){ nuvemEnviar(); ckFlush(); } },60000);
+window.addEventListener("online",()=>{ nuvemAgendar(2000); setTimeout(ckFlush,2500); });
+
+/* =====================================================================
+ * 05/11/26 (2) — CONFERÊNCIA DOS REPAROS (fora da vistoria)
+ * Botão ✅ Reparos na linha da casa (e dentro da vistoria). Lista os itens
+ * de cada vistoria finalizada da casa; qualquer engenheiro logado marca de
+ * qualquer aparelho. Cada marcação entra numa fila do aparelho ANTES de ir
+ * para o servidor (vistNuvemCheck) e só sai dela com a resposta — sem
+ * internet, ou se a página fechar no meio, sobe depois sozinha.
+ * ===================================================================== */
+let CK=null;
+const K_CKFILA="morais_vist_checks_fila_v1";
+function ckFila(){ try{ return JSON.parse(localStorage.getItem(K_CKFILA)||"[]")||[]; }catch(e){ return []; } }
+function ckFilaGravar(l){ try{ localStorage.setItem(K_CKFILA,JSON.stringify(l)); }catch(e){} }
+const itLeve=it=>({k:chave(it),num:it.num||"",comodo:it.comodo||"",descricao:it.descricao||"",classif:it.classif||"",responsavel:it.responsavel||"",prazo:it.prazo||"",
+  feito:!!it.feito,feitoEm:it.feitoEm||null,feitoPor:it.feitoPor||null});
+async function conferir(venda,ctx){
+  estilo(); if(ctx) CTX=Object.assign({},CTX||{},ctx); if(venda) VENDA=venda; const V0=VENDA; if(!V0) return;
+  let o=$("vist-ck"); if(!o){ o=document.createElement("div"); o.id="vist-ck"; o.className="vist-ov vist-ck"; document.body.appendChild(o); }
+  document.body.style.overflow="hidden";
+  o.innerHTML=`<div class="vist"><div class="vist-h"><div><div class="t">✅ Conferência dos reparos</div><div class="s">${esc(V0.endereco||"")} · Casa ${esc(V0.casa!=null?V0.casa:"—")}</div></div><button class="x" onclick="Vistoria._ckFechar()">✕ Fechar</button></div><div class="vist-c" id="ck-c"><div class="info">Carregando…</div></div></div>`;
+  CK={venda:V0,vists:[]};
+  await ckFlush();
+  let locais=[]; try{ locais=(await todos("vist")).filter(v=>v.vendaId===V0.id&&v.status!=="rascunho"); }catch(e){}
+  const nuvem=await nuvemLista(V0.id); if(!CK||CK.venda!==V0) return;
+  const m={};
+  (nuvem||[]).filter(x=>x.status!=="rascunho").forEach(x=>{ m[x.id]={id:x.id,vendaId:x.vendaId||V0.id,rodada:x.rodada||1,data:x.dataVistoria,criadorNome:x.criadorNome||x.criador||"",
+    editando:!!x.editando,itens:x.itens?x.itens.map(i=>Object.assign({},i)):(x.nItens?null:[]),criadoEm:x.criadoEm||""}; });
+  locais.forEach(v=>{ const a=m[v.id]; if(!a||!a.itens) m[v.id]={id:v.id,vendaId:v.vendaId,rodada:v.rodada||1,data:v.dados.dataVistoria,criadorNome:v.criadorNome||"",
+    editando:!!v.editando,itens:(v.itens||[]).map(itLeve),criadoEm:v.criadoEm||"",_local:!a}; });
+  CK.semNuvem=!nuvem;
+  CK.vists=Object.values(m).sort((a,b)=>String(b.criadoEm).localeCompare(String(a.criadoEm)));
+  ckAplicarFila(); ckPintar();
+}
+/* marcações ainda na fila valem por cima do que veio do servidor */
+function ckAplicarFila(){ if(!CK) return; const f=ckFila();
+  CK.vists.forEach(v=>(v.itens||[]).forEach(it=>{ const q=f.filter(x=>x.id===v.id&&x.chave===it.k).sort((a,b)=>a.ts-b.ts).pop();
+    if(q){ it.feito=!!q.feito; it.feitoEm=q.feito?q.em:null; it.feitoPor=q.feito?q.por:null; it._fila=true; } })); }
+function ckPintar(){
+  const c=$("ck-c"); if(!c||!CK) return;
+  const pend=ckFila().filter(x=>x.vendaId===CK.venda.id).length, logado=!!eu();
+  if(!CK.vists.length){ c.innerHTML=`<div class="info">Nenhuma vistoria finalizada desta casa${CK.semNuvem?" neste aparelho (sem conexão com a nuvem agora)":""}.</div>`; return; }
+  c.innerHTML=(logado?"":`<div class="info am">Entre no portal para marcar os reparos.</div>`)+
+    (CK.semNuvem?`<div class="info am">Sem conexão com a nuvem agora: mostrando o que está neste aparelho. As marcações ficam guardadas e sobem sozinhas.</div>`:"")+
+    (pend?`<div class="info am">⏳ ${pend} marcação(ões) aguardando internet — sobem sozinhas.</div>`:"")+
+    CK.vists.map((v,vi)=>{ const its=v.itens||[], nf=its.filter(i=>i.feito).length, tot=its.length, pct=tot?Math.round(nf*100/tot):0;
+      const cab=`<div class="ct">${v.rodada>1?"Relatório "+v.rodada:"Vistoria"} · ${br(v.data)}${v.itens?" · "+nf+" de "+tot+" executado(s)":""}${v.criadorNome?" · criada por "+esc(v.criadorNome):""}${v.editando?" · ✏️ em edição":""}</div>`;
+      if(v.itens===null) return `<div class="card">${cab}<div class="info" style="margin:0">Os itens desta vistoria ainda não estão no resumo da nuvem.<div class="bts" style="margin-top:8px"><button class="bt az" onclick="Vistoria._ckCarregar(${vi})">Carregar os itens</button></div></div></div>`;
+      if(!tot) return `<div class="card">${cab}<div class="info" style="margin:0">Este relatório não tem itens de reparo.</div></div>`;
+      return `<div class="card">${cab}<div class="prog"><i style="width:${pct}%"></i></div>
+        ${its.map((it,ii)=>{ const k=CLS[it.classif]||CLS.C; return `<label class="cf ${it.feito?"on":""}"><input type="checkbox" ${it.feito?"checked":""} ${logado?"":"disabled"} onchange="Vistoria._ck(${vi},${ii},this.checked)">
+          <div class="i"><b><span style="color:${k.c}">${esc(it.num)} · ${esc(it.comodo)}</span> — ${esc(it.descricao)}</b>
+          <small>${it.feito?"✓ Executado em "+br(it.feitoEm)+(it.feitoPor?" · "+esc(it.feitoPor):""):"Pendente"+(it.responsavel?" · "+esc(it.responsavel):"")+(it.prazo?" · "+esc(it.prazo):"")}${it._fila?" · ⏳ enviando":""}</small></div></label>`; }).join("")}
+        <div class="bts" style="margin-top:10px">${logado?`<button class="bt gh" onclick="Vistoria._ckTodos(${vi},${nf<tot})">${nf<tot?"☑ Marcar todos":"☐ Desmarcar todos"}</button>`:""}
+          <button class="bt gh" onclick="Vistoria._ckPdf(${vi},false)">⬇ PDF da conferência</button>
+          ${logado?`<button class="bt az" onclick="Vistoria._ckPdf(${vi},true)">📤 Salvar conferência na casa (PDF)</button>`:""}</div>
+        ${nf===tot?`<div class="info vd" style="margin:10px 0 0">Todos os reparos deste relatório foram executados.</div>`:""}</div>`; }).join("");
+}
+function ckMarcar(v,its,on){
+  const em=hoje(), por=quem(), ts=Date.now(), marcas=[];
+  its.forEach(it=>{ it.feito=!!on; it.feitoEm=on?em:null; it.feitoPor=on?por:null; it._fila=true; marcas.push({chave:it.k,feito:!!on,em,por}); });
+  const fila=ckFila();    // 1º na fila do aparelho (não se perde), depois envia
+  marcas.forEach(mk=>{ const r=Object.assign({vendaId:v.vendaId,id:v.id,ts},mk), i=fila.findIndex(x=>x.id===v.id&&x.chave===mk.chave); if(i>=0) fila[i]=r; else fila.push(r); });
+  ckFilaGravar(fila); ckLocal(v.id,marcas); setTimeout(ckFlush,50);
+}
+/* cópia da vistoria neste aparelho também fica marcada (PDF sem internet) — sem reenviar a vistoria */
+async function ckLocal(id,marcas){ try{
+  const ap=its=>{ let mud=false; (its||[]).forEach(it=>{ const mk=marcas.find(x=>x.chave===chave(it)); if(mk){ it.feito=mk.feito; it.feitoEm=mk.feito?mk.em:null; it.feitoPor=mk.feito?mk.por:null; mud=true; } }); return mud; };
+  const a=await pegar("vist",id); if(a&&ap(a.itens)) await gravarDB("vist",a);
+  if(E&&E.id===id) ap(E.itens); }catch(e){} }
+let _ckf=false;
+async function ckFlush(){
+  if(_ckf||!navigator.onLine||!CTX||!CTX.api) return; let fila=ckFila(); if(!fila.length) return; _ckf=true; let negado=0;
+  try{
+    const g={}; fila.forEach(x=>{ (g[x.vendaId+"|"+x.id]=g[x.vendaId+"|"+x.id]||[]).push(x); });
+    for(const lote of Object.values(g)){
+      let r=null; try{ r=await CTX.api({action:"vistNuvemCheck",vendaId:lote[0].vendaId,id:lote[0].id,marcas:lote.map(x=>({chave:x.chave,feito:x.feito,em:x.em,por:x.por}))},45000); }catch(e){ r=null; }
+      const tirar=()=>{ fila=ckFila().filter(x=>!lote.some(y=>y.id===x.id&&y.chave===x.chave&&y.ts===x.ts)); ckFilaGravar(fila); };
+      if(r&&r.ok) tirar();
+      else if(r&&(r.erro==="SEM_PERMISSAO"||r.erro==="FALTA_PARAM")){ negado+=lote.length; tirar(); }
+      else if(!r) break;     // sem resposta: tenta depois (servidor antigo / vistoria ainda não subiu: fica na fila)
+    }
+  } finally{ _ckf=false; }
+  if(negado){ toast("Sem permissão para marcar os reparos desta casa"); if(CK&&$("vist-ck")) conferir(CK.venda); return; }
+  if(CK&&$("vist-ck")){ const f=ckFila(); CK.vists.forEach(v=>(v.itens||[]).forEach(it=>{ if(it._fila&&!f.some(x=>x.id===v.id&&x.chave===it.k)) it._fila=false; })); ckPintar(); }
+}
+function ckTudoFeito(v){ setTimeout(()=>{ toast("Todos os reparos executados ✓");
+  if(CTX&&CTX.reparosFeitos&&confirm(`Os ${v.itens.length} reparo(s) deste relatório foram marcados como executados.\n\nMarcar “REPAROS DA PRÉ-VISTORIA” = SIM nesta casa? (trava o contador)`)){
+    if(CTX.reparosFeitos(v.vendaId)===false) toast("Sem permissão para alterar os reparos — peça a quem cuida de Vendas"); } },80); }
+function ck(vi,ii,on){ if(!CK||!eu()) return; const v=CK.vists[vi], it=v&&v.itens&&v.itens[ii]; if(!it) return;
+  const antes=v.itens.filter(i=>i.feito).length; ckMarcar(v,[it],on); ckPintar();
+  if(on&&antes<v.itens.length&&v.itens.every(i=>i.feito)) ckTudoFeito(v); }
+function ckTodos(vi,on){ if(!CK||!eu()) return; const v=CK.vists[vi]; if(!v||!v.itens) return;
+  if(!confirm(on?"Marcar TODOS os itens como executados (data de hoje)?":"Desmarcar todos os itens?")) return;
+  const alvo=v.itens.filter(i=>!!i.feito!==!!on); if(!alvo.length) return; ckMarcar(v,alvo,on); ckPintar(); if(on) ckTudoFeito(v); }
+/* vistoria completa (com fotos) com as marcações da tela por cima */
+async function ckCompleta(v){
+  let full=await pegar("vist",v.id);
+  if(!full||(full.itens||[]).some(it=>(it.fotos||[]).some(f=>/^nuvem:/.test(f)))){ toast("Baixando a vistoria…"); full=await trazerDaNuvem(v); }
+  (full.itens||[]).forEach(it=>{ const x=(v.itens||[]).find(y=>y.k===chave(it)); if(x){ it.feito=x.feito; it.feitoEm=x.feitoEm; it.feitoPor=x.feitoPor; } });
+  return full;
+}
+async function ckCarregar(vi){ const v=CK&&CK.vists[vi]; if(!v) return;
+  try{ const full=await ckCompleta(Object.assign({},v,{itens:[]})); v.itens=(full.itens||[]).map(itLeve); ckAplicarFila(); ckPintar(); }catch(e){ toast("Não consegui baixar a vistoria: "+e.message); } }
+async function ckPdf(vi,salvar){ const v=CK&&CK.vists[vi]; if(!v) return;
+  if(salvar&&!confirm(`Salvar a conferência dos reparos na casa?\n\nVai ${navigator.onLine?"subir":"ficar na fila (sem internet)"} um PDF com ${v.itens.filter(i=>i.feito).length} de ${v.itens.length} reparo(s) executado(s).`)) return;
+  toast("Gerando o PDF da conferência…");
+  try{
+    const full=await ckCompleta(v), blob=await gerarPDF(full,null,{conf:true}), nome=nomeArq(full,null,true);
+    if(!salvar){ baixarBlob(blob,nome); return; }
+    const id="p_"+full.id+"_conf_"+Date.now().toString(36);
+    await gravarDB("pdfs",{id,vendaId:full.vendaId,vistId:full.id,nome,blob,criadoEm:new Date().toISOString(),enviado:false});
+    await gravarDB("envios",{id:"e_"+id,pdfId:id,vistId:full.id,vendaId:full.vendaId,tipo:"completo",filename:nome,opId:"vist_"+id.replace(/[^A-Za-z0-9_]/g,"").slice(-60)+"_"+Date.now().toString(36),criadoEm:new Date().toISOString()});
+    await recontar();
+  }catch(e){ toast("Não consegui gerar o PDF da conferência: "+e.message); return; }
+  toast(navigator.onLine?"Conferência gerada — enviando para a casa…":"Sem internet: conferência guardada, sobe sozinha depois ✓");
+  sincronizar(CTX);
+}
+function ckFechar(){ const o=$("vist-ck"); if(o) o.remove(); CK=null; if(!$("vist-ov")) document.body.style.overflow="";
+  if(E&&$("vist-ov")&&PASSO===3) pintarPasso(); if(CTX&&CTX.aoMudar) CTX.aoMudar(); }
 
 /* ---------------- documentos da casa ---------------- */
 /* 16/10 (tarde): o HTML dos documentos recebe a casa (não usa a casa "aberta"),
@@ -837,7 +972,7 @@ async function abrirPdf(id){ const p=await pegar("pdfs",id); if(!p) return; cons
 recontar();
 window.addEventListener("online",pintarPend); window.addEventListener("offline",pintarPend);
 window.Vistoria={
-  abrir, documentos, resumo, sincronizar, contar:id=>CONT[id]||0, pendentes:()=>PEND,
+  abrir, documentos, resumo, sincronizar, conferir, contar:id=>CONT[id]||0, estado:id=>EST[id]||{rasc:0,fin:0,fila:0}, pendentes:()=>PEND,
   _fechar:fechar, _lista:()=>{ capturarSigs(); salvarJa().then(()=>abrir(VENDA,CTX)); }, _nova:nova, _continuar:continuar, _excluir:excluir,
   _passo:irPasso, _avancar:avancar, _dado:dado, _item:item, _cls:cls, _addFotos:addFotos, _remFoto:i=>{ FOTOS.splice(i,1); pintarFotos(); },
   _salvarItem:salvarItem, _fecharModal:fecharModal, _remItem:remItem, _abreItem:abreItem, _foto:verFoto, _limparSig:limparSig,
@@ -845,6 +980,9 @@ window.Vistoria={
   /* 27/10 */
   _editFoto:editFotoModal, _edFerr:k=>{ if(!ED) return; ED.ferr=k; ED.crop=null; edRender(); edBarras(); }, _edCor:c=>{ if(ED){ ED.cor=c; edBarras(); } },
   _edEsp:i=>{ if(ED){ ED.esp=i; edBarras(); } }, _edDesfazer:edDesfazer, _edGirar:edGirar, _edCortar:edCortar, _edSair:edSair, _edSalvar:edSalvar,
-  _feito:feito, _feitoTodos:feitoTodos, _salvarConf:salvarConf, _baixarConf:baixarConf, _novoRel:novoRel
+  _novoRel:novoRel,
+  /* 05/11 (2) */
+  _editar:editar, _reenviar:reenviar, _conferirCasa:()=>conferir(VENDA,CTX), _conferirAqui:()=>{ if(PASSO===2) capturarSigs(); salvarJa(); conferir(VENDA,CTX); },
+  _ck:ck, _ckTodos:ckTodos, _ckPdf:ckPdf, _ckCarregar:ckCarregar, _ckFechar:ckFechar
 };
 })();

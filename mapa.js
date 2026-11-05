@@ -988,9 +988,14 @@ function campoEntrega(v,k,aba){
 /* 16/10 (tarde): o formulário de vistoria é da etapa de REPAROS (pré-vistoria
    marcada) — na "casa apta" não aparece. Casa com PDF já salvo também mostra. */
 function naVistoria(v){ return precisaReparos(v)||!!v.data_pre_vistoria||((v.vist_completo||0)+(v.vist_prestador||0))>0; }
+/* 05/11/26 (2): sai o "N no aparelho" (eram as vistorias guardadas neste
+   celular/computador — confundia). Agora: ✏ rascunho / ⏳ enviando quando há,
+   e o botão ✅ Reparos (conferência fora da vistoria, de qualquer aparelho). */
 function botaoVistoria(v){
-  const n=(v.vist_completo||0)+(v.vist_prestador||0), loc=(window.Vistoria&&Vistoria.contar)?Vistoria.contar(v.id):0;
-  return `<button type="button" class="bt bt-mini az vist-bt" onclick="MapaObras.vistoria('${esc(v.id)}')" title="Formulário de vistoria desta casa (funciona sem internet)">📋 Vistoria${n?` · ${n} PDF`:""}${loc?` · ${loc} no aparelho`:""}</button>`;
+  const n=(v.vist_completo||0)+(v.vist_prestador||0), st=(window.Vistoria&&Vistoria.estado)?Vistoria.estado(v.id):{rasc:0,fin:0,fila:0};
+  const vb=`<button type="button" class="bt bt-mini az vist-bt" onclick="MapaObras.vistoria('${esc(v.id)}')" title="Formulário de vistoria desta casa (funciona sem internet)">📋 Vistoria${n?` · ${n} PDF`:""}${st.rasc?` · ✏ rascunho`:""}${st.fila?` · ⏳ enviando`:""}</button>`;
+  const rb=(n||st.fin)?` <button type="button" class="bt bt-mini vist-bt" style="background:#2a9d5c" onclick="MapaObras.reparos('${esc(v.id)}')" title="Marcar os reparos executados (qualquer engenheiro, de qualquer aparelho)">✅ Reparos</button>`:"";
+  return vb+rb;
 }
 function situacao(v,aba){
   const al=[];
@@ -1098,17 +1103,25 @@ function vendaPorId(id){ return vendasLista.find(x=>x.id===id)||null; }
 async function abrirVistoria(id){
   const v=vendaPorId(id); if(!v) return;
   try{ await carregarVistoria(); }catch(e){ toast("Não consegui abrir o formulário"+(navigator.onLine?"":" — abra uma vez com internet neste aparelho")); return; }
-  Vistoria.abrir({id:v.id,endereco:v.endereco,casa:v.casa,eng:v.eng,setor:(DOCS.find(d=>N(d.endereco)===N(v.endereco))||{}).setor||"",
-    docs:(v.vist_completo||0)+(v.vist_prestador||0)},{api,boot:BOOT,sessao:S,toast,aoMudar:()=>{ pintarEntregas(); if(ATIVO) reabrirPainel(); },
+  Vistoria.abrir(vendaVistoria(v),ctxVistoria());
+}
+function vendaVistoria(v){ return {id:v.id,endereco:v.endereco,casa:v.casa,eng:v.eng,setor:(DOCS.find(d=>N(d.endereco)===N(v.endereco))||{}).setor||"",
+    docs:(v.vist_completo||0)+(v.vist_prestador||0)}; }
+function ctxVistoria(){ return {api,boot:BOOT,sessao:S,toast,aoMudar:()=>{ pintarEntregas(); if(ATIVO) reabrirPainel(); },
     /* 27/10: conferência com tudo executado → Reparos = SIM; novo relatório (novas pontuações) → Não entregue - novas observações */
     reparosFeitos:vid=>{ if(!editavel("reparos_pre_vistoria")) return false; salvarVenda(vid,"reparos_pre_vistoria","SIM"); return true; },
-    novasObservacoes:vid=>{ if(!editavel("entregou_casa")) return false; salvarVenda(vid,"entregou_casa",ENT_NOVAS); return true; }});
+    novasObservacoes:vid=>{ if(!editavel("entregou_casa")) return false; salvarVenda(vid,"entregou_casa",ENT_NOVAS); return true; }}; }
+/* 05/11/26 (2): ✅ Reparos — conferência dos reparos fora da vistoria */
+async function abrirReparos(id){
+  const v=vendaPorId(id); if(!v) return;
+  try{ await carregarVistoria(); }catch(e){ toast("Não consegui abrir a conferência"+(navigator.onLine?"":" — abra uma vez com internet neste aparelho")); return; }
+  Vistoria.conferir(vendaVistoria(v),ctxVistoria());
 }
 let _vistP=null;
 function carregarScript(src){ return new Promise((ok,er)=>{ const s=document.createElement("script"); s.src=src; s.onload=ok; s.onerror=er; document.head.appendChild(s); }); }
 function carregarVistoria(){
   if(window.Vistoria&&window.jspdf) return Promise.resolve();
-  if(!_vistP) _vistP=Promise.all([window.jspdf?null:carregarScript("jspdf.umd.min.js?v=1"),window.Vistoria?null:carregarScript("vistoria.js?v=4")])
+  if(!_vistP) _vistP=Promise.all([window.jspdf?null:carregarScript("jspdf.umd.min.js?v=1"),window.Vistoria?null:carregarScript("vistoria.js?v=5")])
     .catch(e=>{ _vistP=null; throw e; });
   return _vistP;
 }
@@ -1258,7 +1271,7 @@ window.MapaObras={
   medBusca:q=>{ MED_BUSCA=q; repintarMed(); const i=$("med-busca"); if(i){ i.focus(); const n=i.value.length; try{ i.setSelectionRange(n,n); }catch(e){} } },
   verFinIdx:()=>{ MED_IDX_VER_FIN=!MED_IDX_VER_FIN; pintarMedIndice(); },
   /* 16/10: observações, formulário de vistoria, documentos e mapa de casas */
-  obs, salvarObs, fecharJanela, vistoria:abrirVistoria, docs:docsCasa, modoMapa,
+  obs, salvarObs, fecharJanela, vistoria:abrirVistoria, reparos:abrirReparos, docs:docsCasa, modoMapa,
   entAba:k=>{ ENT_ABA=k; pintarEntregas(); },
   entEng:e=>{ ENT_ENG=e; lsSet("og_ent_eng",e); pintarEntregas(); },
   /* a barra é redesenhada a cada letra: devolve o foco e o cursor ao campo */
@@ -1337,7 +1350,9 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
   /* 16/10: o formulário de vistoria fica pronto em segundo plano (sem internet ele precisa estar guardado) e
      os PDFs que ficaram na fila sobem sozinhos */
-  if(navigator.onLine) setTimeout(()=>{ carregarVistoria().then(()=>{ if(window.Vistoria) Vistoria.sincronizar({api,toast}); }).catch(()=>{}); },2500);
-  window.addEventListener("online",()=>{ if(window.Vistoria) Vistoria.sincronizar({api,toast}); });
+  /* 05/11 (2): com a sessão — assim a vistoria guardada neste aparelho sobe para a
+     nuvem mesmo sem abrir a janela da vistoria (antes só subia com ela aberta) */
+  if(navigator.onLine) setTimeout(()=>{ carregarVistoria().then(()=>{ if(window.Vistoria) Vistoria.sincronizar({api,toast,sessao:S,boot:BOOT}); }).catch(()=>{}); },2500);
+  window.addEventListener("online",()=>{ if(window.Vistoria) Vistoria.sincronizar({api,toast,sessao:S,boot:BOOT}); });
 });
 })();
