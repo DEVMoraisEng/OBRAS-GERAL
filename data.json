@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05T21:00:34.847211+00:00",
+ "updated_at": "2026-11-05T21:05:09.343726+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8242,7 +8242,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-10-26"
   },
   {
    "id": "35fc5ab532d380059f06d9ca969111cd",
@@ -8322,7 +8322,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-10-26"
   },
   {
    "id": "33cc5ab532d380259b92d2c23860977f",
@@ -8342,7 +8342,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-10-26"
   },
   {
    "id": "33cc5ab532d380a6811ee83e89555554",
@@ -8622,7 +8622,7 @@
    "data_entrega": "2026-08-10",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-28"
   },
   {
    "id": "33cc5ab532d38067a630e5ae3a193c92",
@@ -8642,7 +8642,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-10-07"
   },
   {
    "id": "33cc5ab532d38058a863f154e3bf76f5",
@@ -8682,7 +8682,7 @@
    "data_entrega": "2026-09-18",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-08-18"
   },
   {
    "id": "33cc5ab532d380d2a69bd9f25f5a67b5",
@@ -8702,7 +8702,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-11-04"
   },
   {
    "id": "33cc5ab532d3805280b8c459d14fcd8f",
@@ -8742,7 +8742,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-10-29"
   },
   {
    "id": "33cc5ab532d38025bd6bcb77a53c9235",
@@ -8762,7 +8762,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-10-26"
   },
   {
    "id": "33cc5ab532d380e3b37ad0c8cecf0812",
@@ -8782,7 +8782,7 @@
    "data_entrega": "2026-07-31",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-22"
   },
   {
    "id": "33cc5ab532d3800481cfd558f8cf141c",
@@ -8802,7 +8802,7 @@
    "data_entrega": "2026-09-11",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-29"
   },
   {
    "id": "33cc5ab532d380e9a9eded0f7c7a8a09",
@@ -8822,7 +8822,7 @@
    "data_entrega": "2026-09-18",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-08-12"
   },
   {
    "id": "33cc5ab532d380e68682e8de7e7d60bf",
@@ -8842,7 +8842,7 @@
    "data_entrega": "2026-08-14",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-10"
   },
   {
    "id": "33cc5ab532d380f3b6b8cfb7ae2738c3",
@@ -8862,7 +8862,7 @@
    "data_entrega": "2026-09-18",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-20"
   },
   {
    "id": "33cc5ab532d38040b8ebd9f971e3bf20",
@@ -8882,7 +8882,7 @@
    "data_entrega": "2026-07-31",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-07"
   },
   {
    "id": "33cc5ab532d38034bc48feb628c45e03",
@@ -8902,7 +8902,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-08-17"
   },
   {
    "id": "33cc5ab532d380a58b3bd9e8ed761688",
@@ -8922,7 +8922,7 @@
    "data_entrega": "2026-09-18",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-08-11"
   },
   {
    "id": "33cc5ab532d3803ca6d8fa6c5fceeec3",
@@ -8942,7 +8942,7 @@
    "data_entrega": "2026-09-10",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-08"
   },
   {
    "id": "33cc5ab532d3806a8660ccdf23c79128",
@@ -8962,7 +8962,7 @@
    "data_entrega": "2026-09-22",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-08-26"
   },
   {
    "id": "33cc5ab532d38073a0dbee953f476216",
@@ -8982,7 +8982,7 @@
    "data_entrega": "2026-10-20",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-16"
   },
   {
    "id": "33cc5ab532d3803aaec3fbedd0aa783f",
@@ -9022,7 +9022,7 @@
    "data_entrega": "2026-08-14",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-20"
   },
   {
    "id": "33cc5ab532d38092a2e5dcae131e2dd7",
@@ -9222,7 +9222,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-10-29"
   },
   {
    "id": "33cc5ab532d380d3a62af248c08d3c8e",
@@ -9242,7 +9242,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-10-22"
   },
   {
    "id": "33cc5ab532d380bab32bde51425600e0",
@@ -9262,7 +9262,7 @@
    "data_entrega": "2026-10-19",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-10-01"
   },
   {
    "id": "33cc5ab532d3803f830ac350bf487725",
@@ -9302,7 +9302,7 @@
    "data_entrega": "2026-08-05",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-07"
   },
   {
    "id": "33cc5ab532d380a6ad41e71ddae68117",
@@ -9342,7 +9342,7 @@
    "data_entrega": "2026-09-12",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-18"
   },
   {
    "id": "33cc5ab532d3804a8dfdd78402ca7d51",
@@ -9402,7 +9402,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-08-12"
   },
   {
    "id": "33cc5ab532d38089bc3ffc7bf476c133",
@@ -9562,7 +9562,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-10-27"
   },
   {
    "id": "33cc5ab532d3800ca85aedfe58b433e0",
@@ -10402,7 +10402,7 @@
    "data_entrega": "2026-09-09",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-08-05"
   },
   {
    "id": "33cc5ab532d3804ab502de06cf4b826e",
@@ -10462,7 +10462,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-10-28"
   },
   {
    "id": "33cc5ab532d3809a8757e04aa2970ee0",
@@ -11702,7 +11702,7 @@
    "data_entrega": "2026-08-07",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-14"
   },
   {
    "id": "33cc5ab532d3809bac77f7b29ee07d4b",
@@ -11742,7 +11742,7 @@
    "data_entrega": "2026-07-29",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-14"
   },
   {
    "id": "33cc5ab532d380188af3c354ba421c76",
@@ -11762,7 +11762,7 @@
    "data_entrega": "2026-08-07",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-14"
   },
   {
    "id": "33cc5ab532d3803da747da275afce491",
@@ -11802,7 +11802,7 @@
    "data_entrega": null,
    "vist_completo": 1,
    "vist_prestador": 1,
-   "apta_desde": null
+   "apta_desde": "2026-10-29"
   },
   {
    "id": "33cc5ab532d3807bbc10c3d1fbf21f33",
@@ -12342,7 +12342,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-10-26"
   },
   {
    "id": "33cc5ab532d38076834bf832356f270f",
@@ -12362,7 +12362,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-10-15"
   },
   {
    "id": "33cc5ab532d380aaa6efd374fd93ca0e",
@@ -12422,7 +12422,7 @@
    "data_entrega": null,
    "vist_completo": 1,
    "vist_prestador": 1,
-   "apta_desde": null
+   "apta_desde": "2026-10-02"
   },
   {
    "id": "33cc5ab532d380cd8fa3caacea6025d2",
@@ -12462,7 +12462,7 @@
    "data_entrega": null,
    "vist_completo": 1,
    "vist_prestador": 1,
-   "apta_desde": null
+   "apta_desde": "2026-09-17"
   },
   {
    "id": "33cc5ab532d380b88d2de9a5c6c4a199",
@@ -12482,7 +12482,7 @@
    "data_entrega": "2026-09-21",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-08-11"
   },
   {
    "id": "33cc5ab532d380ed95b2cd486f23c4ca",
@@ -12502,7 +12502,7 @@
    "data_entrega": "2026-08-31",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-30"
   },
   {
    "id": "33cc5ab532d3809f9a41caa693b1007f",
@@ -12542,7 +12542,7 @@
    "data_entrega": "2026-09-11",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-08-12"
   },
   {
    "id": "33cc5ab532d380ba812edbbf5be79f33",
@@ -12602,7 +12602,7 @@
    "data_entrega": "2026-08-07",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-10"
   },
   {
    "id": "33cc5ab532d380ee8b76fc081a0eedd9",
@@ -13542,7 +13542,7 @@
    "data_entrega": "2026-09-18",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-08-12"
   },
   {
    "id": "33cc5ab532d380bc8628c48a55cfe3a8",
@@ -13562,7 +13562,7 @@
    "data_entrega": "2026-08-18",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-24"
   },
   {
    "id": "33cc5ab532d38007bdf8e2fe0b64abe4",
@@ -13582,7 +13582,7 @@
    "data_entrega": "2026-08-28",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-07-17"
   },
   {
    "id": "33cc5ab532d3805387eafa36e5eaaf88",
@@ -13602,7 +13602,7 @@
    "data_entrega": "2026-08-28",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-08-08"
   },
   {
    "id": "33cc5ab532d380e6a2c5f744c0e8891a",
@@ -13642,7 +13642,7 @@
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-11-05"
   },
   {
    "id": "33cc5ab532d38077abc9f8a0fe5dde04",
@@ -13702,7 +13702,7 @@
    "data_entrega": "2026-10-30",
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-09-17"
   }
  ],
  "snapshot_atual": {
