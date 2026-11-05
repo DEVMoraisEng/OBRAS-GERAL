@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05T20:29:36.118162+00:00",
+ "updated_at": "2026-11-05T20:42:10.185807+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -12333,12 +12333,12 @@
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
-   "agendou_pre_vistoria": "NÃO",
+   "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-11-06",
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:27 · Caio Araujo\nestá atualiado na data de hoje",
-   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":10,\"ret\":\"2026-10-26\",\"trav\":\"2026-11-05\"},\"r\":{\"ini\":\"2026-11-06\",\"acc\":0,\"ret\":\"2026-11-06\",\"trav\":null},\"em\":\"2026-11-05T20:28:56.647Z\",\"por\":\"Guilherme Gouveia\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":10,\"ret\":\"2026-10-26\",\"trav\":\"2026-11-05\"},\"r\":{\"ini\":\"2026-11-06\",\"acc\":0,\"ret\":\"2026-11-06\",\"trav\":null},\"em\":\"2026-11-05T20:30:24.257Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -15323,6 +15323,7 @@
     "MANHÃ"
    ],
    "pv": {
+    "2": "2026-11-06",
     "1": "2026-10-21"
    }
   },
@@ -15678,6 +15679,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-05T20:42:10.185807+00:00",
+   "ref": "MQA 2",
+   "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 08-11 B2",
+   "setor": "MARQUES DE ABREU",
+   "tipo": "pre_vistoria",
+   "casa": "2",
+   "data_pv": "2026-11-06"
+  },
   {
    "em": "2026-11-05T19:36:32.806735+00:00",
    "ref": "TC 65",
