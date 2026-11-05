@@ -80,26 +80,45 @@ async function api(payload,ms){
   } finally{ clearTimeout(tm); }
 }
 const TRANSIT=["BACKEND_OCUPADO","BACKEND_SEM_CONFIG"];
-/* grava: tenta agora; sem rede, guarda na fila e sobe depois */
+/* grava: guarda na fila ANTES de enviar e só tira quando o servidor responde.
+   05/11/26 — antes o pedido só ia para a fila depois de FALHAR: enquanto
+   esperava a resposta (até 45 s) ele vivia só na memória. No CELULAR, travar
+   a tela ou trocar de app nesse meio tempo jogava a gravação fora, e a edição
+   local (K_EDITS) continuava mostrando o valor novo só naquele aparelho.
+   Agora, se a página morrer no meio, a próxima abertura reenvia sozinha. */
+const _emVoo=new Set();
+function _idFila(){ return Date.now()+"_"+Math.random().toString(36).slice(2,7); }
+function _filaLer(){ return lsGet(K_FILA,[]).map(it=>{ if(it&&!it.id) it.id=_idFila(); return it; }).filter(Boolean); }
+function _filaTirar(id){ lsSet(K_FILA,_filaLer().filter(x=>x.id!==id)); pintarFila(); }
 async function gravar(payload,rotulo){
-  if(navigator.onLine){
-    try{ const r=await api(payload); if(r&&r.ok) return {ok:true,r}; if(r&&r.erro&&TRANSIT.indexOf(r.erro)<0) return {ok:false,erro:r.erro}; }catch(e){}
-  }
-  const f=lsGet(K_FILA,[]); f.push({payload,rotulo,t:Date.now()}); lsSet(K_FILA,f); pintarFila();
-  return {ok:true,fila:true};
+  const id=_idFila(), f=_filaLer(); f.push({id,payload,rotulo,t:Date.now()}); lsSet(K_FILA,f); _emVoo.add(id); pintarFila();
+  try{
+    if(navigator.onLine){
+      try{
+        const r=await api(payload);
+        if(r&&r.ok){ _filaTirar(id); return {ok:true,r}; }
+        if(r&&r.erro&&TRANSIT.indexOf(r.erro)<0){ _filaTirar(id); return {ok:false,erro:r.erro}; }
+      }catch(e){}
+    }
+    return {ok:true,fila:true};            // sem resposta: fica guardado e sobe sozinho
+  } finally { _emVoo.delete(id); }
 }
 let _sinc=false;
 async function sincronizar(){
-  if(_sinc||!navigator.onLine) return; const f=lsGet(K_FILA,[]); if(!f.length) return;
-  _sinc=true; const resto=[];
-  for(const it of f){
-    let r=null; try{ r=await api(it.payload,30000); }catch(e){}
-    if(r&&r.ok) continue;
-    if(r&&r.erro&&TRANSIT.indexOf(r.erro)<0&&r.erro!=="SEM_LOGIN"){ toast("Não gravou ("+(it.rotulo||"")+"): "+r.erro); continue; }
-    resto.push(it);
-  }
-  lsSet(K_FILA,resto); _sinc=false; pintarFila();
-  if(!resto.length&&f.length) toast("Gravações pendentes enviadas ✓");
+  if(_sinc||!navigator.onLine) return;
+  const f=_filaLer().filter(it=>!_emVoo.has(it.id)); if(!f.length) return;
+  _sinc=true; let saiu=0, ficou=0;
+  try{
+    for(const it of f){
+      _emVoo.add(it.id);
+      let r=null; try{ r=await api(it.payload,30000); }catch(e){}
+      _emVoo.delete(it.id);
+      if(r&&r.ok){ _filaTirar(it.id); saiu++; continue; }
+      if(r&&r.erro&&TRANSIT.indexOf(r.erro)<0&&r.erro!=="SEM_LOGIN"){ _filaTirar(it.id); saiu++; toast("Não gravou ("+(it.rotulo||"")+"): "+r.erro); continue; }
+      ficou++;
+    }
+  } finally { _sinc=false; pintarFila(); }
+  if(saiu&&!ficou&&!_filaLer().length) toast("Gravações pendentes enviadas ✓");
 }
 function pintarFila(){ const e=$("fila"); if(!e) return; const n=lsGet(K_FILA,[]).length;
   e.style.display=n?"":"none"; e.textContent="⏳ "+n+" gravação"+(n>1?"ões":"")+" aguardando internet"; }
@@ -1289,7 +1308,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   carregarBoot(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas();
   carregarContratos();
   setInterval(()=>{ if(!document.hidden) carregarDados(true); },120000);          // quase ao vivo: relê o data.json a cada 2 min
-  document.addEventListener("visibilitychange",()=>{ if(!document.hidden){ carregarDados(true); carregarContratos(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas(); } });
+  document.addEventListener("visibilitychange",()=>{ if(!document.hidden){ sincronizar(); carregarDados(true); carregarContratos(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas(); } });
   /* 04/11/26 — VOLTOU A INTERNET: primeiro sobe a fila do que foi feito offline
      (status, medições, entregas, observações), DEPOIS relê tudo — dados do mapa,
      contratos/medições do MC, situação das casas e permissões — para a tela
