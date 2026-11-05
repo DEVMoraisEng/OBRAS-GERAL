@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05T15:57:08.524533+00:00",
+ "updated_at": "2026-11-05T17:41:58.171980+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -2419,7 +2419,7 @@
    "data_inicio_obra": "2026-08-06",
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
-   "aprovou_habite_se": "NÃO",
+   "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-11-03",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
@@ -2754,7 +2754,7 @@
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
-   "ret_armazenado": null,
+   "ret_armazenado": "NÃO",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
@@ -2834,7 +2834,7 @@
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
-   "ret_armazenado": null,
+   "ret_armazenado": "NÃO",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
@@ -2874,7 +2874,7 @@
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
-   "ret_armazenado": null,
+   "ret_armazenado": "NÃO",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
@@ -14143,7 +14143,7 @@
    "pv": {}
   },
   "TC 68": {
-   "status": "habite_agendado",
+   "status": "habite_concluido",
    "prazo": null,
    "endereco": "TB 19 QD 51 LT 17",
    "setor": "TERRABELA CERRADO",
@@ -15676,6 +15676,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-05T17:41:58.171980+00:00",
+   "ref": "TC 68",
+   "endereco": "TB 19 QD 51 LT 17",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_agendado",
+   "para": "habite_concluido"
+  },
   {
    "em": "2026-11-05T12:12:00.221578+00:00",
    "ref": "JB 6",
