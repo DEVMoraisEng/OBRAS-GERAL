@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05T19:36:32.806735+00:00",
+ "updated_at": "2026-11-05T19:41:56.068273+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -12332,7 +12332,7 @@
    "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "NÃO",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
