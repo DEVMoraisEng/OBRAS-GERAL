@@ -1108,7 +1108,7 @@ let _vistP=null;
 function carregarScript(src){ return new Promise((ok,er)=>{ const s=document.createElement("script"); s.src=src; s.onload=ok; s.onerror=er; document.head.appendChild(s); }); }
 function carregarVistoria(){
   if(window.Vistoria&&window.jspdf) return Promise.resolve();
-  if(!_vistP) _vistP=Promise.all([window.jspdf?null:carregarScript("jspdf.umd.min.js?v=1"),window.Vistoria?null:carregarScript("vistoria.js?v=3")])
+  if(!_vistP) _vistP=Promise.all([window.jspdf?null:carregarScript("jspdf.umd.min.js?v=1"),window.Vistoria?null:carregarScript("vistoria.js?v=4")])
     .catch(e=>{ _vistP=null; throw e; });
   return _vistP;
 }

@@ -192,8 +192,14 @@ async function nuvemEnviar(){
   try{
     const vs=(await todos("vist")).filter(v=>(v.nuvemPend||!v.nuvemEm)&&meu(v));
     for(const v of vs){
-      const copia=JSON.parse(JSON.stringify(v)); delete copia.nuvemPend; delete copia._nuvem;
-      let r=null; try{ r=await CTX.api({action:"vistNuvemSalvar",vist:copia},180000); }catch(e){ r=null; }
+      /* 05/11/26: as fotos sobem UMA vez cada (vistNuvemFoto) e a vistoria vai só com a referência */
+      const fx=await subirFotos(v);
+      if(!fx.ok&&!fx.legado){
+        if(fx.erro==="SEM_PERMISSAO"){ const a=await pegar("vist",v.id); if(a){ a.nuvemPend=false; a.nuvemEm=a.nuvemEm||"recusada"; await gravarDB("vist",a); } continue; }
+        falhou=true; break; }
+      const copia=JSON.parse(JSON.stringify(v)); delete copia.nuvemPend; delete copia._nuvem; delete copia.fotosNuvem;
+      if(!fx.legado) (copia.itens||[]).forEach(it=>{ it.fotos=(it.fotos||[]).map(f=>ehFoto(f)?"nuvem:"+hashFoto(f):f); });
+      let r=null; try{ r=await CTX.api({action:"vistNuvemSalvar",vist:copia},fx.legado?180000:90000); }catch(e){ r=null; }
       const atual=await pegar("vist",v.id); if(!atual) continue;
       if(r&&r.ok){ atual.criador=r.criador; atual.criadorNome=r.criadorNome; atual.nuvemEm=r.em; if(atual.atualizadoEm===v.atualizadoEm) atual.nuvemPend=false;
         await gravarDB("vist",atual); if(E&&E.id===v.id){ E.criador=r.criador; E.criadorNome=r.criadorNome; E.nuvemEm=r.em; if(E.atualizadoEm===v.atualizadoEm) E.nuvemPend=false; pintarNuvem(); } }
@@ -202,6 +208,29 @@ async function nuvemEnviar(){
     }
   } finally{ _nv=false; }
   if(falhou) nuvemAgendar(60000);
+}
+/* 05/11/26 — FOTOS SEPARADAS. Antes cada alteração (até um check de "Executado")
+   reenviava a vistoria inteira com as fotos dentro (8,8 MB numa de 46 fotos): no 4G
+   da obra não chegava, e a vistoria finalizada/conferida ficava só no aparelho de
+   quem criou — nos outros abria como rascunho, sem a parte de check. Agora cada
+   foto sobe uma vez (marcada em v.fotosNuvem) e a vistoria vai com "nuvem:<id>". */
+const ehFoto=f=>typeof f==="string"&&f.indexOf("data:image/")===0;
+function hashFoto(s){ let h1=0xdeadbeef^s.length, h2=0x41c6ce57^s.length;
+  for(let i=0;i<s.length;i++){ const c=s.charCodeAt(i); h1=Math.imul(h1^c,2654435761); h2=Math.imul(h2^c,1597334677); }
+  h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);
+  h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);
+  return (h2>>>0).toString(16).padStart(8,"0")+(h1>>>0).toString(16).padStart(8,"0")+s.length.toString(16); }
+async function subirFotos(v){
+  const ja=new Set(v.fotosNuvem||[]);
+  for(const it of (v.itens||[])) for(const f of (it.fotos||[])){
+    if(!ehFoto(f)) continue; const h=hashFoto(f); if(ja.has(h)) continue;
+    let r=null; try{ r=await CTX.api({action:"vistNuvemFoto",vendaId:v.vendaId,vistId:v.id,fotoId:h,data:f},90000); }catch(e){ r=null; }
+    if(!r||!r.ok) return {ok:false,erro:r&&r.erro,legado:!!(r&&r.erro==="ACAO_DESCONHECIDA")};   // servidor antigo: manda inteira
+    ja.add(h);
+    const a=await pegar("vist",v.id); if(a){ a.fotosNuvem=Array.from(new Set((a.fotosNuvem||[]).concat([h]))); await gravarDB("vist",a); }
+    if(E&&E.id===v.id) E.fotosNuvem=Array.from(new Set((E.fotosNuvem||[]).concat([h])));
+  }
+  return {ok:true};
 }
 function pintarNuvem(){ const e=$("vist-nuvem"); if(!e||!E) return;
   e.textContent=!meu(E)?"👁 só leitura":E.nuvemPend?(navigator.onLine?"☁ salvando…":"☁ sobe quando tiver internet"):E.nuvemEm&&E.nuvemEm!=="recusada"?"☁ salva na nuvem":""; }
@@ -224,7 +253,7 @@ function juntar(locais,nuvem){
 async function trazerDaNuvem(v){
   const r=await CTX.api({action:"vistNuvemAbrir",vendaId:v.vendaId,id:v.id},120000);
   if(!r||!r.ok) throw new Error(r&&r.erro||"sem resposta");
-  const full=r.vist; full.nuvemPend=false; await gravarDB("vist",full); return full;
+  const full=r.vist; full.nuvemPend=false; full.fotosNuvem=r.fotosNuvem||[]; await gravarDB("vist",full); return full;
 }
 function autosave(){ clearTimeout(salvarT); salvarT=setTimeout(salvarJa,500); }
 
@@ -767,7 +796,8 @@ async function sincronizar(ctx){
       let r=null; try{ r=await CTX.api({action:"vistoriaEnviar",pageId:en.vendaId,tipo:en.tipo,filename:en.filename,mimeType:"application/pdf",dataBase64:await paraB64(pdf.blob),opId:en.opId},240000); }catch(e){ r=null; }
       if(r&&r.ok){ ok++; await apagar("envios",en.id); pdf.enviado=true; await gravarDB("pdfs",pdf);
         const resto=(await todos("envios")).filter(x=>x.vistId===en.vistId);
-        if(!resto.length){ const v=await pegar("vist",en.vistId); if(v){ v.status="enviada"; await gravarDB("vist",v); if(E&&E.id===v.id) E.status="enviada"; } } }
+        if(!resto.length){ const v=await pegar("vist",en.vistId); if(v){ v.status="enviada"; v.atualizadoEm=new Date().toISOString(); v.nuvemPend=true; await gravarDB("vist",v);
+          if(E&&E.id===v.id){ E.status="enviada"; E.atualizadoEm=v.atualizadoEm; E.nuvemPend=true; } nuvemAgendar(); } } }   // 05/11: "enviada" também sobe para a nuvem
       else if(r&&r.erro&&["BACKEND_OCUPADO","BACKEND_SEM_CONFIG"].indexOf(r.erro)<0){ erro=r.erro; en.erro=r.erro; await gravarDB("envios",en); if(r.erro==="SEM_LOGIN"||r.erro==="NAO_AUTORIZADO") break; }
       else break;   // sem resposta: tenta de novo depois
     }

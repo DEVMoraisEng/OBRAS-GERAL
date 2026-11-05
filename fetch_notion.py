@@ -202,9 +202,37 @@ def parse_venda(page):
 # O contador da "Casa apta p/ vistoria" parte dela (prazo de 7 dias).
 DB_ID_ATV_VENDAS = os.environ.get("NOTION_DB_ATV_VENDAS", "33dc5ab532d380abaa00fecd5c2d88c2")
 
+def _nd(t):
+    import unicodedata, re
+    t = unicodedata.normalize("NFD", str(t or ""))
+    t = "".join(c for c in t if unicodedata.category(c) != "Mn")
+    return re.sub(r"\s+", " ", t.upper()).strip()
+
+
+def _aberta(pr):
+    f = (get_prop(pr, "ATIVIDADE FINALIZADA") or {}).get("formula") or {}
+    if not f:
+        return True
+    import re
+    return not (f.get("boolean") is True or re.search(r"SIM|FINALIZ|TRUE|✅", str(f.get("string") or ""), re.I))
+
+
+def _melhor(atual, d, aberta):
+    """a atividade que vale: a EM ABERTO mais recente; sem nenhuma aberta, a mais recente (igual ao MapaObras.gs)"""
+    if not atual:
+        return True
+    if aberta != atual["aberta"]:
+        return aberta
+    return d > atual["d"]
+
+
 def datas_vistoria_previa(token):
-    """{id da venda (sem hífen): data mais antiga} das atividades VISTORIA PRÉVIA."""
-    out = {}
+    """Atividades VISTORIA PRÉVIA: {"rel": {id da venda: data}, "titulos": [...]}.
+    05/11/26 — a automação do Notion cria a atividade com a relação OBRA VAZIA,
+    então também guardo o título ("CONFERIR SE A CASA 1TB 21 QD 51 LT 35 ESTA
+    APTA PARA A VISTORIA") para achar a casa pelo endereço. A data é a de
+    CRIAÇÃO da atividade (é quando PROCESSO CONFORME? virou SIM)."""
+    rel_out, titulos = {}, []
     url = f"https://api.notion.com/v1/databases/{DB_ID_ATV_VENDAS}/query"
     headers = {"Authorization": f"Bearer {token}", "Notion-Version": "2022-06-28", "Content-Type": "application/json"}
     body = {"filter": {"property": "TIPO", "select": {"equals": "VISTORIA PRÉVIA"}}}
@@ -220,16 +248,49 @@ def datas_vistoria_previa(token):
         data = r.json()
         for pg in data.get("results", []):
             pr = pg.get("properties", {})
-            rel = (get_prop(pr, "OBRA").get("relation") or [])
-            dt = prop_date(get_prop(pr, "DATA INICIAL")) or (pg.get("created_time") or "")[:10]
-            for x in rel:
+            dt = (pg.get("created_time") or "")[:10] or (prop_date(get_prop(pr, "DATA INICIAL")) or "")[:10]
+            if not dt:
+                continue
+            ab = _aberta(pr)
+            tit = ""
+            for v in pr.values():
+                if isinstance(v, dict) and v.get("type") == "title":
+                    tit = "".join(x.get("plain_text", "") for x in v.get("title") or [])
+            titulos.append({"t": _nd(tit), "d": dt, "aberta": ab})
+            for x in (get_prop(pr, "OBRA").get("relation") or []):
                 k = (x.get("id") or "").replace("-", "")
-                if k and dt and (k not in out or dt[:10] < out[k]):
-                    out[k] = dt[:10]
+                if k and _melhor(rel_out.get(k), dt, ab):
+                    rel_out[k] = {"d": dt, "aberta": ab}
         if not data.get("has_more"):
             break
         cursor = data.get("next_cursor")
-    return out
+    return {"rel": rel_out, "titulos": titulos}
+
+
+def apta_da_casa(idx, vid, endereco, casa):
+    """data da VISTORIA PRÉVIA da casa: pela relação; sem relação, pelo título
+    (mesma regra do moAptaPorTitulo_ do MapaObras.gs: LT 3 ≠ LT 35, casa confere)"""
+    import re
+    r = idx["rel"].get(vid)
+    if r:
+        return r["d"]
+    e = _nd(endereco)
+    if not e:
+        return None
+    best = None
+    for x in idx["titulos"]:
+        i = x["t"].find(e)
+        if i < 0:
+            continue
+        depois = x["t"][i + len(e):]
+        if re.match(r"^\s*-?\s*\d", depois) and not re.match(r"^\s*(CS|CASA)", depois):
+            continue
+        m = re.search(r"(?:CASA|CS)\s*0*(\d+)\s*$", x["t"][:i]) or re.match(r"^\s*-?\s*(?:CASA|CS)\s*0*(\d+)", depois)
+        if m and casa is not None and str(int(m.group(1))) != str(int(casa)):
+            continue
+        if _melhor(best, x["d"], x["aberta"]):
+            best = {"d": x["d"], "aberta": x["aberta"]}
+    return best["d"] if best else None
 
 # ─── MODELO 3D (coluna MODELO 3D da obra na (EMP) Projeto 2.0) ─────
 DB_ID_OBRAS = os.environ.get("NOTION_DB_OBRAS", "306c5ab532d3812fa14fe9a281510128")   # (EMP) Projeto 2.0
@@ -465,8 +526,9 @@ def main():
             try:
                 apta = datas_vistoria_previa(TOKEN_VENDAS)
                 for v in vendas:
-                    v["apta_desde"] = apta.get(v["id"])
-                print(f"  {len(apta)} casa(s) com atividade VISTORIA PRÉVIA")
+                    v["apta_desde"] = apta_da_casa(apta, v["id"], v.get("endereco"), v.get("casa"))
+                n = sum(1 for v in vendas if v.get("apta_desde"))
+                print(f"  {len(apta['titulos'])} atividade(s) VISTORIA PRÉVIA · {n} casa(s) com data ({len(apta['rel'])} pela relação)")
             except Exception as e:
                 print(f"  AVISO: datas da VISTORIA PRÉVIA: {e}")
         except Exception as e:
