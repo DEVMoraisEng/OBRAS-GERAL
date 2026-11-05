@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05T20:12:14.806211+00:00",
+ "updated_at": "2026-11-05T20:29:36.118162+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -12332,13 +12332,13 @@
    "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "NÃO",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": "2026-11-06",
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:27 · Caio Araujo\nestá atualiado na data de hoje",
-   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":0,\"ret\":\"2026-10-26\",\"trav\":null},\"r\":{},\"em\":\"2026-11-04T18:27:51.961Z\",\"por\":\"Caio Araujo\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":10,\"ret\":\"2026-10-26\",\"trav\":\"2026-11-05\"},\"r\":{\"ini\":\"2026-11-06\",\"acc\":0,\"ret\":\"2026-11-06\",\"trav\":null},\"em\":\"2026-11-05T20:28:56.647Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
