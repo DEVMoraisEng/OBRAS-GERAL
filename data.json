@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05T17:57:21.342270+00:00",
+ "updated_at": "2026-11-05T18:11:53.988778+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -9551,7 +9551,7 @@
    "data_venda": "2026-09-08",
    "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
-   "processo_conforme": "SIM",
+   "processo_conforme": "NÃO",
    "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
