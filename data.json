@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05T18:11:53.988778+00:00",
+ "updated_at": "2026-11-05T18:41:56.161274+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8733,8 +8733,8 @@
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "NÃO",
-   "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null,
+   "agendou_pre_vistoria": "SIM",
+   "data_pre_vistoria": "2026-11-06",
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:30 · Caio Araujo\nVistoria será realizada na sexta 06/11",
@@ -14519,7 +14519,9 @@
     "2026-06-11",
     "MANHÃ"
    ],
-   "pv": {}
+   "pv": {
+    "2": "2026-11-06"
+   }
   },
   "TC 40": {
    "status": "fin_prazo",
@@ -15676,6 +15678,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-05T18:41:56.161274+00:00",
+   "ref": "TC 41",
+   "endereco": "TB 21 QD 51 LT 32",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "2",
+   "data_pv": "2026-11-06"
+  },
   {
    "em": "2026-11-05T17:41:58.171980+00:00",
    "ref": "TC 68",
