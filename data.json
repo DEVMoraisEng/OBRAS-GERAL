@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-05T17:41:58.171980+00:00",
+ "updated_at": "2026-11-05T17:57:21.342270+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -1652,7 +1652,7 @@
    "proprietario": "MORAIS PARTICIPACOES IMOBILIARIAS SPE I LTDA",
    "mestre": null,
    "eng": "João Marcos Vieira Cabral Menezes",
-   "despachante": null,
+   "despachante": "YAN",
    "previsao_inicio_obra": "2026-11-03",
    "obra_iniciada": "NÃO",
    "obra_finalizada": "NÃO",
@@ -1732,7 +1732,7 @@
    "proprietario": "MORAIS INCORPORACOES SENADOR CANEDO SPE LTDA",
    "mestre": null,
    "eng": "João Marcos Vieira Cabral Menezes",
-   "despachante": null,
+   "despachante": "YAN",
    "previsao_inicio_obra": "2026-11-03",
    "obra_iniciada": "NÃO",
    "obra_finalizada": "NÃO",
@@ -1772,7 +1772,7 @@
    "proprietario": "MORAIS INCORPORACOES SENADOR CANEDO SPE LTDA",
    "mestre": null,
    "eng": "João Marcos Vieira Cabral Menezes",
-   "despachante": null,
+   "despachante": "YAN",
    "previsao_inicio_obra": "2026-11-03",
    "obra_iniciada": "NÃO",
    "obra_finalizada": "NÃO",
