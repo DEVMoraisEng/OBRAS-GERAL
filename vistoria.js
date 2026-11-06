@@ -295,8 +295,8 @@ async function abrir(venda,ctx){
     <div class="ct" style="margin-top:6px">Vistorias desta casa${nuvem?"":" (neste aparelho — sem conexão com a nuvem agora)"}</div>
     ${lista.length?lista.map(v=>`<div class="lst"><div class="i"><b>${rotRel(v)}${br(v.dados.dataVistoria)} · ${v.itens.length} item(ns)</b><span>${esc(v.dados.respNome||"")} ${v.dados.clienteNome?"· cliente "+esc(v.dados.clienteNome):""}${v.status!=="rascunho"&&v.itens.length?" · ✅ "+nFeitos(v)+"/"+v.itens.length+" executados":""}${v.criadorNome?" · criada por "+esc(v.criadorNome):""}${v._nuvem?" · ☁":""}</span></div>${tagDe(v)}
       <div class="bts"><button class="bt az" onclick="Vistoria._continuar('${esc(v.id)}')">${meu(v)&&(v.status==="rascunho"||v.editando)?"Continuar":"Abrir"}</button>
-      ${v.status==="rascunho"?(meu(v)?`<button class="bt vm" onclick="Vistoria._excluir('${esc(v.id)}')">🗑</button>`:""):`<button class="bt" title="Marcar os reparos executados" onclick="Vistoria._conferirCasa()">✅ Reparos</button><button class="bt gh" title="Novo relatório: o cliente encontrou novas pontuações" onclick="Vistoria._novoRel('${esc(v.id)}')">➕ Novas pontuações</button>`}</div></div>`).join("")
-      :`<div class="info">Nenhuma vistoria desta casa ainda.</div>`}
+      ${v.status==="rascunho"?(meu(v)?`<button class="bt vm" onclick="Vistoria._excluir('${esc(v.id)}')">🗑</button>`:""):`${meu(v)&&!v.editando?`<button class="bt gh" title="Só quem criou a vistoria edita" onclick="Vistoria._editarDe('${esc(v.id)}')">✏️ Editar</button>`:""}<button class="bt" title="Marcar os reparos executados" onclick="Vistoria._conferirCasa()">✅ Reparos</button><button class="bt gh" title="Novo relatório: o cliente encontrou novas pontuações" onclick="Vistoria._novoRel('${esc(v.id)}')">➕ Novas pontuações</button>`}</div></div>`).join("")
+      :(VENDA&&VENDA.docs?avisoOutroAparelho():`<div class="info">Nenhuma vistoria desta casa ainda.</div>`)}
     <div class="ct" style="margin-top:14px">Documentos da vistoria salvos na casa</div>
     <div id="vist-docs"><div class="info">Carregando os documentos…</div></div>`;
   const alvo=$("vist-docs"); if(alvo) docsHtml(venda).then(h=>{ const a=$("vist-docs"); if(a&&VENDA===venda) a.innerHTML=h; });
@@ -803,6 +803,7 @@ async function sincronizar(ctx){
   if(ctx&&(ctx.api||ctx.toast)) CTX=Object.assign({},CTX||{},ctx);
   if(_sinc) return;
   await recontar();
+  if(navigator.onLine&&CTX&&CTX.api){ nuvemAgendar(3000); setTimeout(ckFlush,3500); }   // 06/11
   if(_sinc||!navigator.onLine||!CTX||!CTX.api) return; _sinc=true;
   let fila=[]; try{ fila=await todos("envios"); }catch(e){ _sinc=false; return; }
   if(!fila.length){ _sinc=false; return; } let ok=0, erro="";
@@ -865,7 +866,8 @@ function ckAplicarFila(){ if(!CK) return; const f=ckFila();
 function ckPintar(){
   const c=$("ck-c"); if(!c||!CK) return;
   const pend=ckFila().filter(x=>x.vendaId===CK.venda.id).length, logado=!!eu();
-  if(!CK.vists.length){ c.innerHTML=`<div class="info">Nenhuma vistoria finalizada desta casa${CK.semNuvem?" neste aparelho (sem conexão com a nuvem agora)":""}.</div>`; return; }
+  if(!CK.vists.length){ c.innerHTML=CK.semNuvem?`<div class="info">Nenhuma vistoria finalizada desta casa neste aparelho (sem conexão com a nuvem agora).</div>`
+      :(CK.venda.docs?avisoOutroAparelho():`<div class="info">Nenhuma vistoria finalizada desta casa.</div>`); return; }
   c.innerHTML=(logado?"":`<div class="info am">Entre no portal para marcar os reparos.</div>`)+
     (CK.semNuvem?`<div class="info am">Sem conexão com a nuvem agora: mostrando o que está neste aparelho. As marcações ficam guardadas e sobem sozinhas.</div>`:"")+
     (pend?`<div class="info am">⏳ ${pend} marcação(ões) aguardando internet — sobem sozinhas.</div>`:"")+
@@ -945,6 +947,14 @@ async function ckPdf(vi,salvar){ const v=CK&&CK.vists[vi]; if(!v) return;
 function ckFechar(){ const o=$("vist-ck"); if(o) o.remove(); CK=null; if(!$("vist-ov")) document.body.style.overflow="";
   if(E&&$("vist-ov")&&PASSO===3) pintarPasso(); if(CTX&&CTX.aoMudar) CTX.aoMudar(); }
 
+/* 06/11: a casa tem PDF de vistoria, mas a vistoria (itens, fotos, checks)
+   ainda está só no aparelho de quem fez — sobe quando essa pessoa abrir o
+   Mapa de Obras com internet naquele aparelho */
+function avisoOutroAparelho(){
+  const quem=VENDA&&VENDA.eng?esc(VENDA.eng):"quem fez a vistoria";
+  return `<div class="info am">A vistoria desta casa foi feita em <b>outro aparelho</b> e ainda não subiu para a nuvem (os PDFs estão abaixo, em “Salvos na casa”).<br>
+    Peça para <b>${quem}</b> abrir o Mapa de Obras <b>uma vez, com internet, no aparelho em que fez a vistoria</b> (logado no portal). Ela sobe sozinha e passa a abrir aqui — com os checks e a edição.</div>`;
+}
 /* ---------------- documentos da casa ---------------- */
 /* 16/10 (tarde): o HTML dos documentos recebe a casa (não usa a casa "aberta"),
    assim o painel do mapa de casas mostra várias casas ao mesmo tempo. */
@@ -982,7 +992,7 @@ window.Vistoria={
   _edEsp:i=>{ if(ED){ ED.esp=i; edBarras(); } }, _edDesfazer:edDesfazer, _edGirar:edGirar, _edCortar:edCortar, _edSair:edSair, _edSalvar:edSalvar,
   _novoRel:novoRel,
   /* 05/11 (2) */
-  _editar:editar, _reenviar:reenviar, _conferirCasa:()=>conferir(VENDA,CTX), _conferirAqui:()=>{ if(PASSO===2) capturarSigs(); salvarJa(); conferir(VENDA,CTX); },
+  _editar:editar, _reenviar:reenviar, _editarDe:async id=>{ await continuar(id); if(E&&E.id===id&&meu(E)&&E.status!=="rascunho") editar(); }, _conferirCasa:()=>conferir(VENDA,CTX), _conferirAqui:()=>{ if(PASSO===2) capturarSigs(); salvarJa(); conferir(VENDA,CTX); },
   _ck:ck, _ckTodos:ckTodos, _ckPdf:ckPdf, _ckCarregar:ckCarregar, _ckFechar:ckFechar
 };
 })();
