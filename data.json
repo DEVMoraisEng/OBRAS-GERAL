@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-06T13:42:12.539845+00:00",
+ "updated_at": "2026-11-06T14:56:52.165420+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8752,13 +8752,13 @@
    "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "NÃO",
+   "casa_apta_vistoria": "EXECUTANDO REPAROS",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:29 · Caio Araujo\nvistoria será realizada na sexta 06/11",
-   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":0,\"ret\":\"2026-10-26\",\"trav\":null},\"r\":{},\"em\":\"2026-11-05T20:50:07.580Z\",\"por\":\"Caio Araujo\",\"origem\":\"atividade\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":0,\"ret\":\"2026-10-26\",\"trav\":null},\"r\":{},\"em\":\"2026-11-06T14:56:14.223Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -9213,12 +9213,12 @@
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
-   "agendou_pre_vistoria": "NÃO",
+   "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:30 · Caio Araujo\nSolicitado atualização.",
-   "contador": "{\"a\":{\"ini\":\"2026-10-29\",\"acc\":8,\"ret\":\"2026-10-29\",\"trav\":\"2026-11-06\"},\"r\":{},\"em\":\"2026-11-06T12:03:00.601Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-29\",\"acc\":8,\"ret\":\"2026-10-29\",\"trav\":\"2026-11-06\"},\"r\":{},\"em\":\"2026-11-06T14:56:37.222Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -14601,7 +14601,9 @@
     "2026-05-22",
     "MANHÃ"
    ],
-   "pv": {}
+   "pv": {
+    "2": ""
+   }
   },
   "TC 34": {
    "status": "fin_prazo",
@@ -15679,6 +15681,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-06T14:56:52.165420+00:00",
+   "ref": "TC 35",
+   "endereco": "TB 19 QD 50 LT 04",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "2",
+   "data_pv": ""
+  },
   {
    "em": "2026-11-05T20:42:10.185807+00:00",
    "ref": "MQA 2",
