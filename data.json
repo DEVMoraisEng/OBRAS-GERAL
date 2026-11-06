@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-06T11:00:42.771497+00:00",
+ "updated_at": "2026-11-06T12:03:16.028565+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -9212,13 +9212,13 @@
    "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "NÃO",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:30 · Caio Araujo\nSolicitado atualização.",
-   "contador": "{\"a\":{\"ini\":\"2026-10-29\",\"acc\":0,\"ret\":\"2026-10-29\",\"trav\":null},\"r\":{},\"em\":\"2026-11-04T18:30:09.538Z\",\"por\":\"Caio Araujo\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-29\",\"acc\":8,\"ret\":\"2026-10-29\",\"trav\":\"2026-11-06\"},\"r\":{},\"em\":\"2026-11-06T12:03:00.601Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -12340,8 +12340,8 @@
    "obs_conferencia": "▸ 04/11/2026 15:27 · Caio Araujo\nestá atualiado na data de hoje",
    "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":10,\"ret\":\"2026-10-26\",\"trav\":\"2026-11-05\"},\"r\":{\"ini\":\"2026-11-06\",\"acc\":0,\"ret\":\"2026-11-06\",\"trav\":null},\"em\":\"2026-11-05T20:30:24.257Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
-   "vist_completo": 0,
-   "vist_prestador": 0,
+   "vist_completo": 1,
+   "vist_prestador": 1,
    "apta_desde": "2026-10-26"
   },
   {
