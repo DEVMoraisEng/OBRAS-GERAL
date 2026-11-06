@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-06T13:15:51.010917+00:00",
+ "updated_at": "2026-11-06T13:19:14.542410+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -10457,8 +10457,8 @@
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": "NECESSITA DE INTERVENÇÕES",
-   "obs_conferencia": "▸ 04/11/2026 15:30 · Caio Araujo\nFarei a verificação do pós obra amanha, quinta 05/11\n\n▸ registro anterior (sem data)\nteste",
-   "contador": "{\"a\":{\"ini\":\"2026-10-28\",\"acc\":7,\"ret\":\"2026-11-06\",\"trav\":null},\"r\":{},\"em\":\"2026-11-06T13:11:21.401Z\",\"por\":\"Caio Araujo\"}",
+   "obs_conferencia": "▸ 06/11/2026 10:18 · Caio Araujo\nCasa ainda precisa de alguns reparos e ajustes, sendo: \n* reparo no grafiato que esta com um buraco;\n* limpeza dos ralos que estao com entulhos\n* portas asperas, aparentando nao terem sido lixadas e envernizadas\n* vazamento sifao suite\n* pintura do piso danificada\n* Retirar entulhos\n* melhorar limpeza.\n\n▸ 04/11/2026 15:30 · Caio Araujo\nFarei a verificação do pós obra amanha, quinta 05/11\n\n▸ registro anterior (sem data)\nteste",
+   "contador": "{\"a\":{\"ini\":\"2026-10-28\",\"acc\":7,\"ret\":\"2026-11-06\",\"trav\":null},\"r\":{},\"em\":\"2026-11-06T13:18:38.573Z\",\"por\":\"Caio Araujo\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
