@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-07T15:41:53.249475+00:00",
+ "updated_at": "2026-11-07T15:57:07.182546+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8334,7 +8334,7 @@
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "EXECUTANDO REPAROS",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": null,
+   "data_pre_vistoria": "2026-11-09",
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:28 · Caio Araujo\nVerificação será na sexta 06/11",
@@ -14405,7 +14405,7 @@
     "MANHÃ"
    ],
    "pv": {
-    "1": ""
+    "1": "2026-11-09"
    }
   },
   "TC 50": {
