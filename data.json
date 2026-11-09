@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-09T12:56:58.103003+00:00",
+ "updated_at": "2026-11-09T13:14:19.370260+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -2819,7 +2819,7 @@
    "data_inicio_obra": "2026-08-06",
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
-   "aprovou_habite_se": "NÃO",
+   "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-11-03",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
@@ -14226,7 +14226,7 @@
    "pv": {}
   },
   "TC 67": {
-   "status": "habite_agendado",
+   "status": "habite_concluido",
    "prazo": null,
    "endereco": "TB 19 QD 51 LT 16",
    "setor": "TERRABELA CERRADO",
@@ -15683,6 +15683,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-09T13:14:19.370260+00:00",
+   "ref": "TC 67",
+   "endereco": "TB 19 QD 51 LT 16",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_agendado",
+   "para": "habite_concluido"
+  },
   {
    "em": "2026-11-07T15:41:53.249475+00:00",
    "ref": "TC 51",
