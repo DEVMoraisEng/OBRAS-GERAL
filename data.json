@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-09T12:47:22.044494+00:00",
+ "updated_at": "2026-11-09T12:54:47.383607+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -12335,10 +12335,10 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-11-06",
-   "reparos_pre_vistoria": "NÃO",
+   "reparos_pre_vistoria": "EXECUTANDO REPAROS",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:27 · Caio Araujo\nestá atualiado na data de hoje",
-   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":10,\"ret\":\"2026-10-26\",\"trav\":\"2026-11-05\"},\"r\":{\"ini\":\"2026-11-06\",\"acc\":0,\"ret\":\"2026-11-06\",\"trav\":null},\"em\":\"2026-11-05T20:30:24.257Z\",\"por\":\"Guilherme Gouveia\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":10,\"ret\":\"2026-10-26\",\"trav\":\"2026-11-05\"},\"r\":{\"ini\":\"2026-11-06\",\"acc\":0,\"ret\":\"2026-11-06\",\"trav\":null},\"em\":\"2026-11-09T12:53:05.695Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 1,
    "vist_prestador": 1,
@@ -12355,10 +12355,10 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-10-21",
-   "reparos_pre_vistoria": "EXECUTANDO REPAROS",
+   "reparos_pre_vistoria": "SIM",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-10-15\",\"acc\":11,\"ret\":\"2026-10-15\",\"trav\":\"2026-10-26\"},\"r\":{\"ini\":\"2026-10-21\",\"acc\":0,\"ret\":\"2026-10-21\",\"trav\":null},\"em\":\"2026-10-26T19:27:10.097Z\",\"por\":\"Guilherme Gouveia\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-15\",\"acc\":11,\"ret\":\"2026-10-15\",\"trav\":\"2026-10-26\"},\"r\":{\"ini\":\"2026-10-21\",\"acc\":19,\"ret\":\"2026-10-21\",\"trav\":\"2026-11-09\"},\"em\":\"2026-11-09T12:52:43.649Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
