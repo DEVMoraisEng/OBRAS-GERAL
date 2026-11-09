@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-09T19:11:54.984827+00:00",
+ "updated_at": "2026-11-09T19:58:39.317938+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -12391,18 +12391,18 @@
    "data_venda": "2026-10-08",
    "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
-   "processo_conforme": "NÃO",
+   "processo_conforme": "SIM",
    "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-04-08\",\"acc\":0,\"ret\":\"2026-04-08\",\"trav\":null},\"r\":{\"ini\":\"2026-10-28\",\"ret\":\"2026-10-28\",\"acc\":0,\"trav\":null},\"em\":\"2026-10-28T18:00:24.532Z\",\"por\":\"Guilherme Gouveia\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-11-09\",\"acc\":0,\"ret\":\"2026-11-09\",\"trav\":null},\"r\":{\"ini\":\"2026-10-28\",\"ret\":\"2026-10-28\",\"acc\":0,\"trav\":null},\"em\":\"2026-11-09T19:58:07.756Z\",\"por\":\"Guilherme Gouveia\",\"origem\":\"atividade\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-11-09"
   },
   {
    "id": "33cc5ab532d380d1a6b0f0ae96deb125",
