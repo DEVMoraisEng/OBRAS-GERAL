@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-09T16:40:03.178366+00:00",
+ "updated_at": "2026-11-09T16:42:57.948004+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8312,13 +8312,13 @@
    "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "EXECUTANDO REPAROS",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:29 · Caio Araujo\nVerificação será na sexta 06/11",
-   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":0,\"ret\":\"2026-10-26\",\"trav\":null},\"r\":{},\"em\":\"2026-11-06T14:57:32.353Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":14,\"ret\":\"2026-10-26\",\"trav\":\"2026-11-09\"},\"r\":{},\"em\":\"2026-11-09T16:42:01.332Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
