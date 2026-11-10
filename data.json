@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-10T19:41:56.111007+00:00",
+ "updated_at": "2026-11-10T19:56:56.704519+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -11728,7 +11728,7 @@
    "id": "33cc5ab532d38080b3cbf4ad48a6415e",
    "endereco": "RPB 24 QD 26A LT 11",
    "casa": 2,
-   "data_venda": null,
+   "data_venda": "2026-07-23",
    "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
    "processo_conforme": "NÃO",
