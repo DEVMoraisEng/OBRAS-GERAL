@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-10T11:00:38.427939+00:00",
+ "updated_at": "2026-11-10T11:57:41.495662+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8236,9 +8236,9 @@
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
-   "conferencia": null,
+   "conferencia": "CONFERIDO OK",
    "obs_conferencia": "▸ 04/11/2026 15:28 · Caio Araujo\nverificação será na sexta 06/11",
-   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":0,\"ret\":\"2026-10-26\",\"trav\":null},\"r\":{},\"em\":\"2026-11-04T18:28:45.652Z\",\"por\":\"Caio Araujo\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":15,\"ret\":\"2026-10-26\",\"trav\":\"2026-11-10\"},\"r\":{},\"em\":\"2026-11-10T11:57:13.791Z\",\"por\":\"Caio Araujo\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
