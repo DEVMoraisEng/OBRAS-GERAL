@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-10T14:29:52.072650+00:00",
+ "updated_at": "2026-11-10T14:40:31.135737+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -10380,8 +10380,8 @@
    "obs_conferencia": "▸ 06/11/2026 10:18 · Caio Araujo\nCasa ainda precisa de alguns reparos e ajustes, sendo: \n* reparo no grafiato que esta com um buraco;\n* limpeza dos ralos que estao com entulhos\n* portas asperas, aparentando nao terem sido lixadas e envernizadas\n* vazamento sifao suite\n* pintura do piso danificada\n* Retirar entulhos\n* melhorar limpeza.\n\n▸ 04/11/2026 15:30 · Caio Araujo\nFarei a verificação do pós obra amanha, quinta 05/11\n\n▸ registro anterior (sem data)\nteste",
    "contador": "{\"a\":{\"ini\":\"2026-10-28\",\"acc\":11,\"ret\":\"2026-11-06\",\"trav\":\"2026-11-10\"},\"r\":{\"ini\":\"2026-11-10\",\"ret\":\"2026-11-10\",\"acc\":0,\"trav\":null},\"em\":\"2026-11-10T14:21:01.794Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
-   "vist_completo": 0,
-   "vist_prestador": 0,
+   "vist_completo": 1,
+   "vist_prestador": 1,
    "apta_desde": "2026-10-28"
   },
   {
