@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-10T11:57:41.495662+00:00",
+ "updated_at": "2026-11-10T12:11:57.341661+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -10452,13 +10452,13 @@
    "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "EXECUTANDO REPAROS",
-   "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null,
+   "casa_apta_vistoria": "SIM",
+   "agendou_pre_vistoria": "SIM",
+   "data_pre_vistoria": "2026-11-10",
    "reparos_pre_vistoria": "NÃO",
-   "conferencia": "NECESSITA DE INTERVENÇÕES",
+   "conferencia": null,
    "obs_conferencia": "▸ 06/11/2026 10:18 · Caio Araujo\nCasa ainda precisa de alguns reparos e ajustes, sendo: \n* reparo no grafiato que esta com um buraco;\n* limpeza dos ralos que estao com entulhos\n* portas asperas, aparentando nao terem sido lixadas e envernizadas\n* vazamento sifao suite\n* pintura do piso danificada\n* Retirar entulhos\n* melhorar limpeza.\n\n▸ 04/11/2026 15:30 · Caio Araujo\nFarei a verificação do pós obra amanha, quinta 05/11\n\n▸ registro anterior (sem data)\nteste",
-   "contador": "{\"a\":{\"ini\":\"2026-10-28\",\"acc\":7,\"ret\":\"2026-11-06\",\"trav\":null},\"r\":{},\"em\":\"2026-11-06T13:18:38.573Z\",\"por\":\"Caio Araujo\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-28\",\"acc\":11,\"ret\":\"2026-11-06\",\"trav\":\"2026-11-10\"},\"r\":{\"ini\":\"2026-11-10\",\"ret\":\"2026-11-10\",\"acc\":0,\"trav\":null},\"em\":\"2026-11-10T11:58:53.049Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -15068,7 +15068,8 @@
    "setor": "ST EFIGÊNIA",
    "habite": null,
    "pv": {
-    "2": "2026-06-01"
+    "2": "2026-06-01",
+    "1": "2026-11-10"
    }
   },
   "SV 6": {
@@ -15731,6 +15732,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-10T12:11:57.341661+00:00",
+   "ref": "SE 1",
+   "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
+   "setor": "ST EFIGÊNIA",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": "2026-11-10"
+  },
   {
    "em": "2026-11-09T18:56:53.942127+00:00",
    "ref": "PO3",
