@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-10T12:57:01.175526+00:00",
+ "updated_at": "2026-11-10T13:12:05.157248+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -11889,26 +11889,6 @@
    "endereco": "RPB 24 QD 26A LT 07",
    "casa": 1,
    "data_venda": "2026-07-03",
-   "eng": "Isaac Natan",
-   "entregou_casa": "NÃO",
-   "processo_conforme": "NÃO",
-   "casa_apta_vistoria": "NÃO",
-   "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null,
-   "reparos_pre_vistoria": "NÃO",
-   "conferencia": null,
-   "obs_conferencia": null,
-   "contador": null,
-   "data_entrega": null,
-   "vist_completo": 0,
-   "vist_prestador": 0,
-   "apta_desde": null
-  },
-  {
-   "id": "33cc5ab532d3802da8e6e162bb1a680d",
-   "endereco": "RPB 24 QD 26A LT 06",
-   "casa": 2,
-   "data_venda": "2026-07-23",
    "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
    "processo_conforme": "NÃO",
