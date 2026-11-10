@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-10T16:57:16.643186+00:00",
+ "updated_at": "2026-11-10T17:27:29.969840+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -1952,7 +1952,7 @@
    "contrato_mestre": "NÃO",
    "contrato_investidor": "INEXISTE",
    "taxas_alvara_pagas": "SIM",
-   "projeto_aprovado": "NÃO",
+   "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
    "ret_armazenado": "NÃO",
    "taxas_habite_se": "NÃO",
@@ -2152,7 +2152,7 @@
    "contrato_mestre": "SIM",
    "contrato_investidor": "INEXISTE",
    "taxas_alvara_pagas": "SIM",
-   "projeto_aprovado": "NÃO",
+   "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
    "ret_armazenado": "NÃO",
    "taxas_habite_se": "NÃO",
@@ -2192,7 +2192,7 @@
    "contrato_mestre": "SIM",
    "contrato_investidor": "INEXISTE",
    "taxas_alvara_pagas": "SIM",
-   "projeto_aprovado": "NÃO",
+   "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
    "ret_armazenado": "NÃO",
    "taxas_habite_se": "NÃO",
