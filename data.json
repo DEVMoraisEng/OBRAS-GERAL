@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-10T14:21:23.956978+00:00",
+ "updated_at": "2026-11-10T14:29:52.072650+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -13532,13 +13532,13 @@
    "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "NÃO",
+   "casa_apta_vistoria": "EXECUTANDO REPAROS",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-11-05\",\"acc\":0,\"ret\":\"2026-11-05\",\"trav\":null},\"r\":{},\"em\":\"2026-11-05T14:43:33.764Z\",\"por\":\"sistema\",\"origem\":\"atividade\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-11-05\",\"acc\":0,\"ret\":\"2026-11-05\",\"trav\":null},\"r\":{},\"em\":\"2026-11-10T14:21:59.946Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
