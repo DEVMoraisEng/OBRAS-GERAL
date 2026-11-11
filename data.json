@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-11T00:57:25.117041+00:00",
+ "updated_at": "2026-11-11T03:00:37.586232+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -11748,7 +11748,7 @@
    "id": "33cc5ab532d3807bbc10c3d1fbf21f33",
    "endereco": "RPB 24 QD 26A LT 11",
    "casa": 1,
-   "data_venda": "2026-08-06",
+   "data_venda": null,
    "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
    "processo_conforme": "NÃO",
@@ -12279,7 +12279,7 @@
    "conferencia": null,
    "obs_conferencia": null,
    "contador": "{\"a\":{\"ini\":\"2026-10-15\",\"acc\":11,\"ret\":\"2026-10-15\",\"trav\":\"2026-10-26\"},\"r\":{\"ini\":\"2026-10-21\",\"acc\":19,\"ret\":\"2026-10-21\",\"trav\":\"2026-11-09\"},\"em\":\"2026-11-10T14:20:48.852Z\",\"por\":\"Guilherme Gouveia\"}",
-   "data_entrega": null,
+   "data_entrega": "2026-11-10",
    "vist_completo": 0,
    "vist_prestador": 0,
    "apta_desde": "2026-10-15"
