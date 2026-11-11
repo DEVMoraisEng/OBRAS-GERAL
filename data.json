@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-11T16:56:58.890497+00:00",
+ "updated_at": "2026-11-11T17:27:02.784363+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -9153,8 +9153,8 @@
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
-   "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null,
+   "agendou_pre_vistoria": "SIM",
+   "data_pre_vistoria": "2026-11-13",
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:29 · Caio Araujo\nSolicitado atualização.",
@@ -14556,7 +14556,8 @@
     "MANHÃ"
    ],
    "pv": {
-    "2": ""
+    "2": "",
+    "1": "2026-11-13"
    }
   },
   "TC 34": {
@@ -15655,6 +15656,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-11T17:27:02.784363+00:00",
+   "ref": "TC 35",
+   "endereco": "TB 19 QD 50 LT 04",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": "2026-11-13"
+  },
   {
    "em": "2026-11-10T19:40:02.822796+00:00",
    "ref": "TC 57",
