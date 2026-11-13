@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T12:01:24.011511+00:00",
+ "updated_at": "2026-11-13T12:03:51.401446+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8575,10 +8575,10 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-10-26",
-   "reparos_pre_vistoria": "EXECUTANDO REPAROS",
+   "reparos_pre_vistoria": "SIM",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-10-07\",\"acc\":13,\"ret\":\"2026-10-07\",\"trav\":\"2026-10-20\"},\"r\":{\"ini\":\"2026-10-26\",\"acc\":0,\"ret\":\"2026-10-26\",\"trav\":null},\"em\":\"2026-10-26T17:08:32.232Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-07\",\"acc\":13,\"ret\":\"2026-10-07\",\"trav\":\"2026-10-20\"},\"r\":{\"ini\":\"2026-10-26\",\"acc\":18,\"ret\":\"2026-10-26\",\"trav\":\"2026-11-13\"},\"em\":\"2026-11-13T12:03:24.710Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
