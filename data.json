@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T13:04:51.490144+00:00",
+ "updated_at": "2026-11-13T13:26:58.653093+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -12332,13 +12332,13 @@
    "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "NÃO",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-11-09\",\"acc\":0,\"ret\":\"2026-11-09\",\"trav\":null},\"r\":{\"ini\":\"2026-10-28\",\"ret\":\"2026-10-28\",\"acc\":0,\"trav\":null},\"em\":\"2026-11-09T19:58:07.756Z\",\"por\":\"Guilherme Gouveia\",\"origem\":\"atividade\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-11-09\",\"acc\":4,\"ret\":\"2026-11-09\",\"trav\":\"2026-11-13\"},\"r\":{\"ini\":\"2026-10-28\",\"ret\":\"2026-10-28\",\"acc\":0,\"trav\":null},\"em\":\"2026-11-13T13:05:16.556Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -13573,12 +13573,12 @@
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
-   "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null,
+   "agendou_pre_vistoria": "SIM",
+   "data_pre_vistoria": "2026-11-13",
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-11-05\",\"acc\":8,\"ret\":\"2026-11-05\",\"trav\":\"2026-11-13\"},\"r\":{},\"em\":\"2026-11-13T13:04:23.775Z\",\"por\":\"Guilherme Gouveia\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-11-05\",\"acc\":8,\"ret\":\"2026-11-05\",\"trav\":\"2026-11-13\"},\"r\":{\"ini\":\"2026-11-13\",\"ret\":\"2026-11-13\",\"acc\":0,\"trav\":null},\"em\":\"2026-11-13T13:04:55.199Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -15627,7 +15627,9 @@
     "2026-06-26",
     "MANHÃ"
    ],
-   "pv": {}
+   "pv": {
+    "1": "2026-11-13"
+   }
   },
   "A4": {
    "status": "acima_prazo",
@@ -15677,6 +15679,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-13T13:26:58.653093+00:00",
+   "ref": "A5",
+   "endereco": "PATHERNON QD 01 LT 26",
+   "setor": "ACROPOLE",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": "2026-11-13"
+  },
   {
    "em": "2026-11-13T10:57:12.180355+00:00",
    "ref": "TC 51",
