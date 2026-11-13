@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T17:08:55.261913+00:00",
+ "updated_at": "2026-11-13T17:17:07.349991+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8633,12 +8633,12 @@
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
-   "agendou_pre_vistoria": "NÃO",
+   "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:30 · Caio Araujo\nVistoria será realizada na sexta 06/11",
-   "contador": "{\"a\":{\"ini\":\"2026-11-04\",\"acc\":2,\"ret\":\"2026-11-04\",\"trav\":\"2026-11-06\"},\"r\":{},\"em\":\"2026-11-06T14:57:25.659Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-11-04\",\"acc\":2,\"ret\":\"2026-11-04\",\"trav\":\"2026-11-06\"},\"r\":{},\"em\":\"2026-11-13T17:08:58.132Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -14483,7 +14483,9 @@
     "2026-07-10",
     "MANHÃ"
    ],
-   "pv": {}
+   "pv": {
+    "2": ""
+   }
   },
   "TC 41": {
    "status": "fin_prazo",
@@ -15679,6 +15681,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-13T17:17:07.349991+00:00",
+   "ref": "TC 42",
+   "endereco": "TB 21 QD 51 LT 33",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "2",
+   "data_pv": ""
+  },
   {
    "em": "2026-11-13T13:56:50.936696+00:00",
    "ref": "RV 8",
