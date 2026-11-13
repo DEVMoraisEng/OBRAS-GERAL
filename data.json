@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T11:44:08.815829+00:00",
+ "updated_at": "2026-11-13T12:01:24.011511+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8185,6 +8185,26 @@
    "apta_desde": null
   },
   {
+   "id": "35dc5ab532d380b48273eacc7a5a608e",
+   "endereco": "TB 19 QD 51 LT 13",
+   "casa": 2,
+   "data_venda": "2026-11-12",
+   "eng": "João Marcos Vieira Cabral Menezes",
+   "entregou_casa": "NÃO",
+   "processo_conforme": "NÃO",
+   "casa_apta_vistoria": "NÃO",
+   "agendou_pre_vistoria": "NÃO",
+   "data_pre_vistoria": null,
+   "reparos_pre_vistoria": "NÃO",
+   "conferencia": null,
+   "obs_conferencia": null,
+   "contador": null,
+   "data_entrega": null,
+   "vist_completo": 0,
+   "vist_prestador": 0,
+   "apta_desde": null
+  },
+  {
    "id": "356c5ab532d380d8886aeb2e51b0f8b9",
    "endereco": "TB 18 QD 49 LT 38",
    "casa": 2,
@@ -8234,7 +8254,7 @@
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": null,
+   "data_pre_vistoria": "2026-11-13",
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:29 · Caio Araujo\nVerificação será na sexta 06/11",
@@ -14357,7 +14377,7 @@
     "MANHÃ"
    ],
    "pv": {
-    "2": "",
+    "2": "2026-11-13",
     "1": "2026-11-09"
    }
   },
