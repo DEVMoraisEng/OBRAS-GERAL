@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T07:00:45.227408+00:00",
+ "updated_at": "2026-11-13T10:57:12.180355+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8233,7 +8233,7 @@
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
-   "agendou_pre_vistoria": "NÃO",
+   "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
@@ -14357,6 +14357,7 @@
     "MANHÃ"
    ],
    "pv": {
+    "2": "",
     "1": "2026-11-09"
    }
   },
@@ -15656,6 +15657,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-13T10:57:12.180355+00:00",
+   "ref": "TC 51",
+   "endereco": "TB 18 QD 49 LT 35",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "pre_vistoria",
+   "casa": "2",
+   "data_pv": ""
+  },
   {
    "em": "2026-11-11T17:27:02.784363+00:00",
    "ref": "TC 35",
