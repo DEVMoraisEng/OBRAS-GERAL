@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T20:28:34.375333+00:00",
+ "updated_at": "2026-11-13T20:41:51.050730+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -10594,7 +10594,7 @@
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": null,
+   "data_pre_vistoria": "2000-01-01",
    "reparos_pre_vistoria": "SIM",
    "conferencia": null,
    "obs_conferencia": null,
@@ -14021,7 +14021,7 @@
    "setor": "RAVENA",
    "habite": null,
    "pv": {
-    "2": "",
+    "2": "2000-01-01",
     "1": "2026-03-25"
    }
   },
