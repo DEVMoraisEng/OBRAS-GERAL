@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T16:27:13.945533+00:00",
+ "updated_at": "2026-11-13T17:08:55.261913+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8260,8 +8260,8 @@
    "obs_conferencia": "▸ 04/11/2026 15:29 · Caio Araujo\nVerificação será na sexta 06/11",
    "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":14,\"ret\":\"2026-10-26\",\"trav\":\"2026-11-09\"},\"r\":{},\"em\":\"2026-11-09T16:42:01.332Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
    "data_entrega": null,
-   "vist_completo": 0,
-   "vist_prestador": 0,
+   "vist_completo": 1,
+   "vist_prestador": 1,
    "apta_desde": "2026-10-26"
   },
   {
