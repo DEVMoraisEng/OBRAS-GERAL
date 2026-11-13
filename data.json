@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T12:03:51.401446+00:00",
+ "updated_at": "2026-11-13T12:11:59.405966+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8275,10 +8275,10 @@
    "casa_apta_vistoria": "EXECUTANDO REPAROS",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-11-09",
-   "reparos_pre_vistoria": "NÃO",
+   "reparos_pre_vistoria": "EXECUTANDO REPAROS",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:28 · Caio Araujo\nVerificação será na sexta 06/11",
-   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":0,\"ret\":\"2026-10-26\",\"trav\":null},\"r\":{},\"em\":\"2026-11-06T14:57:32.038Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-26\",\"acc\":0,\"ret\":\"2026-10-26\",\"trav\":null},\"r\":{\"ini\":\"2026-11-09\",\"acc\":0,\"ret\":\"2026-11-09\",\"trav\":null},\"em\":\"2026-11-13T12:04:12.003Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
    "data_entrega": null,
    "vist_completo": 1,
    "vist_prestador": 1,
@@ -8675,10 +8675,10 @@
    "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-11-06",
-   "reparos_pre_vistoria": "NÃO",
+   "reparos_pre_vistoria": "EXECUTANDO REPAROS",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:30 · Caio Araujo\nVistoria será realizada na sexta 06/11",
-   "contador": "{\"a\":{\"ini\":\"2026-10-29\",\"acc\":0,\"ret\":\"2026-10-29\",\"trav\":null},\"r\":{},\"em\":\"2026-11-04T18:30:32.099Z\",\"por\":\"Caio Araujo\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-29\",\"acc\":0,\"ret\":\"2026-10-29\",\"trav\":null},\"r\":{\"ini\":\"2026-11-06\",\"acc\":0,\"ret\":\"2026-11-06\",\"trav\":null},\"em\":\"2026-11-13T12:03:49.526Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
    "data_entrega": null,
    "vist_completo": 1,
    "vist_prestador": 1,
