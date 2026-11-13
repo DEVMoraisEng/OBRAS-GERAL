@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T17:17:07.349991+00:00",
+ "updated_at": "2026-11-13T17:30:00.463792+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8640,8 +8640,8 @@
    "obs_conferencia": "▸ 04/11/2026 15:30 · Caio Araujo\nVistoria será realizada na sexta 06/11",
    "contador": "{\"a\":{\"ini\":\"2026-11-04\",\"acc\":2,\"ret\":\"2026-11-04\",\"trav\":\"2026-11-06\"},\"r\":{},\"em\":\"2026-11-13T17:08:58.132Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
    "data_entrega": null,
-   "vist_completo": 0,
-   "vist_prestador": 0,
+   "vist_completo": 1,
+   "vist_prestador": 1,
    "apta_desde": "2026-11-04"
   },
   {
