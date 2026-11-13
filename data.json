@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T13:56:50.936696+00:00",
+ "updated_at": "2026-11-13T14:28:03.736689+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -9161,7 +9161,7 @@
    "contador": "{\"a\":{\"ini\":\"2026-10-29\",\"acc\":8,\"ret\":\"2026-10-29\",\"trav\":\"2026-11-06\"},\"r\":{},\"em\":\"2026-11-06T14:56:37.222Z\",\"por\":\"João Marcos Vieira Cabral Menezes\"}",
    "data_entrega": null,
    "vist_completo": 1,
-   "vist_prestador": 0,
+   "vist_prestador": 1,
    "apta_desde": "2026-10-29"
   },
   {
