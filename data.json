@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-13T14:28:03.736689+00:00",
+ "updated_at": "2026-11-13T14:36:49.680451+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -13580,8 +13580,8 @@
    "obs_conferencia": null,
    "contador": "{\"a\":{\"ini\":\"2026-11-05\",\"acc\":8,\"ret\":\"2026-11-05\",\"trav\":\"2026-11-13\"},\"r\":{\"ini\":\"2026-11-13\",\"ret\":\"2026-11-13\",\"acc\":0,\"trav\":null},\"em\":\"2026-11-13T13:04:55.199Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
-   "vist_completo": 0,
-   "vist_prestador": 0,
+   "vist_completo": 1,
+   "vist_prestador": 1,
    "apta_desde": "2026-11-05"
   },
   {
