@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-14T17:29:21.036985+00:00",
+ "updated_at": "2026-11-14T18:42:12.874297+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -12333,7 +12333,7 @@
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
-   "agendou_pre_vistoria": "NÃO",
+   "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
@@ -15370,6 +15370,7 @@
     "MANHÃ"
    ],
    "pv": {
+    "3": "",
     "2": "2026-10-28"
    }
   },
@@ -15681,6 +15682,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-14T18:42:12.874297+00:00",
+   "ref": "JB 4",
+   "endereco": "FERROVIARIOS QD 01 LT 15",
+   "setor": "JOÃO BRAZ",
+   "tipo": "pre_vistoria",
+   "casa": "3",
+   "data_pv": ""
+  },
   {
    "em": "2026-11-14T03:00:34.707096+00:00",
    "ref": "BR 10",
