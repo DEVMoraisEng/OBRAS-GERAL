@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-14T00:33:43.580290+00:00",
+ "updated_at": "2026-11-14T03:00:34.707096+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -15192,7 +15192,7 @@
   },
   "BR 10": {
    "status": "habite_concluido",
-   "prazo": null,
+   "prazo": "a",
    "endereco": "RPB 24 QD 26A LT 08",
    "setor": "PQ DOS BURITIS",
    "habite": [
@@ -15681,6 +15681,14 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-14T03:00:34.707096+00:00",
+   "ref": "BR 10",
+   "endereco": "RPB 24 QD 26A LT 08",
+   "setor": "PQ DOS BURITIS",
+   "tipo": "prazo",
+   "para": "a"
+  },
   {
    "em": "2026-11-13T17:17:07.349991+00:00",
    "ref": "TC 42",
