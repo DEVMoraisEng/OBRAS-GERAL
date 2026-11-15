@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-14T23:31:30.789495+00:00",
+ "updated_at": "2026-11-15T03:00:38.101854+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -14210,7 +14210,7 @@
   },
   "TC 66": {
    "status": "habite_concluido",
-   "prazo": null,
+   "prazo": "a",
    "endereco": "TB 19 QD 51 LT 15",
    "setor": "TERRABELA CERRADO",
    "habite": [
@@ -15682,6 +15682,14 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-15T03:00:38.101854+00:00",
+   "ref": "TC 66",
+   "endereco": "TB 19 QD 51 LT 15",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "prazo",
+   "para": "a"
+  },
   {
    "em": "2026-11-14T18:42:12.874297+00:00",
    "ref": "JB 4",
