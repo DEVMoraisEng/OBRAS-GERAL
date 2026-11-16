@@ -861,7 +861,7 @@ function pintarOcs(){
   const nEl=$("oc-n");
   if(!S||!S.token){ box.innerHTML=`<div class="vazio" style="border:0"><a href="${PORTAL}login.html">Entre no portal</a> para ver e conferir as compras.</div>`; if(nEl) nEl.textContent="0"; return; }
   if(!OCS){ box.innerHTML=`<div class="vazio" style="border:0"><span class="load"></span> Carregando as compras…</div>`; return; }
-  if(OCS.erro&&!(OCS.itens||[]).length){ box.innerHTML=`<div class="vazio" style="border:0">Não consegui carregar as compras (${esc(OCS.erro)}).</div>`; return; }
+  if(OCS.erro&&!(OCS.itens||[]).length){ box.innerHTML=`<div class="vazio" style="border:0">${/ACAO_DESCONHECIDA/.test(OCS.erro)?"A conferência de compras está sendo ligada no servidor — aparece aqui em breve.":"Não consegui carregar as compras ("+esc(OCS.erro)+")."}</div>`; return; }
   const todas=ocItens().map(it=>Object.assign(it,{eng:ocEng(it)}));
   const eng=OC_ENG&&engsDe(todas).some(x=>x.e===OC_ENG)?OC_ENG:"";
   const doEng=todas.filter(x=>bateEng(x,eng));
