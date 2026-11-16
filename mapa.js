@@ -870,23 +870,27 @@ function pintarOcs(){
   if(nEl){ const n=todas.filter(x=>bateEng(x,eng)&&ocEsperaEng(x)).length; nEl.textContent=n; nEl.classList.toggle("alerta",n>0); }
   const engs=engsDe(todas);
   const barra=`<div class="med-barra"><label class="en-sel">👷 Engenheiro <select onchange="MapaObras.ocEng(this.value)"><option value="">Todos (${todas.length})</option>${engs.map(x=>`<option value="${esc(x.e)}" ${x.e===eng?"selected":""}>${esc(x.e)} (${x.n})</option>`).join("")}</select></label>
-    <span class="quem">O pagamento só sai depois do <b>SIM</b>. Rocha Mármores / VIDRO ALVES: o SIM aprova a OC · Serralheria do Fabio: o SIM passa a 2ª parcela para o próximo dia útil.</span></div>`;
+    <span class="quem">Linha vermelha = <b>NF anexada</b> na OC. O pagamento só sai depois do <b>SIM</b>. Rocha Mármores / VIDRO ALVES: o SIM aprova a OC · Serralheria do Fabio: o SIM passa a 2ª parcela para o próximo dia útil.</span></div>`;
   const hoje=hojeISO();
-  const corpo=vis.slice().sort((a,b)=>(ocEsperaEng(b)-ocEsperaEng(a))||String(a.criada_em||"").localeCompare(String(b.criada_em||""))||(a.numero||0)-(b.numero||0)).map(it=>{
+  /* 16/11 (tarde): da OC mais antiga para a mais nova */
+  const corpo=vis.slice().sort((a,b)=>String(a.criada_em||"9999").localeCompare(String(b.criada_em||"9999"))||(a.numero||0)-(b.numero||0)).map(it=>{
     const d=ocDoc(it), ac=OC_ACAO[it.acao]||{l:it.acao,d:""}, dias=it.criada_em?difDias(it.criada_em,hoje):null;
     const ir=d&&d.ref?`onclick="MapaObras.irPara('${esc(d.setor||"")}','${esc(d.ref)}')"`:"";
     const atraso=ocEsperaEng(it)&&dias!=null&&dias>=7?` <span class="chip" style="background:#dc5b2f" title="OC criada há ${dias} dias e ainda sem a conferência do engenheiro">${dias} dias</span>`:(ocEsperaEng(it)&&dias!=null?` <span class="quem">${dias<=0?"hoje":"há "+dias+" dia"+(dias===1?"":"s")}</span>`:"");
-    return `<tr><td class="end" ${ir}>${esc(it.obra||"—")}</td>
+    /* 16/11 (tarde): arquivo na aba Arquivos da OC (o robô confere) = NF anexada → linha vermelha */
+    const nf=Number(it.anexos)>0;
+    return `<tr class="${nf?"oc-nf":""}"><td class="end" ${ir}>${esc(it.obra||"—")}${nf?`<div><span class="chip oc-nf-chip" title="${esc(it.anexos_nomes||"")}">📎 NF anexada${it.anexos>1?" ("+it.anexos+" arquivos)":""}</span></div>`:""}</td>
       <td>${esc(it.fornecedor||"")}<div class="quem" title="${esc(ac.d)}">${esc(ac.l)} · ${esc(ac.d)}</div></td>
       <td><a href="${MC_ERP}#/purchase-order/edit/${esc(it.oc_id)}" target="_blank" rel="noopener" title="Abrir a OC no Mais Controle">${esc(it.numero||"—")}</a></td>
       <td>${br(it.criada_em)}${atraso}</td><td>${esc(it.eng)}</td>
       <td>${botoesOc(it,OCS.pode)}</td><td>${chipOcRobo(it)}</td></tr>`;
   }).join("");
+  const nNf=abertas.filter(x=>Number(x.anexos)>0).length;
   const lnk=feitas.length?` · <a href="#" onclick="MapaObras.ocFeitas();return false" style="color:var(--text2);font-weight:600">${OC_VER_FEITAS?"ocultar as feitas":"mostrar as feitas (30 dias)"}</a>`:"";
   box.innerHTML=barra+(OCS.aviso?`<div class="vazio" style="border:0">${esc(OCS.aviso)}</div>`:"")+
     (vis.length?`<div class="oc-tab"><table><thead><tr><th>Obra</th><th>Fornecedor</th><th>Nº OC</th><th>Criação da OC</th><th>Engenheiro</th><th>Serviço finalizado?</th><th>Mais Controle</th></tr></thead><tbody>${corpo}</tbody></table></div>`
       :`<div class="vazio" style="border:0">✅ Nenhuma compra esperando conferência${eng?" para "+esc(eng):""}.</div>`)+
-    `<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${abertas.filter(ocEsperaEng).length} esperando o engenheiro · ${abertas.filter(x=>!ocEsperaEng(x)).length} com SIM esperando o robô · ${feitas.length} feita${feitas.length===1?"":"s"} no MC${lnk}${OCS.em?" · lista de "+new Date(OCS.em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`;
+    `<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${abertas.filter(ocEsperaEng).length} esperando o engenheiro${nNf?` · <b style="color:#c0392b">${nNf} com NF anexada</b>`:""} · ${abertas.filter(x=>!ocEsperaEng(x)).length} com SIM esperando o robô · ${feitas.length} feita${feitas.length===1?"":"s"} no MC${lnk}${OCS.em?" · lista de "+new Date(OCS.em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`;
 }
 async function responderOc(id,resp){
   const it=((OCS&&OCS.itens)||[]).find(x=>x.oc_id===id); if(!it) return;
