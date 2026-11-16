@@ -348,3 +348,16 @@ html[data-tema="escuro"] .mapa-vp{background:#1a2e3c}
 .obs-h-q{font-size:11px;font-weight:800;color:var(--text3);letter-spacing:.2px}
 .obs-h-t{font-size:13.5px;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:2px}
 .obs-h-vz{font-size:12.5px;color:var(--text3);padding:6px 0}
+
+/* 16/11/26: conferência de compras (OC) */
+.oc-tab{overflow-x:auto}
+.oc-bts{display:flex;gap:6px}
+.oc-bts .bt.off{opacity:.75}
+.oc-bts .bt.on{box-shadow:0 0 0 2px rgba(0,0,0,.12) inset}
+#oc-n.alerta{background:#dc5b2f;color:#fff}
+#oc td a{color:var(--azul);font-weight:700}
+html[data-tema="escuro"] #oc td a{color:#8FDCD2}
+#oc tr.oc-nf td{background:#fde3df}
+#oc tr.oc-nf td:first-child{box-shadow:inset 4px 0 0 #c0392b}
+html[data-tema="escuro"] #oc tr.oc-nf td{background:#4a2420}
+.oc-nf-chip{background:#c0392b;margin-top:4px}

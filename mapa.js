@@ -1,5 +1,5 @@
 /* =====================================================================
- * mapa.js · MAPA DE OBRAS · Morais Engenharia (28/09/26 · 16/10/26: vistorias de entrega, formulário de vistoria e mapa de casas)
+ * mapa.js · MAPA DE OBRAS · Morais Engenharia (28/09/26 · 16/10/26: vistorias de entrega, formulário de vistoria e mapa de casas · 16/11/26: conferência de compras (OC))
  * ---------------------------------------------------------------------
  * Um arquivo só para o índice e para as páginas de setor. A página de setor
  * define CONFIG = {nome, setor, filtro} antes de carregar este arquivo; o
@@ -804,6 +804,111 @@ function pintarMedFora(box,docs,idx){
 }
 
 /* =====================================================================
+ * CONFERÊNCIA DE COMPRAS (OC) — 16/11/26
+ * O pagamento das OCs destes fornecedores só sai depois que o ENGENHEIRO
+ * confirma aqui que a entrega / o serviço foi finalizado:
+ *   Rocha Mármores e Granitos, VIDRO ALVES → com o SIM o robô APROVA a OC no
+ *     Mais Controle (Aprovação = Aprovado, Status da Compra = Aguardando);
+ *   Serralheria do Fabio → com o SIM o robô passa a 2ª parcela do lançamento
+ *     da OC para o próximo dia útil.
+ * Quem traz as OCs novas é o robô "Conferência de compras (OC)" do servidor
+ * (PORTAL-MORAIS/robo_mc_ocs.py → tabela oc_conferencia do Supabase); aqui
+ * a lista e a resposta passam pelo Apps Script (ocLista / ocResponder).
+ * Engenheiro = ENG. EXECUÇÃO do DOCUMENTOS da obra da OC (como nas medições).
+ * Sem internet a resposta vai para a fila e sobe sozinha.
+ * ===================================================================== */
+const K_OCS="og_ocs_v1";
+let OCS=lsGet(K_OCS,null), OC_ENG=lsGet("og_oc_eng",""), OC_VER_FEITAS=false;
+const OC_ACAO={APROVAR:{l:"entrega do material",d:"SIM aprova a OC no Mais Controle"},
+               PARCELA:{l:"serviço",d:"SIM passa a 2ª parcela para o próximo dia útil"}};
+function ocDoc(it){ const k=endK(it.obra||""); return k?DOCS.find(d=>endK(d.endereco)===k)||null:null; }
+function ocEng(it){ const d=ocDoc(it); return (d&&d.eng)||"Sem engenheiro"; }
+const ocFeita=it=>it.robo_situacao==="FEITO";
+const ocEsperaEng=it=>!ocFeita(it)&&it.resposta!=="SIM";
+async function carregarOcs(){
+  if(OCS) pintarOcs();
+  if(!S||!S.token||!navigator.onLine){ pintarOcs(); return; }
+  let r=null; try{ r=await api({action:"ocLista"},30000); }catch(e){}
+  if(r&&r.ok){ OCS={itens:r.itens||[],pode:!!r.podeResponder,aviso:r.aviso||"",em:Date.now()}; lsSet(K_OCS,OCS); }
+  else if(!OCS) OCS={itens:[],pode:false,erro:(r&&r.erro)||"sem resposta"};
+  pintarOcs();
+}
+/* respostas que ainda estão na fila offline valem na tela */
+function ocItens(){
+  const l=((OCS&&OCS.itens)||[]).map(x=>Object.assign({},x)), por={}; l.forEach(x=>{ por[x.oc_id]=x; });
+  _filaLer().forEach(f=>{ const p=f.payload||{}; if(p.action==="ocResponder"&&por[p.oc_id]){ const x=por[p.oc_id];
+    x.resposta=p.resposta; x.respondido_por="(enviando)"; x.respondido_em=null; x.robo_situacao=null; x.robo_msg=null; } });
+  return l;
+}
+function chipOcRobo(it){
+  if(it.resposta!=="SIM") return it.robo_situacao==="FEITO"?`<span class="chip" style="background:#27a35e">✅ feito no MC</span>`:"";
+  const s=it.robo_situacao, m=esc(it.robo_msg||""), q=it.robo_em?" · "+new Date(it.robo_em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):"";
+  if(s==="FEITO") return `<span class="chip" style="background:#27a35e">✅ feito no Mais Controle</span><div class="quem">${m}${q}</div>`;
+  if(s==="ERRO") return `<span class="chip" style="background:#dc5b2f">⚠️ robô não conseguiu</span><div class="quem">${m}${q}${(it.robo_tentativas||0)>=3?" · <b>fazer à mão no MC</b>":" · tenta de novo na próxima rodada"}</div>`;
+  if(s==="SIMULADO") return `<span class="chip" style="background:#7c8ea0">🧪 robô em teste (não salva)</span><div class="quem">${m}${q}</div>`;
+  return `<span class="chip" style="background:#d9922b">⏳ aguardando o robô</span>`;
+}
+function botoesOc(it,pode){
+  const r=it.resposta, trava=ocFeita(it)||!pode;
+  if(trava) return r?tagResp(r)+(it.respondido_por?`<div class="quem">${esc(it.respondido_por)}${it.respondido_em?" · "+new Date(it.respondido_em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`:""):`<span class="quem">${pode?"":"só engenheiros (OBRAS / DOCUMENTOS)"}</span>`;
+  return `<div class="oc-bts"><button type="button" class="bt bt-mini ${r==="SIM"?"on":"off"}" style="background:${r==="SIM"?"#27a35e":"#9aaac5"}" onclick="MapaObras.ocResp('${esc(it.oc_id)}','SIM')">SIM</button>`+
+    `<button type="button" class="bt bt-mini ${r==="NAO"?"on":"off"}" style="background:${r==="NAO"?"#dc5b2f":"#9aaac5"}" onclick="MapaObras.ocResp('${esc(it.oc_id)}','NAO')">NÃO</button></div>`+
+    (it.respondido_por?`<div class="quem">${esc(it.respondido_por)}${it.respondido_em?" · "+new Date(it.respondido_em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`:"");
+}
+function tagResp(r){ return r==="SIM"?`<span class="chip" style="background:#27a35e">SIM</span>`:r==="NAO"?`<span class="chip" style="background:#dc5b2f">NÃO</span>`:"—"; }
+function pintarOcs(){
+  const box=$("oc"); if(!box) return;
+  const nEl=$("oc-n");
+  if(!S||!S.token){ box.innerHTML=`<div class="vazio" style="border:0"><a href="${PORTAL}login.html">Entre no portal</a> para ver e conferir as compras.</div>`; if(nEl) nEl.textContent="0"; return; }
+  if(!OCS){ box.innerHTML=`<div class="vazio" style="border:0"><span class="load"></span> Carregando as compras…</div>`; return; }
+  if(OCS.erro&&!(OCS.itens||[]).length){ box.innerHTML=`<div class="vazio" style="border:0">${/ACAO_DESCONHECIDA/.test(OCS.erro)?"A conferência de compras está sendo ligada no servidor — aparece aqui em breve.":"Não consegui carregar as compras ("+esc(OCS.erro)+")."}</div>`; return; }
+  const todas=ocItens().map(it=>Object.assign(it,{eng:ocEng(it)}));
+  const eng=OC_ENG&&engsDe(todas).some(x=>x.e===OC_ENG)?OC_ENG:"";
+  const doEng=todas.filter(x=>bateEng(x,eng));
+  const abertas=doEng.filter(x=>!ocFeita(x)), feitas=doEng.filter(ocFeita);
+  const vis=OC_VER_FEITAS?doEng:abertas;
+  if(nEl){ const n=todas.filter(x=>bateEng(x,eng)&&ocEsperaEng(x)).length; nEl.textContent=n; nEl.classList.toggle("alerta",n>0); }
+  const engs=engsDe(todas);
+  const barra=`<div class="med-barra"><label class="en-sel">👷 Engenheiro <select onchange="MapaObras.ocEng(this.value)"><option value="">Todos (${todas.length})</option>${engs.map(x=>`<option value="${esc(x.e)}" ${x.e===eng?"selected":""}>${esc(x.e)} (${x.n})</option>`).join("")}</select></label>
+    <span class="quem">Linha vermelha = <b>NF anexada</b> na OC. O pagamento só sai depois do <b>SIM</b>. Rocha Mármores / VIDRO ALVES: o SIM aprova a OC · Serralheria do Fabio: o SIM passa a 2ª parcela para o próximo dia útil.</span></div>`;
+  const hoje=hojeISO();
+  /* 16/11 (tarde): da OC mais antiga para a mais nova */
+  const corpo=vis.slice().sort((a,b)=>String(a.criada_em||"9999").localeCompare(String(b.criada_em||"9999"))||(a.numero||0)-(b.numero||0)).map(it=>{
+    const d=ocDoc(it), ac=OC_ACAO[it.acao]||{l:it.acao,d:""}, dias=it.criada_em?difDias(it.criada_em,hoje):null;
+    const ir=d&&d.ref?`onclick="MapaObras.irPara('${esc(d.setor||"")}','${esc(d.ref)}')"`:"";
+    const atraso=ocEsperaEng(it)&&dias!=null&&dias>=7?` <span class="chip" style="background:#dc5b2f" title="OC criada há ${dias} dias e ainda sem a conferência do engenheiro">${dias} dias</span>`:(ocEsperaEng(it)&&dias!=null?` <span class="quem">${dias<=0?"hoje":"há "+dias+" dia"+(dias===1?"":"s")}</span>`:"");
+    /* 16/11 (tarde): arquivo na aba Arquivos da OC (o robô confere) = NF anexada → linha vermelha */
+    const nf=Number(it.anexos)>0;
+    return `<tr class="${nf?"oc-nf":""}"><td class="end" ${ir}>${esc(it.obra||"—")}${nf?`<div><span class="chip oc-nf-chip" title="${esc(it.anexos_nomes||"")}">📎 NF anexada${it.anexos>1?" ("+it.anexos+" arquivos)":""}</span></div>`:""}</td>
+      <td>${esc(it.fornecedor||"")}<div class="quem" title="${esc(ac.d)}">${esc(ac.l)} · ${esc(ac.d)}</div></td>
+      <td><a href="${MC_ERP}#/purchase-order/edit/${esc(it.oc_id)}" target="_blank" rel="noopener" title="Abrir a OC no Mais Controle">${esc(it.numero||"—")}</a></td>
+      <td>${br(it.criada_em)}${atraso}</td><td>${esc(it.eng)}</td>
+      <td>${botoesOc(it,OCS.pode)}</td><td>${chipOcRobo(it)}</td></tr>`;
+  }).join("");
+  const nNf=abertas.filter(x=>Number(x.anexos)>0).length;
+  const lnk=feitas.length?` · <a href="#" onclick="MapaObras.ocFeitas();return false" style="color:var(--text2);font-weight:600">${OC_VER_FEITAS?"ocultar as feitas":"mostrar as feitas (30 dias)"}</a>`:"";
+  box.innerHTML=barra+(OCS.aviso?`<div class="vazio" style="border:0">${esc(OCS.aviso)}</div>`:"")+
+    (vis.length?`<div class="oc-tab"><table><thead><tr><th>Obra</th><th>Fornecedor</th><th>Nº OC</th><th>Criação da OC</th><th>Engenheiro</th><th>Serviço finalizado?</th><th>Mais Controle</th></tr></thead><tbody>${corpo}</tbody></table></div>`
+      :`<div class="vazio" style="border:0">✅ Nenhuma compra esperando conferência${eng?" para "+esc(eng):""}.</div>`)+
+    `<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${abertas.filter(ocEsperaEng).length} esperando o engenheiro${nNf?` · <b style="color:#c0392b">${nNf} com NF anexada</b>`:""} · ${abertas.filter(x=>!ocEsperaEng(x)).length} com SIM esperando o robô · ${feitas.length} feita${feitas.length===1?"":"s"} no MC${lnk}${OCS.em?" · lista de "+new Date(OCS.em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`;
+}
+async function responderOc(id,resp){
+  const it=((OCS&&OCS.itens)||[]).find(x=>x.oc_id===id); if(!it) return;
+  if(it.resposta===resp&&!(resp==="SIM"&&it.robo_situacao==="ERRO")) return;
+  const ac=OC_ACAO[it.acao]||{d:""};
+  if(resp==="SIM"&&!confirm(`Confirmar SIM na OC ${it.numero} (${it.fornecedor})?\n\n${it.obra||""}\n\nO serviço / a entrega foi finalizado. Com o SIM o robô ${it.acao==="PARCELA"?"passa a 2ª parcela do lançamento para o próximo dia útil":"aprova a OC no Mais Controle e o pagamento é liberado"}.`)) return;
+  const antes=Object.assign({},it);
+  Object.assign(it,{resposta:resp,respondido_por:(S.nome||S.login||"")+" (enviando)",respondido_em:new Date().toISOString(),robo_situacao:null,robo_msg:null});
+  pintarOcs();
+  const r=await gravar({action:"ocResponder",oc_id:id,resposta:resp},"Conferência da OC "+(it.numero||""));
+  if(!r.ok){ Object.assign(it,antes); pintarOcs(); toast("Não gravou: "+(r.erro==="JA_FEITO_NO_MAIS_CONTROLE"?"o robô já fez esta OC no Mais Controle":r.erro)); carregarOcs(); return; }
+  if(r.fila){ toast("Sem internet: a resposta fica guardada e sobe sozinha."); lsSet(K_OCS,OCS); return; }
+  if(r.r&&r.r.item) Object.assign(it,r.r.item);
+  lsSet(K_OCS,OCS); pintarOcs();
+  toast(resp==="SIM"?(r.r&&r.r.robo==="pedido"?"✅ SIM gravado — o robô já foi chamado para fazer no Mais Controle.":"✅ SIM gravado — o robô faz no Mais Controle na próxima rodada."):"Resposta NÃO gravada.");
+}
+
+/* =====================================================================
  * ENTREGAS — casas vendidas e ainda não entregues (BANCO DE DADOS VENDAS).
  * Os alertas seguem a fórmula "PRAZO ATÉ A ENTREGA" do Notion:
  *   agendou pré-vistoria = SIM e reparos = SIM → processo finalizado
@@ -1270,6 +1375,8 @@ window.MapaObras={
   medStob:v=>{ MED_STOB=v; repintarMed(); }, medForn:v=>{ MED_FORN=v; repintarMed(); }, medServ:v=>{ MED_SERV=v; repintarMed(); },
   medBusca:q=>{ MED_BUSCA=q; repintarMed(); const i=$("med-busca"); if(i){ i.focus(); const n=i.value.length; try{ i.setSelectionRange(n,n); }catch(e){} } },
   verFinIdx:()=>{ MED_IDX_VER_FIN=!MED_IDX_VER_FIN; pintarMedIndice(); },
+  /* 16/11: conferência de compras (OC) */
+  ocResp:responderOc, ocEng:e=>{ OC_ENG=e; lsSet("og_oc_eng",e); pintarOcs(); }, ocFeitas:()=>{ OC_VER_FEITAS=!OC_VER_FEITAS; pintarOcs(); },
   /* 16/10: observações, formulário de vistoria, documentos e mapa de casas */
   obs, salvarObs, fecharJanela, vistoria:abrirVistoria, reparos:abrirReparos, docs:docsCasa, modoMapa,
   entAba:k=>{ ENT_ABA=k; pintarEntregas(); },
@@ -1277,7 +1384,7 @@ window.MapaObras={
   /* a barra é redesenhada a cada letra: devolve o foco e o cursor ao campo */
   entBusca:q=>{ ENT_BUSCA=q; pintarEntregas(); const i=$("ent-busca"); if(i){ i.focus(); const n=i.value.length; try{ i.setSelectionRange(n,n); }catch(e){} } },
   fechar:()=>{ ATIVO=null; marcarAtivo(""); if(MODO==="casas") pintarCasas(); const pn=$("painel"); if(pn) pn.innerHTML=MODO==="casas"?`<div class="p-vazio"><b>🏠</b>Toque em um lote no mapa de casas para ver a situação de cada casa, as datas e os documentos da vistoria.</div>`:`<div class="p-vazio"><b>📍</b>Toque em um lote no mapa para ver e preencher o status da obra.</div>`; history.replaceState(null,"",location.pathname); },
-  toggle:id=>{ const e=$(id); if(!e) return; secAbrir(id, e.style.display==="none"); lsSet("og_sec_"+(INDICE&&id==="med"?"i2_":"")+id, e.style.display==="none"?"0":"1"); }
+  toggle:id=>{ const e=$(id); if(!e) return; secAbrir(id, e.style.display==="none"); lsSet("og_sec_"+(INDICE&&(id==="med"||id==="oc")?"i2_":"")+id, e.style.display==="none"?"0":"1"); }
 };
 /* 16/10: seções que abrem e fecham (Medições, Notificações). A seta ficou maior,
    com "abrir/fechar" escrito ao lado, e cada aparelho lembra a última escolha.
@@ -1285,7 +1392,7 @@ window.MapaObras={
 const SEC_PADRAO={ med:"0", notif:"1" };
 /* 23/10: no índice as medições vêm FECHADAS por padrão (chave nova "i2_" para
    valer também para quem já tinha aberto) */
-const SEC_PADRAO_IDX={ med:"0" };
+const SEC_PADRAO_IDX={ med:"0", oc:"1" };   /* 16/11: conferência de compras vem ABERTA (é alerta) */
 function secAbrir(id,ab){
   const e=$(id); if(!e) return; e.style.display=ab?"":"none";
   const s=$(id+"-seta"); if(s) s.textContent=ab?"▾":"▸";
@@ -1314,14 +1421,15 @@ document.addEventListener("DOMContentLoaded",()=>{
     const bi=$("busca"); if(bi) bi.addEventListener("input",()=>buscar(bi.value));
   }
   const c=lsGet(K_DADOS,null); if(c){ _ultimaPub=c.updated_at; prepararDados(c); pintarTudo(); }
-  carregarDados(false).then(()=>{ const h=decodeURIComponent(location.hash.slice(1));
+  carregarDados(false).then(()=>{ if($("oc")) pintarOcs(); const h=decodeURIComponent(location.hash.slice(1));
     /* 16/10: vindo da aba Atividades do portal — abre o formulário de vistoria da casa */
     if(h.indexOf("vist=")===0){ const id=h.slice(5).replace(/-/g,""); setTimeout(()=>{ if(vendaPorId(id)) abrirVistoria(id); else toast("Casa não encontrada no mapa (ainda não publicada)."); },300); return; }
     if(!INDICE&&h) setTimeout(()=>focar(h),200); });
   carregarBoot(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas();
+  if($("oc")) carregarOcs();
   carregarContratos();
   setInterval(()=>{ if(!document.hidden) carregarDados(true); },120000);          // quase ao vivo: relê o data.json a cada 2 min
-  document.addEventListener("visibilitychange",()=>{ if(!document.hidden){ sincronizar(); carregarDados(true); carregarContratos(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas(); } });
+  document.addEventListener("visibilitychange",()=>{ if(!document.hidden){ sincronizar(); carregarDados(true); carregarContratos(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas(); if($("oc")) carregarOcs(); } });
   /* 04/11/26 — VOLTOU A INTERNET: primeiro sobe a fila do que foi feito offline
      (status, medições, entregas, observações), DEPOIS relê tudo — dados do mapa,
      contratos/medições do MC, situação das casas e permissões — para a tela
@@ -1331,6 +1439,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     try{ await sincronizar(); }catch(e){}
     carregarDados(true); carregarContratos();
     if(!INDICE){ carregarMedicoes(); carregarMV(); } else if($("med")) carregarMedTodas();
+    if($("oc")) carregarOcs();
     if(BOOT&&BOOT.erro) BOOT=null;
     const cb=lsGet(K_BOOT,null); if(cb&&cb.t&&Date.now()-cb.t>=30*60*1000||!BOOT) carregarBoot();
   });
