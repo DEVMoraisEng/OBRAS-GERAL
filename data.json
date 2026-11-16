@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-16T19:12:00.828051+00:00",
+ "updated_at": "2026-11-16T19:47:41.079728+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -3098,10 +3098,10 @@
    "obra_finalizada": "NÃO",
    "data_inicio_obra": "2026-08-06",
    "data_termino_obra": null,
-   "agendou_habite_se": "NÃO",
+   "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": null,
-   "turno_habite_se": null,
+   "data_habite_se": "2026-11-27",
+   "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
    "registro_pago": "SIM",
@@ -9154,7 +9154,7 @@
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": null,
+   "data_pre_vistoria": "2026-11-13",
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": "▸ 04/11/2026 15:30 · Caio Araujo\nSolicitado atualização.",
@@ -14294,11 +14294,14 @@
    "pv": {}
   },
   "TC 58": {
-   "status": "em_andamento",
+   "status": "habite_agendado",
    "prazo": null,
    "endereco": "TB 14 QD 42 LT 19",
    "setor": "TERRABELA CERRADO",
-   "habite": null,
+   "habite": [
+    "2026-11-27",
+    "MANHÃ"
+   ],
    "pv": {}
   },
   "TC 57": {
@@ -14579,7 +14582,7 @@
     "MANHÃ"
    ],
    "pv": {
-    "2": "",
+    "2": "2026-11-13",
     "1": "2026-11-13"
    }
   },
@@ -15682,6 +15685,24 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-16T19:47:41.079728+00:00",
+   "ref": "TC 58",
+   "endereco": "TB 14 QD 42 LT 19",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "em_andamento",
+   "para": "habite_agendado"
+  },
+  {
+   "em": "2026-11-16T19:47:41.079728+00:00",
+   "ref": "TC 58",
+   "endereco": "TB 14 QD 42 LT 19",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "habite",
+   "data": "2026-11-27",
+   "turno": "MANHÃ"
+  },
   {
    "em": "2026-11-16T13:26:55.467032+00:00",
    "ref": "TC 77",
