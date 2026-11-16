@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-16T15:11:54.263314+00:00",
+ "updated_at": "2026-11-16T15:27:28.420998+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -2838,8 +2838,8 @@
    "taxas_habite_se": "SIM",
    "issqn": "SIM",
    "cno_cnd": "SIM",
-   "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO",
+   "armazenou_habite": "SIM",
+   "certidoes_matricula": "SIM",
    "modelo3d": null
   },
   {
