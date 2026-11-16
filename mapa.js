@@ -840,8 +840,14 @@ function ocItens(){
     x.resposta=p.resposta; x.respondido_por="(enviando)"; x.respondido_em=null; x.robo_situacao=null; x.robo_msg=null; } });
   return l;
 }
+/* 16/11 (tarde): como a OC está no MC. Aprovada sem lançamento: o robô volta para "Aguardando aprovação" e só aprova com o SIM */
+const OC_APROV={APPROVED:["Aprovado no MC","#7c8ea0"],AWAITING_APPROVAL:["Aguardando aprovação","#d9922b"],OPENED:["Em aberto","#d9922b"],
+  NEGOTIATING:["Negociando","#d9922b"],DENIED:["Negado","#dc5b2f"]};
+function chipAprovMc(it){ const a=OC_APROV[String(it.aprovacao_mc||"").toUpperCase()]; if(!a) return "";
+  const dica=it.aprovacao_mc==="APPROVED"&&it.acao==="APROVAR"?' title="Sem lançamento: o robô volta para Aguardando aprovação até o SIM"':"";
+  return `<span class="chip" style="background:${a[1]}"${dica}>${a[0]}</span>`+(it.aprovacao_mc==="APPROVED"&&it.acao==="APROVAR"?`<div class="quem">o robô volta para “Aguardando aprovação”</div>`:""); }
 function chipOcRobo(it){
-  if(it.resposta!=="SIM") return it.robo_situacao==="FEITO"?`<span class="chip" style="background:#27a35e">✅ feito no MC</span>`:"";
+  if(it.resposta!=="SIM") return it.robo_situacao==="FEITO"?`<span class="chip" style="background:#27a35e">✅ feito no MC</span>`:chipAprovMc(it);
   const s=it.robo_situacao, m=esc(it.robo_msg||""), q=it.robo_em?" · "+new Date(it.robo_em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):"";
   if(s==="FEITO") return `<span class="chip" style="background:#27a35e">✅ feito no Mais Controle</span><div class="quem">${m}${q}</div>`;
   if(s==="ERRO") return `<span class="chip" style="background:#dc5b2f">⚠️ robô não conseguiu</span><div class="quem">${m}${q}${(it.robo_tentativas||0)>=3?" · <b>fazer à mão no MC</b>":" · tenta de novo na próxima rodada"}</div>`;
