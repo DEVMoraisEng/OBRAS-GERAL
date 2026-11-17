@@ -387,5 +387,6 @@ html[data-tema="escuro"] .abas-topo button{color:var(--teal)}
 body:not(.modo-lista) .abas-topo{margin-bottom:16px}
 body:not(.modo-lista) .abas-topo button{opacity:1;border-radius:10px;border-bottom:1px solid var(--border2)}
 body:not(.modo-lista) .abas-topo button:hover{border-color:var(--verde);box-shadow:inset 0 3px 0 var(--verde)}
-body:not(.modo-lista) .abas-topo .ab-t::after{content:" ↗";font-size:13px;opacity:.6}
 body.modo-lista #resumo,body.modo-lista #conteudo,body.modo-lista .sec,body.modo-lista #cal{display:none!important}
+.so-lista{display:none}
+body.modo-lista .so-lista{display:inline-flex;margin-left:8px}

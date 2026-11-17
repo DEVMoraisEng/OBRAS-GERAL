@@ -1407,9 +1407,9 @@ function aplicarEngLogin(){
   const e=engDoLogin(); ENG_LOGIN=e; if(!e||manual) return;
   MED_ENG=OC_ENG=ENT_ENG=NOTIF_ENG=e;
 }
-/* 17/11: abas do topo do índice. 17/11 (tarde, dono): cada aba ABRE EM OUTRA JANELA (index.html?aba=oc …). Na página
+/* 17/11: abas do topo do índice. 17/11 (tarde, dono): cada aba abre a LISTA SOZINHA na mesma janela (index.html?aba=oc …). Na página
    principal ficam só as abas com o número de pendências; a janela da lista mostra só a lista (e as abas para trocar
-   de lista ali mesmo). Cada lista tem a sua janela: clicar de novo traz a mesma janela, não abre outra. */
+   de lista ali mesmo). */
 const ABAS=["med","oc","ent","notif"];
 const ABA_TIT={med:"Medições da semana",oc:"Conferência de compras",ent:"Casas não entregues",notif:"Notificações de status"};
 const MODO_LISTA=(()=>{ try{ const a=new URLSearchParams(location.search).get("aba"); return INDICE&&ABAS.indexOf(a)>=0?a:""; }catch(e){ return ""; } })();
@@ -1417,7 +1417,7 @@ let ABA_ATUAL="";
 function abaAbrir(id,peloClique){
   if(!$("abas")||ABAS.indexOf(id)<0) return;
   if(!MODO_LISTA){
-    if(peloClique){ const w=window.open("index.html?aba="+id,"mapa_obras_"+id); if(w) try{ w.focus(); }catch(e){} else location.href="index.html?aba="+id; }
+    if(peloClique) location.href="index.html?aba="+id;    /* 17/11 (dono): abre na MESMA janela (o Voltar do navegador volta ao mapa) */
     return;
   }
   ABA_ATUAL=id;
