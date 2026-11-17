@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-17T18:19:30.430356+00:00",
+ "updated_at": "2026-11-17T18:23:45.142446+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -10395,10 +10395,10 @@
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
    "data_pre_vistoria": "2026-11-10",
-   "reparos_pre_vistoria": "EXECUTANDO REPAROS",
+   "reparos_pre_vistoria": "SIM",
    "conferencia": null,
    "obs_conferencia": "▸ 06/11/2026 10:18 · Caio Araujo\nCasa ainda precisa de alguns reparos e ajustes, sendo: \n* reparo no grafiato que esta com um buraco;\n* limpeza dos ralos que estao com entulhos\n* portas asperas, aparentando nao terem sido lixadas e envernizadas\n* vazamento sifao suite\n* pintura do piso danificada\n* Retirar entulhos\n* melhorar limpeza.\n\n▸ 04/11/2026 15:30 · Caio Araujo\nFarei a verificação do pós obra amanha, quinta 05/11\n\n▸ registro anterior (sem data)\nteste",
-   "contador": "{\"a\":{\"ini\":\"2026-10-28\",\"acc\":11,\"ret\":\"2026-11-06\",\"trav\":\"2026-11-10\"},\"r\":{\"ini\":\"2026-11-10\",\"ret\":\"2026-11-10\",\"acc\":0,\"trav\":null},\"em\":\"2026-11-10T14:21:01.794Z\",\"por\":\"Guilherme Gouveia\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-28\",\"acc\":11,\"ret\":\"2026-11-06\",\"trav\":\"2026-11-10\"},\"r\":{\"ini\":\"2026-11-10\",\"ret\":\"2026-11-10\",\"acc\":7,\"trav\":\"2026-11-17\"},\"em\":\"2026-11-17T18:19:28.389Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 1,
    "vist_prestador": 1,
@@ -12334,11 +12334,11 @@
    "processo_conforme": "SIM",
    "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "SIM",
-   "data_pre_vistoria": null,
+   "data_pre_vistoria": "2026-11-16",
    "reparos_pre_vistoria": "EXECUTANDO REPAROS",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-11-09\",\"acc\":4,\"ret\":\"2026-11-09\",\"trav\":\"2026-11-13\"},\"r\":{\"ini\":\"2026-10-28\",\"ret\":\"2026-11-16\",\"acc\":19,\"trav\":null},\"em\":\"2026-11-16T18:51:36.119Z\",\"por\":\"Guilherme Gouveia\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-11-09\",\"acc\":4,\"ret\":\"2026-11-09\",\"trav\":\"2026-11-13\"},\"r\":{\"ini\":\"2026-10-28\",\"ret\":\"2026-11-16\",\"acc\":19,\"trav\":null},\"em\":\"2026-11-17T18:20:12.069Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 1,
    "vist_prestador": 1,
@@ -12358,7 +12358,7 @@
    "reparos_pre_vistoria": "SIM",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-10-02\",\"acc\":18,\"ret\":\"2026-10-02\",\"trav\":\"2026-10-20\"},\"r\":{\"ini\":\"2026-10-28\",\"ret\":\"2026-10-28\",\"acc\":19,\"trav\":\"2026-11-16\"},\"em\":\"2026-11-16T18:51:14.227Z\",\"por\":\"Guilherme Gouveia\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-10-02\",\"acc\":18,\"ret\":\"2026-10-02\",\"trav\":\"2026-10-20\"},\"r\":{\"ini\":\"2026-10-28\",\"ret\":\"2026-10-28\",\"acc\":19,\"trav\":\"2026-11-16\"},\"em\":\"2026-11-17T18:23:17.004Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 1,
    "vist_prestador": 1,
@@ -15376,7 +15376,7 @@
     "MANHÃ"
    ],
    "pv": {
-    "3": "",
+    "3": "2026-11-16",
     "2": "2026-10-28"
    }
   },
