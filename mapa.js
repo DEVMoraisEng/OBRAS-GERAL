@@ -854,9 +854,12 @@ function ocItens(){
   return l;
 }
 /* 16/11 (tarde): como a OC está no MC. Aprovada sem lançamento: o robô volta para "Aguardando aprovação" e só aprova com o SIM */
-const OC_APROV={APPROVED:["Aprovado no MC","#7c8ea0"],AWAITING_APPROVAL:["Aguardando aprovação","#d9922b"],OPENED:["Em aberto","#d9922b"],
+const OC_APROV={APPROVED:["Aprovado no MC","#7c8ea0"],AWAITING_APPROVAL:["Aguardando aprovação no MC","#d9922b"],OPENED:["Em aberto no MC","#d9922b"],
   NEGOTIATING:["Negociando","#d9922b"],DENIED:["Negado","#dc5b2f"]};
-function chipAprovMc(it){ const a=OC_APROV[String(it.aprovacao_mc||"").toUpperCase()]; if(!a) return "";
+function chipAprovMc(it){
+  /* 17/11 (dono): a Rocha / VIDRO ALVES aprovada e sem lançamento ainda não voltou — mostra para onde ela vai */
+  if(it.aprovacao_mc==="APPROVED"&&it.acao==="APROVAR") return `<span class="chip" style="background:#d9922b">⏳ vai para Aguardando aprovação</span><div class="quem">hoje está Aprovado no MC — o robô ajusta na próxima rodada</div>`;
+  const a=OC_APROV[String(it.aprovacao_mc||"").toUpperCase()]; if(!a) return "";
   const dica=it.aprovacao_mc==="APPROVED"&&it.acao==="APROVAR"?' title="Sem lançamento: o robô volta para Aguardando aprovação até o SIM"':"";
   return `<span class="chip" style="background:${a[1]}"${dica}>${a[0]}</span>`+(it.aprovacao_mc==="APPROVED"&&it.acao==="APROVAR"?`<div class="quem">o robô volta para “Aguardando aprovação”</div>`:""); }
 function chipOcRobo(it){
@@ -1404,26 +1407,34 @@ function aplicarEngLogin(){
   const e=engDoLogin(); ENG_LOGIN=e; if(!e||manual) return;
   MED_ENG=OC_ENG=ENT_ENG=NOTIF_ENG=e;
 }
-/* 17/11: abas do topo do índice. A 1ª vez na sessão abre a 1ª aba com pendência; depois, a última escolhida. */
+/* 17/11: abas do topo do índice. 17/11 (tarde, dono): cada aba ABRE EM OUTRA JANELA (index.html?aba=oc …). Na página
+   principal ficam só as abas com o número de pendências; a janela da lista mostra só a lista (e as abas para trocar
+   de lista ali mesmo). Cada lista tem a sua janela: clicar de novo traz a mesma janela, não abre outra. */
 const ABAS=["med","oc","ent","notif"];
-let ABA_ATUAL="", ABA_ESCOLHIDA=false;
+const ABA_TIT={med:"Medições da semana",oc:"Conferência de compras",ent:"Casas não entregues",notif:"Notificações de status"};
+const MODO_LISTA=(()=>{ try{ const a=new URLSearchParams(location.search).get("aba"); return INDICE&&ABAS.indexOf(a)>=0?a:""; }catch(e){ return ""; } })();
+let ABA_ATUAL="";
 function abaAbrir(id,peloClique){
   if(!$("abas")||ABAS.indexOf(id)<0) return;
+  if(!MODO_LISTA){
+    if(peloClique){ const w=window.open("index.html?aba="+id,"mapa_obras_"+id); if(w) try{ w.focus(); }catch(e){} else location.href="index.html?aba="+id; }
+    return;
+  }
   ABA_ATUAL=id;
   document.querySelectorAll("#abas [data-aba]").forEach(b=>{ const on=b.dataset.aba===id; b.classList.toggle("on",on); b.setAttribute("aria-selected",on?"true":"false"); });
   document.querySelectorAll(".aba-pn").forEach(p=>{ p.style.display=p.dataset.pn===id?"":"none"; });
-  if(peloClique){ ABA_ESCOLHIDA=true; try{ sessionStorage.setItem("og_aba",id); }catch(e){} }
+  document.title=ABA_TIT[id]+" · Mapa de Obras · Morais";
+  try{ history.replaceState(null,"","index.html?aba="+id+location.hash); }catch(e){}
 }
 function nAba(id){ const e=$(id+"-n"); return e?parseInt(e.textContent,10)||0:0; }
 function pintarAbas(){
   if(!$("abas")) return;
   ABAS.forEach(id=>{ const e=$(id+"-n"); if(e) e.classList.toggle("zero",!nAba(id)); });
-  if(!ABA_ESCOLHIDA){ const p=ABAS.find(id=>nAba(id)>0); abaAbrir(p||ABA_ATUAL||"med"); }
 }
 function montarAbas(){
   if(!$("abas")) return;
-  let s=null; try{ s=sessionStorage.getItem("og_aba"); }catch(e){}
-  if(s&&ABAS.indexOf(s)>=0){ ABA_ESCOLHIDA=true; abaAbrir(s); } else abaAbrir("med");
+  if(MODO_LISTA){ document.body.classList.add("modo-lista"); abaAbrir(MODO_LISTA); }
+  else document.querySelectorAll(".aba-pn").forEach(p=>{ p.style.display="none"; });
   /* os contadores mudam quando cada lista chega (OC, medições, casas, notificações) */
   const ob=new MutationObserver(()=>pintarAbas());
   ABAS.forEach(id=>{ const e=$(id+"-n"); if(e) ob.observe(e,{childList:true,characterData:true,subtree:true}); });
