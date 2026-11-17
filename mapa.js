@@ -213,10 +213,13 @@ function pintarAtualizado(){ const u=$("upd"); if(!u||!DADOS) return;
 /* =====================================================================
  * NOTIFICAÇÕES — eventos que o fetch_notion.py registra a cada execução
  * ===================================================================== */
-let NOTIF_PER="semana";
+let NOTIF_PER="semana", NOTIF_ENG="";
+/* 17/11: no índice a notificação também é do engenheiro (ENG. EXECUÇÃO da obra no DOCUMENTOS) */
+function notifEng(e){ const k=endK(e.endereco||""), d=k?DOCS.find(x=>endK(x.endereco)===k):null; return (d&&d.eng)||"Sem engenheiro"; }
 function eventos(){
   let l=(DADOS&&DADOS.eventos)||[];
   if(!INDICE) l=l.filter(e=>CFG.filtro({setor:e.setor,endereco:e.endereco}));
+  else if(NOTIF_ENG) l=l.filter(e=>bateEng({eng:notifEng(e)},NOTIF_ENG));
   const t0=tercaDe(), tAnt=maisDias(t0,-7), d30=maisDias(hojeISO(),-30);
   const de=e=>String(e.em||"").slice(0,10);
   if(NOTIF_PER==="semana") l=l.filter(e=>de(e)>=t0);
@@ -225,13 +228,20 @@ function eventos(){
   return l.slice().sort((a,b)=>String(b.em).localeCompare(String(a.em)));
 }
 function chip(st){ const s=ST[st]||{l:st,c:"#666"}; return `<span class="chip" style="background:${s.c}">${esc(s.l)}</span>`; }
+function barraNotifEng(){
+  const todos=(DADOS&&DADOS.eventos)||[], m={};
+  todos.forEach(e=>String(notifEng(e)).split(/\s*,\s*/).forEach(x=>{ m[x]=1; }));
+  const engs=Object.keys(m).sort((a,b)=>(a==="Sem engenheiro")-(b==="Sem engenheiro")||a.localeCompare(b,"pt-BR"));
+  if(NOTIF_ENG&&engs.indexOf(NOTIF_ENG)<0) engs.unshift(NOTIF_ENG);
+  return ` <label class="en-sel" style="margin-left:auto">👷 Engenheiro <select onchange="MapaObras.notifEng(this.value)"><option value="">Todos</option>${engs.map(e=>`<option value="${esc(e)}" ${e===NOTIF_ENG?"selected":""}>${esc(e)}</option>`).join("")}</select></label>`;
+}
 function pintarNotif(){
   const box=$("notif"); if(!box) return;
   const semana=(()=>{ const s=NOTIF_PER; NOTIF_PER="semana"; const n=eventos().length; NOTIF_PER=s; return n; })();
   const b=$("notif-n"); if(b){ b.textContent=semana; b.classList.toggle("zero",!semana); }
   const l=eventos();
   const PER=[["semana","Esta semana (desde terça)"],["passada","Semana passada"],["30","Últimos 30 dias"]];
-  box.innerHTML=`<div class="notif-exp">Aqui aparece o que <b>mudou</b> nas obras desde a última atualização do mapa: status (ex.: não iniciado → em andamento → finalizado), chegada aos 150/180 dias, habite-se marcado, pré-vistoria agendada e obra nova. Toque numa linha para ir ao lote.</div><div class="flt">${PER.map(([k,t])=>`<button class="pill ${NOTIF_PER===k?"on":""}" onclick="MapaObras.notifPer('${k}')">${t}</button>`).join("")}</div>`+
+  box.innerHTML=`<div class="notif-exp">Aqui aparece o que <b>mudou</b> nas obras desde a última atualização do mapa: status (ex.: não iniciado → em andamento → finalizado), chegada aos 150/180 dias, habite-se marcado, pré-vistoria agendada e obra nova. Toque numa linha para ir ao lote.</div><div class="flt">${PER.map(([k,t])=>`<button class="pill ${NOTIF_PER===k?"on":""}" onclick="MapaObras.notifPer('${k}')">${t}</button>`).join("")}${INDICE?barraNotifEng():""}</div>`+
     (l.length?l.map(e=>{
       let mud="";
       if(e.tipo==="status") mud=chip(e.de)+" → "+chip(e.para);
@@ -595,7 +605,9 @@ function engsDe(lista){ const m={}; lista.forEach(x=>{ String(x.eng).split(/\s*,
   return Object.keys(m).sort((a,b)=>(a==="Sem engenheiro")-(b==="Sem engenheiro")||a.localeCompare(b,"pt-BR")).map(e=>({e,n:m[e]})); }
 const bateEng=(x,e)=>!e||String(x.eng).split(/\s*,\s*/).indexOf(e)>=0;
 /* engenheiro escolhido que não tem nada nesta lista (veio de outra tela): mostra todos */
-const engValido=lista=>MED_ENG&&engsDe(lista).some(x=>x.e===MED_ENG)?MED_ENG:"";
+const engValido=lista=>MED_ENG&&(MED_ENG===ENG_LOGIN||engsDe(lista).some(x=>x.e===MED_ENG))?MED_ENG:"";
+/* 17/11: o engenheiro do login aparece na lista mesmo sem nada nela (aí a aba mostra 0) */
+const comEng=(engs,e)=>e&&!engs.some(x=>x.e===e)?engs.concat([{e,n:0}]):engs;
 /* entra nas medições: todo contrato com STATUS DO CONTRATO em aberto (qualquer
    que seja o status da obra) e a obra iniciada e não finalizada sem contrato.
    fora=true: só os contratos paralisados / finalizados / 100% medidos. */
@@ -658,7 +670,7 @@ function seletorMed(l,setor,st){
 function chipMed(st){ const o=MED.find(x=>x.v===st)||MED[0]; return `<span class="chip" style="background:${o.c}">${o.l}</span>`; }
 function quemMed(m){ return m&&m.por?`<div class="quem">${esc(m.por)}${m.em?" · "+new Date(m.em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`:""; }
 function barraEng(lista,idSel,fn){
-  const engs=engsDe(lista);
+  const engs=comEng(engsDe(lista),engValido(lista));
   return `<label class="en-sel">👷 Engenheiro <select id="${idSel}" onchange="MapaObras.${fn}(this.value)"><option value="">Todos (${lista.length})</option>${engs.map(x=>`<option value="${esc(x.e)}" ${x.e===engValido(lista)?"selected":""}>${esc(x.e)} (${x.n})</option>`).join("")}</select></label>`;
 }
 async function carregarMedicoes(){
@@ -819,7 +831,8 @@ function pintarMedFora(box,docs,idx){
  * ===================================================================== */
 const K_OCS="og_ocs_v1";
 let OCS=lsGet(K_OCS,null), OC_ENG=lsGet("og_oc_eng",""), OC_VER_FEITAS=false;
-const OC_ACAO={APROVAR:{l:"entrega do material",d:"SIM aprova a OC no Mais Controle"},
+/* 17/11: na Rocha / VIDRO ALVES o que o engenheiro confere é a INSTALAÇÃO (não a entrega) */
+const OC_ACAO={APROVAR:{l:"instalação",d:"SIM aprova a OC no Mais Controle"},
                PARCELA:{l:"serviço",d:"SIM passa a 2ª parcela para o próximo dia útil"}};
 function ocDoc(it){ const k=endK(it.obra||""); return k?DOCS.find(d=>endK(d.endereco)===k)||null:null; }
 function ocEng(it){ const d=ocDoc(it); return (d&&d.eng)||"Sem engenheiro"; }
@@ -854,14 +867,18 @@ function chipOcRobo(it){
   if(s==="SIMULADO") return `<span class="chip" style="background:#7c8ea0">🧪 robô em teste (não salva)</span><div class="quem">${m}${q}</div>`;
   return `<span class="chip" style="background:#d9922b">⏳ aguardando o robô</span>`;
 }
+/* 17/11 (dono): só SIM — o engenheiro só confirma quando a instalação / o serviço terminou; enquanto não termina,
+   a OC fica esperando. SIM por engano: "desfazer" (até o robô fazer no MC) manda NAO, que volta a esperar. */
 function botoesOc(it,pode){
-  const r=it.resposta, trava=ocFeita(it)||!pode;
+  const r=it.resposta==="SIM"?"SIM":"", trava=ocFeita(it)||!pode;
   if(trava) return r?tagResp(r)+(it.respondido_por?`<div class="quem">${esc(it.respondido_por)}${it.respondido_em?" · "+new Date(it.respondido_em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`:""):`<span class="quem">${pode?"":"só engenheiros (OBRAS / DOCUMENTOS)"}</span>`;
-  return `<div class="oc-bts"><button type="button" class="bt bt-mini ${r==="SIM"?"on":"off"}" style="background:${r==="SIM"?"#27a35e":"#9aaac5"}" onclick="MapaObras.ocResp('${esc(it.oc_id)}','SIM')">SIM</button>`+
-    `<button type="button" class="bt bt-mini ${r==="NAO"?"on":"off"}" style="background:${r==="NAO"?"#dc5b2f":"#9aaac5"}" onclick="MapaObras.ocResp('${esc(it.oc_id)}','NAO')">NÃO</button></div>`+
+  if(r==="SIM") return `<div class="oc-bts"><span class="chip" style="background:#27a35e">✓ SIM</span>`+
+    `<a href="#" class="oc-desf" onclick="MapaObras.ocResp('${esc(it.oc_id)}','NAO');return false" title="Marquei SIM por engano">desfazer</a></div>`+
     (it.respondido_por?`<div class="quem">${esc(it.respondido_por)}${it.respondido_em?" · "+new Date(it.respondido_em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`:"");
+  return `<div class="oc-bts"><button type="button" class="bt bt-mini oc-sim" onclick="MapaObras.ocResp('${esc(it.oc_id)}','SIM')" title="${it.acao==="PARCELA"?"O serviço foi finalizado":"A instalação foi concluída"}">SIM</button></div>`+
+    (it.respondido_por&&it.resposta!=="NAO"?`<div class="quem">${esc(it.respondido_por)}${it.respondido_em?" · "+new Date(it.respondido_em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`:"");
 }
-function tagResp(r){ return r==="SIM"?`<span class="chip" style="background:#27a35e">SIM</span>`:r==="NAO"?`<span class="chip" style="background:#dc5b2f">NÃO</span>`:"—"; }
+function tagResp(r){ return r==="SIM"?`<span class="chip" style="background:#27a35e">SIM</span>`:"—"; }
 function pintarOcs(){
   const box=$("oc"); if(!box) return;
   const nEl=$("oc-n");
@@ -869,14 +886,14 @@ function pintarOcs(){
   if(!OCS){ box.innerHTML=`<div class="vazio" style="border:0"><span class="load"></span> Carregando as compras…</div>`; return; }
   if(OCS.erro&&!(OCS.itens||[]).length){ box.innerHTML=`<div class="vazio" style="border:0">${/ACAO_DESCONHECIDA/.test(OCS.erro)?"A conferência de compras está sendo ligada no servidor — aparece aqui em breve.":"Não consegui carregar as compras ("+esc(OCS.erro)+")."}</div>`; return; }
   const todas=ocItens().map(it=>Object.assign(it,{eng:ocEng(it)}));
-  const eng=OC_ENG&&engsDe(todas).some(x=>x.e===OC_ENG)?OC_ENG:"";
+  const eng=OC_ENG&&(OC_ENG===ENG_LOGIN||engsDe(todas).some(x=>x.e===OC_ENG))?OC_ENG:"";
   const doEng=todas.filter(x=>bateEng(x,eng));
   const abertas=doEng.filter(x=>!ocFeita(x)), feitas=doEng.filter(ocFeita);
   const vis=OC_VER_FEITAS?doEng:abertas;
   if(nEl){ const n=todas.filter(x=>bateEng(x,eng)&&ocEsperaEng(x)).length; nEl.textContent=n; nEl.classList.toggle("alerta",n>0); }
-  const engs=engsDe(todas);
+  const engs=comEng(engsDe(todas),eng);
   const barra=`<div class="med-barra"><label class="en-sel">👷 Engenheiro <select onchange="MapaObras.ocEng(this.value)"><option value="">Todos (${todas.length})</option>${engs.map(x=>`<option value="${esc(x.e)}" ${x.e===eng?"selected":""}>${esc(x.e)} (${x.n})</option>`).join("")}</select></label>
-    <span class="quem">Linha vermelha = <b>NF anexada</b> na OC. O pagamento só sai depois do <b>SIM</b>. Rocha Mármores / VIDRO ALVES: o SIM aprova a OC · Serralheria do Fabio: o SIM passa a 2ª parcela para o próximo dia útil.</span></div>`;
+    <span class="quem">Linha vermelha = <b>NF anexada</b> na OC. O pagamento só sai depois do <b>SIM</b>. Marque <b>SIM</b> quando terminar. Rocha Mármores / VIDRO ALVES: instalação concluída → o SIM aprova a OC · Serralheria do Fabio: serviço finalizado → o SIM passa a 2ª parcela para o próximo dia útil.</span></div>`;
   const hoje=hojeISO();
   /* 16/11 (tarde): da OC mais antiga para a mais nova */
   const corpo=vis.slice().sort((a,b)=>String(a.criada_em||"9999").localeCompare(String(b.criada_em||"9999"))||(a.numero||0)-(b.numero||0)).map(it=>{
@@ -894,15 +911,17 @@ function pintarOcs(){
   const nNf=abertas.filter(x=>Number(x.anexos)>0).length;
   const lnk=feitas.length?` · <a href="#" onclick="MapaObras.ocFeitas();return false" style="color:var(--text2);font-weight:600">${OC_VER_FEITAS?"ocultar as feitas":"mostrar as feitas (30 dias)"}</a>`:"";
   box.innerHTML=barra+(OCS.aviso?`<div class="vazio" style="border:0">${esc(OCS.aviso)}</div>`:"")+
-    (vis.length?`<div class="oc-tab"><table><thead><tr><th>Obra</th><th>Fornecedor</th><th>Nº OC</th><th>Criação da OC</th><th>Engenheiro</th><th>Serviço finalizado?</th><th>Mais Controle</th></tr></thead><tbody>${corpo}</tbody></table></div>`
+    (vis.length?`<div class="oc-tab"><table><thead><tr><th>Obra</th><th>Fornecedor</th><th>Nº OC</th><th>Criação da OC</th><th>Engenheiro</th><th>Instalado / finalizado?</th><th>Mais Controle</th></tr></thead><tbody>${corpo}</tbody></table></div>`
       :`<div class="vazio" style="border:0">✅ Nenhuma compra esperando conferência${eng?" para "+esc(eng):""}.</div>`)+
     `<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${abertas.filter(ocEsperaEng).length} esperando o engenheiro${nNf?` · <b style="color:#c0392b">${nNf} com NF anexada</b>`:""} · ${abertas.filter(x=>!ocEsperaEng(x)).length} com SIM esperando o robô · ${feitas.length} feita${feitas.length===1?"":"s"} no MC${lnk}${OCS.em?" · lista de "+new Date(OCS.em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`;
 }
 async function responderOc(id,resp){
   const it=((OCS&&OCS.itens)||[]).find(x=>x.oc_id===id); if(!it) return;
   if(it.resposta===resp&&!(resp==="SIM"&&it.robo_situacao==="ERRO")) return;
+  if(resp==="NAO"&&it.resposta!=="SIM") return;
+  if(resp==="NAO"&&!confirm(`Desfazer o SIM da OC ${it.numero}?\n\nEla volta a esperar a conferência.`)) return;
   const ac=OC_ACAO[it.acao]||{d:""};
-  if(resp==="SIM"&&!confirm(`Confirmar SIM na OC ${it.numero} (${it.fornecedor})?\n\n${it.obra||""}\n\nO serviço / a entrega foi finalizado. Com o SIM o robô ${it.acao==="PARCELA"?"passa a 2ª parcela do lançamento para o próximo dia útil":"aprova a OC no Mais Controle e o pagamento é liberado"}.`)) return;
+  if(resp==="SIM"&&!confirm(`Confirmar SIM na OC ${it.numero} (${it.fornecedor})?\n\n${it.obra||""}\n\n${it.acao==="PARCELA"?"O serviço foi finalizado":"A instalação foi concluída"}. Com o SIM o robô ${it.acao==="PARCELA"?"passa a 2ª parcela do lançamento para o próximo dia útil":"aprova a OC no Mais Controle e o pagamento é liberado"}.`)) return;
   const antes=Object.assign({},it);
   Object.assign(it,{resposta:resp,respondido_por:(S.nome||S.login||"")+" (enviando)",respondido_em:new Date().toISOString(),robo_situacao:null,robo_msg:null});
   pintarOcs();
@@ -911,7 +930,7 @@ async function responderOc(id,resp){
   if(r.fila){ toast("Sem internet: a resposta fica guardada e sobe sozinha."); lsSet(K_OCS,OCS); return; }
   if(r.r&&r.r.item) Object.assign(it,r.r.item);
   lsSet(K_OCS,OCS); pintarOcs();
-  toast(resp==="SIM"?(r.r&&r.r.robo==="pedido"?"✅ SIM gravado — o robô já foi chamado para fazer no Mais Controle.":"✅ SIM gravado — o robô faz no Mais Controle na próxima rodada."):"Resposta NÃO gravada.");
+  toast(resp==="SIM"?(r.r&&r.r.robo==="pedido"?"✅ SIM gravado — o robô já foi chamado para fazer no Mais Controle.":"✅ SIM gravado — o robô faz no Mais Controle na próxima rodada."):"SIM desfeito — a OC volta a esperar a conferência.");
 }
 
 /* =====================================================================
@@ -1139,13 +1158,14 @@ function pintarEntregas(){
   const todas=entregasPendentes(), porAba={todas, apta:todas.filter(precisaApta), reparos:todas.filter(precisaReparos)};
   const aba=ENT_ABAS.find(a=>a.k===ENT_ABA)||ENT_ABAS[0];
   const engs=[...new Set(porAba[aba.k].map(v=>v.eng||"Sem engenheiro"))].sort((a,b)=>(a==="Sem engenheiro")-(b==="Sem engenheiro")||a.localeCompare(b,"pt-BR"));
-  if(ENT_ENG&&engs.indexOf(ENT_ENG)<0&&porAba[aba.k].length) ENT_ENG="";
+  if(ENT_ENG&&engs.indexOf(ENT_ENG)<0&&porAba[aba.k].length&&ENT_ENG!==ENG_LOGIN) ENT_ENG="";
+  if(ENT_ENG&&engs.indexOf(ENT_ENG)<0) engs.push(ENT_ENG);
   const ord=v=>aba.k==="apta"?prazoApta(v).o:aba.k==="reparos"?((prazoEntrega(v)||{}).o||7):ordemEntrega(v);
   const l=porAba[aba.k].filter(v=>(!ENT_ENG||(v.eng||"Sem engenheiro")===ENT_ENG)&&entBate(v,ENT_BUSCA))
     .sort((a,b)=>ord(a)-ord(b)||String(a.endereco).localeCompare(String(b.endereco))||(a.casa||0)-(b.casa||0));
   const nr=porAba.reparos.filter(v=>{ const p=prazoEntrega(v); return p&&(p.n==="r"||p.n==="h"); }).length;
   const na=porAba.apta.filter(v=>{ const p=prazoApta(v); return p.n==="r"||p.n==="h"; }).length;
-  const n=$("ent-n"); if(n) n.textContent=todas.length;
+  const n=$("ent-n"); if(n) n.textContent=ENT_ENG?todas.filter(v=>(v.eng||"Sem engenheiro")===ENT_ENG).length:todas.length;
   const ch=$("ent-chips"); if(ch) ch.innerHTML=(nr?`<span class="chip en-r">${nr} reparo(s) com prazo estourado/hoje</span>`:"")+(na?`<span class="chip en-r">${na} casa(s) apta(s) atrasada(s)</span>`:"")+(porAba.apta.length?`<span class="chip en-w">${porAba.apta.length} casa apta p/ vistoria</span>`:"");
   const aviso=!S||!S.token?`<div class="en-info"><a href="${PORTAL}login.html">Entre no portal</a> para preencher.</div>`:(BOOT&&!BOOT.podeVendas&&!BOOT.erro?(podeConferir()||podeObs()?`<div class="en-info">Você preenche ${podeConferir()?"a <b>Conferência Caio</b> e ":""}as <b>Observações</b>. As outras colunas precisam de acesso a VENDAS ou OBRAS.</div>`:`<div class="en-info">Só leitura: preencher precisa de acesso a VENDAS ou OBRAS.</div>`):"");
   const ajuda=aba.k==="apta"?`<div class="en-info"><b>Prazos:</b> deixar a casa apta em <b>${PRAZO_APTA} dias corridos</b> (contados da criação da atividade) · conferência do Caio em <b>${PRAZO_CAIO} dias corridos</b> (contados do dia em que marcaram SIM). Marcar <b>SIM</b> trava o contador da casa e começa o do Caio: <b>Conferido OK</b> conclui; <b>Necessita de intervenções</b> volta para executando reparos e o contador da casa continua.</div>`
@@ -1361,8 +1381,55 @@ async function docsCasa(id){
 }
 
 /* ---------------- montagem ---------------- */
+/* 17/11 (dono): quem entra com login de engenheiro já vê as listas DELE. O nome do login (LOGINS) é comparado com o
+   ENG. EXECUÇÃO do DOCUMENTOS: mesmo nome, ou mesmo primeiro nome + um sobrenome em comum. Se ele trocar o
+   engenheiro numa lista, vale a escolha dele até fechar o navegador (sessionStorage). */
+let ENG_LOGIN_FEITO=false, ENG_LOGIN="";
+function engDoLogin(){
+  if(!S||!S.token) return "";
+  const nome=N(S.nome||""), b=nome.split(/\s+/).filter(Boolean); if(!b.length) return "";
+  const engs={}; DOCS.forEach(d=>String(d.eng||"").split(/\s*,\s*/).forEach(e=>{ if(e) engs[e]=1; }));
+  let melhor="", pts=0, mesmoPrim=[];
+  Object.keys(engs).forEach(e=>{ const a=N(e).split(/\s+/);
+    if(N(e)===nome){ melhor=e; pts=99; return; }
+    if(a[0]!==b[0]) return; mesmoPrim.push(e);
+    const c=b.slice(1).filter(t=>t.length>2&&a.indexOf(t)>=0).length; if(c>pts){ pts=c; melhor=e; } });
+  if(pts>0) return melhor;
+  return b.length===1&&mesmoPrim.length===1?mesmoPrim[0]:"";
+}
+function engManual(){ try{ sessionStorage.setItem("og_eng_manual","1"); }catch(e){} }
+function aplicarEngLogin(){
+  if(!INDICE||ENG_LOGIN_FEITO||!DOCS.length) return; ENG_LOGIN_FEITO=true;
+  let manual=null; try{ manual=sessionStorage.getItem("og_eng_manual"); }catch(e){}
+  const e=engDoLogin(); ENG_LOGIN=e; if(!e||manual) return;
+  MED_ENG=OC_ENG=ENT_ENG=NOTIF_ENG=e;
+}
+/* 17/11: abas do topo do índice. A 1ª vez na sessão abre a 1ª aba com pendência; depois, a última escolhida. */
+const ABAS=["med","oc","ent","notif"];
+let ABA_ATUAL="", ABA_ESCOLHIDA=false;
+function abaAbrir(id,peloClique){
+  if(!$("abas")||ABAS.indexOf(id)<0) return;
+  ABA_ATUAL=id;
+  document.querySelectorAll("#abas [data-aba]").forEach(b=>{ const on=b.dataset.aba===id; b.classList.toggle("on",on); b.setAttribute("aria-selected",on?"true":"false"); });
+  document.querySelectorAll(".aba-pn").forEach(p=>{ p.style.display=p.dataset.pn===id?"":"none"; });
+  if(peloClique){ ABA_ESCOLHIDA=true; try{ sessionStorage.setItem("og_aba",id); }catch(e){} }
+}
+function nAba(id){ const e=$(id+"-n"); return e?parseInt(e.textContent,10)||0:0; }
+function pintarAbas(){
+  if(!$("abas")) return;
+  ABAS.forEach(id=>{ const e=$(id+"-n"); if(e) e.classList.toggle("zero",!nAba(id)); });
+  if(!ABA_ESCOLHIDA){ const p=ABAS.find(id=>nAba(id)>0); abaAbrir(p||ABA_ATUAL||"med"); }
+}
+function montarAbas(){
+  if(!$("abas")) return;
+  let s=null; try{ s=sessionStorage.getItem("og_aba"); }catch(e){}
+  if(s&&ABAS.indexOf(s)>=0){ ABA_ESCOLHIDA=true; abaAbrir(s); } else abaAbrir("med");
+  /* os contadores mudam quando cada lista chega (OC, medições, casas, notificações) */
+  const ob=new MutationObserver(()=>pintarAbas());
+  ABAS.forEach(id=>{ const e=$(id+"-n"); if(e) ob.observe(e,{childList:true,characterData:true,subtree:true}); });
+}
 function pintarTudo(){
-  pintarAtualizado();
+  pintarAtualizado(); aplicarEngLogin();
   if(INDICE){ pintarIndice(); pintarNotif(); pintarEntregas(); pintarMedIndice(); pintarCal(); return; }
   pintarMapa(); pintarResumo(); pintarNotif(); pintarEntregas(); pintarMedicoes(); pintarCal();
   if(ATIVO) abrir(ATIVO,true);
@@ -1376,17 +1443,19 @@ window.MapaObras={
   verFin:()=>{ VER_FIN=!VER_FIN; pintarIndice(); },
   irPara, focar, medir, verFinalizadas, salvarCampo, salvarVenda,
   /* 23/10: medições por contrato (Mais Controle) e filtro por engenheiro */
-  medEng:e=>{ MED_ENG=e; lsSet("og_med_eng",e); repintarMed(); },
+  medEng:e=>{ MED_ENG=e; lsSet("og_med_eng",e); engManual(); repintarMed(); },
   medFora:v=>{ MED_VER_FORA=!!v; repintarMed(); },
   medStob:v=>{ MED_STOB=v; repintarMed(); }, medForn:v=>{ MED_FORN=v; repintarMed(); }, medServ:v=>{ MED_SERV=v; repintarMed(); },
   medBusca:q=>{ MED_BUSCA=q; repintarMed(); const i=$("med-busca"); if(i){ i.focus(); const n=i.value.length; try{ i.setSelectionRange(n,n); }catch(e){} } },
   verFinIdx:()=>{ MED_IDX_VER_FIN=!MED_IDX_VER_FIN; pintarMedIndice(); },
   /* 16/11: conferência de compras (OC) */
-  ocResp:responderOc, ocEng:e=>{ OC_ENG=e; lsSet("og_oc_eng",e); pintarOcs(); }, ocFeitas:()=>{ OC_VER_FEITAS=!OC_VER_FEITAS; pintarOcs(); },
+  ocResp:responderOc, ocEng:e=>{ OC_ENG=e; lsSet("og_oc_eng",e); engManual(); pintarOcs(); }, ocFeitas:()=>{ OC_VER_FEITAS=!OC_VER_FEITAS; pintarOcs(); },
   /* 16/10: observações, formulário de vistoria, documentos e mapa de casas */
   obs, salvarObs, fecharJanela, vistoria:abrirVistoria, reparos:abrirReparos, docs:docsCasa, modoMapa,
   entAba:k=>{ ENT_ABA=k; pintarEntregas(); },
-  entEng:e=>{ ENT_ENG=e; lsSet("og_ent_eng",e); pintarEntregas(); },
+  entEng:e=>{ ENT_ENG=e; lsSet("og_ent_eng",e); engManual(); pintarEntregas(); },
+  notifEng:e=>{ NOTIF_ENG=e; engManual(); pintarNotif(); },
+  aba:id=>{ abaAbrir(id,true); },
   /* a barra é redesenhada a cada letra: devolve o foco e o cursor ao campo */
   entBusca:q=>{ ENT_BUSCA=q; pintarEntregas(); const i=$("ent-busca"); if(i){ i.focus(); const n=i.value.length; try{ i.setSelectionRange(n,n); }catch(e){} } },
   fechar:()=>{ ATIVO=null; marcarAtivo(""); if(MODO==="casas") pintarCasas(); const pn=$("painel"); if(pn) pn.innerHTML=MODO==="casas"?`<div class="p-vazio"><b>🏠</b>Toque em um lote no mapa de casas para ver a situação de cada casa, as datas e os documentos da vistoria.</div>`:`<div class="p-vazio"><b>📍</b>Toque em um lote no mapa para ver e preencher o status da obra.</div>`; history.replaceState(null,"",location.pathname); },
@@ -1419,7 +1488,7 @@ function montarSecoes(){
 try{ const g=document.createElement("script"); g.src="../PORTAL-MORAIS/tema-escuro.js?v=1"; g.async=true; document.head.appendChild(g); }catch(e){}
 document.addEventListener("DOMContentLoaded",()=>{
   pintarUsuario(); pintarFila();
-  if(INDICE&&$("med")) montarSecoes();
+  if(INDICE&&$("abas")) montarAbas(); else if(INDICE&&$("med")) montarSecoes();
   if(!INDICE){
     document.title=CFG.nome+" · Mapa de Obras · Morais";
     const hn=$("h-emp"); if(hn) hn.textContent=CFG.nome;
