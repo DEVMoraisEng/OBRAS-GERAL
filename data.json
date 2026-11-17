@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-17T17:13:57.990465+00:00",
+ "updated_at": "2026-11-17T17:56:53.786998+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -240,7 +240,7 @@
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
-   "modelo3d": "2026-11-17T14:08:00.000-03:00"
+   "modelo3d": "2026-11-17T14:36:00.000-03:00"
   },
   {
    "id": "3d8c5ab532d380f3958ad1c0d9e074a1",
@@ -280,7 +280,7 @@
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
-   "modelo3d": "2026-11-17T14:08:00.000-03:00"
+   "modelo3d": "2026-11-17T14:36:00.000-03:00"
   },
   {
    "id": "3cfc5ab532d380bdac38d1c3eddd1d47",
@@ -290,7 +290,7 @@
    "cidade": "SENADOR CANEDO",
    "obra_id": "3cfc5ab532d38079af89ed5b518a04e8",
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
-   "mestre": null,
+   "mestre": "IRINEU",
    "eng": "Isaac Natan",
    "despachante": null,
    "previsao_inicio_obra": "2026-10-30",
@@ -309,8 +309,8 @@
    "art_feita_paga": "SIM",
    "escritura_registrada": "NÃO",
    "certidao_lote": "INEXISTE",
-   "contrato_mestre": "NÃO",
-   "contrato_investidor": "NÃO",
+   "contrato_mestre": "SIM",
+   "contrato_investidor": "INEXISTE",
    "taxas_alvara_pagas": "NÃO",
    "projeto_aprovado": "NÃO",
    "incorporacao_finalizada": "NÃO",
@@ -330,7 +330,7 @@
    "cidade": "SENADOR CANEDO",
    "obra_id": "3cfc5ab532d3805c8b1ddcebbb6a2433",
    "proprietario": "MORAIS FLORENÇA SPE LTDA",
-   "mestre": null,
+   "mestre": "IRINEU",
    "eng": "Isaac Natan",
    "despachante": null,
    "previsao_inicio_obra": "2026-10-30",
@@ -349,8 +349,8 @@
    "art_feita_paga": "SIM",
    "escritura_registrada": "NÃO",
    "certidao_lote": "INEXISTE",
-   "contrato_mestre": "NÃO",
-   "contrato_investidor": "NÃO",
+   "contrato_mestre": "SIM",
+   "contrato_investidor": "INEXISTE",
    "taxas_alvara_pagas": "NÃO",
    "projeto_aprovado": "NÃO",
    "incorporacao_finalizada": "NÃO",
@@ -3439,7 +3439,7 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO",
+   "certidoes_matricula": "SIM",
    "modelo3d": null
   },
   {
