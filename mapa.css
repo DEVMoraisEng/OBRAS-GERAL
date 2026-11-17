@@ -361,3 +361,25 @@ html[data-tema="escuro"] #oc td a{color:#8FDCD2}
 #oc tr.oc-nf td:first-child{box-shadow:inset 4px 0 0 #c0392b}
 html[data-tema="escuro"] #oc tr.oc-nf td{background:#4a2420}
 .oc-nf-chip{background:#c0392b;margin-top:4px}
+
+/* 17/11/26: as 4 listas do índice viraram abas no topo (cada uma com o que está em aberto do engenheiro) */
+.abas-topo{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:14px 0 0}
+.abas-topo button{display:flex;align-items:center;gap:8px;min-width:0;cursor:pointer;text-align:left;
+  background:var(--bg3);color:var(--azul-esc);border:1px solid var(--border2);border-bottom:0;border-radius:10px 10px 0 0;
+  padding:11px 14px;font-family:'Barlow Condensed',Inter,sans-serif;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;opacity:.72}
+.abas-topo button:hover{opacity:1}
+.abas-topo button.on{opacity:1;background:var(--sup);border-color:var(--border);box-shadow:inset 0 3px 0 var(--verde)}
+.abas-topo .ab-t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.abas-topo .ab-ic{font-size:17px}
+.abas-topo .ab-n{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;border-radius:24px;padding:0 7px;
+  background:#dc5b2f;color:#fff;font:800 12px Inter,sans-serif;letter-spacing:0}
+.abas-topo .ab-n.zero{background:var(--border2);color:var(--text3)}
+html[data-tema="escuro"] .abas-topo button{color:var(--teal)}
+.aba-pn{background:var(--sup);border:1px solid var(--border);border-radius:0 0 10px 10px;padding:4px 0 2px;margin-bottom:18px}
+.aba-pn>.med,.aba-pn>.notif,.aba-pn>#ent{border:0;margin:0}
+.aba-sub{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 14px 2px;font-size:12.5px;color:var(--text3)}
+.aba-sub .dir{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.oc-sim{background:#27a35e!important;color:#fff;min-width:64px}
+.oc-desf{font-size:11.5px;color:var(--text3);align-self:center;text-decoration:underline}
+@media(max-width:900px){ .abas-topo{grid-template-columns:repeat(2,minmax(0,1fr))} .abas-topo button{border-radius:10px;border-bottom:1px solid var(--border2)} .abas-topo button.on{border-color:var(--verde)} .aba-pn{border-radius:10px;margin-top:8px} }
+@media(max-width:640px){ .abas-topo button{font-size:15px;padding:9px 10px} }
