@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-17T19:00:44.086912+00:00",
+ "updated_at": "2026-11-17T19:11:27.332685+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -6117,7 +6117,7 @@
    "ret_armazenado": "NÃO",
    "taxas_habite_se": "SIM",
    "issqn": "SIM",
-   "cno_cnd": "NÃO",
+   "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
    "modelo3d": null
@@ -9180,7 +9180,7 @@
    "obs_conferencia": "▸ 04/11/2026 15:29 · Caio Araujo\nSolicitado atualização.",
    "contador": "{\"a\":{\"ini\":\"2026-10-22\",\"acc\":14,\"ret\":\"2026-10-22\",\"trav\":\"2026-11-05\"},\"r\":{},\"em\":\"2026-11-05T20:50:52.211Z\",\"por\":\"João Vítor Cabral\"}",
    "data_entrega": null,
-   "vist_completo": 0,
+   "vist_completo": 1,
    "vist_prestador": 0,
    "apta_desde": "2026-10-22"
   },
