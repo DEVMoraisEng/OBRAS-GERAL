@@ -10,7 +10,7 @@
 <title>Empreendimentos · Mapa de Obras · Morais</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="mapa.css?v=7">
+<link rel="stylesheet" href="mapa.css?v=8">
 </head>
 <body>
 <header><div class="wrap hbar">
@@ -30,7 +30,7 @@
        escolhido; quem entra com o login de engenheiro já cai nas DELE, na 1ª aba com pendência. -->
   <nav class="abas-topo" id="abas" role="tablist">
     <button type="button" role="tab" data-aba="med" onclick="MapaObras.aba('med')"><span class="ab-ic">📏</span><span class="ab-t">Medições da semana</span><span class="ab-n zero" id="med-n">0</span></button>
-    <button type="button" role="tab" data-aba="oc" onclick="MapaObras.aba('oc')"><span class="ab-ic">🧾</span><span class="ab-t">Conferência de compras</span><span class="ab-n zero" id="oc-n">0</span></button>
+    <button type="button" role="tab" data-aba="oc" onclick="MapaObras.aba('oc')"><span class="ab-ic">🧾</span><span class="ab-t" title="Conferência de compras (OC)">Conferência de OC</span><span class="ab-n zero" id="oc-n">0</span></button>
     <button type="button" role="tab" data-aba="ent" onclick="MapaObras.aba('ent')"><span class="ab-ic">🏠</span><span class="ab-t" title="Casas vendidas e não entregues">Casas não entregues</span><span class="ab-n zero" id="ent-n">0</span></button>
     <button type="button" role="tab" data-aba="notif" onclick="MapaObras.aba('notif')"><span class="ab-ic">🔔</span><span class="ab-t">Notificações de status</span><span class="ab-n zero" id="notif-n">0</span></button>
   </nav>
@@ -76,6 +76,6 @@ window.SETORES = [
   { arq: "terrabela.html", setor: "TERRABELA DO CERRADO",  nome: "Terrabela",        sub: "Terrabela do Cerrado II",  cidade: "Senador Canedo", chaves: ["TERRABELA"] }
 ];
 </script>
-<script src="mapa.js?v=9"></script>
+<script src="mapa.js?v=10"></script>
 </body>
 </html>
