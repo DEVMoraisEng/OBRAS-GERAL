@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-17T13:26:51.641096+00:00",
+ "updated_at": "2026-11-17T13:42:49.754421+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -2138,10 +2138,10 @@
    "obra_finalizada": "NÃO",
    "data_inicio_obra": "2026-08-06",
    "data_termino_obra": null,
-   "agendou_habite_se": "NÃO",
+   "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": null,
-   "turno_habite_se": null,
+   "data_habite_se": "2026-11-25",
+   "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
    "registro_pago": "SIM",
@@ -14046,11 +14046,14 @@
    "pv": {}
   },
   "TC 83": {
-   "status": "em_andamento",
+   "status": "habite_agendado",
    "prazo": null,
    "endereco": "TB 21 QD 51 LT 38",
    "setor": "TERRABELA CERRADO",
-   "habite": null,
+   "habite": [
+    "2026-11-25",
+    "MANHÃ"
+   ],
    "pv": {}
   },
   "TC 73": {
@@ -15665,6 +15668,24 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-17T13:42:49.754421+00:00",
+   "ref": "TC 83",
+   "endereco": "TB 21 QD 51 LT 38",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "em_andamento",
+   "para": "habite_agendado"
+  },
+  {
+   "em": "2026-11-17T13:42:49.754421+00:00",
+   "ref": "TC 83",
+   "endereco": "TB 21 QD 51 LT 38",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "habite",
+   "data": "2026-11-25",
+   "turno": "MANHÃ"
+  },
   {
    "em": "2026-11-16T19:47:41.079728+00:00",
    "ref": "TC 58",
