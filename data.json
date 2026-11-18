@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-18T12:42:39.130261+00:00",
+ "updated_at": "2026-11-18T12:57:23.126586+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -2999,7 +2999,7 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO",
+   "certidoes_matricula": "SIM",
    "modelo3d": null
   },
   {
@@ -3236,7 +3236,7 @@
    "incorporacao_finalizada": "SIM",
    "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
-   "issqn": "NÃO",
+   "issqn": "SIM",
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
@@ -3439,7 +3439,7 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "SIM",
+   "certidoes_matricula": "NÃO",
    "modelo3d": null
   },
   {
