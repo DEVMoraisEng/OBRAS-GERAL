@@ -86,42 +86,85 @@ const TRANSIT=["BACKEND_OCUPADO","BACKEND_SEM_CONFIG"];
    a tela ou trocar de app nesse meio tempo jogava a gravação fora, e a edição
    local (K_EDITS) continuava mostrando o valor novo só naquele aparelho.
    Agora, se a página morrer no meio, a próxima abertura reenvia sozinha. */
-const _emVoo=new Set();
+/* 18/11/26 — OFFLINE COMPLETO. O que foi preenchido sem internet NUNCA é jogado
+   fora antes de o servidor responder de verdade:
+   - LOGIN VENCIDO (NAO_AUTORIZADO): antes a gravação saía da fila com um aviso
+     e se perdia. Agora fica guardada e sobe assim que a pessoa entra de novo
+     no portal neste aparelho;
+   - cada gravação leva o login de quem fez: outro login no mesmo aparelho não
+     envia (nem assina) o que é de outra pessoa;
+   - memória do aparelho cheia: a fila tem prioridade — libera as cópias de
+     leitura (que o site baixa de novo) e, se nem assim couber, AVISA;
+   - a pílula "⏳ N gravações" abre a lista do que está guardado. */
+const _emVoo=new Set(), SEM_SESSAO=["NAO_AUTORIZADO"];
+let LOGIN_VENCIDO=false, _aposSinc=null, _semApos=false;
+const euFila=()=>(S&&(S.login||S.nome))||"";
 function _idFila(){ return Date.now()+"_"+Math.random().toString(36).slice(2,7); }
 function _filaLer(){ return lsGet(K_FILA,[]).map(it=>{ if(it&&!it.id) it.id=_idFila(); return it; }).filter(Boolean); }
-function _filaTirar(id){ lsSet(K_FILA,_filaLer().filter(x=>x.id!==id)); pintarFila(); }
+function _filaGravar(f){
+  const tx=JSON.stringify(f);
+  try{ localStorage.setItem(K_FILA,tx); return true; }catch(e){}
+  try{ ["og_mv_v1","og_contratos_v1","og_dados_v1"].forEach(k=>localStorage.removeItem(k));
+    Object.keys(localStorage).filter(k=>/^og_med_/.test(k)&&k.indexOf(tercaDe())<0).forEach(k=>localStorage.removeItem(k));
+    localStorage.setItem(K_FILA,tx); return true; }catch(e){}
+  return false;
+}
+function _filaTirar(id){ _filaGravar(_filaLer().filter(x=>x.id!==id)); pintarFila(); }
+function loginVencido(){ if(LOGIN_VENCIDO) return; LOGIN_VENCIDO=true; pintarFila();
+  setTimeout(()=>toast("Login vencido: ficou guardado neste aparelho. Entre no portal de novo para enviar."),60); }
 async function gravar(payload,rotulo){
-  const id=_idFila(), f=_filaLer(); f.push({id,payload,rotulo,t:Date.now()}); lsSet(K_FILA,f); _emVoo.add(id); pintarFila();
+  const id=_idFila(), f=_filaLer(); f.push({id,payload,rotulo,t:Date.now(),u:euFila()});
+  const guardou=_filaGravar(f); _emVoo.add(id); pintarFila();
   try{
     if(navigator.onLine){
       try{
         const r=await api(payload);
         if(r&&r.ok){ _filaTirar(id); return {ok:true,r}; }
+        if(r&&SEM_SESSAO.indexOf(r.erro)>=0&&guardou){ loginVencido(); return {ok:true,fila:true,login:true}; }
         if(r&&r.erro&&TRANSIT.indexOf(r.erro)<0){ _filaTirar(id); return {ok:false,erro:r.erro}; }
       }catch(e){}
     }
+    if(!guardou) return {ok:false,erro:"memória do aparelho cheia — não deu para guardar sem internet. Tente de novo com conexão"};
     return {ok:true,fila:true};            // sem resposta: fica guardado e sobe sozinho
   } finally { _emVoo.delete(id); }
 }
 let _sinc=false;
 async function sincronizar(){
   if(_sinc||!navigator.onLine) return;
-  const f=_filaLer().filter(it=>!_emVoo.has(it.id)); if(!f.length) return;
+  const eu=euFila(), f=_filaLer().filter(it=>!_emVoo.has(it.id)&&(!it.u||!eu||it.u===eu)); if(!f.length) return;
   _sinc=true; let saiu=0, ficou=0;
   try{
     for(const it of f){
       _emVoo.add(it.id);
       let r=null; try{ r=await api(it.payload,30000); }catch(e){}
       _emVoo.delete(it.id);
-      if(r&&r.ok){ _filaTirar(it.id); saiu++; continue; }
+      if(r&&r.ok){ _filaTirar(it.id); saiu++; LOGIN_VENCIDO=false; continue; }
+      if(r&&SEM_SESSAO.indexOf(r.erro)>=0){ loginVencido(); ficou+=f.length-saiu; break; }      // fica guardado até entrar de novo
       if(r&&r.erro&&TRANSIT.indexOf(r.erro)<0&&r.erro!=="SEM_LOGIN"){ _filaTirar(it.id); saiu++; toast("Não gravou ("+(it.rotulo||"")+"): "+r.erro); continue; }
       ficou++;
     }
   } finally { _sinc=false; pintarFila(); }
   if(saiu&&!ficou&&!_filaLer().length) toast("Gravações pendentes enviadas ✓");
+  /* o que subiu agora sai do "(enviando)" nas listas */
+  if(saiu&&_aposSinc&&!_semApos){ try{ _aposSinc(); }catch(e){} }
 }
-function pintarFila(){ const e=$("fila"); if(!e) return; const n=lsGet(K_FILA,[]).length;
-  e.style.display=n?"":"none"; e.textContent="⏳ "+n+" gravação"+(n>1?"ões":"")+" aguardando internet"; }
+function pintarFila(){ const e=$("fila"); if(!e) return; const f=lsGet(K_FILA,[]), n=f.length, eu=euFila();
+  const deOutro=f.filter(it=>it&&it.u&&eu&&it.u!==eu).length;
+  e.style.display=n?"":"none"; e.classList.toggle("alerta",LOGIN_VENCIDO); e.title="Toque para ver o que está guardado neste aparelho";
+  if(!e._ligado){ e._ligado=true; e.setAttribute("role","button"); e.tabIndex=0; e.addEventListener("click",verFila); }
+  e.textContent="⏳ "+n+(n>1?" gravações":" gravação")+(LOGIN_VENCIDO?" guardada"+(n>1?"s":"")+" — entre no portal de novo para enviar"
+    :!S||!S.token?" guardada"+(n>1?"s":"")+" — entre no portal para enviar"
+    :navigator.onLine?" para enviar"+(deOutro===n?" (de outro login)":""):" aguardando internet"); }
+function verFila(){
+  const f=_filaLer(), eu=euFila();
+  const hora=t=>t?new Date(t).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):"";
+  const o=it=>{ const p=it.payload||{}; return p.endereco||(p.action==="ocResponder"?"resposta "+(p.resposta==="NAO"?"desfeita":p.resposta):"")||(p.campo?String(p.campo).replace(/_/g," "):""); };
+  janela(`<div class="og-jan-t">⏳ Guardado neste aparelho</div>
+    <div class="og-jan-s">${LOGIN_VENCIDO?"O seu login venceu. Nada foi perdido: entre no portal de novo neste aparelho e tudo sobe sozinho."
+      :navigator.onLine?"Sobe sozinho — pode continuar usando o mapa.":"Sem internet. Tudo abaixo sobe sozinho quando a conexão voltar (com o mapa aberto)."}</div>
+    <div class="obs-hist">${f.length?f.map(it=>`<div class="obs-h-it"><div class="obs-h-q">${esc(hora(it.t))}${it.u&&eu&&it.u!==eu?" · login "+esc(it.u):""}</div><div class="obs-h-t">${esc(it.rotulo||"Gravação")}${o(it)?" · "+esc(o(it)):""}</div></div>`).join(""):`<div class="obs-h-vz">Nada esperando para enviar.</div>`}</div>
+    <div class="og-jan-b"><button class="bt ghost" onclick="MapaObras.fecharJanela()">Fechar</button>${LOGIN_VENCIDO||!S||!S.token?`<a class="bt" href="${PORTAL}login.html">Entrar no portal</a>`:(f.length&&navigator.onLine?`<button class="bt" onclick="MapaObras.fecharJanela();MapaObras.enviarFila()">Enviar agora</button>`:"")}</div>`);
+}
 window.addEventListener("online",sincronizar); setInterval(sincronizar,30000);
 
 /* ---------------- status da obra ---------------- */
@@ -768,7 +811,8 @@ async function carregarMedTodas(){
 function pintarMedIndice(){
   const box=$("med"); if(!box||!INDICE) return;
   const t=tercaDe(), lab=$("med-sem"); if(lab) lab.textContent=`de ${brc(t)} (ter) a ${brc(maisDias(t,6))} (seg) · zera toda terça`;
-  if(!CONTR){ box.innerHTML=`<div class="vazio" style="border:0"><span class="load"></span> Carregando os contratos do Mais Controle…</div>`; return; }
+  if(!CONTR){ box.innerHTML=navigator.onLine?`<div class="vazio" style="border:0"><span class="load"></span> Carregando os contratos do Mais Controle…</div>`
+      :`<div class="vazio" style="border:0">Sem internet e as medições ainda não foram abertas neste aparelho — abra uma vez com internet e elas ficam guardadas.</div>`; return; }
   /* obras do DOCUMENTOS + obras que só existem no MC (condomínio, escritório…) */
   const docs=DOCS.slice(), conhecidas=new Set(docs.map(d=>endK(d.endereco)));
   [CONTR_POR_END,CONTR_FORA_POR_END].forEach(mp=>Object.keys(mp).forEach(k=>{ if(!conhecidas.has(k)){ conhecidas.add(k); const c=mp[k][0]; docs.push({endereco:c.obra,ref:"",setor:"",eng:null,obra_iniciada:"SIM",_soMC:true}); } }));
@@ -886,7 +930,8 @@ function pintarOcs(){
   const box=$("oc"); if(!box) return;
   const nEl=$("oc-n");
   if(!S||!S.token){ box.innerHTML=`<div class="vazio" style="border:0"><a href="${PORTAL}login.html">Entre no portal</a> para ver e conferir as compras.</div>`; if(nEl) nEl.textContent="0"; return; }
-  if(!OCS){ box.innerHTML=`<div class="vazio" style="border:0"><span class="load"></span> Carregando as compras…</div>`; return; }
+  if(!OCS){ box.innerHTML=navigator.onLine?`<div class="vazio" style="border:0"><span class="load"></span> Carregando as compras…</div>`
+      :`<div class="vazio" style="border:0">Sem internet e esta lista ainda não foi aberta neste aparelho — abra uma vez com internet e ela fica guardada.</div>`; return; }
   if(OCS.erro&&!(OCS.itens||[]).length){ box.innerHTML=`<div class="vazio" style="border:0">${/ACAO_DESCONHECIDA/.test(OCS.erro)?"A conferência de compras está sendo ligada no servidor — aparece aqui em breve.":"Não consegui carregar as compras ("+esc(OCS.erro)+")."}</div>`; return; }
   const todas=ocItens().map(it=>Object.assign(it,{eng:ocEng(it)}));
   const eng=OC_ENG&&(OC_ENG===ENG_LOGIN||engsDe(todas).some(x=>x.e===OC_ENG))?OC_ENG:"";
@@ -916,7 +961,7 @@ function pintarOcs(){
   box.innerHTML=barra+(OCS.aviso?`<div class="vazio" style="border:0">${esc(OCS.aviso)}</div>`:"")+
     (vis.length?`<div class="oc-tab"><table><thead><tr><th>Obra</th><th>Fornecedor</th><th>Nº OC</th><th>Criação da OC</th><th>Engenheiro</th><th>Instalado / finalizado?</th><th>Mais Controle</th></tr></thead><tbody>${corpo}</tbody></table></div>`
       :`<div class="vazio" style="border:0">✅ Nenhuma compra esperando conferência${eng?" para "+esc(eng):""}.</div>`)+
-    `<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${abertas.filter(ocEsperaEng).length} esperando o engenheiro${nNf?` · <b style="color:#c0392b">${nNf} com NF anexada</b>`:""} · ${abertas.filter(x=>!ocEsperaEng(x)).length} com SIM esperando o robô · ${feitas.length} feita${feitas.length===1?"":"s"} no MC${lnk}${OCS.em?" · lista de "+new Date(OCS.em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`;
+    `<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${abertas.filter(ocEsperaEng).length} esperando o engenheiro${nNf?` · <b style="color:#c0392b">${nNf} com NF anexada</b>`:""} · ${abertas.filter(x=>!ocEsperaEng(x)).length} com SIM esperando o robô · ${feitas.length} feita${feitas.length===1?"":"s"} no MC${lnk}${OCS.em?" · "+(navigator.onLine?"":"<b>offline</b> — ")+"lista de "+new Date(OCS.em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`;
 }
 async function responderOc(id,resp){
   const it=((OCS&&OCS.itens)||[]).find(x=>x.oc_id===id); if(!it) return;
@@ -1439,6 +1484,66 @@ function montarAbas(){
   const ob=new MutationObserver(()=>pintarAbas());
   ABAS.forEach(id=>{ const e=$(id+"-n"); if(e) ob.observe(e,{childList:true,characterData:true,subtree:true}); });
 }
+/* =====================================================================
+ * 18/11/26 — TUDO NO APARELHO. O índice baixa as páginas de TODOS os setores
+ * (e os mapas de casas) para o cache PAG do sw.js, que não é apagado quando o
+ * mapa é atualizado. Antes só abria offline o setor que o engenheiro já
+ * tivesse aberto naquele aparelho — e cada atualização apagava a cópia.
+ * No Wi-Fi / computador baixa sozinho; no 3G/4G ou no iPhone aparece o botão
+ * (são páginas pesadas). Um arquivo por vez; o que já está guardado é pulado.
+ * ===================================================================== */
+const PAG_CACHE="mapa-obras-paginas";
+let OFF={faltam:null,total:0,baixando:false,erro:false};
+function listaOffline(){
+  const l=SETORES.map(s=>new URL(s.arq,location.href).href);
+  [...new Set(Object.values(VENDAS_ARQ))].forEach(a=>l.push(new URL("../SITE-DE-VENDAS/"+a+".html",location.href).href));
+  return l;
+}
+function autoBaixar(){
+  const cn=navigator.connection;
+  if(cn&&(cn.saveData||/2g|3g/.test(cn.effectiveType||""))) return false;
+  if(cn&&cn.type) return /wifi|ethernet/.test(cn.type);
+  return !ehToque();
+}
+function pintarOffline(){
+  if(!INDICE||!("caches" in window)) return;
+  let e=$("offl"); const cr=document.querySelector(".crumb");
+  if(!e&&cr){ e=document.createElement("button"); e.type="button"; e.id="offl"; e.className="pill offl"; e.addEventListener("click",()=>baixarOffline(true)); cr.appendChild(e); }
+  if(!e||OFF.faltam==null) return;
+  const n=OFF.faltam.length, feitos=OFF.total-n;
+  e.classList.toggle("ok",!n); e.classList.toggle("baixando",OFF.baixando); e.disabled=OFF.baixando||!n;
+  e.textContent=!n?"✓ Todos os setores guardados para usar sem internet"
+    :OFF.baixando?`📥 Guardando para usar sem internet… ${feitos} de ${OFF.total}`
+    :!navigator.onLine?`⚠ ${n} de ${OFF.total} setores/mapas ainda não estão neste aparelho`
+    :`📥 Baixar tudo para usar sem internet (${OFF.erro?"continuar · ":""}faltam ${n} de ${OFF.total})`;
+  e.title=!n?"Os mapas de todos os setores e os mapas de casas abrem sem internet neste aparelho":"São páginas pesadas (mais de 80 MB no total) — de preferência no Wi-Fi";
+}
+async function conferirOffline(){
+  if(!INDICE||!("caches" in window)) return;
+  try{ const c=await caches.open(PAG_CACHE), l=listaOffline(), falta=[];
+    for(const u of l){ if(!(await c.match(u))) falta.push(u); }
+    OFF.faltam=falta; OFF.total=l.length; pintarOffline();
+    if(falta.length&&navigator.onLine&&autoBaixar()) baixarOffline(false);
+  }catch(e){}
+}
+async function baixarOffline(peloClique){
+  if(OFF.baixando||!OFF.faltam||!OFF.faltam.length) return;
+  if(!navigator.onLine){ if(peloClique) toast("Sem internet agora — baixe quando a conexão voltar."); return; }
+  OFF.baixando=true; OFF.erro=false; pintarOffline();
+  try{ if(navigator.storage&&navigator.storage.persist) navigator.storage.persist().catch(()=>{}); }catch(e){}
+  try{
+    const c=await caches.open(PAG_CACHE);
+    for(const u of OFF.faltam.slice()){
+      try{ const r=await fetch(u,{cache:"no-cache"});
+        if(r&&r.ok) await c.put(u,r);
+        else if(!r||r.status!==404) throw new Error("HTTP "+(r&&r.status));
+        OFF.faltam=OFF.faltam.filter(x=>x!==u);            // 404 = setor sem mapa de casas: não conta
+      }catch(e){ OFF.erro=true; if(!navigator.onLine) break; }
+      pintarOffline();
+    }
+  } finally { OFF.baixando=false; pintarOffline(); }
+  if(peloClique||!OFF.faltam.length) toast(OFF.faltam.length?"Não consegui baixar "+OFF.faltam.length+" — tente de novo com a conexão melhor.":"✓ Mapa de Obras inteiro guardado neste aparelho.");
+}
 function pintarTudo(){
   pintarAtualizado(); aplicarEngLogin();
   if(INDICE){ pintarIndice(); pintarNotif(); pintarEntregas(); pintarMedIndice(); pintarCal(); return; }
@@ -1467,6 +1572,9 @@ window.MapaObras={
   entEng:e=>{ ENT_ENG=e; lsSet("og_ent_eng",e); engManual(); pintarEntregas(); },
   notifEng:e=>{ NOTIF_ENG=e; engManual(); pintarNotif(); },
   aba:id=>{ abaAbrir(id,true); },
+  /* 18/11: fila offline à vista e os setores todos no aparelho */
+  enviarFila:()=>{ sincronizar().then(()=>{ if(_filaLer().length) toast(LOGIN_VENCIDO?"Login vencido — entre no portal de novo.":"Ainda sem resposta do servidor — continua guardado e tenta de novo sozinho."); }); },
+  verFila, baixarOffline:()=>baixarOffline(true),
   /* a barra é redesenhada a cada letra: devolve o foco e o cursor ao campo */
   entBusca:q=>{ ENT_BUSCA=q; pintarEntregas(); const i=$("ent-busca"); if(i){ i.focus(); const n=i.value.length; try{ i.setSelectionRange(n,n); }catch(e){} } },
   fechar:()=>{ ATIVO=null; marcarAtivo(""); if(MODO==="casas") pintarCasas(); const pn=$("painel"); if(pn) pn.innerHTML=MODO==="casas"?`<div class="p-vazio"><b>🏠</b>Toque em um lote no mapa de casas para ver a situação de cada casa, as datas e os documentos da vistoria.</div>`:`<div class="p-vazio"><b>📍</b>Toque em um lote no mapa para ver e preencher o status da obra.</div>`; history.replaceState(null,"",location.pathname); },
@@ -1499,6 +1607,7 @@ function montarSecoes(){
 try{ const g=document.createElement("script"); g.src="../PORTAL-MORAIS/tema-escuro.js?v=1"; g.async=true; document.head.appendChild(g); }catch(e){}
 document.addEventListener("DOMContentLoaded",()=>{
   pintarUsuario(); pintarFila();
+  _aposSinc=()=>{ if($("oc")) carregarOcs(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas(); };
   if(INDICE&&$("abas")) montarAbas(); else if(INDICE&&$("med")) montarSecoes();
   if(!INDICE){
     document.title=CFG.nome+" · Mapa de Obras · Morais";
@@ -1521,15 +1630,16 @@ document.addEventListener("DOMContentLoaded",()=>{
      contratos/medições do MC, situação das casas e permissões — para a tela
      não mostrar o valor velho por cima do que acabou de ser gravado. */
   window.addEventListener("online",async()=>{
-    pintarAtualizado();
-    try{ await sincronizar(); }catch(e){}
+    pintarAtualizado(); pintarFila(); if($("oc")) pintarOcs();
+    _semApos=true; try{ await sincronizar(); }catch(e){} _semApos=false;
+    conferirOffline();
     carregarDados(true); carregarContratos();
     if(!INDICE){ carregarMedicoes(); carregarMV(); } else if($("med")) carregarMedTodas();
     if($("oc")) carregarOcs();
     if(BOOT&&BOOT.erro) BOOT=null;
     const cb=lsGet(K_BOOT,null); if(cb&&cb.t&&Date.now()-cb.t>=30*60*1000||!BOOT) carregarBoot();
   });
-  window.addEventListener("offline",pintarAtualizado);
+  window.addEventListener("offline",()=>{ pintarAtualizado(); pintarFila(); pintarOffline(); if($("oc")) pintarOcs(); });
   sincronizar();
   /* offline: registra o service worker e pede para guardar ESTA página e o
      data.json já na primeira visita */
@@ -1543,6 +1653,8 @@ document.addEventListener("DOMContentLoaded",()=>{
       const arq=!INDICE&&VENDAS_ARQ[paginaArq()]; if(arq&&!leve) l.push(new URL("../SITE-DE-VENDAS/"+arq+".html",location.href).href);
       w.postMessage({cachear:l}); }).catch(()=>{});
   }
+  /* 18/11: o índice confere (e baixa) os setores que ainda não estão no aparelho */
+  setTimeout(conferirOffline,3500);
   /* 16/10: o formulário de vistoria fica pronto em segundo plano (sem internet ele precisa estar guardado) e
      os PDFs que ficaram na fila sobem sozinhos */
   /* 05/11 (2): com a sessão — assim a vistoria guardada neste aparelho sobe para a

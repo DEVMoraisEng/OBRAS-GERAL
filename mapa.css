@@ -390,3 +390,15 @@ body:not(.modo-lista) .abas-topo button:hover{border-color:var(--verde);box-shad
 body.modo-lista #resumo,body.modo-lista #conteudo,body.modo-lista .sec,body.modo-lista #cal{display:none!important}
 .so-lista{display:none}
 body.modo-lista .so-lista{display:inline-flex;margin-left:8px}
+
+/* 18/11/26 — offline completo: fila à vista e "baixar tudo" */
+.crumb #fila{cursor:pointer;padding:7px 12px}
+.crumb #fila.alerta{background:#dc5b2f;color:#fff}
+.pill.offl{border:0;font:inherit;font-size:11px;font-weight:700;cursor:pointer;padding:7px 12px;white-space:normal;text-align:left;max-width:100%}
+.pill.offl:disabled{cursor:default}
+.pill.offl.ok{background:transparent;color:var(--text3);font-weight:600;padding-left:2px}
+.pill.offl.baixando{opacity:.85}
+body.modo-lista .pill.offl{display:none}
+@media(hover:none){ .crumb #fila,.pill.offl:not(.ok){min-height:44px;display:inline-flex;align-items:center;font-size:12.5px} }
+
+a.bt{text-decoration:none;display:inline-block}
