@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-18T15:00:38.906253+00:00",
+ "updated_at": "2026-11-18T16:49:26.346325+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -11732,13 +11732,13 @@
    "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "EXECUTANDO REPAROS",
+   "casa_apta_vistoria": "SIM",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-11-16\",\"acc\":0,\"ret\":\"2026-11-16\",\"trav\":null},\"r\":{},\"em\":\"2026-11-17T19:52:34.574Z\",\"por\":\"Isaac Natan\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-11-16\",\"acc\":2,\"ret\":\"2026-11-16\",\"trav\":\"2026-11-18\"},\"r\":{},\"em\":\"2026-11-18T16:48:54.210Z\",\"por\":\"Isaac Natan\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
