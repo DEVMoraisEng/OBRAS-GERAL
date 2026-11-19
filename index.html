@@ -10,7 +10,7 @@
 <title>Empreendimentos · Mapa de Obras · Morais</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="mapa.css?v=10">
+<link rel="stylesheet" href="mapa.css?v=11">
 </head>
 <body>
 <header><div class="wrap hbar">
@@ -27,11 +27,12 @@
     <a class="btn-voltar so-lista" href="index.html">← Mapa de Obras</a>
     <span class="pill" id="fila" style="display:none"></span>
   </div>
-  <!-- 17/11/26: as 4 listas viraram ABAS no topo. Cada aba mostra o que está em aberto do engenheiro
+  <!-- 17/11/26: as listas viraram ABAS no topo (19/11: + Solicitações sem OC). Cada aba mostra o que está em aberto do engenheiro
        escolhido; quem entra com o login de engenheiro já cai nas DELE, na 1ª aba com pendência. -->
   <nav class="abas-topo" id="abas" role="tablist">
     <button type="button" role="tab" data-aba="med" onclick="MapaObras.aba('med')"><span class="ab-ic">📏</span><span class="ab-t">Medições da semana</span><span class="ab-n zero" id="med-n">0</span></button>
     <button type="button" role="tab" data-aba="oc" onclick="MapaObras.aba('oc')"><span class="ab-ic">🧾</span><span class="ab-t" title="Conferência de compras (OC)">Conferência de OC</span><span class="ab-n zero" id="oc-n">0</span></button>
+    <button type="button" role="tab" data-aba="sol" onclick="MapaObras.aba('sol')"><span class="ab-ic">📋</span><span class="ab-t" title="Solicitações de Bancada, Janela, Calhas/Rufos e Portão ainda sem OC">Solicitações sem OC</span><span class="ab-n zero" id="sol-n">0</span></button>
     <button type="button" role="tab" data-aba="ent" onclick="MapaObras.aba('ent')"><span class="ab-ic">🏠</span><span class="ab-t" title="Casas vendidas e não entregues">Casas não entregues</span><span class="ab-n zero" id="ent-n">0</span></button>
     <button type="button" role="tab" data-aba="notif" onclick="MapaObras.aba('notif')"><span class="ab-ic">🔔</span><span class="ab-t">Notificações de status</span><span class="ab-n zero" id="notif-n">0</span></button>
   </nav>
@@ -41,6 +42,9 @@
   </section>
   <section class="aba-pn" data-pn="oc" style="display:none">
     <div class="med" id="oc"><div class="vazio" style="border:0"><span class="load"></span> Carregando…</div></div>
+  </section>
+  <section class="aba-pn" data-pn="sol" style="display:none">
+    <div class="med" id="sol"><div class="vazio" style="border:0"><span class="load"></span> Carregando…</div></div>
   </section>
   <section class="aba-pn" data-pn="ent" style="display:none">
     <div class="aba-sub">Casas vendidas que ainda não foram entregues <span class="dir" id="ent-chips"></span></div>
@@ -77,6 +81,6 @@ window.SETORES = [
   { arq: "terrabela.html", setor: "TERRABELA DO CERRADO",  nome: "Terrabela",        sub: "Terrabela do Cerrado II",  cidade: "Senador Canedo", chaves: ["TERRABELA"] }
 ];
 </script>
-<script src="mapa.js?v=12"></script>
+<script src="mapa.js?v=13"></script>
 </body>
 </html>

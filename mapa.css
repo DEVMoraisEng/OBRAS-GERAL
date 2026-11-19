@@ -363,7 +363,7 @@ html[data-tema="escuro"] #oc tr.oc-nf td{background:#4a2420}
 .oc-nf-chip{background:#c0392b;margin-top:4px}
 
 /* 17/11/26: as 4 listas do índice viraram abas no topo (cada uma com o que está em aberto do engenheiro) */
-.abas-topo{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:14px 0 0}
+.abas-topo{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:14px 0 0}
 .abas-topo button{display:flex;align-items:center;gap:8px;min-width:0;cursor:pointer;text-align:left;
   background:var(--bg3);color:var(--azul-esc);border:1px solid var(--border2);border-bottom:0;border-radius:10px 10px 0 0;
   padding:11px 14px;font-family:'Barlow Condensed',Inter,sans-serif;font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;opacity:.72}
@@ -402,3 +402,9 @@ body.modo-lista .pill.offl{display:none}
 @media(hover:none){ .crumb #fila,.pill.offl:not(.ok){min-height:44px;display:inline-flex;align-items:center;font-size:12.5px} }
 
 a.bt{text-decoration:none;display:inline-block}
+
+/* 19/11: aba Solicitações sem OC — nome dos itens quebra a linha em vez de esticar a tabela */
+.sol-itens{min-width:180px;max-width:360px;white-space:normal;word-break:break-word}
+@media(max-width:640px){ .sol-itens{min-width:0;max-width:none} }
+/* 19/11: conferência de celular — filtros e o SIM com alvo de toque de 44 px e fonte de 16 px (o iPhone não dá zoom) */
+@media(max-width:640px){ .med-barra .en-sel select{min-height:44px;font-size:16px} .oc-bts .oc-sim{min-height:44px;min-width:64px;font-size:15px} }
