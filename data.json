@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-18T23:41:58.145324+00:00",
+ "updated_at": "2026-11-19T03:00:38.374682+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -15251,7 +15251,7 @@
   },
   "BR 7": {
    "status": "habite_concluido",
-   "prazo": null,
+   "prazo": "a",
    "endereco": "RPB 24 QD 26A LT 05",
    "setor": "PQ DOS BURITIS",
    "habite": [
@@ -15708,6 +15708,14 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-19T03:00:38.374682+00:00",
+   "ref": "BR 7",
+   "endereco": "RPB 24 QD 26A LT 05",
+   "setor": "PQ DOS BURITIS",
+   "tipo": "prazo",
+   "para": "a"
+  },
   {
    "em": "2026-11-17T13:42:49.754421+00:00",
    "ref": "TC 83",
