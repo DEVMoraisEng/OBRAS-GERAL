@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-19T12:42:18.609646+00:00",
+ "updated_at": "2026-11-19T13:12:26.866719+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -3439,7 +3439,7 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO",
+   "certidoes_matricula": "SIM",
    "modelo3d": null
   },
   {
@@ -10381,7 +10381,7 @@
    "contador": "{\"a\":{\"ini\":\"2026-11-11\",\"acc\":8,\"ret\":\"2026-11-11\",\"trav\":\"2026-11-19\"},\"r\":{\"ini\":\"2026-11-19\",\"ret\":\"2026-11-19\",\"acc\":0,\"trav\":null},\"em\":\"2026-11-19T11:59:04.138Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 1,
-   "vist_prestador": 0,
+   "vist_prestador": 1,
    "apta_desde": "2026-11-11"
   },
   {
