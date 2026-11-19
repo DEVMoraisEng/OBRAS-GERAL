@@ -946,7 +946,7 @@ function pintarOcs(){
   const engs=comEng(engsDe(todas),eng);
   const barra=`<div class="med-barra"><label class="en-sel">👷 Engenheiro <select onchange="MapaObras.ocEng(this.value)"><option value="">Todos (${todas.length})</option>${engs.map(x=>`<option value="${esc(x.e)}" ${x.e===eng?"selected":""}>${esc(x.e)} (${x.n})</option>`).join("")}</select></label>
     <label class="en-sel">🏭 Fornecedor <select onchange="MapaObras.ocForn(this.value)"><option value="">Todos (${doEngTodos.length})</option>${Object.keys(forns).sort((a,b)=>a.localeCompare(b,"pt-BR")).map(f=>`<option value="${esc(f)}" ${f===forn?"selected":""}>${esc(f)} (${forns[f]})</option>`).join("")}</select></label>
-    <span class="quem">Linha vermelha = <b>NF anexada</b> na OC. O pagamento só sai depois do <b>SIM</b>. Marque <b>SIM</b> quando terminar. Rocha Mármores / VIDRO ALVES: instalação concluída → o SIM aprova a OC · Serralheria do Fabio: serviço finalizado → o SIM passa a 2ª parcela para o próximo dia útil.</span></div>`;
+    <span class="quem">Linha vermelha = <b>NF anexada</b> na OC. O pagamento só sai depois do <b>SIM</b>. Marque <b>SIM</b> quando terminar. Rocha Mármores / VIDRO ALVES: instalação concluída → o SIM aprova a OC · Serralheria do Fabio / Ideia Calhas e Rufos: serviço finalizado → o SIM passa a 2ª parcela para o próximo dia útil.</span></div>`;
   const hoje=hojeISO();
   /* 16/11 (tarde): da OC mais antiga para a mais nova */
   const corpo=vis.slice().sort((a,b)=>String(a.criada_em||"9999").localeCompare(String(b.criada_em||"9999"))||(a.numero||0)-(b.numero||0)).map(it=>{
@@ -989,9 +989,10 @@ async function responderOc(id,resp){
 
 /* =====================================================================
  * SOLICITAÇÕES SEM OC — 19/11/26 (dono)
- * Solicitações de compra com pelo menos um item de Bancada, Janela, Calhas /
- * Rufos ou Portão que ainda NÃO viraram ordem de compra, contando os dias
- * corridos desde a data da solicitação. Ficam aqui até a OC ser criada.
+ * Solicitações de compra "Em aprovação" ou "A atender" com pelo menos um item
+ * cujo nome COMEÇA com Bancada, Janela, Calha, Rufo ou Portão e que ainda NÃO
+ * virou ordem de compra, contando os dias corridos desde a data da
+ * solicitação. Saem quando a OC é criada ou a solicitação muda de status.
  * Quem traz é o robô ocs do servidor (tabela oc_solicitacao do Supabase),
  * pelo Apps Script (ocSolicitacoes). Só leitura.
  * ===================================================================== */
@@ -1025,7 +1026,7 @@ function pintarSols(){
   const engs=comEng(engsDe(todas),eng);
   const barra=`<div class="med-barra"><label class="en-sel">👷 Engenheiro <select onchange="MapaObras.solEng(this.value)"><option value="">Todos (${todas.length})</option>${engs.map(x=>`<option value="${esc(x.e)}" ${x.e===eng?"selected":""}>${esc(x.e)} (${x.n})</option>`).join("")}</select></label>
     <label class="en-sel">🧱 Material <select onchange="MapaObras.solCat(this.value)"><option value="">Todos (${doEng.length})</option>${Object.keys(cats).sort((a,b)=>a.localeCompare(b,"pt-BR")).map(c=>`<option value="${esc(c)}" ${c===cat?"selected":""}>${esc(c)} (${cats[c]})</option>`).join("")}</select></label>
-    <span class="quem">Solicitações com <b>Bancada</b>, <b>Janela</b>, <b>Calhas / Rufos</b> ou <b>Portão</b> que ainda não viraram OC. Saem daqui quando a OC é criada no Mais Controle.</span></div>`;
+    <span class="quem">Solicitações <b>Em aprovação</b> ou <b>A atender</b> com algum item cujo nome começa com <b>Bancada</b>, <b>Janela</b>, <b>Calha</b>, <b>Rufo</b> ou <b>Portão</b>. Saem daqui quando a OC é criada ou quando a solicitação muda de status no Mais Controle.</span></div>`;
   const corpo=vis.map(x=>{
     const d=ocDoc(x), ir=d&&d.ref?`onclick="MapaObras.irPara('${esc(d.setor||"")}','${esc(d.ref)}')"`:"";
     const n=x.dias, cor=n==null?"":n>=15?"#dc5b2f":n>=7?"#d9922b":"#7c8ea0";
