@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-19T11:00:46.401650+00:00",
+ "updated_at": "2026-11-19T11:59:07.413390+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -10372,13 +10372,13 @@
    "eng": "Guilherme Gouveia",
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "EXECUTANDO REPAROS",
-   "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null,
+   "casa_apta_vistoria": "SIM",
+   "agendou_pre_vistoria": "SIM",
+   "data_pre_vistoria": "2026-11-19",
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-11-11\",\"acc\":0,\"ret\":\"2026-11-11\",\"trav\":null},\"r\":{},\"em\":\"2026-11-17T18:19:11.010Z\",\"por\":\"Guilherme Gouveia\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-11-11\",\"acc\":8,\"ret\":\"2026-11-11\",\"trav\":\"2026-11-19\"},\"r\":{\"ini\":\"2026-11-19\",\"ret\":\"2026-11-19\",\"acc\":0,\"trav\":null},\"em\":\"2026-11-19T11:59:04.138Z\",\"por\":\"Guilherme Gouveia\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -15012,7 +15012,8 @@
    "setor": "ST EFIGÊNIA",
    "habite": null,
    "pv": {
-    "2": "2026-08-20"
+    "2": "2026-08-20",
+    "1": "2026-11-19"
    }
   },
   "SE 1": {
@@ -15708,6 +15709,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-19T11:59:07.413390+00:00",
+   "ref": "SE 2",
+   "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
+   "setor": "ST EFIGÊNIA",
+   "tipo": "pre_vistoria",
+   "casa": "1",
+   "data_pv": "2026-11-19"
+  },
   {
    "em": "2026-11-19T03:00:38.374682+00:00",
    "ref": "BR 7",
