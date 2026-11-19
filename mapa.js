@@ -874,7 +874,7 @@ function pintarMedFora(box,docs,idx){
  * Sem internet a resposta vai para a fila e sobe sozinha.
  * ===================================================================== */
 const K_OCS="og_ocs_v1";
-let OCS=lsGet(K_OCS,null), OC_ENG=lsGet("og_oc_eng",""), OC_VER_FEITAS=false;
+let OCS=lsGet(K_OCS,null), OC_ENG=lsGet("og_oc_eng",""), OC_VER_FEITAS=false, OC_FORN=lsGet("og_oc_forn","");
 /* 17/11: na Rocha / VIDRO ALVES o que o engenheiro confere é a INSTALAÇÃO (não a entrega) */
 const OC_ACAO={APROVAR:{l:"instalação",d:"SIM aprova a OC no Mais Controle"},
                PARCELA:{l:"serviço",d:"SIM passa a 2ª parcela para o próximo dia útil"}};
@@ -935,12 +935,17 @@ function pintarOcs(){
   if(OCS.erro&&!(OCS.itens||[]).length){ box.innerHTML=`<div class="vazio" style="border:0">${/ACAO_DESCONHECIDA/.test(OCS.erro)?"A conferência de compras está sendo ligada no servidor — aparece aqui em breve.":"Não consegui carregar as compras ("+esc(OCS.erro)+")."}</div>`; return; }
   const todas=ocItens().map(it=>Object.assign(it,{eng:ocEng(it)}));
   const eng=OC_ENG&&(OC_ENG===ENG_LOGIN||engsDe(todas).some(x=>x.e===OC_ENG))?OC_ENG:"";
-  const doEng=todas.filter(x=>bateEng(x,eng));
+  const doEngTodos=todas.filter(x=>bateEng(x,eng));
+  /* 19/11 (dono): filtro de fornecedor (o número da aba continua contando todos os fornecedores do engenheiro) */
+  const forns={}; doEngTodos.forEach(x=>{ const f=x.fornecedor||"—"; forns[f]=(forns[f]||0)+1; });
+  const forn=OC_FORN&&forns[OC_FORN]?OC_FORN:"";
+  const doEng=doEngTodos.filter(x=>!forn||(x.fornecedor||"—")===forn);
   const abertas=doEng.filter(x=>!ocFeita(x)), feitas=doEng.filter(ocFeita);
   const vis=OC_VER_FEITAS?doEng:abertas;
   if(nEl){ const n=todas.filter(x=>bateEng(x,eng)&&ocEsperaEng(x)).length; nEl.textContent=n; nEl.classList.toggle("alerta",n>0); }
   const engs=comEng(engsDe(todas),eng);
   const barra=`<div class="med-barra"><label class="en-sel">👷 Engenheiro <select onchange="MapaObras.ocEng(this.value)"><option value="">Todos (${todas.length})</option>${engs.map(x=>`<option value="${esc(x.e)}" ${x.e===eng?"selected":""}>${esc(x.e)} (${x.n})</option>`).join("")}</select></label>
+    <label class="en-sel">🏭 Fornecedor <select onchange="MapaObras.ocForn(this.value)"><option value="">Todos (${doEngTodos.length})</option>${Object.keys(forns).sort((a,b)=>a.localeCompare(b,"pt-BR")).map(f=>`<option value="${esc(f)}" ${f===forn?"selected":""}>${esc(f)} (${forns[f]})</option>`).join("")}</select></label>
     <span class="quem">Linha vermelha = <b>NF anexada</b> na OC. O pagamento só sai depois do <b>SIM</b>. Marque <b>SIM</b> quando terminar. Rocha Mármores / VIDRO ALVES: instalação concluída → o SIM aprova a OC · Serralheria do Fabio: serviço finalizado → o SIM passa a 2ª parcela para o próximo dia útil.</span></div>`;
   const hoje=hojeISO();
   /* 16/11 (tarde): da OC mais antiga para a mais nova */
@@ -953,14 +958,15 @@ function pintarOcs(){
     return `<tr class="${nf?"oc-nf":""}"><td class="end" ${ir}>${esc(it.obra||"—")}${nf?`<div><span class="chip oc-nf-chip" title="${esc(it.anexos_nomes||"")}">📎 NF anexada${it.anexos>1?" ("+it.anexos+" arquivos)":""}</span></div>`:""}</td>
       <td>${esc(it.fornecedor||"")}<div class="quem" title="${esc(ac.d)}">${esc(ac.l)} · ${esc(ac.d)}</div></td>
       <td><a href="${MC_ERP}#/purchase-order/edit/${esc(it.oc_id)}" target="_blank" rel="noopener" title="Abrir a OC no Mais Controle">${esc(it.numero||"—")}</a></td>
+      <td>${it.solicitacao_em?br(it.solicitacao_em)+`<div class="quem">data da solicitação${it.solicitacao_numero?" nº "+esc(it.solicitacao_numero):""}</div>`:"—"}</td>
       <td>${br(it.criada_em)}${atraso}</td><td>${esc(it.eng)}</td>
       <td>${botoesOc(it,OCS.pode)}</td><td>${chipOcRobo(it)}</td></tr>`;
   }).join("");
   const nNf=abertas.filter(x=>Number(x.anexos)>0).length;
   const lnk=feitas.length?` · <a href="#" onclick="MapaObras.ocFeitas();return false" style="color:var(--text2);font-weight:600">${OC_VER_FEITAS?"ocultar as feitas":"mostrar as feitas (30 dias)"}</a>`:"";
   box.innerHTML=barra+(OCS.aviso?`<div class="vazio" style="border:0">${esc(OCS.aviso)}</div>`:"")+
-    (vis.length?`<div class="oc-tab"><table><thead><tr><th>Obra</th><th>Fornecedor</th><th>Nº OC</th><th>Criação da OC</th><th>Engenheiro</th><th>Instalado / finalizado?</th><th>Mais Controle</th></tr></thead><tbody>${corpo}</tbody></table></div>`
-      :`<div class="vazio" style="border:0">✅ Nenhuma compra esperando conferência${eng?" para "+esc(eng):""}.</div>`)+
+    (vis.length?`<div class="oc-tab"><table><thead><tr><th>Obra</th><th>Fornecedor</th><th>Nº OC</th><th>Data da solicitação</th><th>Criação da OC</th><th>Engenheiro</th><th>Instalado / finalizado?</th><th>Mais Controle</th></tr></thead><tbody>${corpo}</tbody></table></div>`
+      :`<div class="vazio" style="border:0">✅ Nenhuma compra esperando conferência${eng?" para "+esc(eng):""}${forn?" de "+esc(forn):""}.</div>`)+
     `<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${abertas.filter(ocEsperaEng).length} esperando o engenheiro${nNf?` · <b style="color:#c0392b">${nNf} com NF anexada</b>`:""} · ${abertas.filter(x=>!ocEsperaEng(x)).length} com SIM esperando o robô · ${feitas.length} feita${feitas.length===1?"":"s"} no MC${lnk}${OCS.em?" · "+(navigator.onLine?"":"<b>offline</b> — ")+"lista de "+new Date(OCS.em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`;
 }
 async function responderOc(id,resp){
@@ -979,6 +985,60 @@ async function responderOc(id,resp){
   if(r.r&&r.r.item) Object.assign(it,r.r.item);
   lsSet(K_OCS,OCS); pintarOcs();
   toast(resp==="SIM"?(r.r&&r.r.robo==="pedido"?"✅ SIM gravado — o robô já foi chamado para fazer no Mais Controle.":"✅ SIM gravado — o robô faz no Mais Controle na próxima rodada."):"SIM desfeito — a OC volta a esperar a conferência.");
+}
+
+/* =====================================================================
+ * SOLICITAÇÕES SEM OC — 19/11/26 (dono)
+ * Solicitações de compra com pelo menos um item de Bancada, Janela, Calhas /
+ * Rufos ou Portão que ainda NÃO viraram ordem de compra, contando os dias
+ * corridos desde a data da solicitação. Ficam aqui até a OC ser criada.
+ * Quem traz é o robô ocs do servidor (tabela oc_solicitacao do Supabase),
+ * pelo Apps Script (ocSolicitacoes). Só leitura.
+ * ===================================================================== */
+const K_SOLS="og_sols_v1";
+let SOLS=lsGet(K_SOLS,null), SOL_ENG=lsGet("og_sol_eng",""), SOL_CAT=lsGet("og_sol_cat","");
+async function carregarSols(){
+  if(SOLS) pintarSols();
+  if(!S||!S.token||!navigator.onLine){ pintarSols(); return; }
+  let r=null; try{ r=await api({action:"ocSolicitacoes"},30000); }catch(e){}
+  if(r&&r.ok){ SOLS={itens:r.itens||[],aviso:r.aviso||"",em:Date.now()}; lsSet(K_SOLS,SOLS); }
+  else if(!SOLS) SOLS={itens:[],erro:(r&&r.erro)||"sem resposta"};
+  pintarSols();
+}
+const solDesde=x=>x.criada_em||String(x.primeiro_visto||"").slice(0,10)||null;
+function pintarSols(){
+  const box=$("sol"); if(!box) return;
+  const nEl=$("sol-n");
+  if(!S||!S.token){ box.innerHTML=`<div class="vazio" style="border:0"><a href="${PORTAL}login.html">Entre no portal</a> para ver as solicitações.</div>`; if(nEl) nEl.textContent="0"; return; }
+  if(!SOLS){ box.innerHTML=navigator.onLine?`<div class="vazio" style="border:0"><span class="load"></span> Carregando as solicitações…</div>`
+      :`<div class="vazio" style="border:0">Sem internet e esta lista ainda não foi aberta neste aparelho — abra uma vez com internet e ela fica guardada.</div>`; return; }
+  if(SOLS.erro&&!(SOLS.itens||[]).length){ box.innerHTML=`<div class="vazio" style="border:0">${/ACAO_DESCONHECIDA/.test(SOLS.erro)?"A lista de solicitações está sendo ligada no servidor — aparece aqui em breve.":"Não consegui carregar as solicitações ("+esc(SOLS.erro)+")."}</div>`; return; }
+  const hoje=hojeISO();
+  const todas=(SOLS.itens||[]).map(x=>Object.assign({},x,{eng:ocEng(x),dias:solDesde(x)?difDias(solDesde(x),hoje):null}));
+  const eng=SOL_ENG&&(SOL_ENG===ENG_LOGIN||engsDe(todas).some(x=>x.e===SOL_ENG))?SOL_ENG:"";
+  const doEng=todas.filter(x=>bateEng(x,eng));
+  if(nEl){ nEl.textContent=doEng.length; nEl.classList.toggle("alerta",doEng.length>0); }
+  const cats={}; doEng.forEach(x=>String(x.categorias||"—").split(" · ").forEach(c=>{ cats[c]=(cats[c]||0)+1; }));
+  const cat=SOL_CAT&&cats[SOL_CAT]?SOL_CAT:"";
+  const vis=doEng.filter(x=>!cat||String(x.categorias||"—").split(" · ").indexOf(cat)>=0)
+    .sort((a,b)=>(b.dias==null?-1:b.dias)-(a.dias==null?-1:a.dias)||(a.numero||0)-(b.numero||0));
+  const engs=comEng(engsDe(todas),eng);
+  const barra=`<div class="med-barra"><label class="en-sel">👷 Engenheiro <select onchange="MapaObras.solEng(this.value)"><option value="">Todos (${todas.length})</option>${engs.map(x=>`<option value="${esc(x.e)}" ${x.e===eng?"selected":""}>${esc(x.e)} (${x.n})</option>`).join("")}</select></label>
+    <label class="en-sel">🧱 Material <select onchange="MapaObras.solCat(this.value)"><option value="">Todos (${doEng.length})</option>${Object.keys(cats).sort((a,b)=>a.localeCompare(b,"pt-BR")).map(c=>`<option value="${esc(c)}" ${c===cat?"selected":""}>${esc(c)} (${cats[c]})</option>`).join("")}</select></label>
+    <span class="quem">Solicitações com <b>Bancada</b>, <b>Janela</b>, <b>Calhas / Rufos</b> ou <b>Portão</b> que ainda não viraram OC. Saem daqui quando a OC é criada no Mais Controle.</span></div>`;
+  const corpo=vis.map(x=>{
+    const d=ocDoc(x), ir=d&&d.ref?`onclick="MapaObras.irPara('${esc(d.setor||"")}','${esc(d.ref)}')"`:"";
+    const n=x.dias, cor=n==null?"":n>=15?"#dc5b2f":n>=7?"#d9922b":"#7c8ea0";
+    const dias=n==null?"—":`<span class="chip" style="background:${cor}" title="Dias corridos desde ${x.criada_em?"a data da solicitação":"que o robô viu a solicitação"}">${n<=0?"hoje":n+" dia"+(n===1?"":"s")}</span>`;
+    return `<tr><td class="end" ${ir}>${esc(x.obra||"—")}</td>
+      <td><a href="${MC_ERP}#/purchase-request/${esc(x.sol_id)}/items" target="_blank" rel="noopener" title="Abrir a solicitação no Mais Controle">${esc(x.numero||"—")}</a></td>
+      <td>${esc(x.categorias||"—")}</td><td class="sol-itens">${esc(x.itens||"—")}</td>
+      <td>${x.criada_em?br(x.criada_em):`— <div class="quem">visto em ${br(solDesde(x))}</div>`}</td><td>${dias}</td><td>${esc(x.eng)}</td></tr>`;
+  }).join("");
+  box.innerHTML=barra+(SOLS.aviso?`<div class="vazio" style="border:0">${esc(SOLS.aviso)}</div>`:"")+
+    (vis.length?`<div class="oc-tab"><table><thead><tr><th>Obra</th><th>Nº solicitação</th><th>Material</th><th>Itens sem OC</th><th>Data da solicitação</th><th>Aberta há</th><th>Engenheiro</th></tr></thead><tbody>${corpo}</tbody></table></div>`
+      :`<div class="vazio" style="border:0">✅ Nenhuma solicitação desses materiais esperando OC${eng?" para "+esc(eng):""}${cat?" de "+esc(cat):""}.</div>`)+
+    `<div style="padding:8px 12px;font-size:12px;color:var(--text3);border-top:1px solid var(--border2)">${vis.length} sem OC${vis.filter(x=>x.dias>=7).length?` · <b style="color:#c0392b">${vis.filter(x=>x.dias>=7).length} há 7 dias ou mais</b>`:""}${SOLS.em?" · "+(navigator.onLine?"":"<b>offline</b> — ")+"lista de "+new Date(SOLS.em).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}):""}</div>`;
 }
 
 /* =====================================================================
@@ -1450,13 +1510,13 @@ function aplicarEngLogin(){
   if(!INDICE||ENG_LOGIN_FEITO||!DOCS.length) return; ENG_LOGIN_FEITO=true;
   let manual=null; try{ manual=sessionStorage.getItem("og_eng_manual"); }catch(e){}
   const e=engDoLogin(); ENG_LOGIN=e; if(!e||manual) return;
-  MED_ENG=OC_ENG=ENT_ENG=NOTIF_ENG=e;
+  MED_ENG=OC_ENG=SOL_ENG=ENT_ENG=NOTIF_ENG=e;
 }
 /* 17/11: abas do topo do índice. 17/11 (tarde, dono): cada aba abre a LISTA SOZINHA na mesma janela (index.html?aba=oc …). Na página
    principal ficam só as abas com o número de pendências; a janela da lista mostra só a lista (e as abas para trocar
    de lista ali mesmo). */
-const ABAS=["med","oc","ent","notif"];
-const ABA_TIT={med:"Medições da semana",oc:"Conferência de compras",ent:"Casas não entregues",notif:"Notificações de status"};
+const ABAS=["med","oc","sol","ent","notif"];
+const ABA_TIT={med:"Medições da semana",oc:"Conferência de compras",sol:"Solicitações sem OC",ent:"Casas não entregues",notif:"Notificações de status"};
 const MODO_LISTA=(()=>{ try{ const a=new URLSearchParams(location.search).get("aba"); return INDICE&&ABAS.indexOf(a)>=0?a:""; }catch(e){ return ""; } })();
 let ABA_ATUAL="";
 function abaAbrir(id,peloClique){
@@ -1566,6 +1626,8 @@ window.MapaObras={
   verFinIdx:()=>{ MED_IDX_VER_FIN=!MED_IDX_VER_FIN; pintarMedIndice(); },
   /* 16/11: conferência de compras (OC) */
   ocResp:responderOc, ocEng:e=>{ OC_ENG=e; lsSet("og_oc_eng",e); engManual(); pintarOcs(); }, ocFeitas:()=>{ OC_VER_FEITAS=!OC_VER_FEITAS; pintarOcs(); },
+  ocForn:f=>{ OC_FORN=f; lsSet("og_oc_forn",f); pintarOcs(); },
+  solEng:e=>{ SOL_ENG=e; lsSet("og_sol_eng",e); engManual(); pintarSols(); }, solCat:c=>{ SOL_CAT=c; lsSet("og_sol_cat",c); pintarSols(); },
   /* 16/10: observações, formulário de vistoria, documentos e mapa de casas */
   obs, salvarObs, fecharJanela, vistoria:abrirVistoria, reparos:abrirReparos, docs:docsCasa, modoMapa,
   entAba:k=>{ ENT_ABA=k; pintarEntregas(); },
@@ -1607,7 +1669,7 @@ function montarSecoes(){
 try{ const g=document.createElement("script"); g.src="../PORTAL-MORAIS/tema-escuro.js?v=1"; g.async=true; document.head.appendChild(g); }catch(e){}
 document.addEventListener("DOMContentLoaded",()=>{
   pintarUsuario(); pintarFila();
-  _aposSinc=()=>{ if($("oc")) carregarOcs(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas(); };
+  _aposSinc=()=>{ if($("oc")) carregarOcs(); if($("sol")) carregarSols(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas(); };
   if(INDICE&&$("abas")) montarAbas(); else if(INDICE&&$("med")) montarSecoes();
   if(!INDICE){
     document.title=CFG.nome+" · Mapa de Obras · Morais";
@@ -1622,9 +1684,10 @@ document.addEventListener("DOMContentLoaded",()=>{
     if(!INDICE&&h) setTimeout(()=>focar(h),200); });
   carregarBoot(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas();
   if($("oc")) carregarOcs();
+  if($("sol")) carregarSols();
   carregarContratos();
   setInterval(()=>{ if(!document.hidden) carregarDados(true); },120000);          // quase ao vivo: relê o data.json a cada 2 min
-  document.addEventListener("visibilitychange",()=>{ if(!document.hidden){ sincronizar(); carregarDados(true); carregarContratos(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas(); if($("oc")) carregarOcs(); } });
+  document.addEventListener("visibilitychange",()=>{ if(!document.hidden){ sincronizar(); carregarDados(true); carregarContratos(); if(!INDICE) carregarMedicoes(); else if($("med")) carregarMedTodas(); if($("oc")) carregarOcs(); if($("sol")) carregarSols(); } });
   /* 04/11/26 — VOLTOU A INTERNET: primeiro sobe a fila do que foi feito offline
      (status, medições, entregas, observações), DEPOIS relê tudo — dados do mapa,
      contratos/medições do MC, situação das casas e permissões — para a tela
@@ -1636,6 +1699,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     carregarDados(true); carregarContratos();
     if(!INDICE){ carregarMedicoes(); carregarMV(); } else if($("med")) carregarMedTodas();
     if($("oc")) carregarOcs();
+    if($("sol")) carregarSols();
     if(BOOT&&BOOT.erro) BOOT=null;
     const cb=lsGet(K_BOOT,null); if(cb&&cb.t&&Date.now()-cb.t>=30*60*1000||!BOOT) carregarBoot();
   });
