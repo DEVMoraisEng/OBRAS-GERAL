@@ -1069,11 +1069,14 @@ const ENT_CAMPOS={
      FOI CRIADA (o contador parte dela), a CONFERÊNCIA DA CONCLUSÃO (Caio/ADM)
      e as OBSERVAÇÕES.
    - Reparos: sem "Vendida" e sem "Agendou pré-vistoria?"; a data da
-     pré-vistoria fica só para leitura; sai da lista só com ENTREGOU = SIM. */
+     pré-vistoria fica só para leitura; sai da lista só com ENTREGOU = SIM.
+     19/11: entra a ATIVIDADE CRIADA (a data de onde o contador dos reparos
+     parte — a 1ª data de pré-vistoria gravada), como na aba Casa apta: quando
+     a pré-vistoria é remarcada, a data ao lado muda mas a contagem não. */
 const ENT_ABAS=[
   {k:"todas", l:"🏠 Não entregues", vendida:true, campos:["casa_apta_vistoria","conferencia","agendou_pre_vistoria","data_pre_vistoria","reparos_pre_vistoria","entregou_casa"]},
   {k:"apta",  l:"🔧 Casa apta p/ vistoria · 7 dias", criada:true, campos:["casa_apta_vistoria","conferencia","obs_conferencia"]},
-  {k:"reparos",l:"🛠 Reparos da pré-vistoria · 15 dias", vistoria:true, campos:["data_pre_vistoria","reparos_pre_vistoria","entregou_casa"], soLeitura:["data_pre_vistoria"]}
+  {k:"reparos",l:"🛠 Reparos da pré-vistoria · 15 dias", vistoria:true, inicio:true, campos:["data_pre_vistoria","reparos_pre_vistoria","entregou_casa"], soLeitura:["data_pre_vistoria"]}
 ];
 let ENT_ABA="todas";
 const PRAZO_APTA=7, PRAZO_REPAROS=15, PRAZO_CAIO=7;   // 04/11/26: Caio confere em até 7 dias corridos depois do SIM
@@ -1283,7 +1286,7 @@ function pintarEntregas(){
     <div class="en-dir"><label class="en-sel en-busca">🔎 <input id="ent-busca" type="search" placeholder="Pesquisar obra (ex.: TB 21 QD 51 LT 34)" value="${esc(ENT_BUSCA)}" oninput="MapaObras.entBusca(this.value)" autocomplete="off"></label>
     <label class="en-sel">👷 Engenheiro <select onchange="MapaObras.entEng(this.value)"><option value="">Todos (${porAba[aba.k].length})</option>${engs.map(e=>`<option value="${esc(e)}" ${e===ENT_ENG?"selected":""}>${esc(e)} (${qtdEng(e)})</option>`).join("")}</select></label></div></div>`;
   if(!l.length){ box.innerHTML=barra+aviso+ajuda+`<div class="vazio" style="border:0">${N(ENT_BUSCA)?`Nenhuma casa encontrada para “${esc(ENT_BUSCA.trim())}”${ENT_ENG?` com o engenheiro ${esc(ENT_ENG)}`:""}.`:aba.k==="todas"?"Nenhuma casa vendida esperando entrega.":aba.k==="apta"?"Nenhuma casa esperando ficar apta / ser conferida.":"Nenhuma casa com reparos da pré-vistoria em aberto."}</div>`; return; }
-  const cab=`<tr><th>Casa</th><th>Engenheiro</th>${aba.vendida?"<th>Vendida</th>":""}${aba.criada?"<th>Atividade criada</th>":""}${aba.campos.map(k=>`<th>${ENT_CAMPOS[k].l}</th>`).join("")}${aba.vistoria?"<th>Vistoria</th>":""}<th>Situação</th></tr>`;
+  const cab=`<tr><th>Casa</th><th>Engenheiro</th>${aba.vendida?"<th>Vendida</th>":""}${aba.criada||aba.inicio?"<th>Atividade criada</th>":""}${aba.campos.map(k=>`<th>${ENT_CAMPOS[k].l}</th>`).join("")}${aba.vistoria?"<th>Vistoria</th>":""}<th>Situação</th></tr>`;
   const linha=v=>{
     const p=aba.k==="apta"?prazoApta(v):prazoEntrega(v), doc=DOCS.find(d=>N(d.endereco)===N(v.endereco));
     const ir=doc?(INDICE?`MapaObras.irPara('${esc(doc.setor||"")}','${esc(doc.ref||"")}')`:`MapaObras.focar('${esc(doc.ref||"")}')`):"";
@@ -1292,6 +1295,7 @@ function pintarEntregas(){
       <td data-l="Casa"><b class="en-end" ${ir?`onclick="${ir}"`:""}>${esc(v.endereco||"")}</b> <span class="pill">Casa ${esc(v.casa!=null?v.casa:"—")}</span></td>
       <td data-l="Engenheiro">${esc(v.eng||"—")}</td>${aba.vendida?`<td data-l="Vendida">${brc(v.data_venda)}</td>`:""}
       ${aba.criada?(()=>{ const a=contDe(v).a; return `<td data-l="Atividade criada" ${a.src==="venda"?'title="Não achei a atividade VISTORIA PRÉVIA desta casa no Notion (criada quando PROCESSO CONFORME? = SIM)"':""}>${a.ini&&a.src!=="venda"?br(a.ini):"—"}${a.src==="venda"?' <small class="vz">sem atividade</small>':""}</td>`; })():""}
+      ${aba.inicio?(()=>{ const r=contDe(v).r, pv=String(v.data_pre_vistoria||"").slice(0,10), dif=r.ini&&pv&&String(r.ini).slice(0,10)!==pv; return `<td data-l="Atividade criada" title="${dif?"O contador dos reparos parte desta data — a pré-vistoria foi remarcada depois":"Data de onde o contador dos reparos parte"}">${r.ini?br(r.ini):"—"}${dif?' <small class="vz">contador parte daqui</small>':""}</td>`; })():""}
       ${aba.campos.map(k=>`<td data-l="${esc(ENT_CAMPOS[k].l)}">${campoEntrega(v,k,aba)}</td>`).join("")}
       ${aba.vistoria?`<td data-l="Vistoria">${botaoVistoria(v)}</td>`:""}
       <td data-l="Situação" class="en-sit">${al.join("")||`<span class="vz">—</span>`}</td></tr>`;
