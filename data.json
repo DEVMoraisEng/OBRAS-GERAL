@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-19T13:12:26.866719+00:00",
+ "updated_at": "2026-11-19T13:27:00.397329+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -4239,7 +4239,7 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO",
+   "certidoes_matricula": "SIM",
    "modelo3d": null
   },
   {
@@ -6114,7 +6114,7 @@
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "SIM",
-   "ret_armazenado": "NÃO",
+   "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
    "issqn": "SIM",
    "cno_cnd": "SIM",
@@ -6234,7 +6234,7 @@
    "taxas_alvara_pagas": "SIM",
    "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "SIM",
-   "ret_armazenado": "NÃO",
+   "ret_armazenado": "SIM",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
    "cno_cnd": "NÃO",
@@ -8008,7 +8008,7 @@
    "id": "3b5c5ab532d3802aa460ce265aa1acbf",
    "endereco": "TB 18 QD 49 LT 32",
    "casa": 2,
-   "data_venda": "2026-10-27",
+   "data_venda": "2026-10-28",
    "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
@@ -8091,18 +8091,18 @@
    "data_venda": "2026-09-28",
    "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
-   "processo_conforme": "NÃO",
+   "processo_conforme": "SIM",
    "casa_apta_vistoria": "NÃO",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": null,
+   "contador": "{\"a\":{\"ini\":\"2026-09-28\",\"acc\":0,\"ret\":\"2026-09-28\",\"trav\":null},\"r\":{},\"em\":\"2026-11-19T13:26:31.337Z\",\"por\":\"sistema\",\"origem\":\"venda\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
-   "apta_desde": null
+   "apta_desde": "2026-11-19"
   },
   {
    "id": "3b5c5ab532d3809bb75dfc0c441ba09f",
