@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-23T15:00:44.387861+00:00",
+ "updated_at": "2026-11-23T15:15:02.220667+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -1093,7 +1093,7 @@
    "mestre": null,
    "eng": "Isaac Natan",
    "despachante": null,
-   "previsao_inicio_obra": null,
+   "previsao_inicio_obra": "2027-01-04",
    "obra_iniciada": "NÃO",
    "obra_finalizada": "NÃO",
    "data_inicio_obra": null,
