@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-23T19:27:13.982431+00:00",
+ "updated_at": "2026-11-23T19:40:25.797327+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -64,7 +64,7 @@
    "turno_habite_se": null,
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
-   "registro_pago": "NÃO",
+   "registro_pago": "SIM",
    "projeto_feito": "NÃO",
    "art_feita_paga": "NÃO",
    "escritura_registrada": "NÃO",
@@ -104,7 +104,7 @@
    "turno_habite_se": null,
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
-   "registro_pago": "NÃO",
+   "registro_pago": "SIM",
    "projeto_feito": "NÃO",
    "art_feita_paga": "NÃO",
    "escritura_registrada": "NÃO",
@@ -2998,7 +2998,7 @@
    "taxas_habite_se": "SIM",
    "issqn": "SIM",
    "cno_cnd": "SIM",
-   "armazenou_habite": "NÃO",
+   "armazenou_habite": "SIM",
    "certidoes_matricula": "SIM",
    "modelo3d": null
   },
@@ -3180,7 +3180,7 @@
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": "2026-11-25",
+   "data_habite_se": "2026-12-10",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
@@ -3197,7 +3197,7 @@
    "ret_armazenado": "INEXISTE",
    "taxas_habite_se": "SIM",
    "issqn": "NÃO",
-   "cno_cnd": "NÃO",
+   "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
    "modelo3d": null
@@ -14404,7 +14404,7 @@
    "endereco": "TB 16 QD 47 LT 40",
    "setor": "TERRABELA CERRADO",
    "habite": [
-    "2026-11-25",
+    "2026-12-10",
     "MANHÃ"
    ],
    "pv": {}
@@ -15770,6 +15770,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-23T19:40:25.797327+00:00",
+   "ref": "TC 56",
+   "endereco": "TB 16 QD 47 LT 40",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "habite",
+   "data": "2026-12-10",
+   "turno": "MANHÃ"
+  },
   {
    "em": "2026-11-21T03:00:45.926217+00:00",
    "ref": "RV 5",
