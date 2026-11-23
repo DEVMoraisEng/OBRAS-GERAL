@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-23T14:42:25.012136+00:00",
+ "updated_at": "2026-11-23T14:58:45.456873+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -5592,7 +5592,7 @@
    "contrato_mestre": "SIM",
    "contrato_investidor": "INEXISTE",
    "taxas_alvara_pagas": "SIM",
-   "projeto_aprovado": "NÃO",
+   "projeto_aprovado": "SIM",
    "incorporacao_finalizada": "NÃO",
    "ret_armazenado": null,
    "taxas_habite_se": "NÃO",
