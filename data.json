@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-23T17:11:58.709625+00:00",
+ "updated_at": "2026-11-23T17:42:09.701909+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -12319,7 +12319,7 @@
    "conferencia": null,
    "obs_conferencia": null,
    "contador": null,
-   "data_entrega": null,
+   "data_entrega": "2027-01-23",
    "vist_completo": 0,
    "vist_prestador": 0,
    "apta_desde": null
