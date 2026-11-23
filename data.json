@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-23T15:15:02.220667+00:00",
+ "updated_at": "2026-11-23T15:26:56.208179+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -6678,7 +6678,7 @@
    "taxas_habite_se": "SIM",
    "issqn": "SIM",
    "cno_cnd": "SIM",
-   "armazenou_habite": "NÃO",
+   "armazenou_habite": "SIM",
    "certidoes_matricula": "SIM",
    "modelo3d": null
   },
@@ -6730,7 +6730,7 @@
    "cidade": "GOIÂNIA",
    "obra_id": null,
    "proprietario": "MORAIS ENGENHARIA E CONSTRUCAO LTDA",
-   "mestre": null,
+   "mestre": "EDNALDO",
    "eng": "Guilherme Gouveia",
    "despachante": "MESSIAS",
    "previsao_inicio_obra": null,
