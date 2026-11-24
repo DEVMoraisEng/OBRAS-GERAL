@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-24T18:12:14.871909+00:00",
+ "updated_at": "2026-11-24T18:42:57.271068+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -440,7 +440,7 @@
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
-   "modelo3d": "2026-11-24T14:40:00.000-03:00"
+   "modelo3d": "2026-11-24T15:35:00.000-03:00"
   },
   {
    "id": "3cfc5ab532d380aba00ac4a663cb9a40",
@@ -1120,7 +1120,7 @@
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
-   "modelo3d": "2026-11-24T15:05:00.000-03:00"
+   "modelo3d": "2026-11-24T15:35:00.000-03:00"
   },
   {
    "id": "3c2c5ab532d3800987a9d29cd952c6be",
@@ -8136,9 +8136,9 @@
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
-   "conferencia": null,
+   "conferencia": "CONFERIDO OK",
    "obs_conferencia": null,
-   "contador": null,
+   "contador": "{\"a\":{\"ini\":\"2026-07-30\",\"acc\":117,\"ret\":\"2026-07-30\",\"trav\":\"2026-11-24\"},\"r\":{},\"em\":\"2026-11-24T18:42:22.987Z\",\"por\":\"Caio Araujo\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
