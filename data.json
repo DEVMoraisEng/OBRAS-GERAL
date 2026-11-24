@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-24T17:57:04.048527+00:00",
+ "updated_at": "2026-11-24T18:12:14.871909+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -1120,7 +1120,7 @@
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
-   "modelo3d": null
+   "modelo3d": "2026-11-24T15:05:00.000-03:00"
   },
   {
    "id": "3c2c5ab532d3800987a9d29cd952c6be",
@@ -13683,26 +13683,6 @@
    "vist_completo": 1,
    "vist_prestador": 1,
    "apta_desde": "2026-11-05"
-  },
-  {
-   "id": "33cc5ab532d38077abc9f8a0fe5dde04",
-   "endereco": "ATALANTA QD 01 LT 24",
-   "casa": 2,
-   "data_venda": "2026-08-14",
-   "eng": "Guilherme Gouveia",
-   "entregou_casa": "NÃO",
-   "processo_conforme": "SIM",
-   "casa_apta_vistoria": "SIM",
-   "agendou_pre_vistoria": "NÃO",
-   "data_pre_vistoria": null,
-   "reparos_pre_vistoria": "NÃO",
-   "conferencia": null,
-   "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-11-17\",\"acc\":0,\"ret\":\"2026-11-17\",\"trav\":\"2026-11-17\"},\"r\":{},\"em\":\"2026-11-17T18:19:14.147Z\",\"por\":\"Guilherme Gouveia\"}",
-   "data_entrega": null,
-   "vist_completo": 0,
-   "vist_prestador": 0,
-   "apta_desde": "2026-11-17"
   },
   {
    "id": "33cc5ab532d3801b91b1e37a3528c848",
