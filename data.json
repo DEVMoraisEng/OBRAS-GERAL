@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-25T17:57:08.564474+00:00",
+ "updated_at": "2026-11-25T18:02:59.197185+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -1520,7 +1520,7 @@
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
-   "modelo3d": null
+   "modelo3d": "2026-11-25T14:59:00.000-03:00"
   },
   {
    "id": "390c5ab532d3800da295f8ff0a6cc3e4",
@@ -10572,13 +10572,13 @@
    "eng": "Isaac Natan",
    "entregou_casa": "NÃO",
    "processo_conforme": "SIM",
-   "casa_apta_vistoria": "NÃO",
+   "casa_apta_vistoria": "EXECUTANDO REPAROS",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-11-24\",\"acc\":0,\"ret\":\"2026-11-24\",\"trav\":null},\"r\":{},\"em\":\"2026-11-24T22:41:52.581Z\",\"por\":\"sistema\",\"origem\":\"atividade\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-11-24\",\"acc\":0,\"ret\":\"2026-11-24\",\"trav\":null},\"r\":{},\"em\":\"2026-11-25T18:02:27.989Z\",\"por\":\"Isaac Natan\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
