@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-25T18:57:16.012299+00:00",
+ "updated_at": "2026-11-25T19:00:42.959079+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -3100,7 +3100,7 @@
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": "2026-11-27",
+   "data_habite_se": "2026-12-10",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
@@ -7558,7 +7558,7 @@
    "taxas_habite_se": "SIM",
    "issqn": "SIM",
    "cno_cnd": "SIM",
-   "armazenou_habite": "NÃO",
+   "armazenou_habite": "SIM",
    "certidoes_matricula": "SIM",
    "modelo3d": null
   },
@@ -14402,7 +14402,7 @@
    "endereco": "TB 14 QD 42 LT 19",
    "setor": "TERRABELA CERRADO",
    "habite": [
-    "2026-11-27",
+    "2026-12-10",
     "MANHÃ"
    ],
    "pv": {}
@@ -15790,6 +15790,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-25T19:00:42.959079+00:00",
+   "ref": "TC 58",
+   "endereco": "TB 14 QD 42 LT 19",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "habite",
+   "data": "2026-12-10",
+   "turno": "MANHÃ"
+  },
   {
    "em": "2026-11-23T19:40:25.797327+00:00",
    "ref": "TC 56",
