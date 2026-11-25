@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-25T16:57:04.819572+00:00",
+ "updated_at": "2026-11-25T17:27:14.755772+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -7998,7 +7998,7 @@
    "reparos_pre_vistoria": "NÃO",
    "conferencia": null,
    "obs_conferencia": null,
-   "contador": "{\"a\":{\"ini\":\"2026-10-20\",\"acc\":0,\"ret\":\"2026-10-20\",\"trav\":null},\"r\":{},\"em\":\"2026-11-25T16:41:24.620Z\",\"por\":\"sistema\",\"origem\":\"venda\"}",
+   "contador": "{\"a\":{\"ini\":\"2026-11-25\",\"acc\":0,\"ret\":\"2026-11-25\",\"trav\":null},\"r\":{},\"em\":\"2026-11-25T17:26:41.280Z\",\"por\":\"sistema\",\"origem\":\"atividade\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
