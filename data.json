@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-25T17:44:13.071791+00:00",
+ "updated_at": "2026-11-25T17:57:08.564474+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -1105,7 +1105,7 @@
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
    "registro_pago": "NÃO",
-   "projeto_feito": "NÃO",
+   "projeto_feito": "SIM",
    "art_feita_paga": "NÃO",
    "escritura_registrada": "NÃO",
    "certidao_lote": "INEXISTE",
@@ -1560,7 +1560,7 @@
    "cno_cnd": "NÃO",
    "armazenou_habite": "NÃO",
    "certidoes_matricula": "NÃO",
-   "modelo3d": null
+   "modelo3d": "2026-11-25T14:55:00.000-03:00"
   },
   {
    "id": "390c5ab532d38061b788c6d110793b9a",
