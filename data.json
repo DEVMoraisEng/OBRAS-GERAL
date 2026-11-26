@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-26T17:17:54.634997+00:00",
+ "updated_at": "2026-11-26T17:26:55.225112+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -8892,13 +8892,13 @@
    "eng": "Caio Araujo",
    "entregou_casa": "NÃO",
    "processo_conforme": "NÃO",
-   "casa_apta_vistoria": "NÃO",
+   "casa_apta_vistoria": "EXECUTANDO REPAROS",
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
-   "conferencia": null,
+   "conferencia": "NECESSITA DE INTERVENÇÕES",
    "obs_conferencia": null,
-   "contador": null,
+   "contador": "{\"a\":{\"ini\":\"2026-08-17\",\"acc\":0,\"ret\":\"2026-08-17\",\"trav\":null},\"r\":{},\"em\":\"2026-11-26T17:18:14.670Z\",\"por\":\"Caio Araujo\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
