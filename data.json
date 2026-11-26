@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-26T16:26:57.160207+00:00",
+ "updated_at": "2026-11-26T17:01:06.097725+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -7936,9 +7936,9 @@
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
-   "conferencia": null,
+   "conferencia": "CONFERIDO OK",
    "obs_conferencia": null,
-   "contador": null,
+   "contador": "{\"a\":{\"ini\":\"2026-09-01\",\"acc\":86,\"ret\":\"2026-09-01\",\"trav\":\"2026-11-26\"},\"r\":{},\"em\":\"2026-11-26T17:00:37.624Z\",\"por\":\"Caio Araujo\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
@@ -7956,9 +7956,9 @@
    "agendou_pre_vistoria": "NÃO",
    "data_pre_vistoria": null,
    "reparos_pre_vistoria": "NÃO",
-   "conferencia": null,
+   "conferencia": "CONFERIDO OK",
    "obs_conferencia": null,
-   "contador": null,
+   "contador": "{\"a\":{\"ini\":\"2026-09-01\",\"acc\":86,\"ret\":\"2026-09-01\",\"trav\":\"2026-11-26\"},\"r\":{},\"em\":\"2026-11-26T17:00:35.138Z\",\"por\":\"Caio Araujo\"}",
    "data_entrega": null,
    "vist_completo": 0,
    "vist_prestador": 0,
