@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-27T13:47:32.648466+00:00",
+ "updated_at": "2026-11-27T14:56:53.500237+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -1106,7 +1106,7 @@
    "itbi_pago": "SIM",
    "registro_pago": "NÃO",
    "projeto_feito": "SIM",
-   "art_feita_paga": "NÃO",
+   "art_feita_paga": "SIM",
    "escritura_registrada": "NÃO",
    "certidao_lote": "INEXISTE",
    "contrato_mestre": "NÃO",
