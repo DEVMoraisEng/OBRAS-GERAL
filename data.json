@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-27T13:17:27.895645+00:00",
+ "updated_at": "2026-11-27T13:20:22.549426+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -6775,9 +6775,9 @@
    "despachante": "MESSIAS",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM",
    "data_inicio_obra": "2026-02-15",
-   "data_termino_obra": null,
+   "data_termino_obra": "2026-11-27",
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-10-26",
@@ -6815,9 +6815,9 @@
    "despachante": "MESSIAS",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM",
    "data_inicio_obra": "2026-02-01",
-   "data_termino_obra": null,
+   "data_termino_obra": "2026-11-27",
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-10-06",
@@ -7535,9 +7535,9 @@
    "despachante": "MESSIAS",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM",
    "data_inicio_obra": "2026-04-02",
-   "data_termino_obra": null,
+   "data_termino_obra": "2026-11-27",
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
    "data_habite_se": "2026-09-16",
@@ -15446,8 +15446,8 @@
    "pv": {}
   },
   "JB 6": {
-   "status": "habite_concluido",
-   "prazo": "r",
+   "status": "acima_prazo",
+   "prazo": null,
    "endereco": "FERROVIARIOS QD 01 LT 17",
    "setor": "JOÃO BRAZ",
    "habite": [
@@ -15457,8 +15457,8 @@
    "pv": {}
   },
   "JB 5": {
-   "status": "habite_concluido",
-   "prazo": "r",
+   "status": "acima_prazo",
+   "prazo": null,
    "endereco": "FERROVIARIOS QD 01 LT 16",
    "setor": "JOÃO BRAZ",
    "habite": [
@@ -15669,8 +15669,8 @@
    "pv": {}
   },
   "A10": {
-   "status": "habite_agendado",
-   "prazo": "r",
+   "status": "acima_prazo",
+   "prazo": null,
    "endereco": "APOLO LYKEIOS QD 01 LT 37",
    "setor": "ACROPOLE",
    "habite": [
@@ -15790,6 +15790,33 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-27T13:20:22.549426+00:00",
+   "ref": "JB 6",
+   "endereco": "FERROVIARIOS QD 01 LT 17",
+   "setor": "JOÃO BRAZ",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "acima_prazo"
+  },
+  {
+   "em": "2026-11-27T13:20:22.549426+00:00",
+   "ref": "JB 5",
+   "endereco": "FERROVIARIOS QD 01 LT 16",
+   "setor": "JOÃO BRAZ",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "acima_prazo"
+  },
+  {
+   "em": "2026-11-27T13:20:22.549426+00:00",
+   "ref": "A10",
+   "endereco": "APOLO LYKEIOS QD 01 LT 37",
+   "setor": "ACROPOLE",
+   "tipo": "status",
+   "de": "habite_agendado",
+   "para": "acima_prazo"
+  },
   {
    "em": "2026-11-27T13:17:27.895645+00:00",
    "ref": "MQA 3",
