@@ -262,6 +262,7 @@ html[data-tema="escuro"] .cal-top b{color:var(--teal)}
 .cidade{display:flex;align-items:center;gap:12px;margin:24px 0 12px}
 .cidade .nm{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--azul)}
 html[data-tema="escuro"] .cidade .nm{color:var(--teal)}
+html[data-tema="escuro"] .emp-abas button b{background:#1c3b4d;color:#cfe6f2}
 .cidade .ln{flex:1;height:1px;background:var(--border2)}
 .cidade .ct{font-size:12px;color:var(--text3);font-weight:600}
 .grade-emp{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
@@ -278,6 +279,17 @@ html[data-tema="escuro"] .emp .nums b{color:#e7f3ff}
 .emp .nums b.r{color:var(--verm)}.emp .nums b.a{color:var(--amar)}
 .emp .nums span{font-size:9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--text3);white-space:nowrap}
 .emp.fin{opacity:.6}
+/* 27/11/2026: abas Em andamento × Finalizados dos empreendimentos */
+.emp-abas{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 4px}
+.emp-abas button{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 18px;border:1.5px solid var(--border);border-radius:12px;background:var(--sup);color:var(--text2);font:inherit;font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.emp-abas button b{font-family:Inter,sans-serif;font-size:12px;min-width:22px;padding:1px 7px;border-radius:10px;background:var(--bg3,#e7f0f3);color:var(--text);text-align:center}
+.emp-abas button.on{border-color:var(--verde);background:rgba(76,217,100,.14);color:var(--text)}
+.emp-abas button.on b{background:var(--verde);color:#fff}
+.emp-abas button:disabled{opacity:.45;cursor:default}
+.emp-abas+.cidade,.emp-abas+.vazio+.cidade{margin-top:14px}
+.emp-abas~.grade-emp .emp.fin{opacity:1}
+.emp-abas button i{font-style:normal}
+@media(max-width:640px){ .emp-abas{display:grid;grid-template-columns:1fr 1fr} .emp-abas button{justify-content:center;gap:6px;padding:8px 6px;font-size:15px;white-space:nowrap} .emp-abas button i{display:none} }
 .tooltip{position:fixed;z-index:999;background:#10283a;color:#fff;border-radius:8px;padding:7px 10px;font-size:12px;pointer-events:none;display:none;max-width:280px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
 .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(120px);background:#1f3b57;color:#fff;padding:10px 16px;border-radius:10px;font-size:13px;font-weight:600;z-index:9999;transition:transform .25s;box-shadow:0 6px 18px rgba(0,0,0,.25);max-width:92vw}
 .toast.on{transform:translateX(-50%) translateY(0)}

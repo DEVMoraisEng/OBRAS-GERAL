@@ -363,28 +363,36 @@ function pintarCal(){
  * ÍNDICE — empreendimentos (setor com TODAS as obras finalizadas some)
  * ===================================================================== */
 const SETORES=window.SETORES||[];
-let VER_FIN=false;
+/* 27/11/2026 (dono): "coloca uma página mostrando os setores com obras em andamento e outra com os finalizados" —
+   os empreendimentos ficam em duas abas: Em andamento (padrão) e Finalizados (setor com TODAS as obras finalizadas).
+   A aba escolhida fica guardada no aparelho. Os números do resumo continuam sendo só dos ativos. */
+let EMP_ABA=(()=>{ try{ return localStorage.getItem("mapa_emp_aba")==="fin"?"fin":"and"; }catch(e){ return "and"; } })();
 function pertence(d,s){ const st=N(d.setor); return s.chaves.some(c=>st.indexOf(N(c))>=0); }
 function pintarIndice(){
   const cont=$("conteudo"); if(!cont||!DADOS) return;
   const por=SETORES.map(s=>{ const l=DOCS.filter(d=>pertence(d,s));
     return {s,l,fin:l.length>0&&l.every(finalizada),ob:l.filter(d=>iniciada(d)&&!finalizada(d)).length,
             a:l.filter(d=>nivelPrazo(d)==="a").length,r:l.filter(d=>nivelPrazo(d)==="r").length,f:l.filter(finalizada).length}; });
-  const ocultos=por.filter(x=>x.fin);
-  const vis=por.filter(x=>VER_FIN||!x.fin);
+  const finais=por.filter(x=>x.fin), ativos=por.filter(x=>!x.fin);
+  if(EMP_ABA==="fin"&&!finais.length) EMP_ABA="and";
+  const vis=EMP_ABA==="fin"?finais:ativos;
   const cidades=[...new Set(vis.map(x=>x.s.cidade))];
   const tot={ob:0,a:0,r:0}; por.forEach(x=>{ if(!x.fin){ tot.ob+=x.ob; tot.a+=x.a; tot.r+=x.r; } });
-  $("resumo").innerHTML=`<div class="icard"><div class="ival">${vis.filter(x=>!x.fin).length}</div><div class="ilab">Empreendimentos ativos</div></div>
+  $("resumo").innerHTML=`<div class="icard"><div class="ival">${ativos.length}</div><div class="ilab">Empreendimentos ativos</div></div>
     <div class="icard"><div class="ival">${tot.ob}</div><div class="ilab">Obras em andamento</div></div>
     <div class="icard"><div class="ival a">${tot.a}</div><div class="ilab">⚠ 150 dias</div></div>
     <div class="icard"><div class="ival r">${tot.r}</div><div class="ilab">⛔ Estouraram 180</div></div>`;
-  cont.innerHTML=cidades.map(c=>{ const l=vis.filter(x=>x.s.cidade===c);
+  const abas=`<div class="emp-abas" role="tablist" aria-label="Empreendimentos">`+
+    `<button type="button" role="tab" aria-selected="${EMP_ABA==="and"}" class="${EMP_ABA==="and"?"on":""}" onclick="MapaObras.empAba('and')"><i>🏗️</i> Em andamento <b>${ativos.length}</b></button>`+
+    `<button type="button" role="tab" aria-selected="${EMP_ABA==="fin"}" class="${EMP_ABA==="fin"?"on":""}" onclick="MapaObras.empAba('fin')"${finais.length?"":" disabled"}><i>✅</i> Finalizados <b>${finais.length}</b></button></div>`;
+  const vazio=!vis.length?`<div class="vazio" style="margin-top:14px">${EMP_ABA==="fin"?"Nenhum empreendimento com todas as obras finalizadas.":"Nenhum empreendimento com obra em andamento."}</div>`:"";
+  cont.innerHTML=abas+vazio+cidades.map(c=>{ const l=vis.filter(x=>x.s.cidade===c);
     return `<div class="cidade"><span class="nm">📍 ${esc(c)}</span><span class="ln"></span><span class="ct">${l.length} empreendimento${l.length>1?"s":""}</span></div>
       <div class="grade-emp">${l.map(x=>`<a class="emp ${x.fin?"fin":""}" href="${esc(x.s.arq)}">
         <div><div class="nm">${esc(x.s.nome)}</div><div class="sub">${esc(x.s.sub)}${x.fin?" · tudo finalizado":""}</div></div>
         <div class="nums"><div><b>${x.l.length||"—"}</b><span>Lotes</span></div><div><b>${x.ob||"—"}</b><span>Em obra</span></div>
           <div><b class="a">${x.a||"—"}</b><span>150 d</span></div><div><b class="r">${x.r||"—"}</b><span>180 d</span></div><div><b>${x.f||"—"}</b><span>Finaliz.</span></div></div></a>`).join("")}</div>`;
-  }).join("")+(ocultos.length?`<div style="text-align:center;margin-top:18px"><button class="bt ghost bt-mini" onclick="MapaObras.verFin()">${VER_FIN?"Esconder":"Mostrar"} ${ocultos.length} empreendimento${ocultos.length>1?"s":""} com todas as obras finalizadas</button></div>`:"");
+  }).join("");
 }
 
 /* =====================================================================
@@ -1621,7 +1629,7 @@ window.MapaObras={
   notifPer:k=>{ NOTIF_PER=k; pintarNotif(); },
   calTipo:t=>{ CAL_TIPO=t; pintarCal(); },
   calMes:n=>{ if(!n){ CAL_MES=new Date(); CAL_MES.setDate(1); } else CAL_MES.setMonth(CAL_MES.getMonth()+n); pintarCal(); },
-  verFin:()=>{ VER_FIN=!VER_FIN; pintarIndice(); },
+  empAba:a=>{ EMP_ABA=a==="fin"?"fin":"and"; try{ localStorage.setItem("mapa_emp_aba",EMP_ABA); }catch(e){} pintarIndice(); },
   irPara, focar, medir, verFinalizadas, salvarCampo, salvarVenda,
   /* 23/10: medições por contrato (Mais Controle) e filtro por engenheiro */
   medEng:e=>{ MED_ENG=e; lsSet("og_med_eng",e); engManual(); repintarMed(); },
