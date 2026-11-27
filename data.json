@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-27T13:27:51.489124+00:00",
+ "updated_at": "2026-11-27T13:42:16.553957+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -4095,7 +4095,7 @@
    "despachante": "LIDIANA",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -4135,7 +4135,7 @@
    "despachante": "LIDIANA",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -4175,7 +4175,7 @@
    "despachante": "LIDIANA",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -4375,7 +4375,7 @@
    "despachante": "YAN",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -4415,7 +4415,7 @@
    "despachante": "YAN",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -4455,7 +4455,7 @@
    "despachante": "YAN",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -4495,7 +4495,7 @@
    "despachante": "YAN",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -4535,7 +4535,7 @@
    "despachante": "YAN",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -4615,7 +4615,7 @@
    "despachante": "YAN",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -4695,7 +4695,7 @@
    "despachante": "YAN",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -4735,7 +4735,7 @@
    "despachante": "YAN",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -4815,7 +4815,7 @@
    "despachante": "LIDIANA",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -4975,7 +4975,7 @@
    "despachante": "YAN",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -5015,7 +5015,7 @@
    "despachante": "YAN",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -5055,7 +5055,7 @@
    "despachante": "LIDIANA",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM SEM PRAZO",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM SEM PRAZO",
    "data_inicio_obra": null,
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
@@ -14703,7 +14703,7 @@
    }
   },
   "TC 33": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 17 QD 48 LT 46",
    "setor": "TERRABELA CERRADO",
@@ -14717,7 +14717,7 @@
    }
   },
   "TC 32": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 17 QD 48 LT 44",
    "setor": "TERRABELA CERRADO",
@@ -14727,7 +14727,7 @@
    }
   },
   "TC 31": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 17 QD 48 LT 40",
    "setor": "TERRABELA CERRADO",
@@ -14787,7 +14787,7 @@
    }
   },
   "TC 26": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 14 QD 43 LT 27",
    "setor": "TERRABELA CERRADO",
@@ -14799,7 +14799,7 @@
    }
   },
   "TC 25": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 14 QD 43 LT 48",
    "setor": "TERRABELA CERRADO",
@@ -14813,7 +14813,7 @@
    }
   },
   "TC 24": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 14 QD 43 LT 35",
    "setor": "TERRABELA CERRADO",
@@ -14823,7 +14823,7 @@
    }
   },
   "TC 23": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 17 QD 48 LT 41",
    "setor": "TERRABELA CERRADO",
@@ -14837,7 +14837,7 @@
    }
   },
   "TC 22": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 14 QD 43 LT 31",
    "setor": "TERRABELA CERRADO",
@@ -14859,7 +14859,7 @@
    }
   },
   "TC 20": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 14 QD 43 LT 29",
    "setor": "TERRABELA CERRADO",
@@ -14882,7 +14882,7 @@
    }
   },
   "TC 18": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 21 QD 42 LT 14",
    "setor": "TERRABELA CERRADO",
@@ -14893,7 +14893,7 @@
    }
   },
   "TC 17": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 21 QD 42 LT 13",
    "setor": "TERRABELA CERRADO",
@@ -14915,7 +14915,7 @@
    }
   },
   "TC 15": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 06 QD 40 LT 37",
    "setor": "TERRABELA CERRADO",
@@ -14959,7 +14959,7 @@
    }
   },
   "TC 11": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 21 QD 40 LT 30",
    "setor": "TERRABELA CERRADO",
@@ -14970,7 +14970,7 @@
    }
   },
   "TC 10": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 20 QD 38 LT 01",
    "setor": "TERRABELA CERRADO",
@@ -14982,7 +14982,7 @@
    }
   },
   "TC 9": {
-   "status": "habite_concluido",
+   "status": "fin_sem_prazo",
    "prazo": null,
    "endereco": "TB 20 QD 37 LT 17",
    "setor": "TERRABELA CERRADO",
@@ -15790,6 +15790,141 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 33",
+   "endereco": "TB 17 QD 48 LT 46",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 32",
+   "endereco": "TB 17 QD 48 LT 44",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 31",
+   "endereco": "TB 17 QD 48 LT 40",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 26",
+   "endereco": "TB 14 QD 43 LT 27",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 25",
+   "endereco": "TB 14 QD 43 LT 48",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 24",
+   "endereco": "TB 14 QD 43 LT 35",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 23",
+   "endereco": "TB 17 QD 48 LT 41",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 22",
+   "endereco": "TB 14 QD 43 LT 31",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 20",
+   "endereco": "TB 14 QD 43 LT 29",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 18",
+   "endereco": "TB 21 QD 42 LT 14",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 17",
+   "endereco": "TB 21 QD 42 LT 13",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 15",
+   "endereco": "TB 06 QD 40 LT 37",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 11",
+   "endereco": "TB 21 QD 40 LT 30",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 10",
+   "endereco": "TB 20 QD 38 LT 01",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
+  {
+   "em": "2026-11-27T13:42:16.553957+00:00",
+   "ref": "TC 9",
+   "endereco": "TB 20 QD 37 LT 17",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "fin_sem_prazo"
+  },
   {
    "em": "2026-11-27T13:27:51.489124+00:00",
    "ref": "TC 21",
