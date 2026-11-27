@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-27T11:00:44.238403+00:00",
+ "updated_at": "2026-11-27T13:14:22.718571+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -4215,9 +4215,9 @@
    "despachante": "LIDIANA",
    "previsao_inicio_obra": null,
    "obra_iniciada": "SIM",
-   "obra_finalizada": "NÃO",
+   "obra_finalizada": "SIM",
    "data_inicio_obra": "2026-04-20",
-   "data_termino_obra": "2026-11-19",
+   "data_termino_obra": "2026-11-26",
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "SIM",
    "data_habite_se": "2026-09-02",
@@ -14738,8 +14738,8 @@
    }
   },
   "TC 30": {
-   "status": "habite_concluido",
-   "prazo": "r",
+   "status": "acima_prazo",
+   "prazo": null,
    "endereco": "TB 17 QD 48 LT 38",
    "setor": "TERRABELA CERRADO",
    "habite": [
@@ -15790,6 +15790,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-27T13:14:22.718571+00:00",
+   "ref": "TC 30",
+   "endereco": "TB 17 QD 48 LT 38",
+   "setor": "TERRABELA CERRADO",
+   "tipo": "status",
+   "de": "habite_concluido",
+   "para": "acima_prazo"
+  },
   {
    "em": "2026-11-25T19:00:42.959079+00:00",
    "ref": "TC 58",
