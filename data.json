@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-27T19:00:40.958362+00:00",
+ "updated_at": "2026-11-27T19:12:03.523181+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -2239,7 +2239,7 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "SIM",
-   "certidoes_matricula": "NÃO",
+   "certidoes_matricula": "SIM",
    "modelo3d": null
   },
   {
@@ -5820,7 +5820,7 @@
    "data_termino_obra": null,
    "agendou_habite_se": "SIM",
    "aprovou_habite_se": "NÃO",
-   "data_habite_se": "2026-11-09",
+   "data_habite_se": "2026-12-04",
    "turno_habite_se": "MANHÃ",
    "escritura_assinada": "SIM",
    "itbi_pago": "SIM",
@@ -6799,7 +6799,7 @@
    "issqn": "SIM",
    "cno_cnd": "SIM",
    "armazenou_habite": "NÃO",
-   "certidoes_matricula": "NÃO",
+   "certidoes_matricula": "SIM",
    "modelo3d": null
   },
   {
@@ -15203,7 +15203,7 @@
    "endereco": "RR 03 QD 02 LT 20",
    "setor": "RAVENA",
    "habite": [
-    "2026-11-09",
+    "2026-12-04",
     "MANHÃ"
    ],
    "pv": {}
@@ -15810,6 +15810,15 @@
   }
  },
  "eventos": [
+  {
+   "em": "2026-11-27T19:12:03.523181+00:00",
+   "ref": "RV 2",
+   "endereco": "RR 03 QD 02 LT 20",
+   "setor": "RAVENA",
+   "tipo": "habite",
+   "data": "2026-12-04",
+   "turno": "MANHÃ"
+  },
   {
    "em": "2026-11-27T13:42:16.553957+00:00",
    "ref": "TC 33",
