@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-27T23:57:28.171303+00:00",
+ "updated_at": "2026-11-28T00:13:00.513224+00:00",
  "modelo3d_conferido": true,
  "documentos": [
   {
@@ -9008,7 +9008,7 @@
    "id": "33cc5ab532d380c392fcdb507351bd00",
    "endereco": "TB 21 QD 46 LT 26",
    "casa": 1,
-   "data_venda": null,
+   "data_venda": "2026-11-27",
    "eng": "João Marcos Vieira Cabral Menezes",
    "entregou_casa": "NÃO",
    "processo_conforme": "NÃO",
